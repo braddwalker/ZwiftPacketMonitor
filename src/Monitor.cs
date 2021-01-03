@@ -11,6 +11,11 @@ namespace ZwiftPacketMonitor
     /// This class implements a UDP packet monitor for the Zwift cycling simulator. It listens for packets on a specific port
     /// of a local network adapter, and when found, deserializes the payload and dispatches events that can be consumed by the
     /// caller.
+    /// 
+    /// NOTE: Because this utilizes a network packet capture to intercept the UDP packets, your system may require this code to
+    /// run using elevated privileges.
+    /// 
+    /// This is a .Net Core port of the Node zwift-packet-monitor project (https://github.com/wiedmann/zwift-packet-monitor).
     ///</summary>
     ///<author>Brad Walker - https://github.com/braddwalker/ZwiftPacketMonitor/</author>
     public class Monitor 
@@ -76,9 +81,9 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// Starts the network monitor and begins dispatching events
         /// </summary>
-        /// <param name="networkInterface">The network interface to attach to</param>
+        /// <param name="networkInterface">The name of the network interface to attach to</param>
         /// <param name="cancellationToken">An optional cancellation token</param>
-        /// <returns>A Task representing the running operation</returns>
+        /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {            
             logger.LogDebug($"Starting UDP packet capture on {networkInterface}:{ZWIFT_PORT}");
@@ -87,7 +92,7 @@ namespace ZwiftPacketMonitor
             var devices = CaptureDeviceList.Instance;
 
             // See if we can find the desired interface by name
-            device = devices.Where(x => x.Name.Equals(networkInterface)).FirstOrDefault();
+            device = devices.Where(x => x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 
             if (device == null)
             {
@@ -109,7 +114,7 @@ namespace ZwiftPacketMonitor
         /// Stops any active capture
         /// </summary>
         /// <param name="cancellationToken">An optional cancellation token</param>
-        /// <returns>A Task representing the running operation</returns>
+        /// <returns>A Task representing the stopped operation</returns>
         public async Task StopCaptureAsync(CancellationToken cancellationToken = default)
         {
             logger.LogDebug("Sopping packet capture");
