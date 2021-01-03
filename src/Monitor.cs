@@ -153,11 +153,6 @@ namespace ZwiftPacketMonitor
                                 args.EventDate = DateTime.Now;
                                 OnIncomingPlayerEvent(args);
                             }
-
-                            if (packetData.Msgnum == packetData.NumMsgs)
-                            {
-                                //System.Console.WriteLine("End of batch");
-                            }
                         }
                         // Outgoing packet
                         else if (dstPort == ZWIFT_PORT) 
