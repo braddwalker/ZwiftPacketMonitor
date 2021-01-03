@@ -3,6 +3,7 @@ using System.Linq;
 using SharpPcap;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace ZwiftPacketMonitor
 {
@@ -24,8 +25,8 @@ namespace ZwiftPacketMonitor
         /// </summary>
         private const int READ_TIMEOUT = 1000;
 
-        private string networkInterface;
         private ICaptureDevice device;
+        private ILogger<Monitor> logger;
 
         /// <summary>
         /// This event gets invoked when player update events are received from the central Zwift game engine
@@ -38,11 +39,10 @@ namespace ZwiftPacketMonitor
         public event EventHandler<PlayerStateEventArgs> OutgoingPlayerEvent;
 
         /// <summary>
-        /// Creates a new instance of the <c>Monitor</c>.
+        /// Creates a new instance of the monitor class.
         /// </summary>
-        /// <param name="networkInterface">The network interface to attach to</param>
-        public Monitor(string networkInterface) {
-            this.networkInterface = networkInterface;
+        public Monitor(ILogger<Monitor> logger) {
+            this.logger = logger;
         }
 
         private void OnIncomingPlayerEvent(PlayerStateEventArgs e)
@@ -50,7 +50,12 @@ namespace ZwiftPacketMonitor
             EventHandler<PlayerStateEventArgs> handler = IncomingPlayerEvent;
             if (handler != null)
             {
-                handler(this, e);
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
             }
         }
 
@@ -59,19 +64,29 @@ namespace ZwiftPacketMonitor
             EventHandler<PlayerStateEventArgs> handler = OutgoingPlayerEvent;
             if (handler != null)
             {
-                handler(this, e);
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
             }
         }
 
         /// <summary>
         /// Starts the network monitor and begins dispatching events
         /// </summary>
+        /// <param name="networkInterface">The network interface to attach to</param>
         /// <param name="cancellationToken">An optional cancellation token</param>
-        /// <returns>A Task representing the operation</returns>
-        public async Task StartCaptureAsync(CancellationToken cancellationToken = default)
-        {
-            /* Retrieve the device list */
+        /// <returns>A Task representing the running operation</returns>
+        public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
+        {            
+            logger.LogDebug($"Starting UDP packet capture on {networkInterface}:{ZWIFT_PORT}");
+
+            // This will blow up if caller doesn't have sufficient privs to attach to network devices
             var devices = CaptureDeviceList.Instance;
+
+            // See if we can find the desired interface by name
             device = devices.Where(x => x.Name.Equals(networkInterface)).FirstOrDefault();
 
             if (device == null)
@@ -79,7 +94,7 @@ namespace ZwiftPacketMonitor
                 throw new ArgumentException($"Interface {networkInterface} not found");
             }
 
-            //Register our handler function to the 'packet arrival' event
+            // Register our handler function to the 'packet arrival' event
             device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
 
             // Open the device for capturing
@@ -94,9 +109,11 @@ namespace ZwiftPacketMonitor
         /// Stops any active capture
         /// </summary>
         /// <param name="cancellationToken">An optional cancellation token</param>
-        /// <returns>A Task representing the operation</returns>
+        /// <returns>A Task representing the running operation</returns>
         public async Task StopCaptureAsync(CancellationToken cancellationToken = default)
         {
+            logger.LogDebug("Sopping packet capture");
+
             if (device == null)
             {
                 await Task.CompletedTask;
@@ -123,9 +140,12 @@ namespace ZwiftPacketMonitor
 
                     try 
                     {
+                        //Incoming packet
                         if (srcPort == ZWIFT_PORT)
                         {
                             var packetData = ServerToClient.Parser.ParseFrom(udpPacket.PayloadData);
+
+                            // Dispatch each player state individually
                             foreach (var player in packetData.PlayerStates)
                             {
                                 PlayerStateEventArgs args = new PlayerStateEventArgs();
@@ -139,6 +159,7 @@ namespace ZwiftPacketMonitor
                                 //System.Console.WriteLine("End of batch");
                             }
                         }
+                        // Outgoing packet
                         else if (dstPort == ZWIFT_PORT) 
                         {
                             var packetData = ClientToServer.Parser.ParseFrom(udpPacket.PayloadData);
@@ -150,13 +171,13 @@ namespace ZwiftPacketMonitor
                         }
                     }
                     catch (Exception ex) {
-                        System.Console.WriteLine($"ERROR: PayloadLen: {udpPacket?.PayloadData?.Length}, SrcPort: {srcPort}, DestPort: {dstPort}, Error: {ex.GetType()}, {ex.Message}");
+                        logger.LogError(ex, $"ERROR: PayloadLen: {udpPacket?.PayloadData?.Length}, SrcPort: {srcPort}, DestPort: {dstPort}");
                     }
                 }
             }
             catch (Exception ee)
             {
-                System.Console.WriteLine($"Unable to parse packet - {ee.Message}");
+                logger.LogError(ee, $"Unable to parse packet");
             }
         }
     }
