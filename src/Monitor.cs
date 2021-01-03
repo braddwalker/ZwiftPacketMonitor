@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 namespace ZwiftPacketMonitor
 {
     ///<summary>
+    /// This class implements a UDP packet monitor for the Zwift cycling simulator. It listens for packets on a specific port
+    /// of a local network adapter, and when found, deserializes the payload and dispatches events that can be consumed by the
+    /// caller.
     ///</summary>
-    ///<author>Brad Walker - https://github.com/braddwalker</author>
+    ///<author>Brad Walker - https://github.com/braddwalker/ZwiftPacketMonitor/</author>
     public class Monitor 
     {
         /// <summary>
