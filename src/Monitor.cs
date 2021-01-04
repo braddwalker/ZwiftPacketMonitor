@@ -103,7 +103,7 @@ namespace ZwiftPacketMonitor
             device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
 
             // Open the device for capturing
-            device.Open(DeviceMode.Promiscuous, READ_TIMEOUT);
+            device.Open(DeviceMode.Normal, READ_TIMEOUT);
             device.Filter = $"udp port {ZWIFT_PORT}";
 
             // Start capture 'INFINTE' number of packets
@@ -147,27 +147,36 @@ namespace ZwiftPacketMonitor
                     {
                         //Incoming packet
                         if (srcPort == ZWIFT_PORT)
-                        {
+                        {                            
                             var packetData = ServerToClient.Parser.ParseFrom(udpPacket.PayloadData);
 
                             // Dispatch each player state individually
                             foreach (var player in packetData.PlayerStates)
                             {
-                                PlayerStateEventArgs args = new PlayerStateEventArgs();
-                                args.PlayerState = player;
-                                args.EventDate = DateTime.Now;
-                                OnIncomingPlayerEvent(args);
+                                if (player != null) 
+                                {
+                                    PlayerStateEventArgs args = new PlayerStateEventArgs();
+                                    args.PlayerState = player;
+                                    args.EventDate = DateTime.Now;
+                                    OnIncomingPlayerEvent(args);
+                                }
                             }
                         }
                         // Outgoing packet
                         else if (dstPort == ZWIFT_PORT) 
                         {
-                            var packetData = ClientToServer.Parser.ParseFrom(udpPacket.PayloadData);
+                            int skip = udpPacket.PayloadData[0] - 1;
+                            var packetBytes = udpPacket.PayloadData.Skip(skip).ToArray();
+                            packetBytes = packetBytes.Take(packetBytes.Length - 4).ToArray();
 
-                            PlayerStateEventArgs args = new PlayerStateEventArgs();
-                            args.PlayerState = packetData.State;
-                            args.EventDate = DateTime.Now;
-                            OnOutgoingPlayerEvent(args);
+                            var packetData = ClientToServer.Parser.ParseFrom(packetBytes);
+                            if (packetData.State != null) 
+                            {
+                                PlayerStateEventArgs args = new PlayerStateEventArgs();
+                                args.PlayerState = packetData.State;
+                                args.EventDate = DateTime.Now;
+                                OnOutgoingPlayerEvent(args);
+                            }
                         }
                     }
                     catch (Exception ex) {
@@ -179,6 +188,14 @@ namespace ZwiftPacketMonitor
             {
                 logger.LogError(ee, $"Unable to parse packet");
             }
+        }
+
+        private uint swapEndianness(uint x)
+        {
+            return ((x & 0x000000ff) << 24) +  // First byte
+                ((x & 0x0000ff00) << 8) +   // Second byte
+                ((x & 0x00ff0000) >> 8) +   // Third byte
+                ((x & 0xff000000) >> 24);   // Fourth byte
         }
     }
 }
