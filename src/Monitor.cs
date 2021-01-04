@@ -165,6 +165,9 @@ namespace ZwiftPacketMonitor
                         // Outgoing packet
                         else if (dstPort == ZWIFT_PORT) 
                         {
+                            // Outgoing packets have some metadeta at the head of the payload.
+                            // First byte tells you how far into the array you need to skip in
+                            // order to get to the serialized proto document. 
                             int skip = udpPacket.PayloadData[0] - 1;
                             var packetBytes = udpPacket.PayloadData.Skip(skip).ToArray();
                             packetBytes = packetBytes.Take(packetBytes.Length - 4).ToArray();
@@ -189,13 +192,5 @@ namespace ZwiftPacketMonitor
                 logger.LogError(ee, $"Unable to parse packet");
             }
         }
-
-        private uint swapEndianness(uint x)
-        {
-            return ((x & 0x000000ff) << 24) +  // First byte
-                ((x & 0x0000ff00) << 8) +   // Second byte
-                ((x & 0x00ff0000) >> 8) +   // Third byte
-                ((x & 0xff000000) >> 24);   // Fourth byte
-        }
-    }
+   }
 }
