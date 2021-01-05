@@ -1,24 +1,25 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>ZwiftPacketMonitor</id>
-    <version>1.0</version>
+    <id>$id$</id>
+    <version>$version$</version>
     <authors>Brad Walker (@bradwalker)</authors>
-    <owners>Brad Walker (@bradwalker)</owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>This is a port of the node zwift-packet-monitor project which monitors Zwift UDP packets</description>
-    <language>en-US</language>
+    <title>Captures UDP packets produced/consumed by the Zwift online cycling simulator</title>
     <projectUrl>https://github.com/braddwalker/ZwiftPacketMonitor</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <tags></tags>
+    <description>This is a port of the node zwift-packet-monitor project which monitors Zwift UDP packets</description>
     <dependencies>
-      <dependency id="Google.Protobuf" version="3.14.0" />
-      <dependency id="SharpPcap" version="5.3.0" />
-      <dependency id="Microsoft.Extensions.Logging.Abstractions" version="5.0.0" />
-      <dependency id="Microsoft.Extensions.Logging" version="5.0.0" />
+      <group targetFramework=".NETStandard2.0" />
+      <group>
+        <dependency id="Google.Protobuf" version="3.14.0" />
+        <dependency id="SharpPcap" version="5.3.0" />
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="5.0.0" />
+        <dependency id="Microsoft.Extensions.Logging" version="5.0.0" />
+      </group>
     </dependencies>
   </metadata>
   <files>
-	<file src="bin\Release\*.dll" target="lib" />
+	  <file src="bin\Release\ZwiftPacketMonitor.dll" target="lib" />
   </files>
 </package>
