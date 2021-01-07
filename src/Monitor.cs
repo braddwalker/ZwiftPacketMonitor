@@ -15,7 +15,7 @@ namespace ZwiftPacketMonitor
     /// NOTE: Because this utilizes a network packet capture to intercept the UDP packets, your system may require this code to
     /// run using elevated privileges.
     /// 
-    /// This is a .Net Core port of the Node zwift-packet-monitor project (https://github.com/wiedmann/zwift-packet-monitor).
+    /// This is a .NET port of the Node zwift-packet-monitor project (https://github.com/jeroni7100/zwift-packet-monitor).
     ///</summary>
     ///<author>Brad Walker - https://github.com/braddwalker/ZwiftPacketMonitor/</author>
     public class Monitor 
