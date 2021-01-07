@@ -165,7 +165,7 @@ namespace ZwiftPacketMonitor
                             // Dispatch player updates individually
                             foreach (var update in packetData.PlayerUpdates)
                             {
-                                System.Console.WriteLine(update.Tag3);
+                                System.Console.WriteLine($"Tag3: {update.Tag3}");
                             }
                         }
                         // Outgoing packet
