@@ -161,6 +161,12 @@ namespace ZwiftPacketMonitor
                                     OnIncomingPlayerEvent(args);
                                 }
                             }
+
+                            // Dispatch player updates individually
+                            foreach (var update in packetData.PlayerUpdates)
+                            {
+                                System.Console.WriteLine(update.Tag3);
+                            }
                         }
                         // Outgoing packet
                         else if (dstPort == ZWIFT_PORT) 
