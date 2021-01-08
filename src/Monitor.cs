@@ -1,9 +1,12 @@
 using System;
 using System.Linq;
 using SharpPcap;
+using SharpPcap.Npcap;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using System.Text.RegularExpressions;
+using System.Net;
 
 namespace ZwiftPacketMonitor
 {
@@ -86,18 +89,34 @@ namespace ZwiftPacketMonitor
         /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {            
-            logger.LogDebug($"Starting UDP packet capture on {networkInterface}:{ZWIFT_PORT}");
-
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
-            var devices = CaptureDeviceList.Instance;
+            var devices = NpcapDeviceList.Instance;
 
-            // See if we can find the desired interface by name
-            device = devices.Where(x => x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            // Roll the dice and pull the first interface in the list
+            if (string.IsNullOrWhiteSpace(networkInterface))
+            {
+                device = devices.FirstOrDefault();
+            }
+            else
+            {
+                // See if we can find the desired interface by name
+                var ipMatch = new Regex("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$");
+                if (ipMatch.IsMatch(networkInterface))
+                {
+                    logger.LogDebug($"Searching for device matching {networkInterface}");
+                    device = devices.FirstOrDefault(d => d.Addresses.Any(a => a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
+                }
+                else {
+                    device = devices.Where(x => x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                }
+            }
 
             if (device == null)
             {
                 throw new ArgumentException($"Interface {networkInterface} not found");
             }
+
+            logger.LogDebug($"Starting UDP packet capture on {device.Name}:{ZWIFT_PORT}");
 
             // Register our handler function to the 'packet arrival' event
             device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
