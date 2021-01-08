@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using SharpPcap;
 using SharpPcap.Npcap;
+using SharpPcap.LibPcap;
+using SharpPcap.WinPcap;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -90,6 +92,7 @@ namespace ZwiftPacketMonitor
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {            
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
+            //var devices = NpcapDeviceList.Instance;
             var devices = NpcapDeviceList.Instance;
 
             // Roll the dice and pull the first interface in the list
@@ -100,11 +103,13 @@ namespace ZwiftPacketMonitor
             else
             {
                 // See if we can find the desired interface by name
-                var ipMatch = new Regex("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$");
-                if (ipMatch.IsMatch(networkInterface))
+                if (Regex.IsMatch(networkInterface, "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"))
                 {
                     logger.LogDebug($"Searching for device matching {networkInterface}");
-                    device = devices.FirstOrDefault(d => d.Addresses.Any(a => a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
+                    device = devices.FirstOrDefault(d => 
+                        d.Addresses != null && d.Addresses.Any(a => 
+                            a.Addr != null && a.Addr.ipAddress != null && 
+                                a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
                 }
                 else {
                     device = devices.Where(x => x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
