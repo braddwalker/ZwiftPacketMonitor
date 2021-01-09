@@ -119,7 +119,7 @@ namespace ZwiftPacketMonitor
                 throw new ArgumentException($"Interface {networkInterface} not found");
             }
 
-            logger.LogDebug($"Starting UDP packet capture on {device?.Addresses[0]?.Addr.ipAddress}:{ZWIFT_PORT}");
+            logger.LogDebug($"Starting UDP packet capture on {GetInterfaceDisplayName(device)}:{ZWIFT_PORT}");
 
             // Register our handler function to the 'packet arrival' event
             device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
@@ -130,6 +130,10 @@ namespace ZwiftPacketMonitor
 
             // Start capture 'INFINTE' number of packets
             await Task.Run(() => { device.Capture(); }, cancellationToken);
+        }
+
+        private string GetInterfaceDisplayName(NpcapDevice device) {
+            return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
         /// <summary>
