@@ -33,7 +33,7 @@ namespace ZwiftPacketMonitor
         /// </summary>
         private const int READ_TIMEOUT = 1000;
 
-        private ICaptureDevice device;
+        private NpcapDevice device;
         private ILogger<Monitor> logger;
 
         /// <summary>
@@ -95,19 +95,22 @@ namespace ZwiftPacketMonitor
             // Roll the dice and pull the first interface in the list
             if (string.IsNullOrWhiteSpace(networkInterface))
             {
-                device = devices.FirstOrDefault();
+                device = devices.FirstOrDefault(d => d.Addresses.Count > 0);
             }
             else
             {
                 // See if we can find the desired interface by name
-                var ipMatch = new Regex("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$");
-                if (ipMatch.IsMatch(networkInterface))
+                if (Regex.IsMatch(networkInterface, "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"))
                 {
                     logger.LogDebug($"Searching for device matching {networkInterface}");
-                    device = devices.FirstOrDefault(d => d.Addresses.Any(a => a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
+                    device = devices.FirstOrDefault(d => 
+                        d.Addresses != null && d.Addresses.Any(a => 
+                            a.Addr != null && a.Addr.ipAddress != null && 
+                                a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
                 }
                 else {
-                    device = devices.Where(x => x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                    device = devices.Where(x => 
+                        x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 }
             }
 
@@ -116,7 +119,7 @@ namespace ZwiftPacketMonitor
                 throw new ArgumentException($"Interface {networkInterface} not found");
             }
 
-            logger.LogDebug($"Starting UDP packet capture on {device.Name}:{ZWIFT_PORT}");
+            logger.LogDebug($"Starting UDP packet capture on {GetInterfaceDisplayName(device)}:{ZWIFT_PORT}");
 
             // Register our handler function to the 'packet arrival' event
             device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
@@ -127,6 +130,10 @@ namespace ZwiftPacketMonitor
 
             // Start capture 'INFINTE' number of packets
             await Task.Run(() => { device.Capture(); }, cancellationToken);
+        }
+
+        private string GetInterfaceDisplayName(NpcapDevice device) {
+            return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
         /// <summary>
@@ -174,6 +181,11 @@ namespace ZwiftPacketMonitor
                             {
                                 if (player != null) 
                                 {
+                                    if (logger.IsEnabled(LogLevel.Debug))
+                                    {
+                                        logger.LogDebug($"INCOMING: {player}");
+                                    }
+                                    
                                     PlayerStateEventArgs args = new PlayerStateEventArgs();
                                     args.PlayerState = player;
                                     args.EventDate = DateTime.Now;
@@ -194,6 +206,11 @@ namespace ZwiftPacketMonitor
                             var packetData = ClientToServer.Parser.ParseFrom(packetBytes);
                             if (packetData.State != null) 
                             {
+                                if (logger.IsEnabled(LogLevel.Debug))
+                                {
+                                    logger.LogDebug($"OUTGOING: {packetData.State}");
+                                }
+
                                 PlayerStateEventArgs args = new PlayerStateEventArgs();
                                 args.PlayerState = packetData.State;
                                 args.EventDate = DateTime.Now;
