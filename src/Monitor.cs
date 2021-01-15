@@ -47,11 +47,68 @@ namespace ZwiftPacketMonitor
         public event EventHandler<PlayerStateEventArgs> OutgoingPlayerEvent;
 
         /// <summary>
+        /// This event gets invoked when a remote player enteres the world
+        /// </summary>
+        public event EventHandler<PlayerEnteredWorldEventArgs> IncomingPlayerEnteredWorldEvent;
+
+        /// <summary>
+        /// This event gets invoked when a remote player gives a ride on to another player
+        /// </summary>
+        public event EventHandler<RideOnGivenEventArgs> IncomingRideOnGivenEvent;
+
+        /// <summary>
+        /// This event gets invoked when a remote player sends a chat message
+        /// </summary>
+        public event EventHandler<ChatMessageEventArgs> IncomingChatMessageEvent;
+
+        /// <summary>
         /// Creates a new instance of the monitor class.
         /// </summary>
         public Monitor(ILogger<Monitor> logger) {
             this.logger = logger;
         }
+
+         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
+        {
+            EventHandler<ChatMessageEventArgs> handler = IncomingChatMessageEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+         private void OnIncomingRideOnGivenEvent(RideOnGivenEventArgs e)
+        {
+            EventHandler<RideOnGivenEventArgs> handler = IncomingRideOnGivenEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+         private void OnIncomingPlayerEnteredWorldEvent(PlayerEnteredWorldEventArgs e)
+        {
+            EventHandler<PlayerEnteredWorldEventArgs> handler = IncomingPlayerEnteredWorldEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }      
 
         private void OnIncomingPlayerEvent(PlayerStateEventArgs e)
         {
@@ -107,8 +164,7 @@ namespace ZwiftPacketMonitor
 
             // Open the device for capturing
             device.Open(DeviceMode.Normal, READ_TIMEOUT);
-            //device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
-            device.Filter = $"udp port {ZWIFT_UDP_PORT}";
+            device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
 
             // Start capture 'INFINTE' number of packets
             await Task.Run(() => { device.Capture(); }, cancellationToken);
@@ -202,25 +258,30 @@ namespace ZwiftPacketMonitor
                             skip = packetBytes[0] - 1;
                         }
 
+                        // Pluck the protobuf data from the packet payload
                         protoBytes = packetBytes.Skip(skip).ToArray();
                         protoBytes = protoBytes.Take(protoBytes.Length - 4).ToArray();
                         direction = Direction.Outgoing;
                     }
                 }
 
+                // If we have any data at this point, let's continue
                 if (protoBytes?.Length > 0)
                 {
                     try 
                     {
+                        // Depending on the direction, we need to use different protobuf parsers
                         if (direction == Direction.Outgoing)
                         {
                             var packetData = ClientToServer.Parser.ParseFrom(protoBytes);
                             if (packetData.State != null) 
                             {
-                                PlayerStateEventArgs args = new PlayerStateEventArgs();
-                                args.PlayerState = packetData.State;
-                                args.EventDate = DateTime.Now;
-                                OnOutgoingPlayerEvent(args);
+                                // Dispatch the event
+                                OnOutgoingPlayerEvent(new PlayerStateEventArgs()
+                                {
+                                    PlayerState = packetData.State,
+                                    EventDate = DateTime.Now
+                                });
                             }
                         }
                         else if (direction == Direction.Incoming)
@@ -232,10 +293,12 @@ namespace ZwiftPacketMonitor
                             {
                                 if (player != null) 
                                 {
-                                    PlayerStateEventArgs args = new PlayerStateEventArgs();
-                                    args.PlayerState = player;
-                                    args.EventDate = DateTime.Now;
-                                    OnIncomingPlayerEvent(args);
+                                    // Dispatch the event
+                                    OnIncomingPlayerEvent(new PlayerStateEventArgs()
+                                    {
+                                        PlayerState = player,
+                                        EventDate = DateTime.Now
+                                    });
                                 }
                             }
 
@@ -243,7 +306,29 @@ namespace ZwiftPacketMonitor
                             foreach (var pu in packetData.PlayerUpdates)
                             {
                                 switch (pu.Tag3)
-                                {
+                                {                                    
+                                    case 4:
+                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() {
+                                            RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            EventDate = DateTime.Now
+                                        });
+                                        break;
+                                    case 5:
+                                        OnIncomingChatMessageEvent(new ChatMessageEventArgs()
+                                        {
+                                            Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            EventDate = DateTime.Now
+                                        });
+                                        break;
+                                    case 105:
+                                        OnIncomingPlayerEnteredWorldEvent(new PlayerEnteredWorldEventArgs()
+                                        {
+                                            PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            EventDate = DateTime.Now
+                                        });
+                                        break;
+                                    
+                                    /*
                                     case 2:
                                         var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
                                         Console.WriteLine($"Payload2: {payload2}");
@@ -251,18 +336,6 @@ namespace ZwiftPacketMonitor
                                     case 3:
                                         var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
                                         Console.WriteLine($"Payload3: {payload3}");
-                                        break;
-                                    case 4:
-                                        var payload4 = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload4: {payload4}");
-                                        break;
-                                    case 5:
-                                        var payload5 = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload5: {payload5}");
-                                        break;
-                                    case 105:
-                                        var payload105 = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload105: {payload105}");
                                         break;
                                     case 109:
                                         var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
@@ -272,6 +345,7 @@ namespace ZwiftPacketMonitor
                                         var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
                                         Console.WriteLine($"Payload110: {payload110}");
                                         break;
+                                    */
                                     default:
                                         break;
                                 }                            
@@ -290,10 +364,17 @@ namespace ZwiftPacketMonitor
         }
    }
 
+    /// <summary>
+    /// This enumeration defines whether a given packet of data
+    /// is incoming from the remote server, or outgoing from the local client
+    /// </summary>
    public enum Direction 
    {
+       // Default value
        Unknown,
+       // Incoming from the remote server
        Incoming,
+       // Outgoing from the local client
        Outgoing
    }
 }
