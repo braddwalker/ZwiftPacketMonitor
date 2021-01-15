@@ -316,7 +316,7 @@ namespace ZwiftPacketMonitor
                     }
                 }
 
-                // If we have any data at this point, let's continue
+                // If we have any data to deserialize at this point, let's continue
                 if (protoBytes?.Length > 0)
                 {
                     try 
