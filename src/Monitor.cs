@@ -4,6 +4,7 @@ using SharpPcap;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using PacketDotNet;
 
 namespace ZwiftPacketMonitor
 {
@@ -23,7 +24,9 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// The default Zwift UDP data port
         /// </summary>
-        private const int ZWIFT_PORT = 3022;
+        private const int ZWIFT_UDP_PORT = 3022;
+
+        private const int ZWIFT_TCP_PORT = 3023;
 
         /// <summary>
         /// Default read timeout for packet capture
@@ -86,7 +89,7 @@ namespace ZwiftPacketMonitor
         /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {            
-            logger.LogDebug($"Starting UDP packet capture on {networkInterface}:{ZWIFT_PORT}");
+            logger.LogDebug($"Starting packet capture on {networkInterface} UDP:{ZWIFT_UDP_PORT}, TCP:{ZWIFT_TCP_PORT}");
 
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
             var devices = CaptureDeviceList.Instance;
@@ -104,7 +107,8 @@ namespace ZwiftPacketMonitor
 
             // Open the device for capturing
             device.Open(DeviceMode.Normal, READ_TIMEOUT);
-            device.Filter = $"udp port {ZWIFT_PORT}";
+            //device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
+            device.Filter = $"udp port {ZWIFT_UDP_PORT}";
 
             // Start capture 'INFINTE' number of packets
             await Task.Run(() => { device.Capture(); }, cancellationToken);
@@ -132,23 +136,96 @@ namespace ZwiftPacketMonitor
         {
             try 
             {
-                var packet = PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
-                var udpPacket = packet.Extract<PacketDotNet.UdpPacket>();
-                if (udpPacket != null)
-                {
-                    var ipPacket = (PacketDotNet.IPPacket)udpPacket.ParentPacket;
+                var packet = Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
+                var tcpPacket = packet.Extract<TcpPacket>();
+                var udpPacket = packet.Extract<UdpPacket>();
 
-                    System.Net.IPAddress srcIp = ipPacket.SourceAddress;
-                    System.Net.IPAddress dstIp = ipPacket.DestinationAddress;
+                var packetBytes = new byte[0];
+                var protoBytes = new byte[0];
+                var direction = Direction.Unknown;
+                
+                if (tcpPacket != null) {
+                    var ipPacket = (IPPacket)tcpPacket.ParentPacket;
+                    int srcPort = tcpPacket.SourcePort;
+                    int dstPort = tcpPacket.DestinationPort;
+
+                    packetBytes = tcpPacket.PayloadData;
+
+                    //Incoming packet
+                    if (srcPort == ZWIFT_TCP_PORT)
+                    {
+                        // Always skip the first 2 bytes to get to the protobuf
+                       protoBytes = packetBytes.Skip(2).ToArray(); 
+                       direction = Direction.Incoming;
+                    }
+                    // Outgoing packet
+                    else if (dstPort == ZWIFT_TCP_PORT)
+                    {
+                        // Currently no support for outbound TCP packets
+                        packetBytes = new byte[0];
+                        protoBytes = new byte[0];
+                        direction = Direction.Outgoing;
+                    }
+                }
+                else if (udpPacket != null)
+                {
+                    var ipPacket = (IPPacket)udpPacket.ParentPacket;
                     int srcPort = udpPacket.SourcePort;
                     int dstPort = udpPacket.DestinationPort;
 
+                    packetBytes = udpPacket.PayloadData;
+
+                    //Incoming packet
+                    if (srcPort == ZWIFT_UDP_PORT)
+                    {
+                        protoBytes = packetBytes;
+                        direction = Direction.Incoming;
+                    }
+                    // Outgoing packet
+                    else if (dstPort == ZWIFT_UDP_PORT)
+                    {
+                        // Outgoing packets *may* have some a metadata header that's not part of the protobuf.
+                        // This is sort of a magic number at the moment -- not sure if the first byte is coincidentally 0x06, 
+                        // or if the header (if there is one) is always 5 bytes long
+                        int skip = 5;
+
+                        if (packetBytes[skip] == 0x08) {
+                            // NOOP, as the protobuf payload looks like it starts after the initial skip estimate
+                        }
+                        else if (packetBytes[0] == 0x08) {
+                            // protobuf payload starts at the beginning
+                            skip = 0;
+                        }
+                        else {
+                            // Use the first byte as an indicator of how far into the payload we need to look
+                            // in order to find the beginning of the protobuf
+                            skip = packetBytes[0] - 1;
+                        }
+
+                        protoBytes = packetBytes.Skip(skip).ToArray();
+                        protoBytes = protoBytes.Take(protoBytes.Length - 4).ToArray();
+                        direction = Direction.Outgoing;
+                    }
+                }
+
+                if (protoBytes?.Length > 0)
+                {
                     try 
                     {
-                        //Incoming packet
-                        if (srcPort == ZWIFT_PORT)
-                        {                            
-                            var packetData = ServerToClient.Parser.ParseFrom(udpPacket.PayloadData);
+                        if (direction == Direction.Outgoing)
+                        {
+                            var packetData = ClientToServer.Parser.ParseFrom(protoBytes);
+                            if (packetData.State != null) 
+                            {
+                                PlayerStateEventArgs args = new PlayerStateEventArgs();
+                                args.PlayerState = packetData.State;
+                                args.EventDate = DateTime.Now;
+                                OnOutgoingPlayerEvent(args);
+                            }
+                        }
+                        else if (direction == Direction.Incoming)
+                        {
+                            var packetData = ServerToClient.Parser.ParseFrom(protoBytes);
 
                             // Dispatch each player state individually
                             foreach (var player in packetData.PlayerStates)
@@ -163,33 +240,46 @@ namespace ZwiftPacketMonitor
                             }
 
                             // Dispatch player updates individually
-                            foreach (var update in packetData.PlayerUpdates)
+                            foreach (var pu in packetData.PlayerUpdates)
                             {
-                                System.Console.WriteLine($"Tag3: {update.Tag3}");
-                            }
-                        }
-                        // Outgoing packet
-                        else if (dstPort == ZWIFT_PORT) 
-                        {
-                            // Outgoing packets have some metadeta at the head of the payload.
-                            // First byte tells you how far into the array you need to skip in
-                            // order to get to the serialized proto document. 
-                            int skip = udpPacket.PayloadData[0] - 1;
-                            var packetBytes = udpPacket.PayloadData.Skip(skip).ToArray();
-                            packetBytes = packetBytes.Take(packetBytes.Length - 4).ToArray();
-
-                            var packetData = ClientToServer.Parser.ParseFrom(packetBytes);
-                            if (packetData.State != null) 
-                            {
-                                PlayerStateEventArgs args = new PlayerStateEventArgs();
-                                args.PlayerState = packetData.State;
-                                args.EventDate = DateTime.Now;
-                                OnOutgoingPlayerEvent(args);
+                                switch (pu.Tag3)
+                                {
+                                    case 2:
+                                        var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload2: {payload2}");
+                                        break;
+                                    case 3:
+                                        var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload3: {payload3}");
+                                        break;
+                                    case 4:
+                                        var payload4 = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload4: {payload4}");
+                                        break;
+                                    case 5:
+                                        var payload5 = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload5: {payload5}");
+                                        break;
+                                    case 105:
+                                        var payload105 = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload105: {payload105}");
+                                        break;
+                                    case 109:
+                                        var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload109: {payload109}");
+                                        break;
+                                    case 110:
+                                        var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload110: {payload110}");
+                                        break;
+                                    default:
+                                        break;
+                                }                            
                             }
                         }
                     }
                     catch (Exception ex) {
-                        logger.LogError(ex, $"ERROR: PayloadLen: {udpPacket?.PayloadData?.Length}, SrcPort: {srcPort}, DestPort: {dstPort}");
+                        logger.LogError(ex, $"ERROR: PayloadLen: {packetBytes?.Length}, PayloadData: {BitConverter.ToString(packetBytes).Replace("-", "")}\n\r");
                     }
                 }
             }
@@ -198,5 +288,12 @@ namespace ZwiftPacketMonitor
                 logger.LogError(ee, $"Unable to parse packet");
             }
         }
+   }
+
+   public enum Direction 
+   {
+       Unknown,
+       Incoming,
+       Outgoing
    }
 }
