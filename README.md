@@ -4,11 +4,9 @@ This project implements a TCP and UDP packet monitor for the Zwift cycling simul
 **NOTE**: Because this utilizes a network packet capture to intercept the UDP packets, your system may require this code to run using elevated privileges.
 
 ## Prerequisites
----
 * Packet capture relies on [SharpPcap](https://github.com/chmorgan/sharppcap) and requires the installation of libpcap (Linux), Npcap (Windows) or similar packet capture library.
 
 ## Usage
----
 ```c#
 using System;
 using SharpPcap;
