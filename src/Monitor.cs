@@ -61,6 +61,9 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<ChatMessageEventArgs> IncomingChatMessageEvent;
 
+        private byte[] fragmentedBytes;
+        private int fragmentedPayloadLength;
+
         /// <summary>
         /// Creates a new instance of the monitor class.
         /// </summary>
@@ -210,9 +213,57 @@ namespace ZwiftPacketMonitor
                     //Incoming packet
                     if (srcPort == ZWIFT_TCP_PORT)
                     {
-                        // Always skip the first 2 bytes to get to the protobuf
-                       protoBytes = packetBytes.Skip(2).ToArray(); 
-                       direction = Direction.Incoming;
+                        if (fragmentedBytes != null && tcpPacket.Push) 
+                        {
+                            // This is part of a fragmented packet
+                            // The *entire* payload is valid (no length in the first bytes)
+                            fragmentedBytes = fragmentedBytes.Concat(tcpPacket.PayloadData).ToArray();
+
+                            logger.LogDebug($"Combining packets - {fragmentedBytes.Length}, {fragmentedPayloadLength}");
+
+                            // Did we get enough?
+                            if (fragmentedBytes.Length >= fragmentedPayloadLength)
+                            {
+                                logger.LogDebug("Fragmented packet completed!");
+
+                                protoBytes = fragmentedBytes.Take(fragmentedPayloadLength).ToArray();
+                                fragmentedBytes = null;
+                                fragmentedPayloadLength = 0;
+                            }
+                            else {
+                                // Wait for more packets?
+                                logger.LogDebug($"Waiting for more packets - {fragmentedBytes.Length}, {fragmentedPayloadLength}");
+                                return;
+                            }
+                        }
+                        else 
+                        {
+                            // Total payload length is stored in the first 2 bytes
+                            var payloadLenBytes = packetBytes.Take(2).ToArray();
+                            if (BitConverter.IsLittleEndian)
+                                Array.Reverse(payloadLenBytes);
+
+                            // first 2 bytes are the total payload length
+                            int expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
+                            int actualLen = packetBytes.Length - 2;
+
+                            // we have a fragmented packet here
+                            if (expectedLen != actualLen)
+                            {
+                                logger.LogDebug($"Packet payload length doesn't match - Expected: {expectedLen}, Actual: {actualLen}");
+                                fragmentedBytes = packetBytes.Skip(2).ToArray();
+                                fragmentedPayloadLength = expectedLen;
+                                
+                                // Nothing more to do here until the rest of the packets show up
+                                return;
+                            }
+                            else {
+                                // This packet is complete, trim off the payload length bytes
+                                protoBytes = packetBytes.Skip(2).ToArray(); 
+                            }
+                        }
+
+                        direction = Direction.Incoming;
                     }
                     // Outgoing packet
                     else if (dstPort == ZWIFT_TCP_PORT)
