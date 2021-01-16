@@ -4,6 +4,7 @@
     <id>ZwiftPacketMonitor</id>
     <Version>1.2.0</Version>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.14.0" />

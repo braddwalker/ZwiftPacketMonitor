@@ -1,22 +1,25 @@
 using System;
 using System.Linq;
 using SharpPcap;
+using SharpPcap.Npcap;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Net;
 using Microsoft.Extensions.Logging;
 using PacketDotNet;
 
 namespace ZwiftPacketMonitor
 {
     ///<summary>
-    /// This class implements a UDP packet monitor for the Zwift cycling simulator. It listens for packets on a specific port
+    /// This class implements a TCP and UDP packet monitor for the Zwift cycling simulator. It listens for packets on a specific port
     /// of a local network adapter, and when found, deserializes the payload and dispatches events that can be consumed by the
     /// caller.
     /// 
     /// NOTE: Because this utilizes a network packet capture to intercept the UDP packets, your system may require this code to
     /// run using elevated privileges.
     /// 
-    /// This is a .Net Core port of the Node zwift-packet-monitor project (https://github.com/wiedmann/zwift-packet-monitor).
+    /// This is a .NET port of the Node zwift-packet-monitor project (https://github.com/jeroni7100/zwift-packet-monitor).
     ///</summary>
     ///<author>Brad Walker - https://github.com/braddwalker/ZwiftPacketMonitor/</author>
     public class Monitor 
@@ -26,6 +29,9 @@ namespace ZwiftPacketMonitor
         /// </summary>
         private const int ZWIFT_UDP_PORT = 3022;
 
+        /// <summary>
+        /// The default Zwift TCP data port
+        /// </summary>
         private const int ZWIFT_TCP_PORT = 3023;
 
         /// <summary>
@@ -33,7 +39,7 @@ namespace ZwiftPacketMonitor
         /// </summary>
         private const int READ_TIMEOUT = 1000;
 
-        private ICaptureDevice device;
+        private NpcapDevice device;
         private ILogger<Monitor> logger;
 
         /// <summary>
@@ -67,7 +73,8 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// Creates a new instance of the monitor class.
         /// </summary>
-        public Monitor(ILogger<Monitor> logger) {
+        public Monitor(ILogger<Monitor> logger) 
+        {
             this.logger = logger;
         }
 
@@ -144,7 +151,7 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// Starts the network monitor and begins dispatching events
         /// </summary>
-        /// <param name="networkInterface">The name of the network interface to attach to</param>
+        /// <param name="networkInterface">The name or IP address of the network interface to attach to</param>
         /// <param name="cancellationToken">An optional cancellation token</param>
         /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
@@ -152,25 +159,50 @@ namespace ZwiftPacketMonitor
             logger.LogDebug($"Starting packet capture on {networkInterface} UDP:{ZWIFT_UDP_PORT}, TCP:{ZWIFT_TCP_PORT}");
 
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
-            var devices = CaptureDeviceList.Instance;
+            var devices = NpcapDeviceList.Instance;
 
-            // See if we can find the desired interface by name
-            device = devices.Where(x => x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            // Roll the dice and pull the first interface in the list
+            if (string.IsNullOrWhiteSpace(networkInterface))
+            {
+                device = devices.FirstOrDefault(d => d.Addresses.Count > 0);
+            }
+            else
+            {
+                // See if we can find the desired interface by name
+                if (Regex.IsMatch(networkInterface, "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"))
+                {
+                    logger.LogDebug($"Searching for device matching {networkInterface}");
+                    device = devices.FirstOrDefault(d => 
+                        d.Addresses != null && d.Addresses.Any(a => 
+                            a.Addr != null && a.Addr.ipAddress != null && 
+                                a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
+                }
+                else 
+                {
+                    device = devices.Where(x => 
+                        x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                }
+            }
 
             if (device == null)
             {
                 throw new ArgumentException($"Interface {networkInterface} not found");
             }
 
-            // Register our handler function to the 'packet arrival' event
-            device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
+            logger.LogDebug($"Starting packet capture on {GetInterfaceDisplayName(device)} UDP:{ZWIFT_UDP_PORT}, TCP: {ZWIFT_TCP_PORT}");
 
             // Open the device for capturing
             device.Open(DeviceMode.Normal, READ_TIMEOUT);
             device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
+            device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
 
             // Start capture 'INFINTE' number of packets
             await Task.Run(() => { device.Capture(); }, cancellationToken);
+        }
+
+        private string GetInterfaceDisplayName(NpcapDevice device) 
+        {
+            return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
         /// <summary>
@@ -186,7 +218,8 @@ namespace ZwiftPacketMonitor
             {
                 await Task.CompletedTask;
             }
-            else {
+            else 
+            {
                 await Task.Run(() => { device.Close(); }, cancellationToken);
             }
         }
@@ -203,7 +236,8 @@ namespace ZwiftPacketMonitor
                 var protoBytes = new byte[0];
                 var direction = Direction.Unknown;
                 
-                if (tcpPacket != null) {
+                if (tcpPacket != null) 
+                {
                     var ipPacket = (IPPacket)tcpPacket.ParentPacket;
                     int srcPort = tcpPacket.SourcePort;
                     int dstPort = tcpPacket.DestinationPort;
@@ -216,7 +250,7 @@ namespace ZwiftPacketMonitor
                         if (fragmentedBytes != null && tcpPacket.Push) 
                         {
                             // This is part of a fragmented packet
-                            // The *entire* payload is valid (no length in the first bytes)
+                            // The entire payload of this packet is valid (no length in the first bytes)
                             fragmentedBytes = fragmentedBytes.Concat(tcpPacket.PayloadData).ToArray();
 
                             logger.LogDebug($"Combining packets - {fragmentedBytes.Length}, {fragmentedPayloadLength}");
@@ -230,7 +264,8 @@ namespace ZwiftPacketMonitor
                                 fragmentedBytes = null;
                                 fragmentedPayloadLength = 0;
                             }
-                            else {
+                            else 
+                            {
                                 // Wait for more packets?
                                 logger.LogDebug($"Waiting for more packets - {fragmentedBytes.Length}, {fragmentedPayloadLength}");
                                 return;
@@ -241,7 +276,9 @@ namespace ZwiftPacketMonitor
                             // Total payload length is stored in the first 2 bytes
                             var payloadLenBytes = packetBytes.Take(2).ToArray();
                             if (BitConverter.IsLittleEndian)
+                            {
                                 Array.Reverse(payloadLenBytes);
+                            }
 
                             // first 2 bytes are the total payload length
                             int expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
@@ -257,7 +294,8 @@ namespace ZwiftPacketMonitor
                                 // Nothing more to do here until the rest of the packets show up
                                 return;
                             }
-                            else {
+                            else 
+                            {
                                 // This packet is complete, trim off the payload length bytes
                                 protoBytes = packetBytes.Skip(2).ToArray(); 
                             }
@@ -289,7 +327,7 @@ namespace ZwiftPacketMonitor
                         direction = Direction.Incoming;
                     }
                     // Outgoing packet
-                    else if (dstPort == ZWIFT_UDP_PORT)
+                    else if (dstPort == ZWIFT_UDP_PORT) 
                     {
                         // Outgoing packets *may* have some a metadata header that's not part of the protobuf.
                         // This is sort of a magic number at the moment -- not sure if the first byte is coincidentally 0x06, 
@@ -359,7 +397,8 @@ namespace ZwiftPacketMonitor
                                 switch (pu.Tag3)
                                 {                                    
                                     case 4:
-                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() {
+                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
+                                        {
                                             RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                             EventDate = DateTime.Now
                                         });
@@ -403,7 +442,8 @@ namespace ZwiftPacketMonitor
                             }
                         }
                     }
-                    catch (Exception ex) {
+                    catch (Exception ex) 
+                    {
                         logger.LogError(ex, $"ERROR: PayloadLen: {packetBytes?.Length}, PayloadData: {BitConverter.ToString(packetBytes).Replace("-", "")}\n\r");
                     }
                 }
