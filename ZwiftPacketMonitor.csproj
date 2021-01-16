@@ -2,9 +2,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <id>ZwiftPacketMonitor</id>
-    <Version>1.2.0</Version>
+    <version>1.2.1</version>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>Brad Walker (@braddwalker)</Authors>
+    <Description>This is a port of the node zwift-packet-monitor project which monitors Zwift network packets</Description>
+    <Title>Captures TCP and UDP packets produced/consumed by the Zwift online cycling simulator</Title>
+    <PackageProjectUrl>https://github.com/braddwalker/ZwiftPacketMonitor</PackageProjectUrl>
+    
+    <!-- forward compatibility with expcted upcoming nuget changes https://github.com/NuGet/Home/wiki/Embedding-and-displaying-NuGet-READMEs -->
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.14.0" />
@@ -12,5 +19,8 @@
     <PackageReference Include="SharpPcap" Version="5.3.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+  </ItemGroup>
+    <ItemGroup>
+      <None Include="readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
 </Project>
