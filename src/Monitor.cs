@@ -39,9 +39,6 @@ namespace ZwiftPacketMonitor
         /// </summary>
         private const int READ_TIMEOUT = 1000;
 
-        private NpcapDevice device;
-        private ILogger<Monitor> logger;
-
         /// <summary>
         /// This event gets invoked when player update events are received from the central Zwift game engine
         /// </summary>
@@ -67,6 +64,8 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<ChatMessageEventArgs> IncomingChatMessageEvent;
 
+        private NpcapDevice device;
+        private ILogger<Monitor> logger;
         private byte[] fragmentedBytes;
         private int fragmentedPayloadLength;
 
@@ -247,7 +246,7 @@ namespace ZwiftPacketMonitor
                     //Incoming packet
                     if (srcPort == ZWIFT_TCP_PORT)
                     {
-                        if (fragmentedBytes != null && tcpPacket.Push) 
+                        if (fragmentedBytes != null )
                         {
                             // This is part of a fragmented packet
                             // The entire payload of this packet is valid (no length in the first bytes)
@@ -289,6 +288,11 @@ namespace ZwiftPacketMonitor
                                 // we have a fragmented packet here
                                 if (expectedLen != actualLen)
                                 {
+                                    if (fragmentedPayloadLength > 0)
+                                    {
+                                        logger.LogWarning($"Fragmented packet detected by already waiting on an existing one");
+                                    }
+
                                     logger.LogDebug($"Packet payload length doesn't match - Expected: {expectedLen}, Actual: {actualLen}");
                                     fragmentedBytes = packetBytes.Skip(2).ToArray();
                                     fragmentedPayloadLength = expectedLen;
