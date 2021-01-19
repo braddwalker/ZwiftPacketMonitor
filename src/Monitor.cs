@@ -280,24 +280,32 @@ namespace ZwiftPacketMonitor
                                 Array.Reverse(payloadLenBytes);
                             }
 
-                            // first 2 bytes are the total payload length
-                            int expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
-                            int actualLen = packetBytes.Length - 2;
+                            if (payloadLenBytes.Length > 0)
+                            {
+                                // first 2 bytes are the total payload length
+                                int expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
+                                int actualLen = packetBytes.Length - 2;
 
-                            // we have a fragmented packet here
-                            if (expectedLen != actualLen)
-                            {
-                                logger.LogDebug($"Packet payload length doesn't match - Expected: {expectedLen}, Actual: {actualLen}");
-                                fragmentedBytes = packetBytes.Skip(2).ToArray();
-                                fragmentedPayloadLength = expectedLen;
-                                
-                                // Nothing more to do here until the rest of the packets show up
-                                return;
+                                // we have a fragmented packet here
+                                if (expectedLen != actualLen)
+                                {
+                                    logger.LogDebug($"Packet payload length doesn't match - Expected: {expectedLen}, Actual: {actualLen}");
+                                    fragmentedBytes = packetBytes.Skip(2).ToArray();
+                                    fragmentedPayloadLength = expectedLen;
+                                    
+                                    // Nothing more to do here until the rest of the packets show up
+                                    return;
+                                }
+                                else 
+                                {
+                                    // This packet is complete, trim off the payload length bytes
+                                    protoBytes = packetBytes.Skip(2).ToArray(); 
+                                }
                             }
-                            else 
+                            else
                             {
-                                // This packet is complete, trim off the payload length bytes
-                                protoBytes = packetBytes.Skip(2).ToArray(); 
+                                // Payload is empty, nothing to do here
+                                protoBytes = new byte[0];
                             }
                         }
 
