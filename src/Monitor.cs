@@ -155,8 +155,6 @@ namespace ZwiftPacketMonitor
         /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {            
-            logger.LogDebug($"Starting packet capture on {networkInterface} UDP:{ZWIFT_UDP_PORT}, TCP:{ZWIFT_TCP_PORT}");
-
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
             var devices = NpcapDeviceList.Instance;
 
@@ -246,70 +244,78 @@ namespace ZwiftPacketMonitor
                     //Incoming packet
                     if (srcPort == ZWIFT_TCP_PORT)
                     {
-                        if (fragmentedBytes != null )
+                        if (fragmentedBytes == null)
                         {
-                            // This is part of a fragmented packet
-                            // The entire payload of this packet is valid (no length in the first bytes)
-                            fragmentedBytes = fragmentedBytes.Concat(tcpPacket.PayloadData).ToArray();
+                            int expectedLen = 0;
 
-                            logger.LogDebug($"Combining packets - {fragmentedBytes.Length}, {fragmentedPayloadLength}");
-
-                            // Did we get enough?
-                            if (fragmentedBytes.Length >= fragmentedPayloadLength)
+                            if (packetBytes != null)
                             {
-                                logger.LogDebug("Fragmented packet completed!");
-
-                                protoBytes = fragmentedBytes.Take(fragmentedPayloadLength).ToArray();
-                                fragmentedBytes = null;
-                                fragmentedPayloadLength = 0;
-                            }
-                            else 
-                            {
-                                // Wait for more packets?
-                                logger.LogDebug($"Waiting for more packets - {fragmentedBytes.Length}, {fragmentedPayloadLength}");
-                                return;
-                            }
-                        }
-                        else 
-                        {
-                            // Total payload length is stored in the first 2 bytes
-                            var payloadLenBytes = packetBytes.Take(2).ToArray();
-                            if (BitConverter.IsLittleEndian)
-                            {
-                                Array.Reverse(payloadLenBytes);
-                            }
-
-                            if (payloadLenBytes.Length > 0)
-                            {
-                                // first 2 bytes are the total payload length
-                                int expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
-                                int actualLen = packetBytes.Length - 2;
-
-                                // we have a fragmented packet here
-                                if (expectedLen != actualLen)
+                                // Total payload length is always stored in the first 2 bytes of the first packet of a sequence
+                                if (packetBytes.Length > 2)
                                 {
-                                    if (fragmentedPayloadLength > 0)
+                                    var payloadLenBytes = packetBytes.Take(2).ToArray();
+                                    if (BitConverter.IsLittleEndian)
                                     {
-                                        logger.LogWarning($"Fragmented packet detected by already waiting on an existing one");
+                                        Array.Reverse(payloadLenBytes);
                                     }
 
-                                    logger.LogDebug($"Packet payload length doesn't match - Expected: {expectedLen}, Actual: {actualLen}");
-                                    fragmentedBytes = packetBytes.Skip(2).ToArray();
-                                    fragmentedPayloadLength = expectedLen;
-                                    
-                                    // Nothing more to do here until the rest of the packets show up
-                                    return;
+                                    // first 2 bytes are the total payload length
+                                    expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
                                 }
-                                else 
-                                {
-                                    // This packet is complete, trim off the payload length bytes
-                                    protoBytes = packetBytes.Skip(2).ToArray(); 
-                                }
+                            }
+
+                            if (expectedLen == 0)
+                            {
+                                // Hmmm, empty payload
+                                logger.LogDebug($"EMPTY PAYLOAD, Push: {tcpPacket.Push}, PayloadData: {BitConverter.ToString(packetBytes).Replace("-", "")}\n\r");
+                                return;
+                            }
+
+                            //logger.LogInformation($"PACKET: Expected: {expectedLen}, PayloadData: {BitConverter.ToString(packetBytes).Replace("-", "")}\n\r");
+
+                            // PSH flag indicates whether this payload is completely contained
+                            // in this packet. !PSH indicates the payload is fragmented across mutliple
+                            // packets
+                            if (tcpPacket.Push)
+                            {
+                                // This packet is complete (first 2 bytes are always total payload length)
+                                protoBytes = packetBytes.Skip(2).ToArray(); 
+                                //logger.LogDebug($"Complete packet - Expected: {expectedLen}, Actual: {protoBytes.Length}, Push: {tcpPacket.Push}");
                             }
                             else
                             {
-                                // Payload is empty, nothing to do here
-                                protoBytes = new byte[0];
+                                // The payload is fragmented across mutliple packets (first 2 bytes are total payload length)
+                                fragmentedBytes = packetBytes.Skip(2).ToArray();
+                                fragmentedPayloadLength = expectedLen;
+                                logger.LogDebug($"Fragmented packet detected - Expected: {expectedLen}, Actual: {fragmentedBytes.Length}, Push: {tcpPacket.Push}");
+                                
+                                // need to wait for more packets to arrive
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            // Append this packet's payload to the larger fragmented one we're reassembling
+                            fragmentedBytes = fragmentedBytes.Concat(tcpPacket.PayloadData).ToArray();
+
+                            // SOMETIMES we get a PSH flag even though we haven't pulled all of the packets we expect to
+                            if (tcpPacket.Push && (fragmentedBytes.Length >= fragmentedPayloadLength))
+                            {
+                                // This should be the last packet in this sequence
+                                protoBytes = fragmentedBytes.Take(fragmentedPayloadLength).ToArray();
+                                logger.LogDebug($"Fragmented packet completed!, Expected: {fragmentedPayloadLength}, Actual: {protoBytes.Length}, Packet: {tcpPacket.PayloadData.Length}, Push: {tcpPacket.Push}");
+
+                                // Reset these for the next sequence
+                                fragmentedBytes = null;
+                                fragmentedPayloadLength = 0;
+                            }
+                            else
+                            {
+                                // This is an intermediate packet in the sequeunce
+                                logger.LogDebug($"Combining packets - Expected: {fragmentedPayloadLength}, Actual: {fragmentedBytes.Length}, Packet: {tcpPacket.PayloadData.Length}, Push: {tcpPacket.Push}");
+                            
+                                // need to wait for more packets
+                                return;
                             }
                         }
 
@@ -456,7 +462,8 @@ namespace ZwiftPacketMonitor
                     }
                     catch (Exception ex) 
                     {
-                        logger.LogError(ex, $"ERROR: PayloadLen: {packetBytes?.Length}, PayloadData: {BitConverter.ToString(packetBytes).Replace("-", "")}\n\r");
+                        logger.LogError(ex, $"ERROR: FragmentedBytes: {fragmentedBytes?.Length}, PayloadData: {BitConverter.ToString(protoBytes).Replace("-", "")}\n\r");
+                        System.Environment.Exit(0);
                     }
                 }
             }
