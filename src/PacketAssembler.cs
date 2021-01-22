@@ -6,40 +6,8 @@ using Microsoft.Extensions.Logging;
 
 namespace ZwiftPacketMonitor
 {
-    public class PacketAssemblyResult
-    {
-        /// <summary>
-        /// A flag indicating whether the payload is ready to be consumed. False if
-        /// the fragmented segment is still being assembled
-        /// </summary>
-        /// <value>True if the payload is complete.</value>
-        public bool IsReady {get; set;}
-
-        /// <summary>
-        /// The completed payload buffer
-        /// </summary>
-        /// <value>The payload buffer</value>
-        public byte[] Payload {get; set;}
-
-        /// <summary>
-        /// Convenience property to generate an instance where IsReady = false
-        /// </summary>
-        /// <returns>A PacketAssemblyResult instance</returns>
-        public static PacketAssemblyResult NotReady => new PacketAssemblyResult() { IsReady = false };
-
-        /// <summary>
-        /// A convenience method to generate an instance where IsReady = true and a payload is available
-        /// </summary>
-        /// <param name="payload">The payload to include in the result</param>
-        /// <returns>A PacketAssemblyResult instance</returns>
-        public static PacketAssemblyResult Ready(byte[] payload) {
-            return (new PacketAssemblyResult()
-                {
-                    IsReady = true,
-                    Payload = payload
-                }
-            );
-        }
+    public class PayloadReadyEventArgs : EventArgs {
+        public byte[] Payload { get; set; }
     }
 
     /// <summary>
@@ -47,6 +15,8 @@ namespace ZwiftPacketMonitor
     /// </summary>
     public class PacketAssembler
     {
+        public event EventHandler<PayloadReadyEventArgs> PayloadReady;
+
         private ILogger<PacketAssembler> logger;
         private int expectedLen;
         private byte[] payload;
@@ -56,21 +26,37 @@ namespace ZwiftPacketMonitor
             this.logger = logger;
         }
 
+        private void OnPayloadReady(PayloadReadyEventArgs e)
+        {
+            EventHandler<PayloadReadyEventArgs> handler = PayloadReady;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
         /// <summary>
         /// Processes the current packet. If this packet is part of a fragmented sequence,
         /// its payload will be added to the internal buffer until the entire sequence payload has
-        /// been loaded. Check <c>PacketAssemblyResult.Status</c> to know if the sequence is ready to use or not.
+        /// been loaded. When the packet sequence has been fully loaded, the <c>PayloadReady</c> event is invoked.
         /// </summary>
         /// <param name="packet">The packet to process</param>
-        /// <returns>A <c>PacketAssemblyResult</c> that determines whether the packet has been fully assembled or not</returns>
-        public PacketAssemblyResult Assemble(TcpPacket packet)
+        public void Assemble(TcpPacket packet)
         {
-            var result = new PacketAssemblyResult();
+            AssembleInternal(packet, packet.PayloadData);
+        }
 
+        private void AssembleInternal(TcpPacket packet, byte[] buffer)
+        {
             // New packet sequence
             if (payload == null) 
             {
-                payload = packet.PayloadData;
+                payload = buffer;
 
                 if (payload.Length > 2)
                 {
@@ -88,11 +74,12 @@ namespace ZwiftPacketMonitor
                 payload = payload.Skip(2).ToArray();
 
                 // PSH flag indicates the payload is wholly contained in this packet
-                if (packet.Push)
+                if (payload.Length == expectedLen)
+                //if (packet.Push)
                 {
                     logger.LogDebug($"Complete packet - Expected: {expectedLen}, Actual: {payload.Length}, Push: {packet.Push}");
 
-                    result = PacketAssemblyResult.Ready(payload.ToArray());
+                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload.ToArray() });
 
                     // clear out state for the next sequence
                     Reset();
@@ -101,50 +88,35 @@ namespace ZwiftPacketMonitor
                 else
                 {
                     logger.LogDebug($"Fragmented packet detected - Expected: {expectedLen}, Actual: {payload.Length}, Push: {packet.Push}");
-
-                    result = PacketAssemblyResult.NotReady;
                 }
             }
             // reconstructing a fragmented sequence
             else
             {
                 // Append this packet's payload to the fragment one we're currently reassembling
+                logger.LogDebug($"Combining packets - Expected: {expectedLen}, Actual: {payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
                 payload = payload.Concat(packet.PayloadData).ToArray();
 
-                // SOMETIMES we get a PSH flag even though we haven't gotten all of the packets we expect to
-                if (packet.Push && (payload.Length >= expectedLen))
+                var overflow = new byte[0];
+
+                if (payload.Length >= expectedLen)
                 {
-                    // This should be the last packet in this sequence so grab everthing that's expected
-                    payload = payload.Take(expectedLen).ToArray();
+                    overflow = payload.Skip(expectedLen).ToArray();
                     logger.LogDebug($"Fragmented packet completed!, Expected: {expectedLen}, Actual: {payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
 
-                    result = PacketAssemblyResult.Ready(payload.ToArray());
-                        
-                    // wait... one more thing
-                    if (payload.Length > expectedLen)
-                    {
-                        logger.LogWarning($"OVERFLOW bytes detected - Len: {payload.Length - expectedLen}, PayloadData: {BitConverter.ToString(payload.Skip(expectedLen).ToArray()).Replace("-", "")}\n\r");
-
-                        // this is temporary until I decide what to do with these bytes
-                        Reset();
-                    }
-                    else 
-                    {
-                        // clear out state for the next sequence
-                        Reset();
-                    }
+                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload.Take(expectedLen).ToArray() });
+                    Reset();
                 }
-                else
+
+                // See if the next packet sequence is comingled with this one
+                if (overflow.Length > 0)
                 {
-                    // This is an intermediate packet in the sequeunce
-                    logger.LogDebug($"Combining packets - Expected: {expectedLen}, Actual: {payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
-                
-                    // need to wait for more packets
-                    result = PacketAssemblyResult.NotReady;
+                    logger.LogWarning($"OVERFLOW bytes detected - Len: {overflow.Length - expectedLen}, PayloadData: {BitConverter.ToString(overflow.ToArray()).Replace("-", "")}\n\r");
+
+                    Reset();
+                    AssembleInternal(packet, overflow);
                 }
             }
-
-            return (result);
         }
 
         /// <summary>

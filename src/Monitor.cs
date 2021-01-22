@@ -74,7 +74,10 @@ namespace ZwiftPacketMonitor
         public Monitor(ILogger<Monitor> logger, PacketAssembler packetAssembler) 
         {
             this.logger = logger;
+
+            // Setup the packet assembler and callback
             this.packetAssembler = packetAssembler;
+            this.packetAssembler.PayloadReady += OnPayloadReady;
         }
 
         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
@@ -241,29 +244,7 @@ namespace ZwiftPacketMonitor
                     //Incoming packet
                     if (srcPort == ZWIFT_TCP_PORT)
                     {
-                        var result = packetAssembler.Assemble(tcpPacket);
-
-                        // This will take care of packet reassembly by maintaining an internal state buffer
-                        // If the packet isn't fragmented, or the fragmented segment has been fully put back together,
-                        // the result will be IsReady = true.
-                        if (result.IsReady)
-                        {
-                            protoBytes = result.Payload;
-                        }
-                        else
-                        {
-                            // If IsReady = false comes back it means the segment is still being 
-                            // assembled and the next packet recieved will be added to it.
-                        }
-
-                        direction = Direction.Incoming;
-                    }
-                    // Outgoing packet
-                    else if (dstPort == ZWIFT_TCP_PORT)
-                    {
-                        // Currently no support for outbound TCP packets
-                        protoBytes = new byte[0];
-                        direction = Direction.Outgoing;
+                        packetAssembler.Assemble(tcpPacket);
                     }
                 }
                 else if (udpPacket != null)
@@ -306,15 +287,21 @@ namespace ZwiftPacketMonitor
                         protoBytes = protoBytes.Take(protoBytes.Length - 4).ToArray();
                         direction = Direction.Outgoing;
                     }
-                }
 
-                // I mean, it's pretty self-evident
-                DeserializeAndDispatch(protoBytes, direction);
+                    // I mean, it's pretty self-evident
+                    DeserializeAndDispatch(protoBytes, direction);
+                }
             }
             catch (Exception ee)
             {
                 logger.LogError(ee, $"Unable to parse packet");
             }
+        }
+
+        private void OnPayloadReady(object sender, PayloadReadyEventArgs e)
+        {
+            // Only incoming TCP payloads are coming through here
+            DeserializeAndDispatch(e.Payload, Direction.Incoming);
         }
 
         private void DeserializeAndDispatch(byte[] buffer, Direction direction)
