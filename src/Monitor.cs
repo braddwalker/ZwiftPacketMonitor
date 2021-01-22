@@ -66,18 +66,18 @@ namespace ZwiftPacketMonitor
 
         private NpcapDevice device;
         private ILogger<Monitor> logger;
-        private byte[] fragmentedBytes;
-        private int fragmentedPayloadLength;
+        private PacketAssembler packetAssembler;
 
         /// <summary>
         /// Creates a new instance of the monitor class.
         /// </summary>
-        public Monitor(ILogger<Monitor> logger) 
+        public Monitor(ILogger<Monitor> logger, PacketAssembler packetAssembler) 
         {
             this.logger = logger;
+            this.packetAssembler = packetAssembler;
         }
 
-         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
+        private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
         {
             EventHandler<ChatMessageEventArgs> handler = IncomingChatMessageEvent;
             if (handler != null)
@@ -91,7 +91,7 @@ namespace ZwiftPacketMonitor
             }
         }  
 
-         private void OnIncomingRideOnGivenEvent(RideOnGivenEventArgs e)
+        private void OnIncomingRideOnGivenEvent(RideOnGivenEventArgs e)
         {
             EventHandler<RideOnGivenEventArgs> handler = IncomingRideOnGivenEvent;
             if (handler != null)
@@ -105,7 +105,7 @@ namespace ZwiftPacketMonitor
             }
         }  
 
-         private void OnIncomingPlayerEnteredWorldEvent(PlayerEnteredWorldEventArgs e)
+        private void OnIncomingPlayerEnteredWorldEvent(PlayerEnteredWorldEventArgs e)
         {
             EventHandler<PlayerEnteredWorldEventArgs> handler = IncomingPlayerEnteredWorldEvent;
             if (handler != null)
@@ -155,8 +155,6 @@ namespace ZwiftPacketMonitor
         /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {            
-            logger.LogDebug($"Starting packet capture on {networkInterface} UDP:{ZWIFT_UDP_PORT}, TCP:{ZWIFT_TCP_PORT}");
-
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
             var devices = NpcapDeviceList.Instance;
 
@@ -231,7 +229,6 @@ namespace ZwiftPacketMonitor
                 var tcpPacket = packet.Extract<TcpPacket>();
                 var udpPacket = packet.Extract<UdpPacket>();
 
-                var packetBytes = new byte[0];
                 var protoBytes = new byte[0];
                 var direction = Direction.Unknown;
                 
@@ -241,76 +238,22 @@ namespace ZwiftPacketMonitor
                     int srcPort = tcpPacket.SourcePort;
                     int dstPort = tcpPacket.DestinationPort;
 
-                    packetBytes = tcpPacket.PayloadData;
-
                     //Incoming packet
                     if (srcPort == ZWIFT_TCP_PORT)
                     {
-                        if (fragmentedBytes != null )
+                        var result = packetAssembler.Assemble(tcpPacket);
+
+                        // This will take care of packet reassembly by maintaining an internal state buffer
+                        // If the packet isn't fragmented, or the fragmented segment has been fully put back together,
+                        // the result will be IsReady = true.
+                        if (result.IsReady)
                         {
-                            // This is part of a fragmented packet
-                            // The entire payload of this packet is valid (no length in the first bytes)
-                            fragmentedBytes = fragmentedBytes.Concat(tcpPacket.PayloadData).ToArray();
-
-                            logger.LogDebug($"Combining packets - {fragmentedBytes.Length}, {fragmentedPayloadLength}");
-
-                            // Did we get enough?
-                            if (fragmentedBytes.Length >= fragmentedPayloadLength)
-                            {
-                                logger.LogDebug("Fragmented packet completed!");
-
-                                protoBytes = fragmentedBytes.Take(fragmentedPayloadLength).ToArray();
-                                fragmentedBytes = null;
-                                fragmentedPayloadLength = 0;
-                            }
-                            else 
-                            {
-                                // Wait for more packets?
-                                logger.LogDebug($"Waiting for more packets - {fragmentedBytes.Length}, {fragmentedPayloadLength}");
-                                return;
-                            }
+                            protoBytes = result.Payload;
                         }
-                        else 
+                        else
                         {
-                            // Total payload length is stored in the first 2 bytes
-                            var payloadLenBytes = packetBytes.Take(2).ToArray();
-                            if (BitConverter.IsLittleEndian)
-                            {
-                                Array.Reverse(payloadLenBytes);
-                            }
-
-                            if (payloadLenBytes.Length > 0)
-                            {
-                                // first 2 bytes are the total payload length
-                                int expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
-                                int actualLen = packetBytes.Length - 2;
-
-                                // we have a fragmented packet here
-                                if (expectedLen != actualLen)
-                                {
-                                    if (fragmentedPayloadLength > 0)
-                                    {
-                                        logger.LogWarning($"Fragmented packet detected by already waiting on an existing one");
-                                    }
-
-                                    logger.LogDebug($"Packet payload length doesn't match - Expected: {expectedLen}, Actual: {actualLen}");
-                                    fragmentedBytes = packetBytes.Skip(2).ToArray();
-                                    fragmentedPayloadLength = expectedLen;
-                                    
-                                    // Nothing more to do here until the rest of the packets show up
-                                    return;
-                                }
-                                else 
-                                {
-                                    // This packet is complete, trim off the payload length bytes
-                                    protoBytes = packetBytes.Skip(2).ToArray(); 
-                                }
-                            }
-                            else
-                            {
-                                // Payload is empty, nothing to do here
-                                protoBytes = new byte[0];
-                            }
+                            // If IsReady = false comes back it means the segment is still being 
+                            // assembled and the next packet recieved will be added to it.
                         }
 
                         direction = Direction.Incoming;
@@ -319,7 +262,6 @@ namespace ZwiftPacketMonitor
                     else if (dstPort == ZWIFT_TCP_PORT)
                     {
                         // Currently no support for outbound TCP packets
-                        packetBytes = new byte[0];
                         protoBytes = new byte[0];
                         direction = Direction.Outgoing;
                     }
@@ -330,7 +272,7 @@ namespace ZwiftPacketMonitor
                     int srcPort = udpPacket.SourcePort;
                     int dstPort = udpPacket.DestinationPort;
 
-                    packetBytes = udpPacket.PayloadData;
+                    var packetBytes = udpPacket.PayloadData;
 
                     //Incoming packet
                     if (srcPort == ZWIFT_UDP_PORT)
@@ -366,103 +308,109 @@ namespace ZwiftPacketMonitor
                     }
                 }
 
-                // If we have any data to deserialize at this point, let's continue
-                if (protoBytes?.Length > 0)
-                {
-                    try 
-                    {
-                        // Depending on the direction, we need to use different protobuf parsers
-                        if (direction == Direction.Outgoing)
-                        {
-                            var packetData = ClientToServer.Parser.ParseFrom(protoBytes);
-                            if (packetData.State != null) 
-                            {
-                                // Dispatch the event
-                                OnOutgoingPlayerEvent(new PlayerStateEventArgs()
-                                {
-                                    PlayerState = packetData.State,
-                                    EventDate = DateTime.Now
-                                });
-                            }
-                        }
-                        else if (direction == Direction.Incoming)
-                        {
-                            var packetData = ServerToClient.Parser.ParseFrom(protoBytes);
-
-                            // Dispatch each player state individually
-                            foreach (var player in packetData.PlayerStates)
-                            {
-                                if (player != null) 
-                                {
-                                    // Dispatch the event
-                                    OnIncomingPlayerEvent(new PlayerStateEventArgs()
-                                    {
-                                        PlayerState = player,
-                                        EventDate = DateTime.Now
-                                    });
-                                }
-                            }
-
-                            // Dispatch player updates individually
-                            foreach (var pu in packetData.PlayerUpdates)
-                            {
-                                switch (pu.Tag3)
-                                {                                    
-                                    case 4:
-                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
-                                        {
-                                            RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                            EventDate = DateTime.Now
-                                        });
-                                        break;
-                                    case 5:
-                                        OnIncomingChatMessageEvent(new ChatMessageEventArgs()
-                                        {
-                                            Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                            EventDate = DateTime.Now
-                                        });
-                                        break;
-                                    case 105:
-                                        OnIncomingPlayerEnteredWorldEvent(new PlayerEnteredWorldEventArgs()
-                                        {
-                                            PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                            EventDate = DateTime.Now
-                                        });
-                                        break;
-                                    
-                                    /*
-                                    case 2:
-                                        var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload2: {payload2}");
-                                        break;
-                                    case 3:
-                                        var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload3: {payload3}");
-                                        break;
-                                    case 109:
-                                        var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload109: {payload109}");
-                                        break;
-                                    case 110:
-                                        var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload110: {payload110}");
-                                        break;
-                                    */
-                                    default:
-                                        break;
-                                }                            
-                            }
-                        }
-                    }
-                    catch (Exception ex) 
-                    {
-                        logger.LogError(ex, $"ERROR: PayloadLen: {packetBytes?.Length}, PayloadData: {BitConverter.ToString(packetBytes).Replace("-", "")}\n\r");
-                    }
-                }
+                // I mean, it's pretty self-evident
+                DeserializeAndDispatch(protoBytes, direction);
             }
             catch (Exception ee)
             {
                 logger.LogError(ee, $"Unable to parse packet");
+            }
+        }
+
+        private void DeserializeAndDispatch(byte[] buffer, Direction direction)
+        {
+            // If we have any data to deserialize at this point, let's continue
+            if (buffer?.Length > 0)
+            {
+                try 
+                {
+                    // Depending on the direction, we need to use different protobuf parsers
+                    if (direction == Direction.Outgoing)
+                    {
+                        var packetData = ClientToServer.Parser.ParseFrom(buffer);
+                        if (packetData.State != null) 
+                        {
+                            // Dispatch the event
+                            OnOutgoingPlayerEvent(new PlayerStateEventArgs()
+                            {
+                                PlayerState = packetData.State,
+                                EventDate = DateTime.Now
+                            });
+                        }
+                    }
+                    else if (direction == Direction.Incoming)
+                    {
+                        var packetData = ServerToClient.Parser.ParseFrom(buffer);
+
+                        // Dispatch each player state individually
+                        foreach (var player in packetData.PlayerStates)
+                        {
+                            if (player != null) 
+                            {
+                                // Dispatch the event
+                                OnIncomingPlayerEvent(new PlayerStateEventArgs()
+                                {
+                                    PlayerState = player,
+                                    EventDate = DateTime.Now
+                                });
+                            }
+                        }
+
+                        // Dispatch player updates individually
+                        foreach (var pu in packetData.PlayerUpdates)
+                        {
+                            switch (pu.Tag3)
+                            {                                    
+                                case 4:
+                                    OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
+                                    {
+                                        RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        EventDate = DateTime.Now
+                                    });
+                                    break;
+                                case 5:
+                                    OnIncomingChatMessageEvent(new ChatMessageEventArgs()
+                                    {
+                                        Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        EventDate = DateTime.Now
+                                    });
+                                    break;
+                                case 105:
+                                    OnIncomingPlayerEnteredWorldEvent(new PlayerEnteredWorldEventArgs()
+                                    {
+                                        PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        EventDate = DateTime.Now
+                                    });
+                                    break;
+                                
+                                /*
+                                case 2:
+                                    var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                    Console.WriteLine($"Payload2: {payload2}");
+                                    break;
+                                case 3:
+                                    var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                    Console.WriteLine($"Payload3: {payload3}");
+                                    break;
+                                case 109:
+                                    var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                    Console.WriteLine($"Payload109: {payload109}");
+                                    break;
+                                case 110:
+                                    var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                    Console.WriteLine($"Payload110: {payload110}");
+                                    break;
+                                */
+                                default:
+                                    break;
+                            }                            
+                        }
+                    }
+                }
+                catch (Exception ex) 
+                {
+                    logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                }   
             }
         }
    }
