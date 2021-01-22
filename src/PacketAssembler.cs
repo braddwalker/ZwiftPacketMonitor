@@ -6,29 +6,44 @@ using Microsoft.Extensions.Logging;
 
 namespace ZwiftPacketMonitor
 {
-    public enum PacketAssemblyStatus
-    {
-        /// <summary>
-        /// The packet assembly is complete and ready for consumption
-        /// </summary>
-        Ready,
-
-        /// <summary>
-        /// The packet assembly is not complete
-        /// </summary>
-        NotReady,
-    }
-
     public class PacketAssemblyResult
     {
-        public PacketAssemblyStatus Status {get; set;}
+        /// <summary>
+        /// A flag indicating whether the payload is ready to be consumed. False if
+        /// the fragmented segment is still being assembled
+        /// </summary>
+        /// <value>True if the payload is complete.</value>
+        public bool IsReady {get; set;}
+
+        /// <summary>
+        /// The completed payload buffer
+        /// </summary>
+        /// <value>The payload buffer</value>
         public byte[] Payload {get; set;}
 
-        public static PacketAssemblyResult NotReady => new PacketAssemblyResult() { Status = PacketAssemblyStatus.NotReady};
+        /// <summary>
+        /// Convenience property to generate an instance where IsReady = false
+        /// </summary>
+        /// <returns>A PacketAssemblyResult instance</returns>
+        public static PacketAssemblyResult NotReady => new PacketAssemblyResult() { IsReady = false };
+
+        /// <summary>
+        /// A convenience method to generate an instance where IsReady = true and a payload is available
+        /// </summary>
+        /// <param name="payload">The payload to include in the result</param>
+        /// <returns>A PacketAssemblyResult instance</returns>
+        public static PacketAssemblyResult Ready(byte[] payload) {
+            return (new PacketAssemblyResult()
+                {
+                    IsReady = true,
+                    Payload = payload
+                }
+            );
+        }
     }
 
     /// <summary>
-    /// This helper class is used to reassembly fragmented TCP payloads.
+    /// This helper class is used to identify and reassemble fragmented TCP payloads.
     /// </summary>
     public class PacketAssembler
     {
@@ -44,7 +59,7 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// Processes the current packet. If this packet is part of a fragmented sequence,
         /// its payload will be added to the internal buffer until the entire sequence payload has
-        /// been loaded.
+        /// been loaded. Check <c>PacketAssemblyResult.Status</c> to know if the sequence is ready to use or not.
         /// </summary>
         /// <param name="packet">The packet to process</param>
         /// <returns>A <c>PacketAssemblyResult</c> that determines whether the packet has been fully assembled or not</returns>
@@ -77,8 +92,7 @@ namespace ZwiftPacketMonitor
                 {
                     logger.LogDebug($"Complete packet - Expected: {expectedLen}, Actual: {payload.Length}, Push: {packet.Push}");
 
-                    result.Status = PacketAssemblyStatus.Ready;
-                    result.Payload = payload.ToArray();
+                    result = PacketAssemblyResult.Ready(payload.ToArray());
 
                     // clear out state for the next sequence
                     Reset();
@@ -94,7 +108,7 @@ namespace ZwiftPacketMonitor
             // reconstructing a fragmented sequence
             else
             {
-                // Append this packet's payload to the larger fragmented one we're currently reassembling
+                // Append this packet's payload to the fragment one we're currently reassembling
                 payload = payload.Concat(packet.PayloadData).ToArray();
 
                 // SOMETIMES we get a PSH flag even though we haven't gotten all of the packets we expect to
@@ -104,36 +118,21 @@ namespace ZwiftPacketMonitor
                     payload = payload.Take(expectedLen).ToArray();
                     logger.LogDebug($"Fragmented packet completed!, Expected: {expectedLen}, Actual: {payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
 
-                    result.Status = PacketAssemblyStatus.Ready;
-                    result.Payload = payload.ToArray();
-
-                    // clear out state for the next sequence
-                    Reset();
-
-                    /*
-                    if (fragmentedBytes.Length > fragmentedPayloadLength)
+                    result = PacketAssemblyResult.Ready(payload.ToArray());
+                        
+                    // wait... one more thing
+                    if (payload.Length > expectedLen)
                     {
-                        // This is technically the next game packet, so we'll need to treat it as if we received it as the first packet in another sequence
-                        fragmentedBytes = fragmentedBytes.Skip(fragmentedPayloadLength).ToArray();
+                        logger.LogWarning($"OVERFLOW bytes detected - Len: {payload.Length - expectedLen}, PayloadData: {BitConverter.ToString(payload.Skip(expectedLen).ToArray()).Replace("-", "")}\n\r");
 
-                        var payloadLenBytes = packetBytes.Take(2).ToArray();
-                        if (BitConverter.IsLittleEndian)
-                        {
-                            Array.Reverse(payloadLenBytes);
-                        }
-
-                        // first 2 bytes are the total payload length
-                        fragmentedPayloadLength = BitConverter.ToUInt16(payloadLenBytes, 0);
-
-                        logger.LogDebug($"OVERFLOW: Expected: {fragmentedPayloadLength}, Actual: {fragmentedBytes.Length}, PayloadData: {BitConverter.ToString(fragmentedBytes).Replace("-", "")}\n\r");
+                        // this is temporary until I decide what to do with these bytes
+                        Reset();
                     }
                     else 
                     {
-                        // Reset these for the next sequence
-                        fragmentedBytes = null;
-                        fragmentedPayloadLength = 0;
+                        // clear out state for the next sequence
+                        Reset();
                     }
-                    */
                 }
                 else
                 {
