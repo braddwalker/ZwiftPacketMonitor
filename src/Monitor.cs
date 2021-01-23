@@ -77,7 +77,7 @@ namespace ZwiftPacketMonitor
 
             // Setup the packet assembler and callback
             this.packetAssembler = packetAssembler;
-            this.packetAssembler.PayloadReady += OnPayloadReady;
+            this.packetAssembler.PayloadReady += packet_OnPayloadReady;
         }
 
         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
@@ -237,19 +237,24 @@ namespace ZwiftPacketMonitor
                 
                 if (tcpPacket != null) 
                 {
-                    var ipPacket = (IPPacket)tcpPacket.ParentPacket;
                     int srcPort = tcpPacket.SourcePort;
                     int dstPort = tcpPacket.DestinationPort;
 
-                    //Incoming packet
+                    //Only incoming packets are supported
                     if (srcPort == ZWIFT_TCP_PORT)
                     {
+                        // TCP packets are often fragmented due to payloads that are larger
+                        // than the MTU size, so we need to do some extra work to reassemble
+                        // them and reconstruct the protobuf data.
                         packetAssembler.Assemble(tcpPacket);
+                    }
+                    else if (dstPort == ZWIFT_TCP_PORT)
+                    {
+                        // these packets don't contain any payload
                     }
                 }
                 else if (udpPacket != null)
                 {
-                    var ipPacket = (IPPacket)udpPacket.ParentPacket;
                     int srcPort = udpPacket.SourcePort;
                     int dstPort = udpPacket.DestinationPort;
 
@@ -288,7 +293,6 @@ namespace ZwiftPacketMonitor
                         direction = Direction.Outgoing;
                     }
 
-                    // I mean, it's pretty self-evident
                     DeserializeAndDispatch(protoBytes, direction);
                 }
             }
@@ -298,7 +302,7 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        private void OnPayloadReady(object sender, PayloadReadyEventArgs e)
+        private void packet_OnPayloadReady(object sender, PayloadReadyEventArgs e)
         {
             // Only incoming TCP payloads are coming through here
             DeserializeAndDispatch(e.Payload, Direction.Incoming);

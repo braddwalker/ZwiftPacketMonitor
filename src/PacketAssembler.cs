@@ -37,6 +37,9 @@ namespace ZwiftPacketMonitor
                 catch {
                     // Don't let downstream exceptions bubble up
                 }
+                finally {
+                    Reset();
+                }
             }
         }  
 
@@ -73,16 +76,22 @@ namespace ZwiftPacketMonitor
                 // trim off the header
                 payload = payload.Skip(2).ToArray();
 
-                // PSH flag indicates the payload is wholly contained in this packet
-                if (payload.Length == expectedLen)
-                //if (packet.Push)
+                if (payload.Length >= expectedLen)
                 {
+                    // Any bytes past the expectedLen are overflow from the next message
+                    var overflow = payload.Skip(expectedLen).ToArray();
                     logger.LogDebug($"Complete packet - Expected: {expectedLen}, Actual: {payload.Length}, Push: {packet.Push}");
 
                     OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload.ToArray() });
 
-                    // clear out state for the next sequence
-                    Reset();
+                    // See if the next packet sequence is comingled with this one
+                    if (overflow.Length > 0)
+                    {
+                        logger.LogWarning($"OVERFLOW bytes detected - Len: {overflow.Length}, PayloadData: {BitConverter.ToString(overflow.ToArray()).Replace("-", "")}\n\r");
+                        
+                        // Start the process over as if this overflow data came in fresh from a packet
+                        AssembleInternal(packet, overflow);
+                    }
                 }
                 // the payload will be spread out across multiple packets
                 else
@@ -97,24 +106,23 @@ namespace ZwiftPacketMonitor
                 logger.LogDebug($"Combining packets - Expected: {expectedLen}, Actual: {payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
                 payload = payload.Concat(packet.PayloadData).ToArray();
 
-                var overflow = new byte[0];
-
                 if (payload.Length >= expectedLen)
                 {
-                    overflow = payload.Skip(expectedLen).ToArray();
+                    // Any bytes past the expectedLen are overflow from the next message
+                    var overflow = payload.Skip(expectedLen).ToArray();
                     logger.LogDebug($"Fragmented packet completed!, Expected: {expectedLen}, Actual: {payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
 
+                    // our original fragmented packet is ready to ship
                     OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload.Take(expectedLen).ToArray() });
-                    Reset();
-                }
 
-                // See if the next packet sequence is comingled with this one
-                if (overflow.Length > 0)
-                {
-                    logger.LogWarning($"OVERFLOW bytes detected - Len: {overflow.Length - expectedLen}, PayloadData: {BitConverter.ToString(overflow.ToArray()).Replace("-", "")}\n\r");
-
-                    Reset();
-                    AssembleInternal(packet, overflow);
+                    // See if the next packet sequence is comingled with this one
+                    if (overflow.Length > 0)
+                    {
+                        logger.LogDebug($"OVERFLOW bytes detected - Len: {overflow.Length}, PayloadData: {BitConverter.ToString(overflow.ToArray()).Replace("-", "")}\n\r");
+                        
+                        // Start the process over as if this overflow data came in fresh from a packet
+                        AssembleInternal(packet, overflow);
+                    }
                 }
             }
         }
