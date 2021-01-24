@@ -106,6 +106,15 @@ namespace ZwiftPacketMonitor
                 _logger.LogDebug($"Combining packets - Expected: {_expectedLen}, Actual: {_payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
                 _payload = _payload.Concat(packet.PayloadData).ToArray();
 
+                if (packet.Push)
+                {
+                    _logger.LogDebug($"Fragmented packet completed!, Expected: {_expectedLen}, Actual: {_payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
+
+                    // our original fragmented packet is ready to ship
+                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = _payload.Take(_expectedLen).ToArray() });
+                }
+
+                /*
                 if (_payload.Length >= _expectedLen)
                 {
                     // Any bytes past the expectedLen are overflow from the next message
@@ -124,6 +133,7 @@ namespace ZwiftPacketMonitor
                         AssembleInternal(packet, overflow);
                     }
                 }
+                */
             }
         }
 
