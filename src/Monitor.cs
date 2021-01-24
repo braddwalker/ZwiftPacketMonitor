@@ -64,20 +64,20 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<ChatMessageEventArgs> IncomingChatMessageEvent;
 
-        private NpcapDevice device;
-        private ILogger<Monitor> logger;
-        private PacketAssembler packetAssembler;
+        private NpcapDevice _device;
+        private ILogger<Monitor> _logger;
+        private PacketAssembler _packetAssembler;
 
         /// <summary>
         /// Creates a new instance of the monitor class.
         /// </summary>
         public Monitor(ILogger<Monitor> logger, PacketAssembler packetAssembler) 
         {
-            this.logger = logger;
+            _logger = logger ?? throw new ArgumentException(nameof(logger));
 
             // Setup the packet assembler and callback
-            this.packetAssembler = packetAssembler;
-            this.packetAssembler.PayloadReady += packet_OnPayloadReady;
+            this._packetAssembler = packetAssembler ?? throw new ArgumentException(nameof(packetAssembler));
+            this._packetAssembler.PayloadReady += packet_OnPayloadReady;
         }
 
         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
@@ -164,40 +164,40 @@ namespace ZwiftPacketMonitor
             // Roll the dice and pull the first interface in the list
             if (string.IsNullOrWhiteSpace(networkInterface))
             {
-                device = devices.FirstOrDefault(d => d.Addresses.Count > 0);
+                _device = devices.FirstOrDefault(d => d.Addresses.Count > 0);
             }
             else
             {
                 // See if we can find the desired interface by name
                 if (Regex.IsMatch(networkInterface, "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"))
                 {
-                    logger.LogDebug($"Searching for device matching {networkInterface}");
-                    device = devices.FirstOrDefault(d => 
+                    _logger.LogDebug($"Searching for device matching {networkInterface}");
+                    _device = devices.FirstOrDefault(d => 
                         d.Addresses != null && d.Addresses.Any(a => 
                             a.Addr != null && a.Addr.ipAddress != null && 
                                 a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
                 }
                 else 
                 {
-                    device = devices.Where(x => 
+                    _device = devices.Where(x => 
                         x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 }
             }
 
-            if (device == null)
+            if (_device == null)
             {
                 throw new ArgumentException($"Interface {networkInterface} not found");
             }
 
-            logger.LogDebug($"Starting packet capture on {GetInterfaceDisplayName(device)} UDP:{ZWIFT_UDP_PORT}, TCP: {ZWIFT_TCP_PORT}");
+            _logger.LogDebug($"Starting packet capture on {GetInterfaceDisplayName(_device)} UDP:{ZWIFT_UDP_PORT}, TCP: {ZWIFT_TCP_PORT}");
 
             // Open the device for capturing
-            device.Open(DeviceMode.Normal, READ_TIMEOUT);
-            device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
-            device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
+            _device.Open(DeviceMode.Normal, READ_TIMEOUT);
+            _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
+            _device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
 
             // Start capture 'INFINTE' number of packets
-            await Task.Run(() => { device.Capture(); }, cancellationToken);
+            await Task.Run(() => { _device.Capture(); }, cancellationToken);
         }
 
         private string GetInterfaceDisplayName(NpcapDevice device) 
@@ -212,15 +212,15 @@ namespace ZwiftPacketMonitor
         /// <returns>A Task representing the stopped operation</returns>
         public async Task StopCaptureAsync(CancellationToken cancellationToken = default)
         {
-            logger.LogDebug("Sopping packet capture");
+            _logger.LogDebug("Sopping packet capture");
 
-            if (device == null)
+            if (_device == null)
             {
                 await Task.CompletedTask;
             }
             else 
             {
-                await Task.Run(() => { device.Close(); }, cancellationToken);
+                await Task.Run(() => { _device.Close(); }, cancellationToken);
             }
         }
 
@@ -246,7 +246,7 @@ namespace ZwiftPacketMonitor
                         // TCP packets are often fragmented due to payloads that are larger
                         // than the MTU size, so we need to do some extra work to reassemble
                         // them and reconstruct the protobuf data.
-                        packetAssembler.Assemble(tcpPacket);
+                        _packetAssembler.Assemble(tcpPacket);
                     }
                     else if (dstPort == ZWIFT_TCP_PORT)
                     {
@@ -298,7 +298,7 @@ namespace ZwiftPacketMonitor
             }
             catch (Exception ee)
             {
-                logger.LogError(ee, $"Unable to parse packet");
+                _logger.LogError(ee, $"Unable to parse packet");
             }
         }
 
@@ -400,7 +400,7 @@ namespace ZwiftPacketMonitor
                 }
                 catch (Exception ex) 
                 {
-                    logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                    _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
                 }   
             }
         }

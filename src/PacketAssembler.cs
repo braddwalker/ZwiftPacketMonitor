@@ -17,13 +17,13 @@ namespace ZwiftPacketMonitor
     {
         public event EventHandler<PayloadReadyEventArgs> PayloadReady;
 
-        private ILogger<PacketAssembler> logger;
-        private int expectedLen;
-        private byte[] payload;
+        private ILogger<PacketAssembler> _logger;
+        private int _expectedLen;
+        private byte[] _payload;
 
         public PacketAssembler(ILogger<PacketAssembler> logger)
         {
-            this.logger = logger;
+            _logger = logger ?? throw new ArgumentException(nameof(logger));
         }
 
         private void OnPayloadReady(PayloadReadyEventArgs e)
@@ -57,37 +57,37 @@ namespace ZwiftPacketMonitor
         private void AssembleInternal(TcpPacket packet, byte[] buffer)
         {
             // New packet sequence
-            if (payload == null) 
+            if (_payload == null) 
             {
-                payload = buffer;
+                _payload = buffer;
 
-                if (payload.Length > 2)
+                if (_payload.Length > 2)
                 {
                     // first 2 bytes are the total payload length
-                    var payloadLenBytes = payload.Take(2).ToArray();
+                    var payloadLenBytes = _payload.Take(2).ToArray();
                     if (BitConverter.IsLittleEndian)
                     {
                         Array.Reverse(payloadLenBytes);
                     }
 
-                    expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
+                    _expectedLen = BitConverter.ToUInt16(payloadLenBytes, 0);
                 }
 
                 // trim off the header
-                payload = payload.Skip(2).ToArray();
+                _payload = _payload.Skip(2).ToArray();
 
-                if (payload.Length >= expectedLen)
+                if (_payload.Length >= _expectedLen)
                 {
                     // Any bytes past the expectedLen are overflow from the next message
-                    var overflow = payload.Skip(expectedLen).ToArray();
-                    logger.LogDebug($"Complete packet - Expected: {expectedLen}, Actual: {payload.Length}, Push: {packet.Push}");
+                    var overflow = _payload.Skip(_expectedLen).ToArray();
+                    _logger.LogDebug($"Complete packet - Expected: {_expectedLen}, Actual: {_payload.Length}, Push: {packet.Push}");
 
-                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload.ToArray() });
+                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = _payload.ToArray() });
 
                     // See if the next packet sequence is comingled with this one
                     if (overflow.Length > 0)
                     {
-                        logger.LogWarning($"OVERFLOW bytes detected - Len: {overflow.Length}, PayloadData: {BitConverter.ToString(overflow.ToArray()).Replace("-", "")}\n\r");
+                        _logger.LogWarning($"OVERFLOW bytes detected - Len: {overflow.Length}, PayloadData: {BitConverter.ToString(overflow.ToArray()).Replace("-", "")}\n\r");
                         
                         // Start the process over as if this overflow data came in fresh from a packet
                         AssembleInternal(packet, overflow);
@@ -96,29 +96,29 @@ namespace ZwiftPacketMonitor
                 // the payload will be spread out across multiple packets
                 else
                 {
-                    logger.LogDebug($"Fragmented packet detected - Expected: {expectedLen}, Actual: {payload.Length}, Push: {packet.Push}");
+                    _logger.LogDebug($"Fragmented packet detected - Expected: {_expectedLen}, Actual: {_payload.Length}, Push: {packet.Push}");
                 }
             }
             // reconstructing a fragmented sequence
             else
             {
                 // Append this packet's payload to the fragment one we're currently reassembling
-                logger.LogDebug($"Combining packets - Expected: {expectedLen}, Actual: {payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
-                payload = payload.Concat(packet.PayloadData).ToArray();
+                _logger.LogDebug($"Combining packets - Expected: {_expectedLen}, Actual: {_payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
+                _payload = _payload.Concat(packet.PayloadData).ToArray();
 
-                if (payload.Length >= expectedLen)
+                if (_payload.Length >= _expectedLen)
                 {
                     // Any bytes past the expectedLen are overflow from the next message
-                    var overflow = payload.Skip(expectedLen).ToArray();
-                    logger.LogDebug($"Fragmented packet completed!, Expected: {expectedLen}, Actual: {payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
+                    var overflow = _payload.Skip(_expectedLen).ToArray();
+                    _logger.LogDebug($"Fragmented packet completed!, Expected: {_expectedLen}, Actual: {_payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
 
                     // our original fragmented packet is ready to ship
-                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload.Take(expectedLen).ToArray() });
+                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = _payload.Take(_expectedLen).ToArray() });
 
                     // See if the next packet sequence is comingled with this one
                     if (overflow.Length > 0)
                     {
-                        logger.LogDebug($"OVERFLOW bytes detected - Len: {overflow.Length}, PayloadData: {BitConverter.ToString(overflow.ToArray()).Replace("-", "")}\n\r");
+                        _logger.LogDebug($"OVERFLOW bytes detected - Len: {overflow.Length}, PayloadData: {BitConverter.ToString(overflow.ToArray()).Replace("-", "")}\n\r");
                         
                         // Start the process over as if this overflow data came in fresh from a packet
                         AssembleInternal(packet, overflow);
@@ -132,8 +132,8 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public void Reset()
         {
-            payload = null;
-            expectedLen = 0;
+            _payload = null;
+            _expectedLen = 0;
         }
     }
 }
