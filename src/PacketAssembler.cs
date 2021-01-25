@@ -15,6 +15,11 @@ namespace ZwiftPacketMonitor
     /// </summary>
     public class PacketAssembler
     {
+        private readonly byte[][] HEADERS = new byte[][]
+        {
+            new byte[] { 0x10, 0x96, 0x5E, 0x18 },
+            new byte[] { 0x08, 0x01, 0x10, 0x96 }
+        };
         public event EventHandler<PayloadReadyEventArgs> PayloadReady;
 
         private ILogger<PacketAssembler> _logger;
@@ -64,6 +69,15 @@ namespace ZwiftPacketMonitor
 
                 // trim off the header
                 _payload = _payload.Skip(2).ToArray();
+
+                // Validate that we're not lost in the middle of a sequence somewhere
+                if (!IsValidPayload(_payload))
+                {
+                    _logger.LogDebug($"Skipping packet, no valid payload header found");
+                    _logger.LogDebug(BitConverter.ToString(buffer).Replace("-", ""));
+                    Reset();
+                    return;
+                }
 
                 if (_payload.Length >= _expectedLen)
                 {
@@ -147,6 +161,19 @@ namespace ZwiftPacketMonitor
             {
                 return (0);
             }
+        }
+
+        private bool IsValidPayload(byte[] buffer)
+        {
+            foreach (var h in HEADERS)
+            {
+                if (h.SequenceEqual(buffer.Take(h.Length)))
+                {
+                    return (true);
+                }
+            }
+
+            return (false);
         }
     }
 }
