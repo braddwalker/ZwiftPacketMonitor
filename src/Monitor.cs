@@ -373,7 +373,6 @@ namespace ZwiftPacketMonitor
                                         EventDate = DateTime.Now
                                     });
                                     break;
-                                
                                 /*
                                 case 2:
                                     var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
