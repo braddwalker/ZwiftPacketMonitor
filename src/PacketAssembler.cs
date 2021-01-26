@@ -73,8 +73,8 @@ namespace ZwiftPacketMonitor
                 // Validate that we're not lost in the middle of a sequence somewhere
                 if (!IsValidPayload(_payload))
                 {
-                    _logger.LogDebug($"Skipping packet, no valid payload header found");
-                    _logger.LogDebug(BitConverter.ToString(buffer).Replace("-", ""));
+                    _logger.LogWarning($"Skipping packet, no valid payload header found");
+                    _logger.LogWarning(BitConverter.ToString(buffer).Replace("-", ""));
                     Reset();
                     return;
                 }
