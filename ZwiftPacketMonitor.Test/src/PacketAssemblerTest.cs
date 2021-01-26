@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ZwiftPacketMonitor;
 
@@ -14,7 +15,8 @@ namespace ZwiftPacketMonitor.Test
         }
 
         [TestMethod]
-        public void Test_NullPacket_NoErrors()
+        [ExpectedException(typeof(ArgumentException))]
+        public void Test_NullPacket_ArgumentException()
         {
             var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
             pa.Assemble(null);

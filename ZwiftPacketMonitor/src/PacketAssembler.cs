@@ -56,6 +56,11 @@ namespace ZwiftPacketMonitor
         /// <param name="packet">The packet to process</param>
         public void Assemble(TcpPacket packet)
         {
+            if (packet == null) 
+            {
+                throw new ArgumentException(nameof(packet));
+            }
+
             AssembleInternal(packet, packet.PayloadData);
         }
 
