@@ -21,6 +21,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
     <ItemGroup>
-      <None Include="readme.md" Pack="true" PackagePath=""/>
+      <None Include="../readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
 </Project>
