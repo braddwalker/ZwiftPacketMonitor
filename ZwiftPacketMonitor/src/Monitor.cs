@@ -325,7 +325,6 @@ namespace ZwiftPacketMonitor
                             OnOutgoingPlayerEvent(new PlayerStateEventArgs()
                             {
                                 PlayerState = packetData.State,
-                                EventDate = DateTime.Now
                             });
                         }
                     }
@@ -342,7 +341,6 @@ namespace ZwiftPacketMonitor
                                 OnIncomingPlayerEvent(new PlayerStateEventArgs()
                                 {
                                     PlayerState = player,
-                                    EventDate = DateTime.Now
                                 });
                             }
                         }
@@ -356,21 +354,18 @@ namespace ZwiftPacketMonitor
                                     OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
                                     {
                                         RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
                                     });
                                     break;
                                 case 5:
                                     OnIncomingChatMessageEvent(new ChatMessageEventArgs()
                                     {
                                         Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
                                     });
                                     break;
                                 case 105:
                                     OnIncomingPlayerEnteredWorldEvent(new PlayerEnteredWorldEventArgs()
                                     {
                                         PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
                                     });
                                     break;
                                 /*

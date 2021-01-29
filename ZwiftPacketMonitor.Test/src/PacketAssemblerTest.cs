@@ -1,8 +1,6 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ZwiftPacketMonitor;
 using PacketDotNet;
-using Moq;
 using System.Linq;
 
 namespace ZwiftPacketMonitor.Test
@@ -252,6 +250,149 @@ namespace ZwiftPacketMonitor.Test
             pa.Assemble(packet);
 
             packet.PayloadData = payload.Skip(8).ToArray();
+            pa.Assemble(packet);
+
+            CollectionAssert.AreEqual(payload.Skip(2).ToArray(), buffer);
+        }
+
+        [TestMethod]
+        public void Packet_Complete_With_Overflow_Verify()
+        {
+            byte[] buffer1 = null;
+            byte[] buffer2 = null;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                if (buffer1 == null)
+                    buffer1 = e.Payload;
+                else
+                    buffer2 = e.Payload;
+            };
+
+            var payload = CreatePacketPayloadWithHeader(10);
+            var payload2 = CreatePacketPayloadWithHeader(10);
+            var combined = payload.Concat(payload2).ToArray();
+
+            var packet = new TcpPacket(0, 0);
+            packet.PayloadData = combined;
+            pa.Assemble(packet);
+
+            CollectionAssert.AreEqual(payload.Skip(2).ToArray(), buffer1);
+            CollectionAssert.AreEqual(payload2.Skip(2).ToArray(), buffer2);
+        }
+
+        [TestMethod]
+        public void Packet_Complete_With_Invalid_Overflow_Verify()
+        {
+            byte[] buffer1 = null;
+            byte[] buffer2 = null;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                if (buffer1 == null)
+                    buffer1 = e.Payload;
+                else
+                    buffer2 = e.Payload;
+            };
+
+            var payload = CreatePacketPayloadWithHeader(10);
+            var payload2 = CreatePacketPayloadWithHeader(10);
+            var combined = payload.Concat(payload2.Skip(3)).ToArray();
+
+            var packet = new TcpPacket(0, 0);
+            packet.PayloadData = combined;
+            pa.Assemble(packet);
+
+            CollectionAssert.AreEqual(payload.Skip(2).ToArray(), buffer1);
+            Assert.IsNull(buffer2);
+        }
+
+        [TestMethod]
+        public void Packet_Fragmented_With_Overflow_Verify()
+        {
+            byte[] buffer1 = null;
+            byte[] buffer2 = null;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                if (buffer1 == null)
+                    buffer1 = e.Payload;
+                else
+                    buffer2 = e.Payload;
+            };
+
+            var payload = CreatePacketPayloadWithHeader(10);
+            var payload2 = CreatePacketPayloadWithHeader(10);
+            var combined = payload.Concat(payload2).ToArray();
+
+            var packet = new TcpPacket(0, 0);
+            packet.PayloadData = combined.Take(10).ToArray();
+            pa.Assemble(packet);
+
+            packet.PayloadData = combined.Skip(10).ToArray();
+            pa.Assemble(packet);
+
+            CollectionAssert.AreEqual(payload.Skip(2).ToArray(), buffer1);
+            CollectionAssert.AreEqual(payload2.Skip(2).ToArray(), buffer2);
+        }
+
+        [TestMethod]
+        public void Event_Verify_Dont_Bubble_Exception()
+        {
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                throw new NullReferenceException();
+            };
+
+            var packet = new TcpPacket(0, 0);
+            packet.PayloadData = CreatePacketPayloadWithHeader(10);
+            pa.Assemble(packet);
+        }
+
+        [TestMethod]
+        public void Packet_Reset()
+        {
+            byte[] buffer = null;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                buffer = e.Payload;
+            };
+
+            var payload = CreatePacketPayloadWithHeader(10);
+
+            var packet = new TcpPacket(0, 0);
+            packet.PayloadData = payload.Take(8).ToArray();
+            pa.Assemble(packet);
+
+            pa.Reset();
+
+            packet.PayloadData = payload.Skip(8).ToArray();
+            pa.Assemble(packet);
+
+            Assert.IsNull(buffer);
+        }
+
+       [TestMethod]
+        public void Packet_Reset_Then_Complete_Verify()
+        {
+            byte[] buffer = null;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                buffer = e.Payload;
+            };
+
+            var payload = CreatePacketPayloadWithHeader(10);
+
+            var packet = new TcpPacket(0, 0);
+            packet.PayloadData = payload.Take(8).ToArray();
+            pa.Assemble(packet);
+
+            pa.Reset();
+
+            packet.PayloadData = payload.ToArray();
             pa.Assemble(packet);
 
             CollectionAssert.AreEqual(payload.Skip(2).ToArray(), buffer);

@@ -10,7 +10,9 @@ namespace ZwiftPacketMonitor.Test
 
         [TestInitialize]
         public virtual void Setup() { 
-            _loggerFactory = LoggerFactory.Create(builder => builder.AddConsole().AddDebug());
+            _loggerFactory = LoggerFactory.Create(builder => builder
+                .AddConsole()
+                .AddDebug());
         }
 
         [TestCleanup]
