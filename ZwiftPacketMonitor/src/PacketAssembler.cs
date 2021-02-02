@@ -17,8 +17,9 @@ namespace ZwiftPacketMonitor
     {
         public static readonly byte[][] HEADERS = new byte[][]
         {
-            new byte[] { 0x10, 0x96, 0x5E, 0x18 },
-            new byte[] { 0x08, 0x01, 0x10, 0x96 }
+            new byte[] { 0x10, 0x80 },
+            new byte[] { 0x10, 0x96 },
+            new byte[] { 0x08, 0x01 }
         };
         public event EventHandler<PayloadReadyEventArgs> PayloadReady;
 
