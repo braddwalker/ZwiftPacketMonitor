@@ -325,7 +325,6 @@ namespace ZwiftPacketMonitor
                             OnOutgoingPlayerEvent(new PlayerStateEventArgs()
                             {
                                 PlayerState = packetData.State,
-                                EventDate = DateTime.Now
                             });
                         }
                     }
@@ -342,7 +341,6 @@ namespace ZwiftPacketMonitor
                                 OnIncomingPlayerEvent(new PlayerStateEventArgs()
                                 {
                                     PlayerState = player,
-                                    EventDate = DateTime.Now
                                 });
                             }
                         }
@@ -350,50 +348,54 @@ namespace ZwiftPacketMonitor
                         // Dispatch player updates individually
                         foreach (var pu in packetData.PlayerUpdates)
                         {
-                            switch (pu.Tag3)
-                            {                                    
-                                case 4:
-                                    OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
-                                    {
-                                        RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
-                                    });
-                                    break;
-                                case 5:
-                                    OnIncomingChatMessageEvent(new ChatMessageEventArgs()
-                                    {
-                                        Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
-                                    });
-                                    break;
-                                case 105:
-                                    OnIncomingPlayerEnteredWorldEvent(new PlayerEnteredWorldEventArgs()
-                                    {
-                                        PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
-                                    });
-                                    break;
-                                /*
-                                case 2:
-                                    var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                    Console.WriteLine($"Payload2: {payload2}");
-                                    break;
-                                case 3:
-                                    var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                    Console.WriteLine($"Payload3: {payload3}");
-                                    break;
-                                case 109:
-                                    var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                    Console.WriteLine($"Payload109: {payload109}");
-                                    break;
-                                case 110:
-                                    var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                    Console.WriteLine($"Payload110: {payload110}");
-                                    break;
-                                */
-                                default:
-                                    break;
-                            }                            
+                            try
+                            {
+                                switch (pu.Tag3)
+                                {                                    
+                                    case 4:
+                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
+                                        {
+                                            RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
+                                        break;
+                                    case 5:
+                                        OnIncomingChatMessageEvent(new ChatMessageEventArgs()
+                                        {
+                                            Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
+                                        break;
+                                    case 105:
+                                        OnIncomingPlayerEnteredWorldEvent(new PlayerEnteredWorldEventArgs()
+                                        {
+                                            PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
+                                        break;
+                                    /*
+                                    case 2:
+                                        var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload2: {payload2}");
+                                        break;
+                                    case 3:
+                                        var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload3: {payload3}");
+                                        break;
+                                    case 109:
+                                        var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload109: {payload109}");
+                                        break;
+                                    case 110:
+                                        var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                        Console.WriteLine($"Payload110: {payload110}");
+                                        break;
+                                    */
+                                    default:
+                                        break;
+                                }                            
+                            }
+                            catch (Exception e)
+                            {
+                                _logger.LogError(e, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                            }
                         }
                     }
                 }

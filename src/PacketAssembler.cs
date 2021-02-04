@@ -3,7 +3,6 @@ using System.Linq;
 using PacketDotNet;
 using Microsoft.Extensions.Logging;
 
-
 namespace ZwiftPacketMonitor
 {
     public class PayloadReadyEventArgs : EventArgs {
@@ -15,10 +14,11 @@ namespace ZwiftPacketMonitor
     /// </summary>
     public class PacketAssembler
     {
-        private readonly byte[][] HEADERS = new byte[][]
+        public static readonly byte[][] HEADERS = new byte[][]
         {
-            new byte[] { 0x10, 0x96, 0x5E, 0x18 },
-            new byte[] { 0x08, 0x01, 0x10, 0x96 }
+            new byte[] { 0x10, 0x80 },
+            new byte[] { 0x10, 0x96 },
+            new byte[] { 0x08, 0x01 }
         };
         public event EventHandler<PayloadReadyEventArgs> PayloadReady;
 
@@ -56,6 +56,11 @@ namespace ZwiftPacketMonitor
         /// <param name="packet">The packet to process</param>
         public void Assemble(TcpPacket packet)
         {
+            if (packet == null) 
+            {
+                throw new ArgumentException(nameof(packet));
+            }
+
             AssembleInternal(packet, packet.PayloadData);
         }
 
@@ -64,6 +69,11 @@ namespace ZwiftPacketMonitor
             // New packet sequence
             if (_payload == null) 
             {
+                if (buffer == null) 
+                {
+                    return;
+                }
+
                 _payload = buffer;
                 _expectedLen = ToUInt16(buffer, 0, 2);
 
