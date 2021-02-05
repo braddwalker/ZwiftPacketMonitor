@@ -181,6 +181,12 @@ namespace ZwiftPacketMonitor
                 {
                     _device = devices.Where(x => 
                         x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+
+                    if (_device == null) // still unresolved, search by friendly name (ie. ipconfig /all)
+                    {
+                        _device = devices.Where(x => x.Interface.FriendlyName != null &&
+                            x.Interface.FriendlyName.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                    }
                 }
             }
 
