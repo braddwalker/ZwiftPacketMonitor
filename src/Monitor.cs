@@ -179,13 +179,13 @@ namespace ZwiftPacketMonitor
                 }
                 else 
                 {
-                    _device = devices.Where(x => 
-                        x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                    _device = devices.FirstOrDefault(x => 
+                        x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase));
 
                     if (_device == null) // still unresolved, search by friendly name (ie. ipconfig /all)
                     {
-                        _device = devices.Where(x => x.Interface.FriendlyName != null &&
-                            x.Interface.FriendlyName.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+                        _device = devices.FirstOrDefault(x => 
+                            x.Interface.FriendlyName != null && x.Interface.FriendlyName.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase));
                     }
                 }
             }
@@ -218,7 +218,7 @@ namespace ZwiftPacketMonitor
         /// <returns>A Task representing the stopped operation</returns>
         public async Task StopCaptureAsync(CancellationToken cancellationToken = default)
         {
-            _logger.LogDebug("Sopping packet capture");
+            _logger.LogDebug("Stopping packet capture");
 
             if (_device == null)
             {
