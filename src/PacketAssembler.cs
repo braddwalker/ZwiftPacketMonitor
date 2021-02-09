@@ -94,7 +94,11 @@ namespace ZwiftPacketMonitor
                     var offset = 0;
                     var length = 0;
 
-                    _logger.LogDebug($"FULL PAYLOAD: {BitConverter.ToString(_payload.ToArray()).Replace("-", "")}\n\r");
+                    // No need to decode the payload if debug isn't enabled
+                    if (_logger.IsEnabled(LogLevel.Debug))
+                    {
+                        _logger.LogDebug($"FULL PAYLOAD: {BitConverter.ToString(_payload.ToArray()).Replace("-", "")}\n\r");
+                    }
 
                     while (offset < _assembledLen)
                     {
@@ -103,8 +107,13 @@ namespace ZwiftPacketMonitor
                         if (offset + length < _assembledLen)
                         {
                             var payload = _payload.Skip(offset + 2).Take(length).ToArray();
-                            _logger.LogDebug($"{BitConverter.ToString(payload.ToArray()).Replace("-", "")}\n\r");
                             OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload });
+
+                            // No need to decode the payload if debug isn't enabled
+                            if (_logger.IsEnabled(LogLevel.Debug))
+                            {
+                                _logger.LogDebug($"{BitConverter.ToString(payload.ToArray()).Replace("-", "")}\n\r");
+                            }
                         }
 
                         offset += 2 + length;

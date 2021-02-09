@@ -324,8 +324,7 @@ namespace ZwiftPacketMonitor
                             // Dispatch the event
                             OnOutgoingPlayerEvent(new PlayerStateEventArgs()
                             {
-                                PlayerState = packetData.State,
-                                EventDate = DateTime.Now
+                                PlayerState = packetData.State
                             });
                         }
                     }
@@ -341,8 +340,7 @@ namespace ZwiftPacketMonitor
                                 // Dispatch the event
                                 OnIncomingPlayerEvent(new PlayerStateEventArgs()
                                 {
-                                    PlayerState = player,
-                                    EventDate = DateTime.Now
+                                    PlayerState = player
                                 });
                             }
                         }
@@ -355,22 +353,19 @@ namespace ZwiftPacketMonitor
                                 case 4:
                                     OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
                                     {
-                                        RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
+                                        RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray())
                                     });
                                     break;
                                 case 5:
                                     OnIncomingChatMessageEvent(new ChatMessageEventArgs()
                                     {
-                                        Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
+                                        Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray())
                                     });
                                     break;
                                 case 105:
                                     OnIncomingPlayerEnteredWorldEvent(new PlayerEnteredWorldEventArgs()
                                     {
-                                        PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        EventDate = DateTime.Now
+                                        PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray())
                                     });
                                     break;
                                 
