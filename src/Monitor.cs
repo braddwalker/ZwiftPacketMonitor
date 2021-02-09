@@ -64,6 +64,11 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<ChatMessageEventArgs> IncomingChatMessageEvent;
 
+        /// <summary>
+        /// This event gets invoked when a remote player's world time needs to be synced
+        /// </summary>
+        public event EventHandler<PlayerWorldTimeEventArgs> IncomingPlayerWorldTimeUpdateEvent;
+
         private NpcapDevice _device;
         private ILogger<Monitor> _logger;
         private PacketAssembler _packetAssembler;
@@ -139,6 +144,20 @@ namespace ZwiftPacketMonitor
         private void OnOutgoingPlayerEvent(PlayerStateEventArgs e)
         {
             EventHandler<PlayerStateEventArgs> handler = OutgoingPlayerEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }
+
+        private void OnIncomingPlayerWorldTimeUpdateEvent(PlayerWorldTimeEventArgs e)
+        {
+            EventHandler<PlayerWorldTimeEventArgs> handler = IncomingPlayerWorldTimeUpdateEvent;
             if (handler != null)
             {
                 try {
@@ -376,15 +395,18 @@ namespace ZwiftPacketMonitor
                                             PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-                                    /*
+                                    case 3:
+                                        OnIncomingPlayerWorldTimeUpdateEvent(new PlayerWorldTimeEventArgs()
+                                        {
+                                            PlayerUpdate = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
+                                        break;
+
                                     case 2:
                                         var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
                                         Console.WriteLine($"Payload2: {payload2}");
                                         break;
-                                    case 3:
-                                        var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload3: {payload3}");
-                                        break;
+                                    /*
                                     case 109:
                                         var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
                                         Console.WriteLine($"Payload109: {payload109}");
