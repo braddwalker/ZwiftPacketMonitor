@@ -3,7 +3,6 @@ using System.Linq;
 using PacketDotNet;
 using Microsoft.Extensions.Logging;
 
-
 namespace ZwiftPacketMonitor
 {
     public class PayloadReadyEventArgs : EventArgs {
@@ -18,8 +17,9 @@ namespace ZwiftPacketMonitor
         public event EventHandler<PayloadReadyEventArgs> PayloadReady;
 
         private ILogger<PacketAssembler> _logger;
-        private int _expectedLen;
+        private int _assembledLen;
         private byte[] _payload;
+        private bool _complete;
 
         public PacketAssembler(ILogger<PacketAssembler> logger)
         {
@@ -37,9 +37,6 @@ namespace ZwiftPacketMonitor
                 catch {
                     // Don't let downstream exceptions bubble up
                 }
-                finally {
-                    Reset();
-                }
             }
         }  
 
@@ -51,11 +48,78 @@ namespace ZwiftPacketMonitor
         /// <param name="packet">The packet to process</param>
         public void Assemble(TcpPacket packet)
         {
-            AssembleInternal(packet, packet.PayloadData);
-        }
+            try
+            {
+                if (packet.Push && packet.Acknowledgment && _payload == null)
+                {
+                    // No reassembly required
+                    _payload = packet.PayloadData;
+                    _assembledLen = packet.PayloadData.Length;
+                    _complete = true;
 
-        private void AssembleInternal(TcpPacket packet, byte[] buffer)
-        {
+                    _logger.LogDebug($"Complete packet - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+                }
+                else if (packet.Push && packet.Acknowledgment)
+                {
+                    // Last packet in the sequence
+                    _payload = _payload.Concat(packet.PayloadData).ToArray();
+                    _assembledLen += packet.PayloadData.Length;
+                    _complete = true;
+
+                    _logger.LogDebug($"Fragmented sequence finished - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+                }
+                else if (packet.Acknowledgment && _payload == null)
+                {
+                    // First packet in a sequence
+                    _payload = packet.PayloadData;
+                    _assembledLen = packet.PayloadData.Length;
+
+                    _logger.LogDebug($"Fragmented packet started - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+                }
+                else if (packet.Acknowledgment) {
+                    // Middle packet in a sequence
+                    _payload = _payload.Concat(packet.PayloadData).ToArray();
+                    _assembledLen += packet.PayloadData.Length;
+
+                    _logger.LogDebug($"Fragmented packet continued - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+                }
+
+                if (_complete)
+                {
+                    _logger.LogDebug($"Packet completed!, Actual: {_assembledLen}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+
+                    // Break apart any concatenated payloads
+                    var offset = 0;
+                    var length = 0;
+
+                    _logger.LogDebug($"FULL PAYLOAD: {BitConverter.ToString(_payload.ToArray()).Replace("-", "")}\n\r");
+
+                    while (offset < _assembledLen)
+                    {
+                        length = ToUInt16(_payload, offset, 2);
+
+                        if (offset + length < _assembledLen)
+                        {
+                            var payload = _payload.Skip(offset + 2).Take(length).ToArray();
+                            _logger.LogDebug($"{BitConverter.ToString(payload.ToArray()).Replace("-", "")}\n\r");
+                            OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload });
+                        }
+
+                        offset += 2 + length;
+                        length = 0;
+                    }
+
+                    Reset();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "ERROR");
+                Reset();
+            }
+
+
+            /*
             // New packet sequence
             if (_payload == null) 
             {
@@ -125,6 +189,7 @@ namespace ZwiftPacketMonitor
                     }
                 }
             }
+            */
         }
 
         /// <summary>
@@ -133,7 +198,26 @@ namespace ZwiftPacketMonitor
         public void Reset()
         {
             _payload = null;
-            _expectedLen = 0;
+            _assembledLen = 0;
+            _complete = false;
+        }
+
+        private int ToUInt16(byte[] buffer, int start, int count)
+        {
+            if (buffer.Length > 2)
+            {
+                var b = buffer.Skip(start).Take(count).ToArray();
+                if (BitConverter.IsLittleEndian)
+                {
+                    Array.Reverse(b);
+                }
+
+                return (BitConverter.ToUInt16(b, 0));
+            }
+            else 
+            {
+                return (0);
+            }
         }
     }
 }
