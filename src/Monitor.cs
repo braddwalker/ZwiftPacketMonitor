@@ -422,14 +422,14 @@ namespace ZwiftPacketMonitor
                             }
                             catch (Exception e)
                             {
-                                _logger.LogError(e, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                                _logger.LogError(e, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}...\n\r");
                             }
                         }
                     }
                 }
                 catch (Exception ex) 
                 {
-                    _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                    _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}...\n\r");
                 }   
             }
         }

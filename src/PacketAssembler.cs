@@ -86,7 +86,7 @@ namespace ZwiftPacketMonitor
                     _logger.LogDebug($"Fragmented packet continued - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
                 }
 
-                if (_complete)
+                if (_complete && _payload?.Length > 0)
                 {
                     _logger.LogDebug($"Packet completed!, Actual: {_assembledLen}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
 
@@ -107,12 +107,16 @@ namespace ZwiftPacketMonitor
                         if (offset + length < _assembledLen)
                         {
                             var payload = _payload.Skip(offset + 2).Take(length).ToArray();
-                            OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload });
 
-                            // No need to decode the payload if debug isn't enabled
-                            if (_logger.IsEnabled(LogLevel.Debug))
+                            if (payload.Length > 0)
                             {
-                                _logger.LogDebug($"{BitConverter.ToString(payload.ToArray()).Replace("-", "")}\n\r");
+                                OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload });
+
+                                // No need to decode the payload if debug isn't enabled
+                                if (_logger.IsEnabled(LogLevel.Debug))
+                                {
+                                    _logger.LogDebug($"{BitConverter.ToString(payload.ToArray()).Replace("-", "")}\n\r");
+                                }
                             }
                         }
 
