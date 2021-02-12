@@ -13,6 +13,7 @@ using SharpPcap;
 using ZwiftPacketMonitor;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+//The package Microsoft.Extensions.Logging.Console needs to be added
 
 namespace ZwiftPacketMonitorDemo
 {
@@ -21,12 +22,18 @@ namespace ZwiftPacketMonitorDemo
         static void Main(string[] args)
         {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLogging(
-                configure => configure.AddConsole()).AddSingleton<Monitor>();
-            var serviceProvider = serviceCollection.BuildServiceProvider(); 
-            var logger = serviceProvider.GetService<ILogger<Program>>();
 
+            // added to allow logging level configuration
+            serviceCollection.AddLogging(configure => configure.AddConsole())
+                .Configure<LoggerFilterOptions>(configure => configure.MinLevel = LogLevel.Debug);
+
+            RegistrationExtensions.AddZwiftPacketMonitoring(serviceCollection);
+
+            var serviceProvider = serviceCollection.BuildServiceProvider(); 
+
+            var logger = serviceProvider.GetService<ILogger<Program>>();
             var monitor = serviceProvider.GetService<Monitor>();
+
             monitor.IncomingPlayerEvent += (s, e) => {
                 logger.LogInformation($"INCOMING: {e.PlayerState}");
             };
