@@ -69,6 +69,11 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<PlayerWorldTimeEventArgs> IncomingPlayerWorldTimeUpdateEvent;
 
+        /// <summary>
+        /// This event gets invoked when a meetup gets scheduled or updated
+        /// </summary>
+        public event EventHandler<MeetupEventArgs> IncomingMeetupEvent;
+
         private NpcapDevice _device;
         private ILogger<Monitor> _logger;
         private PacketAssembler _packetAssembler;
@@ -84,6 +89,20 @@ namespace ZwiftPacketMonitor
             this._packetAssembler = packetAssembler ?? throw new ArgumentException(nameof(packetAssembler));
             this._packetAssembler.PayloadReady += packet_OnPayloadReady;
         }
+
+        private void OnIncomingMeetupEvent(MeetupEventArgs e)
+        {
+            EventHandler<MeetupEventArgs> handler = IncomingMeetupEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
 
         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
         {
@@ -401,12 +420,17 @@ namespace ZwiftPacketMonitor
                                             PlayerUpdate = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-
+                                    case 6:
+                                        OnIncomingMeetupEvent(new MeetupEventArgs()
+                                        {
+                                            Meetup = Meetup.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
+                                        break;
+                                    /*
                                     case 2:
                                         var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
                                         Console.WriteLine($"Payload2: {payload2}");
                                         break;
-                                    /*
                                     case 109:
                                         var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
                                         Console.WriteLine($"Payload109: {payload109}");
@@ -417,12 +441,13 @@ namespace ZwiftPacketMonitor
                                         break;
                                     */
                                     default:
+                                        _logger.LogWarning($"Unknown tag: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
                                         break;
                                 }                            
                             }
                             catch (Exception e)
                             {
-                                _logger.LogError(e, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}\n\r");
+                                _logger.LogError(e, $"ERROR packetData.PlayerUpdates: Actual: {pu.Payload.Length}, PayloadData: {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}\n\r");
                             }
                         }
                     }
@@ -430,6 +455,39 @@ namespace ZwiftPacketMonitor
                 catch (Exception ex) 
                 {
                     _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}\n\r");
+
+                    try 
+                    {
+                        WorldAttributes.Parser.ParseFrom(buffer);
+                        _logger.LogWarning("WorldAttributes");
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            WorldAttribute.Parser.ParseFrom(buffer);
+                            _logger.LogWarning("WorldAttribute");
+                        }
+                        catch
+                        {
+                            try 
+                            {
+                                EventSubgroupProtobuf.Parser.ParseFrom(buffer);
+                                _logger.LogWarning("EventSubgroupProtobuf");
+                            }
+                            catch
+                            {
+                                try
+                                {
+                                    RiderAttributes.Parser.ParseFrom(buffer);
+                                    _logger.LogWarning("RiderAttributes");
+                                }
+                                catch
+                                {
+                                }
+                            }
+                        }
+                    }
                 }   
             }
         }

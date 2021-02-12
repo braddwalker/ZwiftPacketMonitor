@@ -20,4 +20,8 @@ namespace ZwiftPacketMonitor
     public class PlayerWorldTimeEventArgs : EventArgs {
         public Payload3 PlayerUpdate {get; set;} 
     }
+
+    public class MeetupEventArgs : EventArgs {
+        public Meetup Meetup {get; set;}
+    }
 }

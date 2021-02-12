@@ -1,6 +1,62 @@
 syntax="proto3";
 package ZwiftPacketMonitor;
 
+message Meetup {
+    int32 id = 1;
+    int32 tag2 = 2;
+    string name = 3;
+    string description = 4;
+    int64 start_time = 5;
+    fixed32 distance = 7;
+    int32 tag8 = 8;
+
+    message MeetupInner {
+        int32 id = 1;
+        string name = 2;
+        string description = 3;
+        string f7 = 7;
+        int64 f8 = 8;
+        int64 f9 = 9;
+        int64 f10 = 10;
+        int64 f11 = 11;
+        int64 f12 = 12;
+        int64 f13 = 13;
+        int64 f14 = 14;
+        int64 f15 = 15;
+        int64 f16 = 16;
+        int64 f17 = 17;
+        int64 f18 = 18;
+        int64 f22 = 22;
+        fixed32 distance = 24;
+        int64 f25 = 25;
+        int32 f29 = 29;
+        int32 f30 = 30;
+        int32 f31 = 31;
+        fixed32 f32 = 32;
+        fixed32 f33 = 33;
+        int32 duration = 34;
+        int64 f42 = 42;
+        int64 f44 = 44;
+        int32 f46 = 46;
+        int32 f47 = 47;
+    }
+    MeetupInner meetup_inner = 10;
+    string thumbnail = 12;
+    int32 duration = 13;
+    int64 f14 = 14;
+    int32 f17 = 17;
+    int32 f18 = 18;
+    int32 f22 = 22;
+    int32 f23 = 23;
+    int32 meetup_only_view = 24;
+    int32 f25 = 25;
+    int32 f27 = 27;
+    int32 f28 = 28;
+    int32 f29 = 29;
+    int32 f34 = 34;
+    int32 f35 = 35;   
+}
+
 message PlayerState {
     int32 id = 1;
     int64 worldTime = 2;
