@@ -449,7 +449,7 @@ namespace ZwiftPacketMonitor
                                         });
                                         break;
                                     case 6:
-                                        // meetup create/update?
+                                        // meetup create/update? 6 has the same payload as 10
                                     case 10:
                                         // join meetup?
                                         OnIncomingMeetupEvent(new MeetupEventArgs()
@@ -463,7 +463,7 @@ namespace ZwiftPacketMonitor
                                         // Haven't been able to decode these yet
                                         break;
                                     default:
-                                        _logger.LogWarning($"Unknown tag: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
+                                        _logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
                                         break;
                                 }                            
                             }
@@ -477,39 +477,6 @@ namespace ZwiftPacketMonitor
                 catch (Exception ex) 
                 {
                     _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}\n\r");
-
-                    try 
-                    {
-                        WorldAttributes.Parser.ParseFrom(buffer);
-                        _logger.LogWarning("WorldAttributes");
-                    }
-                    catch
-                    {
-                        try
-                        {
-                            WorldAttribute.Parser.ParseFrom(buffer);
-                            _logger.LogWarning("WorldAttribute");
-                        }
-                        catch
-                        {
-                            try 
-                            {
-                                EventSubgroupProtobuf.Parser.ParseFrom(buffer);
-                                _logger.LogWarning("EventSubgroupProtobuf");
-                            }
-                            catch
-                            {
-                                try
-                                {
-                                    RiderAttributes.Parser.ParseFrom(buffer);
-                                    _logger.LogWarning("RiderAttributes");
-                                }
-                                catch
-                                {
-                                }
-                            }
-                        }
-                    }
                 }   
             }
         }
