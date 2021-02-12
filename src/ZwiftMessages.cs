@@ -24,76 +24,95 @@ namespace ZwiftPacketMonitor {
     static ZwiftMessagesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChN6d2lmdE1lc3NhZ2VzLnByb3RvEhJad2lmdFBhY2tldE1vbml0b3Ii0wMK",
-            "C1BsYXllclN0YXRlEgoKAmlkGAEgASgFEhEKCXdvcmxkVGltZRgCIAEoAxIQ",
-            "CghkaXN0YW5jZRgDIAEoBRIQCghyb2FkVGltZRgEIAEoBRIMCgRsYXBzGAUg",
-            "ASgFEg0KBXNwZWVkGAYgASgFEhQKDHJvYWRQb3NpdGlvbhgIIAEoBRISCgpj",
-            "YWRlbmNlVUh6GAkgASgFEhEKCWhlYXJ0cmF0ZRgLIAEoBRINCgVwb3dlchgM",
-            "IAEoBRIPCgdoZWFkaW5nGA0gASgDEgwKBGxlYW4YDiABKAUSEAoIY2xpbWJp",
-            "bmcYDyABKAUSDAoEdGltZRgQIAEoBRILCgNmMTkYEyABKAUSCwoDZjIwGBQg",
-            "ASgFEhAKCHByb2dyZXNzGBUgASgFEhcKD2N1c3RvbWlzYXRpb25JZBgWIAEo",
-            "AxIUCgxqdXN0V2F0Y2hpbmcYFyABKAUSEAoIY2Fsb3JpZXMYGCABKAUSCQoB",
-            "eBgZIAEoAhIQCghhbHRpdHVkZRgaIAEoAhIJCgF5GBsgASgCEhcKD3dhdGNo",
-            "aW5nUmlkZXJJZBgcIAEoBRIPCgdncm91cElkGB0gASgFEg0KBXNwb3J0GB8g",
-            "ASgDEgsKA2YzNBgiIAEoAiLkAQoOQ2xpZW50VG9TZXJ2ZXISEQoJY29ubmVj",
-            "dGVkGAEgASgFEhAKCHJpZGVyX2lkGAIgASgFEhIKCndvcmxkX3RpbWUYAyAB",
-            "KAMSLgoFc3RhdGUYByABKAsyHy5ad2lmdFBhY2tldE1vbml0b3IuUGxheWVy",
-            "U3RhdGUSDQoFc2Vxbm8YBCABKAUSDAoEdGFnOBgIIAEoAxIMCgR0YWc5GAkg",
-            "ASgDEhMKC2xhc3RfdXBkYXRlGAogASgDEg0KBXRhZzExGAsgASgDEhoKEmxh",
-            "c3RfcGxheWVyX3VwZGF0ZRgMIAEoAyIRCg9Vbmtub3duTWVzc2FnZTEiEAoO",
-            "VW5rbm93bk1lc3NhZ2UiywEKDFBsYXllclVwZGF0ZRIMCgR0YWcxGAEgASgD",
-            "EgwKBHRhZzIYAiABKAUSDAoEdGFnMxgDIAEoBRIPCgdwYXlsb2FkGAQgASgM",
-            "EgwKBHRhZzUYBSABKAMSDAoEdGFnNhgGIAEoAxIMCgR0YWc3GAcgASgDEgwK",
-            "BHRhZzgYCCABKAMSDAoEdGFnORgJIAEoAxINCgV0YWcxMRgLIAEoAxINCgV0",
-            "YWcxMhgMIAEoAxINCgV0YWcxNBgOIAEoAxINCgV0YWcxNRgPIAEoAyLwAQoK",
-            "UGF5bG9hZDEwNRIKCgJmMRgBIAEoAxIKCgJmMhgCIAEoBRIKCgJmMxgDIAEo",
-            "BRIKCgJmNBgEIAEoAxIKCgJmNRgFIAEoAxIKCgJmNhgGIAEoAxIRCglmaXJz",
-            "dE5hbWUYByABKAkSEAoIbGFzdE5hbWUYCCABKAkSCgoCZjkYCSABKAMSCwoD",
-            "ZjExGAsgASgDEgsKA2YxMhgMIAEoBRILCgNmMTMYDSABKAUSCwoDZjE0GA4g",
-            "ASgFEgsKA2YxNRgPIAEoBRILCgNmMTYYECABKAUSDgoGZjdkYXRlGBEgASgJ",
-            "EgsKA2YxORgTIAEoBSKvAQoIUGF5bG9hZDUSEAoIcmlkZXJfaWQYASABKAUS",
-            "EwoLdG9fcmlkZXJfaWQYAiABKAUSCgoCZjMYAyABKAUSEQoJZmlyc3ROYW1l",
-            "GAQgASgJEhAKCGxhc3ROYW1lGAUgASgJEg8KB21lc3NhZ2UYBiABKAkSDgoG",
-            "YXZhdGFyGAcgASgJEhMKC2NvdW50cnlDb2RlGAggASgFEhUKDWV2ZW50U3Vi",
-            "Z3JvdXAYCyABKAUiawoIUGF5bG9hZDQSEAoIcmlkZXJfaWQYASABKAUSEwoL",
-            "dG9fcmlkZXJfaWQYAiABKAUSEQoJZmlyc3ROYW1lGAMgASgJEhAKCGxhc3RO",
-            "YW1lGAQgASgJEhMKC2NvdW50cnlDb2RlGAUgASgFIiIKCFBheWxvYWQyEgoK",
-            "AmYxGAEgASgFEgoKAmYyGAIgASgDIi4KCFBheWxvYWQzEgoKAmYxGAEgASgF",
-            "EgoKAmYyGAIgASgDEgoKAmYzGAMgASgFIgwKClBheWxvYWQxMTAiDAoKUGF5",
-            "bG9hZDEwOSKxAQoORXZlbnRQb3NpdGlvbnMSEAoIcG9zaXRpb24YASABKAUS",
-            "UQoSZXZlbnRSaWRlclBvc2l0aW9uGAQgAygLMjUuWndpZnRQYWNrZXRNb25p",
-            "dG9yLkV2ZW50UG9zaXRpb25zLkV2ZW50UmlkZXJQb3NpdGlvbhISCgpudW1f",
-            "cmlkZXJzGHQgASgFGiYKEkV2ZW50UmlkZXJQb3NpdGlvbhIQCghyaWRlcl9p",
-            "ZBgBIAEoBSLCAgoOU2VydmVyVG9DbGllbnQSDAoEdGFnMRgBIAEoBRIQCghy",
-            "aWRlcl9pZBgCIAEoBRISCgp3b3JsZF90aW1lGAMgASgDEg0KBXNlcW5vGAQg",
-            "ASgFEjYKDXBsYXllcl9zdGF0ZXMYCCADKAsyHy5ad2lmdFBhY2tldE1vbml0",
-            "b3IuUGxheWVyU3RhdGUSOAoOcGxheWVyX3VwZGF0ZXMYCSADKAsyIC5ad2lm",
-            "dFBhY2tldE1vbml0b3IuUGxheWVyVXBkYXRlEg0KBXRhZzExGAsgASgDEg0K",
-            "BXRhZzE3GBEgASgDEhAKCG51bV9tc2dzGBIgASgFEg4KBm1zZ251bRgTIAEo",
-            "BRI7Cg9ldmVudF9wb3NpdGlvbnMYFyABKAsyIi5ad2lmdFBhY2tldE1vbml0",
-            "b3IuRXZlbnRQb3NpdGlvbnMidQoPV29ybGRBdHRyaWJ1dGVzEhAKCHdvcmxk",
-            "X2lkGAEgASgFEgwKBG5hbWUYAiABKAkSDAoEdGFnMxgDIAEoAxIMCgR0YWc1",
-            "GAQgASgDEhIKCndvcmxkX3RpbWUYBiABKAMSEgoKY2xvY2tfdGltZRgHIAEo",
-            "AyIkCg5Xb3JsZEF0dHJpYnV0ZRISCgp3b3JsZF90aW1lGAIgASgDIqkBChVF",
-            "dmVudFN1Ymdyb3VwUHJvdG9idWYSCgoCaWQYASABKAUSDAoEbmFtZRgCIAEo",
-            "CRINCgVydWxlcxgIIAEoBRINCgVyb3V0ZRgWIAEoBRIMCgRsYXBzGBkgASgF",
-            "EhUKDXN0YXJ0TG9jYXRpb24YHSABKAUSDQoFbGFiZWwYHiABKAUSEAoIcGFj",
-            "ZVR5cGUYHyABKAUSEgoKamVyc2V5SGFzaBgkIAEoBSKEAgoPUmlkZXJBdHRy",
-            "aWJ1dGVzEgoKAmYyGAIgASgFEgoKAmYzGAMgASgFEk4KEGF0dHJpYnV0ZU1l",
-            "c3NhZ2UYBCABKAsyNC5ad2lmdFBhY2tldE1vbml0b3IuUmlkZXJBdHRyaWJ1",
-            "dGVzLkF0dHJpYnV0ZU1lc3NhZ2USDwoHdGhlaXJJZBgKIAEoBRILCgNmMTMY",
-            "DSABKAUaawoQQXR0cmlidXRlTWVzc2FnZRIMCgRteUlkGAEgASgFEg8KB3Ro",
-            "ZWlySWQYAiABKAUSEQoJZmlyc3ROYW1lGAMgASgJEhAKCGxhc3ROYW1lGAQg",
-            "ASgJEhMKC2NvdW50cnlDb2RlGAUgASgFYgZwcm90bzM="));
+            "ChN6d2lmdE1lc3NhZ2VzLnByb3RvEhJad2lmdFBhY2tldE1vbml0b3IikAYK",
+            "Bk1lZXR1cBIKCgJpZBgBIAEoBRIMCgR0YWcyGAIgASgFEgwKBG5hbWUYAyAB",
+            "KAkSEwoLZGVzY3JpcHRpb24YBCABKAkSEgoKc3RhcnRfdGltZRgFIAEoAxIQ",
+            "CghkaXN0YW5jZRgHIAEoBxIMCgR0YWc4GAggASgFEjwKDG1lZXR1cF9pbm5l",
+            "chgKIAEoCzImLlp3aWZ0UGFja2V0TW9uaXRvci5NZWV0dXAuTWVldHVwSW5u",
+            "ZXISEQoJdGh1bWJuYWlsGAwgASgJEhAKCGR1cmF0aW9uGA0gASgFEgsKA2Yx",
+            "NBgOIAEoAxILCgNmMTcYESABKAUSCwoDZjE4GBIgASgFEgsKA2YyMhgWIAEo",
+            "BRILCgNmMjMYFyABKAUSGAoQbWVldHVwX29ubHlfdmlldxgYIAEoBRILCgNm",
+            "MjUYGSABKAUSCwoDZjI3GBsgASgFEgsKA2YyOBgcIAEoBRILCgNmMjkYHSAB",
+            "KAUSCwoDZjM0GCIgASgFEgsKA2YzNRgjIAEoBRqIAwoLTWVldHVwSW5uZXIS",
+            "CgoCaWQYASABKAUSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEo",
+            "CRIKCgJmNxgHIAEoCRIKCgJmOBgIIAEoAxIKCgJmORgJIAEoAxILCgNmMTAY",
+            "CiABKAMSCwoDZjExGAsgASgDEgsKA2YxMhgMIAEoAxILCgNmMTMYDSABKAMS",
+            "CwoDZjE0GA4gASgDEgsKA2YxNRgPIAEoAxILCgNmMTYYECABKAMSCwoDZjE3",
+            "GBEgASgDEgsKA2YxOBgSIAEoAxILCgNmMjIYFiABKAMSEAoIZGlzdGFuY2UY",
+            "GCABKAcSCwoDZjI1GBkgASgDEgsKA2YyORgdIAEoBRILCgNmMzAYHiABKAUS",
+            "CwoDZjMxGB8gASgFEgsKA2YzMhggIAEoBxILCgNmMzMYISABKAcSEAoIZHVy",
+            "YXRpb24YIiABKAUSCwoDZjQyGCogASgDEgsKA2Y0NBgsIAEoAxILCgNmNDYY",
+            "LiABKAUSCwoDZjQ3GC8gASgFItMDCgtQbGF5ZXJTdGF0ZRIKCgJpZBgBIAEo",
+            "BRIRCgl3b3JsZFRpbWUYAiABKAMSEAoIZGlzdGFuY2UYAyABKAUSEAoIcm9h",
+            "ZFRpbWUYBCABKAUSDAoEbGFwcxgFIAEoBRINCgVzcGVlZBgGIAEoBRIUCgxy",
+            "b2FkUG9zaXRpb24YCCABKAUSEgoKY2FkZW5jZVVIehgJIAEoBRIRCgloZWFy",
+            "dHJhdGUYCyABKAUSDQoFcG93ZXIYDCABKAUSDwoHaGVhZGluZxgNIAEoAxIM",
+            "CgRsZWFuGA4gASgFEhAKCGNsaW1iaW5nGA8gASgFEgwKBHRpbWUYECABKAUS",
+            "CwoDZjE5GBMgASgFEgsKA2YyMBgUIAEoBRIQCghwcm9ncmVzcxgVIAEoBRIX",
+            "Cg9jdXN0b21pc2F0aW9uSWQYFiABKAMSFAoManVzdFdhdGNoaW5nGBcgASgF",
+            "EhAKCGNhbG9yaWVzGBggASgFEgkKAXgYGSABKAISEAoIYWx0aXR1ZGUYGiAB",
+            "KAISCQoBeRgbIAEoAhIXCg93YXRjaGluZ1JpZGVySWQYHCABKAUSDwoHZ3Jv",
+            "dXBJZBgdIAEoBRINCgVzcG9ydBgfIAEoAxILCgNmMzQYIiABKAIi5AEKDkNs",
+            "aWVudFRvU2VydmVyEhEKCWNvbm5lY3RlZBgBIAEoBRIQCghyaWRlcl9pZBgC",
+            "IAEoBRISCgp3b3JsZF90aW1lGAMgASgDEi4KBXN0YXRlGAcgASgLMh8uWndp",
+            "ZnRQYWNrZXRNb25pdG9yLlBsYXllclN0YXRlEg0KBXNlcW5vGAQgASgFEgwK",
+            "BHRhZzgYCCABKAMSDAoEdGFnORgJIAEoAxITCgtsYXN0X3VwZGF0ZRgKIAEo",
+            "AxINCgV0YWcxMRgLIAEoAxIaChJsYXN0X3BsYXllcl91cGRhdGUYDCABKAMi",
+            "EQoPVW5rbm93bk1lc3NhZ2UxIhAKDlVua25vd25NZXNzYWdlIssBCgxQbGF5",
+            "ZXJVcGRhdGUSDAoEdGFnMRgBIAEoAxIMCgR0YWcyGAIgASgFEgwKBHRhZzMY",
+            "AyABKAUSDwoHcGF5bG9hZBgEIAEoDBIMCgR0YWc1GAUgASgDEgwKBHRhZzYY",
+            "BiABKAMSDAoEdGFnNxgHIAEoAxIMCgR0YWc4GAggASgDEgwKBHRhZzkYCSAB",
+            "KAMSDQoFdGFnMTEYCyABKAMSDQoFdGFnMTIYDCABKAMSDQoFdGFnMTQYDiAB",
+            "KAMSDQoFdGFnMTUYDyABKAMi9gEKClBheWxvYWQxMDUSCgoCZjEYASABKAMS",
+            "EAoIcmlkZXJfaWQYAiABKAUSCgoCZjMYAyABKAUSCgoCZjQYBCABKAMSCgoC",
+            "ZjUYBSABKAMSCgoCZjYYBiABKAMSEQoJZmlyc3ROYW1lGAcgASgJEhAKCGxh",
+            "c3ROYW1lGAggASgJEgoKAmY5GAkgASgDEgsKA2YxMRgLIAEoAxILCgNmMTIY",
+            "DCABKAUSCwoDZjEzGA0gASgFEgsKA2YxNBgOIAEoBRILCgNmMTUYDyABKAUS",
+            "CwoDZjE2GBAgASgFEg4KBmY3ZGF0ZRgRIAEoCRILCgNmMTkYEyABKAUirwEK",
+            "CFBheWxvYWQ1EhAKCHJpZGVyX2lkGAEgASgFEhMKC3RvX3JpZGVyX2lkGAIg",
+            "ASgFEgoKAmYzGAMgASgFEhEKCWZpcnN0TmFtZRgEIAEoCRIQCghsYXN0TmFt",
+            "ZRgFIAEoCRIPCgdtZXNzYWdlGAYgASgJEg4KBmF2YXRhchgHIAEoCRITCgtj",
+            "b3VudHJ5Q29kZRgIIAEoBRIVCg1ldmVudFN1Ymdyb3VwGAsgASgFImsKCFBh",
+            "eWxvYWQ0EhAKCHJpZGVyX2lkGAEgASgFEhMKC3RvX3JpZGVyX2lkGAIgASgF",
+            "EhEKCWZpcnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3Vu",
+            "dHJ5Q29kZRgFIAEoBSIiCghQYXlsb2FkMhIKCgJmMRgBIAEoBRIKCgJmMhgC",
+            "IAEoAyIuCghQYXlsb2FkMxIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoAxIKCgJm",
+            "MxgDIAEoBSIMCgpQYXlsb2FkMTEwIgwKClBheWxvYWQxMDkisQEKDkV2ZW50",
+            "UG9zaXRpb25zEhAKCHBvc2l0aW9uGAEgASgFElEKEmV2ZW50UmlkZXJQb3Np",
+            "dGlvbhgEIAMoCzI1Llp3aWZ0UGFja2V0TW9uaXRvci5FdmVudFBvc2l0aW9u",
+            "cy5FdmVudFJpZGVyUG9zaXRpb24SEgoKbnVtX3JpZGVycxh0IAEoBRomChJF",
+            "dmVudFJpZGVyUG9zaXRpb24SEAoIcmlkZXJfaWQYASABKAUiwgIKDlNlcnZl",
+            "clRvQ2xpZW50EgwKBHRhZzEYASABKAUSEAoIcmlkZXJfaWQYAiABKAUSEgoK",
+            "d29ybGRfdGltZRgDIAEoAxINCgVzZXFubxgEIAEoBRI2Cg1wbGF5ZXJfc3Rh",
+            "dGVzGAggAygLMh8uWndpZnRQYWNrZXRNb25pdG9yLlBsYXllclN0YXRlEjgK",
+            "DnBsYXllcl91cGRhdGVzGAkgAygLMiAuWndpZnRQYWNrZXRNb25pdG9yLlBs",
+            "YXllclVwZGF0ZRINCgV0YWcxMRgLIAEoAxINCgV0YWcxNxgRIAEoAxIQCghu",
+            "dW1fbXNncxgSIAEoBRIOCgZtc2dudW0YEyABKAUSOwoPZXZlbnRfcG9zaXRp",
+            "b25zGBcgASgLMiIuWndpZnRQYWNrZXRNb25pdG9yLkV2ZW50UG9zaXRpb25z",
+            "InUKD1dvcmxkQXR0cmlidXRlcxIQCgh3b3JsZF9pZBgBIAEoBRIMCgRuYW1l",
+            "GAIgASgJEgwKBHRhZzMYAyABKAMSDAoEdGFnNRgEIAEoAxISCgp3b3JsZF90",
+            "aW1lGAYgASgDEhIKCmNsb2NrX3RpbWUYByABKAMiJAoOV29ybGRBdHRyaWJ1",
+            "dGUSEgoKd29ybGRfdGltZRgCIAEoAyKpAQoVRXZlbnRTdWJncm91cFByb3Rv",
+            "YnVmEgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkSDQoFcnVsZXMYCCABKAUS",
+            "DQoFcm91dGUYFiABKAUSDAoEbGFwcxgZIAEoBRIVCg1zdGFydExvY2F0aW9u",
+            "GB0gASgFEg0KBWxhYmVsGB4gASgFEhAKCHBhY2VUeXBlGB8gASgFEhIKCmpl",
+            "cnNleUhhc2gYJCABKAUihAIKD1JpZGVyQXR0cmlidXRlcxIKCgJmMhgCIAEo",
+            "BRIKCgJmMxgDIAEoBRJOChBhdHRyaWJ1dGVNZXNzYWdlGAQgASgLMjQuWndp",
+            "ZnRQYWNrZXRNb25pdG9yLlJpZGVyQXR0cmlidXRlcy5BdHRyaWJ1dGVNZXNz",
+            "YWdlEg8KB3RoZWlySWQYCiABKAUSCwoDZjEzGA0gASgFGmsKEEF0dHJpYnV0",
+            "ZU1lc3NhZ2USDAoEbXlJZBgBIAEoBRIPCgd0aGVpcklkGAIgASgFEhEKCWZp",
+            "cnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3VudHJ5Q29k",
+            "ZRgFIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Meetup), global::ZwiftPacketMonitor.Meetup.Parser, new[]{ "Id", "Tag2", "Name", "Description", "StartTime", "Distance", "Tag8", "MeetupInner", "Thumbnail", "Duration", "F14", "F17", "F18", "F22", "F23", "MeetupOnlyView", "F25", "F27", "F28", "F29", "F34", "F35" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Meetup.Types.MeetupInner), global::ZwiftPacketMonitor.Meetup.Types.MeetupInner.Parser, new[]{ "Id", "Name", "Description", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F22", "Distance", "F25", "F29", "F30", "F31", "F32", "F33", "Duration", "F42", "F44", "F46", "F47" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerState), global::ZwiftPacketMonitor.PlayerState.Parser, new[]{ "Id", "WorldTime", "Distance", "RoadTime", "Laps", "Speed", "RoadPosition", "CadenceUHz", "Heartrate", "Power", "Heading", "Lean", "Climbing", "Time", "F19", "F20", "Progress", "CustomisationId", "JustWatching", "Calories", "X", "Altitude", "Y", "WatchingRiderId", "GroupId", "Sport", "F34" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ClientToServer), global::ZwiftPacketMonitor.ClientToServer.Parser, new[]{ "Connected", "RiderId", "WorldTime", "State", "Seqno", "Tag8", "Tag9", "LastUpdate", "Tag11", "LastPlayerUpdate" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.UnknownMessage1), global::ZwiftPacketMonitor.UnknownMessage1.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.UnknownMessage), global::ZwiftPacketMonitor.UnknownMessage.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerUpdate), global::ZwiftPacketMonitor.PlayerUpdate.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Payload", "Tag5", "Tag6", "Tag7", "Tag8", "Tag9", "Tag11", "Tag12", "Tag14", "Tag15" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload105), global::ZwiftPacketMonitor.Payload105.Parser, new[]{ "F1", "F2", "F3", "F4", "F5", "F6", "FirstName", "LastName", "F9", "F11", "F12", "F13", "F14", "F15", "F16", "F7Date", "F19" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload105), global::ZwiftPacketMonitor.Payload105.Parser, new[]{ "F1", "RiderId", "F3", "F4", "F5", "F6", "FirstName", "LastName", "F9", "F11", "F12", "F13", "F14", "F15", "F16", "F7Date", "F19" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload5), global::ZwiftPacketMonitor.Payload5.Parser, new[]{ "RiderId", "ToRiderId", "F3", "FirstName", "LastName", "Message", "Avatar", "CountryCode", "EventSubgroup" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload4), global::ZwiftPacketMonitor.Payload4.Parser, new[]{ "RiderId", "ToRiderId", "FirstName", "LastName", "CountryCode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload2), global::ZwiftPacketMonitor.Payload2.Parser, new[]{ "F1", "F2" }, null, null, null, null),
@@ -112,6 +131,2094 @@ namespace ZwiftPacketMonitor {
 
   }
   #region Messages
+  public sealed partial class Meetup : pb::IMessage<Meetup>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Meetup> _parser = new pb::MessageParser<Meetup>(() => new Meetup());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Meetup> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Meetup() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Meetup(Meetup other) : this() {
+      id_ = other.id_;
+      tag2_ = other.tag2_;
+      name_ = other.name_;
+      description_ = other.description_;
+      startTime_ = other.startTime_;
+      distance_ = other.distance_;
+      tag8_ = other.tag8_;
+      meetupInner_ = other.meetupInner_ != null ? other.meetupInner_.Clone() : null;
+      thumbnail_ = other.thumbnail_;
+      duration_ = other.duration_;
+      f14_ = other.f14_;
+      f17_ = other.f17_;
+      f18_ = other.f18_;
+      f22_ = other.f22_;
+      f23_ = other.f23_;
+      meetupOnlyView_ = other.meetupOnlyView_;
+      f25_ = other.f25_;
+      f27_ = other.f27_;
+      f28_ = other.f28_;
+      f29_ = other.f29_;
+      f34_ = other.f34_;
+      f35_ = other.f35_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Meetup Clone() {
+      return new Meetup(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag2" field.</summary>
+    public const int Tag2FieldNumber = 2;
+    private int tag2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Tag2 {
+      get { return tag2_; }
+      set {
+        tag2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 4;
+    private string description_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "start_time" field.</summary>
+    public const int StartTimeFieldNumber = 5;
+    private long startTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long StartTime {
+      get { return startTime_; }
+      set {
+        startTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "distance" field.</summary>
+    public const int DistanceFieldNumber = 7;
+    private uint distance_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Distance {
+      get { return distance_; }
+      set {
+        distance_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag8" field.</summary>
+    public const int Tag8FieldNumber = 8;
+    private int tag8_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Tag8 {
+      get { return tag8_; }
+      set {
+        tag8_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "meetup_inner" field.</summary>
+    public const int MeetupInnerFieldNumber = 10;
+    private global::ZwiftPacketMonitor.Meetup.Types.MeetupInner meetupInner_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ZwiftPacketMonitor.Meetup.Types.MeetupInner MeetupInner {
+      get { return meetupInner_; }
+      set {
+        meetupInner_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "thumbnail" field.</summary>
+    public const int ThumbnailFieldNumber = 12;
+    private string thumbnail_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Thumbnail {
+      get { return thumbnail_; }
+      set {
+        thumbnail_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "duration" field.</summary>
+    public const int DurationFieldNumber = 13;
+    private int duration_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Duration {
+      get { return duration_; }
+      set {
+        duration_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f14" field.</summary>
+    public const int F14FieldNumber = 14;
+    private long f14_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long F14 {
+      get { return f14_; }
+      set {
+        f14_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f17" field.</summary>
+    public const int F17FieldNumber = 17;
+    private int f17_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F17 {
+      get { return f17_; }
+      set {
+        f17_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f18" field.</summary>
+    public const int F18FieldNumber = 18;
+    private int f18_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F18 {
+      get { return f18_; }
+      set {
+        f18_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f22" field.</summary>
+    public const int F22FieldNumber = 22;
+    private int f22_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F22 {
+      get { return f22_; }
+      set {
+        f22_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f23" field.</summary>
+    public const int F23FieldNumber = 23;
+    private int f23_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F23 {
+      get { return f23_; }
+      set {
+        f23_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "meetup_only_view" field.</summary>
+    public const int MeetupOnlyViewFieldNumber = 24;
+    private int meetupOnlyView_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int MeetupOnlyView {
+      get { return meetupOnlyView_; }
+      set {
+        meetupOnlyView_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f25" field.</summary>
+    public const int F25FieldNumber = 25;
+    private int f25_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F25 {
+      get { return f25_; }
+      set {
+        f25_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f27" field.</summary>
+    public const int F27FieldNumber = 27;
+    private int f27_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F27 {
+      get { return f27_; }
+      set {
+        f27_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f28" field.</summary>
+    public const int F28FieldNumber = 28;
+    private int f28_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F28 {
+      get { return f28_; }
+      set {
+        f28_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f29" field.</summary>
+    public const int F29FieldNumber = 29;
+    private int f29_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F29 {
+      get { return f29_; }
+      set {
+        f29_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f34" field.</summary>
+    public const int F34FieldNumber = 34;
+    private int f34_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F34 {
+      get { return f34_; }
+      set {
+        f34_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "f35" field.</summary>
+    public const int F35FieldNumber = 35;
+    private int f35_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int F35 {
+      get { return f35_; }
+      set {
+        f35_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Meetup);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Meetup other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Tag2 != other.Tag2) return false;
+      if (Name != other.Name) return false;
+      if (Description != other.Description) return false;
+      if (StartTime != other.StartTime) return false;
+      if (Distance != other.Distance) return false;
+      if (Tag8 != other.Tag8) return false;
+      if (!object.Equals(MeetupInner, other.MeetupInner)) return false;
+      if (Thumbnail != other.Thumbnail) return false;
+      if (Duration != other.Duration) return false;
+      if (F14 != other.F14) return false;
+      if (F17 != other.F17) return false;
+      if (F18 != other.F18) return false;
+      if (F22 != other.F22) return false;
+      if (F23 != other.F23) return false;
+      if (MeetupOnlyView != other.MeetupOnlyView) return false;
+      if (F25 != other.F25) return false;
+      if (F27 != other.F27) return false;
+      if (F28 != other.F28) return false;
+      if (F29 != other.F29) return false;
+      if (F34 != other.F34) return false;
+      if (F35 != other.F35) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (StartTime != 0L) hash ^= StartTime.GetHashCode();
+      if (Distance != 0) hash ^= Distance.GetHashCode();
+      if (Tag8 != 0) hash ^= Tag8.GetHashCode();
+      if (meetupInner_ != null) hash ^= MeetupInner.GetHashCode();
+      if (Thumbnail.Length != 0) hash ^= Thumbnail.GetHashCode();
+      if (Duration != 0) hash ^= Duration.GetHashCode();
+      if (F14 != 0L) hash ^= F14.GetHashCode();
+      if (F17 != 0) hash ^= F17.GetHashCode();
+      if (F18 != 0) hash ^= F18.GetHashCode();
+      if (F22 != 0) hash ^= F22.GetHashCode();
+      if (F23 != 0) hash ^= F23.GetHashCode();
+      if (MeetupOnlyView != 0) hash ^= MeetupOnlyView.GetHashCode();
+      if (F25 != 0) hash ^= F25.GetHashCode();
+      if (F27 != 0) hash ^= F27.GetHashCode();
+      if (F28 != 0) hash ^= F28.GetHashCode();
+      if (F29 != 0) hash ^= F29.GetHashCode();
+      if (F34 != 0) hash ^= F34.GetHashCode();
+      if (F35 != 0) hash ^= F35.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Tag2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Tag2);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Description);
+      }
+      if (StartTime != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(StartTime);
+      }
+      if (Distance != 0) {
+        output.WriteRawTag(61);
+        output.WriteFixed32(Distance);
+      }
+      if (Tag8 != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(Tag8);
+      }
+      if (meetupInner_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(MeetupInner);
+      }
+      if (Thumbnail.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Thumbnail);
+      }
+      if (Duration != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(Duration);
+      }
+      if (F14 != 0L) {
+        output.WriteRawTag(112);
+        output.WriteInt64(F14);
+      }
+      if (F17 != 0) {
+        output.WriteRawTag(136, 1);
+        output.WriteInt32(F17);
+      }
+      if (F18 != 0) {
+        output.WriteRawTag(144, 1);
+        output.WriteInt32(F18);
+      }
+      if (F22 != 0) {
+        output.WriteRawTag(176, 1);
+        output.WriteInt32(F22);
+      }
+      if (F23 != 0) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt32(F23);
+      }
+      if (MeetupOnlyView != 0) {
+        output.WriteRawTag(192, 1);
+        output.WriteInt32(MeetupOnlyView);
+      }
+      if (F25 != 0) {
+        output.WriteRawTag(200, 1);
+        output.WriteInt32(F25);
+      }
+      if (F27 != 0) {
+        output.WriteRawTag(216, 1);
+        output.WriteInt32(F27);
+      }
+      if (F28 != 0) {
+        output.WriteRawTag(224, 1);
+        output.WriteInt32(F28);
+      }
+      if (F29 != 0) {
+        output.WriteRawTag(232, 1);
+        output.WriteInt32(F29);
+      }
+      if (F34 != 0) {
+        output.WriteRawTag(144, 2);
+        output.WriteInt32(F34);
+      }
+      if (F35 != 0) {
+        output.WriteRawTag(152, 2);
+        output.WriteInt32(F35);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (Tag2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Tag2);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Description);
+      }
+      if (StartTime != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(StartTime);
+      }
+      if (Distance != 0) {
+        output.WriteRawTag(61);
+        output.WriteFixed32(Distance);
+      }
+      if (Tag8 != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(Tag8);
+      }
+      if (meetupInner_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(MeetupInner);
+      }
+      if (Thumbnail.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Thumbnail);
+      }
+      if (Duration != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(Duration);
+      }
+      if (F14 != 0L) {
+        output.WriteRawTag(112);
+        output.WriteInt64(F14);
+      }
+      if (F17 != 0) {
+        output.WriteRawTag(136, 1);
+        output.WriteInt32(F17);
+      }
+      if (F18 != 0) {
+        output.WriteRawTag(144, 1);
+        output.WriteInt32(F18);
+      }
+      if (F22 != 0) {
+        output.WriteRawTag(176, 1);
+        output.WriteInt32(F22);
+      }
+      if (F23 != 0) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt32(F23);
+      }
+      if (MeetupOnlyView != 0) {
+        output.WriteRawTag(192, 1);
+        output.WriteInt32(MeetupOnlyView);
+      }
+      if (F25 != 0) {
+        output.WriteRawTag(200, 1);
+        output.WriteInt32(F25);
+      }
+      if (F27 != 0) {
+        output.WriteRawTag(216, 1);
+        output.WriteInt32(F27);
+      }
+      if (F28 != 0) {
+        output.WriteRawTag(224, 1);
+        output.WriteInt32(F28);
+      }
+      if (F29 != 0) {
+        output.WriteRawTag(232, 1);
+        output.WriteInt32(F29);
+      }
+      if (F34 != 0) {
+        output.WriteRawTag(144, 2);
+        output.WriteInt32(F34);
+      }
+      if (F35 != 0) {
+        output.WriteRawTag(152, 2);
+        output.WriteInt32(F35);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (Tag2 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag2);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (StartTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StartTime);
+      }
+      if (Distance != 0) {
+        size += 1 + 4;
+      }
+      if (Tag8 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag8);
+      }
+      if (meetupInner_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MeetupInner);
+      }
+      if (Thumbnail.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Thumbnail);
+      }
+      if (Duration != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Duration);
+      }
+      if (F14 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F14);
+      }
+      if (F17 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F17);
+      }
+      if (F18 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F18);
+      }
+      if (F22 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F22);
+      }
+      if (F23 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F23);
+      }
+      if (MeetupOnlyView != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(MeetupOnlyView);
+      }
+      if (F25 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F25);
+      }
+      if (F27 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F27);
+      }
+      if (F28 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F28);
+      }
+      if (F29 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F29);
+      }
+      if (F34 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F34);
+      }
+      if (F35 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F35);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Meetup other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.Tag2 != 0) {
+        Tag2 = other.Tag2;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      if (other.StartTime != 0L) {
+        StartTime = other.StartTime;
+      }
+      if (other.Distance != 0) {
+        Distance = other.Distance;
+      }
+      if (other.Tag8 != 0) {
+        Tag8 = other.Tag8;
+      }
+      if (other.meetupInner_ != null) {
+        if (meetupInner_ == null) {
+          MeetupInner = new global::ZwiftPacketMonitor.Meetup.Types.MeetupInner();
+        }
+        MeetupInner.MergeFrom(other.MeetupInner);
+      }
+      if (other.Thumbnail.Length != 0) {
+        Thumbnail = other.Thumbnail;
+      }
+      if (other.Duration != 0) {
+        Duration = other.Duration;
+      }
+      if (other.F14 != 0L) {
+        F14 = other.F14;
+      }
+      if (other.F17 != 0) {
+        F17 = other.F17;
+      }
+      if (other.F18 != 0) {
+        F18 = other.F18;
+      }
+      if (other.F22 != 0) {
+        F22 = other.F22;
+      }
+      if (other.F23 != 0) {
+        F23 = other.F23;
+      }
+      if (other.MeetupOnlyView != 0) {
+        MeetupOnlyView = other.MeetupOnlyView;
+      }
+      if (other.F25 != 0) {
+        F25 = other.F25;
+      }
+      if (other.F27 != 0) {
+        F27 = other.F27;
+      }
+      if (other.F28 != 0) {
+        F28 = other.F28;
+      }
+      if (other.F29 != 0) {
+        F29 = other.F29;
+      }
+      if (other.F34 != 0) {
+        F34 = other.F34;
+      }
+      if (other.F35 != 0) {
+        F35 = other.F35;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Tag2 = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            Description = input.ReadString();
+            break;
+          }
+          case 40: {
+            StartTime = input.ReadInt64();
+            break;
+          }
+          case 61: {
+            Distance = input.ReadFixed32();
+            break;
+          }
+          case 64: {
+            Tag8 = input.ReadInt32();
+            break;
+          }
+          case 82: {
+            if (meetupInner_ == null) {
+              MeetupInner = new global::ZwiftPacketMonitor.Meetup.Types.MeetupInner();
+            }
+            input.ReadMessage(MeetupInner);
+            break;
+          }
+          case 98: {
+            Thumbnail = input.ReadString();
+            break;
+          }
+          case 104: {
+            Duration = input.ReadInt32();
+            break;
+          }
+          case 112: {
+            F14 = input.ReadInt64();
+            break;
+          }
+          case 136: {
+            F17 = input.ReadInt32();
+            break;
+          }
+          case 144: {
+            F18 = input.ReadInt32();
+            break;
+          }
+          case 176: {
+            F22 = input.ReadInt32();
+            break;
+          }
+          case 184: {
+            F23 = input.ReadInt32();
+            break;
+          }
+          case 192: {
+            MeetupOnlyView = input.ReadInt32();
+            break;
+          }
+          case 200: {
+            F25 = input.ReadInt32();
+            break;
+          }
+          case 216: {
+            F27 = input.ReadInt32();
+            break;
+          }
+          case 224: {
+            F28 = input.ReadInt32();
+            break;
+          }
+          case 232: {
+            F29 = input.ReadInt32();
+            break;
+          }
+          case 272: {
+            F34 = input.ReadInt32();
+            break;
+          }
+          case 280: {
+            F35 = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Tag2 = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            Description = input.ReadString();
+            break;
+          }
+          case 40: {
+            StartTime = input.ReadInt64();
+            break;
+          }
+          case 61: {
+            Distance = input.ReadFixed32();
+            break;
+          }
+          case 64: {
+            Tag8 = input.ReadInt32();
+            break;
+          }
+          case 82: {
+            if (meetupInner_ == null) {
+              MeetupInner = new global::ZwiftPacketMonitor.Meetup.Types.MeetupInner();
+            }
+            input.ReadMessage(MeetupInner);
+            break;
+          }
+          case 98: {
+            Thumbnail = input.ReadString();
+            break;
+          }
+          case 104: {
+            Duration = input.ReadInt32();
+            break;
+          }
+          case 112: {
+            F14 = input.ReadInt64();
+            break;
+          }
+          case 136: {
+            F17 = input.ReadInt32();
+            break;
+          }
+          case 144: {
+            F18 = input.ReadInt32();
+            break;
+          }
+          case 176: {
+            F22 = input.ReadInt32();
+            break;
+          }
+          case 184: {
+            F23 = input.ReadInt32();
+            break;
+          }
+          case 192: {
+            MeetupOnlyView = input.ReadInt32();
+            break;
+          }
+          case 200: {
+            F25 = input.ReadInt32();
+            break;
+          }
+          case 216: {
+            F27 = input.ReadInt32();
+            break;
+          }
+          case 224: {
+            F28 = input.ReadInt32();
+            break;
+          }
+          case 232: {
+            F29 = input.ReadInt32();
+            break;
+          }
+          case 272: {
+            F34 = input.ReadInt32();
+            break;
+          }
+          case 280: {
+            F35 = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the Meetup message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public sealed partial class MeetupInner : pb::IMessage<MeetupInner>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
+        private static readonly pb::MessageParser<MeetupInner> _parser = new pb::MessageParser<MeetupInner>(() => new MeetupInner());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<MeetupInner> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::ZwiftPacketMonitor.Meetup.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public MeetupInner() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public MeetupInner(MeetupInner other) : this() {
+          id_ = other.id_;
+          name_ = other.name_;
+          description_ = other.description_;
+          f7_ = other.f7_;
+          f8_ = other.f8_;
+          f9_ = other.f9_;
+          f10_ = other.f10_;
+          f11_ = other.f11_;
+          f12_ = other.f12_;
+          f13_ = other.f13_;
+          f14_ = other.f14_;
+          f15_ = other.f15_;
+          f16_ = other.f16_;
+          f17_ = other.f17_;
+          f18_ = other.f18_;
+          f22_ = other.f22_;
+          distance_ = other.distance_;
+          f25_ = other.f25_;
+          f29_ = other.f29_;
+          f30_ = other.f30_;
+          f31_ = other.f31_;
+          f32_ = other.f32_;
+          f33_ = other.f33_;
+          duration_ = other.duration_;
+          f42_ = other.f42_;
+          f44_ = other.f44_;
+          f46_ = other.f46_;
+          f47_ = other.f47_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public MeetupInner Clone() {
+          return new MeetupInner(this);
+        }
+
+        /// <summary>Field number for the "id" field.</summary>
+        public const int IdFieldNumber = 1;
+        private int id_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int Id {
+          get { return id_; }
+          set {
+            id_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "name" field.</summary>
+        public const int NameFieldNumber = 2;
+        private string name_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Name {
+          get { return name_; }
+          set {
+            name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "description" field.</summary>
+        public const int DescriptionFieldNumber = 3;
+        private string description_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Description {
+          get { return description_; }
+          set {
+            description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "f7" field.</summary>
+        public const int F7FieldNumber = 7;
+        private string f7_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string F7 {
+          get { return f7_; }
+          set {
+            f7_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "f8" field.</summary>
+        public const int F8FieldNumber = 8;
+        private long f8_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F8 {
+          get { return f8_; }
+          set {
+            f8_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f9" field.</summary>
+        public const int F9FieldNumber = 9;
+        private long f9_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F9 {
+          get { return f9_; }
+          set {
+            f9_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f10" field.</summary>
+        public const int F10FieldNumber = 10;
+        private long f10_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F10 {
+          get { return f10_; }
+          set {
+            f10_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f11" field.</summary>
+        public const int F11FieldNumber = 11;
+        private long f11_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F11 {
+          get { return f11_; }
+          set {
+            f11_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f12" field.</summary>
+        public const int F12FieldNumber = 12;
+        private long f12_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F12 {
+          get { return f12_; }
+          set {
+            f12_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f13" field.</summary>
+        public const int F13FieldNumber = 13;
+        private long f13_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F13 {
+          get { return f13_; }
+          set {
+            f13_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f14" field.</summary>
+        public const int F14FieldNumber = 14;
+        private long f14_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F14 {
+          get { return f14_; }
+          set {
+            f14_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f15" field.</summary>
+        public const int F15FieldNumber = 15;
+        private long f15_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F15 {
+          get { return f15_; }
+          set {
+            f15_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f16" field.</summary>
+        public const int F16FieldNumber = 16;
+        private long f16_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F16 {
+          get { return f16_; }
+          set {
+            f16_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f17" field.</summary>
+        public const int F17FieldNumber = 17;
+        private long f17_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F17 {
+          get { return f17_; }
+          set {
+            f17_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f18" field.</summary>
+        public const int F18FieldNumber = 18;
+        private long f18_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F18 {
+          get { return f18_; }
+          set {
+            f18_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f22" field.</summary>
+        public const int F22FieldNumber = 22;
+        private long f22_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F22 {
+          get { return f22_; }
+          set {
+            f22_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "distance" field.</summary>
+        public const int DistanceFieldNumber = 24;
+        private uint distance_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint Distance {
+          get { return distance_; }
+          set {
+            distance_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f25" field.</summary>
+        public const int F25FieldNumber = 25;
+        private long f25_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F25 {
+          get { return f25_; }
+          set {
+            f25_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f29" field.</summary>
+        public const int F29FieldNumber = 29;
+        private int f29_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int F29 {
+          get { return f29_; }
+          set {
+            f29_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f30" field.</summary>
+        public const int F30FieldNumber = 30;
+        private int f30_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int F30 {
+          get { return f30_; }
+          set {
+            f30_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f31" field.</summary>
+        public const int F31FieldNumber = 31;
+        private int f31_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int F31 {
+          get { return f31_; }
+          set {
+            f31_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f32" field.</summary>
+        public const int F32FieldNumber = 32;
+        private uint f32_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint F32 {
+          get { return f32_; }
+          set {
+            f32_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f33" field.</summary>
+        public const int F33FieldNumber = 33;
+        private uint f33_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint F33 {
+          get { return f33_; }
+          set {
+            f33_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "duration" field.</summary>
+        public const int DurationFieldNumber = 34;
+        private int duration_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int Duration {
+          get { return duration_; }
+          set {
+            duration_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f42" field.</summary>
+        public const int F42FieldNumber = 42;
+        private long f42_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F42 {
+          get { return f42_; }
+          set {
+            f42_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f44" field.</summary>
+        public const int F44FieldNumber = 44;
+        private long f44_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public long F44 {
+          get { return f44_; }
+          set {
+            f44_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f46" field.</summary>
+        public const int F46FieldNumber = 46;
+        private int f46_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int F46 {
+          get { return f46_; }
+          set {
+            f46_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "f47" field.</summary>
+        public const int F47FieldNumber = 47;
+        private int f47_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int F47 {
+          get { return f47_; }
+          set {
+            f47_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as MeetupInner);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(MeetupInner other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Id != other.Id) return false;
+          if (Name != other.Name) return false;
+          if (Description != other.Description) return false;
+          if (F7 != other.F7) return false;
+          if (F8 != other.F8) return false;
+          if (F9 != other.F9) return false;
+          if (F10 != other.F10) return false;
+          if (F11 != other.F11) return false;
+          if (F12 != other.F12) return false;
+          if (F13 != other.F13) return false;
+          if (F14 != other.F14) return false;
+          if (F15 != other.F15) return false;
+          if (F16 != other.F16) return false;
+          if (F17 != other.F17) return false;
+          if (F18 != other.F18) return false;
+          if (F22 != other.F22) return false;
+          if (Distance != other.Distance) return false;
+          if (F25 != other.F25) return false;
+          if (F29 != other.F29) return false;
+          if (F30 != other.F30) return false;
+          if (F31 != other.F31) return false;
+          if (F32 != other.F32) return false;
+          if (F33 != other.F33) return false;
+          if (Duration != other.Duration) return false;
+          if (F42 != other.F42) return false;
+          if (F44 != other.F44) return false;
+          if (F46 != other.F46) return false;
+          if (F47 != other.F47) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Id != 0) hash ^= Id.GetHashCode();
+          if (Name.Length != 0) hash ^= Name.GetHashCode();
+          if (Description.Length != 0) hash ^= Description.GetHashCode();
+          if (F7.Length != 0) hash ^= F7.GetHashCode();
+          if (F8 != 0L) hash ^= F8.GetHashCode();
+          if (F9 != 0L) hash ^= F9.GetHashCode();
+          if (F10 != 0L) hash ^= F10.GetHashCode();
+          if (F11 != 0L) hash ^= F11.GetHashCode();
+          if (F12 != 0L) hash ^= F12.GetHashCode();
+          if (F13 != 0L) hash ^= F13.GetHashCode();
+          if (F14 != 0L) hash ^= F14.GetHashCode();
+          if (F15 != 0L) hash ^= F15.GetHashCode();
+          if (F16 != 0L) hash ^= F16.GetHashCode();
+          if (F17 != 0L) hash ^= F17.GetHashCode();
+          if (F18 != 0L) hash ^= F18.GetHashCode();
+          if (F22 != 0L) hash ^= F22.GetHashCode();
+          if (Distance != 0) hash ^= Distance.GetHashCode();
+          if (F25 != 0L) hash ^= F25.GetHashCode();
+          if (F29 != 0) hash ^= F29.GetHashCode();
+          if (F30 != 0) hash ^= F30.GetHashCode();
+          if (F31 != 0) hash ^= F31.GetHashCode();
+          if (F32 != 0) hash ^= F32.GetHashCode();
+          if (F33 != 0) hash ^= F33.GetHashCode();
+          if (Duration != 0) hash ^= Duration.GetHashCode();
+          if (F42 != 0L) hash ^= F42.GetHashCode();
+          if (F44 != 0L) hash ^= F44.GetHashCode();
+          if (F46 != 0) hash ^= F46.GetHashCode();
+          if (F47 != 0) hash ^= F47.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (Id != 0) {
+            output.WriteRawTag(8);
+            output.WriteInt32(Id);
+          }
+          if (Name.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(Name);
+          }
+          if (Description.Length != 0) {
+            output.WriteRawTag(26);
+            output.WriteString(Description);
+          }
+          if (F7.Length != 0) {
+            output.WriteRawTag(58);
+            output.WriteString(F7);
+          }
+          if (F8 != 0L) {
+            output.WriteRawTag(64);
+            output.WriteInt64(F8);
+          }
+          if (F9 != 0L) {
+            output.WriteRawTag(72);
+            output.WriteInt64(F9);
+          }
+          if (F10 != 0L) {
+            output.WriteRawTag(80);
+            output.WriteInt64(F10);
+          }
+          if (F11 != 0L) {
+            output.WriteRawTag(88);
+            output.WriteInt64(F11);
+          }
+          if (F12 != 0L) {
+            output.WriteRawTag(96);
+            output.WriteInt64(F12);
+          }
+          if (F13 != 0L) {
+            output.WriteRawTag(104);
+            output.WriteInt64(F13);
+          }
+          if (F14 != 0L) {
+            output.WriteRawTag(112);
+            output.WriteInt64(F14);
+          }
+          if (F15 != 0L) {
+            output.WriteRawTag(120);
+            output.WriteInt64(F15);
+          }
+          if (F16 != 0L) {
+            output.WriteRawTag(128, 1);
+            output.WriteInt64(F16);
+          }
+          if (F17 != 0L) {
+            output.WriteRawTag(136, 1);
+            output.WriteInt64(F17);
+          }
+          if (F18 != 0L) {
+            output.WriteRawTag(144, 1);
+            output.WriteInt64(F18);
+          }
+          if (F22 != 0L) {
+            output.WriteRawTag(176, 1);
+            output.WriteInt64(F22);
+          }
+          if (Distance != 0) {
+            output.WriteRawTag(197, 1);
+            output.WriteFixed32(Distance);
+          }
+          if (F25 != 0L) {
+            output.WriteRawTag(200, 1);
+            output.WriteInt64(F25);
+          }
+          if (F29 != 0) {
+            output.WriteRawTag(232, 1);
+            output.WriteInt32(F29);
+          }
+          if (F30 != 0) {
+            output.WriteRawTag(240, 1);
+            output.WriteInt32(F30);
+          }
+          if (F31 != 0) {
+            output.WriteRawTag(248, 1);
+            output.WriteInt32(F31);
+          }
+          if (F32 != 0) {
+            output.WriteRawTag(133, 2);
+            output.WriteFixed32(F32);
+          }
+          if (F33 != 0) {
+            output.WriteRawTag(141, 2);
+            output.WriteFixed32(F33);
+          }
+          if (Duration != 0) {
+            output.WriteRawTag(144, 2);
+            output.WriteInt32(Duration);
+          }
+          if (F42 != 0L) {
+            output.WriteRawTag(208, 2);
+            output.WriteInt64(F42);
+          }
+          if (F44 != 0L) {
+            output.WriteRawTag(224, 2);
+            output.WriteInt64(F44);
+          }
+          if (F46 != 0) {
+            output.WriteRawTag(240, 2);
+            output.WriteInt32(F46);
+          }
+          if (F47 != 0) {
+            output.WriteRawTag(248, 2);
+            output.WriteInt32(F47);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Id != 0) {
+            output.WriteRawTag(8);
+            output.WriteInt32(Id);
+          }
+          if (Name.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(Name);
+          }
+          if (Description.Length != 0) {
+            output.WriteRawTag(26);
+            output.WriteString(Description);
+          }
+          if (F7.Length != 0) {
+            output.WriteRawTag(58);
+            output.WriteString(F7);
+          }
+          if (F8 != 0L) {
+            output.WriteRawTag(64);
+            output.WriteInt64(F8);
+          }
+          if (F9 != 0L) {
+            output.WriteRawTag(72);
+            output.WriteInt64(F9);
+          }
+          if (F10 != 0L) {
+            output.WriteRawTag(80);
+            output.WriteInt64(F10);
+          }
+          if (F11 != 0L) {
+            output.WriteRawTag(88);
+            output.WriteInt64(F11);
+          }
+          if (F12 != 0L) {
+            output.WriteRawTag(96);
+            output.WriteInt64(F12);
+          }
+          if (F13 != 0L) {
+            output.WriteRawTag(104);
+            output.WriteInt64(F13);
+          }
+          if (F14 != 0L) {
+            output.WriteRawTag(112);
+            output.WriteInt64(F14);
+          }
+          if (F15 != 0L) {
+            output.WriteRawTag(120);
+            output.WriteInt64(F15);
+          }
+          if (F16 != 0L) {
+            output.WriteRawTag(128, 1);
+            output.WriteInt64(F16);
+          }
+          if (F17 != 0L) {
+            output.WriteRawTag(136, 1);
+            output.WriteInt64(F17);
+          }
+          if (F18 != 0L) {
+            output.WriteRawTag(144, 1);
+            output.WriteInt64(F18);
+          }
+          if (F22 != 0L) {
+            output.WriteRawTag(176, 1);
+            output.WriteInt64(F22);
+          }
+          if (Distance != 0) {
+            output.WriteRawTag(197, 1);
+            output.WriteFixed32(Distance);
+          }
+          if (F25 != 0L) {
+            output.WriteRawTag(200, 1);
+            output.WriteInt64(F25);
+          }
+          if (F29 != 0) {
+            output.WriteRawTag(232, 1);
+            output.WriteInt32(F29);
+          }
+          if (F30 != 0) {
+            output.WriteRawTag(240, 1);
+            output.WriteInt32(F30);
+          }
+          if (F31 != 0) {
+            output.WriteRawTag(248, 1);
+            output.WriteInt32(F31);
+          }
+          if (F32 != 0) {
+            output.WriteRawTag(133, 2);
+            output.WriteFixed32(F32);
+          }
+          if (F33 != 0) {
+            output.WriteRawTag(141, 2);
+            output.WriteFixed32(F33);
+          }
+          if (Duration != 0) {
+            output.WriteRawTag(144, 2);
+            output.WriteInt32(Duration);
+          }
+          if (F42 != 0L) {
+            output.WriteRawTag(208, 2);
+            output.WriteInt64(F42);
+          }
+          if (F44 != 0L) {
+            output.WriteRawTag(224, 2);
+            output.WriteInt64(F44);
+          }
+          if (F46 != 0) {
+            output.WriteRawTag(240, 2);
+            output.WriteInt32(F46);
+          }
+          if (F47 != 0) {
+            output.WriteRawTag(248, 2);
+            output.WriteInt32(F47);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (Id != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+          }
+          if (Name.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+          }
+          if (Description.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+          }
+          if (F7.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(F7);
+          }
+          if (F8 != 0L) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F8);
+          }
+          if (F9 != 0L) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F9);
+          }
+          if (F10 != 0L) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F10);
+          }
+          if (F11 != 0L) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F11);
+          }
+          if (F12 != 0L) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F12);
+          }
+          if (F13 != 0L) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F13);
+          }
+          if (F14 != 0L) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F14);
+          }
+          if (F15 != 0L) {
+            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F15);
+          }
+          if (F16 != 0L) {
+            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F16);
+          }
+          if (F17 != 0L) {
+            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F17);
+          }
+          if (F18 != 0L) {
+            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F18);
+          }
+          if (F22 != 0L) {
+            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F22);
+          }
+          if (Distance != 0) {
+            size += 2 + 4;
+          }
+          if (F25 != 0L) {
+            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F25);
+          }
+          if (F29 != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F29);
+          }
+          if (F30 != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F30);
+          }
+          if (F31 != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F31);
+          }
+          if (F32 != 0) {
+            size += 2 + 4;
+          }
+          if (F33 != 0) {
+            size += 2 + 4;
+          }
+          if (Duration != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeInt32Size(Duration);
+          }
+          if (F42 != 0L) {
+            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F42);
+          }
+          if (F44 != 0L) {
+            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F44);
+          }
+          if (F46 != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F46);
+          }
+          if (F47 != 0) {
+            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F47);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(MeetupInner other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Id != 0) {
+            Id = other.Id;
+          }
+          if (other.Name.Length != 0) {
+            Name = other.Name;
+          }
+          if (other.Description.Length != 0) {
+            Description = other.Description;
+          }
+          if (other.F7.Length != 0) {
+            F7 = other.F7;
+          }
+          if (other.F8 != 0L) {
+            F8 = other.F8;
+          }
+          if (other.F9 != 0L) {
+            F9 = other.F9;
+          }
+          if (other.F10 != 0L) {
+            F10 = other.F10;
+          }
+          if (other.F11 != 0L) {
+            F11 = other.F11;
+          }
+          if (other.F12 != 0L) {
+            F12 = other.F12;
+          }
+          if (other.F13 != 0L) {
+            F13 = other.F13;
+          }
+          if (other.F14 != 0L) {
+            F14 = other.F14;
+          }
+          if (other.F15 != 0L) {
+            F15 = other.F15;
+          }
+          if (other.F16 != 0L) {
+            F16 = other.F16;
+          }
+          if (other.F17 != 0L) {
+            F17 = other.F17;
+          }
+          if (other.F18 != 0L) {
+            F18 = other.F18;
+          }
+          if (other.F22 != 0L) {
+            F22 = other.F22;
+          }
+          if (other.Distance != 0) {
+            Distance = other.Distance;
+          }
+          if (other.F25 != 0L) {
+            F25 = other.F25;
+          }
+          if (other.F29 != 0) {
+            F29 = other.F29;
+          }
+          if (other.F30 != 0) {
+            F30 = other.F30;
+          }
+          if (other.F31 != 0) {
+            F31 = other.F31;
+          }
+          if (other.F32 != 0) {
+            F32 = other.F32;
+          }
+          if (other.F33 != 0) {
+            F33 = other.F33;
+          }
+          if (other.Duration != 0) {
+            Duration = other.Duration;
+          }
+          if (other.F42 != 0L) {
+            F42 = other.F42;
+          }
+          if (other.F44 != 0L) {
+            F44 = other.F44;
+          }
+          if (other.F46 != 0) {
+            F46 = other.F46;
+          }
+          if (other.F47 != 0) {
+            F47 = other.F47;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                Id = input.ReadInt32();
+                break;
+              }
+              case 18: {
+                Name = input.ReadString();
+                break;
+              }
+              case 26: {
+                Description = input.ReadString();
+                break;
+              }
+              case 58: {
+                F7 = input.ReadString();
+                break;
+              }
+              case 64: {
+                F8 = input.ReadInt64();
+                break;
+              }
+              case 72: {
+                F9 = input.ReadInt64();
+                break;
+              }
+              case 80: {
+                F10 = input.ReadInt64();
+                break;
+              }
+              case 88: {
+                F11 = input.ReadInt64();
+                break;
+              }
+              case 96: {
+                F12 = input.ReadInt64();
+                break;
+              }
+              case 104: {
+                F13 = input.ReadInt64();
+                break;
+              }
+              case 112: {
+                F14 = input.ReadInt64();
+                break;
+              }
+              case 120: {
+                F15 = input.ReadInt64();
+                break;
+              }
+              case 128: {
+                F16 = input.ReadInt64();
+                break;
+              }
+              case 136: {
+                F17 = input.ReadInt64();
+                break;
+              }
+              case 144: {
+                F18 = input.ReadInt64();
+                break;
+              }
+              case 176: {
+                F22 = input.ReadInt64();
+                break;
+              }
+              case 197: {
+                Distance = input.ReadFixed32();
+                break;
+              }
+              case 200: {
+                F25 = input.ReadInt64();
+                break;
+              }
+              case 232: {
+                F29 = input.ReadInt32();
+                break;
+              }
+              case 240: {
+                F30 = input.ReadInt32();
+                break;
+              }
+              case 248: {
+                F31 = input.ReadInt32();
+                break;
+              }
+              case 261: {
+                F32 = input.ReadFixed32();
+                break;
+              }
+              case 269: {
+                F33 = input.ReadFixed32();
+                break;
+              }
+              case 272: {
+                Duration = input.ReadInt32();
+                break;
+              }
+              case 336: {
+                F42 = input.ReadInt64();
+                break;
+              }
+              case 352: {
+                F44 = input.ReadInt64();
+                break;
+              }
+              case 368: {
+                F46 = input.ReadInt32();
+                break;
+              }
+              case 376: {
+                F47 = input.ReadInt32();
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                Id = input.ReadInt32();
+                break;
+              }
+              case 18: {
+                Name = input.ReadString();
+                break;
+              }
+              case 26: {
+                Description = input.ReadString();
+                break;
+              }
+              case 58: {
+                F7 = input.ReadString();
+                break;
+              }
+              case 64: {
+                F8 = input.ReadInt64();
+                break;
+              }
+              case 72: {
+                F9 = input.ReadInt64();
+                break;
+              }
+              case 80: {
+                F10 = input.ReadInt64();
+                break;
+              }
+              case 88: {
+                F11 = input.ReadInt64();
+                break;
+              }
+              case 96: {
+                F12 = input.ReadInt64();
+                break;
+              }
+              case 104: {
+                F13 = input.ReadInt64();
+                break;
+              }
+              case 112: {
+                F14 = input.ReadInt64();
+                break;
+              }
+              case 120: {
+                F15 = input.ReadInt64();
+                break;
+              }
+              case 128: {
+                F16 = input.ReadInt64();
+                break;
+              }
+              case 136: {
+                F17 = input.ReadInt64();
+                break;
+              }
+              case 144: {
+                F18 = input.ReadInt64();
+                break;
+              }
+              case 176: {
+                F22 = input.ReadInt64();
+                break;
+              }
+              case 197: {
+                Distance = input.ReadFixed32();
+                break;
+              }
+              case 200: {
+                F25 = input.ReadInt64();
+                break;
+              }
+              case 232: {
+                F29 = input.ReadInt32();
+                break;
+              }
+              case 240: {
+                F30 = input.ReadInt32();
+                break;
+              }
+              case 248: {
+                F31 = input.ReadInt32();
+                break;
+              }
+              case 261: {
+                F32 = input.ReadFixed32();
+                break;
+              }
+              case 269: {
+                F33 = input.ReadFixed32();
+                break;
+              }
+              case 272: {
+                Duration = input.ReadInt32();
+                break;
+              }
+              case 336: {
+                F42 = input.ReadInt64();
+                break;
+              }
+              case 352: {
+                F44 = input.ReadInt64();
+                break;
+              }
+              case 368: {
+                F46 = input.ReadInt32();
+                break;
+              }
+              case 376: {
+                F47 = input.ReadInt32();
+                break;
+              }
+            }
+          }
+        }
+        #endif
+
+      }
+
+    }
+    #endregion
+
+  }
+
   public sealed partial class PlayerState : pb::IMessage<PlayerState>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -124,7 +2231,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[0]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1235,7 +3342,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1745,7 +3852,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1885,7 +3992,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2021,7 +4128,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2628,7 +4735,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2646,7 +4753,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Payload105(Payload105 other) : this() {
       f1_ = other.f1_;
-      f2_ = other.f2_;
+      riderId_ = other.riderId_;
       f3_ = other.f3_;
       f4_ = other.f4_;
       f5_ = other.f5_;
@@ -2681,14 +4788,14 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "f2" field.</summary>
-    public const int F2FieldNumber = 2;
-    private int f2_;
+    /// <summary>Field number for the "rider_id" field.</summary>
+    public const int RiderIdFieldNumber = 2;
+    private int riderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F2 {
-      get { return f2_; }
+    public int RiderId {
+      get { return riderId_; }
       set {
-        f2_ = value;
+        riderId_ = value;
       }
     }
 
@@ -2877,7 +4984,7 @@ namespace ZwiftPacketMonitor {
         return true;
       }
       if (F1 != other.F1) return false;
-      if (F2 != other.F2) return false;
+      if (RiderId != other.RiderId) return false;
       if (F3 != other.F3) return false;
       if (F4 != other.F4) return false;
       if (F5 != other.F5) return false;
@@ -2900,7 +5007,7 @@ namespace ZwiftPacketMonitor {
     public override int GetHashCode() {
       int hash = 1;
       if (F1 != 0L) hash ^= F1.GetHashCode();
-      if (F2 != 0) hash ^= F2.GetHashCode();
+      if (RiderId != 0) hash ^= RiderId.GetHashCode();
       if (F3 != 0) hash ^= F3.GetHashCode();
       if (F4 != 0L) hash ^= F4.GetHashCode();
       if (F5 != 0L) hash ^= F5.GetHashCode();
@@ -2936,9 +5043,9 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(8);
         output.WriteInt64(F1);
       }
-      if (F2 != 0) {
+      if (RiderId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(RiderId);
       }
       if (F3 != 0) {
         output.WriteRawTag(24);
@@ -3013,9 +5120,9 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(8);
         output.WriteInt64(F1);
       }
-      if (F2 != 0) {
+      if (RiderId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(RiderId);
       }
       if (F3 != 0) {
         output.WriteRawTag(24);
@@ -3089,8 +5196,8 @@ namespace ZwiftPacketMonitor {
       if (F1 != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(F1);
       }
-      if (F2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F2);
+      if (RiderId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
       }
       if (F3 != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(F3);
@@ -3151,8 +5258,8 @@ namespace ZwiftPacketMonitor {
       if (other.F1 != 0L) {
         F1 = other.F1;
       }
-      if (other.F2 != 0) {
-        F2 = other.F2;
+      if (other.RiderId != 0) {
+        RiderId = other.RiderId;
       }
       if (other.F3 != 0) {
         F3 = other.F3;
@@ -3218,7 +5325,7 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            RiderId = input.ReadInt32();
             break;
           }
           case 24: {
@@ -3300,7 +5407,7 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            RiderId = input.ReadInt32();
             break;
           }
           case 24: {
@@ -3385,7 +5492,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3854,7 +5961,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[7]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4170,7 +6277,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[8]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4378,7 +6485,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[9]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4628,7 +6735,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[10]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4767,7 +6874,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[11]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4903,7 +7010,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[12]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5318,7 +7425,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[13]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5837,7 +7944,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[14]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6189,7 +8296,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[15]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6361,7 +8468,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[16]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6821,7 +8928,7 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[17]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

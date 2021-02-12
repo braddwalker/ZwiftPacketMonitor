@@ -64,6 +64,21 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<ChatMessageEventArgs> IncomingChatMessageEvent;
 
+        /// <summary>
+        /// This event gets invoked when a remote player's world time needs to be synced
+        /// </summary>
+        public event EventHandler<PlayerWorldTimeEventArgs> IncomingPlayerWorldTimeUpdateEvent;
+
+        /// <summary>
+        /// This event gets invoked when a meetup gets scheduled or updated
+        /// </summary>
+        public event EventHandler<MeetupEventArgs> IncomingMeetupEvent;
+
+        /// <summary>
+        /// This event gets invoked during events and reports rider positions
+        /// </summary>
+        public event EventHandler<EventPositionsEventArgs> IncomingEventPositionsEvent;
+
         private NpcapDevice _device;
         private ILogger<Monitor> _logger;
         private PacketAssembler _packetAssembler;
@@ -80,9 +95,37 @@ namespace ZwiftPacketMonitor
             this._packetAssembler.PayloadReady += packet_OnPayloadReady;
         }
 
+        private void OnIncomingEventPositionsEvent(EventPositionsEventArgs e)
+        {
+            var handler = IncomingEventPositionsEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingMeetupEvent(MeetupEventArgs e)
+        {
+            var handler = IncomingMeetupEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
         {
-            EventHandler<ChatMessageEventArgs> handler = IncomingChatMessageEvent;
+            var handler = IncomingChatMessageEvent;
             if (handler != null)
             {
                 try {
@@ -96,7 +139,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingRideOnGivenEvent(RideOnGivenEventArgs e)
         {
-            EventHandler<RideOnGivenEventArgs> handler = IncomingRideOnGivenEvent;
+            var handler = IncomingRideOnGivenEvent;
             if (handler != null)
             {
                 try {
@@ -110,7 +153,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingPlayerEnteredWorldEvent(PlayerEnteredWorldEventArgs e)
         {
-            EventHandler<PlayerEnteredWorldEventArgs> handler = IncomingPlayerEnteredWorldEvent;
+            var handler = IncomingPlayerEnteredWorldEvent;
             if (handler != null)
             {
                 try {
@@ -124,7 +167,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingPlayerEvent(PlayerStateEventArgs e)
         {
-            EventHandler<PlayerStateEventArgs> handler = IncomingPlayerEvent;
+            var handler = IncomingPlayerEvent;
             if (handler != null)
             {
                 try {
@@ -138,7 +181,21 @@ namespace ZwiftPacketMonitor
 
         private void OnOutgoingPlayerEvent(PlayerStateEventArgs e)
         {
-            EventHandler<PlayerStateEventArgs> handler = OutgoingPlayerEvent;
+            var handler = OutgoingPlayerEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }
+
+        private void OnIncomingPlayerWorldTimeUpdateEvent(PlayerWorldTimeEventArgs e)
+        {
+            var handler = IncomingPlayerWorldTimeUpdateEvent;
             if (handler != null)
             {
                 try {
@@ -351,6 +408,15 @@ namespace ZwiftPacketMonitor
                             }
                         }
 
+                        if (packetData.EventPositions != null)
+                        {
+                            // Dispatch the event
+                            OnIncomingEventPositionsEvent(new EventPositionsEventArgs()
+                            {
+                                EventPositions = packetData.EventPositions,
+                            });
+                        }
+
                         // Dispatch player updates individually
                         foreach (var pu in packetData.PlayerUpdates)
                         {
@@ -376,38 +442,41 @@ namespace ZwiftPacketMonitor
                                             PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-                                    /*
-                                    case 2:
-                                        var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload2: {payload2}");
-                                        break;
                                     case 3:
-                                        var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload3: {payload3}");
+                                        OnIncomingPlayerWorldTimeUpdateEvent(new PlayerWorldTimeEventArgs()
+                                        {
+                                            PlayerUpdate = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
                                         break;
+                                    case 6:
+                                        // meetup create/update? 6 has the same payload as 10
+                                    case 10:
+                                        // join meetup?
+                                        OnIncomingMeetupEvent(new MeetupEventArgs()
+                                        {
+                                            Meetup = Meetup.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
+                                        break;
+                                    case 102:
                                     case 109:
-                                        var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload109: {payload109}");
-                                        break;
                                     case 110:
-                                        var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload110: {payload110}");
+                                        // Haven't been able to decode these yet
                                         break;
-                                    */
                                     default:
+                                        _logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
                                         break;
                                 }                            
                             }
                             catch (Exception e)
                             {
-                                _logger.LogError(e, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                                _logger.LogError(e, $"ERROR packetData.PlayerUpdates: Actual: {pu.Payload.Length}, PayloadData: {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}\n\r");
                             }
                         }
                     }
                 }
                 catch (Exception ex) 
                 {
-                    _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                    _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}\n\r");
                 }   
             }
         }

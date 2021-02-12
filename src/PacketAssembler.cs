@@ -11,20 +11,17 @@ namespace ZwiftPacketMonitor
 
     /// <summary>
     /// This helper class is used to identify and reassemble fragmented TCP payloads.
+    /// 
+    /// Many thanks to @jeroni7100 for figuring out the packet reassembly magic!
     /// </summary>
     public class PacketAssembler
     {
-        public static readonly byte[][] HEADERS = new byte[][]
-        {
-            new byte[] { 0x10, 0x80 },
-            new byte[] { 0x10, 0x96 },
-            new byte[] { 0x08, 0x01 }
-        };
         public event EventHandler<PayloadReadyEventArgs> PayloadReady;
 
         private ILogger<PacketAssembler> _logger;
-        private int _expectedLen;
+        private int _assembledLen;
         private byte[] _payload;
+        private bool _complete;
 
         public PacketAssembler(ILogger<PacketAssembler> logger)
         {
@@ -42,9 +39,6 @@ namespace ZwiftPacketMonitor
                 catch {
                     // Don't let downstream exceptions bubble up
                 }
-                finally {
-                    Reset();
-                }
             }
         }  
 
@@ -56,93 +50,87 @@ namespace ZwiftPacketMonitor
         /// <param name="packet">The packet to process</param>
         public void Assemble(TcpPacket packet)
         {
-            if (packet == null) 
+            try
             {
-                throw new ArgumentException(nameof(packet));
-            }
-
-            AssembleInternal(packet, packet.PayloadData);
-        }
-
-        private void AssembleInternal(TcpPacket packet, byte[] buffer)
-        {
-            // New packet sequence
-            if (_payload == null) 
-            {
-                if (buffer == null) 
+                if (packet.Push && packet.Acknowledgment && _payload == null)
                 {
-                    return;
+                    // No reassembly required
+                    _payload = packet.PayloadData;
+                    _assembledLen = packet.PayloadData.Length;
+                    _complete = true;
+
+                    _logger.LogDebug($"Complete packet - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+                }
+                else if (packet.Push && packet.Acknowledgment)
+                {
+                    // Last packet in the sequence
+                    _payload = _payload.Concat(packet.PayloadData).ToArray();
+                    _assembledLen += packet.PayloadData.Length;
+                    _complete = true;
+
+                    _logger.LogDebug($"Fragmented sequence finished - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+                }
+                else if (packet.Acknowledgment && _payload == null)
+                {
+                    // First packet in a sequence
+                    _payload = packet.PayloadData;
+                    _assembledLen = packet.PayloadData.Length;
+
+                    _logger.LogDebug($"Fragmented packet started - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+                }
+                else if (packet.Acknowledgment) {
+                    // Middle packet in a sequence
+                    _payload = _payload.Concat(packet.PayloadData).ToArray();
+                    _assembledLen += packet.PayloadData.Length;
+
+                    _logger.LogDebug($"Fragmented packet continued - Actual: {_payload.Length}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
                 }
 
-                _payload = buffer;
-                _expectedLen = ToUInt16(buffer, 0, 2);
-
-                // trim off the header
-                _payload = _payload.Skip(2).ToArray();
-
-                // Validate that we're not lost in the middle of a sequence somewhere
-                if (!IsValidPayload(_payload))
+                if (_complete && _payload?.Length > 0)
                 {
-                    _logger.LogWarning($"Skipping packet, no valid payload header found");
-                    _logger.LogWarning(BitConverter.ToString(buffer).Replace("-", ""));
+                    _logger.LogDebug($"Packet completed!, Actual: {_assembledLen}, Push: {packet.Push}, Ack: {packet.Acknowledgment}");
+
+                    // Break apart any concatenated payloads
+                    var offset = 0;
+                    var length = 0;
+
+                    // No need to decode the payload if debug isn't enabled
+                    if (_logger.IsEnabled(LogLevel.Debug))
+                    {
+                        _logger.LogDebug($"FULL PAYLOAD: {BitConverter.ToString(_payload.ToArray()).Replace("-", "")}\n\r");
+                    }
+
+                    while (offset < _assembledLen)
+                    {
+                        length = ToUInt16(_payload, offset, 2);
+
+                        if (offset + length < _assembledLen)
+                        {
+                            var payload = _payload.Skip(offset + 2).Take(length).ToArray();
+
+                            if (payload.Length > 0)
+                            {
+                                OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload });
+
+                                // No need to decode the payload if debug isn't enabled
+                                if (_logger.IsEnabled(LogLevel.Debug))
+                                {
+                                    _logger.LogDebug($"{BitConverter.ToString(payload.ToArray()).Replace("-", "")}\n\r");
+                                }
+                            }
+                        }
+
+                        offset += 2 + length;
+                        length = 0;
+                    }
+
                     Reset();
-                    return;
-                }
-
-                if (_payload.Length >= _expectedLen)
-                {
-                    // Any bytes past the expectedLen are overflow from the next message
-                    var overflow = _payload.Skip(_expectedLen).ToArray();
-                    _logger.LogDebug($"Complete packet - Expected: {_expectedLen}, Actual: {_payload.Length}, Push: {packet.Push}");
-
-                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = _payload.Take(_expectedLen).ToArray() });
-
-                    // See if the next packet sequence is comingled with this one
-                    if (overflow.Length > 0)
-                    {
-                        _logger.LogDebug($"OVERFLOW bytes detected - Len: {overflow.Length}");
-                        
-                        // Start the process over as if this overflow data came in fresh from a packet
-                        AssembleInternal(packet, overflow);
-                    }
-                }
-                // the payload will be spread out across multiple packets
-                else
-                {
-                    _logger.LogDebug($"Fragmented packet detected - Expected: {_expectedLen}, Actual: {_payload.Length}, Push: {packet.Push}");
-                    _logger.LogDebug(BitConverter.ToString(buffer).Replace("-", ""));
                 }
             }
-            // reconstructing a fragmented sequence
-            else
+            catch (Exception ex)
             {
-                // Append this packet's payload to the fragment one we're currently reassembling
-                _logger.LogDebug($"Combining packets - Expected: {_expectedLen}, Actual: {_payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
-                _logger.LogDebug(BitConverter.ToString(packet.PayloadData).Replace("-", ""));
-
-                _payload = _payload.Concat(packet.PayloadData).ToArray();
-
-                if (_payload.Length >= _expectedLen)
-                {
-                    _logger.LogDebug($"Fragmented packet completed!, Expected: {_expectedLen}, Actual: {_payload.Length}, Packet: {packet.PayloadData.Length}, Push: {packet.Push}");
-
-                    // Any bytes past the expectedLen are overflow from the next message
-                    var overflow = _payload.Skip(_expectedLen).ToArray();
-
-                    _logger.LogDebug(BitConverter.ToString(overflow).Replace("-", ""));
-
-                    // our original fragmented packet is ready to ship
-                    OnPayloadReady(new PayloadReadyEventArgs() { Payload = _payload.Take(_expectedLen).ToArray() });
-
-                    // See if the next packet sequence is comingled with this one
-                    if (overflow.Length > 0)
-                    {
-                        _logger.LogDebug($"OVERFLOW bytes detected - Len: {overflow.Length}");
-                        
-                        // Start the process over as if this overflow data came in fresh from a packet
-                        AssembleInternal(packet, overflow);
-                    }
-                }
+                _logger.LogError(ex, "ERROR");
+                Reset();
             }
         }
 
@@ -152,7 +140,8 @@ namespace ZwiftPacketMonitor
         public void Reset()
         {
             _payload = null;
-            _expectedLen = 0;
+            _assembledLen = 0;
+            _complete = false;
         }
 
         private int ToUInt16(byte[] buffer, int start, int count)
@@ -171,19 +160,6 @@ namespace ZwiftPacketMonitor
             {
                 return (0);
             }
-        }
-
-        private bool IsValidPayload(byte[] buffer)
-        {
-            foreach (var h in HEADERS)
-            {
-                if (h.SequenceEqual(buffer.Take(h.Length)))
-                {
-                    return (true);
-                }
-            }
-
-            return (false);
         }
     }
 }
