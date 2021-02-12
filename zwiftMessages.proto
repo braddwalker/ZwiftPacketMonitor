@@ -130,7 +130,7 @@ message PlayerUpdate {
 
 message Payload105 { // player entered world ?
     int64 f1 = 1;
-    int32 f2 = 2;
+    int32 rider_id = 2;
     int32 f3 = 3;
     int64 f4 = 4; // int32?
     int64 f5 = 5; 

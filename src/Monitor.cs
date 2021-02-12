@@ -74,6 +74,11 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<MeetupEventArgs> IncomingMeetupEvent;
 
+        /// <summary>
+        /// This event gets invoked during events and reports rider positions
+        /// </summary>
+        public event EventHandler<EventPositionsEventArgs> IncomingEventPositionsEvent;
+
         private NpcapDevice _device;
         private ILogger<Monitor> _logger;
         private PacketAssembler _packetAssembler;
@@ -90,9 +95,23 @@ namespace ZwiftPacketMonitor
             this._packetAssembler.PayloadReady += packet_OnPayloadReady;
         }
 
+        private void OnIncomingEventPositionsEvent(EventPositionsEventArgs e)
+        {
+            var handler = IncomingEventPositionsEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
         private void OnIncomingMeetupEvent(MeetupEventArgs e)
         {
-            EventHandler<MeetupEventArgs> handler = IncomingMeetupEvent;
+            var handler = IncomingMeetupEvent;
             if (handler != null)
             {
                 try {
@@ -106,7 +125,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
         {
-            EventHandler<ChatMessageEventArgs> handler = IncomingChatMessageEvent;
+            var handler = IncomingChatMessageEvent;
             if (handler != null)
             {
                 try {
@@ -120,7 +139,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingRideOnGivenEvent(RideOnGivenEventArgs e)
         {
-            EventHandler<RideOnGivenEventArgs> handler = IncomingRideOnGivenEvent;
+            var handler = IncomingRideOnGivenEvent;
             if (handler != null)
             {
                 try {
@@ -134,7 +153,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingPlayerEnteredWorldEvent(PlayerEnteredWorldEventArgs e)
         {
-            EventHandler<PlayerEnteredWorldEventArgs> handler = IncomingPlayerEnteredWorldEvent;
+            var handler = IncomingPlayerEnteredWorldEvent;
             if (handler != null)
             {
                 try {
@@ -148,7 +167,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingPlayerEvent(PlayerStateEventArgs e)
         {
-            EventHandler<PlayerStateEventArgs> handler = IncomingPlayerEvent;
+            var handler = IncomingPlayerEvent;
             if (handler != null)
             {
                 try {
@@ -162,7 +181,7 @@ namespace ZwiftPacketMonitor
 
         private void OnOutgoingPlayerEvent(PlayerStateEventArgs e)
         {
-            EventHandler<PlayerStateEventArgs> handler = OutgoingPlayerEvent;
+            var handler = OutgoingPlayerEvent;
             if (handler != null)
             {
                 try {
@@ -176,7 +195,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingPlayerWorldTimeUpdateEvent(PlayerWorldTimeEventArgs e)
         {
-            EventHandler<PlayerWorldTimeEventArgs> handler = IncomingPlayerWorldTimeUpdateEvent;
+            var handler = IncomingPlayerWorldTimeUpdateEvent;
             if (handler != null)
             {
                 try {
@@ -389,6 +408,15 @@ namespace ZwiftPacketMonitor
                             }
                         }
 
+                        if (packetData.EventPositions != null)
+                        {
+                            // Dispatch the event
+                            OnIncomingEventPositionsEvent(new EventPositionsEventArgs()
+                            {
+                                EventPositions = packetData.EventPositions,
+                            });
+                        }
+
                         // Dispatch player updates individually
                         foreach (var pu in packetData.PlayerUpdates)
                         {
@@ -421,10 +449,15 @@ namespace ZwiftPacketMonitor
                                         });
                                         break;
                                     case 6:
+                                    case 10:
                                         OnIncomingMeetupEvent(new MeetupEventArgs()
                                         {
                                             Meetup = Meetup.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
+                                        break;
+                                    case 109:
+                                        break;
+                                    case 110:
                                         break;
                                     /*
                                     case 2:

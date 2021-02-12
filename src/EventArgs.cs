@@ -24,4 +24,8 @@ namespace ZwiftPacketMonitor
     public class MeetupEventArgs : EventArgs {
         public Meetup Meetup {get; set;}
     }
+
+    public class EventPositionsEventArgs : EventArgs {
+        public EventPositions EventPositions {get; set;}
+    }
 }
