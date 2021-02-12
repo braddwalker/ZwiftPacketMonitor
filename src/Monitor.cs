@@ -449,30 +449,19 @@ namespace ZwiftPacketMonitor
                                         });
                                         break;
                                     case 6:
+                                        // meetup create/update?
                                     case 10:
+                                        // join meetup?
                                         OnIncomingMeetupEvent(new MeetupEventArgs()
                                         {
                                             Meetup = Meetup.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
+                                    case 102:
                                     case 109:
-                                        break;
                                     case 110:
+                                        // Haven't been able to decode these yet
                                         break;
-                                    /*
-                                    case 2:
-                                        var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload2: {payload2}");
-                                        break;
-                                    case 109:
-                                        var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload109: {payload109}");
-                                        break;
-                                    case 110:
-                                        var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload110: {payload110}");
-                                        break;
-                                    */
                                     default:
                                         _logger.LogWarning($"Unknown tag: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
                                         break;
