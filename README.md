@@ -27,7 +27,7 @@ namespace ZwiftPacketMonitorDemo
             serviceCollection.AddLogging(configure => configure.AddConsole())
                 .Configure<LoggerFilterOptions>(configure => configure.MinLevel = LogLevel.Debug);
 
-            RegistrationExtensions.AddZwiftPacketMonitoring(serviceCollection);
+            serviceCollection.AddZwiftPacketMonitoring();
 
             var serviceProvider = serviceCollection.BuildServiceProvider(); 
 
