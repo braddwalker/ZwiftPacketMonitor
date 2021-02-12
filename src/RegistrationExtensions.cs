@@ -15,7 +15,7 @@ namespace ZwiftPacketMonitor
         public static IServiceCollection AddZwiftPacketMonitoring(this IServiceCollection services)
         {
             services.AddTransient<PacketAssembler>();
-            services.AddTransient<Monitor>();
+            services.AddSingleton<Monitor>();
 
             return (services);
         }
