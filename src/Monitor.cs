@@ -67,7 +67,7 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// This event gets invoked when a remote player's world time needs to be synced
         /// </summary>
-        public event EventHandler<PlayerWorldTimeEventArgs> IncomingPlayerWorldTimeUpdateEvent;
+        public event EventHandler<PlayerTimeSyncEventArgs> IncomingPlayerTimeSyncEvent;
 
         /// <summary>
         /// This event gets invoked when a meetup gets scheduled or updated
@@ -78,6 +78,12 @@ namespace ZwiftPacketMonitor
         /// This event gets invoked during events and reports rider positions
         /// </summary>
         public event EventHandler<EventPositionsEventArgs> IncomingEventPositionsEvent;
+
+        /// <summary>
+        /// A flag that indicates whether packet capture is currently running or not
+        /// </summary>
+        /// <value>true if running</value>
+        public bool IsRunning {get; private set;}
 
         private NpcapDevice _device;
         private ILogger<Monitor> _logger;
@@ -92,7 +98,11 @@ namespace ZwiftPacketMonitor
 
             // Setup the packet assembler and callback
             this._packetAssembler = packetAssembler ?? throw new ArgumentException(nameof(packetAssembler));
-            this._packetAssembler.PayloadReady += packet_OnPayloadReady;
+            this._packetAssembler.PayloadReady += (s, e) =>
+            {
+                // Only incoming TCP payloads are coming through here
+                DeserializeAndDispatch(e.Payload, Direction.Incoming);
+            };
         }
 
         private void OnIncomingEventPositionsEvent(EventPositionsEventArgs e)
@@ -193,9 +203,9 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        private void OnIncomingPlayerWorldTimeUpdateEvent(PlayerWorldTimeEventArgs e)
+        private void OnIncomingPlayerTimeSyncEvent(PlayerTimeSyncEventArgs e)
         {
-            var handler = IncomingPlayerWorldTimeUpdateEvent;
+            var handler = IncomingPlayerTimeSyncEvent;
             if (handler != null)
             {
                 try {
@@ -259,13 +269,10 @@ namespace ZwiftPacketMonitor
             _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
             _device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
 
+            IsRunning = true;
+
             // Start capture 'INFINTE' number of packets
             await Task.Run(() => { _device.Capture(); }, cancellationToken);
-        }
-
-        private string GetInterfaceDisplayName(NpcapDevice device) 
-        {
-            return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
         /// <summary>
@@ -276,6 +283,7 @@ namespace ZwiftPacketMonitor
         public async Task StopCaptureAsync(CancellationToken cancellationToken = default)
         {
             _logger.LogDebug("Stopping packet capture");
+            IsRunning = false;
 
             if (_device == null)
             {
@@ -285,6 +293,11 @@ namespace ZwiftPacketMonitor
             {
                 await Task.Run(() => { _device.Close(); }, cancellationToken);
             }
+        }
+
+        private string GetInterfaceDisplayName(NpcapDevice device) 
+        {
+            return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
         private void device_OnPacketArrival(object sender, CaptureEventArgs e)
@@ -365,12 +378,6 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        private void packet_OnPayloadReady(object sender, PayloadReadyEventArgs e)
-        {
-            // Only incoming TCP payloads are coming through here
-            DeserializeAndDispatch(e.Payload, Direction.Incoming);
-        }
-
         private void DeserializeAndDispatch(byte[] buffer, Direction direction)
         {
             // If we have any data to deserialize at this point, let's continue
@@ -394,6 +401,8 @@ namespace ZwiftPacketMonitor
                     else if (direction == Direction.Incoming)
                     {
                         var packetData = ServerToClient.Parser.ParseFrom(buffer);
+
+                        //Console.WriteLine($"{packetData}");
 
                         // Dispatch each player state individually
                         foreach (var player in packetData.PlayerStates)
@@ -443,9 +452,9 @@ namespace ZwiftPacketMonitor
                                         });
                                         break;
                                     case 3:
-                                        OnIncomingPlayerWorldTimeUpdateEvent(new PlayerWorldTimeEventArgs()
+                                        OnIncomingPlayerTimeSyncEvent(new PlayerTimeSyncEventArgs()
                                         {
-                                            PlayerUpdate = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            TimeSync = TimeSync.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
                                     case 6:

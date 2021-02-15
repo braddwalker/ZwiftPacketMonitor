@@ -17,8 +17,8 @@ namespace ZwiftPacketMonitor
         public Payload5 Message {get; set;}
     }
 
-    public class PlayerWorldTimeEventArgs : EventArgs {
-        public Payload3 PlayerUpdate {get; set;} 
+    public class PlayerTimeSyncEventArgs : EventArgs {
+        public TimeSync TimeSync {get; set;} 
     }
 
     public class MeetupEventArgs : EventArgs {

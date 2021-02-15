@@ -173,9 +173,9 @@ message Payload2 {
     int64 f2 = 2;
 }
 
-message Payload3 { 
-    int32 f1 = 1;
-    int64 f2 = 2; // worldtime ?
+message TimeSync { 
+    int32 rider_id = 1;
+    int64 world_time = 2;
     int32 f3 = 3;
 }
 
@@ -206,10 +206,42 @@ message ServerToClient {
     repeated PlayerState player_states = 8;
     repeated PlayerUpdate player_updates = 9;
     int64 tag11 = 11;
+    string local_ip = 12;
+    int32 tag15 = 15;
     int64 tag17 = 17;
     int32 num_msgs = 18;
     int32 msgnum = 19;
     EventPositions event_positions = 23;
+    Server1 servers1 = 24;
+    Server2 servers2 = 25;
+}
+
+message ServerAddress {
+    int32 f1 = 1;
+    int32 f2 = 2;
+    string ip = 3;
+    int32 f4 = 4;
+    fixed32 f5 = 5;
+    fixed32 f6 = 6;
+}
+
+message ServerPool {
+    int32 f1 = 1;
+    int32 f2 = 2;
+    repeated ServerAddress addresses = 3;
+    int32 f4 = 4;
+}
+
+message Server2 {
+    repeated ServerPool pool = 1;
+    int32 f2 = 2;
+}
+
+message Server1 {
+    repeated ServerAddress addresses = 1;
+    int32 f2 = 2;
+    int32 f3 = 3;
+    int32 f4 = 4;
 }
 
 message WorldAttributes {
