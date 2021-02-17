@@ -54,8 +54,8 @@ namespace ZwiftPacketMonitor {
             "KAISCQoBeRgbIAEoAhIXCg93YXRjaGluZ1JpZGVySWQYHCABKAUSDwoHZ3Jv",
             "dXBJZBgdIAEoBRINCgVzcG9ydBgfIAEoAxILCgNmMzQYIiABKAIi5AEKDkNs",
             "aWVudFRvU2VydmVyEhEKCWNvbm5lY3RlZBgBIAEoBRIQCghyaWRlcl9pZBgC",
-            "IAEoBRISCgp3b3JsZF90aW1lGAMgASgDEi4KBXN0YXRlGAcgASgLMh8uWndp",
-            "ZnRQYWNrZXRNb25pdG9yLlBsYXllclN0YXRlEg0KBXNlcW5vGAQgASgFEgwK",
+            "IAEoBRISCgp3b3JsZF90aW1lGAMgASgDEg0KBXNlcW5vGAQgASgFEi4KBXN0",
+            "YXRlGAcgASgLMh8uWndpZnRQYWNrZXRNb25pdG9yLlBsYXllclN0YXRlEgwK",
             "BHRhZzgYCCABKAMSDAoEdGFnORgJIAEoAxITCgtsYXN0X3VwZGF0ZRgKIAEo",
             "AxINCgV0YWcxMRgLIAEoAxIaChJsYXN0X3BsYXllcl91cGRhdGUYDCABKAMi",
             "EQoPVW5rbm93bk1lc3NhZ2UxIhAKDlVua25vd25NZXNzYWdlIssBCgxQbGF5",
@@ -68,64 +68,64 @@ namespace ZwiftPacketMonitor {
             "ZjUYBSABKAMSCgoCZjYYBiABKAMSEQoJZmlyc3ROYW1lGAcgASgJEhAKCGxh",
             "c3ROYW1lGAggASgJEgoKAmY5GAkgASgDEgsKA2YxMRgLIAEoAxILCgNmMTIY",
             "DCABKAUSCwoDZjEzGA0gASgFEgsKA2YxNBgOIAEoBRILCgNmMTUYDyABKAUS",
-            "CwoDZjE2GBAgASgFEg4KBmY3ZGF0ZRgRIAEoCRILCgNmMTkYEyABKAUirwEK",
-            "CFBheWxvYWQ1EhAKCHJpZGVyX2lkGAEgASgFEhMKC3RvX3JpZGVyX2lkGAIg",
-            "ASgFEgoKAmYzGAMgASgFEhEKCWZpcnN0TmFtZRgEIAEoCRIQCghsYXN0TmFt",
-            "ZRgFIAEoCRIPCgdtZXNzYWdlGAYgASgJEg4KBmF2YXRhchgHIAEoCRITCgtj",
-            "b3VudHJ5Q29kZRgIIAEoBRIVCg1ldmVudFN1Ymdyb3VwGAsgASgFImsKCFBh",
-            "eWxvYWQ0EhAKCHJpZGVyX2lkGAEgASgFEhMKC3RvX3JpZGVyX2lkGAIgASgF",
-            "EhEKCWZpcnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3Vu",
-            "dHJ5Q29kZRgFIAEoBSIiCghQYXlsb2FkMhIKCgJmMRgBIAEoBRIKCgJmMhgC",
-            "IAEoAyI8CghUaW1lU3luYxIQCghyaWRlcl9pZBgBIAEoBRISCgp3b3JsZF90",
-            "aW1lGAIgASgDEgoKAmYzGAMgASgFIgwKClBheWxvYWQxMTAiDAoKUGF5bG9h",
-            "ZDEwOSKxAQoORXZlbnRQb3NpdGlvbnMSEAoIcG9zaXRpb24YASABKAUSUQoS",
-            "ZXZlbnRSaWRlclBvc2l0aW9uGAQgAygLMjUuWndpZnRQYWNrZXRNb25pdG9y",
-            "LkV2ZW50UG9zaXRpb25zLkV2ZW50UmlkZXJQb3NpdGlvbhISCgpudW1fcmlk",
-            "ZXJzGHQgASgFGiYKEkV2ZW50UmlkZXJQb3NpdGlvbhIQCghyaWRlcl9pZBgB",
-            "IAEoBSLBAwoOU2VydmVyVG9DbGllbnQSDAoEdGFnMRgBIAEoBRIQCghyaWRl",
-            "cl9pZBgCIAEoBRISCgp3b3JsZF90aW1lGAMgASgDEg0KBXNlcW5vGAQgASgF",
-            "EjYKDXBsYXllcl9zdGF0ZXMYCCADKAsyHy5ad2lmdFBhY2tldE1vbml0b3Iu",
-            "UGxheWVyU3RhdGUSOAoOcGxheWVyX3VwZGF0ZXMYCSADKAsyIC5ad2lmdFBh",
-            "Y2tldE1vbml0b3IuUGxheWVyVXBkYXRlEg0KBXRhZzExGAsgASgDEhAKCGxv",
-            "Y2FsX2lwGAwgASgJEg0KBXRhZzE1GA8gASgFEg0KBXRhZzE3GBEgASgDEhAK",
-            "CG51bV9tc2dzGBIgASgFEg4KBm1zZ251bRgTIAEoBRI7Cg9ldmVudF9wb3Np",
-            "dGlvbnMYFyABKAsyIi5ad2lmdFBhY2tldE1vbml0b3IuRXZlbnRQb3NpdGlv",
-            "bnMSLQoIc2VydmVyczEYGCABKAsyGy5ad2lmdFBhY2tldE1vbml0b3IuU2Vy",
-            "dmVyMRItCghzZXJ2ZXJzMhgZIAEoCzIbLlp3aWZ0UGFja2V0TW9uaXRvci5T",
-            "ZXJ2ZXIyIlcKDVNlcnZlckFkZHJlc3MSCgoCZjEYASABKAUSCgoCZjIYAiAB",
-            "KAUSCgoCaXAYAyABKAkSCgoCZjQYBCABKAUSCgoCZjUYBSABKAcSCgoCZjYY",
-            "BiABKAciZgoKU2VydmVyUG9vbBIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoBRI0",
-            "CglhZGRyZXNzZXMYAyADKAsyIS5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVy",
-            "QWRkcmVzcxIKCgJmNBgEIAEoBSJDCgdTZXJ2ZXIyEiwKBHBvb2wYASADKAsy",
-            "Hi5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVyUG9vbBIKCgJmMhgCIAEoBSJj",
-            "CgdTZXJ2ZXIxEjQKCWFkZHJlc3NlcxgBIAMoCzIhLlp3aWZ0UGFja2V0TW9u",
-            "aXRvci5TZXJ2ZXJBZGRyZXNzEgoKAmYyGAIgASgFEgoKAmYzGAMgASgFEgoK",
-            "AmY0GAQgASgFInUKD1dvcmxkQXR0cmlidXRlcxIQCgh3b3JsZF9pZBgBIAEo",
-            "BRIMCgRuYW1lGAIgASgJEgwKBHRhZzMYAyABKAMSDAoEdGFnNRgEIAEoAxIS",
-            "Cgp3b3JsZF90aW1lGAYgASgDEhIKCmNsb2NrX3RpbWUYByABKAMiJAoOV29y",
-            "bGRBdHRyaWJ1dGUSEgoKd29ybGRfdGltZRgCIAEoAyKpAQoVRXZlbnRTdWJn",
-            "cm91cFByb3RvYnVmEgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkSDQoFcnVs",
-            "ZXMYCCABKAUSDQoFcm91dGUYFiABKAUSDAoEbGFwcxgZIAEoBRIVCg1zdGFy",
-            "dExvY2F0aW9uGB0gASgFEg0KBWxhYmVsGB4gASgFEhAKCHBhY2VUeXBlGB8g",
-            "ASgFEhIKCmplcnNleUhhc2gYJCABKAUihAIKD1JpZGVyQXR0cmlidXRlcxIK",
-            "CgJmMhgCIAEoBRIKCgJmMxgDIAEoBRJOChBhdHRyaWJ1dGVNZXNzYWdlGAQg",
-            "ASgLMjQuWndpZnRQYWNrZXRNb25pdG9yLlJpZGVyQXR0cmlidXRlcy5BdHRy",
-            "aWJ1dGVNZXNzYWdlEg8KB3RoZWlySWQYCiABKAUSCwoDZjEzGA0gASgFGmsK",
-            "EEF0dHJpYnV0ZU1lc3NhZ2USDAoEbXlJZBgBIAEoBRIPCgd0aGVpcklkGAIg",
-            "ASgFEhEKCWZpcnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtj",
-            "b3VudHJ5Q29kZRgFIAEoBWIGcHJvdG8z"));
+            "CwoDZjE2GBAgASgFEg4KBmY3ZGF0ZRgRIAEoCRILCgNmMTkYEyABKAUiqwEK",
+            "BENoYXQSEAoIcmlkZXJfaWQYASABKAUSEwoLdG9fcmlkZXJfaWQYAiABKAUS",
+            "CgoCZjMYAyABKAUSEQoJZmlyc3ROYW1lGAQgASgJEhAKCGxhc3ROYW1lGAUg",
+            "ASgJEg8KB21lc3NhZ2UYBiABKAkSDgoGYXZhdGFyGAcgASgJEhMKC2NvdW50",
+            "cnlDb2RlGAggASgFEhUKDWV2ZW50U3ViZ3JvdXAYCyABKAUiaQoGUmlkZU9u",
+            "EhAKCHJpZGVyX2lkGAEgASgFEhMKC3RvX3JpZGVyX2lkGAIgASgFEhEKCWZp",
+            "cnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3VudHJ5Q29k",
+            "ZRgFIAEoBSIiCghQYXlsb2FkMhIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoAyI8",
+            "CghUaW1lU3luYxIQCghyaWRlcl9pZBgBIAEoBRISCgp3b3JsZF90aW1lGAIg",
+            "ASgDEgoKAmYzGAMgASgFIgwKClBheWxvYWQxMTAiDAoKUGF5bG9hZDEwOSKx",
+            "AQoORXZlbnRQb3NpdGlvbnMSEAoIcG9zaXRpb24YASABKAUSUQoSZXZlbnRS",
+            "aWRlclBvc2l0aW9uGAQgAygLMjUuWndpZnRQYWNrZXRNb25pdG9yLkV2ZW50",
+            "UG9zaXRpb25zLkV2ZW50UmlkZXJQb3NpdGlvbhISCgpudW1fcmlkZXJzGHQg",
+            "ASgFGiYKEkV2ZW50UmlkZXJQb3NpdGlvbhIQCghyaWRlcl9pZBgBIAEoBSLB",
+            "AwoOU2VydmVyVG9DbGllbnQSDAoEdGFnMRgBIAEoBRIQCghyaWRlcl9pZBgC",
+            "IAEoBRISCgp3b3JsZF90aW1lGAMgASgDEg0KBXNlcW5vGAQgASgFEjYKDXBs",
+            "YXllcl9zdGF0ZXMYCCADKAsyHy5ad2lmdFBhY2tldE1vbml0b3IuUGxheWVy",
+            "U3RhdGUSOAoOcGxheWVyX3VwZGF0ZXMYCSADKAsyIC5ad2lmdFBhY2tldE1v",
+            "bml0b3IuUGxheWVyVXBkYXRlEg0KBXRhZzExGAsgASgDEhAKCGxvY2FsX2lw",
+            "GAwgASgJEg0KBXRhZzE1GA8gASgFEg0KBXRhZzE3GBEgASgDEhAKCG51bV9t",
+            "c2dzGBIgASgFEg4KBm1zZ251bRgTIAEoBRI7Cg9ldmVudF9wb3NpdGlvbnMY",
+            "FyABKAsyIi5ad2lmdFBhY2tldE1vbml0b3IuRXZlbnRQb3NpdGlvbnMSLQoI",
+            "c2VydmVyczEYGCABKAsyGy5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVyMRIt",
+            "CghzZXJ2ZXJzMhgZIAEoCzIbLlp3aWZ0UGFja2V0TW9uaXRvci5TZXJ2ZXIy",
+            "IlcKDVNlcnZlckFkZHJlc3MSCgoCZjEYASABKAUSCgoCZjIYAiABKAUSCgoC",
+            "aXAYAyABKAkSCgoCZjQYBCABKAUSCgoCZjUYBSABKAcSCgoCZjYYBiABKAci",
+            "ZgoKU2VydmVyUG9vbBIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoBRI0CglhZGRy",
+            "ZXNzZXMYAyADKAsyIS5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVyQWRkcmVz",
+            "cxIKCgJmNBgEIAEoBSJDCgdTZXJ2ZXIyEiwKBHBvb2wYASADKAsyHi5ad2lm",
+            "dFBhY2tldE1vbml0b3IuU2VydmVyUG9vbBIKCgJmMhgCIAEoBSJjCgdTZXJ2",
+            "ZXIxEjQKCWFkZHJlc3NlcxgBIAMoCzIhLlp3aWZ0UGFja2V0TW9uaXRvci5T",
+            "ZXJ2ZXJBZGRyZXNzEgoKAmYyGAIgASgFEgoKAmYzGAMgASgFEgoKAmY0GAQg",
+            "ASgFInUKD1dvcmxkQXR0cmlidXRlcxIQCgh3b3JsZF9pZBgBIAEoBRIMCgRu",
+            "YW1lGAIgASgJEgwKBHRhZzMYAyABKAMSDAoEdGFnNRgEIAEoAxISCgp3b3Js",
+            "ZF90aW1lGAYgASgDEhIKCmNsb2NrX3RpbWUYByABKAMiJAoOV29ybGRBdHRy",
+            "aWJ1dGUSEgoKd29ybGRfdGltZRgCIAEoAyKpAQoVRXZlbnRTdWJncm91cFBy",
+            "b3RvYnVmEgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkSDQoFcnVsZXMYCCAB",
+            "KAUSDQoFcm91dGUYFiABKAUSDAoEbGFwcxgZIAEoBRIVCg1zdGFydExvY2F0",
+            "aW9uGB0gASgFEg0KBWxhYmVsGB4gASgFEhAKCHBhY2VUeXBlGB8gASgFEhIK",
+            "CmplcnNleUhhc2gYJCABKAUihAIKD1JpZGVyQXR0cmlidXRlcxIKCgJmMhgC",
+            "IAEoBRIKCgJmMxgDIAEoBRJOChBhdHRyaWJ1dGVNZXNzYWdlGAQgASgLMjQu",
+            "WndpZnRQYWNrZXRNb25pdG9yLlJpZGVyQXR0cmlidXRlcy5BdHRyaWJ1dGVN",
+            "ZXNzYWdlEg8KB3RoZWlySWQYCiABKAUSCwoDZjEzGA0gASgFGmsKEEF0dHJp",
+            "YnV0ZU1lc3NhZ2USDAoEbXlJZBgBIAEoBRIPCgd0aGVpcklkGAIgASgFEhEK",
+            "CWZpcnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3VudHJ5",
+            "Q29kZRgFIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Meetup), global::ZwiftPacketMonitor.Meetup.Parser, new[]{ "Id", "Tag2", "Name", "Description", "StartTime", "Distance", "Tag8", "MeetupInner", "Thumbnail", "Duration", "F14", "F17", "F18", "F22", "F23", "MeetupOnlyView", "F25", "F27", "F28", "F29", "F34", "F35" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Meetup.Types.MeetupInner), global::ZwiftPacketMonitor.Meetup.Types.MeetupInner.Parser, new[]{ "Id", "Name", "Description", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F22", "Distance", "F25", "F29", "F30", "F31", "F32", "F33", "Duration", "F42", "F44", "F46", "F47" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerState), global::ZwiftPacketMonitor.PlayerState.Parser, new[]{ "Id", "WorldTime", "Distance", "RoadTime", "Laps", "Speed", "RoadPosition", "CadenceUHz", "Heartrate", "Power", "Heading", "Lean", "Climbing", "Time", "F19", "F20", "Progress", "CustomisationId", "JustWatching", "Calories", "X", "Altitude", "Y", "WatchingRiderId", "GroupId", "Sport", "F34" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ClientToServer), global::ZwiftPacketMonitor.ClientToServer.Parser, new[]{ "Connected", "RiderId", "WorldTime", "State", "Seqno", "Tag8", "Tag9", "LastUpdate", "Tag11", "LastPlayerUpdate" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ClientToServer), global::ZwiftPacketMonitor.ClientToServer.Parser, new[]{ "Connected", "RiderId", "WorldTime", "Seqno", "State", "Tag8", "Tag9", "LastUpdate", "Tag11", "LastPlayerUpdate" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.UnknownMessage1), global::ZwiftPacketMonitor.UnknownMessage1.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.UnknownMessage), global::ZwiftPacketMonitor.UnknownMessage.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerUpdate), global::ZwiftPacketMonitor.PlayerUpdate.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Payload", "Tag5", "Tag6", "Tag7", "Tag8", "Tag9", "Tag11", "Tag12", "Tag14", "Tag15" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload105), global::ZwiftPacketMonitor.Payload105.Parser, new[]{ "F1", "RiderId", "F3", "F4", "F5", "F6", "FirstName", "LastName", "F9", "F11", "F12", "F13", "F14", "F15", "F16", "F7Date", "F19" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload5), global::ZwiftPacketMonitor.Payload5.Parser, new[]{ "RiderId", "ToRiderId", "F3", "FirstName", "LastName", "Message", "Avatar", "CountryCode", "EventSubgroup" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload4), global::ZwiftPacketMonitor.Payload4.Parser, new[]{ "RiderId", "ToRiderId", "FirstName", "LastName", "CountryCode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Chat), global::ZwiftPacketMonitor.Chat.Parser, new[]{ "RiderId", "ToRiderId", "F3", "FirstName", "LastName", "Message", "Avatar", "CountryCode", "EventSubgroup" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.RideOn), global::ZwiftPacketMonitor.RideOn.Parser, new[]{ "RiderId", "ToRiderId", "FirstName", "LastName", "CountryCode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload2), global::ZwiftPacketMonitor.Payload2.Parser, new[]{ "F1", "F2" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.TimeSync), global::ZwiftPacketMonitor.TimeSync.Parser, new[]{ "RiderId", "WorldTime", "F3" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload110), global::ZwiftPacketMonitor.Payload110.Parser, null, null, null, null, null),
@@ -3377,8 +3377,8 @@ namespace ZwiftPacketMonitor {
       connected_ = other.connected_;
       riderId_ = other.riderId_;
       worldTime_ = other.worldTime_;
-      state_ = other.state_ != null ? other.state_.Clone() : null;
       seqno_ = other.seqno_;
+      state_ = other.state_ != null ? other.state_.Clone() : null;
       tag8_ = other.tag8_;
       tag9_ = other.tag9_;
       lastUpdate_ = other.lastUpdate_;
@@ -3425,17 +3425,6 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "state" field.</summary>
-    public const int StateFieldNumber = 7;
-    private global::ZwiftPacketMonitor.PlayerState state_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ZwiftPacketMonitor.PlayerState State {
-      get { return state_; }
-      set {
-        state_ = value;
-      }
-    }
-
     /// <summary>Field number for the "seqno" field.</summary>
     public const int SeqnoFieldNumber = 4;
     private int seqno_;
@@ -3444,6 +3433,17 @@ namespace ZwiftPacketMonitor {
       get { return seqno_; }
       set {
         seqno_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "state" field.</summary>
+    public const int StateFieldNumber = 7;
+    private global::ZwiftPacketMonitor.PlayerState state_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ZwiftPacketMonitor.PlayerState State {
+      get { return state_; }
+      set {
+        state_ = value;
       }
     }
 
@@ -3518,8 +3518,8 @@ namespace ZwiftPacketMonitor {
       if (Connected != other.Connected) return false;
       if (RiderId != other.RiderId) return false;
       if (WorldTime != other.WorldTime) return false;
-      if (!object.Equals(State, other.State)) return false;
       if (Seqno != other.Seqno) return false;
+      if (!object.Equals(State, other.State)) return false;
       if (Tag8 != other.Tag8) return false;
       if (Tag9 != other.Tag9) return false;
       if (LastUpdate != other.LastUpdate) return false;
@@ -3534,8 +3534,8 @@ namespace ZwiftPacketMonitor {
       if (Connected != 0) hash ^= Connected.GetHashCode();
       if (RiderId != 0) hash ^= RiderId.GetHashCode();
       if (WorldTime != 0L) hash ^= WorldTime.GetHashCode();
-      if (state_ != null) hash ^= State.GetHashCode();
       if (Seqno != 0) hash ^= Seqno.GetHashCode();
+      if (state_ != null) hash ^= State.GetHashCode();
       if (Tag8 != 0L) hash ^= Tag8.GetHashCode();
       if (Tag9 != 0L) hash ^= Tag9.GetHashCode();
       if (LastUpdate != 0L) hash ^= LastUpdate.GetHashCode();
@@ -3664,11 +3664,11 @@ namespace ZwiftPacketMonitor {
       if (WorldTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(WorldTime);
       }
-      if (state_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(State);
-      }
       if (Seqno != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seqno);
+      }
+      if (state_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(State);
       }
       if (Tag8 != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag8);
@@ -3705,14 +3705,14 @@ namespace ZwiftPacketMonitor {
       if (other.WorldTime != 0L) {
         WorldTime = other.WorldTime;
       }
+      if (other.Seqno != 0) {
+        Seqno = other.Seqno;
+      }
       if (other.state_ != null) {
         if (state_ == null) {
           State = new global::ZwiftPacketMonitor.PlayerState();
         }
         State.MergeFrom(other.State);
-      }
-      if (other.Seqno != 0) {
-        Seqno = other.Seqno;
       }
       if (other.Tag8 != 0L) {
         Tag8 = other.Tag8;
@@ -5492,18 +5492,15 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  /// <summary>
-  /// chat message
-  /// </summary>
-  public sealed partial class Payload5 : pb::IMessage<Payload5>
+  public sealed partial class Chat : pb::IMessage<Chat>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Payload5> _parser = new pb::MessageParser<Payload5>(() => new Payload5());
+    private static readonly pb::MessageParser<Chat> _parser = new pb::MessageParser<Chat>(() => new Chat());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Payload5> Parser { get { return _parser; } }
+    public static pb::MessageParser<Chat> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -5516,14 +5513,14 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload5() {
+    public Chat() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload5(Payload5 other) : this() {
+    public Chat(Chat other) : this() {
       riderId_ = other.riderId_;
       toRiderId_ = other.toRiderId_;
       f3_ = other.f3_;
@@ -5537,8 +5534,8 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload5 Clone() {
-      return new Payload5(this);
+    public Chat Clone() {
+      return new Chat(this);
     }
 
     /// <summary>Field number for the "rider_id" field.</summary>
@@ -5648,11 +5645,11 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Payload5);
+      return Equals(other as Chat);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Payload5 other) {
+    public bool Equals(Chat other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -5823,7 +5820,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Payload5 other) {
+    public void MergeFrom(Chat other) {
       if (other == null) {
         return;
       }
@@ -5961,18 +5958,15 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  /// <summary>
-  /// ride on
-  /// </summary>
-  public sealed partial class Payload4 : pb::IMessage<Payload4>
+  public sealed partial class RideOn : pb::IMessage<RideOn>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Payload4> _parser = new pb::MessageParser<Payload4>(() => new Payload4());
+    private static readonly pb::MessageParser<RideOn> _parser = new pb::MessageParser<RideOn>(() => new RideOn());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Payload4> Parser { get { return _parser; } }
+    public static pb::MessageParser<RideOn> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -5985,14 +5979,14 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload4() {
+    public RideOn() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload4(Payload4 other) : this() {
+    public RideOn(RideOn other) : this() {
       riderId_ = other.riderId_;
       toRiderId_ = other.toRiderId_;
       firstName_ = other.firstName_;
@@ -6002,8 +5996,8 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload4 Clone() {
-      return new Payload4(this);
+    public RideOn Clone() {
+      return new RideOn(this);
     }
 
     /// <summary>Field number for the "rider_id" field.</summary>
@@ -6063,11 +6057,11 @@ namespace ZwiftPacketMonitor {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Payload4);
+      return Equals(other as RideOn);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Payload4 other) {
+    public bool Equals(RideOn other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -6186,7 +6180,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Payload4 other) {
+    public void MergeFrom(RideOn other) {
       if (other == null) {
         return;
       }

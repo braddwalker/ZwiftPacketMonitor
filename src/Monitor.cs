@@ -402,8 +402,6 @@ namespace ZwiftPacketMonitor
                     {
                         var packetData = ServerToClient.Parser.ParseFrom(buffer);
 
-                        //Console.WriteLine($"{packetData}");
-
                         // Dispatch each player state individually
                         foreach (var player in packetData.PlayerStates)
                         {
@@ -436,13 +434,13 @@ namespace ZwiftPacketMonitor
                                     case 4:
                                         OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
                                         {
-                                            RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            RideOn = RideOn.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
                                     case 5:
                                         OnIncomingChatMessageEvent(new ChatMessageEventArgs()
                                         {
-                                            Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            Message = Chat.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
                                     case 105:

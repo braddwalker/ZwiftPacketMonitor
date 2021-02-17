@@ -10,11 +10,11 @@ namespace ZwiftPacketMonitor
     }
 
     public class RideOnGivenEventArgs : EventArgs {
-        public Payload4 RideOn {get; set;}
+        public RideOn RideOn {get; set;}
     }
 
     public class ChatMessageEventArgs : EventArgs {
-        public Payload5 Message {get; set;}
+        public Chat Message {get; set;}
     }
 
     public class PlayerTimeSyncEventArgs : EventArgs {
