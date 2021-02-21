@@ -64,6 +64,27 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<ChatMessageEventArgs> IncomingChatMessageEvent;
 
+        /// <summary>
+        /// This event gets invoked when a remote player's world time needs to be synced
+        /// </summary>
+        public event EventHandler<PlayerTimeSyncEventArgs> IncomingPlayerTimeSyncEvent;
+
+        /// <summary>
+        /// This event gets invoked when a meetup gets scheduled or updated
+        /// </summary>
+        public event EventHandler<MeetupEventArgs> IncomingMeetupEvent;
+
+        /// <summary>
+        /// This event gets invoked during events and reports rider positions
+        /// </summary>
+        public event EventHandler<EventPositionsEventArgs> IncomingEventPositionsEvent;
+
+        /// <summary>
+        /// A flag that indicates whether packet capture is currently running or not
+        /// </summary>
+        /// <value>true if running</value>
+        public bool IsRunning {get; private set;}
+
         private NpcapDevice _device;
         private ILogger<Monitor> _logger;
         private PacketAssembler _packetAssembler;
@@ -77,12 +98,44 @@ namespace ZwiftPacketMonitor
 
             // Setup the packet assembler and callback
             this._packetAssembler = packetAssembler ?? throw new ArgumentException(nameof(packetAssembler));
-            this._packetAssembler.PayloadReady += packet_OnPayloadReady;
+            this._packetAssembler.PayloadReady += (s, e) =>
+            {
+                // Only incoming TCP payloads are coming through here
+                DeserializeAndDispatch(e.Payload, Direction.Incoming);
+            };
         }
+
+        private void OnIncomingEventPositionsEvent(EventPositionsEventArgs e)
+        {
+            var handler = IncomingEventPositionsEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingMeetupEvent(MeetupEventArgs e)
+        {
+            var handler = IncomingMeetupEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
 
         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
         {
-            EventHandler<ChatMessageEventArgs> handler = IncomingChatMessageEvent;
+            var handler = IncomingChatMessageEvent;
             if (handler != null)
             {
                 try {
@@ -96,7 +149,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingRideOnGivenEvent(RideOnGivenEventArgs e)
         {
-            EventHandler<RideOnGivenEventArgs> handler = IncomingRideOnGivenEvent;
+            var handler = IncomingRideOnGivenEvent;
             if (handler != null)
             {
                 try {
@@ -110,7 +163,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingPlayerEnteredWorldEvent(PlayerEnteredWorldEventArgs e)
         {
-            EventHandler<PlayerEnteredWorldEventArgs> handler = IncomingPlayerEnteredWorldEvent;
+            var handler = IncomingPlayerEnteredWorldEvent;
             if (handler != null)
             {
                 try {
@@ -124,7 +177,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingPlayerEvent(PlayerStateEventArgs e)
         {
-            EventHandler<PlayerStateEventArgs> handler = IncomingPlayerEvent;
+            var handler = IncomingPlayerEvent;
             if (handler != null)
             {
                 try {
@@ -138,7 +191,21 @@ namespace ZwiftPacketMonitor
 
         private void OnOutgoingPlayerEvent(PlayerStateEventArgs e)
         {
-            EventHandler<PlayerStateEventArgs> handler = OutgoingPlayerEvent;
+            var handler = OutgoingPlayerEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }
+
+        private void OnIncomingPlayerTimeSyncEvent(PlayerTimeSyncEventArgs e)
+        {
+            var handler = IncomingPlayerTimeSyncEvent;
             if (handler != null)
             {
                 try {
@@ -202,13 +269,10 @@ namespace ZwiftPacketMonitor
             _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
             _device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
 
+            IsRunning = true;
+
             // Start capture 'INFINTE' number of packets
             await Task.Run(() => { _device.Capture(); }, cancellationToken);
-        }
-
-        private string GetInterfaceDisplayName(NpcapDevice device) 
-        {
-            return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
         /// <summary>
@@ -219,6 +283,7 @@ namespace ZwiftPacketMonitor
         public async Task StopCaptureAsync(CancellationToken cancellationToken = default)
         {
             _logger.LogDebug("Stopping packet capture");
+            IsRunning = false;
 
             if (_device == null)
             {
@@ -228,6 +293,11 @@ namespace ZwiftPacketMonitor
             {
                 await Task.Run(() => { _device.Close(); }, cancellationToken);
             }
+        }
+
+        private string GetInterfaceDisplayName(NpcapDevice device) 
+        {
+            return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
         private void device_OnPacketArrival(object sender, CaptureEventArgs e)
@@ -308,12 +378,6 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        private void packet_OnPayloadReady(object sender, PayloadReadyEventArgs e)
-        {
-            // Only incoming TCP payloads are coming through here
-            DeserializeAndDispatch(e.Payload, Direction.Incoming);
-        }
-
         private void DeserializeAndDispatch(byte[] buffer, Direction direction)
         {
             // If we have any data to deserialize at this point, let's continue
@@ -351,6 +415,15 @@ namespace ZwiftPacketMonitor
                             }
                         }
 
+                        if (packetData.EventPositions != null)
+                        {
+                            // Dispatch the event
+                            OnIncomingEventPositionsEvent(new EventPositionsEventArgs()
+                            {
+                                EventPositions = packetData.EventPositions,
+                            });
+                        }
+
                         // Dispatch player updates individually
                         foreach (var pu in packetData.PlayerUpdates)
                         {
@@ -361,13 +434,13 @@ namespace ZwiftPacketMonitor
                                     case 4:
                                         OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
                                         {
-                                            RideOn = Payload4.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            RideOn = RideOn.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
                                     case 5:
                                         OnIncomingChatMessageEvent(new ChatMessageEventArgs()
                                         {
-                                            Message = Payload5.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            Message = Chat.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
                                     case 105:
@@ -376,38 +449,41 @@ namespace ZwiftPacketMonitor
                                             PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-                                    /*
-                                    case 2:
-                                        var payload2 = Payload2.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload2: {payload2}");
-                                        break;
                                     case 3:
-                                        var payload3 = Payload3.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload3: {payload3}");
+                                        OnIncomingPlayerTimeSyncEvent(new PlayerTimeSyncEventArgs()
+                                        {
+                                            TimeSync = TimeSync.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
                                         break;
+                                    case 6:
+                                        // meetup create/update? 6 has the same payload as 10
+                                    case 10:
+                                        // join meetup?
+                                        OnIncomingMeetupEvent(new MeetupEventArgs()
+                                        {
+                                            Meetup = Meetup.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
+                                        break;
+                                    case 102:
                                     case 109:
-                                        var payload109 = Payload109.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload109: {payload109}");
-                                        break;
                                     case 110:
-                                        var payload110 = Payload110.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        Console.WriteLine($"Payload110: {payload110}");
+                                        // Haven't been able to decode these yet
                                         break;
-                                    */
                                     default:
+                                        _logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
                                         break;
                                 }                            
                             }
                             catch (Exception e)
                             {
-                                _logger.LogError(e, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                                _logger.LogError(e, $"ERROR packetData.PlayerUpdates: Actual: {pu.Payload.Length}, PayloadData: {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}\n\r");
                             }
                         }
                     }
                 }
                 catch (Exception ex) 
                 {
-                    _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "").Substring(0, 25)}...\n\r");
+                    _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}\n\r");
                 }   
             }
         }
