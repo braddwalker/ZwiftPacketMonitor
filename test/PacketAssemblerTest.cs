@@ -40,7 +40,7 @@ namespace ZwiftPacketMonitor.Test
         }
 
         [TestMethod]
-        public void Packet_InsufficientPayload()
+        public void Packet_InvalidPayload()
         {
             var payloadReady = false;
             var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
@@ -55,6 +55,124 @@ namespace ZwiftPacketMonitor.Test
             pa.Assemble(packet);
 
             Assert.IsFalse(payloadReady);
+        }
+
+        [TestMethod]
+        public void Packet_CompleteSinglePacket()
+        {
+            var payloadReady = false;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                payloadReady = true;
+            };
+            
+            var packet = new TcpPacket(0, 0);
+            packet.Push = true;
+            packet.Acknowledgment = true;
+            packet.PayloadData = CreatePacketPayload(new byte[] {0x01});
+
+            pa.Assemble(packet);
+
+            Assert.IsTrue(payloadReady);
+        }
+
+        [TestMethod]
+        public void Packet_CompleteSinglePacket_NoPush()
+        {
+            var payloadReady = false;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                payloadReady = true;
+            };
+            
+            var packet = new TcpPacket(0, 0);
+            packet.Push = false;
+            packet.Acknowledgment = true;
+            packet.PayloadData = CreatePacketPayload(new byte[] {0x01});
+
+            pa.Assemble(packet);
+
+            Assert.IsFalse(payloadReady);
+        }
+
+        [TestMethod]
+        public void Packet_CompleteSinglePacket_NoAck()
+        {
+            var payloadReady = false;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                payloadReady = true;
+            };
+            
+            var packet = new TcpPacket(0, 0);
+            packet.Push = true;
+            packet.Acknowledgment = false;
+            packet.PayloadData = CreatePacketPayload(new byte[] {0x01});
+
+            pa.Assemble(packet);
+
+            Assert.IsFalse(payloadReady);
+        }
+
+        [TestMethod]
+        public void Packet_FragmentedSinglePacket_Two()
+        {
+            byte[] assembledPayload = null;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                assembledPayload = e.Payload; 
+            };
+            
+            var payload = CreatePacketPayload(new byte[] {0x01, 0x01});
+            var packet = new TcpPacket(0, 0);
+            packet.Push = false;
+            packet.Acknowledgment = true;
+            packet.PayloadData = payload.Take(payload.Length - 1).ToArray();
+            pa.Assemble(packet);
+
+            packet = new TcpPacket(0, 0);
+            packet.Push = true;
+            packet.Acknowledgment = true;
+            packet.PayloadData = payload.Skip(payload.Length - 1).ToArray();
+            pa.Assemble(packet);
+
+            Assert.IsTrue(Enumerable.SequenceEqual(payload.Skip(2), assembledPayload));
+        }
+
+        [TestMethod]
+        public void Packet_FragmentedSinglePacket_Three()
+        {
+            byte[] assembledPayload = null;
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                assembledPayload = e.Payload; 
+            };
+            
+            var payload = CreatePacketPayload(new byte[] {0x01, 0x01, 0x01});
+            var packet = new TcpPacket(0, 0);
+            packet.Push = false;
+            packet.Acknowledgment = true;
+            packet.PayloadData = payload.Take(3).ToArray();
+            pa.Assemble(packet);
+
+            packet = new TcpPacket(0, 0);
+            packet.Push = false;
+            packet.Acknowledgment = true;
+            packet.PayloadData = payload.Skip(2).Take(1).ToArray();
+            pa.Assemble(packet);
+
+            packet = new TcpPacket(0, 0);
+            packet.Push = true;
+            packet.Acknowledgment = true;
+            packet.PayloadData = payload.Skip(payload.Length - 1).ToArray();
+            pa.Assemble(packet);
+
+            Assert.IsTrue(Enumerable.SequenceEqual(payload.Skip(2), assembledPayload));
         }
     }
 }

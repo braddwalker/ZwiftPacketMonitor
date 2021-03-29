@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ZwiftPacketMonitor.Test
 {
@@ -10,9 +11,11 @@ namespace ZwiftPacketMonitor.Test
 
         [TestInitialize]
         public virtual void Setup() { 
-            _loggerFactory = LoggerFactory.Create(builder => builder
-                .AddConsole()
-                .AddDebug());
+            var serviceProvider = new ServiceCollection()
+                .AddLogging(x => x.AddDebug().AddConsole())
+                .BuildServiceProvider();
+
+            _loggerFactory = serviceProvider.GetService<ILoggerFactory>();
         }
 
         [TestCleanup]
