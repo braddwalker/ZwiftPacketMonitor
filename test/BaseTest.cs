@@ -1,6 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 
 namespace ZwiftPacketMonitor.Test
 {
@@ -25,6 +27,22 @@ namespace ZwiftPacketMonitor.Test
         protected ILogger<T> CreateLogger<T>()
         {
             return (_loggerFactory.CreateLogger<T>());
+        }
+
+        protected byte[] CreatePacketPayload(byte[] payload)
+        {
+            if (BitConverter.IsLittleEndian)
+            {
+                return (BitConverter.GetBytes((Int16)payload.Length)
+                    .Reverse()
+                    .Concat(payload)
+                    .ToArray());
+            }
+            else {
+                return (BitConverter.GetBytes((Int16)payload.Length)
+                    .Concat(payload)
+                    .ToArray());
+            }
         }
     }
 }

@@ -2,20 +2,13 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PacketDotNet;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace ZwiftPacketMonitor.Test
 {    
     [TestClass]
     public class PacketAssemblerTest : BaseTest
     {
-        private byte[] CreatePacketPayload(byte[] payload)
-        {
-            return (BitConverter.GetBytes((Int16)payload.Length)
-                .Reverse()
-                .Concat(payload)
-                .ToArray());
-        }
-
         [TestMethod]
         public void Initialize_NoErrors()
         {
@@ -173,6 +166,34 @@ namespace ZwiftPacketMonitor.Test
             pa.Assemble(packet);
 
             Assert.IsTrue(Enumerable.SequenceEqual(payload.Skip(2), assembledPayload));
+        }
+
+        [TestMethod]
+        public void Packet_MultiplePackets()
+        {
+            IList<byte[]> assembledPayloads = new List<byte[]>();
+            var pa = new PacketAssembler(CreateLogger<PacketAssembler>());
+            pa.PayloadReady += (s, e) =>
+            {
+                assembledPayloads.Add(e.Payload); 
+            };
+
+            var p1 = CreatePacketPayload(new byte[] {0x01, 0x01, 0x01});
+            var p2 =  CreatePacketPayload(new byte[] {0x02, 0x02, 0x02});
+            var p3 = CreatePacketPayload(new byte[] {0x03, 0x03, 0x03});
+
+            var payload = p1.Concat(p2.Concat(p3)).ToArray();
+            
+            var packet = new TcpPacket(0, 0);
+            packet.Push = true;
+            packet.Acknowledgment = true;
+            packet.PayloadData = payload;
+            pa.Assemble(packet);
+
+            Assert.AreEqual(3, assembledPayloads.Count);
+            Assert.IsTrue(Enumerable.SequenceEqual(p1.Skip(2), assembledPayloads[0]));
+            Assert.IsTrue(Enumerable.SequenceEqual(p2.Skip(2), assembledPayloads[1]));
+            Assert.IsTrue(Enumerable.SequenceEqual(p3.Skip(2), assembledPayloads[2]));
         }
     }
 }

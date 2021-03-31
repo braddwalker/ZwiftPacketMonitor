@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <id>ZwiftPacketMonitor</id>
-    <Version>1.2.7</Version>
+    <Version>1.2.8</Version>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Brad Walker (@braddwalker)</Authors>
@@ -11,7 +11,7 @@
     <PackageProjectUrl>https://github.com/braddwalker/ZwiftPacketMonitor</PackageProjectUrl>
     
     <!-- forward compatibility with expcted upcoming nuget changes https://github.com/NuGet/Home/wiki/Embedding-and-displaying-NuGet-READMEs -->
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageReadmeFile>../readme.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.14.0" />
@@ -21,6 +21,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
     <ItemGroup>
-      <None Include="readme.md" Pack="true" PackagePath="" />
+      <None Include="../readme.md" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>

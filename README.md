@@ -33,7 +33,7 @@ See the included ZwiftPacketMonitor.Demo project for a complete working example.
         logger.LogInformation($"RIDEON: {e.RideOn}");
     };
 
-    // network interface name or IP address (windows only)
+    // network interface name or IP address
     monitor.StartCaptureAsync("en0").Wait();
     
     // This won't get called until the above Wait finishes
