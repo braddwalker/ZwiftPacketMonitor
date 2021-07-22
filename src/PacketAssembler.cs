@@ -50,6 +50,8 @@ namespace ZwiftPacketMonitor
         /// <param name="packet">The packet to process</param>
         public void Assemble(TcpPacket packet)
         {
+            packet = packet ?? throw new ArgumentException(nameof(packet));
+
             try
             {
                 if (packet.Push && packet.Acknowledgment && _payload == null)
