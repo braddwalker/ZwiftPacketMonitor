@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZwiftPacketMonitor", "ZwiftPacketMonitor.csproj", "{9E50CB9E-DB26-46F4-927D-588389F0E585}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E50CB9E-DB26-46F4-927D-588389F0E585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E50CB9E-DB26-46F4-927D-588389F0E585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E50CB9E-DB26-46F4-927D-588389F0E585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E50CB9E-DB26-46F4-927D-588389F0E585}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {13B28B97-F84B-417A-BD8F-B847BDAD3902}
+	EndGlobalSection
+EndGlobal
