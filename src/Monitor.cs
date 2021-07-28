@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using SharpPcap;
-using SharpPcap.Npcap;
+using SharpPcap.LibPcap;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
@@ -85,7 +85,7 @@ namespace ZwiftPacketMonitor
         /// <value>true if running</value>
         public bool IsRunning {get; private set;}
 
-        private NpcapDevice _device;
+        private LibPcapLiveDevice _device;
         private ILogger<Monitor> _logger;
         private PacketAssembler _packetAssembler;
 
@@ -226,7 +226,7 @@ namespace ZwiftPacketMonitor
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {            
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
-            var devices = NpcapDeviceList.Instance;
+            var devices = LibPcapLiveDeviceList.Instance;
 
             // Roll the dice and pull the first interface in the list
             if (string.IsNullOrWhiteSpace(networkInterface))
@@ -265,7 +265,7 @@ namespace ZwiftPacketMonitor
             _logger.LogDebug($"Starting packet capture on {GetInterfaceDisplayName(_device)} UDP:{ZWIFT_UDP_PORT}, TCP: {ZWIFT_TCP_PORT}");
 
             // Open the device for capturing
-            _device.Open(DeviceMode.Normal, READ_TIMEOUT);
+            _device.Open(mode: DeviceModes.Promiscuous | DeviceModes.DataTransferUdp | DeviceModes.NoCaptureLocal, read_timeout: READ_TIMEOUT);
             _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
             _device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
 
@@ -289,22 +289,25 @@ namespace ZwiftPacketMonitor
             {
                 await Task.CompletedTask;
             }
-            else 
+            else
             {
-                await Task.Run(() => { _device.Close(); }, cancellationToken);
+                await Task.Run(() => { 
+                    _device.Close();
+                    _device.Dispose();
+                }, cancellationToken);
             }
         }
 
-        private string GetInterfaceDisplayName(NpcapDevice device) 
+        private string GetInterfaceDisplayName(LibPcapLiveDevice device) 
         {
             return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
-        private void device_OnPacketArrival(object sender, CaptureEventArgs e)
+        private void device_OnPacketArrival(object sender, PacketCapture e)
         {
             try 
             {
-                var packet = Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
+                var packet = Packet.ParsePacket(e.Device.LinkType, e.Data.ToArray());
                 var tcpPacket = packet.Extract<TcpPacket>();
                 var udpPacket = packet.Extract<UdpPacket>();
 
