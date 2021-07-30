@@ -292,8 +292,8 @@ namespace ZwiftPacketMonitor
             else
             {
                 await Task.Run(() => { 
-                    _device.Close();
-                    _device.Dispose();
+                    _device.StopCapture();
+                    _device = null;
                 }, cancellationToken);
             }
         }

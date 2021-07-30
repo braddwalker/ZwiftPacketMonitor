@@ -13,7 +13,7 @@ namespace ZwiftPacketMonitorDemo
         {
             var serviceCollection = new ServiceCollection();
 
-            // added to allow logging level configuration
+            // added to allow logging level configuration, change MinLevel to LogLevel.Debug to see internal traces.
             serviceCollection.AddLogging(configure => configure.AddConsole())
                 .Configure<LoggerFilterOptions>(configure => configure.MinLevel = LogLevel.Information);
 
@@ -28,18 +28,22 @@ namespace ZwiftPacketMonitorDemo
             {
                 logger.LogInformation($"INCOMING: {e.PlayerState}");
             };
-            //monitor.OutgoingPlayerEvent += (s, e) => {
-            //    logger.LogInformation($"OUTGOING: {e.PlayerState}");
-            //};
-            //monitor.IncomingChatMessageEvent += (s, e) => {
-            //    logger.LogInformation($"CHAT: {e.Message}");
-            //};
-            //monitor.IncomingPlayerEnteredWorldEvent += (s, e) => {
-            //    logger.LogInformation($"WORLD: {e.PlayerUpdate}");
-            //};
-            //monitor.IncomingRideOnGivenEvent += (s, e) => {
-            //    logger.LogInformation($"RIDEON: {e.RideOn}");
-            //};
+            monitor.OutgoingPlayerEvent += (s, e) =>
+            {
+                logger.LogInformation($"OUTGOING: {e.PlayerState}");
+            };
+            monitor.IncomingChatMessageEvent += (s, e) =>
+            {
+                logger.LogInformation($"CHAT: {e.Message}");
+            };
+            monitor.IncomingPlayerEnteredWorldEvent += (s, e) =>
+            {
+                logger.LogInformation($"WORLD: {e.PlayerUpdate}");
+            };
+            monitor.IncomingRideOnGivenEvent += (s, e) =>
+            {
+                logger.LogInformation($"RIDEON: {e.RideOn}");
+            };
 
             // Print SharpPcap version
             var ver = Pcap.SharpPcapVersion;
@@ -77,6 +81,9 @@ namespace ZwiftPacketMonitorDemo
             // network interface name or IP address (windows only)
             _ = monitor.StartCaptureAsync(devices[i].Interface.Name); // not waiting to complete as it doesn't until StopCaptureAsync is called, instead wait for a keypress
 
+            // waiting for a keypress to shutdown clean
+            Console.WriteLine();
+            Console.WriteLine("Press ctrl-c to quit.");
             Console.ReadLine();
           
             // Stop monitoring
