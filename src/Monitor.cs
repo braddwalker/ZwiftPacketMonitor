@@ -303,7 +303,7 @@ namespace ZwiftPacketMonitor
             return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
-        private void device_OnPacketArrival(object sender, PacketCapture e)
+        protected void device_OnPacketArrival(object sender, PacketCapture e)
         {
             try 
             {

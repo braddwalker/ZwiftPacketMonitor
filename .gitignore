@@ -339,3 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /ZwiftActivityMonitor/nsis-setup/Setup-ZAM.exe
+
+# Launch settings are user specific
+launchSettings.json

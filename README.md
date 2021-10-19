@@ -40,6 +40,13 @@ See the included ZwiftPacketMonitor.Demo project for a complete working example.
     monitor.StopCaptureAsync().Wait();
 ```
 
+## Replay Zwift messages
+
+Debugging is hard but it's even harder when having to do a Zwift work out at the same time!
+
+To make life easier you can replay Zwift messages from a PCAP capture file instead of a network device so that you can debug and analyse without having to run Zwift at the same time.
+Capture packets using SharpCap or Wireshark and save the results to a file, then run `ZwiftPacketMonitor.Replay.exe <path to capture file>` and see the messages flow by.
+
 ## Credit
 This project is a .NET port of the [zwift-packet-monitor](https://github.com/jeroni7100/zwift-packet-monitor) project and borrows heavily from its packet handling and protobuf implementation.
 
