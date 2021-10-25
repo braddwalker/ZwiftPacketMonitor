@@ -10,8 +10,8 @@ namespace ZwiftPacketMonitor
     /// </summary>
     public class Replayer : Monitor
     {
-        public Replayer(ILogger<Monitor> logger, PacketAssembler packetAssembler) 
-            : base(logger, packetAssembler)
+        public Replayer(ILogger<Monitor> logger, PacketAssembler packetAssembler, PacketAssembler companionPacketAssemblerPcToApp) 
+            : base(logger, packetAssembler, companionPacketAssemblerPcToApp)
         {
         }
 

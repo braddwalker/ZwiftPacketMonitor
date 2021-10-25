@@ -14,7 +14,7 @@ namespace ZwiftPacketMonitor.Replay
                 .Configure<LoggerFilterOptions>(configure => configure.MinLevel = LogLevel.Information);
 
             serviceCollection.AddZwiftPacketMonitoring();
-            serviceCollection.AddSingleton<Replay>();
+            serviceCollection.AddSingleton<Replayer>();
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
             return serviceProvider;

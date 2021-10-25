@@ -1,0 +1,166 @@
+syntax="proto3";
+package ZwiftPacketMonitor;
+
+message ZwiftCompanionMessage {
+    uint32 myId = 1; // Our own Zwift rider_id
+    message ZwiftCompanionMessage2 {
+        int32 sequence = 1; // Sequence maybe?
+        uint32 type = 2; // Seems to always be 16. No it's not, can also be 28
+        int32 tag3 = 3;
+        int32 tag4 = 4;
+        int32 rider_id = 5;
+        int32 tag7 = 7;
+        optional int32 tag8 = 8;
+        optional uint32 tag10 = 10; // For type 22 messages
+        optional int32 myId = 19; // Our own Zwift rider_id
+    }
+    optional ZwiftCompanionMessage2 companionMessage2 = 2;
+    uint32 tag10 = 10; // Could this be world_clock?
+    uint32 rider_id = 19; // Set when type = 28
+
+    message ZwiftCompanionDevice {
+        int32 tag1 = 1;
+        message Version {
+            string app_version = 1; // Version of the Zwift Companion app
+            string os_version = 2; // Version of the device OS
+            string os = 3; // Type of the device OS
+            string device = 4; // Device model
+            message SomeThing {
+                int32 tag1 = 1;
+            }
+            SomeThing tag5 = 5;
+        }
+        optional Version version = 5;
+        message SomeThing2 {
+            int32 tag1 = 1;
+        }
+        optional SomeThing2 tag16 = 16;
+    }
+    optional ZwiftCompanionDevice device = 21; // For type 29 messages
+}
+
+message ZwiftCompanionMessageRiderPosition {
+    uint32 myId = 1; // Our own Zwift rider_id
+    optional float tag3 = 3;
+    optional float tag4 = 4;
+    optional float tag5 = 5;
+    optional float tag6 = 6;
+    optional float tag7 = 7;
+    optional float tag8 = 8;
+    double clock_time = 9;
+    uint32 tag10 = 10; // Seems to always be zero for this message type
+}
+
+message ZwiftToCompanionMessage
+{
+    // These fields are always there
+    uint32 tag1 = 1; // Our own Zwift rider_id but it can also be 2 (uint32)
+    uint32 tag10 = 10; // Zero for this type
+}
+
+message ZwiftCompanionRiderMessage
+{
+    // These fields are always there
+    uint32 myId = 1; // Our own Zwift rider_id but it can also be 2 (uint32)
+    uint32 tag10 = 10; // Zero for this type
+
+    message RiderMessage
+    {
+        uint32 tag1 = 1;
+        uint32 tag2 = 2;
+        uint32 tag3 = 3;
+        uint32 tag5 = 5;
+        uint32 tag7 = 7;
+        uint32 rider_id = 19;
+    }
+
+    optional RiderMessage details = 2;
+}
+
+message ZwiftToCompanionMessageValueZero
+{
+    // These fields are always there
+    uint32 tag1 = 1; // This will have value 0
+
+    uint32 tag2 = 2;
+    uint32 tag3 = 3;
+    uint32 tag4 = 4;
+    uint32 tag6 = 6;
+    uint32 tag7 = 7;
+    uint32 tag12 = 12;
+}
+
+message ZwiftToCompanionMessageValueOne
+{
+    // These fields are always there
+    uint32 tag1 = 1; // This will have value 1
+
+    uint32 tag2 = 2;
+    uint32 tag3 = 3;
+    uint32 tag4 = 4;
+    uint32 tag6 = 6;
+    uint32 tag7 = 7;
+    
+    message TypeOneSubItem
+    {
+        uint32 tag1 = 1;
+        uint32 tag2 = 2;
+        uint32 tag19 = 19;
+    }
+
+    TypeOneSubItem sub_item = 11;
+
+    uint32 tag12 = 12;
+}
+
+message ZwiftToCompanionMessageValueTwo
+{
+    // These fields are always there
+    uint32 tag1 = 1; // This will have value 2
+
+    uint32 tag2 = 2;
+    uint32 tag3 = 3;
+    uint32 tag4 = 4;
+    uint32 tag6 = 6;
+    uint32 tag7 = 7;
+ 
+    message TypeTwoSubItem
+    {
+        uint32 tag1 = 1;
+        uint32 tag2 = 2;
+        
+        message TypeTwoSubItemData
+        {
+            uint32 tag1 = 1;
+
+            message MoreData
+            {
+                uint32 tag1 = 1;
+                uint64 tag2 = 2;
+                uint32 tag3 = 3;
+                uint32 tag4 = 4;
+
+                message EvenMoreData
+                {
+                    float tag6 = 6;
+                }
+
+                EvenMoreData data = 6;
+
+                uint32 tag7 = 7;
+                uint32 tag8 = 8;
+                uint32 tag10 = 10;
+                uint32 tag11 = 11;
+                uint32 tag12 = 12;
+            }
+
+            MoreData data = 4;
+        }
+
+        TypeTwoSubItemData data = 21;
+    }
+
+    repeated TypeTwoSubItem sub_item = 11;
+
+    uint32 tag12 = 12;
+}

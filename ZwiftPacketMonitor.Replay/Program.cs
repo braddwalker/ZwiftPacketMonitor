@@ -30,26 +30,26 @@ namespace ZwiftPacketMonitor.Replay
             var logger = serviceProvider.GetService<ILogger<Program>>();
             var replay = serviceProvider.GetService<Replayer>();
             
-            replay.IncomingPlayerEvent += (s, e) =>
-            {
-                logger.LogInformation($"INCOMING: {e.PlayerState}");
-            };
-            replay.OutgoingPlayerEvent += (s, e) =>
-            {
-                logger.LogInformation($"OUTGOING: {e.PlayerState}");
-            };
-            replay.IncomingChatMessageEvent += (s, e) =>
-            {
-                logger.LogInformation($"CHAT: {e.Message}");
-            };
-            replay.IncomingPlayerEnteredWorldEvent += (s, e) =>
-            {
-                logger.LogInformation($"WORLD: {e.PlayerUpdate}");
-            };
-            replay.IncomingRideOnGivenEvent += (s, e) =>
-            {
-                logger.LogInformation($"RIDEON: {e.RideOn}");
-            };
+            //replay.IncomingPlayerEvent += (s, e) =>
+            //{
+            //    logger.LogInformation($"INCOMING: {e.PlayerState}");
+            //};
+            //replay.OutgoingPlayerEvent += (s, e) =>
+            //{
+            //    logger.LogInformation($"OUTGOING: {e.PlayerState}");
+            //};
+            //replay.IncomingChatMessageEvent += (s, e) =>
+            //{
+            //    logger.LogInformation($"CHAT: {e.Message}");
+            //};
+            //replay.IncomingPlayerEnteredWorldEvent += (s, e) =>
+            //{
+            //    logger.LogInformation($"WORLD: {e.PlayerUpdate}");
+            //};
+            //replay.IncomingRideOnGivenEvent += (s, e) =>
+            //{
+            //    logger.LogInformation($"RIDEON: {e.RideOn}");
+            //};
 
             replay.FromCapture(path);
         }

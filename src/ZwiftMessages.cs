@@ -77,43 +77,47 @@ namespace ZwiftPacketMonitor {
             "cnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3VudHJ5Q29k",
             "ZRgFIAEoBSIiCghQYXlsb2FkMhIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoAyI8",
             "CghUaW1lU3luYxIQCghyaWRlcl9pZBgBIAEoBRISCgp3b3JsZF90aW1lGAIg",
-            "ASgDEgoKAmYzGAMgASgFIgwKClBheWxvYWQxMTAiDAoKUGF5bG9hZDEwOSKx",
-            "AQoORXZlbnRQb3NpdGlvbnMSEAoIcG9zaXRpb24YASABKAUSUQoSZXZlbnRS",
-            "aWRlclBvc2l0aW9uGAQgAygLMjUuWndpZnRQYWNrZXRNb25pdG9yLkV2ZW50",
-            "UG9zaXRpb25zLkV2ZW50UmlkZXJQb3NpdGlvbhISCgpudW1fcmlkZXJzGHQg",
-            "ASgFGiYKEkV2ZW50UmlkZXJQb3NpdGlvbhIQCghyaWRlcl9pZBgBIAEoBSLB",
-            "AwoOU2VydmVyVG9DbGllbnQSDAoEdGFnMRgBIAEoBRIQCghyaWRlcl9pZBgC",
-            "IAEoBRISCgp3b3JsZF90aW1lGAMgASgDEg0KBXNlcW5vGAQgASgFEjYKDXBs",
-            "YXllcl9zdGF0ZXMYCCADKAsyHy5ad2lmdFBhY2tldE1vbml0b3IuUGxheWVy",
-            "U3RhdGUSOAoOcGxheWVyX3VwZGF0ZXMYCSADKAsyIC5ad2lmdFBhY2tldE1v",
-            "bml0b3IuUGxheWVyVXBkYXRlEg0KBXRhZzExGAsgASgDEhAKCGxvY2FsX2lw",
-            "GAwgASgJEg0KBXRhZzE1GA8gASgFEg0KBXRhZzE3GBEgASgDEhAKCG51bV9t",
-            "c2dzGBIgASgFEg4KBm1zZ251bRgTIAEoBRI7Cg9ldmVudF9wb3NpdGlvbnMY",
-            "FyABKAsyIi5ad2lmdFBhY2tldE1vbml0b3IuRXZlbnRQb3NpdGlvbnMSLQoI",
-            "c2VydmVyczEYGCABKAsyGy5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVyMRIt",
-            "CghzZXJ2ZXJzMhgZIAEoCzIbLlp3aWZ0UGFja2V0TW9uaXRvci5TZXJ2ZXIy",
-            "IlcKDVNlcnZlckFkZHJlc3MSCgoCZjEYASABKAUSCgoCZjIYAiABKAUSCgoC",
-            "aXAYAyABKAkSCgoCZjQYBCABKAUSCgoCZjUYBSABKAcSCgoCZjYYBiABKAci",
-            "ZgoKU2VydmVyUG9vbBIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoBRI0CglhZGRy",
-            "ZXNzZXMYAyADKAsyIS5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVyQWRkcmVz",
-            "cxIKCgJmNBgEIAEoBSJDCgdTZXJ2ZXIyEiwKBHBvb2wYASADKAsyHi5ad2lm",
-            "dFBhY2tldE1vbml0b3IuU2VydmVyUG9vbBIKCgJmMhgCIAEoBSJjCgdTZXJ2",
-            "ZXIxEjQKCWFkZHJlc3NlcxgBIAMoCzIhLlp3aWZ0UGFja2V0TW9uaXRvci5T",
-            "ZXJ2ZXJBZGRyZXNzEgoKAmYyGAIgASgFEgoKAmYzGAMgASgFEgoKAmY0GAQg",
-            "ASgFInUKD1dvcmxkQXR0cmlidXRlcxIQCgh3b3JsZF9pZBgBIAEoBRIMCgRu",
-            "YW1lGAIgASgJEgwKBHRhZzMYAyABKAMSDAoEdGFnNRgEIAEoAxISCgp3b3Js",
-            "ZF90aW1lGAYgASgDEhIKCmNsb2NrX3RpbWUYByABKAMiJAoOV29ybGRBdHRy",
-            "aWJ1dGUSEgoKd29ybGRfdGltZRgCIAEoAyKpAQoVRXZlbnRTdWJncm91cFBy",
-            "b3RvYnVmEgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkSDQoFcnVsZXMYCCAB",
-            "KAUSDQoFcm91dGUYFiABKAUSDAoEbGFwcxgZIAEoBRIVCg1zdGFydExvY2F0",
-            "aW9uGB0gASgFEg0KBWxhYmVsGB4gASgFEhAKCHBhY2VUeXBlGB8gASgFEhIK",
-            "CmplcnNleUhhc2gYJCABKAUihAIKD1JpZGVyQXR0cmlidXRlcxIKCgJmMhgC",
-            "IAEoBRIKCgJmMxgDIAEoBRJOChBhdHRyaWJ1dGVNZXNzYWdlGAQgASgLMjQu",
-            "WndpZnRQYWNrZXRNb25pdG9yLlJpZGVyQXR0cmlidXRlcy5BdHRyaWJ1dGVN",
-            "ZXNzYWdlEg8KB3RoZWlySWQYCiABKAUSCwoDZjEzGA0gASgFGmsKEEF0dHJp",
-            "YnV0ZU1lc3NhZ2USDAoEbXlJZBgBIAEoBRIPCgd0aGVpcklkGAIgASgFEhEK",
-            "CWZpcnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3VudHJ5",
-            "Q29kZRgFIAEoBWIGcHJvdG8z"));
+            "ASgDEgoKAmYzGAMgASgFIgwKClBheWxvYWQxMTAiDAoKUGF5bG9hZDEwOSIa",
+            "CgpQYXlsb2FkMTA2EgwKBHRhZzIYAiABKAgimwEKClBheWxvYWQxMTYSDAoE",
+            "dGFnMhgCIAEoAxIMCgR0YWc0GAQgASgMEgwKBHRhZzUYBSABKAMSDAoEdGFn",
+            "NhgGIAEoAxIMCgR0YWc3GAcgASgDEgwKBHRhZzgYCCABKAMSDAoEdGFnORgJ",
+            "IAEoAxINCgV0YWcxMRgLIAEoAxINCgV0YWcxNBgOIAEoAxINCgV0YWcxNRgP",
+            "IAEoAyKxAQoORXZlbnRQb3NpdGlvbnMSEAoIcG9zaXRpb24YASABKAUSUQoS",
+            "ZXZlbnRSaWRlclBvc2l0aW9uGAQgAygLMjUuWndpZnRQYWNrZXRNb25pdG9y",
+            "LkV2ZW50UG9zaXRpb25zLkV2ZW50UmlkZXJQb3NpdGlvbhISCgpudW1fcmlk",
+            "ZXJzGHQgASgFGiYKEkV2ZW50UmlkZXJQb3NpdGlvbhIQCghyaWRlcl9pZBgB",
+            "IAEoBSLBAwoOU2VydmVyVG9DbGllbnQSDAoEdGFnMRgBIAEoBRIQCghyaWRl",
+            "cl9pZBgCIAEoBRISCgp3b3JsZF90aW1lGAMgASgDEg0KBXNlcW5vGAQgASgF",
+            "EjYKDXBsYXllcl9zdGF0ZXMYCCADKAsyHy5ad2lmdFBhY2tldE1vbml0b3Iu",
+            "UGxheWVyU3RhdGUSOAoOcGxheWVyX3VwZGF0ZXMYCSADKAsyIC5ad2lmdFBh",
+            "Y2tldE1vbml0b3IuUGxheWVyVXBkYXRlEg0KBXRhZzExGAsgASgDEhAKCGxv",
+            "Y2FsX2lwGAwgASgJEg0KBXRhZzE1GA8gASgFEg0KBXRhZzE3GBEgASgDEhAK",
+            "CG51bV9tc2dzGBIgASgFEg4KBm1zZ251bRgTIAEoBRI7Cg9ldmVudF9wb3Np",
+            "dGlvbnMYFyABKAsyIi5ad2lmdFBhY2tldE1vbml0b3IuRXZlbnRQb3NpdGlv",
+            "bnMSLQoIc2VydmVyczEYGCABKAsyGy5ad2lmdFBhY2tldE1vbml0b3IuU2Vy",
+            "dmVyMRItCghzZXJ2ZXJzMhgZIAEoCzIbLlp3aWZ0UGFja2V0TW9uaXRvci5T",
+            "ZXJ2ZXIyIlcKDVNlcnZlckFkZHJlc3MSCgoCZjEYASABKAUSCgoCZjIYAiAB",
+            "KAUSCgoCaXAYAyABKAkSCgoCZjQYBCABKAUSCgoCZjUYBSABKAcSCgoCZjYY",
+            "BiABKAciZgoKU2VydmVyUG9vbBIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoBRI0",
+            "CglhZGRyZXNzZXMYAyADKAsyIS5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVy",
+            "QWRkcmVzcxIKCgJmNBgEIAEoBSJDCgdTZXJ2ZXIyEiwKBHBvb2wYASADKAsy",
+            "Hi5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVyUG9vbBIKCgJmMhgCIAEoBSJj",
+            "CgdTZXJ2ZXIxEjQKCWFkZHJlc3NlcxgBIAMoCzIhLlp3aWZ0UGFja2V0TW9u",
+            "aXRvci5TZXJ2ZXJBZGRyZXNzEgoKAmYyGAIgASgFEgoKAmYzGAMgASgFEgoK",
+            "AmY0GAQgASgFInUKD1dvcmxkQXR0cmlidXRlcxIQCgh3b3JsZF9pZBgBIAEo",
+            "BRIMCgRuYW1lGAIgASgJEgwKBHRhZzMYAyABKAMSDAoEdGFnNRgEIAEoAxIS",
+            "Cgp3b3JsZF90aW1lGAYgASgDEhIKCmNsb2NrX3RpbWUYByABKAMiJAoOV29y",
+            "bGRBdHRyaWJ1dGUSEgoKd29ybGRfdGltZRgCIAEoAyKpAQoVRXZlbnRTdWJn",
+            "cm91cFByb3RvYnVmEgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkSDQoFcnVs",
+            "ZXMYCCABKAUSDQoFcm91dGUYFiABKAUSDAoEbGFwcxgZIAEoBRIVCg1zdGFy",
+            "dExvY2F0aW9uGB0gASgFEg0KBWxhYmVsGB4gASgFEhAKCHBhY2VUeXBlGB8g",
+            "ASgFEhIKCmplcnNleUhhc2gYJCABKAUihAIKD1JpZGVyQXR0cmlidXRlcxIK",
+            "CgJmMhgCIAEoBRIKCgJmMxgDIAEoBRJOChBhdHRyaWJ1dGVNZXNzYWdlGAQg",
+            "ASgLMjQuWndpZnRQYWNrZXRNb25pdG9yLlJpZGVyQXR0cmlidXRlcy5BdHRy",
+            "aWJ1dGVNZXNzYWdlEg8KB3RoZWlySWQYCiABKAUSCwoDZjEzGA0gASgFGmsK",
+            "EEF0dHJpYnV0ZU1lc3NhZ2USDAoEbXlJZBgBIAEoBRIPCgd0aGVpcklkGAIg",
+            "ASgFEhEKCWZpcnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtj",
+            "b3VudHJ5Q29kZRgFIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -130,6 +134,8 @@ namespace ZwiftPacketMonitor {
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.TimeSync), global::ZwiftPacketMonitor.TimeSync.Parser, new[]{ "RiderId", "WorldTime", "F3" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload110), global::ZwiftPacketMonitor.Payload110.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload109), global::ZwiftPacketMonitor.Payload109.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload106), global::ZwiftPacketMonitor.Payload106.Parser, new[]{ "Tag2" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload116), global::ZwiftPacketMonitor.Payload116.Parser, new[]{ "Tag2", "Tag4", "Tag5", "Tag6", "Tag7", "Tag8", "Tag9", "Tag11", "Tag14", "Tag15" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventPositions), global::ZwiftPacketMonitor.EventPositions.Parser, new[]{ "Position", "EventRiderPosition", "NumRiders" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition), global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition.Parser, new[]{ "RiderId" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ServerToClient), global::ZwiftPacketMonitor.ServerToClient.Parser, new[]{ "Tag1", "RiderId", "WorldTime", "Seqno", "PlayerStates", "PlayerUpdates", "Tag11", "LocalIp", "Tag15", "Tag17", "NumMsgs", "Msgnum", "EventPositions", "Servers1", "Servers2" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ServerAddress), global::ZwiftPacketMonitor.ServerAddress.Parser, new[]{ "F1", "F2", "Ip", "F4", "F5", "F6" }, null, null, null, null),
@@ -154,19 +160,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<Meetup> _parser = new pb::MessageParser<Meetup>(() => new Meetup());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Meetup> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Meetup() {
       OnConstruction();
     }
@@ -174,6 +184,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Meetup(Meetup other) : this() {
       id_ = other.id_;
       tag2_ = other.tag2_;
@@ -201,6 +212,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Meetup Clone() {
       return new Meetup(this);
     }
@@ -209,6 +221,7 @@ namespace ZwiftPacketMonitor {
     public const int IdFieldNumber = 1;
     private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Id {
       get { return id_; }
       set {
@@ -220,6 +233,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag2FieldNumber = 2;
     private int tag2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Tag2 {
       get { return tag2_; }
       set {
@@ -231,6 +245,7 @@ namespace ZwiftPacketMonitor {
     public const int NameFieldNumber = 3;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Name {
       get { return name_; }
       set {
@@ -242,6 +257,7 @@ namespace ZwiftPacketMonitor {
     public const int DescriptionFieldNumber = 4;
     private string description_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Description {
       get { return description_; }
       set {
@@ -253,6 +269,7 @@ namespace ZwiftPacketMonitor {
     public const int StartTimeFieldNumber = 5;
     private long startTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long StartTime {
       get { return startTime_; }
       set {
@@ -264,6 +281,7 @@ namespace ZwiftPacketMonitor {
     public const int DistanceFieldNumber = 7;
     private uint distance_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Distance {
       get { return distance_; }
       set {
@@ -275,6 +293,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag8FieldNumber = 8;
     private int tag8_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Tag8 {
       get { return tag8_; }
       set {
@@ -286,6 +305,7 @@ namespace ZwiftPacketMonitor {
     public const int MeetupInnerFieldNumber = 10;
     private global::ZwiftPacketMonitor.Meetup.Types.MeetupInner meetupInner_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::ZwiftPacketMonitor.Meetup.Types.MeetupInner MeetupInner {
       get { return meetupInner_; }
       set {
@@ -297,6 +317,7 @@ namespace ZwiftPacketMonitor {
     public const int ThumbnailFieldNumber = 12;
     private string thumbnail_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Thumbnail {
       get { return thumbnail_; }
       set {
@@ -308,6 +329,7 @@ namespace ZwiftPacketMonitor {
     public const int DurationFieldNumber = 13;
     private int duration_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Duration {
       get { return duration_; }
       set {
@@ -319,6 +341,7 @@ namespace ZwiftPacketMonitor {
     public const int F14FieldNumber = 14;
     private long f14_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long F14 {
       get { return f14_; }
       set {
@@ -330,6 +353,7 @@ namespace ZwiftPacketMonitor {
     public const int F17FieldNumber = 17;
     private int f17_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F17 {
       get { return f17_; }
       set {
@@ -341,6 +365,7 @@ namespace ZwiftPacketMonitor {
     public const int F18FieldNumber = 18;
     private int f18_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F18 {
       get { return f18_; }
       set {
@@ -352,6 +377,7 @@ namespace ZwiftPacketMonitor {
     public const int F22FieldNumber = 22;
     private int f22_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F22 {
       get { return f22_; }
       set {
@@ -363,6 +389,7 @@ namespace ZwiftPacketMonitor {
     public const int F23FieldNumber = 23;
     private int f23_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F23 {
       get { return f23_; }
       set {
@@ -374,6 +401,7 @@ namespace ZwiftPacketMonitor {
     public const int MeetupOnlyViewFieldNumber = 24;
     private int meetupOnlyView_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int MeetupOnlyView {
       get { return meetupOnlyView_; }
       set {
@@ -385,6 +413,7 @@ namespace ZwiftPacketMonitor {
     public const int F25FieldNumber = 25;
     private int f25_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F25 {
       get { return f25_; }
       set {
@@ -396,6 +425,7 @@ namespace ZwiftPacketMonitor {
     public const int F27FieldNumber = 27;
     private int f27_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F27 {
       get { return f27_; }
       set {
@@ -407,6 +437,7 @@ namespace ZwiftPacketMonitor {
     public const int F28FieldNumber = 28;
     private int f28_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F28 {
       get { return f28_; }
       set {
@@ -418,6 +449,7 @@ namespace ZwiftPacketMonitor {
     public const int F29FieldNumber = 29;
     private int f29_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F29 {
       get { return f29_; }
       set {
@@ -429,6 +461,7 @@ namespace ZwiftPacketMonitor {
     public const int F34FieldNumber = 34;
     private int f34_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F34 {
       get { return f34_; }
       set {
@@ -440,6 +473,7 @@ namespace ZwiftPacketMonitor {
     public const int F35FieldNumber = 35;
     private int f35_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F35 {
       get { return f35_; }
       set {
@@ -448,11 +482,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as Meetup);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(Meetup other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -486,6 +522,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
@@ -517,11 +554,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -622,6 +661,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
         output.WriteRawTag(8);
@@ -718,6 +758,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Id != 0) {
@@ -793,6 +834,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Meetup other) {
       if (other == null) {
         return;
@@ -870,6 +912,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -978,6 +1021,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -1084,6 +1128,7 @@ namespace ZwiftPacketMonitor {
     #region Nested types
     /// <summary>Container for nested types declared in the Meetup message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static partial class Types {
       public sealed partial class MeetupInner : pb::IMessage<MeetupInner>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1093,19 +1138,23 @@ namespace ZwiftPacketMonitor {
         private static readonly pb::MessageParser<MeetupInner> _parser = new pb::MessageParser<MeetupInner>(() => new MeetupInner());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pb::MessageParser<MeetupInner> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pbr::MessageDescriptor Descriptor {
           get { return global::ZwiftPacketMonitor.Meetup.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         pbr::MessageDescriptor pb::IMessage.Descriptor {
           get { return Descriptor; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public MeetupInner() {
           OnConstruction();
         }
@@ -1113,6 +1162,7 @@ namespace ZwiftPacketMonitor {
         partial void OnConstruction();
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public MeetupInner(MeetupInner other) : this() {
           id_ = other.id_;
           name_ = other.name_;
@@ -1146,6 +1196,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public MeetupInner Clone() {
           return new MeetupInner(this);
         }
@@ -1154,6 +1205,7 @@ namespace ZwiftPacketMonitor {
         public const int IdFieldNumber = 1;
         private int id_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int Id {
           get { return id_; }
           set {
@@ -1165,6 +1217,7 @@ namespace ZwiftPacketMonitor {
         public const int NameFieldNumber = 2;
         private string name_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string Name {
           get { return name_; }
           set {
@@ -1176,6 +1229,7 @@ namespace ZwiftPacketMonitor {
         public const int DescriptionFieldNumber = 3;
         private string description_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string Description {
           get { return description_; }
           set {
@@ -1187,6 +1241,7 @@ namespace ZwiftPacketMonitor {
         public const int F7FieldNumber = 7;
         private string f7_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string F7 {
           get { return f7_; }
           set {
@@ -1198,6 +1253,7 @@ namespace ZwiftPacketMonitor {
         public const int F8FieldNumber = 8;
         private long f8_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F8 {
           get { return f8_; }
           set {
@@ -1209,6 +1265,7 @@ namespace ZwiftPacketMonitor {
         public const int F9FieldNumber = 9;
         private long f9_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F9 {
           get { return f9_; }
           set {
@@ -1220,6 +1277,7 @@ namespace ZwiftPacketMonitor {
         public const int F10FieldNumber = 10;
         private long f10_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F10 {
           get { return f10_; }
           set {
@@ -1231,6 +1289,7 @@ namespace ZwiftPacketMonitor {
         public const int F11FieldNumber = 11;
         private long f11_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F11 {
           get { return f11_; }
           set {
@@ -1242,6 +1301,7 @@ namespace ZwiftPacketMonitor {
         public const int F12FieldNumber = 12;
         private long f12_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F12 {
           get { return f12_; }
           set {
@@ -1253,6 +1313,7 @@ namespace ZwiftPacketMonitor {
         public const int F13FieldNumber = 13;
         private long f13_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F13 {
           get { return f13_; }
           set {
@@ -1264,6 +1325,7 @@ namespace ZwiftPacketMonitor {
         public const int F14FieldNumber = 14;
         private long f14_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F14 {
           get { return f14_; }
           set {
@@ -1275,6 +1337,7 @@ namespace ZwiftPacketMonitor {
         public const int F15FieldNumber = 15;
         private long f15_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F15 {
           get { return f15_; }
           set {
@@ -1286,6 +1349,7 @@ namespace ZwiftPacketMonitor {
         public const int F16FieldNumber = 16;
         private long f16_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F16 {
           get { return f16_; }
           set {
@@ -1297,6 +1361,7 @@ namespace ZwiftPacketMonitor {
         public const int F17FieldNumber = 17;
         private long f17_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F17 {
           get { return f17_; }
           set {
@@ -1308,6 +1373,7 @@ namespace ZwiftPacketMonitor {
         public const int F18FieldNumber = 18;
         private long f18_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F18 {
           get { return f18_; }
           set {
@@ -1319,6 +1385,7 @@ namespace ZwiftPacketMonitor {
         public const int F22FieldNumber = 22;
         private long f22_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F22 {
           get { return f22_; }
           set {
@@ -1330,6 +1397,7 @@ namespace ZwiftPacketMonitor {
         public const int DistanceFieldNumber = 24;
         private uint distance_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public uint Distance {
           get { return distance_; }
           set {
@@ -1341,6 +1409,7 @@ namespace ZwiftPacketMonitor {
         public const int F25FieldNumber = 25;
         private long f25_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F25 {
           get { return f25_; }
           set {
@@ -1352,6 +1421,7 @@ namespace ZwiftPacketMonitor {
         public const int F29FieldNumber = 29;
         private int f29_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int F29 {
           get { return f29_; }
           set {
@@ -1363,6 +1433,7 @@ namespace ZwiftPacketMonitor {
         public const int F30FieldNumber = 30;
         private int f30_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int F30 {
           get { return f30_; }
           set {
@@ -1374,6 +1445,7 @@ namespace ZwiftPacketMonitor {
         public const int F31FieldNumber = 31;
         private int f31_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int F31 {
           get { return f31_; }
           set {
@@ -1385,6 +1457,7 @@ namespace ZwiftPacketMonitor {
         public const int F32FieldNumber = 32;
         private uint f32_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public uint F32 {
           get { return f32_; }
           set {
@@ -1396,6 +1469,7 @@ namespace ZwiftPacketMonitor {
         public const int F33FieldNumber = 33;
         private uint f33_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public uint F33 {
           get { return f33_; }
           set {
@@ -1407,6 +1481,7 @@ namespace ZwiftPacketMonitor {
         public const int DurationFieldNumber = 34;
         private int duration_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int Duration {
           get { return duration_; }
           set {
@@ -1418,6 +1493,7 @@ namespace ZwiftPacketMonitor {
         public const int F42FieldNumber = 42;
         private long f42_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F42 {
           get { return f42_; }
           set {
@@ -1429,6 +1505,7 @@ namespace ZwiftPacketMonitor {
         public const int F44FieldNumber = 44;
         private long f44_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public long F44 {
           get { return f44_; }
           set {
@@ -1440,6 +1517,7 @@ namespace ZwiftPacketMonitor {
         public const int F46FieldNumber = 46;
         private int f46_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int F46 {
           get { return f46_; }
           set {
@@ -1451,6 +1529,7 @@ namespace ZwiftPacketMonitor {
         public const int F47FieldNumber = 47;
         private int f47_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int F47 {
           get { return f47_; }
           set {
@@ -1459,11 +1538,13 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
           return Equals(other as MeetupInner);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public bool Equals(MeetupInner other) {
           if (ReferenceEquals(other, null)) {
             return false;
@@ -1503,6 +1584,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override int GetHashCode() {
           int hash = 1;
           if (Id != 0) hash ^= Id.GetHashCode();
@@ -1540,11 +1622,13 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override string ToString() {
           return pb::JsonFormatter.ToDiagnosticString(this);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void WriteTo(pb::CodedOutputStream output) {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           output.WriteRawMessage(this);
@@ -1669,6 +1753,7 @@ namespace ZwiftPacketMonitor {
 
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
           if (Id != 0) {
             output.WriteRawTag(8);
@@ -1789,6 +1874,7 @@ namespace ZwiftPacketMonitor {
         #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int CalculateSize() {
           int size = 0;
           if (Id != 0) {
@@ -1882,6 +1968,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void MergeFrom(MeetupInner other) {
           if (other == null) {
             return;
@@ -1974,6 +2061,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void MergeFrom(pb::CodedInputStream input) {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           input.ReadRawMessage(this);
@@ -2103,6 +2191,7 @@ namespace ZwiftPacketMonitor {
 
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
@@ -2242,19 +2331,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<PlayerState> _parser = new pb::MessageParser<PlayerState>(() => new PlayerState());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<PlayerState> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerState() {
       OnConstruction();
     }
@@ -2262,6 +2355,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerState(PlayerState other) : this() {
       id_ = other.id_;
       worldTime_ = other.worldTime_;
@@ -2294,6 +2388,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerState Clone() {
       return new PlayerState(this);
     }
@@ -2302,6 +2397,7 @@ namespace ZwiftPacketMonitor {
     public const int IdFieldNumber = 1;
     private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Id {
       get { return id_; }
       set {
@@ -2313,6 +2409,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 2;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -2324,6 +2421,7 @@ namespace ZwiftPacketMonitor {
     public const int DistanceFieldNumber = 3;
     private int distance_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Distance {
       get { return distance_; }
       set {
@@ -2335,6 +2433,7 @@ namespace ZwiftPacketMonitor {
     public const int RoadTimeFieldNumber = 4;
     private int roadTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RoadTime {
       get { return roadTime_; }
       set {
@@ -2346,6 +2445,7 @@ namespace ZwiftPacketMonitor {
     public const int LapsFieldNumber = 5;
     private int laps_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Laps {
       get { return laps_; }
       set {
@@ -2357,6 +2457,7 @@ namespace ZwiftPacketMonitor {
     public const int SpeedFieldNumber = 6;
     private int speed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Speed {
       get { return speed_; }
       set {
@@ -2368,6 +2469,7 @@ namespace ZwiftPacketMonitor {
     public const int RoadPositionFieldNumber = 8;
     private int roadPosition_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RoadPosition {
       get { return roadPosition_; }
       set {
@@ -2379,6 +2481,7 @@ namespace ZwiftPacketMonitor {
     public const int CadenceUHzFieldNumber = 9;
     private int cadenceUHz_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CadenceUHz {
       get { return cadenceUHz_; }
       set {
@@ -2390,6 +2493,7 @@ namespace ZwiftPacketMonitor {
     public const int HeartrateFieldNumber = 11;
     private int heartrate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Heartrate {
       get { return heartrate_; }
       set {
@@ -2401,6 +2505,7 @@ namespace ZwiftPacketMonitor {
     public const int PowerFieldNumber = 12;
     private int power_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Power {
       get { return power_; }
       set {
@@ -2412,6 +2517,7 @@ namespace ZwiftPacketMonitor {
     public const int HeadingFieldNumber = 13;
     private long heading_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Heading {
       get { return heading_; }
       set {
@@ -2423,6 +2529,7 @@ namespace ZwiftPacketMonitor {
     public const int LeanFieldNumber = 14;
     private int lean_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Lean {
       get { return lean_; }
       set {
@@ -2434,6 +2541,7 @@ namespace ZwiftPacketMonitor {
     public const int ClimbingFieldNumber = 15;
     private int climbing_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Climbing {
       get { return climbing_; }
       set {
@@ -2445,6 +2553,7 @@ namespace ZwiftPacketMonitor {
     public const int TimeFieldNumber = 16;
     private int time_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Time {
       get { return time_; }
       set {
@@ -2456,6 +2565,7 @@ namespace ZwiftPacketMonitor {
     public const int F19FieldNumber = 19;
     private int f19_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F19 {
       get { return f19_; }
       set {
@@ -2467,6 +2577,7 @@ namespace ZwiftPacketMonitor {
     public const int F20FieldNumber = 20;
     private int f20_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F20 {
       get { return f20_; }
       set {
@@ -2478,6 +2589,7 @@ namespace ZwiftPacketMonitor {
     public const int ProgressFieldNumber = 21;
     private int progress_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Progress {
       get { return progress_; }
       set {
@@ -2489,6 +2601,7 @@ namespace ZwiftPacketMonitor {
     public const int CustomisationIdFieldNumber = 22;
     private long customisationId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long CustomisationId {
       get { return customisationId_; }
       set {
@@ -2500,6 +2613,7 @@ namespace ZwiftPacketMonitor {
     public const int JustWatchingFieldNumber = 23;
     private int justWatching_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int JustWatching {
       get { return justWatching_; }
       set {
@@ -2511,6 +2625,7 @@ namespace ZwiftPacketMonitor {
     public const int CaloriesFieldNumber = 24;
     private int calories_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Calories {
       get { return calories_; }
       set {
@@ -2522,6 +2637,7 @@ namespace ZwiftPacketMonitor {
     public const int XFieldNumber = 25;
     private float x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float X {
       get { return x_; }
       set {
@@ -2533,6 +2649,7 @@ namespace ZwiftPacketMonitor {
     public const int AltitudeFieldNumber = 26;
     private float altitude_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float Altitude {
       get { return altitude_; }
       set {
@@ -2544,6 +2661,7 @@ namespace ZwiftPacketMonitor {
     public const int YFieldNumber = 27;
     private float y_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float Y {
       get { return y_; }
       set {
@@ -2555,6 +2673,7 @@ namespace ZwiftPacketMonitor {
     public const int WatchingRiderIdFieldNumber = 28;
     private int watchingRiderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int WatchingRiderId {
       get { return watchingRiderId_; }
       set {
@@ -2566,6 +2685,7 @@ namespace ZwiftPacketMonitor {
     public const int GroupIdFieldNumber = 29;
     private int groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int GroupId {
       get { return groupId_; }
       set {
@@ -2577,6 +2697,7 @@ namespace ZwiftPacketMonitor {
     public const int SportFieldNumber = 31;
     private long sport_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Sport {
       get { return sport_; }
       set {
@@ -2591,6 +2712,7 @@ namespace ZwiftPacketMonitor {
     /// actual distance moved included lateral movement
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float F34 {
       get { return f34_; }
       set {
@@ -2599,11 +2721,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as PlayerState);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(PlayerState other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -2642,6 +2766,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
@@ -2678,11 +2803,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -2803,6 +2930,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
         output.WriteRawTag(8);
@@ -2919,6 +3047,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Id != 0) {
@@ -3009,6 +3138,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(PlayerState other) {
       if (other == null) {
         return;
@@ -3098,6 +3228,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -3223,6 +3354,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -3353,19 +3485,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<ClientToServer> _parser = new pb::MessageParser<ClientToServer>(() => new ClientToServer());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<ClientToServer> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientToServer() {
       OnConstruction();
     }
@@ -3373,6 +3509,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientToServer(ClientToServer other) : this() {
       connected_ = other.connected_;
       riderId_ = other.riderId_;
@@ -3388,6 +3525,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientToServer Clone() {
       return new ClientToServer(this);
     }
@@ -3396,6 +3534,7 @@ namespace ZwiftPacketMonitor {
     public const int ConnectedFieldNumber = 1;
     private int connected_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Connected {
       get { return connected_; }
       set {
@@ -3407,6 +3546,7 @@ namespace ZwiftPacketMonitor {
     public const int RiderIdFieldNumber = 2;
     private int riderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RiderId {
       get { return riderId_; }
       set {
@@ -3418,6 +3558,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 3;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -3429,6 +3570,7 @@ namespace ZwiftPacketMonitor {
     public const int SeqnoFieldNumber = 4;
     private int seqno_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Seqno {
       get { return seqno_; }
       set {
@@ -3440,6 +3582,7 @@ namespace ZwiftPacketMonitor {
     public const int StateFieldNumber = 7;
     private global::ZwiftPacketMonitor.PlayerState state_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::ZwiftPacketMonitor.PlayerState State {
       get { return state_; }
       set {
@@ -3451,6 +3594,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag8FieldNumber = 8;
     private long tag8_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag8 {
       get { return tag8_; }
       set {
@@ -3462,6 +3606,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag9FieldNumber = 9;
     private long tag9_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag9 {
       get { return tag9_; }
       set {
@@ -3473,6 +3618,7 @@ namespace ZwiftPacketMonitor {
     public const int LastUpdateFieldNumber = 10;
     private long lastUpdate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long LastUpdate {
       get { return lastUpdate_; }
       set {
@@ -3484,6 +3630,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag11FieldNumber = 11;
     private long tag11_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag11 {
       get { return tag11_; }
       set {
@@ -3495,6 +3642,7 @@ namespace ZwiftPacketMonitor {
     public const int LastPlayerUpdateFieldNumber = 12;
     private long lastPlayerUpdate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long LastPlayerUpdate {
       get { return lastPlayerUpdate_; }
       set {
@@ -3503,11 +3651,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as ClientToServer);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(ClientToServer other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -3529,6 +3679,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Connected != 0) hash ^= Connected.GetHashCode();
@@ -3548,11 +3699,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -3605,6 +3758,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Connected != 0) {
         output.WriteRawTag(8);
@@ -3653,6 +3807,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Connected != 0) {
@@ -3692,6 +3847,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(ClientToServer other) {
       if (other == null) {
         return;
@@ -3733,6 +3889,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -3793,6 +3950,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -3863,19 +4021,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<UnknownMessage1> _parser = new pb::MessageParser<UnknownMessage1>(() => new UnknownMessage1());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<UnknownMessage1> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UnknownMessage1() {
       OnConstruction();
     }
@@ -3883,21 +4045,25 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UnknownMessage1(UnknownMessage1 other) : this() {
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UnknownMessage1 Clone() {
       return new UnknownMessage1(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as UnknownMessage1);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(UnknownMessage1 other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -3909,6 +4075,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (_unknownFields != null) {
@@ -3918,11 +4085,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -3935,6 +4104,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3943,6 +4113,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (_unknownFields != null) {
@@ -3952,6 +4123,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(UnknownMessage1 other) {
       if (other == null) {
         return;
@@ -3960,6 +4132,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -3977,6 +4150,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -4003,19 +4177,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<UnknownMessage> _parser = new pb::MessageParser<UnknownMessage>(() => new UnknownMessage());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<UnknownMessage> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UnknownMessage() {
       OnConstruction();
     }
@@ -4023,21 +4201,25 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UnknownMessage(UnknownMessage other) : this() {
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UnknownMessage Clone() {
       return new UnknownMessage(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as UnknownMessage);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(UnknownMessage other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -4049,6 +4231,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (_unknownFields != null) {
@@ -4058,11 +4241,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -4075,6 +4260,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -4083,6 +4269,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (_unknownFields != null) {
@@ -4092,6 +4279,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(UnknownMessage other) {
       if (other == null) {
         return;
@@ -4100,6 +4288,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -4117,6 +4306,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -4139,19 +4329,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<PlayerUpdate> _parser = new pb::MessageParser<PlayerUpdate>(() => new PlayerUpdate());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<PlayerUpdate> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerUpdate() {
       OnConstruction();
     }
@@ -4159,6 +4353,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerUpdate(PlayerUpdate other) : this() {
       tag1_ = other.tag1_;
       tag2_ = other.tag2_;
@@ -4177,6 +4372,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerUpdate Clone() {
       return new PlayerUpdate(this);
     }
@@ -4185,6 +4381,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag1FieldNumber = 1;
     private long tag1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag1 {
       get { return tag1_; }
       set {
@@ -4196,6 +4393,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag2FieldNumber = 2;
     private int tag2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Tag2 {
       get { return tag2_; }
       set {
@@ -4207,6 +4405,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag3FieldNumber = 3;
     private int tag3_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Tag3 {
       get { return tag3_; }
       set {
@@ -4218,6 +4417,7 @@ namespace ZwiftPacketMonitor {
     public const int PayloadFieldNumber = 4;
     private pb::ByteString payload_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pb::ByteString Payload {
       get { return payload_; }
       set {
@@ -4229,6 +4429,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag5FieldNumber = 5;
     private long tag5_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag5 {
       get { return tag5_; }
       set {
@@ -4240,6 +4441,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag6FieldNumber = 6;
     private long tag6_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag6 {
       get { return tag6_; }
       set {
@@ -4251,6 +4453,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag7FieldNumber = 7;
     private long tag7_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag7 {
       get { return tag7_; }
       set {
@@ -4262,6 +4465,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag8FieldNumber = 8;
     private long tag8_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag8 {
       get { return tag8_; }
       set {
@@ -4273,6 +4477,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag9FieldNumber = 9;
     private long tag9_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag9 {
       get { return tag9_; }
       set {
@@ -4284,6 +4489,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag11FieldNumber = 11;
     private long tag11_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag11 {
       get { return tag11_; }
       set {
@@ -4295,6 +4501,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag12FieldNumber = 12;
     private long tag12_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag12 {
       get { return tag12_; }
       set {
@@ -4306,6 +4513,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag14FieldNumber = 14;
     private long tag14_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag14 {
       get { return tag14_; }
       set {
@@ -4317,6 +4525,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag15FieldNumber = 15;
     private long tag15_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag15 {
       get { return tag15_; }
       set {
@@ -4325,11 +4534,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as PlayerUpdate);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(PlayerUpdate other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -4354,6 +4565,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Tag1 != 0L) hash ^= Tag1.GetHashCode();
@@ -4376,11 +4588,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -4445,6 +4659,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Tag1 != 0L) {
         output.WriteRawTag(8);
@@ -4505,6 +4720,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Tag1 != 0L) {
@@ -4553,6 +4769,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(PlayerUpdate other) {
       if (other == null) {
         return;
@@ -4600,6 +4817,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -4669,6 +4887,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -4746,19 +4965,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<Payload105> _parser = new pb::MessageParser<Payload105>(() => new Payload105());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Payload105> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload105() {
       OnConstruction();
     }
@@ -4766,6 +4989,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload105(Payload105 other) : this() {
       f1_ = other.f1_;
       riderId_ = other.riderId_;
@@ -4788,6 +5012,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload105 Clone() {
       return new Payload105(this);
     }
@@ -4796,6 +5021,7 @@ namespace ZwiftPacketMonitor {
     public const int F1FieldNumber = 1;
     private long f1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long F1 {
       get { return f1_; }
       set {
@@ -4807,6 +5033,7 @@ namespace ZwiftPacketMonitor {
     public const int RiderIdFieldNumber = 2;
     private int riderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RiderId {
       get { return riderId_; }
       set {
@@ -4818,6 +5045,7 @@ namespace ZwiftPacketMonitor {
     public const int F3FieldNumber = 3;
     private int f3_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F3 {
       get { return f3_; }
       set {
@@ -4832,6 +5060,7 @@ namespace ZwiftPacketMonitor {
     /// int32?
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long F4 {
       get { return f4_; }
       set {
@@ -4843,6 +5072,7 @@ namespace ZwiftPacketMonitor {
     public const int F5FieldNumber = 5;
     private long f5_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long F5 {
       get { return f5_; }
       set {
@@ -4857,6 +5087,7 @@ namespace ZwiftPacketMonitor {
     /// int32?
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long F6 {
       get { return f6_; }
       set {
@@ -4868,6 +5099,7 @@ namespace ZwiftPacketMonitor {
     public const int FirstNameFieldNumber = 7;
     private string firstName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string FirstName {
       get { return firstName_; }
       set {
@@ -4879,6 +5111,7 @@ namespace ZwiftPacketMonitor {
     public const int LastNameFieldNumber = 8;
     private string lastName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LastName {
       get { return lastName_; }
       set {
@@ -4890,6 +5123,7 @@ namespace ZwiftPacketMonitor {
     public const int F9FieldNumber = 9;
     private long f9_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long F9 {
       get { return f9_; }
       set {
@@ -4901,6 +5135,7 @@ namespace ZwiftPacketMonitor {
     public const int F11FieldNumber = 11;
     private long f11_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long F11 {
       get { return f11_; }
       set {
@@ -4912,6 +5147,7 @@ namespace ZwiftPacketMonitor {
     public const int F12FieldNumber = 12;
     private int f12_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F12 {
       get { return f12_; }
       set {
@@ -4923,6 +5159,7 @@ namespace ZwiftPacketMonitor {
     public const int F13FieldNumber = 13;
     private int f13_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F13 {
       get { return f13_; }
       set {
@@ -4934,6 +5171,7 @@ namespace ZwiftPacketMonitor {
     public const int F14FieldNumber = 14;
     private int f14_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F14 {
       get { return f14_; }
       set {
@@ -4945,6 +5183,7 @@ namespace ZwiftPacketMonitor {
     public const int F15FieldNumber = 15;
     private int f15_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F15 {
       get { return f15_; }
       set {
@@ -4956,6 +5195,7 @@ namespace ZwiftPacketMonitor {
     public const int F16FieldNumber = 16;
     private int f16_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F16 {
       get { return f16_; }
       set {
@@ -4967,6 +5207,7 @@ namespace ZwiftPacketMonitor {
     public const int F7DateFieldNumber = 17;
     private string f7Date_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string F7Date {
       get { return f7Date_; }
       set {
@@ -4978,6 +5219,7 @@ namespace ZwiftPacketMonitor {
     public const int F19FieldNumber = 19;
     private int f19_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F19 {
       get { return f19_; }
       set {
@@ -4986,11 +5228,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as Payload105);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(Payload105 other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -5019,6 +5263,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (F1 != 0L) hash ^= F1.GetHashCode();
@@ -5045,11 +5290,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -5130,6 +5377,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (F1 != 0L) {
         output.WriteRawTag(8);
@@ -5206,6 +5454,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (F1 != 0L) {
@@ -5266,6 +5515,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Payload105 other) {
       if (other == null) {
         return;
@@ -5325,6 +5575,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -5410,6 +5661,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -5500,19 +5752,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<Chat> _parser = new pb::MessageParser<Chat>(() => new Chat());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Chat> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Chat() {
       OnConstruction();
     }
@@ -5520,6 +5776,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Chat(Chat other) : this() {
       riderId_ = other.riderId_;
       toRiderId_ = other.toRiderId_;
@@ -5534,6 +5791,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Chat Clone() {
       return new Chat(this);
     }
@@ -5542,6 +5800,7 @@ namespace ZwiftPacketMonitor {
     public const int RiderIdFieldNumber = 1;
     private int riderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RiderId {
       get { return riderId_; }
       set {
@@ -5556,6 +5815,7 @@ namespace ZwiftPacketMonitor {
     /// 0 if public message
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ToRiderId {
       get { return toRiderId_; }
       set {
@@ -5570,6 +5830,7 @@ namespace ZwiftPacketMonitor {
     /// always value 1 ?
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F3 {
       get { return f3_; }
       set {
@@ -5581,6 +5842,7 @@ namespace ZwiftPacketMonitor {
     public const int FirstNameFieldNumber = 4;
     private string firstName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string FirstName {
       get { return firstName_; }
       set {
@@ -5592,6 +5854,7 @@ namespace ZwiftPacketMonitor {
     public const int LastNameFieldNumber = 5;
     private string lastName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LastName {
       get { return lastName_; }
       set {
@@ -5603,6 +5866,7 @@ namespace ZwiftPacketMonitor {
     public const int MessageFieldNumber = 6;
     private string message_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Message {
       get { return message_; }
       set {
@@ -5614,6 +5878,7 @@ namespace ZwiftPacketMonitor {
     public const int AvatarFieldNumber = 7;
     private string avatar_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Avatar {
       get { return avatar_; }
       set {
@@ -5625,6 +5890,7 @@ namespace ZwiftPacketMonitor {
     public const int CountryCodeFieldNumber = 8;
     private int countryCode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CountryCode {
       get { return countryCode_; }
       set {
@@ -5636,6 +5902,7 @@ namespace ZwiftPacketMonitor {
     public const int EventSubgroupFieldNumber = 11;
     private int eventSubgroup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int EventSubgroup {
       get { return eventSubgroup_; }
       set {
@@ -5644,11 +5911,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as Chat);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(Chat other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -5669,6 +5938,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (RiderId != 0) hash ^= RiderId.GetHashCode();
@@ -5687,11 +5957,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -5740,6 +6012,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (RiderId != 0) {
         output.WriteRawTag(8);
@@ -5784,6 +6057,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (RiderId != 0) {
@@ -5820,6 +6094,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Chat other) {
       if (other == null) {
         return;
@@ -5855,6 +6130,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -5908,6 +6184,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -5966,19 +6243,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<RideOn> _parser = new pb::MessageParser<RideOn>(() => new RideOn());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<RideOn> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RideOn() {
       OnConstruction();
     }
@@ -5986,6 +6267,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RideOn(RideOn other) : this() {
       riderId_ = other.riderId_;
       toRiderId_ = other.toRiderId_;
@@ -5996,6 +6278,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RideOn Clone() {
       return new RideOn(this);
     }
@@ -6004,6 +6287,7 @@ namespace ZwiftPacketMonitor {
     public const int RiderIdFieldNumber = 1;
     private int riderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RiderId {
       get { return riderId_; }
       set {
@@ -6015,6 +6299,7 @@ namespace ZwiftPacketMonitor {
     public const int ToRiderIdFieldNumber = 2;
     private int toRiderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int ToRiderId {
       get { return toRiderId_; }
       set {
@@ -6026,6 +6311,7 @@ namespace ZwiftPacketMonitor {
     public const int FirstNameFieldNumber = 3;
     private string firstName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string FirstName {
       get { return firstName_; }
       set {
@@ -6037,6 +6323,7 @@ namespace ZwiftPacketMonitor {
     public const int LastNameFieldNumber = 4;
     private string lastName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LastName {
       get { return lastName_; }
       set {
@@ -6048,6 +6335,7 @@ namespace ZwiftPacketMonitor {
     public const int CountryCodeFieldNumber = 5;
     private int countryCode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CountryCode {
       get { return countryCode_; }
       set {
@@ -6056,11 +6344,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as RideOn);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(RideOn other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -6077,6 +6367,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (RiderId != 0) hash ^= RiderId.GetHashCode();
@@ -6091,11 +6382,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -6128,6 +6421,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (RiderId != 0) {
         output.WriteRawTag(8);
@@ -6156,6 +6450,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (RiderId != 0) {
@@ -6180,6 +6475,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(RideOn other) {
       if (other == null) {
         return;
@@ -6203,6 +6499,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -6240,6 +6537,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -6282,19 +6580,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<Payload2> _parser = new pb::MessageParser<Payload2>(() => new Payload2());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Payload2> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload2() {
       OnConstruction();
     }
@@ -6302,6 +6604,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload2(Payload2 other) : this() {
       f1_ = other.f1_;
       f2_ = other.f2_;
@@ -6309,6 +6612,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload2 Clone() {
       return new Payload2(this);
     }
@@ -6317,6 +6621,7 @@ namespace ZwiftPacketMonitor {
     public const int F1FieldNumber = 1;
     private int f1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F1 {
       get { return f1_; }
       set {
@@ -6328,6 +6633,7 @@ namespace ZwiftPacketMonitor {
     public const int F2FieldNumber = 2;
     private long f2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long F2 {
       get { return f2_; }
       set {
@@ -6336,11 +6642,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as Payload2);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(Payload2 other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -6354,6 +6662,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (F1 != 0) hash ^= F1.GetHashCode();
@@ -6365,11 +6674,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -6390,6 +6701,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (F1 != 0) {
         output.WriteRawTag(8);
@@ -6406,6 +6718,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (F1 != 0) {
@@ -6421,6 +6734,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Payload2 other) {
       if (other == null) {
         return;
@@ -6435,6 +6749,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -6460,6 +6775,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -6490,19 +6806,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<TimeSync> _parser = new pb::MessageParser<TimeSync>(() => new TimeSync());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<TimeSync> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TimeSync() {
       OnConstruction();
     }
@@ -6510,6 +6830,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TimeSync(TimeSync other) : this() {
       riderId_ = other.riderId_;
       worldTime_ = other.worldTime_;
@@ -6518,6 +6839,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TimeSync Clone() {
       return new TimeSync(this);
     }
@@ -6526,6 +6848,7 @@ namespace ZwiftPacketMonitor {
     public const int RiderIdFieldNumber = 1;
     private int riderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RiderId {
       get { return riderId_; }
       set {
@@ -6537,6 +6860,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 2;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -6548,6 +6872,7 @@ namespace ZwiftPacketMonitor {
     public const int F3FieldNumber = 3;
     private int f3_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F3 {
       get { return f3_; }
       set {
@@ -6556,11 +6881,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as TimeSync);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(TimeSync other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -6575,6 +6902,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (RiderId != 0) hash ^= RiderId.GetHashCode();
@@ -6587,11 +6915,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -6616,6 +6946,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (RiderId != 0) {
         output.WriteRawTag(8);
@@ -6636,6 +6967,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (RiderId != 0) {
@@ -6654,6 +6986,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(TimeSync other) {
       if (other == null) {
         return;
@@ -6671,6 +7004,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -6700,6 +7034,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -6737,19 +7072,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<Payload110> _parser = new pb::MessageParser<Payload110>(() => new Payload110());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Payload110> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload110() {
       OnConstruction();
     }
@@ -6757,21 +7096,25 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload110(Payload110 other) : this() {
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload110 Clone() {
       return new Payload110(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as Payload110);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(Payload110 other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -6783,6 +7126,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (_unknownFields != null) {
@@ -6792,11 +7136,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -6809,6 +7155,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -6817,6 +7164,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (_unknownFields != null) {
@@ -6826,6 +7174,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Payload110 other) {
       if (other == null) {
         return;
@@ -6834,6 +7183,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -6851,6 +7201,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -6876,19 +7227,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<Payload109> _parser = new pb::MessageParser<Payload109>(() => new Payload109());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Payload109> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload109() {
       OnConstruction();
     }
@@ -6896,21 +7251,25 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload109(Payload109 other) : this() {
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Payload109 Clone() {
       return new Payload109(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as Payload109);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(Payload109 other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -6922,6 +7281,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (_unknownFields != null) {
@@ -6931,11 +7291,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -6948,6 +7310,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -6956,6 +7319,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (_unknownFields != null) {
@@ -6965,6 +7329,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Payload109 other) {
       if (other == null) {
         return;
@@ -6973,6 +7338,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -6990,6 +7356,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -6997,6 +7364,746 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class Payload106 : pb::IMessage<Payload106>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Payload106> _parser = new pb::MessageParser<Payload106>(() => new Payload106());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<Payload106> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Payload106() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Payload106(Payload106 other) : this() {
+      tag2_ = other.tag2_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Payload106 Clone() {
+      return new Payload106(this);
+    }
+
+    /// <summary>Field number for the "tag2" field.</summary>
+    public const int Tag2FieldNumber = 2;
+    private bool tag2_;
+    /// <summary>
+    /// bool tag3 = 3;
+    /// message SubPayload {
+    ///     int64 tag1 = 1;
+    ///     int32 tag2 = 2;
+    ///     bool tag3 = 3;
+    ///     bool tag4 = 4;
+    ///     int32 tag5 = 5;
+    ///     string tag7 = 7;
+    ///     string tag8 = 8;
+    ///     int64 tag9 = 9;
+    ///     string timestamp = 10;
+    ///     int32 tag11 = 11;
+    ///     bool tag12 = 12;
+    ///     int32 tag13 = 13;
+    ///     bool tag14 = 14;
+    ///     int32 tag15 = 15;
+    ///     bool tag16 = 16;
+    ///     string timestamp2 = 17;
+    ///     bool tag18 = 18;
+    ///     bool tag19 = 19;
+    ///     bool tag20 = 20;
+    ///     int64 tag21 = 21;
+    /// }
+    /// int64 tag5 = 5;
+    /// int64 tag9 = 9;
+    /// int64 tag14 = 14;
+    /// int64 tag15 = 15;
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Tag2 {
+      get { return tag2_; }
+      set {
+        tag2_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as Payload106);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(Payload106 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Tag2 != other.Tag2) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Tag2 != false) hash ^= Tag2.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag2 != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(Tag2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag2 != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(Tag2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Tag2 != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(Payload106 other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Tag2 != false) {
+        Tag2 = other.Tag2;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 16: {
+            Tag2 = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 16: {
+            Tag2 = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class Payload116 : pb::IMessage<Payload116>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Payload116> _parser = new pb::MessageParser<Payload116>(() => new Payload116());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<Payload116> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Payload116() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Payload116(Payload116 other) : this() {
+      tag2_ = other.tag2_;
+      tag4_ = other.tag4_;
+      tag5_ = other.tag5_;
+      tag6_ = other.tag6_;
+      tag7_ = other.tag7_;
+      tag8_ = other.tag8_;
+      tag9_ = other.tag9_;
+      tag11_ = other.tag11_;
+      tag14_ = other.tag14_;
+      tag15_ = other.tag15_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Payload116 Clone() {
+      return new Payload116(this);
+    }
+
+    /// <summary>Field number for the "tag2" field.</summary>
+    public const int Tag2FieldNumber = 2;
+    private long tag2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag2 {
+      get { return tag2_; }
+      set {
+        tag2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag4" field.</summary>
+    public const int Tag4FieldNumber = 4;
+    private pb::ByteString tag4_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString Tag4 {
+      get { return tag4_; }
+      set {
+        tag4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "tag5" field.</summary>
+    public const int Tag5FieldNumber = 5;
+    private long tag5_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag5 {
+      get { return tag5_; }
+      set {
+        tag5_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag6" field.</summary>
+    public const int Tag6FieldNumber = 6;
+    private long tag6_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag6 {
+      get { return tag6_; }
+      set {
+        tag6_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag7" field.</summary>
+    public const int Tag7FieldNumber = 7;
+    private long tag7_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag7 {
+      get { return tag7_; }
+      set {
+        tag7_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag8" field.</summary>
+    public const int Tag8FieldNumber = 8;
+    private long tag8_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag8 {
+      get { return tag8_; }
+      set {
+        tag8_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag9" field.</summary>
+    public const int Tag9FieldNumber = 9;
+    private long tag9_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag9 {
+      get { return tag9_; }
+      set {
+        tag9_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag11" field.</summary>
+    public const int Tag11FieldNumber = 11;
+    private long tag11_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag11 {
+      get { return tag11_; }
+      set {
+        tag11_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag14" field.</summary>
+    public const int Tag14FieldNumber = 14;
+    private long tag14_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag14 {
+      get { return tag14_; }
+      set {
+        tag14_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag15" field.</summary>
+    public const int Tag15FieldNumber = 15;
+    private long tag15_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Tag15 {
+      get { return tag15_; }
+      set {
+        tag15_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as Payload116);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(Payload116 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Tag2 != other.Tag2) return false;
+      if (Tag4 != other.Tag4) return false;
+      if (Tag5 != other.Tag5) return false;
+      if (Tag6 != other.Tag6) return false;
+      if (Tag7 != other.Tag7) return false;
+      if (Tag8 != other.Tag8) return false;
+      if (Tag9 != other.Tag9) return false;
+      if (Tag11 != other.Tag11) return false;
+      if (Tag14 != other.Tag14) return false;
+      if (Tag15 != other.Tag15) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Tag2 != 0L) hash ^= Tag2.GetHashCode();
+      if (Tag4.Length != 0) hash ^= Tag4.GetHashCode();
+      if (Tag5 != 0L) hash ^= Tag5.GetHashCode();
+      if (Tag6 != 0L) hash ^= Tag6.GetHashCode();
+      if (Tag7 != 0L) hash ^= Tag7.GetHashCode();
+      if (Tag8 != 0L) hash ^= Tag8.GetHashCode();
+      if (Tag9 != 0L) hash ^= Tag9.GetHashCode();
+      if (Tag11 != 0L) hash ^= Tag11.GetHashCode();
+      if (Tag14 != 0L) hash ^= Tag14.GetHashCode();
+      if (Tag15 != 0L) hash ^= Tag15.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag2 != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Tag2);
+      }
+      if (Tag4.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteBytes(Tag4);
+      }
+      if (Tag5 != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(Tag5);
+      }
+      if (Tag6 != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(Tag6);
+      }
+      if (Tag7 != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(Tag7);
+      }
+      if (Tag8 != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(Tag8);
+      }
+      if (Tag9 != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(Tag9);
+      }
+      if (Tag11 != 0L) {
+        output.WriteRawTag(88);
+        output.WriteInt64(Tag11);
+      }
+      if (Tag14 != 0L) {
+        output.WriteRawTag(112);
+        output.WriteInt64(Tag14);
+      }
+      if (Tag15 != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(Tag15);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag2 != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Tag2);
+      }
+      if (Tag4.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteBytes(Tag4);
+      }
+      if (Tag5 != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(Tag5);
+      }
+      if (Tag6 != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(Tag6);
+      }
+      if (Tag7 != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(Tag7);
+      }
+      if (Tag8 != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(Tag8);
+      }
+      if (Tag9 != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(Tag9);
+      }
+      if (Tag11 != 0L) {
+        output.WriteRawTag(88);
+        output.WriteInt64(Tag11);
+      }
+      if (Tag14 != 0L) {
+        output.WriteRawTag(112);
+        output.WriteInt64(Tag14);
+      }
+      if (Tag15 != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(Tag15);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Tag2 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag2);
+      }
+      if (Tag4.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Tag4);
+      }
+      if (Tag5 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag5);
+      }
+      if (Tag6 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag6);
+      }
+      if (Tag7 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag7);
+      }
+      if (Tag8 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag8);
+      }
+      if (Tag9 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag9);
+      }
+      if (Tag11 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag11);
+      }
+      if (Tag14 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag14);
+      }
+      if (Tag15 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag15);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(Payload116 other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Tag2 != 0L) {
+        Tag2 = other.Tag2;
+      }
+      if (other.Tag4.Length != 0) {
+        Tag4 = other.Tag4;
+      }
+      if (other.Tag5 != 0L) {
+        Tag5 = other.Tag5;
+      }
+      if (other.Tag6 != 0L) {
+        Tag6 = other.Tag6;
+      }
+      if (other.Tag7 != 0L) {
+        Tag7 = other.Tag7;
+      }
+      if (other.Tag8 != 0L) {
+        Tag8 = other.Tag8;
+      }
+      if (other.Tag9 != 0L) {
+        Tag9 = other.Tag9;
+      }
+      if (other.Tag11 != 0L) {
+        Tag11 = other.Tag11;
+      }
+      if (other.Tag14 != 0L) {
+        Tag14 = other.Tag14;
+      }
+      if (other.Tag15 != 0L) {
+        Tag15 = other.Tag15;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 16: {
+            Tag2 = input.ReadInt64();
+            break;
+          }
+          case 34: {
+            Tag4 = input.ReadBytes();
+            break;
+          }
+          case 40: {
+            Tag5 = input.ReadInt64();
+            break;
+          }
+          case 48: {
+            Tag6 = input.ReadInt64();
+            break;
+          }
+          case 56: {
+            Tag7 = input.ReadInt64();
+            break;
+          }
+          case 64: {
+            Tag8 = input.ReadInt64();
+            break;
+          }
+          case 72: {
+            Tag9 = input.ReadInt64();
+            break;
+          }
+          case 88: {
+            Tag11 = input.ReadInt64();
+            break;
+          }
+          case 112: {
+            Tag14 = input.ReadInt64();
+            break;
+          }
+          case 120: {
+            Tag15 = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 16: {
+            Tag2 = input.ReadInt64();
+            break;
+          }
+          case 34: {
+            Tag4 = input.ReadBytes();
+            break;
+          }
+          case 40: {
+            Tag5 = input.ReadInt64();
+            break;
+          }
+          case 48: {
+            Tag6 = input.ReadInt64();
+            break;
+          }
+          case 56: {
+            Tag7 = input.ReadInt64();
+            break;
+          }
+          case 64: {
+            Tag8 = input.ReadInt64();
+            break;
+          }
+          case 72: {
+            Tag9 = input.ReadInt64();
+            break;
+          }
+          case 88: {
+            Tag11 = input.ReadInt64();
+            break;
+          }
+          case 112: {
+            Tag14 = input.ReadInt64();
+            break;
+          }
+          case 120: {
+            Tag15 = input.ReadInt64();
+            break;
+          }
         }
       }
     }
@@ -7012,19 +8119,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<EventPositions> _parser = new pb::MessageParser<EventPositions>(() => new EventPositions());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<EventPositions> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[13]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventPositions() {
       OnConstruction();
     }
@@ -7032,6 +8143,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventPositions(EventPositions other) : this() {
       position_ = other.position_;
       eventRiderPosition_ = other.eventRiderPosition_.Clone();
@@ -7040,6 +8152,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventPositions Clone() {
       return new EventPositions(this);
     }
@@ -7048,6 +8161,7 @@ namespace ZwiftPacketMonitor {
     public const int PositionFieldNumber = 1;
     private int position_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Position {
       get { return position_; }
       set {
@@ -7061,6 +8175,7 @@ namespace ZwiftPacketMonitor {
         = pb::FieldCodec.ForMessage(34, global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition.Parser);
     private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition> eventRiderPosition_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition> EventRiderPosition {
       get { return eventRiderPosition_; }
     }
@@ -7069,6 +8184,7 @@ namespace ZwiftPacketMonitor {
     public const int NumRidersFieldNumber = 116;
     private int numRiders_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NumRiders {
       get { return numRiders_; }
       set {
@@ -7077,11 +8193,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as EventPositions);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(EventPositions other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -7096,6 +8214,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Position != 0) hash ^= Position.GetHashCode();
@@ -7108,11 +8227,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -7134,6 +8255,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Position != 0) {
         output.WriteRawTag(8);
@@ -7151,6 +8273,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Position != 0) {
@@ -7167,6 +8290,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(EventPositions other) {
       if (other == null) {
         return;
@@ -7182,6 +8306,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -7211,6 +8336,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -7238,6 +8364,7 @@ namespace ZwiftPacketMonitor {
     #region Nested types
     /// <summary>Container for nested types declared in the EventPositions message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static partial class Types {
       public sealed partial class EventRiderPosition : pb::IMessage<EventRiderPosition>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -7247,19 +8374,23 @@ namespace ZwiftPacketMonitor {
         private static readonly pb::MessageParser<EventRiderPosition> _parser = new pb::MessageParser<EventRiderPosition>(() => new EventRiderPosition());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pb::MessageParser<EventRiderPosition> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pbr::MessageDescriptor Descriptor {
           get { return global::ZwiftPacketMonitor.EventPositions.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         pbr::MessageDescriptor pb::IMessage.Descriptor {
           get { return Descriptor; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public EventRiderPosition() {
           OnConstruction();
         }
@@ -7267,12 +8398,14 @@ namespace ZwiftPacketMonitor {
         partial void OnConstruction();
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public EventRiderPosition(EventRiderPosition other) : this() {
           riderId_ = other.riderId_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public EventRiderPosition Clone() {
           return new EventRiderPosition(this);
         }
@@ -7284,6 +8417,7 @@ namespace ZwiftPacketMonitor {
         /// ?? float distance_covered = 2; 
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int RiderId {
           get { return riderId_; }
           set {
@@ -7292,11 +8426,13 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
           return Equals(other as EventRiderPosition);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public bool Equals(EventRiderPosition other) {
           if (ReferenceEquals(other, null)) {
             return false;
@@ -7309,6 +8445,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override int GetHashCode() {
           int hash = 1;
           if (RiderId != 0) hash ^= RiderId.GetHashCode();
@@ -7319,11 +8456,13 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override string ToString() {
           return pb::JsonFormatter.ToDiagnosticString(this);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void WriteTo(pb::CodedOutputStream output) {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           output.WriteRawMessage(this);
@@ -7340,6 +8479,7 @@ namespace ZwiftPacketMonitor {
 
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
           if (RiderId != 0) {
             output.WriteRawTag(8);
@@ -7352,6 +8492,7 @@ namespace ZwiftPacketMonitor {
         #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int CalculateSize() {
           int size = 0;
           if (RiderId != 0) {
@@ -7364,6 +8505,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void MergeFrom(EventRiderPosition other) {
           if (other == null) {
             return;
@@ -7375,6 +8517,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void MergeFrom(pb::CodedInputStream input) {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           input.ReadRawMessage(this);
@@ -7396,6 +8539,7 @@ namespace ZwiftPacketMonitor {
 
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
@@ -7427,19 +8571,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<ServerToClient> _parser = new pb::MessageParser<ServerToClient>(() => new ServerToClient());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<ServerToClient> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[14]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerToClient() {
       OnConstruction();
     }
@@ -7447,6 +8595,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerToClient(ServerToClient other) : this() {
       tag1_ = other.tag1_;
       riderId_ = other.riderId_;
@@ -7467,6 +8616,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerToClient Clone() {
       return new ServerToClient(this);
     }
@@ -7475,6 +8625,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag1FieldNumber = 1;
     private int tag1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Tag1 {
       get { return tag1_; }
       set {
@@ -7486,6 +8637,7 @@ namespace ZwiftPacketMonitor {
     public const int RiderIdFieldNumber = 2;
     private int riderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RiderId {
       get { return riderId_; }
       set {
@@ -7497,6 +8649,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 3;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -7508,6 +8661,7 @@ namespace ZwiftPacketMonitor {
     public const int SeqnoFieldNumber = 4;
     private int seqno_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Seqno {
       get { return seqno_; }
       set {
@@ -7521,6 +8675,7 @@ namespace ZwiftPacketMonitor {
         = pb::FieldCodec.ForMessage(66, global::ZwiftPacketMonitor.PlayerState.Parser);
     private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState> playerStates_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState> PlayerStates {
       get { return playerStates_; }
     }
@@ -7531,6 +8686,7 @@ namespace ZwiftPacketMonitor {
         = pb::FieldCodec.ForMessage(74, global::ZwiftPacketMonitor.PlayerUpdate.Parser);
     private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerUpdate> playerUpdates_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerUpdate>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerUpdate> PlayerUpdates {
       get { return playerUpdates_; }
     }
@@ -7539,6 +8695,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag11FieldNumber = 11;
     private long tag11_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag11 {
       get { return tag11_; }
       set {
@@ -7550,6 +8707,7 @@ namespace ZwiftPacketMonitor {
     public const int LocalIpFieldNumber = 12;
     private string localIp_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LocalIp {
       get { return localIp_; }
       set {
@@ -7561,6 +8719,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag15FieldNumber = 15;
     private int tag15_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Tag15 {
       get { return tag15_; }
       set {
@@ -7572,6 +8731,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag17FieldNumber = 17;
     private long tag17_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag17 {
       get { return tag17_; }
       set {
@@ -7583,6 +8743,7 @@ namespace ZwiftPacketMonitor {
     public const int NumMsgsFieldNumber = 18;
     private int numMsgs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NumMsgs {
       get { return numMsgs_; }
       set {
@@ -7594,6 +8755,7 @@ namespace ZwiftPacketMonitor {
     public const int MsgnumFieldNumber = 19;
     private int msgnum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Msgnum {
       get { return msgnum_; }
       set {
@@ -7605,6 +8767,7 @@ namespace ZwiftPacketMonitor {
     public const int EventPositionsFieldNumber = 23;
     private global::ZwiftPacketMonitor.EventPositions eventPositions_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::ZwiftPacketMonitor.EventPositions EventPositions {
       get { return eventPositions_; }
       set {
@@ -7616,6 +8779,7 @@ namespace ZwiftPacketMonitor {
     public const int Servers1FieldNumber = 24;
     private global::ZwiftPacketMonitor.Server1 servers1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::ZwiftPacketMonitor.Server1 Servers1 {
       get { return servers1_; }
       set {
@@ -7627,6 +8791,7 @@ namespace ZwiftPacketMonitor {
     public const int Servers2FieldNumber = 25;
     private global::ZwiftPacketMonitor.Server2 servers2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::ZwiftPacketMonitor.Server2 Servers2 {
       get { return servers2_; }
       set {
@@ -7635,11 +8800,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as ServerToClient);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(ServerToClient other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -7666,6 +8833,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Tag1 != 0) hash ^= Tag1.GetHashCode();
@@ -7690,11 +8858,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -7761,6 +8931,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Tag1 != 0) {
         output.WriteRawTag(8);
@@ -7823,6 +8994,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Tag1 != 0) {
@@ -7873,6 +9045,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(ServerToClient other) {
       if (other == null) {
         return;
@@ -7931,6 +9104,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -8017,6 +9191,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -8108,19 +9283,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<ServerAddress> _parser = new pb::MessageParser<ServerAddress>(() => new ServerAddress());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<ServerAddress> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[15]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerAddress() {
       OnConstruction();
     }
@@ -8128,6 +9307,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerAddress(ServerAddress other) : this() {
       f1_ = other.f1_;
       f2_ = other.f2_;
@@ -8139,6 +9319,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerAddress Clone() {
       return new ServerAddress(this);
     }
@@ -8147,6 +9328,7 @@ namespace ZwiftPacketMonitor {
     public const int F1FieldNumber = 1;
     private int f1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F1 {
       get { return f1_; }
       set {
@@ -8158,6 +9340,7 @@ namespace ZwiftPacketMonitor {
     public const int F2FieldNumber = 2;
     private int f2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F2 {
       get { return f2_; }
       set {
@@ -8169,6 +9352,7 @@ namespace ZwiftPacketMonitor {
     public const int IpFieldNumber = 3;
     private string ip_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Ip {
       get { return ip_; }
       set {
@@ -8180,6 +9364,7 @@ namespace ZwiftPacketMonitor {
     public const int F4FieldNumber = 4;
     private int f4_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F4 {
       get { return f4_; }
       set {
@@ -8191,6 +9376,7 @@ namespace ZwiftPacketMonitor {
     public const int F5FieldNumber = 5;
     private uint f5_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint F5 {
       get { return f5_; }
       set {
@@ -8202,6 +9388,7 @@ namespace ZwiftPacketMonitor {
     public const int F6FieldNumber = 6;
     private uint f6_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint F6 {
       get { return f6_; }
       set {
@@ -8210,11 +9397,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as ServerAddress);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(ServerAddress other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -8232,6 +9421,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (F1 != 0) hash ^= F1.GetHashCode();
@@ -8247,11 +9437,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -8288,6 +9480,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (F1 != 0) {
         output.WriteRawTag(8);
@@ -8320,6 +9513,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (F1 != 0) {
@@ -8347,6 +9541,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(ServerAddress other) {
       if (other == null) {
         return;
@@ -8373,6 +9568,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -8414,6 +9610,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -8460,19 +9657,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<ServerPool> _parser = new pb::MessageParser<ServerPool>(() => new ServerPool());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<ServerPool> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[16]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerPool() {
       OnConstruction();
     }
@@ -8480,6 +9681,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerPool(ServerPool other) : this() {
       f1_ = other.f1_;
       f2_ = other.f2_;
@@ -8489,6 +9691,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerPool Clone() {
       return new ServerPool(this);
     }
@@ -8497,6 +9700,7 @@ namespace ZwiftPacketMonitor {
     public const int F1FieldNumber = 1;
     private int f1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F1 {
       get { return f1_; }
       set {
@@ -8508,6 +9712,7 @@ namespace ZwiftPacketMonitor {
     public const int F2FieldNumber = 2;
     private int f2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F2 {
       get { return f2_; }
       set {
@@ -8521,6 +9726,7 @@ namespace ZwiftPacketMonitor {
         = pb::FieldCodec.ForMessage(26, global::ZwiftPacketMonitor.ServerAddress.Parser);
     private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress> addresses_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress> Addresses {
       get { return addresses_; }
     }
@@ -8529,6 +9735,7 @@ namespace ZwiftPacketMonitor {
     public const int F4FieldNumber = 4;
     private int f4_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F4 {
       get { return f4_; }
       set {
@@ -8537,11 +9744,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as ServerPool);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(ServerPool other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -8557,6 +9766,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (F1 != 0) hash ^= F1.GetHashCode();
@@ -8570,11 +9780,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -8600,6 +9812,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (F1 != 0) {
         output.WriteRawTag(8);
@@ -8621,6 +9834,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (F1 != 0) {
@@ -8640,6 +9854,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(ServerPool other) {
       if (other == null) {
         return;
@@ -8658,6 +9873,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -8691,6 +9907,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -8729,19 +9946,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<Server2> _parser = new pb::MessageParser<Server2>(() => new Server2());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Server2> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[17]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Server2() {
       OnConstruction();
     }
@@ -8749,6 +9970,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Server2(Server2 other) : this() {
       pool_ = other.pool_.Clone();
       f2_ = other.f2_;
@@ -8756,6 +9978,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Server2 Clone() {
       return new Server2(this);
     }
@@ -8766,6 +9989,7 @@ namespace ZwiftPacketMonitor {
         = pb::FieldCodec.ForMessage(10, global::ZwiftPacketMonitor.ServerPool.Parser);
     private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.ServerPool> pool_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.ServerPool>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::ZwiftPacketMonitor.ServerPool> Pool {
       get { return pool_; }
     }
@@ -8774,6 +9998,7 @@ namespace ZwiftPacketMonitor {
     public const int F2FieldNumber = 2;
     private int f2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F2 {
       get { return f2_; }
       set {
@@ -8782,11 +10007,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as Server2);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(Server2 other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -8800,6 +10027,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       hash ^= pool_.GetHashCode();
@@ -8811,11 +10039,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -8833,6 +10063,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       pool_.WriteTo(ref output, _repeated_pool_codec);
       if (F2 != 0) {
@@ -8846,6 +10077,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       size += pool_.CalculateSize(_repeated_pool_codec);
@@ -8859,6 +10091,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Server2 other) {
       if (other == null) {
         return;
@@ -8871,6 +10104,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -8896,6 +10130,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -8926,19 +10161,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<Server1> _parser = new pb::MessageParser<Server1>(() => new Server1());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Server1> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[18]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Server1() {
       OnConstruction();
     }
@@ -8946,6 +10185,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Server1(Server1 other) : this() {
       addresses_ = other.addresses_.Clone();
       f2_ = other.f2_;
@@ -8955,6 +10195,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Server1 Clone() {
       return new Server1(this);
     }
@@ -8965,6 +10206,7 @@ namespace ZwiftPacketMonitor {
         = pb::FieldCodec.ForMessage(10, global::ZwiftPacketMonitor.ServerAddress.Parser);
     private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress> addresses_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress> Addresses {
       get { return addresses_; }
     }
@@ -8973,6 +10215,7 @@ namespace ZwiftPacketMonitor {
     public const int F2FieldNumber = 2;
     private int f2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F2 {
       get { return f2_; }
       set {
@@ -8984,6 +10227,7 @@ namespace ZwiftPacketMonitor {
     public const int F3FieldNumber = 3;
     private int f3_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F3 {
       get { return f3_; }
       set {
@@ -8995,6 +10239,7 @@ namespace ZwiftPacketMonitor {
     public const int F4FieldNumber = 4;
     private int f4_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F4 {
       get { return f4_; }
       set {
@@ -9003,11 +10248,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as Server1);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(Server1 other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -9023,6 +10270,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       hash ^= addresses_.GetHashCode();
@@ -9036,11 +10284,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -9066,6 +10316,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       addresses_.WriteTo(ref output, _repeated_addresses_codec);
       if (F2 != 0) {
@@ -9087,6 +10338,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       size += addresses_.CalculateSize(_repeated_addresses_codec);
@@ -9106,6 +10358,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Server1 other) {
       if (other == null) {
         return;
@@ -9124,6 +10377,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -9157,6 +10411,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -9195,19 +10450,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<WorldAttributes> _parser = new pb::MessageParser<WorldAttributes>(() => new WorldAttributes());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<WorldAttributes> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[19]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WorldAttributes() {
       OnConstruction();
     }
@@ -9215,6 +10474,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WorldAttributes(WorldAttributes other) : this() {
       worldId_ = other.worldId_;
       name_ = other.name_;
@@ -9226,6 +10486,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WorldAttributes Clone() {
       return new WorldAttributes(this);
     }
@@ -9234,6 +10495,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldIdFieldNumber = 1;
     private int worldId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int WorldId {
       get { return worldId_; }
       set {
@@ -9245,6 +10507,7 @@ namespace ZwiftPacketMonitor {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Name {
       get { return name_; }
       set {
@@ -9256,6 +10519,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag3FieldNumber = 3;
     private long tag3_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag3 {
       get { return tag3_; }
       set {
@@ -9267,6 +10531,7 @@ namespace ZwiftPacketMonitor {
     public const int Tag5FieldNumber = 4;
     private long tag5_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Tag5 {
       get { return tag5_; }
       set {
@@ -9278,6 +10543,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 6;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -9289,6 +10555,7 @@ namespace ZwiftPacketMonitor {
     public const int ClockTimeFieldNumber = 7;
     private long clockTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long ClockTime {
       get { return clockTime_; }
       set {
@@ -9297,11 +10564,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as WorldAttributes);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(WorldAttributes other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -9319,6 +10588,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (WorldId != 0) hash ^= WorldId.GetHashCode();
@@ -9334,11 +10604,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -9375,6 +10647,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (WorldId != 0) {
         output.WriteRawTag(8);
@@ -9407,6 +10680,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (WorldId != 0) {
@@ -9434,6 +10708,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(WorldAttributes other) {
       if (other == null) {
         return;
@@ -9460,6 +10735,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -9501,6 +10777,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -9547,19 +10824,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<WorldAttribute> _parser = new pb::MessageParser<WorldAttribute>(() => new WorldAttribute());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<WorldAttribute> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[20]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WorldAttribute() {
       OnConstruction();
     }
@@ -9567,12 +10848,14 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WorldAttribute(WorldAttribute other) : this() {
       worldTime_ = other.worldTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WorldAttribute Clone() {
       return new WorldAttribute(this);
     }
@@ -9581,6 +10864,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 2;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -9589,11 +10873,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as WorldAttribute);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(WorldAttribute other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -9606,6 +10892,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (WorldTime != 0L) hash ^= WorldTime.GetHashCode();
@@ -9616,11 +10903,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -9637,6 +10926,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (WorldTime != 0L) {
         output.WriteRawTag(16);
@@ -9649,6 +10939,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (WorldTime != 0L) {
@@ -9661,6 +10952,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(WorldAttribute other) {
       if (other == null) {
         return;
@@ -9672,6 +10964,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -9693,6 +10986,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -9719,19 +11013,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<EventSubgroupProtobuf> _parser = new pb::MessageParser<EventSubgroupProtobuf>(() => new EventSubgroupProtobuf());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<EventSubgroupProtobuf> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[21]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventSubgroupProtobuf() {
       OnConstruction();
     }
@@ -9739,6 +11037,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventSubgroupProtobuf(EventSubgroupProtobuf other) : this() {
       id_ = other.id_;
       name_ = other.name_;
@@ -9753,6 +11052,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventSubgroupProtobuf Clone() {
       return new EventSubgroupProtobuf(this);
     }
@@ -9761,6 +11061,7 @@ namespace ZwiftPacketMonitor {
     public const int IdFieldNumber = 1;
     private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Id {
       get { return id_; }
       set {
@@ -9772,6 +11073,7 @@ namespace ZwiftPacketMonitor {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Name {
       get { return name_; }
       set {
@@ -9783,6 +11085,7 @@ namespace ZwiftPacketMonitor {
     public const int RulesFieldNumber = 8;
     private int rules_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Rules {
       get { return rules_; }
       set {
@@ -9794,6 +11097,7 @@ namespace ZwiftPacketMonitor {
     public const int RouteFieldNumber = 22;
     private int route_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Route {
       get { return route_; }
       set {
@@ -9805,6 +11109,7 @@ namespace ZwiftPacketMonitor {
     public const int LapsFieldNumber = 25;
     private int laps_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Laps {
       get { return laps_; }
       set {
@@ -9816,6 +11121,7 @@ namespace ZwiftPacketMonitor {
     public const int StartLocationFieldNumber = 29;
     private int startLocation_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int StartLocation {
       get { return startLocation_; }
       set {
@@ -9827,6 +11133,7 @@ namespace ZwiftPacketMonitor {
     public const int LabelFieldNumber = 30;
     private int label_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Label {
       get { return label_; }
       set {
@@ -9838,6 +11145,7 @@ namespace ZwiftPacketMonitor {
     public const int PaceTypeFieldNumber = 31;
     private int paceType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int PaceType {
       get { return paceType_; }
       set {
@@ -9849,6 +11157,7 @@ namespace ZwiftPacketMonitor {
     public const int JerseyHashFieldNumber = 36;
     private int jerseyHash_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int JerseyHash {
       get { return jerseyHash_; }
       set {
@@ -9857,11 +11166,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as EventSubgroupProtobuf);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(EventSubgroupProtobuf other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -9882,6 +11193,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
@@ -9900,11 +11212,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -9953,6 +11267,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
         output.WriteRawTag(8);
@@ -9997,6 +11312,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Id != 0) {
@@ -10033,6 +11349,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(EventSubgroupProtobuf other) {
       if (other == null) {
         return;
@@ -10068,6 +11385,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -10121,6 +11439,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -10179,19 +11498,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<RiderAttributes> _parser = new pb::MessageParser<RiderAttributes>(() => new RiderAttributes());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<RiderAttributes> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[22]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RiderAttributes() {
       OnConstruction();
     }
@@ -10199,6 +11522,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RiderAttributes(RiderAttributes other) : this() {
       f2_ = other.f2_;
       f3_ = other.f3_;
@@ -10209,6 +11533,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RiderAttributes Clone() {
       return new RiderAttributes(this);
     }
@@ -10217,6 +11542,7 @@ namespace ZwiftPacketMonitor {
     public const int F2FieldNumber = 2;
     private int f2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F2 {
       get { return f2_; }
       set {
@@ -10228,6 +11554,7 @@ namespace ZwiftPacketMonitor {
     public const int F3FieldNumber = 3;
     private int f3_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F3 {
       get { return f3_; }
       set {
@@ -10239,6 +11566,7 @@ namespace ZwiftPacketMonitor {
     public const int AttributeMessageFieldNumber = 4;
     private global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage attributeMessage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage AttributeMessage {
       get { return attributeMessage_; }
       set {
@@ -10250,6 +11578,7 @@ namespace ZwiftPacketMonitor {
     public const int TheirIdFieldNumber = 10;
     private int theirId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int TheirId {
       get { return theirId_; }
       set {
@@ -10261,6 +11590,7 @@ namespace ZwiftPacketMonitor {
     public const int F13FieldNumber = 13;
     private int f13_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F13 {
       get { return f13_; }
       set {
@@ -10269,11 +11599,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as RiderAttributes);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(RiderAttributes other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -10290,6 +11622,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (F2 != 0) hash ^= F2.GetHashCode();
@@ -10304,11 +11637,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -10341,6 +11676,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (F2 != 0) {
         output.WriteRawTag(16);
@@ -10369,6 +11705,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (F2 != 0) {
@@ -10393,6 +11730,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(RiderAttributes other) {
       if (other == null) {
         return;
@@ -10419,6 +11757,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -10459,6 +11798,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -10497,6 +11837,7 @@ namespace ZwiftPacketMonitor {
     #region Nested types
     /// <summary>Container for nested types declared in the RiderAttributes message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static partial class Types {
       public sealed partial class AttributeMessage : pb::IMessage<AttributeMessage>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -10506,19 +11847,23 @@ namespace ZwiftPacketMonitor {
         private static readonly pb::MessageParser<AttributeMessage> _parser = new pb::MessageParser<AttributeMessage>(() => new AttributeMessage());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pb::MessageParser<AttributeMessage> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pbr::MessageDescriptor Descriptor {
           get { return global::ZwiftPacketMonitor.RiderAttributes.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         pbr::MessageDescriptor pb::IMessage.Descriptor {
           get { return Descriptor; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public AttributeMessage() {
           OnConstruction();
         }
@@ -10526,6 +11871,7 @@ namespace ZwiftPacketMonitor {
         partial void OnConstruction();
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public AttributeMessage(AttributeMessage other) : this() {
           myId_ = other.myId_;
           theirId_ = other.theirId_;
@@ -10536,6 +11882,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public AttributeMessage Clone() {
           return new AttributeMessage(this);
         }
@@ -10544,6 +11891,7 @@ namespace ZwiftPacketMonitor {
         public const int MyIdFieldNumber = 1;
         private int myId_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int MyId {
           get { return myId_; }
           set {
@@ -10555,6 +11903,7 @@ namespace ZwiftPacketMonitor {
         public const int TheirIdFieldNumber = 2;
         private int theirId_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int TheirId {
           get { return theirId_; }
           set {
@@ -10566,6 +11915,7 @@ namespace ZwiftPacketMonitor {
         public const int FirstNameFieldNumber = 3;
         private string firstName_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string FirstName {
           get { return firstName_; }
           set {
@@ -10577,6 +11927,7 @@ namespace ZwiftPacketMonitor {
         public const int LastNameFieldNumber = 4;
         private string lastName_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public string LastName {
           get { return lastName_; }
           set {
@@ -10588,6 +11939,7 @@ namespace ZwiftPacketMonitor {
         public const int CountryCodeFieldNumber = 5;
         private int countryCode_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int CountryCode {
           get { return countryCode_; }
           set {
@@ -10596,11 +11948,13 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
           return Equals(other as AttributeMessage);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public bool Equals(AttributeMessage other) {
           if (ReferenceEquals(other, null)) {
             return false;
@@ -10617,6 +11971,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override int GetHashCode() {
           int hash = 1;
           if (MyId != 0) hash ^= MyId.GetHashCode();
@@ -10631,11 +11986,13 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override string ToString() {
           return pb::JsonFormatter.ToDiagnosticString(this);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void WriteTo(pb::CodedOutputStream output) {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           output.WriteRawMessage(this);
@@ -10668,6 +12025,7 @@ namespace ZwiftPacketMonitor {
 
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
           if (MyId != 0) {
             output.WriteRawTag(8);
@@ -10696,6 +12054,7 @@ namespace ZwiftPacketMonitor {
         #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int CalculateSize() {
           int size = 0;
           if (MyId != 0) {
@@ -10720,6 +12079,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void MergeFrom(AttributeMessage other) {
           if (other == null) {
             return;
@@ -10743,6 +12103,7 @@ namespace ZwiftPacketMonitor {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void MergeFrom(pb::CodedInputStream input) {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           input.ReadRawMessage(this);
@@ -10780,6 +12141,7 @@ namespace ZwiftPacketMonitor {
 
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
