@@ -68,7 +68,7 @@ blah
 192.168.1.53 - pc
 192.168.1.55 - mobile device
 
-DST port 21587 is the port on the mobile device 
+DST port 21587 is the port on the mobile device.
 
 => `outgoing` packets are the packets that flow from the Zwift Companion app to the Zwift Desktop app
 => `incoming` packets are the packets that flow from the Zwift Desktop app to the Zwitft Companion app
