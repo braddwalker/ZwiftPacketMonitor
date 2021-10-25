@@ -421,9 +421,13 @@ namespace ZwiftPacketMonitor
         {
             if (direction == Direction.Incoming)
             {
-                var packetData = ZwiftCompanionMessage.Parser.ParseFrom(buffer);
+                var packetData = ZwiftAppToCompanion.Parser.ParseFrom(buffer);
 
-                if (packetData.CompanionMessage2 != null)
+                if (packetData.Tag1 == 1)
+                {
+                    var messageTypeOne = ZwiftAppToCompanionMessageTypeOne.Parser.ParseFrom(buffer);
+                }
+                else if (packetData.CompanionMessage2 != null)
                 {
                     var messageType = packetData.CompanionMessage2.Type;
 
@@ -444,11 +448,11 @@ namespace ZwiftPacketMonitor
             }
             else if (direction == Direction.Outgoing)
             {
-                var message = ZwiftToCompanionMessage.Parser.ParseFrom(buffer);
+                var message = ZwiftCompanionToApp.Parser.ParseFrom(buffer);
 
                 if (message.Tag1 == 0)
                 {
-                    var typeZero = ZwiftToCompanionMessageValueZero.Parser.ParseFrom(buffer);
+                    var typeZero = ZwiftCompanionToAppMessageValueZero.Parser.ParseFrom(buffer);
 
                     _logger.LogInformation("Received type zero message");
 
@@ -456,7 +460,7 @@ namespace ZwiftPacketMonitor
                 }
                 else if (message.Tag1 == 1)
                 {
-                    var typeOne = ZwiftToCompanionMessageValueOne.Parser.ParseFrom(buffer);
+                    var typeOne = ZwiftCompanionToAppMessageValueOne.Parser.ParseFrom(buffer);
 
                     _logger.LogInformation("Received type one message");
 
@@ -464,7 +468,7 @@ namespace ZwiftPacketMonitor
                 }
                 else if (message.Tag1 == 2)
                 {
-                    var typeTwo = ZwiftToCompanionMessageValueTwo.Parser.ParseFrom(buffer);
+                    var typeTwo = ZwiftCompanionToAppMessageValueTwo.Parser.ParseFrom(buffer);
 
                     _logger.LogInformation("Received type two message");
 

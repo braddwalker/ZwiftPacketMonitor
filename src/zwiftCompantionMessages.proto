@@ -1,9 +1,17 @@
 syntax="proto3";
 package ZwiftPacketMonitor;
 
-message ZwiftCompanionMessage {
-    uint32 myId = 1; // Our own Zwift rider_id
-    message ZwiftCompanionMessage2 {
+////////////////////////////////////////////////////////////////
+////// Zwift Companion app to Zwift Desktop app messages //////
+////////////////////////////////////////////////////////////////
+
+// Base message type
+message ZwiftAppToCompanion
+{
+    // These fields are always there
+    uint32 tag1 = 1; // This will have value 2
+
+    message ZwiftAppToCompanionMessageTwo {
         int32 sequence = 1; // Sequence maybe?
         uint32 type = 2; // Seems to always be 16. No it's not, can also be 28
         int32 tag3 = 3;
@@ -14,8 +22,10 @@ message ZwiftCompanionMessage {
         optional uint32 tag10 = 10; // For type 22 messages
         optional int32 myId = 19; // Our own Zwift rider_id
     }
-    optional ZwiftCompanionMessage2 companionMessage2 = 2;
-    uint32 tag10 = 10; // Could this be world_clock?
+    optional ZwiftAppToCompanionMessageTwo companionMessage2 = 2;
+
+    optional uint32 tag10 = 10; // Not there when tag 1 = 1
+
     uint32 rider_id = 19; // Set when type = 28
 
     message ZwiftCompanionDevice {
@@ -39,7 +49,7 @@ message ZwiftCompanionMessage {
     optional ZwiftCompanionDevice device = 21; // For type 29 messages
 }
 
-message ZwiftCompanionMessageRiderPosition {
+message ZwiftAppToCompanionMessageRiderPosition {
     uint32 myId = 1; // Our own Zwift rider_id
     optional float tag3 = 3;
     optional float tag4 = 4;
@@ -51,14 +61,40 @@ message ZwiftCompanionMessageRiderPosition {
     uint32 tag10 = 10; // Seems to always be zero for this message type
 }
 
-message ZwiftToCompanionMessage
+message ZwiftAppToCompanionMessageTypeOne
+{
+    // These fields are always there
+    uint32 tag1 = 1; // This will have value 1
+    uint32 tag2 = 2;
+    uint32 rider_id = 3;
+    uint32 tag4 = 4;
+    uint32 tag6 = 6;
+    uint32 tag7 = 7;
+
+    message ZwiftAppToCompanionMessageThree
+    {
+        uint32 tag1 = 1;
+        uint32 tag2 = 2;
+        uint32 tag19 = 19;
+    }
+    ZwiftAppToCompanionMessageThree type_three = 11;
+    
+    uint32 tag12 = 12; // Set when type_three is not null
+}
+
+////////////////////////////////////////////////////////////////
+////// Zwift Desktop app to Zwift Companion app messages //////
+////////////////////////////////////////////////////////////////
+
+// Base message type
+message ZwiftCompanionToApp
 {
     // These fields are always there
     uint32 tag1 = 1; // Our own Zwift rider_id but it can also be 2 (uint32)
     uint32 tag10 = 10; // Zero for this type
 }
 
-message ZwiftCompanionRiderMessage
+message ZwiftCompanionToAppRiderMessage
 {
     // These fields are always there
     uint32 myId = 1; // Our own Zwift rider_id but it can also be 2 (uint32)
@@ -77,7 +113,7 @@ message ZwiftCompanionRiderMessage
     optional RiderMessage details = 2;
 }
 
-message ZwiftToCompanionMessageValueZero
+message ZwiftCompanionToAppMessageValueZero
 {
     // These fields are always there
     uint32 tag1 = 1; // This will have value 0
@@ -90,7 +126,7 @@ message ZwiftToCompanionMessageValueZero
     uint32 tag12 = 12;
 }
 
-message ZwiftToCompanionMessageValueOne
+message ZwiftCompanionToAppMessageValueOne
 {
     // These fields are always there
     uint32 tag1 = 1; // This will have value 1
@@ -113,7 +149,7 @@ message ZwiftToCompanionMessageValueOne
     uint32 tag12 = 12;
 }
 
-message ZwiftToCompanionMessageValueTwo
+message ZwiftCompanionToAppMessageValueTwo
 {
     // These fields are always there
     uint32 tag1 = 1; // This will have value 2

@@ -50,8 +50,6 @@ Tag 1 can either be the `rider_id` but also 1, or 2.
 
 This message doesn't have a tag 10.
 
-
-
 ### Notes
 
 blah
