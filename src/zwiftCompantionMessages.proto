@@ -157,27 +157,6 @@ message ZwiftAppToCompanionActivityDetailsMessage
     ActivityDetails details = 21;
 }
 
-message ZwiftAppToCompanionMessageTypeOne
-{
-    // These fields are always there
-    uint32 tag1 = 1; // This will have value 1
-    uint32 tag2 = 2;
-    uint32 rider_id = 3;
-    uint32 tag4 = 4;
-    uint32 tag6 = 6;
-    uint32 tag7 = 7;
-
-    message ZwiftAppToCompanionMessageThree
-    {
-        uint32 tag1 = 1;
-        uint32 tag2 = 2;
-        uint32 tag19 = 19;
-    }
-    ZwiftAppToCompanionMessageThree type_three = 11;
-    
-    uint32 tag12 = 12; // Set when type_three is not null
-}
-
 ////////////////////////////////////////////////////////////////
 ////// Zwift Companion app to Zwift Desktop app messages //////
 ////////////////////////////////////////////////////////////////

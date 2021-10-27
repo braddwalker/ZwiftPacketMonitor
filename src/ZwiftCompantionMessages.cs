@@ -86,55 +86,48 @@ namespace ZwiftPacketMonitor {
             "BXRhZzEzGA0gASgNEg0KBXRhZzE0GA4gASgNEg0KBXRhZzE1GA8gASgNEg0K",
             "BXRhZzE2GBAgASgNEg0KBXRhZzE3GBEgASgNEg0KBXRhZzE4GBIgASgNEhgK",
             "C3Byb2ZpbGVfdXJsGBMgASgJSACIAQFCDgoMX3Byb2ZpbGVfdXJsQgcKBV9k",
-            "YXRhQg0KC19yaWRlcl9kYXRhQg4KDF9vdGhlcl9yaWRlciLDAgohWndpZnRB",
-            "cHBUb0NvbXBhbmlvbk1lc3NhZ2VUeXBlT25lEgwKBHRhZzEYASABKA0SDAoE",
-            "dGFnMhgCIAEoDRIQCghyaWRlcl9pZBgDIAEoDRIMCgR0YWc0GAQgASgNEgwK",
-            "BHRhZzYYBiABKA0SDAoEdGFnNxgHIAEoDRJpCgp0eXBlX3RocmVlGAsgASgL",
-            "MlUuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0QXBwVG9Db21wYW5pb25NZXNz",
-            "YWdlVHlwZU9uZS5ad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVRocmVlEg0K",
-            "BXRhZzEyGAwgASgNGkwKH1p3aWZ0QXBwVG9Db21wYW5pb25NZXNzYWdlVGhy",
-            "ZWUSDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEg0KBXRhZzE5GBMgASgN",
-            "IjIKE1p3aWZ0Q29tcGFuaW9uVG9BcHASDAoEdGFnMRgBIAEoDRINCgV0YWcx",
-            "MBgKIAEoDSKyBAofWndpZnRDb21wYW5pb25Ub0FwcFJpZGVyTWVzc2FnZRIM",
-            "CgRteUlkGAEgASgNEhAKCHNlcXVlbmNlGAogASgNElYKB2RldGFpbHMYAiAB",
-            "KAsyQC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcFJp",
-            "ZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2VIAIgBARqKAwoMUmlkZXJNZXNzYWdl",
-            "EgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0YWczGAMgASgNEgwK",
-            "BHRhZzUYBSABKA0SDAoEdGFnNxgHIAEoDRIRCgR0YWc4GAggASgNSACIAQES",
-            "EgoFdGFnMTAYCiABKA1IAYgBARIVCghyaWRlcl9pZBgTIAEoDUgCiAEBEmQK",
-            "BGRhdGEYFSABKAsyUS5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5p",
-            "b25Ub0FwcFJpZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2UuUmlkZXJNZXNzYWdl",
-            "RGF0YUgDiAEBGmcKEFJpZGVyTWVzc2FnZURhdGESDAoEdGFnMRgBIAEoDRpF",
-            "ChNSaWRlck1lc3NhZ2VTdWJEYXRhEgwKBHRhZzEYASABKA0SEgoKd29ybGRf",
-            "bmFtZRgDIAEoCRIMCgR0YWc0GAQgASgNQgcKBV90YWc4QggKBl90YWcxMEIL",
-            "CglfcmlkZXJfaWRCBwoFX2RhdGFCCgoIX2RldGFpbHMi1AEKJVp3aWZ0Q29t",
-            "cGFuaW9uVG9BcHBFbmRBY3Rpdml0eU1lc3NhZ2USDAoEdGFnMRgBIAEoDRJX",
-            "CgRkYXRhGBAgASgLMkkuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFu",
-            "aW9uVG9BcHBFbmRBY3Rpdml0eU1lc3NhZ2UuRW5kQWN0aXZpdHlEYXRhGkQK",
-            "D0VuZEFjdGl2aXR5RGF0YRIMCgR0YWcxGAEgASgNEhUKDWFjdGl2aXR5X25h",
-            "bWUYAyABKAkSDAoEdGFnNBgEIAEoDSKHAQogWndpZnRDb21wYW5pb25Ub0Fw",
-            "cFJpZGVPbk1lc3NhZ2USDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEgwK",
-            "BHRhZzMYAyABKA0SFgoOb3RoZXJfcmlkZXJfaWQYBSABKA0SEwoLcHJvZmls",
-            "ZV91cmwYBiABKAkSDAoEdGFnNxgHIAEoDSKnBQokWndpZnRDb21wYW5pb25U",
-            "b0FwcERldmljZUluZm9NZXNzYWdlEgwKBHRhZzEYASABKA0SDQoFdGFnMTAY",
-            "CiABKA0SWAoLZGV2aWNlX2luZm8YAiABKAsyQy5ad2lmdFBhY2tldE1vbml0",
-            "b3IuWndpZnRDb21wYW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRldmlj",
-            "ZUluZm8ahwQKCkRldmljZUluZm8SaAoGZGV2aWNlGBUgASgLMlguWndpZnRQ",
+            "YXRhQg0KC19yaWRlcl9kYXRhQg4KDF9vdGhlcl9yaWRlciIyChNad2lmdENv",
+            "bXBhbmlvblRvQXBwEgwKBHRhZzEYASABKA0SDQoFdGFnMTAYCiABKA0isgQK",
+            "H1p3aWZ0Q29tcGFuaW9uVG9BcHBSaWRlck1lc3NhZ2USDAoEbXlJZBgBIAEo",
+            "DRIQCghzZXF1ZW5jZRgKIAEoDRJWCgdkZXRhaWxzGAIgASgLMkAuWndpZnRQ",
+            "YWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBSaWRlck1lc3NhZ2Uu",
+            "UmlkZXJNZXNzYWdlSACIAQEaigMKDFJpZGVyTWVzc2FnZRIMCgR0YWcxGAEg",
+            "ASgNEgwKBHRhZzIYAiABKA0SDAoEdGFnMxgDIAEoDRIMCgR0YWc1GAUgASgN",
+            "EgwKBHRhZzcYByABKA0SEQoEdGFnOBgIIAEoDUgAiAEBEhIKBXRhZzEwGAog",
+            "ASgNSAGIAQESFQoIcmlkZXJfaWQYEyABKA1IAogBARJkCgRkYXRhGBUgASgL",
+            "MlEuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBSaWRl",
+            "ck1lc3NhZ2UuUmlkZXJNZXNzYWdlLlJpZGVyTWVzc2FnZURhdGFIA4gBARpn",
+            "ChBSaWRlck1lc3NhZ2VEYXRhEgwKBHRhZzEYASABKA0aRQoTUmlkZXJNZXNz",
+            "YWdlU3ViRGF0YRIMCgR0YWcxGAEgASgNEhIKCndvcmxkX25hbWUYAyABKAkS",
+            "DAoEdGFnNBgEIAEoDUIHCgVfdGFnOEIICgZfdGFnMTBCCwoJX3JpZGVyX2lk",
+            "QgcKBV9kYXRhQgoKCF9kZXRhaWxzItQBCiVad2lmdENvbXBhbmlvblRvQXBw",
+            "RW5kQWN0aXZpdHlNZXNzYWdlEgwKBHRhZzEYASABKA0SVwoEZGF0YRgQIAEo",
+            "CzJJLlp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlvblRvQXBwRW5k",
+            "QWN0aXZpdHlNZXNzYWdlLkVuZEFjdGl2aXR5RGF0YRpECg9FbmRBY3Rpdml0",
+            "eURhdGESDAoEdGFnMRgBIAEoDRIVCg1hY3Rpdml0eV9uYW1lGAMgASgJEgwK",
+            "BHRhZzQYBCABKA0ihwEKIFp3aWZ0Q29tcGFuaW9uVG9BcHBSaWRlT25NZXNz",
+            "YWdlEgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0YWczGAMgASgN",
+            "EhYKDm90aGVyX3JpZGVyX2lkGAUgASgNEhMKC3Byb2ZpbGVfdXJsGAYgASgJ",
+            "EgwKBHRhZzcYByABKA0ipwUKJFp3aWZ0Q29tcGFuaW9uVG9BcHBEZXZpY2VJ",
+            "bmZvTWVzc2FnZRIMCgR0YWcxGAEgASgNEg0KBXRhZzEwGAogASgNElgKC2Rl",
+            "dmljZV9pbmZvGAIgASgLMkMuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29t",
+            "cGFuaW9uVG9BcHBEZXZpY2VJbmZvTWVzc2FnZS5EZXZpY2VJbmZvGocECgpE",
+            "ZXZpY2VJbmZvEmgKBmRldmljZRgVIAEoCzJYLlp3aWZ0UGFja2V0TW9uaXRv",
+            "ci5ad2lmdENvbXBhbmlvblRvQXBwRGV2aWNlSW5mb01lc3NhZ2UuRGV2aWNl",
+            "SW5mby5ad2lmdENvbXBhbmlvbkRldmljZRqOAwoUWndpZnRDb21wYW5pb25E",
+            "ZXZpY2USDAoEdGFnMRgBIAEoBRJ2Cgd2ZXJzaW9uGAUgASgLMmAuWndpZnRQ",
             "YWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBEZXZpY2VJbmZvTWVz",
-            "c2FnZS5EZXZpY2VJbmZvLlp3aWZ0Q29tcGFuaW9uRGV2aWNlGo4DChRad2lm",
-            "dENvbXBhbmlvbkRldmljZRIMCgR0YWcxGAEgASgFEnYKB3ZlcnNpb24YBSAB",
-            "KAsyYC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcERl",
-            "dmljZUluZm9NZXNzYWdlLkRldmljZUluZm8uWndpZnRDb21wYW5pb25EZXZp",
-            "Y2UuVmVyc2lvbkgAiAEBGuMBCgdWZXJzaW9uEhMKC2FwcF92ZXJzaW9uGAEg",
-            "ASgJEhIKCm9zX3ZlcnNpb24YAiABKAkSCgoCb3MYAyABKAkSDgoGZGV2aWNl",
-            "GAQgASgJEngKBHRhZzUYBSABKAsyai5ad2lmdFBhY2tldE1vbml0b3IuWndp",
-            "ZnRDb21wYW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRldmljZUluZm8u",
-            "WndpZnRDb21wYW5pb25EZXZpY2UuVmVyc2lvbi5Tb21lVGhpbmcaGQoJU29t",
-            "ZVRoaW5nEgwKBHRhZzEYASABKAVCCgoIX3ZlcnNpb24ipAEKI1p3aWZ0Q29t",
-            "cGFuaW9uVG9BcHBNZXNzYWdlVGFnMTBaZXJvEgwKBG15SWQYASABKA0SDAoE",
-            "dGFnMxgDIAEoAhIMCgR0YWc0GAQgASgCEgwKBHRhZzUYBSABKAISDAoEdGFn",
-            "NhgGIAEoAhIMCgR0YWc3GAcgASgCEgwKBHRhZzgYCCABKAISDAoEdGFnORgJ",
-            "IAEoARINCgV0YWcxMBgKIAEoDWIGcHJvdG8z"));
+            "c2FnZS5EZXZpY2VJbmZvLlp3aWZ0Q29tcGFuaW9uRGV2aWNlLlZlcnNpb25I",
+            "AIgBARrjAQoHVmVyc2lvbhITCgthcHBfdmVyc2lvbhgBIAEoCRISCgpvc192",
+            "ZXJzaW9uGAIgASgJEgoKAm9zGAMgASgJEg4KBmRldmljZRgEIAEoCRJ4CgR0",
+            "YWc1GAUgASgLMmouWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9u",
+            "VG9BcHBEZXZpY2VJbmZvTWVzc2FnZS5EZXZpY2VJbmZvLlp3aWZ0Q29tcGFu",
+            "aW9uRGV2aWNlLlZlcnNpb24uU29tZVRoaW5nGhkKCVNvbWVUaGluZxIMCgR0",
+            "YWcxGAEgASgFQgoKCF92ZXJzaW9uIqQBCiNad2lmdENvbXBhbmlvblRvQXBw",
+            "TWVzc2FnZVRhZzEwWmVybxIMCgRteUlkGAEgASgNEgwKBHRhZzMYAyABKAIS",
+            "DAoEdGFnNBgEIAEoAhIMCgR0YWc1GAUgASgCEgwKBHRhZzYYBiABKAISDAoE",
+            "dGFnNxgHIAEoAhIMCgR0YWc4GAggASgCEgwKBHRhZzkYCSABKAESDQoFdGFn",
+            "MTAYCiABKA1iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -146,7 +139,6 @@ namespace ZwiftPacketMonitor {
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.Rider), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.Rider.Parser, new[]{ "RiderId", "Tag2", "SomeData", "ProfileUrl", "SecondRiderId", "Tag7", "Description", "Tag12", "Tag13", "Tag16", "Tag18", "Tag19", "Tag20" }, new[]{ "ProfileUrl" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.Rider.Types.WhatIsThis), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.Rider.Types.WhatIsThis.Parser, new[]{ "Tag1", "Tag2", "Tag3" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Parser, new[]{ "Sub" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Types.Sub), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Types.Sub.Parser, new[]{ "Tag1", "Rider", "Tag3" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag5", "Tag6", "FirstName", "LastName", "Tag9", "Tag10", "Tag11", "Tag12", "Tag13", "Tag14", "Tag15", "Tag16", "Tag17", "Tag18", "ProfileUrl" }, new[]{ "ProfileUrl" }, null, null, null)})}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag6", "Tag7", "TypeThree", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree.Parser, new[]{ "Tag1", "Tag2", "Tag19" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToApp), global::ZwiftPacketMonitor.ZwiftCompanionToApp.Parser, new[]{ "Tag1", "Tag10" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Parser, new[]{ "MyId", "Sequence", "Details" }, new[]{ "Details" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag5", "Tag7", "Tag8", "Tag10", "RiderId", "Data" }, new[]{ "Tag8", "Tag10", "RiderId", "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Parser, new[]{ "Tag1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData.Parser, new[]{ "Tag1", "WorldName", "Tag4" }, null, null, null, null)})})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Parser, new[]{ "Tag1", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData), global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData.Parser, new[]{ "Tag1", "ActivityName", "Tag4" }, null, null, null, null)}),
@@ -5940,740 +5932,6 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class ZwiftAppToCompanionMessageTypeOne : pb::IMessage<ZwiftAppToCompanionMessageTypeOne>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<ZwiftAppToCompanionMessageTypeOne> _parser = new pb::MessageParser<ZwiftAppToCompanionMessageTypeOne>(() => new ZwiftAppToCompanionMessageTypeOne());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<ZwiftAppToCompanionMessageTypeOne> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[5]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ZwiftAppToCompanionMessageTypeOne() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ZwiftAppToCompanionMessageTypeOne(ZwiftAppToCompanionMessageTypeOne other) : this() {
-      tag1_ = other.tag1_;
-      tag2_ = other.tag2_;
-      riderId_ = other.riderId_;
-      tag4_ = other.tag4_;
-      tag6_ = other.tag6_;
-      tag7_ = other.tag7_;
-      typeThree_ = other.typeThree_ != null ? other.typeThree_.Clone() : null;
-      tag12_ = other.tag12_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ZwiftAppToCompanionMessageTypeOne Clone() {
-      return new ZwiftAppToCompanionMessageTypeOne(this);
-    }
-
-    /// <summary>Field number for the "tag1" field.</summary>
-    public const int Tag1FieldNumber = 1;
-    private uint tag1_;
-    /// <summary>
-    /// These fields are always there
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag1 {
-      get { return tag1_; }
-      set {
-        tag1_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "tag2" field.</summary>
-    public const int Tag2FieldNumber = 2;
-    private uint tag2_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag2 {
-      get { return tag2_; }
-      set {
-        tag2_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "rider_id" field.</summary>
-    public const int RiderIdFieldNumber = 3;
-    private uint riderId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RiderId {
-      get { return riderId_; }
-      set {
-        riderId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "tag4" field.</summary>
-    public const int Tag4FieldNumber = 4;
-    private uint tag4_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag4 {
-      get { return tag4_; }
-      set {
-        tag4_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "tag6" field.</summary>
-    public const int Tag6FieldNumber = 6;
-    private uint tag6_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag6 {
-      get { return tag6_; }
-      set {
-        tag6_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "tag7" field.</summary>
-    public const int Tag7FieldNumber = 7;
-    private uint tag7_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag7 {
-      get { return tag7_; }
-      set {
-        tag7_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "type_three" field.</summary>
-    public const int TypeThreeFieldNumber = 11;
-    private global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree typeThree_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree TypeThree {
-      get { return typeThree_; }
-      set {
-        typeThree_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "tag12" field.</summary>
-    public const int Tag12FieldNumber = 12;
-    private uint tag12_;
-    /// <summary>
-    /// Set when type_three is not null
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag12 {
-      get { return tag12_; }
-      set {
-        tag12_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as ZwiftAppToCompanionMessageTypeOne);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(ZwiftAppToCompanionMessageTypeOne other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Tag1 != other.Tag1) return false;
-      if (Tag2 != other.Tag2) return false;
-      if (RiderId != other.RiderId) return false;
-      if (Tag4 != other.Tag4) return false;
-      if (Tag6 != other.Tag6) return false;
-      if (Tag7 != other.Tag7) return false;
-      if (!object.Equals(TypeThree, other.TypeThree)) return false;
-      if (Tag12 != other.Tag12) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
-      if (Tag2 != 0) hash ^= Tag2.GetHashCode();
-      if (RiderId != 0) hash ^= RiderId.GetHashCode();
-      if (Tag4 != 0) hash ^= Tag4.GetHashCode();
-      if (Tag6 != 0) hash ^= Tag6.GetHashCode();
-      if (Tag7 != 0) hash ^= Tag7.GetHashCode();
-      if (typeThree_ != null) hash ^= TypeThree.GetHashCode();
-      if (Tag12 != 0) hash ^= Tag12.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Tag1 != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Tag1);
-      }
-      if (Tag2 != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Tag2);
-      }
-      if (RiderId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(RiderId);
-      }
-      if (Tag4 != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(Tag4);
-      }
-      if (Tag6 != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Tag6);
-      }
-      if (Tag7 != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Tag7);
-      }
-      if (typeThree_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(TypeThree);
-      }
-      if (Tag12 != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(Tag12);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Tag1 != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(Tag1);
-      }
-      if (Tag2 != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Tag2);
-      }
-      if (RiderId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(RiderId);
-      }
-      if (Tag4 != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(Tag4);
-      }
-      if (Tag6 != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Tag6);
-      }
-      if (Tag7 != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Tag7);
-      }
-      if (typeThree_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(TypeThree);
-      }
-      if (Tag12 != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(Tag12);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Tag1 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
-      }
-      if (Tag2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
-      }
-      if (RiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RiderId);
-      }
-      if (Tag4 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag4);
-      }
-      if (Tag6 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag6);
-      }
-      if (Tag7 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag7);
-      }
-      if (typeThree_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TypeThree);
-      }
-      if (Tag12 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag12);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(ZwiftAppToCompanionMessageTypeOne other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Tag1 != 0) {
-        Tag1 = other.Tag1;
-      }
-      if (other.Tag2 != 0) {
-        Tag2 = other.Tag2;
-      }
-      if (other.RiderId != 0) {
-        RiderId = other.RiderId;
-      }
-      if (other.Tag4 != 0) {
-        Tag4 = other.Tag4;
-      }
-      if (other.Tag6 != 0) {
-        Tag6 = other.Tag6;
-      }
-      if (other.Tag7 != 0) {
-        Tag7 = other.Tag7;
-      }
-      if (other.typeThree_ != null) {
-        if (typeThree_ == null) {
-          TypeThree = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree();
-        }
-        TypeThree.MergeFrom(other.TypeThree);
-      }
-      if (other.Tag12 != 0) {
-        Tag12 = other.Tag12;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Tag1 = input.ReadUInt32();
-            break;
-          }
-          case 16: {
-            Tag2 = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            RiderId = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            Tag4 = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Tag6 = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            Tag7 = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            if (typeThree_ == null) {
-              TypeThree = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree();
-            }
-            input.ReadMessage(TypeThree);
-            break;
-          }
-          case 96: {
-            Tag12 = input.ReadUInt32();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 8: {
-            Tag1 = input.ReadUInt32();
-            break;
-          }
-          case 16: {
-            Tag2 = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            RiderId = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            Tag4 = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Tag6 = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            Tag7 = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            if (typeThree_ == null) {
-              TypeThree = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree();
-            }
-            input.ReadMessage(TypeThree);
-            break;
-          }
-          case 96: {
-            Tag12 = input.ReadUInt32();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the ZwiftAppToCompanionMessageTypeOne message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static partial class Types {
-      public sealed partial class ZwiftAppToCompanionMessageThree : pb::IMessage<ZwiftAppToCompanionMessageThree>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<ZwiftAppToCompanionMessageThree> _parser = new pb::MessageParser<ZwiftAppToCompanionMessageThree>(() => new ZwiftAppToCompanionMessageThree());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<ZwiftAppToCompanionMessageThree> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Descriptor.NestedTypes[0]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftAppToCompanionMessageThree() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftAppToCompanionMessageThree(ZwiftAppToCompanionMessageThree other) : this() {
-          tag1_ = other.tag1_;
-          tag2_ = other.tag2_;
-          tag19_ = other.tag19_;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftAppToCompanionMessageThree Clone() {
-          return new ZwiftAppToCompanionMessageThree(this);
-        }
-
-        /// <summary>Field number for the "tag1" field.</summary>
-        public const int Tag1FieldNumber = 1;
-        private uint tag1_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public uint Tag1 {
-          get { return tag1_; }
-          set {
-            tag1_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "tag2" field.</summary>
-        public const int Tag2FieldNumber = 2;
-        private uint tag2_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public uint Tag2 {
-          get { return tag2_; }
-          set {
-            tag2_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "tag19" field.</summary>
-        public const int Tag19FieldNumber = 19;
-        private uint tag19_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public uint Tag19 {
-          get { return tag19_; }
-          set {
-            tag19_ = value;
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override bool Equals(object other) {
-          return Equals(other as ZwiftAppToCompanionMessageThree);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(ZwiftAppToCompanionMessageThree other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Tag1 != other.Tag1) return false;
-          if (Tag2 != other.Tag2) return false;
-          if (Tag19 != other.Tag19) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Tag1 != 0) hash ^= Tag1.GetHashCode();
-          if (Tag2 != 0) hash ^= Tag2.GetHashCode();
-          if (Tag19 != 0) hash ^= Tag19.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          if (Tag1 != 0) {
-            output.WriteRawTag(8);
-            output.WriteUInt32(Tag1);
-          }
-          if (Tag2 != 0) {
-            output.WriteRawTag(16);
-            output.WriteUInt32(Tag2);
-          }
-          if (Tag19 != 0) {
-            output.WriteRawTag(152, 1);
-            output.WriteUInt32(Tag19);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (Tag1 != 0) {
-            output.WriteRawTag(8);
-            output.WriteUInt32(Tag1);
-          }
-          if (Tag2 != 0) {
-            output.WriteRawTag(16);
-            output.WriteUInt32(Tag2);
-          }
-          if (Tag19 != 0) {
-            output.WriteRawTag(152, 1);
-            output.WriteUInt32(Tag19);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int CalculateSize() {
-          int size = 0;
-          if (Tag1 != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
-          }
-          if (Tag2 != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
-          }
-          if (Tag19 != 0) {
-            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Tag19);
-          }
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(ZwiftAppToCompanionMessageThree other) {
-          if (other == null) {
-            return;
-          }
-          if (other.Tag1 != 0) {
-            Tag1 = other.Tag1;
-          }
-          if (other.Tag2 != 0) {
-            Tag2 = other.Tag2;
-          }
-          if (other.Tag19 != 0) {
-            Tag19 = other.Tag19;
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 8: {
-                Tag1 = input.ReadUInt32();
-                break;
-              }
-              case 16: {
-                Tag2 = input.ReadUInt32();
-                break;
-              }
-              case 152: {
-                Tag19 = input.ReadUInt32();
-                break;
-              }
-            }
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-              case 8: {
-                Tag1 = input.ReadUInt32();
-                break;
-              }
-              case 16: {
-                Tag2 = input.ReadUInt32();
-                break;
-              }
-              case 152: {
-                Tag19 = input.ReadUInt32();
-                break;
-              }
-            }
-          }
-        }
-        #endif
-
-      }
-
-    }
-    #endregion
-
-  }
-
   /// <summary>
   /// Base message type
   /// </summary>
@@ -6691,7 +5949,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6923,7 +6181,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[7]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8215,7 +7473,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[8]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8721,7 +7979,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[9]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9098,7 +8356,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[10]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10388,7 +9646,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[11]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
