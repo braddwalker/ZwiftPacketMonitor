@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using PacketDotNet;
 using Microsoft.Extensions.Logging;
@@ -146,7 +147,7 @@ namespace ZwiftPacketMonitor
             _complete = false;
         }
 
-        private int ToUInt16(byte[] buffer, int start, int count)
+        private static int ToUInt16(byte[] buffer, int start, int count)
         {
             if (buffer.Length > 2)
             {
@@ -156,12 +157,15 @@ namespace ZwiftPacketMonitor
                     Array.Reverse(b);
                 }
 
-                return (BitConverter.ToUInt16(b, 0));
+                if (b.Length == count)
+                {
+                    return (BitConverter.ToUInt16(b, 0));
+                }
+
+                return 0;
             }
-            else 
-            {
-                return (0);
-            }
+
+            return 0;
         }
     }
 }

@@ -2,51 +2,37 @@ syntax="proto3";
 package ZwiftPacketMonitor;
 
 ////////////////////////////////////////////////////////////////
-////// Zwift Companion app to Zwift Desktop app messages //////
+////// Zwift Desktop app to Zwift Companion app messages //////
 ////////////////////////////////////////////////////////////////
 
 // Base message type
 message ZwiftAppToCompanion
 {
     // These fields are always there
-    uint32 tag1 = 1; // This will have value 2
+    uint32 sequence = 1; // This can be either the rider_id in which case tag10 is set or another value in the low range
 
-    message ZwiftAppToCompanionMessageTwo {
-        int32 sequence = 1; // Sequence maybe?
-        uint32 type = 2; // Seems to always be 16. No it's not, can also be 28
-        int32 tag3 = 3;
-        int32 tag4 = 4;
-        int32 rider_id = 5;
-        int32 tag7 = 7;
-        optional int32 tag8 = 8;
-        optional uint32 tag10 = 10; // For type 22 messages
-        optional int32 myId = 19; // Our own Zwift rider_id
-    }
-    optional ZwiftAppToCompanionMessageTwo companionMessage2 = 2;
+    uint32 tag2 = 2;
+    uint32 rider_id = 3;
+    uint32 tag4 = 4;
+    uint32 tag6 = 6;
+    uint32 tag7 = 7;
+    
+    message SubItem
+    {
+        uint32 sequence = 1;
+        uint32 tag2 = 2;
+        optional uint32 tag3 = 3;
+        optional uint32 tag7 = 7;
 
-    optional uint32 tag10 = 10; // Not there when tag 1 = 1
-
-    uint32 rider_id = 19; // Set when type = 28
-
-    message ZwiftCompanionDevice {
-        int32 tag1 = 1;
-        message Version {
-            string app_version = 1; // Version of the Zwift Companion app
-            string os_version = 2; // Version of the device OS
-            string os = 3; // Type of the device OS
-            string device = 4; // Device model
-            message SomeThing {
-                int32 tag1 = 1;
-            }
-            SomeThing tag5 = 5;
+        message SubItemData
+        {
+            uint32 tag1 = 1; // Can be 3 or 6
+            optional string tag7 = 7;
         }
-        optional Version version = 5;
-        message SomeThing2 {
-            int32 tag1 = 1;
-        }
-        optional SomeThing2 tag16 = 16;
+
+        optional SubItemData data = 21;
     }
-    optional ZwiftCompanionDevice device = 21; // For type 29 messages
+    repeated SubItem items = 11;
 }
 
 message ZwiftAppToCompanionMessageRiderPosition {
@@ -59,6 +45,27 @@ message ZwiftAppToCompanionMessageRiderPosition {
     optional float tag8 = 8;
     double clock_time = 9;
     uint32 tag10 = 10; // Seems to always be zero for this message type
+}
+
+message ZwiftAppToCompanionPowerUpMessage
+{
+    uint32 tag1 = 1;
+    uint32 tag2 = 2; // Always 2 for this type
+    uint32 tag3 = 3;
+    string power_up = 4;
+    string foreground_color = 6;
+    string background_color = 12;
+}
+
+message ZwiftAppToCompanionButtonMessage
+{
+    uint32 tag1 = 1;
+    uint32 tag2 = 4;
+    uint32 tag8 = 8;
+    uint32 tag9 = 9;
+    string title = 10;
+    string image_url = 11;
+    uint32 tag13 = 13;
 }
 
 message ZwiftAppToCompanionMessageTypeOne
@@ -82,8 +89,90 @@ message ZwiftAppToCompanionMessageTypeOne
     uint32 tag12 = 12; // Set when type_three is not null
 }
 
+message ZwiftAppToCompanionMessageTypeTwo
+{
+    // These fields are always there
+    uint32 tag1 = 1; // This will have value 2
+    uint32 tag2 = 2;
+    uint32 rider_id = 3;
+    uint32 tag4 = 4;
+    uint32 tag6 = 6;
+    uint32 tag7 = 7;
+
+    message TypeTwoSubItem
+    {
+        uint32 tag1 = 1;
+        uint32 tag2 = 2;
+        
+        message TypeTwoSubItemData
+        {
+            uint32 tag1 = 1;
+
+            message MoreData
+            {
+                uint32 tag1 = 1;
+                uint64 tag2 = 2;
+                uint32 tag3 = 3;
+                uint32 tag4 = 4;
+
+                message EvenMoreData
+                {
+                    message MoreMoreDataOne
+                    {
+                        uint32 tag1 = 1;
+                    }
+                    optional MoreMoreDataOne data_1 = 1;
+
+                    message MoreMoreDataTwo
+                    {
+                        uint32 rider_id = 1;
+                        uint32 tag2 = 2;
+                        message WhatIsThis
+                        {
+                            float tag1 = 1;
+                            float tag2 = 2;
+                            float tag3 = 3;
+                        }
+                        WhatIsThis some_data = 3;
+                        string profile_url = 5;
+                        uint32 second_rider_id = 6; // This is appearing twice...
+                        uint32 tag7 = 7;
+                        string description = 11;
+                        uint32 tag12 = 12;
+                        float tag13 = 13;
+                        uint32 tag16 = 16;
+                        uint32 tag18 = 18;
+                        double tag19 = 19;
+                        uint32 tag20 = 20;
+                    }
+                    optional MoreMoreDataTwo data_2 = 2;
+
+                    optional uint32 tag3 = 3;
+                    float tag6 = 6;
+                }
+
+                EvenMoreData data = 6;
+
+                uint32 tag7 = 7;
+                uint32 tag8 = 8;
+                uint32 tag10 = 10;
+                uint32 tag11 = 11;
+                uint32 tag12 = 12;
+            }
+
+            MoreData data = 4;
+        }
+
+        TypeTwoSubItemData data = 21;
+    }
+
+    repeated TypeTwoSubItem sub_item = 11;
+    
+    uint32 tag12 = 12; // Set when type_three is not null
+}
+
 ////////////////////////////////////////////////////////////////
-////// Zwift Desktop app to Zwift Companion app messages //////
+////// Zwift Companion app to Zwift Desktop app messages //////
 ////////////////////////////////////////////////////////////////
 
 // Base message type
@@ -98,19 +187,95 @@ message ZwiftCompanionToAppRiderMessage
 {
     // These fields are always there
     uint32 myId = 1; // Our own Zwift rider_id but it can also be 2 (uint32)
-    uint32 tag10 = 10; // Zero for this type
+    uint32 sequence = 10; // This now seems to be a sequence number
 
     message RiderMessage
     {
         uint32 tag1 = 1;
-        uint32 tag2 = 2;
+        uint32 tag2 = 2; // Possible type, have seen values 1, 2 and 22 (left/right/straight), 29
         uint32 tag3 = 3;
         uint32 tag5 = 5;
         uint32 tag7 = 7;
-        uint32 rider_id = 19;
+        optional uint32 tag8 = 8;
+        optional uint32 tag10 = 10;
+        optional uint32 rider_id = 19;
+
+        message RiderMessageData
+        {
+            uint32 tag1 = 1;
+
+            message RiderMessageSubData
+            {
+                uint32 tag1 = 1;
+                string world_name = 3;
+                uint32 tag4 = 4;
+            }
+        }
+
+        optional RiderMessageData data = 21;
     }
 
     optional RiderMessage details = 2;
+}
+
+message ZwiftCompanionToAppEndActivityMessage
+{
+    uint32 tag1 = 1;
+
+    message EndActivityData
+    {
+        uint32 tag1 = 1;
+        string activity_name = 3;
+        uint32 tag4 = 4;
+    }
+
+    EndActivityData data = 16;
+}
+
+message ZwiftCompanionToAppRideOnMessage
+{
+    // These fields are always there
+    uint32 tag1 = 1; // Our own Zwift rider_id
+    uint32 tag10 = 10; // 391 for this type
+
+    message RideOn {
+        uint32 tag1 = 1;
+        uint32 tag2 = 2;
+        uint32 tag3 = 3;
+        uint32 other_rider_id = 5;
+        string profile_url = 6;
+        uint32 tag7 = 7;
+    }
+
+    RideOn ride_on = 2;
+}
+
+message ZwiftCompanionToAppDeviceInfoMessage
+{
+    // These fields are always there
+    uint32 tag1 = 1; // Our own Zwift rider_id
+    uint32 tag10 = 10;
+
+    message DeviceInfo
+    {
+        message ZwiftCompanionDevice {
+            int32 tag1 = 1;
+            message Version {
+                string app_version = 1; // Version of the Zwift Companion app
+                string os_version = 2; // Version of the device OS
+                string os = 3; // Type of the device OS
+                string device = 4; // Device model
+                message SomeThing {
+                    int32 tag1 = 1;
+                }
+                SomeThing tag5 = 5;
+            }
+            optional Version version = 5;
+        }
+        ZwiftCompanionDevice device = 21; // For type 29 messages
+    }
+
+    DeviceInfo device_info = 2;    
 }
 
 message ZwiftCompanionToAppMessageValueZero

@@ -25,87 +25,155 @@ namespace ZwiftPacketMonitor {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch16d2lmdENvbXBhbnRpb25NZXNzYWdlcy5wcm90bxISWndpZnRQYWNrZXRN",
-            "b25pdG9yIt4HChNad2lmdEFwcFRvQ29tcGFuaW9uEgwKBHRhZzEYASABKA0S",
-            "ZQoRY29tcGFuaW9uTWVzc2FnZTIYAiABKAsyRS5ad2lmdFBhY2tldE1vbml0",
-            "b3IuWndpZnRBcHBUb0NvbXBhbmlvbi5ad2lmdEFwcFRvQ29tcGFuaW9uTWVz",
-            "c2FnZVR3b0gAiAEBEhIKBXRhZzEwGAogASgNSAGIAQESEAoIcmlkZXJfaWQY",
-            "EyABKA0SUQoGZGV2aWNlGBUgASgLMjwuWndpZnRQYWNrZXRNb25pdG9yLlp3",
-            "aWZ0QXBwVG9Db21wYW5pb24uWndpZnRDb21wYW5pb25EZXZpY2VIAogBARrR",
-            "AQodWndpZnRBcHBUb0NvbXBhbmlvbk1lc3NhZ2VUd28SEAoIc2VxdWVuY2UY",
-            "ASABKAUSDAoEdHlwZRgCIAEoDRIMCgR0YWczGAMgASgFEgwKBHRhZzQYBCAB",
-            "KAUSEAoIcmlkZXJfaWQYBSABKAUSDAoEdGFnNxgHIAEoBRIRCgR0YWc4GAgg",
-            "ASgFSACIAQESEgoFdGFnMTAYCiABKA1IAYgBARIRCgRteUlkGBMgASgFSAKI",
-            "AQFCBwoFX3RhZzhCCAoGX3RhZzEwQgcKBV9teUlkGtkDChRad2lmdENvbXBh",
-            "bmlvbkRldmljZRIMCgR0YWcxGAEgASgFEloKB3ZlcnNpb24YBSABKAsyRC5a",
-            "d2lmdFBhY2tldE1vbml0b3IuWndpZnRBcHBUb0NvbXBhbmlvbi5ad2lmdENv",
-            "bXBhbmlvbkRldmljZS5WZXJzaW9uSACIAQESWwoFdGFnMTYYECABKAsyRy5a",
-            "d2lmdFBhY2tldE1vbml0b3IuWndpZnRBcHBUb0NvbXBhbmlvbi5ad2lmdENv",
-            "bXBhbmlvbkRldmljZS5Tb21lVGhpbmcySAGIAQEaxwEKB1ZlcnNpb24SEwoL",
-            "YXBwX3ZlcnNpb24YASABKAkSEgoKb3NfdmVyc2lvbhgCIAEoCRIKCgJvcxgD",
-            "IAEoCRIOCgZkZXZpY2UYBCABKAkSXAoEdGFnNRgFIAEoCzJOLlp3aWZ0UGFj",
-            "a2V0TW9uaXRvci5ad2lmdEFwcFRvQ29tcGFuaW9uLlp3aWZ0Q29tcGFuaW9u",
-            "RGV2aWNlLlZlcnNpb24uU29tZVRoaW5nGhkKCVNvbWVUaGluZxIMCgR0YWcx",
-            "GAEgASgFGhoKClNvbWVUaGluZzISDAoEdGFnMRgBIAEoBUIKCghfdmVyc2lv",
-            "bkIICgZfdGFnMTZCFAoSX2NvbXBhbmlvbk1lc3NhZ2UyQggKBl90YWcxMEIJ",
-            "CgdfZGV2aWNlIoICCidad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVJpZGVy",
-            "UG9zaXRpb24SDAoEbXlJZBgBIAEoDRIRCgR0YWczGAMgASgCSACIAQESEQoE",
-            "dGFnNBgEIAEoAkgBiAEBEhEKBHRhZzUYBSABKAJIAogBARIRCgR0YWc2GAYg",
-            "ASgCSAOIAQESEQoEdGFnNxgHIAEoAkgEiAEBEhEKBHRhZzgYCCABKAJIBYgB",
-            "ARISCgpjbG9ja190aW1lGAkgASgBEg0KBXRhZzEwGAogASgNQgcKBV90YWcz",
-            "QgcKBV90YWc0QgcKBV90YWc1QgcKBV90YWc2QgcKBV90YWc3QgcKBV90YWc4",
-            "IsMCCiFad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVR5cGVPbmUSDAoEdGFn",
-            "MRgBIAEoDRIMCgR0YWcyGAIgASgNEhAKCHJpZGVyX2lkGAMgASgNEgwKBHRh",
-            "ZzQYBCABKA0SDAoEdGFnNhgGIAEoDRIMCgR0YWc3GAcgASgNEmkKCnR5cGVf",
-            "dGhyZWUYCyABKAsyVS5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRBcHBUb0Nv",
-            "bXBhbmlvbk1lc3NhZ2VUeXBlT25lLlp3aWZ0QXBwVG9Db21wYW5pb25NZXNz",
-            "YWdlVGhyZWUSDQoFdGFnMTIYDCABKA0aTAofWndpZnRBcHBUb0NvbXBhbmlv",
-            "bk1lc3NhZ2VUaHJlZRIMCgR0YWcxGAEgASgNEgwKBHRhZzIYAiABKA0SDQoF",
-            "dGFnMTkYEyABKA0iMgoTWndpZnRDb21wYW5pb25Ub0FwcBIMCgR0YWcxGAEg",
-            "ASgNEg0KBXRhZzEwGAogASgNIooCCh9ad2lmdENvbXBhbmlvblRvQXBwUmlk",
-            "ZXJNZXNzYWdlEgwKBG15SWQYASABKA0SDQoFdGFnMTAYCiABKA0SVgoHZGV0",
-            "YWlscxgCIAEoCzJALlp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlv",
-            "blRvQXBwUmlkZXJNZXNzYWdlLlJpZGVyTWVzc2FnZUgAiAEBGmYKDFJpZGVy",
-            "TWVzc2FnZRIMCgR0YWcxGAEgASgNEgwKBHRhZzIYAiABKA0SDAoEdGFnMxgD",
-            "IAEoDRIMCgR0YWc1GAUgASgNEgwKBHRhZzcYByABKA0SEAoIcmlkZXJfaWQY",
-            "EyABKA1CCgoIX2RldGFpbHMiiAEKI1p3aWZ0Q29tcGFuaW9uVG9BcHBNZXNz",
-            "YWdlVmFsdWVaZXJvEgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0",
-            "YWczGAMgASgNEgwKBHRhZzQYBCABKA0SDAoEdGFnNhgGIAEoDRIMCgR0YWc3",
-            "GAcgASgNEg0KBXRhZzEyGAwgASgNIp0CCiJad2lmdENvbXBhbmlvblRvQXBw",
-            "TWVzc2FnZVZhbHVlT25lEgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIM",
-            "CgR0YWczGAMgASgNEgwKBHRhZzQYBCABKA0SDAoEdGFnNhgGIAEoDRIMCgR0",
-            "YWc3GAcgASgNElcKCHN1Yl9pdGVtGAsgASgLMkUuWndpZnRQYWNrZXRNb25p",
-            "dG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVPbmUuVHlwZU9u",
-            "ZVN1Ykl0ZW0SDQoFdGFnMTIYDCABKA0aOwoOVHlwZU9uZVN1Ykl0ZW0SDAoE",
-            "dGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEg0KBXRhZzE5GBMgASgNIrcGCiJa",
-            "d2lmdENvbXBhbmlvblRvQXBwTWVzc2FnZVZhbHVlVHdvEgwKBHRhZzEYASAB",
-            "KA0SDAoEdGFnMhgCIAEoDRIMCgR0YWczGAMgASgNEgwKBHRhZzQYBCABKA0S",
-            "DAoEdGFnNhgGIAEoDRIMCgR0YWc3GAcgASgNElcKCHN1Yl9pdGVtGAsgAygL",
-            "MkUuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBNZXNz",
-            "YWdlVmFsdWVUd28uVHlwZVR3b1N1Ykl0ZW0SDQoFdGFnMTIYDCABKA0a1AQK",
-            "DlR5cGVUd29TdWJJdGVtEgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRJm",
-            "CgRkYXRhGBUgASgLMlguWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFu",
-            "aW9uVG9BcHBNZXNzYWdlVmFsdWVUd28uVHlwZVR3b1N1Ykl0ZW0uVHlwZVR3",
-            "b1N1Ykl0ZW1EYXRhGr0DChJUeXBlVHdvU3ViSXRlbURhdGESDAoEdGFnMRgB",
-            "IAEoDRJvCgRkYXRhGAQgASgLMmEuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0",
-            "Q29tcGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVUd28uVHlwZVR3b1N1Ykl0ZW0u",
-            "VHlwZVR3b1N1Ykl0ZW1EYXRhLk1vcmVEYXRhGqcCCghNb3JlRGF0YRIMCgR0",
-            "YWcxGAEgASgNEgwKBHRhZzIYAiABKAQSDAoEdGFnMxgDIAEoDRIMCgR0YWc0",
-            "GAQgASgNEnwKBGRhdGEYBiABKAsybi5ad2lmdFBhY2tldE1vbml0b3IuWndp",
-            "ZnRDb21wYW5pb25Ub0FwcE1lc3NhZ2VWYWx1ZVR3by5UeXBlVHdvU3ViSXRl",
-            "bS5UeXBlVHdvU3ViSXRlbURhdGEuTW9yZURhdGEuRXZlbk1vcmVEYXRhEgwK",
-            "BHRhZzcYByABKA0SDAoEdGFnOBgIIAEoDRINCgV0YWcxMBgKIAEoDRINCgV0",
-            "YWcxMRgLIAEoDRINCgV0YWcxMhgMIAEoDRocCgxFdmVuTW9yZURhdGESDAoE",
-            "dGFnNhgGIAEoAmIGcHJvdG8z"));
+            "b25pdG9yIqcDChNad2lmdEFwcFRvQ29tcGFuaW9uEhAKCHNlcXVlbmNlGAEg",
+            "ASgNEgwKBHRhZzIYAiABKA0SEAoIcmlkZXJfaWQYAyABKA0SDAoEdGFnNBgE",
+            "IAEoDRIMCgR0YWc2GAYgASgNEgwKBHRhZzcYByABKA0SPgoFaXRlbXMYCyAD",
+            "KAsyLy5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRBcHBUb0NvbXBhbmlvbi5T",
+            "dWJJdGVtGvMBCgdTdWJJdGVtEhAKCHNlcXVlbmNlGAEgASgNEgwKBHRhZzIY",
+            "AiABKA0SEQoEdGFnMxgDIAEoDUgAiAEBEhEKBHRhZzcYByABKA1IAYgBARJO",
+            "CgRkYXRhGBUgASgLMjsuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0QXBwVG9D",
+            "b21wYW5pb24uU3ViSXRlbS5TdWJJdGVtRGF0YUgCiAEBGjcKC1N1Ykl0ZW1E",
+            "YXRhEgwKBHRhZzEYASABKA0SEQoEdGFnNxgHIAEoCUgAiAEBQgcKBV90YWc3",
+            "QgcKBV90YWczQgcKBV90YWc3QgcKBV9kYXRhIoICCidad2lmdEFwcFRvQ29t",
+            "cGFuaW9uTWVzc2FnZVJpZGVyUG9zaXRpb24SDAoEbXlJZBgBIAEoDRIRCgR0",
+            "YWczGAMgASgCSACIAQESEQoEdGFnNBgEIAEoAkgBiAEBEhEKBHRhZzUYBSAB",
+            "KAJIAogBARIRCgR0YWc2GAYgASgCSAOIAQESEQoEdGFnNxgHIAEoAkgEiAEB",
+            "EhEKBHRhZzgYCCABKAJIBYgBARISCgpjbG9ja190aW1lGAkgASgBEg0KBXRh",
+            "ZzEwGAogASgNQgcKBV90YWczQgcKBV90YWc0QgcKBV90YWc1QgcKBV90YWc2",
+            "QgcKBV90YWc3QgcKBV90YWc4IpMBCiFad2lmdEFwcFRvQ29tcGFuaW9uUG93",
+            "ZXJVcE1lc3NhZ2USDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEgwKBHRh",
+            "ZzMYAyABKA0SEAoIcG93ZXJfdXAYBCABKAkSGAoQZm9yZWdyb3VuZF9jb2xv",
+            "chgGIAEoCRIYChBiYWNrZ3JvdW5kX2NvbG9yGAwgASgJIosBCiBad2lmdEFw",
+            "cFRvQ29tcGFuaW9uQnV0dG9uTWVzc2FnZRIMCgR0YWcxGAEgASgNEgwKBHRh",
+            "ZzIYBCABKA0SDAoEdGFnOBgIIAEoDRIMCgR0YWc5GAkgASgNEg0KBXRpdGxl",
+            "GAogASgJEhEKCWltYWdlX3VybBgLIAEoCRINCgV0YWcxMxgNIAEoDSLDAgoh",
+            "WndpZnRBcHBUb0NvbXBhbmlvbk1lc3NhZ2VUeXBlT25lEgwKBHRhZzEYASAB",
+            "KA0SDAoEdGFnMhgCIAEoDRIQCghyaWRlcl9pZBgDIAEoDRIMCgR0YWc0GAQg",
+            "ASgNEgwKBHRhZzYYBiABKA0SDAoEdGFnNxgHIAEoDRJpCgp0eXBlX3RocmVl",
+            "GAsgASgLMlUuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0QXBwVG9Db21wYW5p",
+            "b25NZXNzYWdlVHlwZU9uZS5ad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVRo",
+            "cmVlEg0KBXRhZzEyGAwgASgNGkwKH1p3aWZ0QXBwVG9Db21wYW5pb25NZXNz",
+            "YWdlVGhyZWUSDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEg0KBXRhZzE5",
+            "GBMgASgNIuoMCiFad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVR5cGVUd28S",
+            "DAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEhAKCHJpZGVyX2lkGAMgASgN",
+            "EgwKBHRhZzQYBCABKA0SDAoEdGFnNhgGIAEoDRIMCgR0YWc3GAcgASgNElYK",
+            "CHN1Yl9pdGVtGAsgAygLMkQuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0QXBw",
+            "VG9Db21wYW5pb25NZXNzYWdlVHlwZVR3by5UeXBlVHdvU3ViSXRlbRINCgV0",
+            "YWcxMhgMIAEoDRqFCwoOVHlwZVR3b1N1Ykl0ZW0SDAoEdGFnMRgBIAEoDRIM",
+            "CgR0YWcyGAIgASgNEmUKBGRhdGEYFSABKAsyVy5ad2lmdFBhY2tldE1vbml0",
+            "b3IuWndpZnRBcHBUb0NvbXBhbmlvbk1lc3NhZ2VUeXBlVHdvLlR5cGVUd29T",
+            "dWJJdGVtLlR5cGVUd29TdWJJdGVtRGF0YRrvCQoSVHlwZVR3b1N1Ykl0ZW1E",
+            "YXRhEgwKBHRhZzEYASABKA0SbgoEZGF0YRgEIAEoCzJgLlp3aWZ0UGFja2V0",
+            "TW9uaXRvci5ad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVR5cGVUd28uVHlw",
+            "ZVR3b1N1Ykl0ZW0uVHlwZVR3b1N1Ykl0ZW1EYXRhLk1vcmVEYXRhGtoICghN",
+            "b3JlRGF0YRIMCgR0YWcxGAEgASgNEgwKBHRhZzIYAiABKAQSDAoEdGFnMxgD",
+            "IAEoDRIMCgR0YWc0GAQgASgNEnsKBGRhdGEYBiABKAsybS5ad2lmdFBhY2tl",
+            "dE1vbml0b3IuWndpZnRBcHBUb0NvbXBhbmlvbk1lc3NhZ2VUeXBlVHdvLlR5",
+            "cGVUd29TdWJJdGVtLlR5cGVUd29TdWJJdGVtRGF0YS5Nb3JlRGF0YS5FdmVu",
+            "TW9yZURhdGESDAoEdGFnNxgHIAEoDRIMCgR0YWc4GAggASgNEg0KBXRhZzEw",
+            "GAogASgNEg0KBXRhZzExGAsgASgNEg0KBXRhZzEyGAwgASgNGs8GCgxFdmVu",
+            "TW9yZURhdGESkgEKBmRhdGFfMRgBIAEoCzJ9Llp3aWZ0UGFja2V0TW9uaXRv",
+            "ci5ad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVR5cGVUd28uVHlwZVR3b1N1",
+            "Ykl0ZW0uVHlwZVR3b1N1Ykl0ZW1EYXRhLk1vcmVEYXRhLkV2ZW5Nb3JlRGF0",
+            "YS5Nb3JlTW9yZURhdGFPbmVIAIgBARKSAQoGZGF0YV8yGAIgASgLMn0uWndp",
+            "ZnRQYWNrZXRNb25pdG9yLlp3aWZ0QXBwVG9Db21wYW5pb25NZXNzYWdlVHlw",
+            "ZVR3by5UeXBlVHdvU3ViSXRlbS5UeXBlVHdvU3ViSXRlbURhdGEuTW9yZURh",
+            "dGEuRXZlbk1vcmVEYXRhLk1vcmVNb3JlRGF0YVR3b0gBiAEBEhEKBHRhZzMY",
+            "AyABKA1IAogBARIMCgR0YWc2GAYgASgCGh8KD01vcmVNb3JlRGF0YU9uZRIM",
+            "CgR0YWcxGAEgASgNGrMDCg9Nb3JlTW9yZURhdGFUd28SEAoIcmlkZXJfaWQY",
+            "ASABKA0SDAoEdGFnMhgCIAEoDRKcAQoJc29tZV9kYXRhGAMgASgLMogBLlp3",
+            "aWZ0UGFja2V0TW9uaXRvci5ad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVR5",
+            "cGVUd28uVHlwZVR3b1N1Ykl0ZW0uVHlwZVR3b1N1Ykl0ZW1EYXRhLk1vcmVE",
+            "YXRhLkV2ZW5Nb3JlRGF0YS5Nb3JlTW9yZURhdGFUd28uV2hhdElzVGhpcxIT",
+            "Cgtwcm9maWxlX3VybBgFIAEoCRIXCg9zZWNvbmRfcmlkZXJfaWQYBiABKA0S",
+            "DAoEdGFnNxgHIAEoDRITCgtkZXNjcmlwdGlvbhgLIAEoCRINCgV0YWcxMhgM",
+            "IAEoDRINCgV0YWcxMxgNIAEoAhINCgV0YWcxNhgQIAEoDRINCgV0YWcxOBgS",
+            "IAEoDRINCgV0YWcxORgTIAEoARINCgV0YWcyMBgUIAEoDRo2CgpXaGF0SXNU",
+            "aGlzEgwKBHRhZzEYASABKAISDAoEdGFnMhgCIAEoAhIMCgR0YWczGAMgASgC",
+            "QgkKB19kYXRhXzFCCQoHX2RhdGFfMkIHCgVfdGFnMyIyChNad2lmdENvbXBh",
+            "bmlvblRvQXBwEgwKBHRhZzEYASABKA0SDQoFdGFnMTAYCiABKA0isgQKH1p3",
+            "aWZ0Q29tcGFuaW9uVG9BcHBSaWRlck1lc3NhZ2USDAoEbXlJZBgBIAEoDRIQ",
+            "CghzZXF1ZW5jZRgKIAEoDRJWCgdkZXRhaWxzGAIgASgLMkAuWndpZnRQYWNr",
+            "ZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBSaWRlck1lc3NhZ2UuUmlk",
+            "ZXJNZXNzYWdlSACIAQEaigMKDFJpZGVyTWVzc2FnZRIMCgR0YWcxGAEgASgN",
+            "EgwKBHRhZzIYAiABKA0SDAoEdGFnMxgDIAEoDRIMCgR0YWc1GAUgASgNEgwK",
+            "BHRhZzcYByABKA0SEQoEdGFnOBgIIAEoDUgAiAEBEhIKBXRhZzEwGAogASgN",
+            "SAGIAQESFQoIcmlkZXJfaWQYEyABKA1IAogBARJkCgRkYXRhGBUgASgLMlEu",
+            "WndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBSaWRlck1l",
+            "c3NhZ2UuUmlkZXJNZXNzYWdlLlJpZGVyTWVzc2FnZURhdGFIA4gBARpnChBS",
+            "aWRlck1lc3NhZ2VEYXRhEgwKBHRhZzEYASABKA0aRQoTUmlkZXJNZXNzYWdl",
+            "U3ViRGF0YRIMCgR0YWcxGAEgASgNEhIKCndvcmxkX25hbWUYAyABKAkSDAoE",
+            "dGFnNBgEIAEoDUIHCgVfdGFnOEIICgZfdGFnMTBCCwoJX3JpZGVyX2lkQgcK",
+            "BV9kYXRhQgoKCF9kZXRhaWxzItQBCiVad2lmdENvbXBhbmlvblRvQXBwRW5k",
+            "QWN0aXZpdHlNZXNzYWdlEgwKBHRhZzEYASABKA0SVwoEZGF0YRgQIAEoCzJJ",
+            "Llp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlvblRvQXBwRW5kQWN0",
+            "aXZpdHlNZXNzYWdlLkVuZEFjdGl2aXR5RGF0YRpECg9FbmRBY3Rpdml0eURh",
+            "dGESDAoEdGFnMRgBIAEoDRIVCg1hY3Rpdml0eV9uYW1lGAMgASgJEgwKBHRh",
+            "ZzQYBCABKA0i/AEKIFp3aWZ0Q29tcGFuaW9uVG9BcHBSaWRlT25NZXNzYWdl",
+            "EgwKBHRhZzEYASABKA0SDQoFdGFnMTAYCiABKA0STAoHcmlkZV9vbhgCIAEo",
+            "CzI7Llp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlvblRvQXBwUmlk",
+            "ZU9uTWVzc2FnZS5SaWRlT24abQoGUmlkZU9uEgwKBHRhZzEYASABKA0SDAoE",
+            "dGFnMhgCIAEoDRIMCgR0YWczGAMgASgNEhYKDm90aGVyX3JpZGVyX2lkGAUg",
+            "ASgNEhMKC3Byb2ZpbGVfdXJsGAYgASgJEgwKBHRhZzcYByABKA0ipwUKJFp3",
+            "aWZ0Q29tcGFuaW9uVG9BcHBEZXZpY2VJbmZvTWVzc2FnZRIMCgR0YWcxGAEg",
+            "ASgNEg0KBXRhZzEwGAogASgNElgKC2RldmljZV9pbmZvGAIgASgLMkMuWndp",
+            "ZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBEZXZpY2VJbmZv",
+            "TWVzc2FnZS5EZXZpY2VJbmZvGocECgpEZXZpY2VJbmZvEmgKBmRldmljZRgV",
+            "IAEoCzJYLlp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlvblRvQXBw",
+            "RGV2aWNlSW5mb01lc3NhZ2UuRGV2aWNlSW5mby5ad2lmdENvbXBhbmlvbkRl",
+            "dmljZRqOAwoUWndpZnRDb21wYW5pb25EZXZpY2USDAoEdGFnMRgBIAEoBRJ2",
+            "Cgd2ZXJzaW9uGAUgASgLMmAuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29t",
+            "cGFuaW9uVG9BcHBEZXZpY2VJbmZvTWVzc2FnZS5EZXZpY2VJbmZvLlp3aWZ0",
+            "Q29tcGFuaW9uRGV2aWNlLlZlcnNpb25IAIgBARrjAQoHVmVyc2lvbhITCgth",
+            "cHBfdmVyc2lvbhgBIAEoCRISCgpvc192ZXJzaW9uGAIgASgJEgoKAm9zGAMg",
+            "ASgJEg4KBmRldmljZRgEIAEoCRJ4CgR0YWc1GAUgASgLMmouWndpZnRQYWNr",
+            "ZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBEZXZpY2VJbmZvTWVzc2Fn",
+            "ZS5EZXZpY2VJbmZvLlp3aWZ0Q29tcGFuaW9uRGV2aWNlLlZlcnNpb24uU29t",
+            "ZVRoaW5nGhkKCVNvbWVUaGluZxIMCgR0YWcxGAEgASgFQgoKCF92ZXJzaW9u",
+            "IogBCiNad2lmdENvbXBhbmlvblRvQXBwTWVzc2FnZVZhbHVlWmVybxIMCgR0",
+            "YWcxGAEgASgNEgwKBHRhZzIYAiABKA0SDAoEdGFnMxgDIAEoDRIMCgR0YWc0",
+            "GAQgASgNEgwKBHRhZzYYBiABKA0SDAoEdGFnNxgHIAEoDRINCgV0YWcxMhgM",
+            "IAEoDSKdAgoiWndpZnRDb21wYW5pb25Ub0FwcE1lc3NhZ2VWYWx1ZU9uZRIM",
+            "CgR0YWcxGAEgASgNEgwKBHRhZzIYAiABKA0SDAoEdGFnMxgDIAEoDRIMCgR0",
+            "YWc0GAQgASgNEgwKBHRhZzYYBiABKA0SDAoEdGFnNxgHIAEoDRJXCghzdWJf",
+            "aXRlbRgLIAEoCzJFLlp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlv",
+            "blRvQXBwTWVzc2FnZVZhbHVlT25lLlR5cGVPbmVTdWJJdGVtEg0KBXRhZzEy",
+            "GAwgASgNGjsKDlR5cGVPbmVTdWJJdGVtEgwKBHRhZzEYASABKA0SDAoEdGFn",
+            "MhgCIAEoDRINCgV0YWcxORgTIAEoDSK3BgoiWndpZnRDb21wYW5pb25Ub0Fw",
+            "cE1lc3NhZ2VWYWx1ZVR3bxIMCgR0YWcxGAEgASgNEgwKBHRhZzIYAiABKA0S",
+            "DAoEdGFnMxgDIAEoDRIMCgR0YWc0GAQgASgNEgwKBHRhZzYYBiABKA0SDAoE",
+            "dGFnNxgHIAEoDRJXCghzdWJfaXRlbRgLIAMoCzJFLlp3aWZ0UGFja2V0TW9u",
+            "aXRvci5ad2lmdENvbXBhbmlvblRvQXBwTWVzc2FnZVZhbHVlVHdvLlR5cGVU",
+            "d29TdWJJdGVtEg0KBXRhZzEyGAwgASgNGtQECg5UeXBlVHdvU3ViSXRlbRIM",
+            "CgR0YWcxGAEgASgNEgwKBHRhZzIYAiABKA0SZgoEZGF0YRgVIAEoCzJYLlp3",
+            "aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlvblRvQXBwTWVzc2FnZVZh",
+            "bHVlVHdvLlR5cGVUd29TdWJJdGVtLlR5cGVUd29TdWJJdGVtRGF0YRq9AwoS",
+            "VHlwZVR3b1N1Ykl0ZW1EYXRhEgwKBHRhZzEYASABKA0SbwoEZGF0YRgEIAEo",
+            "CzJhLlp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlvblRvQXBwTWVz",
+            "c2FnZVZhbHVlVHdvLlR5cGVUd29TdWJJdGVtLlR5cGVUd29TdWJJdGVtRGF0",
+            "YS5Nb3JlRGF0YRqnAgoITW9yZURhdGESDAoEdGFnMRgBIAEoDRIMCgR0YWcy",
+            "GAIgASgEEgwKBHRhZzMYAyABKA0SDAoEdGFnNBgEIAEoDRJ8CgRkYXRhGAYg",
+            "ASgLMm4uWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBN",
+            "ZXNzYWdlVmFsdWVUd28uVHlwZVR3b1N1Ykl0ZW0uVHlwZVR3b1N1Ykl0ZW1E",
+            "YXRhLk1vcmVEYXRhLkV2ZW5Nb3JlRGF0YRIMCgR0YWc3GAcgASgNEgwKBHRh",
+            "ZzgYCCABKA0SDQoFdGFnMTAYCiABKA0SDQoFdGFnMTEYCyABKA0SDQoFdGFn",
+            "MTIYDCABKA0aHAoMRXZlbk1vcmVEYXRhEgwKBHRhZzYYBiABKAJiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Parser, new[]{ "Tag1", "CompanionMessage2", "Tag10", "RiderId", "Device" }, new[]{ "CompanionMessage2", "Tag10", "Device" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftAppToCompanionMessageTwo), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftAppToCompanionMessageTwo.Parser, new[]{ "Sequence", "Type", "Tag3", "Tag4", "RiderId", "Tag7", "Tag8", "Tag10", "MyId" }, new[]{ "Tag8", "Tag10", "MyId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Parser, new[]{ "Tag1", "Version", "Tag16" }, new[]{ "Version", "Tag16" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Parser, new[]{ "AppVersion", "OsVersion", "Os", "Device", "Tag5" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing.Parser, new[]{ "Tag1" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.SomeThing2), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.SomeThing2.Parser, new[]{ "Tag1" }, null, null, null, null)})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Parser, new[]{ "Sequence", "Tag2", "RiderId", "Tag4", "Tag6", "Tag7", "Items" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Parser, new[]{ "Sequence", "Tag2", "Tag3", "Tag7", "Data" }, new[]{ "Tag3", "Tag7", "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Types.SubItemData), global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Types.SubItemData.Parser, new[]{ "Tag1", "Tag7" }, new[]{ "Tag7" }, null, null, null)})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageRiderPosition), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageRiderPosition.Parser, new[]{ "MyId", "Tag3", "Tag4", "Tag5", "Tag6", "Tag7", "Tag8", "ClockTime", "Tag10" }, new[]{ "Tag3", "Tag4", "Tag5", "Tag6", "Tag7", "Tag8" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionPowerUpMessage), global::ZwiftPacketMonitor.ZwiftAppToCompanionPowerUpMessage.Parser, new[]{ "Tag1", "Tag2", "Tag3", "PowerUp", "ForegroundColor", "BackgroundColor" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionButtonMessage), global::ZwiftPacketMonitor.ZwiftAppToCompanionButtonMessage.Parser, new[]{ "Tag1", "Tag2", "Tag8", "Tag9", "Title", "ImageUrl", "Tag13" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag6", "Tag7", "TypeThree", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree.Parser, new[]{ "Tag1", "Tag2", "Tag19" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag6", "Tag7", "SubItem", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Parser, new[]{ "Tag1", "Tag2", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Parser, new[]{ "Tag1", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Data", "Tag7", "Tag8", "Tag10", "Tag11", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Parser, new[]{ "Data1", "Data2", "Tag3", "Tag6" }, new[]{ "Data1", "Data2", "Tag3" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataOne), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataOne.Parser, new[]{ "Tag1" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Parser, new[]{ "RiderId", "Tag2", "SomeData", "ProfileUrl", "SecondRiderId", "Tag7", "Description", "Tag12", "Tag13", "Tag16", "Tag18", "Tag19", "Tag20" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Types.WhatIsThis), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Types.WhatIsThis.Parser, new[]{ "Tag1", "Tag2", "Tag3" }, null, null, null, null)})})})})})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToApp), global::ZwiftPacketMonitor.ZwiftCompanionToApp.Parser, new[]{ "Tag1", "Tag10" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Parser, new[]{ "MyId", "Tag10", "Details" }, new[]{ "Details" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag5", "Tag7", "RiderId" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Parser, new[]{ "MyId", "Sequence", "Details" }, new[]{ "Details" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag5", "Tag7", "Tag8", "Tag10", "RiderId", "Data" }, new[]{ "Tag8", "Tag10", "RiderId", "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Parser, new[]{ "Tag1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData.Parser, new[]{ "Tag1", "WorldName", "Tag4" }, null, null, null, null)})})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Parser, new[]{ "Tag1", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData), global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData.Parser, new[]{ "Tag1", "ActivityName", "Tag4" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Parser, new[]{ "Tag1", "Tag10", "RideOn" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Types.RideOn), global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Types.RideOn.Parser, new[]{ "Tag1", "Tag2", "Tag3", "OtherRiderId", "ProfileUrl", "Tag7" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Parser, new[]{ "Tag1", "Tag10", "DeviceInfo" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Parser, new[]{ "Device" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Parser, new[]{ "Tag1", "Version" }, new[]{ "Version" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Parser, new[]{ "AppVersion", "OsVersion", "Os", "Device", "Tag5" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing.Parser, new[]{ "Tag1" }, null, null, null, null)})})})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueZero), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueZero.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Tag6", "Tag7", "Tag12" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueOne), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueOne.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Tag6", "Tag7", "SubItem", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueOne.Types.TypeOneSubItem), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueOne.Types.TypeOneSubItem.Parser, new[]{ "Tag1", "Tag2", "Tag19" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Tag6", "Tag7", "SubItem", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Parser, new[]{ "Tag1", "Tag2", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Parser, new[]{ "Tag1", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Data", "Tag7", "Tag8", "Tag10", "Tag11", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Parser, new[]{ "Tag6" }, null, null, null, null)})})})})
@@ -125,7 +193,6 @@ namespace ZwiftPacketMonitor {
   {
     private static readonly pb::MessageParser<ZwiftAppToCompanion> _parser = new pb::MessageParser<ZwiftAppToCompanion>(() => new ZwiftAppToCompanion());
     private pb::UnknownFieldSet _unknownFields;
-    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<ZwiftAppToCompanion> Parser { get { return _parser; } }
@@ -153,12 +220,13 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ZwiftAppToCompanion(ZwiftAppToCompanion other) : this() {
-      _hasBits0 = other._hasBits0;
-      tag1_ = other.tag1_;
-      companionMessage2_ = other.companionMessage2_ != null ? other.companionMessage2_.Clone() : null;
-      tag10_ = other.tag10_;
+      sequence_ = other.sequence_;
+      tag2_ = other.tag2_;
       riderId_ = other.riderId_;
-      device_ = other.device_ != null ? other.device_.Clone() : null;
+      tag4_ = other.tag4_;
+      tag6_ = other.tag6_;
+      tag7_ = other.tag7_;
+      items_ = other.items_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -168,67 +236,36 @@ namespace ZwiftPacketMonitor {
       return new ZwiftAppToCompanion(this);
     }
 
-    /// <summary>Field number for the "tag1" field.</summary>
-    public const int Tag1FieldNumber = 1;
-    private uint tag1_;
+    /// <summary>Field number for the "sequence" field.</summary>
+    public const int SequenceFieldNumber = 1;
+    private uint sequence_;
     /// <summary>
     /// These fields are always there
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag1 {
-      get { return tag1_; }
+    public uint Sequence {
+      get { return sequence_; }
       set {
-        tag1_ = value;
+        sequence_ = value;
       }
     }
 
-    /// <summary>Field number for the "companionMessage2" field.</summary>
-    public const int CompanionMessage2FieldNumber = 2;
-    private global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftAppToCompanionMessageTwo companionMessage2_;
+    /// <summary>Field number for the "tag2" field.</summary>
+    public const int Tag2FieldNumber = 2;
+    private uint tag2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftAppToCompanionMessageTwo CompanionMessage2 {
-      get { return companionMessage2_; }
+    public uint Tag2 {
+      get { return tag2_; }
       set {
-        companionMessage2_ = value;
+        tag2_ = value;
       }
-    }
-
-    /// <summary>Field number for the "tag10" field.</summary>
-    public const int Tag10FieldNumber = 10;
-    private uint tag10_;
-    /// <summary>
-    /// Not there when tag 1 = 1
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag10 {
-      get { if ((_hasBits0 & 1) != 0) { return tag10_; } else { return 0; } }
-      set {
-        _hasBits0 |= 1;
-        tag10_ = value;
-      }
-    }
-    /// <summary>Gets whether the "tag10" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasTag10 {
-      get { return (_hasBits0 & 1) != 0; }
-    }
-    /// <summary>Clears the value of the "tag10" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearTag10() {
-      _hasBits0 &= ~1;
     }
 
     /// <summary>Field number for the "rider_id" field.</summary>
-    public const int RiderIdFieldNumber = 19;
+    public const int RiderIdFieldNumber = 3;
     private uint riderId_;
-    /// <summary>
-    /// Set when type = 28
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint RiderId {
@@ -238,19 +275,51 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "device" field.</summary>
-    public const int DeviceFieldNumber = 21;
-    private global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice device_;
-    /// <summary>
-    /// For type 29 messages
-    /// </summary>
+    /// <summary>Field number for the "tag4" field.</summary>
+    public const int Tag4FieldNumber = 4;
+    private uint tag4_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice Device {
-      get { return device_; }
+    public uint Tag4 {
+      get { return tag4_; }
       set {
-        device_ = value;
+        tag4_ = value;
       }
+    }
+
+    /// <summary>Field number for the "tag6" field.</summary>
+    public const int Tag6FieldNumber = 6;
+    private uint tag6_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag6 {
+      get { return tag6_; }
+      set {
+        tag6_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag7" field.</summary>
+    public const int Tag7FieldNumber = 7;
+    private uint tag7_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag7 {
+      get { return tag7_; }
+      set {
+        tag7_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 11;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem> _repeated_items_codec
+        = pb::FieldCodec.ForMessage(90, global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem> items_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem> Items {
+      get { return items_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -268,11 +337,13 @@ namespace ZwiftPacketMonitor {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Tag1 != other.Tag1) return false;
-      if (!object.Equals(CompanionMessage2, other.CompanionMessage2)) return false;
-      if (Tag10 != other.Tag10) return false;
+      if (Sequence != other.Sequence) return false;
+      if (Tag2 != other.Tag2) return false;
       if (RiderId != other.RiderId) return false;
-      if (!object.Equals(Device, other.Device)) return false;
+      if (Tag4 != other.Tag4) return false;
+      if (Tag6 != other.Tag6) return false;
+      if (Tag7 != other.Tag7) return false;
+      if(!items_.Equals(other.items_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -280,11 +351,13 @@ namespace ZwiftPacketMonitor {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
-      if (companionMessage2_ != null) hash ^= CompanionMessage2.GetHashCode();
-      if (HasTag10) hash ^= Tag10.GetHashCode();
+      if (Sequence != 0) hash ^= Sequence.GetHashCode();
+      if (Tag2 != 0) hash ^= Tag2.GetHashCode();
       if (RiderId != 0) hash ^= RiderId.GetHashCode();
-      if (device_ != null) hash ^= Device.GetHashCode();
+      if (Tag4 != 0) hash ^= Tag4.GetHashCode();
+      if (Tag6 != 0) hash ^= Tag6.GetHashCode();
+      if (Tag7 != 0) hash ^= Tag7.GetHashCode();
+      hash ^= items_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -303,26 +376,31 @@ namespace ZwiftPacketMonitor {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Tag1 != 0) {
+      if (Sequence != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(Tag1);
+        output.WriteUInt32(Sequence);
       }
-      if (companionMessage2_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(CompanionMessage2);
-      }
-      if (HasTag10) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Tag10);
+      if (Tag2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Tag2);
       }
       if (RiderId != 0) {
-        output.WriteRawTag(152, 1);
+        output.WriteRawTag(24);
         output.WriteUInt32(RiderId);
       }
-      if (device_ != null) {
-        output.WriteRawTag(170, 1);
-        output.WriteMessage(Device);
+      if (Tag4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Tag4);
       }
+      if (Tag6 != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Tag6);
+      }
+      if (Tag7 != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Tag7);
+      }
+      items_.WriteTo(output, _repeated_items_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -333,26 +411,31 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Tag1 != 0) {
+      if (Sequence != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(Tag1);
+        output.WriteUInt32(Sequence);
       }
-      if (companionMessage2_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(CompanionMessage2);
-      }
-      if (HasTag10) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Tag10);
+      if (Tag2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Tag2);
       }
       if (RiderId != 0) {
-        output.WriteRawTag(152, 1);
+        output.WriteRawTag(24);
         output.WriteUInt32(RiderId);
       }
-      if (device_ != null) {
-        output.WriteRawTag(170, 1);
-        output.WriteMessage(Device);
+      if (Tag4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Tag4);
       }
+      if (Tag6 != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Tag6);
+      }
+      if (Tag7 != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Tag7);
+      }
+      items_.WriteTo(ref output, _repeated_items_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -363,21 +446,25 @@ namespace ZwiftPacketMonitor {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Tag1 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+      if (Sequence != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Sequence);
       }
-      if (companionMessage2_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CompanionMessage2);
-      }
-      if (HasTag10) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
+      if (Tag2 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
       }
       if (RiderId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(RiderId);
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RiderId);
       }
-      if (device_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Device);
+      if (Tag4 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag4);
       }
+      if (Tag6 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag6);
+      }
+      if (Tag7 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag7);
+      }
+      size += items_.CalculateSize(_repeated_items_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -390,27 +477,25 @@ namespace ZwiftPacketMonitor {
       if (other == null) {
         return;
       }
-      if (other.Tag1 != 0) {
-        Tag1 = other.Tag1;
+      if (other.Sequence != 0) {
+        Sequence = other.Sequence;
       }
-      if (other.companionMessage2_ != null) {
-        if (companionMessage2_ == null) {
-          CompanionMessage2 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftAppToCompanionMessageTwo();
-        }
-        CompanionMessage2.MergeFrom(other.CompanionMessage2);
-      }
-      if (other.HasTag10) {
-        Tag10 = other.Tag10;
+      if (other.Tag2 != 0) {
+        Tag2 = other.Tag2;
       }
       if (other.RiderId != 0) {
         RiderId = other.RiderId;
       }
-      if (other.device_ != null) {
-        if (device_ == null) {
-          Device = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice();
-        }
-        Device.MergeFrom(other.Device);
+      if (other.Tag4 != 0) {
+        Tag4 = other.Tag4;
       }
+      if (other.Tag6 != 0) {
+        Tag6 = other.Tag6;
+      }
+      if (other.Tag7 != 0) {
+        Tag7 = other.Tag7;
+      }
+      items_.Add(other.items_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -427,29 +512,31 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Tag1 = input.ReadUInt32();
+            Sequence = input.ReadUInt32();
             break;
           }
-          case 18: {
-            if (companionMessage2_ == null) {
-              CompanionMessage2 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftAppToCompanionMessageTwo();
-            }
-            input.ReadMessage(CompanionMessage2);
+          case 16: {
+            Tag2 = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Tag10 = input.ReadUInt32();
-            break;
-          }
-          case 152: {
+          case 24: {
             RiderId = input.ReadUInt32();
             break;
           }
-          case 170: {
-            if (device_ == null) {
-              Device = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice();
-            }
-            input.ReadMessage(Device);
+          case 32: {
+            Tag4 = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            Tag6 = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            Tag7 = input.ReadUInt32();
+            break;
+          }
+          case 90: {
+            items_.AddEntriesFrom(input, _repeated_items_codec);
             break;
           }
         }
@@ -468,29 +555,31 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Tag1 = input.ReadUInt32();
+            Sequence = input.ReadUInt32();
             break;
           }
-          case 18: {
-            if (companionMessage2_ == null) {
-              CompanionMessage2 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftAppToCompanionMessageTwo();
-            }
-            input.ReadMessage(CompanionMessage2);
+          case 16: {
+            Tag2 = input.ReadUInt32();
             break;
           }
-          case 80: {
-            Tag10 = input.ReadUInt32();
-            break;
-          }
-          case 152: {
+          case 24: {
             RiderId = input.ReadUInt32();
             break;
           }
-          case 170: {
-            if (device_ == null) {
-              Device = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice();
-            }
-            input.ReadMessage(Device);
+          case 32: {
+            Tag4 = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            Tag6 = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            Tag7 = input.ReadUInt32();
+            break;
+          }
+          case 90: {
+            items_.AddEntriesFrom(ref input, _repeated_items_codec);
             break;
           }
         }
@@ -503,17 +592,17 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static partial class Types {
-      public sealed partial class ZwiftAppToCompanionMessageTwo : pb::IMessage<ZwiftAppToCompanionMessageTwo>
+      public sealed partial class SubItem : pb::IMessage<SubItem>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           , pb::IBufferMessage
       #endif
       {
-        private static readonly pb::MessageParser<ZwiftAppToCompanionMessageTwo> _parser = new pb::MessageParser<ZwiftAppToCompanionMessageTwo>(() => new ZwiftAppToCompanionMessageTwo());
+        private static readonly pb::MessageParser<SubItem> _parser = new pb::MessageParser<SubItem>(() => new SubItem());
         private pb::UnknownFieldSet _unknownFields;
         private int _hasBits0;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<ZwiftAppToCompanionMessageTwo> Parser { get { return _parser; } }
+        public static pb::MessageParser<SubItem> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -529,7 +618,7 @@ namespace ZwiftPacketMonitor {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftAppToCompanionMessageTwo() {
+        public SubItem() {
           OnConstruction();
         }
 
@@ -537,194 +626,117 @@ namespace ZwiftPacketMonitor {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftAppToCompanionMessageTwo(ZwiftAppToCompanionMessageTwo other) : this() {
+        public SubItem(SubItem other) : this() {
           _hasBits0 = other._hasBits0;
           sequence_ = other.sequence_;
-          type_ = other.type_;
+          tag2_ = other.tag2_;
           tag3_ = other.tag3_;
-          tag4_ = other.tag4_;
-          riderId_ = other.riderId_;
           tag7_ = other.tag7_;
-          tag8_ = other.tag8_;
-          tag10_ = other.tag10_;
-          myId_ = other.myId_;
+          data_ = other.data_ != null ? other.data_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftAppToCompanionMessageTwo Clone() {
-          return new ZwiftAppToCompanionMessageTwo(this);
+        public SubItem Clone() {
+          return new SubItem(this);
         }
 
         /// <summary>Field number for the "sequence" field.</summary>
         public const int SequenceFieldNumber = 1;
-        private int sequence_;
-        /// <summary>
-        /// Sequence maybe?
-        /// </summary>
+        private uint sequence_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int Sequence {
+        public uint Sequence {
           get { return sequence_; }
           set {
             sequence_ = value;
           }
         }
 
-        /// <summary>Field number for the "type" field.</summary>
-        public const int TypeFieldNumber = 2;
-        private uint type_;
-        /// <summary>
-        /// Seems to always be 16. No it's not, can also be 28
-        /// </summary>
+        /// <summary>Field number for the "tag2" field.</summary>
+        public const int Tag2FieldNumber = 2;
+        private uint tag2_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public uint Type {
-          get { return type_; }
+        public uint Tag2 {
+          get { return tag2_; }
           set {
-            type_ = value;
+            tag2_ = value;
           }
         }
 
         /// <summary>Field number for the "tag3" field.</summary>
         public const int Tag3FieldNumber = 3;
-        private int tag3_;
+        private uint tag3_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int Tag3 {
-          get { return tag3_; }
+        public uint Tag3 {
+          get { if ((_hasBits0 & 1) != 0) { return tag3_; } else { return 0; } }
           set {
+            _hasBits0 |= 1;
             tag3_ = value;
           }
         }
-
-        /// <summary>Field number for the "tag4" field.</summary>
-        public const int Tag4FieldNumber = 4;
-        private int tag4_;
+        /// <summary>Gets whether the "tag3" field is set</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int Tag4 {
-          get { return tag4_; }
-          set {
-            tag4_ = value;
-          }
+        public bool HasTag3 {
+          get { return (_hasBits0 & 1) != 0; }
         }
-
-        /// <summary>Field number for the "rider_id" field.</summary>
-        public const int RiderIdFieldNumber = 5;
-        private int riderId_;
+        /// <summary>Clears the value of the "tag3" field</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int RiderId {
-          get { return riderId_; }
-          set {
-            riderId_ = value;
-          }
+        public void ClearTag3() {
+          _hasBits0 &= ~1;
         }
 
         /// <summary>Field number for the "tag7" field.</summary>
         public const int Tag7FieldNumber = 7;
-        private int tag7_;
+        private uint tag7_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int Tag7 {
-          get { return tag7_; }
+        public uint Tag7 {
+          get { if ((_hasBits0 & 2) != 0) { return tag7_; } else { return 0; } }
           set {
+            _hasBits0 |= 2;
             tag7_ = value;
           }
         }
-
-        /// <summary>Field number for the "tag8" field.</summary>
-        public const int Tag8FieldNumber = 8;
-        private int tag8_;
+        /// <summary>Gets whether the "tag7" field is set</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int Tag8 {
-          get { if ((_hasBits0 & 1) != 0) { return tag8_; } else { return 0; } }
-          set {
-            _hasBits0 |= 1;
-            tag8_ = value;
-          }
-        }
-        /// <summary>Gets whether the "tag8" field is set</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool HasTag8 {
-          get { return (_hasBits0 & 1) != 0; }
-        }
-        /// <summary>Clears the value of the "tag8" field</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void ClearTag8() {
-          _hasBits0 &= ~1;
-        }
-
-        /// <summary>Field number for the "tag10" field.</summary>
-        public const int Tag10FieldNumber = 10;
-        private uint tag10_;
-        /// <summary>
-        /// For type 22 messages
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public uint Tag10 {
-          get { if ((_hasBits0 & 2) != 0) { return tag10_; } else { return 0; } }
-          set {
-            _hasBits0 |= 2;
-            tag10_ = value;
-          }
-        }
-        /// <summary>Gets whether the "tag10" field is set</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool HasTag10 {
+        public bool HasTag7 {
           get { return (_hasBits0 & 2) != 0; }
         }
-        /// <summary>Clears the value of the "tag10" field</summary>
+        /// <summary>Clears the value of the "tag7" field</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void ClearTag10() {
+        public void ClearTag7() {
           _hasBits0 &= ~2;
         }
 
-        /// <summary>Field number for the "myId" field.</summary>
-        public const int MyIdFieldNumber = 19;
-        private int myId_;
-        /// <summary>
-        /// Our own Zwift rider_id
-        /// </summary>
+        /// <summary>Field number for the "data" field.</summary>
+        public const int DataFieldNumber = 21;
+        private global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Types.SubItemData data_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int MyId {
-          get { if ((_hasBits0 & 4) != 0) { return myId_; } else { return 0; } }
+        public global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Types.SubItemData Data {
+          get { return data_; }
           set {
-            _hasBits0 |= 4;
-            myId_ = value;
+            data_ = value;
           }
-        }
-        /// <summary>Gets whether the "myId" field is set</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool HasMyId {
-          get { return (_hasBits0 & 4) != 0; }
-        }
-        /// <summary>Clears the value of the "myId" field</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void ClearMyId() {
-          _hasBits0 &= ~4;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
-          return Equals(other as ZwiftAppToCompanionMessageTwo);
+          return Equals(other as SubItem);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(ZwiftAppToCompanionMessageTwo other) {
+        public bool Equals(SubItem other) {
           if (ReferenceEquals(other, null)) {
             return false;
           }
@@ -732,14 +744,10 @@ namespace ZwiftPacketMonitor {
             return true;
           }
           if (Sequence != other.Sequence) return false;
-          if (Type != other.Type) return false;
+          if (Tag2 != other.Tag2) return false;
           if (Tag3 != other.Tag3) return false;
-          if (Tag4 != other.Tag4) return false;
-          if (RiderId != other.RiderId) return false;
           if (Tag7 != other.Tag7) return false;
-          if (Tag8 != other.Tag8) return false;
-          if (Tag10 != other.Tag10) return false;
-          if (MyId != other.MyId) return false;
+          if (!object.Equals(Data, other.Data)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -748,14 +756,10 @@ namespace ZwiftPacketMonitor {
         public override int GetHashCode() {
           int hash = 1;
           if (Sequence != 0) hash ^= Sequence.GetHashCode();
-          if (Type != 0) hash ^= Type.GetHashCode();
-          if (Tag3 != 0) hash ^= Tag3.GetHashCode();
-          if (Tag4 != 0) hash ^= Tag4.GetHashCode();
-          if (RiderId != 0) hash ^= RiderId.GetHashCode();
-          if (Tag7 != 0) hash ^= Tag7.GetHashCode();
-          if (HasTag8) hash ^= Tag8.GetHashCode();
-          if (HasTag10) hash ^= Tag10.GetHashCode();
-          if (HasMyId) hash ^= MyId.GetHashCode();
+          if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+          if (HasTag3) hash ^= Tag3.GetHashCode();
+          if (HasTag7) hash ^= Tag7.GetHashCode();
+          if (data_ != null) hash ^= Data.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -776,39 +780,23 @@ namespace ZwiftPacketMonitor {
         #else
           if (Sequence != 0) {
             output.WriteRawTag(8);
-            output.WriteInt32(Sequence);
+            output.WriteUInt32(Sequence);
           }
-          if (Type != 0) {
+          if (Tag2 != 0) {
             output.WriteRawTag(16);
-            output.WriteUInt32(Type);
+            output.WriteUInt32(Tag2);
           }
-          if (Tag3 != 0) {
+          if (HasTag3) {
             output.WriteRawTag(24);
-            output.WriteInt32(Tag3);
+            output.WriteUInt32(Tag3);
           }
-          if (Tag4 != 0) {
-            output.WriteRawTag(32);
-            output.WriteInt32(Tag4);
-          }
-          if (RiderId != 0) {
-            output.WriteRawTag(40);
-            output.WriteInt32(RiderId);
-          }
-          if (Tag7 != 0) {
+          if (HasTag7) {
             output.WriteRawTag(56);
-            output.WriteInt32(Tag7);
+            output.WriteUInt32(Tag7);
           }
-          if (HasTag8) {
-            output.WriteRawTag(64);
-            output.WriteInt32(Tag8);
-          }
-          if (HasTag10) {
-            output.WriteRawTag(80);
-            output.WriteUInt32(Tag10);
-          }
-          if (HasMyId) {
-            output.WriteRawTag(152, 1);
-            output.WriteInt32(MyId);
+          if (data_ != null) {
+            output.WriteRawTag(170, 1);
+            output.WriteMessage(Data);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -822,39 +810,23 @@ namespace ZwiftPacketMonitor {
         void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
           if (Sequence != 0) {
             output.WriteRawTag(8);
-            output.WriteInt32(Sequence);
+            output.WriteUInt32(Sequence);
           }
-          if (Type != 0) {
+          if (Tag2 != 0) {
             output.WriteRawTag(16);
-            output.WriteUInt32(Type);
+            output.WriteUInt32(Tag2);
           }
-          if (Tag3 != 0) {
+          if (HasTag3) {
             output.WriteRawTag(24);
-            output.WriteInt32(Tag3);
+            output.WriteUInt32(Tag3);
           }
-          if (Tag4 != 0) {
-            output.WriteRawTag(32);
-            output.WriteInt32(Tag4);
-          }
-          if (RiderId != 0) {
-            output.WriteRawTag(40);
-            output.WriteInt32(RiderId);
-          }
-          if (Tag7 != 0) {
+          if (HasTag7) {
             output.WriteRawTag(56);
-            output.WriteInt32(Tag7);
+            output.WriteUInt32(Tag7);
           }
-          if (HasTag8) {
-            output.WriteRawTag(64);
-            output.WriteInt32(Tag8);
-          }
-          if (HasTag10) {
-            output.WriteRawTag(80);
-            output.WriteUInt32(Tag10);
-          }
-          if (HasMyId) {
-            output.WriteRawTag(152, 1);
-            output.WriteInt32(MyId);
+          if (data_ != null) {
+            output.WriteRawTag(170, 1);
+            output.WriteMessage(Data);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(ref output);
@@ -867,31 +839,19 @@ namespace ZwiftPacketMonitor {
         public int CalculateSize() {
           int size = 0;
           if (Sequence != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Sequence);
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Sequence);
           }
-          if (Type != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Type);
+          if (Tag2 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
           }
-          if (Tag3 != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag3);
+          if (HasTag3) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag3);
           }
-          if (Tag4 != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag4);
+          if (HasTag7) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag7);
           }
-          if (RiderId != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
-          }
-          if (Tag7 != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag7);
-          }
-          if (HasTag8) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag8);
-          }
-          if (HasTag10) {
-            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
-          }
-          if (HasMyId) {
-            size += 2 + pb::CodedOutputStream.ComputeInt32Size(MyId);
+          if (data_ != null) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Data);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -901,36 +861,27 @@ namespace ZwiftPacketMonitor {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(ZwiftAppToCompanionMessageTwo other) {
+        public void MergeFrom(SubItem other) {
           if (other == null) {
             return;
           }
           if (other.Sequence != 0) {
             Sequence = other.Sequence;
           }
-          if (other.Type != 0) {
-            Type = other.Type;
+          if (other.Tag2 != 0) {
+            Tag2 = other.Tag2;
           }
-          if (other.Tag3 != 0) {
+          if (other.HasTag3) {
             Tag3 = other.Tag3;
           }
-          if (other.Tag4 != 0) {
-            Tag4 = other.Tag4;
-          }
-          if (other.RiderId != 0) {
-            RiderId = other.RiderId;
-          }
-          if (other.Tag7 != 0) {
+          if (other.HasTag7) {
             Tag7 = other.Tag7;
           }
-          if (other.HasTag8) {
-            Tag8 = other.Tag8;
-          }
-          if (other.HasTag10) {
-            Tag10 = other.Tag10;
-          }
-          if (other.HasMyId) {
-            MyId = other.MyId;
+          if (other.data_ != null) {
+            if (data_ == null) {
+              Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Types.SubItemData();
+            }
+            Data.MergeFrom(other.Data);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -948,39 +899,26 @@ namespace ZwiftPacketMonitor {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 8: {
-                Sequence = input.ReadInt32();
+                Sequence = input.ReadUInt32();
                 break;
               }
               case 16: {
-                Type = input.ReadUInt32();
+                Tag2 = input.ReadUInt32();
                 break;
               }
               case 24: {
-                Tag3 = input.ReadInt32();
-                break;
-              }
-              case 32: {
-                Tag4 = input.ReadInt32();
-                break;
-              }
-              case 40: {
-                RiderId = input.ReadInt32();
+                Tag3 = input.ReadUInt32();
                 break;
               }
               case 56: {
-                Tag7 = input.ReadInt32();
+                Tag7 = input.ReadUInt32();
                 break;
               }
-              case 64: {
-                Tag8 = input.ReadInt32();
-                break;
-              }
-              case 80: {
-                Tag10 = input.ReadUInt32();
-                break;
-              }
-              case 152: {
-                MyId = input.ReadInt32();
+              case 170: {
+                if (data_ == null) {
+                  Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Types.SubItemData();
+                }
+                input.ReadMessage(Data);
                 break;
               }
             }
@@ -999,320 +937,26 @@ namespace ZwiftPacketMonitor {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
                 break;
               case 8: {
-                Sequence = input.ReadInt32();
+                Sequence = input.ReadUInt32();
                 break;
               }
               case 16: {
-                Type = input.ReadUInt32();
+                Tag2 = input.ReadUInt32();
                 break;
               }
               case 24: {
-                Tag3 = input.ReadInt32();
-                break;
-              }
-              case 32: {
-                Tag4 = input.ReadInt32();
-                break;
-              }
-              case 40: {
-                RiderId = input.ReadInt32();
+                Tag3 = input.ReadUInt32();
                 break;
               }
               case 56: {
-                Tag7 = input.ReadInt32();
+                Tag7 = input.ReadUInt32();
                 break;
               }
-              case 64: {
-                Tag8 = input.ReadInt32();
-                break;
-              }
-              case 80: {
-                Tag10 = input.ReadUInt32();
-                break;
-              }
-              case 152: {
-                MyId = input.ReadInt32();
-                break;
-              }
-            }
-          }
-        }
-        #endif
-
-      }
-
-      public sealed partial class ZwiftCompanionDevice : pb::IMessage<ZwiftCompanionDevice>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<ZwiftCompanionDevice> _parser = new pb::MessageParser<ZwiftCompanionDevice>(() => new ZwiftCompanionDevice());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<ZwiftCompanionDevice> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::ZwiftPacketMonitor.ZwiftAppToCompanion.Descriptor.NestedTypes[1]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftCompanionDevice() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftCompanionDevice(ZwiftCompanionDevice other) : this() {
-          tag1_ = other.tag1_;
-          version_ = other.version_ != null ? other.version_.Clone() : null;
-          tag16_ = other.tag16_ != null ? other.tag16_.Clone() : null;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public ZwiftCompanionDevice Clone() {
-          return new ZwiftCompanionDevice(this);
-        }
-
-        /// <summary>Field number for the "tag1" field.</summary>
-        public const int Tag1FieldNumber = 1;
-        private int tag1_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int Tag1 {
-          get { return tag1_; }
-          set {
-            tag1_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "version" field.</summary>
-        public const int VersionFieldNumber = 5;
-        private global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version version_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version Version {
-          get { return version_; }
-          set {
-            version_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "tag16" field.</summary>
-        public const int Tag16FieldNumber = 16;
-        private global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.SomeThing2 tag16_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.SomeThing2 Tag16 {
-          get { return tag16_; }
-          set {
-            tag16_ = value;
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override bool Equals(object other) {
-          return Equals(other as ZwiftCompanionDevice);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(ZwiftCompanionDevice other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Tag1 != other.Tag1) return false;
-          if (!object.Equals(Version, other.Version)) return false;
-          if (!object.Equals(Tag16, other.Tag16)) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Tag1 != 0) hash ^= Tag1.GetHashCode();
-          if (version_ != null) hash ^= Version.GetHashCode();
-          if (tag16_ != null) hash ^= Tag16.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          if (Tag1 != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(Tag1);
-          }
-          if (version_ != null) {
-            output.WriteRawTag(42);
-            output.WriteMessage(Version);
-          }
-          if (tag16_ != null) {
-            output.WriteRawTag(130, 1);
-            output.WriteMessage(Tag16);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (Tag1 != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(Tag1);
-          }
-          if (version_ != null) {
-            output.WriteRawTag(42);
-            output.WriteMessage(Version);
-          }
-          if (tag16_ != null) {
-            output.WriteRawTag(130, 1);
-            output.WriteMessage(Tag16);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public int CalculateSize() {
-          int size = 0;
-          if (Tag1 != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag1);
-          }
-          if (version_ != null) {
-            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Version);
-          }
-          if (tag16_ != null) {
-            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Tag16);
-          }
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(ZwiftCompanionDevice other) {
-          if (other == null) {
-            return;
-          }
-          if (other.Tag1 != 0) {
-            Tag1 = other.Tag1;
-          }
-          if (other.version_ != null) {
-            if (version_ == null) {
-              Version = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version();
-            }
-            Version.MergeFrom(other.Version);
-          }
-          if (other.tag16_ != null) {
-            if (tag16_ == null) {
-              Tag16 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.SomeThing2();
-            }
-            Tag16.MergeFrom(other.Tag16);
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 8: {
-                Tag1 = input.ReadInt32();
-                break;
-              }
-              case 42: {
-                if (version_ == null) {
-                  Version = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version();
+              case 170: {
+                if (data_ == null) {
+                  Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Types.SubItemData();
                 }
-                input.ReadMessage(Version);
-                break;
-              }
-              case 130: {
-                if (tag16_ == null) {
-                  Tag16 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.SomeThing2();
-                }
-                input.ReadMessage(Tag16);
-                break;
-              }
-            }
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-              case 8: {
-                Tag1 = input.ReadInt32();
-                break;
-              }
-              case 42: {
-                if (version_ == null) {
-                  Version = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version();
-                }
-                input.ReadMessage(Version);
-                break;
-              }
-              case 130: {
-                if (tag16_ == null) {
-                  Tag16 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.SomeThing2();
-                }
-                input.ReadMessage(Tag16);
+                input.ReadMessage(Data);
                 break;
               }
             }
@@ -1321,25 +965,25 @@ namespace ZwiftPacketMonitor {
         #endif
 
         #region Nested types
-        /// <summary>Container for nested types declared in the ZwiftCompanionDevice message type.</summary>
+        /// <summary>Container for nested types declared in the SubItem message type.</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static partial class Types {
-          public sealed partial class Version : pb::IMessage<Version>
+          public sealed partial class SubItemData : pb::IMessage<SubItemData>
           #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
               , pb::IBufferMessage
           #endif
           {
-            private static readonly pb::MessageParser<Version> _parser = new pb::MessageParser<Version>(() => new Version());
+            private static readonly pb::MessageParser<SubItemData> _parser = new pb::MessageParser<SubItemData>(() => new SubItemData());
             private pb::UnknownFieldSet _unknownFields;
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static pb::MessageParser<Version> Parser { get { return _parser; } }
+            public static pb::MessageParser<SubItemData> Parser { get { return _parser; } }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
             public static pbr::MessageDescriptor Descriptor {
-              get { return global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Descriptor.NestedTypes[0]; }
+              get { return global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.SubItem.Descriptor.NestedTypes[0]; }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1350,7 +994,7 @@ namespace ZwiftPacketMonitor {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Version() {
+            public SubItemData() {
               OnConstruction();
             }
 
@@ -1358,593 +1002,66 @@ namespace ZwiftPacketMonitor {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Version(Version other) : this() {
-              appVersion_ = other.appVersion_;
-              osVersion_ = other.osVersion_;
-              os_ = other.os_;
-              device_ = other.device_;
-              tag5_ = other.tag5_ != null ? other.tag5_.Clone() : null;
-              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Version Clone() {
-              return new Version(this);
-            }
-
-            /// <summary>Field number for the "app_version" field.</summary>
-            public const int AppVersionFieldNumber = 1;
-            private string appVersion_ = "";
-            /// <summary>
-            /// Version of the Zwift Companion app
-            /// </summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public string AppVersion {
-              get { return appVersion_; }
-              set {
-                appVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-              }
-            }
-
-            /// <summary>Field number for the "os_version" field.</summary>
-            public const int OsVersionFieldNumber = 2;
-            private string osVersion_ = "";
-            /// <summary>
-            /// Version of the device OS
-            /// </summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public string OsVersion {
-              get { return osVersion_; }
-              set {
-                osVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-              }
-            }
-
-            /// <summary>Field number for the "os" field.</summary>
-            public const int OsFieldNumber = 3;
-            private string os_ = "";
-            /// <summary>
-            /// Type of the device OS
-            /// </summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public string Os {
-              get { return os_; }
-              set {
-                os_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-              }
-            }
-
-            /// <summary>Field number for the "device" field.</summary>
-            public const int DeviceFieldNumber = 4;
-            private string device_ = "";
-            /// <summary>
-            /// Device model
-            /// </summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public string Device {
-              get { return device_; }
-              set {
-                device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-              }
-            }
-
-            /// <summary>Field number for the "tag5" field.</summary>
-            public const int Tag5FieldNumber = 5;
-            private global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing tag5_;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing Tag5 {
-              get { return tag5_; }
-              set {
-                tag5_ = value;
-              }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public override bool Equals(object other) {
-              return Equals(other as Version);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public bool Equals(Version other) {
-              if (ReferenceEquals(other, null)) {
-                return false;
-              }
-              if (ReferenceEquals(other, this)) {
-                return true;
-              }
-              if (AppVersion != other.AppVersion) return false;
-              if (OsVersion != other.OsVersion) return false;
-              if (Os != other.Os) return false;
-              if (Device != other.Device) return false;
-              if (!object.Equals(Tag5, other.Tag5)) return false;
-              return Equals(_unknownFields, other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public override int GetHashCode() {
-              int hash = 1;
-              if (AppVersion.Length != 0) hash ^= AppVersion.GetHashCode();
-              if (OsVersion.Length != 0) hash ^= OsVersion.GetHashCode();
-              if (Os.Length != 0) hash ^= Os.GetHashCode();
-              if (Device.Length != 0) hash ^= Device.GetHashCode();
-              if (tag5_ != null) hash ^= Tag5.GetHashCode();
-              if (_unknownFields != null) {
-                hash ^= _unknownFields.GetHashCode();
-              }
-              return hash;
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public override string ToString() {
-              return pb::JsonFormatter.ToDiagnosticString(this);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void WriteTo(pb::CodedOutputStream output) {
-            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-              output.WriteRawMessage(this);
-            #else
-              if (AppVersion.Length != 0) {
-                output.WriteRawTag(10);
-                output.WriteString(AppVersion);
-              }
-              if (OsVersion.Length != 0) {
-                output.WriteRawTag(18);
-                output.WriteString(OsVersion);
-              }
-              if (Os.Length != 0) {
-                output.WriteRawTag(26);
-                output.WriteString(Os);
-              }
-              if (Device.Length != 0) {
-                output.WriteRawTag(34);
-                output.WriteString(Device);
-              }
-              if (tag5_ != null) {
-                output.WriteRawTag(42);
-                output.WriteMessage(Tag5);
-              }
-              if (_unknownFields != null) {
-                _unknownFields.WriteTo(output);
-              }
-            #endif
-            }
-
-            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-              if (AppVersion.Length != 0) {
-                output.WriteRawTag(10);
-                output.WriteString(AppVersion);
-              }
-              if (OsVersion.Length != 0) {
-                output.WriteRawTag(18);
-                output.WriteString(OsVersion);
-              }
-              if (Os.Length != 0) {
-                output.WriteRawTag(26);
-                output.WriteString(Os);
-              }
-              if (Device.Length != 0) {
-                output.WriteRawTag(34);
-                output.WriteString(Device);
-              }
-              if (tag5_ != null) {
-                output.WriteRawTag(42);
-                output.WriteMessage(Tag5);
-              }
-              if (_unknownFields != null) {
-                _unknownFields.WriteTo(ref output);
-              }
-            }
-            #endif
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public int CalculateSize() {
-              int size = 0;
-              if (AppVersion.Length != 0) {
-                size += 1 + pb::CodedOutputStream.ComputeStringSize(AppVersion);
-              }
-              if (OsVersion.Length != 0) {
-                size += 1 + pb::CodedOutputStream.ComputeStringSize(OsVersion);
-              }
-              if (Os.Length != 0) {
-                size += 1 + pb::CodedOutputStream.ComputeStringSize(Os);
-              }
-              if (Device.Length != 0) {
-                size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
-              }
-              if (tag5_ != null) {
-                size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tag5);
-              }
-              if (_unknownFields != null) {
-                size += _unknownFields.CalculateSize();
-              }
-              return size;
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void MergeFrom(Version other) {
-              if (other == null) {
-                return;
-              }
-              if (other.AppVersion.Length != 0) {
-                AppVersion = other.AppVersion;
-              }
-              if (other.OsVersion.Length != 0) {
-                OsVersion = other.OsVersion;
-              }
-              if (other.Os.Length != 0) {
-                Os = other.Os;
-              }
-              if (other.Device.Length != 0) {
-                Device = other.Device;
-              }
-              if (other.tag5_ != null) {
-                if (tag5_ == null) {
-                  Tag5 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing();
-                }
-                Tag5.MergeFrom(other.Tag5);
-              }
-              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void MergeFrom(pb::CodedInputStream input) {
-            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-              input.ReadRawMessage(this);
-            #else
-              uint tag;
-              while ((tag = input.ReadTag()) != 0) {
-                switch(tag) {
-                  default:
-                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                    break;
-                  case 10: {
-                    AppVersion = input.ReadString();
-                    break;
-                  }
-                  case 18: {
-                    OsVersion = input.ReadString();
-                    break;
-                  }
-                  case 26: {
-                    Os = input.ReadString();
-                    break;
-                  }
-                  case 34: {
-                    Device = input.ReadString();
-                    break;
-                  }
-                  case 42: {
-                    if (tag5_ == null) {
-                      Tag5 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing();
-                    }
-                    input.ReadMessage(Tag5);
-                    break;
-                  }
-                }
-              }
-            #endif
-            }
-
-            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-              uint tag;
-              while ((tag = input.ReadTag()) != 0) {
-                switch(tag) {
-                  default:
-                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                    break;
-                  case 10: {
-                    AppVersion = input.ReadString();
-                    break;
-                  }
-                  case 18: {
-                    OsVersion = input.ReadString();
-                    break;
-                  }
-                  case 26: {
-                    Os = input.ReadString();
-                    break;
-                  }
-                  case 34: {
-                    Device = input.ReadString();
-                    break;
-                  }
-                  case 42: {
-                    if (tag5_ == null) {
-                      Tag5 = new global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing();
-                    }
-                    input.ReadMessage(Tag5);
-                    break;
-                  }
-                }
-              }
-            }
-            #endif
-
-            #region Nested types
-            /// <summary>Container for nested types declared in the Version message type.</summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static partial class Types {
-              public sealed partial class SomeThing : pb::IMessage<SomeThing>
-              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  , pb::IBufferMessage
-              #endif
-              {
-                private static readonly pb::MessageParser<SomeThing> _parser = new pb::MessageParser<SomeThing>(() => new SomeThing());
-                private pb::UnknownFieldSet _unknownFields;
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public static pb::MessageParser<SomeThing> Parser { get { return _parser; } }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public static pbr::MessageDescriptor Descriptor {
-                  get { return global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Types.Version.Descriptor.NestedTypes[0]; }
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                pbr::MessageDescriptor pb::IMessage.Descriptor {
-                  get { return Descriptor; }
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public SomeThing() {
-                  OnConstruction();
-                }
-
-                partial void OnConstruction();
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public SomeThing(SomeThing other) : this() {
-                  tag1_ = other.tag1_;
-                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public SomeThing Clone() {
-                  return new SomeThing(this);
-                }
-
-                /// <summary>Field number for the "tag1" field.</summary>
-                public const int Tag1FieldNumber = 1;
-                private int tag1_;
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public int Tag1 {
-                  get { return tag1_; }
-                  set {
-                    tag1_ = value;
-                  }
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override bool Equals(object other) {
-                  return Equals(other as SomeThing);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public bool Equals(SomeThing other) {
-                  if (ReferenceEquals(other, null)) {
-                    return false;
-                  }
-                  if (ReferenceEquals(other, this)) {
-                    return true;
-                  }
-                  if (Tag1 != other.Tag1) return false;
-                  return Equals(_unknownFields, other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override int GetHashCode() {
-                  int hash = 1;
-                  if (Tag1 != 0) hash ^= Tag1.GetHashCode();
-                  if (_unknownFields != null) {
-                    hash ^= _unknownFields.GetHashCode();
-                  }
-                  return hash;
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override string ToString() {
-                  return pb::JsonFormatter.ToDiagnosticString(this);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void WriteTo(pb::CodedOutputStream output) {
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  output.WriteRawMessage(this);
-                #else
-                  if (Tag1 != 0) {
-                    output.WriteRawTag(8);
-                    output.WriteInt32(Tag1);
-                  }
-                  if (_unknownFields != null) {
-                    _unknownFields.WriteTo(output);
-                  }
-                #endif
-                }
-
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-                  if (Tag1 != 0) {
-                    output.WriteRawTag(8);
-                    output.WriteInt32(Tag1);
-                  }
-                  if (_unknownFields != null) {
-                    _unknownFields.WriteTo(ref output);
-                  }
-                }
-                #endif
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public int CalculateSize() {
-                  int size = 0;
-                  if (Tag1 != 0) {
-                    size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag1);
-                  }
-                  if (_unknownFields != null) {
-                    size += _unknownFields.CalculateSize();
-                  }
-                  return size;
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void MergeFrom(SomeThing other) {
-                  if (other == null) {
-                    return;
-                  }
-                  if (other.Tag1 != 0) {
-                    Tag1 = other.Tag1;
-                  }
-                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void MergeFrom(pb::CodedInputStream input) {
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  input.ReadRawMessage(this);
-                #else
-                  uint tag;
-                  while ((tag = input.ReadTag()) != 0) {
-                    switch(tag) {
-                      default:
-                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                        break;
-                      case 8: {
-                        Tag1 = input.ReadInt32();
-                        break;
-                      }
-                    }
-                  }
-                #endif
-                }
-
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-                  uint tag;
-                  while ((tag = input.ReadTag()) != 0) {
-                    switch(tag) {
-                      default:
-                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                        break;
-                      case 8: {
-                        Tag1 = input.ReadInt32();
-                        break;
-                      }
-                    }
-                  }
-                }
-                #endif
-
-              }
-
-            }
-            #endregion
-
-          }
-
-          public sealed partial class SomeThing2 : pb::IMessage<SomeThing2>
-          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-              , pb::IBufferMessage
-          #endif
-          {
-            private static readonly pb::MessageParser<SomeThing2> _parser = new pb::MessageParser<SomeThing2>(() => new SomeThing2());
-            private pb::UnknownFieldSet _unknownFields;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static pb::MessageParser<SomeThing2> Parser { get { return _parser; } }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static pbr::MessageDescriptor Descriptor {
-              get { return global::ZwiftPacketMonitor.ZwiftAppToCompanion.Types.ZwiftCompanionDevice.Descriptor.NestedTypes[1]; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            pbr::MessageDescriptor pb::IMessage.Descriptor {
-              get { return Descriptor; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public SomeThing2() {
-              OnConstruction();
-            }
-
-            partial void OnConstruction();
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public SomeThing2(SomeThing2 other) : this() {
+            public SubItemData(SubItemData other) : this() {
               tag1_ = other.tag1_;
+              tag7_ = other.tag7_;
               _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public SomeThing2 Clone() {
-              return new SomeThing2(this);
+            public SubItemData Clone() {
+              return new SubItemData(this);
             }
 
             /// <summary>Field number for the "tag1" field.</summary>
             public const int Tag1FieldNumber = 1;
-            private int tag1_;
+            private uint tag1_;
+            /// <summary>
+            /// Can be 3 or 6
+            /// </summary>
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public int Tag1 {
+            public uint Tag1 {
               get { return tag1_; }
               set {
                 tag1_ = value;
               }
             }
 
+            /// <summary>Field number for the "tag7" field.</summary>
+            public const int Tag7FieldNumber = 7;
+            private string tag7_;
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public override bool Equals(object other) {
-              return Equals(other as SomeThing2);
+            public string Tag7 {
+              get { return tag7_ ?? ""; }
+              set {
+                tag7_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+            /// <summary>Gets whether the "tag7" field is set</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool HasTag7 {
+              get { return tag7_ != null; }
+            }
+            /// <summary>Clears the value of the "tag7" field</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void ClearTag7() {
+              tag7_ = null;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public bool Equals(SomeThing2 other) {
+            public override bool Equals(object other) {
+              return Equals(other as SubItemData);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(SubItemData other) {
               if (ReferenceEquals(other, null)) {
                 return false;
               }
@@ -1952,6 +1069,7 @@ namespace ZwiftPacketMonitor {
                 return true;
               }
               if (Tag1 != other.Tag1) return false;
+              if (Tag7 != other.Tag7) return false;
               return Equals(_unknownFields, other._unknownFields);
             }
 
@@ -1960,6 +1078,7 @@ namespace ZwiftPacketMonitor {
             public override int GetHashCode() {
               int hash = 1;
               if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+              if (HasTag7) hash ^= Tag7.GetHashCode();
               if (_unknownFields != null) {
                 hash ^= _unknownFields.GetHashCode();
               }
@@ -1980,7 +1099,11 @@ namespace ZwiftPacketMonitor {
             #else
               if (Tag1 != 0) {
                 output.WriteRawTag(8);
-                output.WriteInt32(Tag1);
+                output.WriteUInt32(Tag1);
+              }
+              if (HasTag7) {
+                output.WriteRawTag(58);
+                output.WriteString(Tag7);
               }
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(output);
@@ -1994,7 +1117,11 @@ namespace ZwiftPacketMonitor {
             void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
               if (Tag1 != 0) {
                 output.WriteRawTag(8);
-                output.WriteInt32(Tag1);
+                output.WriteUInt32(Tag1);
+              }
+              if (HasTag7) {
+                output.WriteRawTag(58);
+                output.WriteString(Tag7);
               }
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(ref output);
@@ -2007,7 +1134,10 @@ namespace ZwiftPacketMonitor {
             public int CalculateSize() {
               int size = 0;
               if (Tag1 != 0) {
-                size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag1);
+                size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+              }
+              if (HasTag7) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Tag7);
               }
               if (_unknownFields != null) {
                 size += _unknownFields.CalculateSize();
@@ -2017,12 +1147,15 @@ namespace ZwiftPacketMonitor {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void MergeFrom(SomeThing2 other) {
+            public void MergeFrom(SubItemData other) {
               if (other == null) {
                 return;
               }
               if (other.Tag1 != 0) {
                 Tag1 = other.Tag1;
+              }
+              if (other.HasTag7) {
+                Tag7 = other.Tag7;
               }
               _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
             }
@@ -2040,7 +1173,11 @@ namespace ZwiftPacketMonitor {
                     _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                     break;
                   case 8: {
-                    Tag1 = input.ReadInt32();
+                    Tag1 = input.ReadUInt32();
+                    break;
+                  }
+                  case 58: {
+                    Tag7 = input.ReadString();
                     break;
                   }
                 }
@@ -2059,7 +1196,11 @@ namespace ZwiftPacketMonitor {
                     _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
                     break;
                   case 8: {
-                    Tag1 = input.ReadInt32();
+                    Tag1 = input.ReadUInt32();
+                    break;
+                  }
+                  case 58: {
+                    Tag7 = input.ReadString();
                     break;
                   }
                 }
@@ -2650,6 +1791,794 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  public sealed partial class ZwiftAppToCompanionPowerUpMessage : pb::IMessage<ZwiftAppToCompanionPowerUpMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ZwiftAppToCompanionPowerUpMessage> _parser = new pb::MessageParser<ZwiftAppToCompanionPowerUpMessage>(() => new ZwiftAppToCompanionPowerUpMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ZwiftAppToCompanionPowerUpMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionPowerUpMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionPowerUpMessage(ZwiftAppToCompanionPowerUpMessage other) : this() {
+      tag1_ = other.tag1_;
+      tag2_ = other.tag2_;
+      tag3_ = other.tag3_;
+      powerUp_ = other.powerUp_;
+      foregroundColor_ = other.foregroundColor_;
+      backgroundColor_ = other.backgroundColor_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionPowerUpMessage Clone() {
+      return new ZwiftAppToCompanionPowerUpMessage(this);
+    }
+
+    /// <summary>Field number for the "tag1" field.</summary>
+    public const int Tag1FieldNumber = 1;
+    private uint tag1_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag1 {
+      get { return tag1_; }
+      set {
+        tag1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag2" field.</summary>
+    public const int Tag2FieldNumber = 2;
+    private uint tag2_;
+    /// <summary>
+    /// Always 2 for this type
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag2 {
+      get { return tag2_; }
+      set {
+        tag2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag3" field.</summary>
+    public const int Tag3FieldNumber = 3;
+    private uint tag3_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag3 {
+      get { return tag3_; }
+      set {
+        tag3_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "power_up" field.</summary>
+    public const int PowerUpFieldNumber = 4;
+    private string powerUp_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PowerUp {
+      get { return powerUp_; }
+      set {
+        powerUp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "foreground_color" field.</summary>
+    public const int ForegroundColorFieldNumber = 6;
+    private string foregroundColor_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ForegroundColor {
+      get { return foregroundColor_; }
+      set {
+        foregroundColor_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "background_color" field.</summary>
+    public const int BackgroundColorFieldNumber = 12;
+    private string backgroundColor_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string BackgroundColor {
+      get { return backgroundColor_; }
+      set {
+        backgroundColor_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ZwiftAppToCompanionPowerUpMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ZwiftAppToCompanionPowerUpMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Tag1 != other.Tag1) return false;
+      if (Tag2 != other.Tag2) return false;
+      if (Tag3 != other.Tag3) return false;
+      if (PowerUp != other.PowerUp) return false;
+      if (ForegroundColor != other.ForegroundColor) return false;
+      if (BackgroundColor != other.BackgroundColor) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+      if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+      if (Tag3 != 0) hash ^= Tag3.GetHashCode();
+      if (PowerUp.Length != 0) hash ^= PowerUp.GetHashCode();
+      if (ForegroundColor.Length != 0) hash ^= ForegroundColor.GetHashCode();
+      if (BackgroundColor.Length != 0) hash ^= BackgroundColor.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (Tag2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Tag2);
+      }
+      if (Tag3 != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Tag3);
+      }
+      if (PowerUp.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PowerUp);
+      }
+      if (ForegroundColor.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(ForegroundColor);
+      }
+      if (BackgroundColor.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(BackgroundColor);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (Tag2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Tag2);
+      }
+      if (Tag3 != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Tag3);
+      }
+      if (PowerUp.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(PowerUp);
+      }
+      if (ForegroundColor.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(ForegroundColor);
+      }
+      if (BackgroundColor.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(BackgroundColor);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Tag1 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+      }
+      if (Tag2 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
+      }
+      if (Tag3 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag3);
+      }
+      if (PowerUp.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PowerUp);
+      }
+      if (ForegroundColor.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ForegroundColor);
+      }
+      if (BackgroundColor.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BackgroundColor);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ZwiftAppToCompanionPowerUpMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Tag1 != 0) {
+        Tag1 = other.Tag1;
+      }
+      if (other.Tag2 != 0) {
+        Tag2 = other.Tag2;
+      }
+      if (other.Tag3 != 0) {
+        Tag3 = other.Tag3;
+      }
+      if (other.PowerUp.Length != 0) {
+        PowerUp = other.PowerUp;
+      }
+      if (other.ForegroundColor.Length != 0) {
+        ForegroundColor = other.ForegroundColor;
+      }
+      if (other.BackgroundColor.Length != 0) {
+        BackgroundColor = other.BackgroundColor;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Tag2 = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            Tag3 = input.ReadUInt32();
+            break;
+          }
+          case 34: {
+            PowerUp = input.ReadString();
+            break;
+          }
+          case 50: {
+            ForegroundColor = input.ReadString();
+            break;
+          }
+          case 98: {
+            BackgroundColor = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Tag2 = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            Tag3 = input.ReadUInt32();
+            break;
+          }
+          case 34: {
+            PowerUp = input.ReadString();
+            break;
+          }
+          case 50: {
+            ForegroundColor = input.ReadString();
+            break;
+          }
+          case 98: {
+            BackgroundColor = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class ZwiftAppToCompanionButtonMessage : pb::IMessage<ZwiftAppToCompanionButtonMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ZwiftAppToCompanionButtonMessage> _parser = new pb::MessageParser<ZwiftAppToCompanionButtonMessage>(() => new ZwiftAppToCompanionButtonMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ZwiftAppToCompanionButtonMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionButtonMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionButtonMessage(ZwiftAppToCompanionButtonMessage other) : this() {
+      tag1_ = other.tag1_;
+      tag2_ = other.tag2_;
+      tag8_ = other.tag8_;
+      tag9_ = other.tag9_;
+      title_ = other.title_;
+      imageUrl_ = other.imageUrl_;
+      tag13_ = other.tag13_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionButtonMessage Clone() {
+      return new ZwiftAppToCompanionButtonMessage(this);
+    }
+
+    /// <summary>Field number for the "tag1" field.</summary>
+    public const int Tag1FieldNumber = 1;
+    private uint tag1_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag1 {
+      get { return tag1_; }
+      set {
+        tag1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag2" field.</summary>
+    public const int Tag2FieldNumber = 4;
+    private uint tag2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag2 {
+      get { return tag2_; }
+      set {
+        tag2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag8" field.</summary>
+    public const int Tag8FieldNumber = 8;
+    private uint tag8_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag8 {
+      get { return tag8_; }
+      set {
+        tag8_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag9" field.</summary>
+    public const int Tag9FieldNumber = 9;
+    private uint tag9_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag9 {
+      get { return tag9_; }
+      set {
+        tag9_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "title" field.</summary>
+    public const int TitleFieldNumber = 10;
+    private string title_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Title {
+      get { return title_; }
+      set {
+        title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "image_url" field.</summary>
+    public const int ImageUrlFieldNumber = 11;
+    private string imageUrl_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ImageUrl {
+      get { return imageUrl_; }
+      set {
+        imageUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "tag13" field.</summary>
+    public const int Tag13FieldNumber = 13;
+    private uint tag13_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag13 {
+      get { return tag13_; }
+      set {
+        tag13_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ZwiftAppToCompanionButtonMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ZwiftAppToCompanionButtonMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Tag1 != other.Tag1) return false;
+      if (Tag2 != other.Tag2) return false;
+      if (Tag8 != other.Tag8) return false;
+      if (Tag9 != other.Tag9) return false;
+      if (Title != other.Title) return false;
+      if (ImageUrl != other.ImageUrl) return false;
+      if (Tag13 != other.Tag13) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+      if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+      if (Tag8 != 0) hash ^= Tag8.GetHashCode();
+      if (Tag9 != 0) hash ^= Tag9.GetHashCode();
+      if (Title.Length != 0) hash ^= Title.GetHashCode();
+      if (ImageUrl.Length != 0) hash ^= ImageUrl.GetHashCode();
+      if (Tag13 != 0) hash ^= Tag13.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (Tag2 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Tag2);
+      }
+      if (Tag8 != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Tag8);
+      }
+      if (Tag9 != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Tag9);
+      }
+      if (Title.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(Title);
+      }
+      if (ImageUrl.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(ImageUrl);
+      }
+      if (Tag13 != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Tag13);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (Tag2 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Tag2);
+      }
+      if (Tag8 != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Tag8);
+      }
+      if (Tag9 != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Tag9);
+      }
+      if (Title.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(Title);
+      }
+      if (ImageUrl.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(ImageUrl);
+      }
+      if (Tag13 != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Tag13);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Tag1 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+      }
+      if (Tag2 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
+      }
+      if (Tag8 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag8);
+      }
+      if (Tag9 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag9);
+      }
+      if (Title.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
+      }
+      if (ImageUrl.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ImageUrl);
+      }
+      if (Tag13 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag13);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ZwiftAppToCompanionButtonMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Tag1 != 0) {
+        Tag1 = other.Tag1;
+      }
+      if (other.Tag2 != 0) {
+        Tag2 = other.Tag2;
+      }
+      if (other.Tag8 != 0) {
+        Tag8 = other.Tag8;
+      }
+      if (other.Tag9 != 0) {
+        Tag9 = other.Tag9;
+      }
+      if (other.Title.Length != 0) {
+        Title = other.Title;
+      }
+      if (other.ImageUrl.Length != 0) {
+        ImageUrl = other.ImageUrl;
+      }
+      if (other.Tag13 != 0) {
+        Tag13 = other.Tag13;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Tag2 = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            Tag8 = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Tag9 = input.ReadUInt32();
+            break;
+          }
+          case 82: {
+            Title = input.ReadString();
+            break;
+          }
+          case 90: {
+            ImageUrl = input.ReadString();
+            break;
+          }
+          case 104: {
+            Tag13 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Tag2 = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            Tag8 = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Tag9 = input.ReadUInt32();
+            break;
+          }
+          case 82: {
+            Title = input.ReadString();
+            break;
+          }
+          case 90: {
+            ImageUrl = input.ReadString();
+            break;
+          }
+          case 104: {
+            Tag13 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class ZwiftAppToCompanionMessageTypeOne : pb::IMessage<ZwiftAppToCompanionMessageTypeOne>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2664,7 +2593,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3384,6 +3313,2965 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  public sealed partial class ZwiftAppToCompanionMessageTypeTwo : pb::IMessage<ZwiftAppToCompanionMessageTypeTwo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ZwiftAppToCompanionMessageTypeTwo> _parser = new pb::MessageParser<ZwiftAppToCompanionMessageTypeTwo>(() => new ZwiftAppToCompanionMessageTypeTwo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ZwiftAppToCompanionMessageTypeTwo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionMessageTypeTwo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionMessageTypeTwo(ZwiftAppToCompanionMessageTypeTwo other) : this() {
+      tag1_ = other.tag1_;
+      tag2_ = other.tag2_;
+      riderId_ = other.riderId_;
+      tag4_ = other.tag4_;
+      tag6_ = other.tag6_;
+      tag7_ = other.tag7_;
+      subItem_ = other.subItem_.Clone();
+      tag12_ = other.tag12_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftAppToCompanionMessageTypeTwo Clone() {
+      return new ZwiftAppToCompanionMessageTypeTwo(this);
+    }
+
+    /// <summary>Field number for the "tag1" field.</summary>
+    public const int Tag1FieldNumber = 1;
+    private uint tag1_;
+    /// <summary>
+    /// These fields are always there
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag1 {
+      get { return tag1_; }
+      set {
+        tag1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag2" field.</summary>
+    public const int Tag2FieldNumber = 2;
+    private uint tag2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag2 {
+      get { return tag2_; }
+      set {
+        tag2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rider_id" field.</summary>
+    public const int RiderIdFieldNumber = 3;
+    private uint riderId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RiderId {
+      get { return riderId_; }
+      set {
+        riderId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag4" field.</summary>
+    public const int Tag4FieldNumber = 4;
+    private uint tag4_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag4 {
+      get { return tag4_; }
+      set {
+        tag4_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag6" field.</summary>
+    public const int Tag6FieldNumber = 6;
+    private uint tag6_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag6 {
+      get { return tag6_; }
+      set {
+        tag6_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag7" field.</summary>
+    public const int Tag7FieldNumber = 7;
+    private uint tag7_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag7 {
+      get { return tag7_; }
+      set {
+        tag7_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sub_item" field.</summary>
+    public const int SubItemFieldNumber = 11;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem> _repeated_subItem_codec
+        = pb::FieldCodec.ForMessage(90, global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem> subItem_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem> SubItem {
+      get { return subItem_; }
+    }
+
+    /// <summary>Field number for the "tag12" field.</summary>
+    public const int Tag12FieldNumber = 12;
+    private uint tag12_;
+    /// <summary>
+    /// Set when type_three is not null
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag12 {
+      get { return tag12_; }
+      set {
+        tag12_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ZwiftAppToCompanionMessageTypeTwo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ZwiftAppToCompanionMessageTypeTwo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Tag1 != other.Tag1) return false;
+      if (Tag2 != other.Tag2) return false;
+      if (RiderId != other.RiderId) return false;
+      if (Tag4 != other.Tag4) return false;
+      if (Tag6 != other.Tag6) return false;
+      if (Tag7 != other.Tag7) return false;
+      if(!subItem_.Equals(other.subItem_)) return false;
+      if (Tag12 != other.Tag12) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+      if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+      if (RiderId != 0) hash ^= RiderId.GetHashCode();
+      if (Tag4 != 0) hash ^= Tag4.GetHashCode();
+      if (Tag6 != 0) hash ^= Tag6.GetHashCode();
+      if (Tag7 != 0) hash ^= Tag7.GetHashCode();
+      hash ^= subItem_.GetHashCode();
+      if (Tag12 != 0) hash ^= Tag12.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (Tag2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Tag2);
+      }
+      if (RiderId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(RiderId);
+      }
+      if (Tag4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Tag4);
+      }
+      if (Tag6 != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Tag6);
+      }
+      if (Tag7 != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Tag7);
+      }
+      subItem_.WriteTo(output, _repeated_subItem_codec);
+      if (Tag12 != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(Tag12);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (Tag2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Tag2);
+      }
+      if (RiderId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(RiderId);
+      }
+      if (Tag4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Tag4);
+      }
+      if (Tag6 != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Tag6);
+      }
+      if (Tag7 != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Tag7);
+      }
+      subItem_.WriteTo(ref output, _repeated_subItem_codec);
+      if (Tag12 != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(Tag12);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Tag1 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+      }
+      if (Tag2 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
+      }
+      if (RiderId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RiderId);
+      }
+      if (Tag4 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag4);
+      }
+      if (Tag6 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag6);
+      }
+      if (Tag7 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag7);
+      }
+      size += subItem_.CalculateSize(_repeated_subItem_codec);
+      if (Tag12 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag12);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ZwiftAppToCompanionMessageTypeTwo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Tag1 != 0) {
+        Tag1 = other.Tag1;
+      }
+      if (other.Tag2 != 0) {
+        Tag2 = other.Tag2;
+      }
+      if (other.RiderId != 0) {
+        RiderId = other.RiderId;
+      }
+      if (other.Tag4 != 0) {
+        Tag4 = other.Tag4;
+      }
+      if (other.Tag6 != 0) {
+        Tag6 = other.Tag6;
+      }
+      if (other.Tag7 != 0) {
+        Tag7 = other.Tag7;
+      }
+      subItem_.Add(other.subItem_);
+      if (other.Tag12 != 0) {
+        Tag12 = other.Tag12;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Tag2 = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            RiderId = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Tag4 = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            Tag6 = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            Tag7 = input.ReadUInt32();
+            break;
+          }
+          case 90: {
+            subItem_.AddEntriesFrom(input, _repeated_subItem_codec);
+            break;
+          }
+          case 96: {
+            Tag12 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Tag2 = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            RiderId = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Tag4 = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            Tag6 = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            Tag7 = input.ReadUInt32();
+            break;
+          }
+          case 90: {
+            subItem_.AddEntriesFrom(ref input, _repeated_subItem_codec);
+            break;
+          }
+          case 96: {
+            Tag12 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ZwiftAppToCompanionMessageTypeTwo message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Types {
+      public sealed partial class TypeTwoSubItem : pb::IMessage<TypeTwoSubItem>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
+        private static readonly pb::MessageParser<TypeTwoSubItem> _parser = new pb::MessageParser<TypeTwoSubItem>(() => new TypeTwoSubItem());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pb::MessageParser<TypeTwoSubItem> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public TypeTwoSubItem() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public TypeTwoSubItem(TypeTwoSubItem other) : this() {
+          tag1_ = other.tag1_;
+          tag2_ = other.tag2_;
+          data_ = other.data_ != null ? other.data_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public TypeTwoSubItem Clone() {
+          return new TypeTwoSubItem(this);
+        }
+
+        /// <summary>Field number for the "tag1" field.</summary>
+        public const int Tag1FieldNumber = 1;
+        private uint tag1_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag1 {
+          get { return tag1_; }
+          set {
+            tag1_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "tag2" field.</summary>
+        public const int Tag2FieldNumber = 2;
+        private uint tag2_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag2 {
+          get { return tag2_; }
+          set {
+            tag2_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "data" field.</summary>
+        public const int DataFieldNumber = 21;
+        private global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData data_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData Data {
+          get { return data_; }
+          set {
+            data_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override bool Equals(object other) {
+          return Equals(other as TypeTwoSubItem);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool Equals(TypeTwoSubItem other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Tag1 != other.Tag1) return false;
+          if (Tag2 != other.Tag2) return false;
+          if (!object.Equals(Data, other.Data)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+          if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+          if (data_ != null) hash ^= Data.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (Tag1 != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(Tag1);
+          }
+          if (Tag2 != 0) {
+            output.WriteRawTag(16);
+            output.WriteUInt32(Tag2);
+          }
+          if (data_ != null) {
+            output.WriteRawTag(170, 1);
+            output.WriteMessage(Data);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Tag1 != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(Tag1);
+          }
+          if (Tag2 != 0) {
+            output.WriteRawTag(16);
+            output.WriteUInt32(Tag2);
+          }
+          if (data_ != null) {
+            output.WriteRawTag(170, 1);
+            output.WriteMessage(Data);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public int CalculateSize() {
+          int size = 0;
+          if (Tag1 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+          }
+          if (Tag2 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
+          }
+          if (data_ != null) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Data);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(TypeTwoSubItem other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Tag1 != 0) {
+            Tag1 = other.Tag1;
+          }
+          if (other.Tag2 != 0) {
+            Tag2 = other.Tag2;
+          }
+          if (other.data_ != null) {
+            if (data_ == null) {
+              Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData();
+            }
+            Data.MergeFrom(other.Data);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                Tag1 = input.ReadUInt32();
+                break;
+              }
+              case 16: {
+                Tag2 = input.ReadUInt32();
+                break;
+              }
+              case 170: {
+                if (data_ == null) {
+                  Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData();
+                }
+                input.ReadMessage(Data);
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                Tag1 = input.ReadUInt32();
+                break;
+              }
+              case 16: {
+                Tag2 = input.ReadUInt32();
+                break;
+              }
+              case 170: {
+                if (data_ == null) {
+                  Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData();
+                }
+                input.ReadMessage(Data);
+                break;
+              }
+            }
+          }
+        }
+        #endif
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the TypeTwoSubItem message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static partial class Types {
+          public sealed partial class TypeTwoSubItemData : pb::IMessage<TypeTwoSubItemData>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<TypeTwoSubItemData> _parser = new pb::MessageParser<TypeTwoSubItemData>(() => new TypeTwoSubItemData());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<TypeTwoSubItemData> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public TypeTwoSubItemData() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public TypeTwoSubItemData(TypeTwoSubItemData other) : this() {
+              tag1_ = other.tag1_;
+              data_ = other.data_ != null ? other.data_.Clone() : null;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public TypeTwoSubItemData Clone() {
+              return new TypeTwoSubItemData(this);
+            }
+
+            /// <summary>Field number for the "tag1" field.</summary>
+            public const int Tag1FieldNumber = 1;
+            private uint tag1_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public uint Tag1 {
+              get { return tag1_; }
+              set {
+                tag1_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "data" field.</summary>
+            public const int DataFieldNumber = 4;
+            private global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData data_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData Data {
+              get { return data_; }
+              set {
+                data_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as TypeTwoSubItemData);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(TypeTwoSubItemData other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Tag1 != other.Tag1) return false;
+              if (!object.Equals(Data, other.Data)) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+              if (data_ != null) hash ^= Data.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (Tag1 != 0) {
+                output.WriteRawTag(8);
+                output.WriteUInt32(Tag1);
+              }
+              if (data_ != null) {
+                output.WriteRawTag(34);
+                output.WriteMessage(Data);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (Tag1 != 0) {
+                output.WriteRawTag(8);
+                output.WriteUInt32(Tag1);
+              }
+              if (data_ != null) {
+                output.WriteRawTag(34);
+                output.WriteMessage(Data);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (Tag1 != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+              }
+              if (data_ != null) {
+                size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(TypeTwoSubItemData other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Tag1 != 0) {
+                Tag1 = other.Tag1;
+              }
+              if (other.data_ != null) {
+                if (data_ == null) {
+                  Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData();
+                }
+                Data.MergeFrom(other.Data);
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 8: {
+                    Tag1 = input.ReadUInt32();
+                    break;
+                  }
+                  case 34: {
+                    if (data_ == null) {
+                      Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData();
+                    }
+                    input.ReadMessage(Data);
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 8: {
+                    Tag1 = input.ReadUInt32();
+                    break;
+                  }
+                  case 34: {
+                    if (data_ == null) {
+                      Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData();
+                    }
+                    input.ReadMessage(Data);
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the TypeTwoSubItemData message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static partial class Types {
+              public sealed partial class MoreData : pb::IMessage<MoreData>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<MoreData> _parser = new pb::MessageParser<MoreData>(() => new MoreData());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<MoreData> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Descriptor.NestedTypes[0]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public MoreData() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public MoreData(MoreData other) : this() {
+                  tag1_ = other.tag1_;
+                  tag2_ = other.tag2_;
+                  tag3_ = other.tag3_;
+                  tag4_ = other.tag4_;
+                  data_ = other.data_ != null ? other.data_.Clone() : null;
+                  tag7_ = other.tag7_;
+                  tag8_ = other.tag8_;
+                  tag10_ = other.tag10_;
+                  tag11_ = other.tag11_;
+                  tag12_ = other.tag12_;
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public MoreData Clone() {
+                  return new MoreData(this);
+                }
+
+                /// <summary>Field number for the "tag1" field.</summary>
+                public const int Tag1FieldNumber = 1;
+                private uint tag1_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag1 {
+                  get { return tag1_; }
+                  set {
+                    tag1_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "tag2" field.</summary>
+                public const int Tag2FieldNumber = 2;
+                private ulong tag2_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public ulong Tag2 {
+                  get { return tag2_; }
+                  set {
+                    tag2_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "tag3" field.</summary>
+                public const int Tag3FieldNumber = 3;
+                private uint tag3_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag3 {
+                  get { return tag3_; }
+                  set {
+                    tag3_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "tag4" field.</summary>
+                public const int Tag4FieldNumber = 4;
+                private uint tag4_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag4 {
+                  get { return tag4_; }
+                  set {
+                    tag4_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "data" field.</summary>
+                public const int DataFieldNumber = 6;
+                private global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData data_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData Data {
+                  get { return data_; }
+                  set {
+                    data_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "tag7" field.</summary>
+                public const int Tag7FieldNumber = 7;
+                private uint tag7_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag7 {
+                  get { return tag7_; }
+                  set {
+                    tag7_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "tag8" field.</summary>
+                public const int Tag8FieldNumber = 8;
+                private uint tag8_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag8 {
+                  get { return tag8_; }
+                  set {
+                    tag8_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "tag10" field.</summary>
+                public const int Tag10FieldNumber = 10;
+                private uint tag10_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag10 {
+                  get { return tag10_; }
+                  set {
+                    tag10_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "tag11" field.</summary>
+                public const int Tag11FieldNumber = 11;
+                private uint tag11_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag11 {
+                  get { return tag11_; }
+                  set {
+                    tag11_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "tag12" field.</summary>
+                public const int Tag12FieldNumber = 12;
+                private uint tag12_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag12 {
+                  get { return tag12_; }
+                  set {
+                    tag12_ = value;
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as MoreData);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(MoreData other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (Tag1 != other.Tag1) return false;
+                  if (Tag2 != other.Tag2) return false;
+                  if (Tag3 != other.Tag3) return false;
+                  if (Tag4 != other.Tag4) return false;
+                  if (!object.Equals(Data, other.Data)) return false;
+                  if (Tag7 != other.Tag7) return false;
+                  if (Tag8 != other.Tag8) return false;
+                  if (Tag10 != other.Tag10) return false;
+                  if (Tag11 != other.Tag11) return false;
+                  if (Tag12 != other.Tag12) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+                  if (Tag2 != 0UL) hash ^= Tag2.GetHashCode();
+                  if (Tag3 != 0) hash ^= Tag3.GetHashCode();
+                  if (Tag4 != 0) hash ^= Tag4.GetHashCode();
+                  if (data_ != null) hash ^= Data.GetHashCode();
+                  if (Tag7 != 0) hash ^= Tag7.GetHashCode();
+                  if (Tag8 != 0) hash ^= Tag8.GetHashCode();
+                  if (Tag10 != 0) hash ^= Tag10.GetHashCode();
+                  if (Tag11 != 0) hash ^= Tag11.GetHashCode();
+                  if (Tag12 != 0) hash ^= Tag12.GetHashCode();
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (Tag1 != 0) {
+                    output.WriteRawTag(8);
+                    output.WriteUInt32(Tag1);
+                  }
+                  if (Tag2 != 0UL) {
+                    output.WriteRawTag(16);
+                    output.WriteUInt64(Tag2);
+                  }
+                  if (Tag3 != 0) {
+                    output.WriteRawTag(24);
+                    output.WriteUInt32(Tag3);
+                  }
+                  if (Tag4 != 0) {
+                    output.WriteRawTag(32);
+                    output.WriteUInt32(Tag4);
+                  }
+                  if (data_ != null) {
+                    output.WriteRawTag(50);
+                    output.WriteMessage(Data);
+                  }
+                  if (Tag7 != 0) {
+                    output.WriteRawTag(56);
+                    output.WriteUInt32(Tag7);
+                  }
+                  if (Tag8 != 0) {
+                    output.WriteRawTag(64);
+                    output.WriteUInt32(Tag8);
+                  }
+                  if (Tag10 != 0) {
+                    output.WriteRawTag(80);
+                    output.WriteUInt32(Tag10);
+                  }
+                  if (Tag11 != 0) {
+                    output.WriteRawTag(88);
+                    output.WriteUInt32(Tag11);
+                  }
+                  if (Tag12 != 0) {
+                    output.WriteRawTag(96);
+                    output.WriteUInt32(Tag12);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (Tag1 != 0) {
+                    output.WriteRawTag(8);
+                    output.WriteUInt32(Tag1);
+                  }
+                  if (Tag2 != 0UL) {
+                    output.WriteRawTag(16);
+                    output.WriteUInt64(Tag2);
+                  }
+                  if (Tag3 != 0) {
+                    output.WriteRawTag(24);
+                    output.WriteUInt32(Tag3);
+                  }
+                  if (Tag4 != 0) {
+                    output.WriteRawTag(32);
+                    output.WriteUInt32(Tag4);
+                  }
+                  if (data_ != null) {
+                    output.WriteRawTag(50);
+                    output.WriteMessage(Data);
+                  }
+                  if (Tag7 != 0) {
+                    output.WriteRawTag(56);
+                    output.WriteUInt32(Tag7);
+                  }
+                  if (Tag8 != 0) {
+                    output.WriteRawTag(64);
+                    output.WriteUInt32(Tag8);
+                  }
+                  if (Tag10 != 0) {
+                    output.WriteRawTag(80);
+                    output.WriteUInt32(Tag10);
+                  }
+                  if (Tag11 != 0) {
+                    output.WriteRawTag(88);
+                    output.WriteUInt32(Tag11);
+                  }
+                  if (Tag12 != 0) {
+                    output.WriteRawTag(96);
+                    output.WriteUInt32(Tag12);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (Tag1 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+                  }
+                  if (Tag2 != 0UL) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Tag2);
+                  }
+                  if (Tag3 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag3);
+                  }
+                  if (Tag4 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag4);
+                  }
+                  if (data_ != null) {
+                    size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data);
+                  }
+                  if (Tag7 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag7);
+                  }
+                  if (Tag8 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag8);
+                  }
+                  if (Tag10 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
+                  }
+                  if (Tag11 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag11);
+                  }
+                  if (Tag12 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag12);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(MoreData other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.Tag1 != 0) {
+                    Tag1 = other.Tag1;
+                  }
+                  if (other.Tag2 != 0UL) {
+                    Tag2 = other.Tag2;
+                  }
+                  if (other.Tag3 != 0) {
+                    Tag3 = other.Tag3;
+                  }
+                  if (other.Tag4 != 0) {
+                    Tag4 = other.Tag4;
+                  }
+                  if (other.data_ != null) {
+                    if (data_ == null) {
+                      Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData();
+                    }
+                    Data.MergeFrom(other.Data);
+                  }
+                  if (other.Tag7 != 0) {
+                    Tag7 = other.Tag7;
+                  }
+                  if (other.Tag8 != 0) {
+                    Tag8 = other.Tag8;
+                  }
+                  if (other.Tag10 != 0) {
+                    Tag10 = other.Tag10;
+                  }
+                  if (other.Tag11 != 0) {
+                    Tag11 = other.Tag11;
+                  }
+                  if (other.Tag12 != 0) {
+                    Tag12 = other.Tag12;
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 8: {
+                        Tag1 = input.ReadUInt32();
+                        break;
+                      }
+                      case 16: {
+                        Tag2 = input.ReadUInt64();
+                        break;
+                      }
+                      case 24: {
+                        Tag3 = input.ReadUInt32();
+                        break;
+                      }
+                      case 32: {
+                        Tag4 = input.ReadUInt32();
+                        break;
+                      }
+                      case 50: {
+                        if (data_ == null) {
+                          Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData();
+                        }
+                        input.ReadMessage(Data);
+                        break;
+                      }
+                      case 56: {
+                        Tag7 = input.ReadUInt32();
+                        break;
+                      }
+                      case 64: {
+                        Tag8 = input.ReadUInt32();
+                        break;
+                      }
+                      case 80: {
+                        Tag10 = input.ReadUInt32();
+                        break;
+                      }
+                      case 88: {
+                        Tag11 = input.ReadUInt32();
+                        break;
+                      }
+                      case 96: {
+                        Tag12 = input.ReadUInt32();
+                        break;
+                      }
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                      case 8: {
+                        Tag1 = input.ReadUInt32();
+                        break;
+                      }
+                      case 16: {
+                        Tag2 = input.ReadUInt64();
+                        break;
+                      }
+                      case 24: {
+                        Tag3 = input.ReadUInt32();
+                        break;
+                      }
+                      case 32: {
+                        Tag4 = input.ReadUInt32();
+                        break;
+                      }
+                      case 50: {
+                        if (data_ == null) {
+                          Data = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData();
+                        }
+                        input.ReadMessage(Data);
+                        break;
+                      }
+                      case 56: {
+                        Tag7 = input.ReadUInt32();
+                        break;
+                      }
+                      case 64: {
+                        Tag8 = input.ReadUInt32();
+                        break;
+                      }
+                      case 80: {
+                        Tag10 = input.ReadUInt32();
+                        break;
+                      }
+                      case 88: {
+                        Tag11 = input.ReadUInt32();
+                        break;
+                      }
+                      case 96: {
+                        Tag12 = input.ReadUInt32();
+                        break;
+                      }
+                    }
+                  }
+                }
+                #endif
+
+                #region Nested types
+                /// <summary>Container for nested types declared in the MoreData message type.</summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static partial class Types {
+                  public sealed partial class EvenMoreData : pb::IMessage<EvenMoreData>
+                  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                      , pb::IBufferMessage
+                  #endif
+                  {
+                    private static readonly pb::MessageParser<EvenMoreData> _parser = new pb::MessageParser<EvenMoreData>(() => new EvenMoreData());
+                    private pb::UnknownFieldSet _unknownFields;
+                    private int _hasBits0;
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public static pb::MessageParser<EvenMoreData> Parser { get { return _parser; } }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public static pbr::MessageDescriptor Descriptor {
+                      get { return global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Descriptor.NestedTypes[0]; }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    pbr::MessageDescriptor pb::IMessage.Descriptor {
+                      get { return Descriptor; }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public EvenMoreData() {
+                      OnConstruction();
+                    }
+
+                    partial void OnConstruction();
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public EvenMoreData(EvenMoreData other) : this() {
+                      _hasBits0 = other._hasBits0;
+                      data1_ = other.data1_ != null ? other.data1_.Clone() : null;
+                      data2_ = other.data2_ != null ? other.data2_.Clone() : null;
+                      tag3_ = other.tag3_;
+                      tag6_ = other.tag6_;
+                      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public EvenMoreData Clone() {
+                      return new EvenMoreData(this);
+                    }
+
+                    /// <summary>Field number for the "data_1" field.</summary>
+                    public const int Data1FieldNumber = 1;
+                    private global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataOne data1_;
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataOne Data1 {
+                      get { return data1_; }
+                      set {
+                        data1_ = value;
+                      }
+                    }
+
+                    /// <summary>Field number for the "data_2" field.</summary>
+                    public const int Data2FieldNumber = 2;
+                    private global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo data2_;
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo Data2 {
+                      get { return data2_; }
+                      set {
+                        data2_ = value;
+                      }
+                    }
+
+                    /// <summary>Field number for the "tag3" field.</summary>
+                    public const int Tag3FieldNumber = 3;
+                    private uint tag3_;
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public uint Tag3 {
+                      get { if ((_hasBits0 & 1) != 0) { return tag3_; } else { return 0; } }
+                      set {
+                        _hasBits0 |= 1;
+                        tag3_ = value;
+                      }
+                    }
+                    /// <summary>Gets whether the "tag3" field is set</summary>
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public bool HasTag3 {
+                      get { return (_hasBits0 & 1) != 0; }
+                    }
+                    /// <summary>Clears the value of the "tag3" field</summary>
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public void ClearTag3() {
+                      _hasBits0 &= ~1;
+                    }
+
+                    /// <summary>Field number for the "tag6" field.</summary>
+                    public const int Tag6FieldNumber = 6;
+                    private float tag6_;
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public float Tag6 {
+                      get { return tag6_; }
+                      set {
+                        tag6_ = value;
+                      }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public override bool Equals(object other) {
+                      return Equals(other as EvenMoreData);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public bool Equals(EvenMoreData other) {
+                      if (ReferenceEquals(other, null)) {
+                        return false;
+                      }
+                      if (ReferenceEquals(other, this)) {
+                        return true;
+                      }
+                      if (!object.Equals(Data1, other.Data1)) return false;
+                      if (!object.Equals(Data2, other.Data2)) return false;
+                      if (Tag3 != other.Tag3) return false;
+                      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag6, other.Tag6)) return false;
+                      return Equals(_unknownFields, other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public override int GetHashCode() {
+                      int hash = 1;
+                      if (data1_ != null) hash ^= Data1.GetHashCode();
+                      if (data2_ != null) hash ^= Data2.GetHashCode();
+                      if (HasTag3) hash ^= Tag3.GetHashCode();
+                      if (Tag6 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag6);
+                      if (_unknownFields != null) {
+                        hash ^= _unknownFields.GetHashCode();
+                      }
+                      return hash;
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public override string ToString() {
+                      return pb::JsonFormatter.ToDiagnosticString(this);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public void WriteTo(pb::CodedOutputStream output) {
+                    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                      output.WriteRawMessage(this);
+                    #else
+                      if (data1_ != null) {
+                        output.WriteRawTag(10);
+                        output.WriteMessage(Data1);
+                      }
+                      if (data2_ != null) {
+                        output.WriteRawTag(18);
+                        output.WriteMessage(Data2);
+                      }
+                      if (HasTag3) {
+                        output.WriteRawTag(24);
+                        output.WriteUInt32(Tag3);
+                      }
+                      if (Tag6 != 0F) {
+                        output.WriteRawTag(53);
+                        output.WriteFloat(Tag6);
+                      }
+                      if (_unknownFields != null) {
+                        _unknownFields.WriteTo(output);
+                      }
+                    #endif
+                    }
+
+                    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                      if (data1_ != null) {
+                        output.WriteRawTag(10);
+                        output.WriteMessage(Data1);
+                      }
+                      if (data2_ != null) {
+                        output.WriteRawTag(18);
+                        output.WriteMessage(Data2);
+                      }
+                      if (HasTag3) {
+                        output.WriteRawTag(24);
+                        output.WriteUInt32(Tag3);
+                      }
+                      if (Tag6 != 0F) {
+                        output.WriteRawTag(53);
+                        output.WriteFloat(Tag6);
+                      }
+                      if (_unknownFields != null) {
+                        _unknownFields.WriteTo(ref output);
+                      }
+                    }
+                    #endif
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public int CalculateSize() {
+                      int size = 0;
+                      if (data1_ != null) {
+                        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data1);
+                      }
+                      if (data2_ != null) {
+                        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Data2);
+                      }
+                      if (HasTag3) {
+                        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag3);
+                      }
+                      if (Tag6 != 0F) {
+                        size += 1 + 4;
+                      }
+                      if (_unknownFields != null) {
+                        size += _unknownFields.CalculateSize();
+                      }
+                      return size;
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public void MergeFrom(EvenMoreData other) {
+                      if (other == null) {
+                        return;
+                      }
+                      if (other.data1_ != null) {
+                        if (data1_ == null) {
+                          Data1 = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataOne();
+                        }
+                        Data1.MergeFrom(other.Data1);
+                      }
+                      if (other.data2_ != null) {
+                        if (data2_ == null) {
+                          Data2 = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo();
+                        }
+                        Data2.MergeFrom(other.Data2);
+                      }
+                      if (other.HasTag3) {
+                        Tag3 = other.Tag3;
+                      }
+                      if (other.Tag6 != 0F) {
+                        Tag6 = other.Tag6;
+                      }
+                      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public void MergeFrom(pb::CodedInputStream input) {
+                    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                      input.ReadRawMessage(this);
+                    #else
+                      uint tag;
+                      while ((tag = input.ReadTag()) != 0) {
+                        switch(tag) {
+                          default:
+                            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                            break;
+                          case 10: {
+                            if (data1_ == null) {
+                              Data1 = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataOne();
+                            }
+                            input.ReadMessage(Data1);
+                            break;
+                          }
+                          case 18: {
+                            if (data2_ == null) {
+                              Data2 = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo();
+                            }
+                            input.ReadMessage(Data2);
+                            break;
+                          }
+                          case 24: {
+                            Tag3 = input.ReadUInt32();
+                            break;
+                          }
+                          case 53: {
+                            Tag6 = input.ReadFloat();
+                            break;
+                          }
+                        }
+                      }
+                    #endif
+                    }
+
+                    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                      uint tag;
+                      while ((tag = input.ReadTag()) != 0) {
+                        switch(tag) {
+                          default:
+                            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                            break;
+                          case 10: {
+                            if (data1_ == null) {
+                              Data1 = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataOne();
+                            }
+                            input.ReadMessage(Data1);
+                            break;
+                          }
+                          case 18: {
+                            if (data2_ == null) {
+                              Data2 = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo();
+                            }
+                            input.ReadMessage(Data2);
+                            break;
+                          }
+                          case 24: {
+                            Tag3 = input.ReadUInt32();
+                            break;
+                          }
+                          case 53: {
+                            Tag6 = input.ReadFloat();
+                            break;
+                          }
+                        }
+                      }
+                    }
+                    #endif
+
+                    #region Nested types
+                    /// <summary>Container for nested types declared in the EvenMoreData message type.</summary>
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public static partial class Types {
+                      public sealed partial class MoreMoreDataOne : pb::IMessage<MoreMoreDataOne>
+                      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                          , pb::IBufferMessage
+                      #endif
+                      {
+                        private static readonly pb::MessageParser<MoreMoreDataOne> _parser = new pb::MessageParser<MoreMoreDataOne>(() => new MoreMoreDataOne());
+                        private pb::UnknownFieldSet _unknownFields;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public static pb::MessageParser<MoreMoreDataOne> Parser { get { return _parser; } }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public static pbr::MessageDescriptor Descriptor {
+                          get { return global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Descriptor.NestedTypes[0]; }
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        pbr::MessageDescriptor pb::IMessage.Descriptor {
+                          get { return Descriptor; }
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public MoreMoreDataOne() {
+                          OnConstruction();
+                        }
+
+                        partial void OnConstruction();
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public MoreMoreDataOne(MoreMoreDataOne other) : this() {
+                          tag1_ = other.tag1_;
+                          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public MoreMoreDataOne Clone() {
+                          return new MoreMoreDataOne(this);
+                        }
+
+                        /// <summary>Field number for the "tag1" field.</summary>
+                        public const int Tag1FieldNumber = 1;
+                        private uint tag1_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint Tag1 {
+                          get { return tag1_; }
+                          set {
+                            tag1_ = value;
+                          }
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public override bool Equals(object other) {
+                          return Equals(other as MoreMoreDataOne);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public bool Equals(MoreMoreDataOne other) {
+                          if (ReferenceEquals(other, null)) {
+                            return false;
+                          }
+                          if (ReferenceEquals(other, this)) {
+                            return true;
+                          }
+                          if (Tag1 != other.Tag1) return false;
+                          return Equals(_unknownFields, other._unknownFields);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public override int GetHashCode() {
+                          int hash = 1;
+                          if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+                          if (_unknownFields != null) {
+                            hash ^= _unknownFields.GetHashCode();
+                          }
+                          return hash;
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public override string ToString() {
+                          return pb::JsonFormatter.ToDiagnosticString(this);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public void WriteTo(pb::CodedOutputStream output) {
+                        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                          output.WriteRawMessage(this);
+                        #else
+                          if (Tag1 != 0) {
+                            output.WriteRawTag(8);
+                            output.WriteUInt32(Tag1);
+                          }
+                          if (_unknownFields != null) {
+                            _unknownFields.WriteTo(output);
+                          }
+                        #endif
+                        }
+
+                        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                          if (Tag1 != 0) {
+                            output.WriteRawTag(8);
+                            output.WriteUInt32(Tag1);
+                          }
+                          if (_unknownFields != null) {
+                            _unknownFields.WriteTo(ref output);
+                          }
+                        }
+                        #endif
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public int CalculateSize() {
+                          int size = 0;
+                          if (Tag1 != 0) {
+                            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+                          }
+                          if (_unknownFields != null) {
+                            size += _unknownFields.CalculateSize();
+                          }
+                          return size;
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public void MergeFrom(MoreMoreDataOne other) {
+                          if (other == null) {
+                            return;
+                          }
+                          if (other.Tag1 != 0) {
+                            Tag1 = other.Tag1;
+                          }
+                          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public void MergeFrom(pb::CodedInputStream input) {
+                        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                          input.ReadRawMessage(this);
+                        #else
+                          uint tag;
+                          while ((tag = input.ReadTag()) != 0) {
+                            switch(tag) {
+                              default:
+                                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                                break;
+                              case 8: {
+                                Tag1 = input.ReadUInt32();
+                                break;
+                              }
+                            }
+                          }
+                        #endif
+                        }
+
+                        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                          uint tag;
+                          while ((tag = input.ReadTag()) != 0) {
+                            switch(tag) {
+                              default:
+                                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                                break;
+                              case 8: {
+                                Tag1 = input.ReadUInt32();
+                                break;
+                              }
+                            }
+                          }
+                        }
+                        #endif
+
+                      }
+
+                      public sealed partial class MoreMoreDataTwo : pb::IMessage<MoreMoreDataTwo>
+                      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                          , pb::IBufferMessage
+                      #endif
+                      {
+                        private static readonly pb::MessageParser<MoreMoreDataTwo> _parser = new pb::MessageParser<MoreMoreDataTwo>(() => new MoreMoreDataTwo());
+                        private pb::UnknownFieldSet _unknownFields;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public static pb::MessageParser<MoreMoreDataTwo> Parser { get { return _parser; } }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public static pbr::MessageDescriptor Descriptor {
+                          get { return global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Descriptor.NestedTypes[1]; }
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        pbr::MessageDescriptor pb::IMessage.Descriptor {
+                          get { return Descriptor; }
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public MoreMoreDataTwo() {
+                          OnConstruction();
+                        }
+
+                        partial void OnConstruction();
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public MoreMoreDataTwo(MoreMoreDataTwo other) : this() {
+                          riderId_ = other.riderId_;
+                          tag2_ = other.tag2_;
+                          someData_ = other.someData_ != null ? other.someData_.Clone() : null;
+                          profileUrl_ = other.profileUrl_;
+                          secondRiderId_ = other.secondRiderId_;
+                          tag7_ = other.tag7_;
+                          description_ = other.description_;
+                          tag12_ = other.tag12_;
+                          tag13_ = other.tag13_;
+                          tag16_ = other.tag16_;
+                          tag18_ = other.tag18_;
+                          tag19_ = other.tag19_;
+                          tag20_ = other.tag20_;
+                          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public MoreMoreDataTwo Clone() {
+                          return new MoreMoreDataTwo(this);
+                        }
+
+                        /// <summary>Field number for the "rider_id" field.</summary>
+                        public const int RiderIdFieldNumber = 1;
+                        private uint riderId_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint RiderId {
+                          get { return riderId_; }
+                          set {
+                            riderId_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "tag2" field.</summary>
+                        public const int Tag2FieldNumber = 2;
+                        private uint tag2_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint Tag2 {
+                          get { return tag2_; }
+                          set {
+                            tag2_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "some_data" field.</summary>
+                        public const int SomeDataFieldNumber = 3;
+                        private global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Types.WhatIsThis someData_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Types.WhatIsThis SomeData {
+                          get { return someData_; }
+                          set {
+                            someData_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "profile_url" field.</summary>
+                        public const int ProfileUrlFieldNumber = 5;
+                        private string profileUrl_ = "";
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public string ProfileUrl {
+                          get { return profileUrl_; }
+                          set {
+                            profileUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                          }
+                        }
+
+                        /// <summary>Field number for the "second_rider_id" field.</summary>
+                        public const int SecondRiderIdFieldNumber = 6;
+                        private uint secondRiderId_;
+                        /// <summary>
+                        /// This is appearing twice...
+                        /// </summary>
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint SecondRiderId {
+                          get { return secondRiderId_; }
+                          set {
+                            secondRiderId_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "tag7" field.</summary>
+                        public const int Tag7FieldNumber = 7;
+                        private uint tag7_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint Tag7 {
+                          get { return tag7_; }
+                          set {
+                            tag7_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "description" field.</summary>
+                        public const int DescriptionFieldNumber = 11;
+                        private string description_ = "";
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public string Description {
+                          get { return description_; }
+                          set {
+                            description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                          }
+                        }
+
+                        /// <summary>Field number for the "tag12" field.</summary>
+                        public const int Tag12FieldNumber = 12;
+                        private uint tag12_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint Tag12 {
+                          get { return tag12_; }
+                          set {
+                            tag12_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "tag13" field.</summary>
+                        public const int Tag13FieldNumber = 13;
+                        private float tag13_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public float Tag13 {
+                          get { return tag13_; }
+                          set {
+                            tag13_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "tag16" field.</summary>
+                        public const int Tag16FieldNumber = 16;
+                        private uint tag16_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint Tag16 {
+                          get { return tag16_; }
+                          set {
+                            tag16_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "tag18" field.</summary>
+                        public const int Tag18FieldNumber = 18;
+                        private uint tag18_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint Tag18 {
+                          get { return tag18_; }
+                          set {
+                            tag18_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "tag19" field.</summary>
+                        public const int Tag19FieldNumber = 19;
+                        private double tag19_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public double Tag19 {
+                          get { return tag19_; }
+                          set {
+                            tag19_ = value;
+                          }
+                        }
+
+                        /// <summary>Field number for the "tag20" field.</summary>
+                        public const int Tag20FieldNumber = 20;
+                        private uint tag20_;
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public uint Tag20 {
+                          get { return tag20_; }
+                          set {
+                            tag20_ = value;
+                          }
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public override bool Equals(object other) {
+                          return Equals(other as MoreMoreDataTwo);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public bool Equals(MoreMoreDataTwo other) {
+                          if (ReferenceEquals(other, null)) {
+                            return false;
+                          }
+                          if (ReferenceEquals(other, this)) {
+                            return true;
+                          }
+                          if (RiderId != other.RiderId) return false;
+                          if (Tag2 != other.Tag2) return false;
+                          if (!object.Equals(SomeData, other.SomeData)) return false;
+                          if (ProfileUrl != other.ProfileUrl) return false;
+                          if (SecondRiderId != other.SecondRiderId) return false;
+                          if (Tag7 != other.Tag7) return false;
+                          if (Description != other.Description) return false;
+                          if (Tag12 != other.Tag12) return false;
+                          if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag13, other.Tag13)) return false;
+                          if (Tag16 != other.Tag16) return false;
+                          if (Tag18 != other.Tag18) return false;
+                          if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Tag19, other.Tag19)) return false;
+                          if (Tag20 != other.Tag20) return false;
+                          return Equals(_unknownFields, other._unknownFields);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public override int GetHashCode() {
+                          int hash = 1;
+                          if (RiderId != 0) hash ^= RiderId.GetHashCode();
+                          if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+                          if (someData_ != null) hash ^= SomeData.GetHashCode();
+                          if (ProfileUrl.Length != 0) hash ^= ProfileUrl.GetHashCode();
+                          if (SecondRiderId != 0) hash ^= SecondRiderId.GetHashCode();
+                          if (Tag7 != 0) hash ^= Tag7.GetHashCode();
+                          if (Description.Length != 0) hash ^= Description.GetHashCode();
+                          if (Tag12 != 0) hash ^= Tag12.GetHashCode();
+                          if (Tag13 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag13);
+                          if (Tag16 != 0) hash ^= Tag16.GetHashCode();
+                          if (Tag18 != 0) hash ^= Tag18.GetHashCode();
+                          if (Tag19 != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Tag19);
+                          if (Tag20 != 0) hash ^= Tag20.GetHashCode();
+                          if (_unknownFields != null) {
+                            hash ^= _unknownFields.GetHashCode();
+                          }
+                          return hash;
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public override string ToString() {
+                          return pb::JsonFormatter.ToDiagnosticString(this);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public void WriteTo(pb::CodedOutputStream output) {
+                        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                          output.WriteRawMessage(this);
+                        #else
+                          if (RiderId != 0) {
+                            output.WriteRawTag(8);
+                            output.WriteUInt32(RiderId);
+                          }
+                          if (Tag2 != 0) {
+                            output.WriteRawTag(16);
+                            output.WriteUInt32(Tag2);
+                          }
+                          if (someData_ != null) {
+                            output.WriteRawTag(26);
+                            output.WriteMessage(SomeData);
+                          }
+                          if (ProfileUrl.Length != 0) {
+                            output.WriteRawTag(42);
+                            output.WriteString(ProfileUrl);
+                          }
+                          if (SecondRiderId != 0) {
+                            output.WriteRawTag(48);
+                            output.WriteUInt32(SecondRiderId);
+                          }
+                          if (Tag7 != 0) {
+                            output.WriteRawTag(56);
+                            output.WriteUInt32(Tag7);
+                          }
+                          if (Description.Length != 0) {
+                            output.WriteRawTag(90);
+                            output.WriteString(Description);
+                          }
+                          if (Tag12 != 0) {
+                            output.WriteRawTag(96);
+                            output.WriteUInt32(Tag12);
+                          }
+                          if (Tag13 != 0F) {
+                            output.WriteRawTag(109);
+                            output.WriteFloat(Tag13);
+                          }
+                          if (Tag16 != 0) {
+                            output.WriteRawTag(128, 1);
+                            output.WriteUInt32(Tag16);
+                          }
+                          if (Tag18 != 0) {
+                            output.WriteRawTag(144, 1);
+                            output.WriteUInt32(Tag18);
+                          }
+                          if (Tag19 != 0D) {
+                            output.WriteRawTag(153, 1);
+                            output.WriteDouble(Tag19);
+                          }
+                          if (Tag20 != 0) {
+                            output.WriteRawTag(160, 1);
+                            output.WriteUInt32(Tag20);
+                          }
+                          if (_unknownFields != null) {
+                            _unknownFields.WriteTo(output);
+                          }
+                        #endif
+                        }
+
+                        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                          if (RiderId != 0) {
+                            output.WriteRawTag(8);
+                            output.WriteUInt32(RiderId);
+                          }
+                          if (Tag2 != 0) {
+                            output.WriteRawTag(16);
+                            output.WriteUInt32(Tag2);
+                          }
+                          if (someData_ != null) {
+                            output.WriteRawTag(26);
+                            output.WriteMessage(SomeData);
+                          }
+                          if (ProfileUrl.Length != 0) {
+                            output.WriteRawTag(42);
+                            output.WriteString(ProfileUrl);
+                          }
+                          if (SecondRiderId != 0) {
+                            output.WriteRawTag(48);
+                            output.WriteUInt32(SecondRiderId);
+                          }
+                          if (Tag7 != 0) {
+                            output.WriteRawTag(56);
+                            output.WriteUInt32(Tag7);
+                          }
+                          if (Description.Length != 0) {
+                            output.WriteRawTag(90);
+                            output.WriteString(Description);
+                          }
+                          if (Tag12 != 0) {
+                            output.WriteRawTag(96);
+                            output.WriteUInt32(Tag12);
+                          }
+                          if (Tag13 != 0F) {
+                            output.WriteRawTag(109);
+                            output.WriteFloat(Tag13);
+                          }
+                          if (Tag16 != 0) {
+                            output.WriteRawTag(128, 1);
+                            output.WriteUInt32(Tag16);
+                          }
+                          if (Tag18 != 0) {
+                            output.WriteRawTag(144, 1);
+                            output.WriteUInt32(Tag18);
+                          }
+                          if (Tag19 != 0D) {
+                            output.WriteRawTag(153, 1);
+                            output.WriteDouble(Tag19);
+                          }
+                          if (Tag20 != 0) {
+                            output.WriteRawTag(160, 1);
+                            output.WriteUInt32(Tag20);
+                          }
+                          if (_unknownFields != null) {
+                            _unknownFields.WriteTo(ref output);
+                          }
+                        }
+                        #endif
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public int CalculateSize() {
+                          int size = 0;
+                          if (RiderId != 0) {
+                            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RiderId);
+                          }
+                          if (Tag2 != 0) {
+                            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
+                          }
+                          if (someData_ != null) {
+                            size += 1 + pb::CodedOutputStream.ComputeMessageSize(SomeData);
+                          }
+                          if (ProfileUrl.Length != 0) {
+                            size += 1 + pb::CodedOutputStream.ComputeStringSize(ProfileUrl);
+                          }
+                          if (SecondRiderId != 0) {
+                            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SecondRiderId);
+                          }
+                          if (Tag7 != 0) {
+                            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag7);
+                          }
+                          if (Description.Length != 0) {
+                            size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+                          }
+                          if (Tag12 != 0) {
+                            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag12);
+                          }
+                          if (Tag13 != 0F) {
+                            size += 1 + 4;
+                          }
+                          if (Tag16 != 0) {
+                            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Tag16);
+                          }
+                          if (Tag18 != 0) {
+                            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Tag18);
+                          }
+                          if (Tag19 != 0D) {
+                            size += 2 + 8;
+                          }
+                          if (Tag20 != 0) {
+                            size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Tag20);
+                          }
+                          if (_unknownFields != null) {
+                            size += _unknownFields.CalculateSize();
+                          }
+                          return size;
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public void MergeFrom(MoreMoreDataTwo other) {
+                          if (other == null) {
+                            return;
+                          }
+                          if (other.RiderId != 0) {
+                            RiderId = other.RiderId;
+                          }
+                          if (other.Tag2 != 0) {
+                            Tag2 = other.Tag2;
+                          }
+                          if (other.someData_ != null) {
+                            if (someData_ == null) {
+                              SomeData = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Types.WhatIsThis();
+                            }
+                            SomeData.MergeFrom(other.SomeData);
+                          }
+                          if (other.ProfileUrl.Length != 0) {
+                            ProfileUrl = other.ProfileUrl;
+                          }
+                          if (other.SecondRiderId != 0) {
+                            SecondRiderId = other.SecondRiderId;
+                          }
+                          if (other.Tag7 != 0) {
+                            Tag7 = other.Tag7;
+                          }
+                          if (other.Description.Length != 0) {
+                            Description = other.Description;
+                          }
+                          if (other.Tag12 != 0) {
+                            Tag12 = other.Tag12;
+                          }
+                          if (other.Tag13 != 0F) {
+                            Tag13 = other.Tag13;
+                          }
+                          if (other.Tag16 != 0) {
+                            Tag16 = other.Tag16;
+                          }
+                          if (other.Tag18 != 0) {
+                            Tag18 = other.Tag18;
+                          }
+                          if (other.Tag19 != 0D) {
+                            Tag19 = other.Tag19;
+                          }
+                          if (other.Tag20 != 0) {
+                            Tag20 = other.Tag20;
+                          }
+                          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                        }
+
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public void MergeFrom(pb::CodedInputStream input) {
+                        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                          input.ReadRawMessage(this);
+                        #else
+                          uint tag;
+                          while ((tag = input.ReadTag()) != 0) {
+                            switch(tag) {
+                              default:
+                                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                                break;
+                              case 8: {
+                                RiderId = input.ReadUInt32();
+                                break;
+                              }
+                              case 16: {
+                                Tag2 = input.ReadUInt32();
+                                break;
+                              }
+                              case 26: {
+                                if (someData_ == null) {
+                                  SomeData = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Types.WhatIsThis();
+                                }
+                                input.ReadMessage(SomeData);
+                                break;
+                              }
+                              case 42: {
+                                ProfileUrl = input.ReadString();
+                                break;
+                              }
+                              case 48: {
+                                SecondRiderId = input.ReadUInt32();
+                                break;
+                              }
+                              case 56: {
+                                Tag7 = input.ReadUInt32();
+                                break;
+                              }
+                              case 90: {
+                                Description = input.ReadString();
+                                break;
+                              }
+                              case 96: {
+                                Tag12 = input.ReadUInt32();
+                                break;
+                              }
+                              case 109: {
+                                Tag13 = input.ReadFloat();
+                                break;
+                              }
+                              case 128: {
+                                Tag16 = input.ReadUInt32();
+                                break;
+                              }
+                              case 144: {
+                                Tag18 = input.ReadUInt32();
+                                break;
+                              }
+                              case 153: {
+                                Tag19 = input.ReadDouble();
+                                break;
+                              }
+                              case 160: {
+                                Tag20 = input.ReadUInt32();
+                                break;
+                              }
+                            }
+                          }
+                        #endif
+                        }
+
+                        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                          uint tag;
+                          while ((tag = input.ReadTag()) != 0) {
+                            switch(tag) {
+                              default:
+                                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                                break;
+                              case 8: {
+                                RiderId = input.ReadUInt32();
+                                break;
+                              }
+                              case 16: {
+                                Tag2 = input.ReadUInt32();
+                                break;
+                              }
+                              case 26: {
+                                if (someData_ == null) {
+                                  SomeData = new global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Types.WhatIsThis();
+                                }
+                                input.ReadMessage(SomeData);
+                                break;
+                              }
+                              case 42: {
+                                ProfileUrl = input.ReadString();
+                                break;
+                              }
+                              case 48: {
+                                SecondRiderId = input.ReadUInt32();
+                                break;
+                              }
+                              case 56: {
+                                Tag7 = input.ReadUInt32();
+                                break;
+                              }
+                              case 90: {
+                                Description = input.ReadString();
+                                break;
+                              }
+                              case 96: {
+                                Tag12 = input.ReadUInt32();
+                                break;
+                              }
+                              case 109: {
+                                Tag13 = input.ReadFloat();
+                                break;
+                              }
+                              case 128: {
+                                Tag16 = input.ReadUInt32();
+                                break;
+                              }
+                              case 144: {
+                                Tag18 = input.ReadUInt32();
+                                break;
+                              }
+                              case 153: {
+                                Tag19 = input.ReadDouble();
+                                break;
+                              }
+                              case 160: {
+                                Tag20 = input.ReadUInt32();
+                                break;
+                              }
+                            }
+                          }
+                        }
+                        #endif
+
+                        #region Nested types
+                        /// <summary>Container for nested types declared in the MoreMoreDataTwo message type.</summary>
+                        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                        public static partial class Types {
+                          public sealed partial class WhatIsThis : pb::IMessage<WhatIsThis>
+                          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                              , pb::IBufferMessage
+                          #endif
+                          {
+                            private static readonly pb::MessageParser<WhatIsThis> _parser = new pb::MessageParser<WhatIsThis>(() => new WhatIsThis());
+                            private pb::UnknownFieldSet _unknownFields;
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public static pb::MessageParser<WhatIsThis> Parser { get { return _parser; } }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public static pbr::MessageDescriptor Descriptor {
+                              get { return global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Types.MoreMoreDataTwo.Descriptor.NestedTypes[0]; }
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            pbr::MessageDescriptor pb::IMessage.Descriptor {
+                              get { return Descriptor; }
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public WhatIsThis() {
+                              OnConstruction();
+                            }
+
+                            partial void OnConstruction();
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public WhatIsThis(WhatIsThis other) : this() {
+                              tag1_ = other.tag1_;
+                              tag2_ = other.tag2_;
+                              tag3_ = other.tag3_;
+                              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public WhatIsThis Clone() {
+                              return new WhatIsThis(this);
+                            }
+
+                            /// <summary>Field number for the "tag1" field.</summary>
+                            public const int Tag1FieldNumber = 1;
+                            private float tag1_;
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public float Tag1 {
+                              get { return tag1_; }
+                              set {
+                                tag1_ = value;
+                              }
+                            }
+
+                            /// <summary>Field number for the "tag2" field.</summary>
+                            public const int Tag2FieldNumber = 2;
+                            private float tag2_;
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public float Tag2 {
+                              get { return tag2_; }
+                              set {
+                                tag2_ = value;
+                              }
+                            }
+
+                            /// <summary>Field number for the "tag3" field.</summary>
+                            public const int Tag3FieldNumber = 3;
+                            private float tag3_;
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public float Tag3 {
+                              get { return tag3_; }
+                              set {
+                                tag3_ = value;
+                              }
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public override bool Equals(object other) {
+                              return Equals(other as WhatIsThis);
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public bool Equals(WhatIsThis other) {
+                              if (ReferenceEquals(other, null)) {
+                                return false;
+                              }
+                              if (ReferenceEquals(other, this)) {
+                                return true;
+                              }
+                              if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag1, other.Tag1)) return false;
+                              if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag2, other.Tag2)) return false;
+                              if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag3, other.Tag3)) return false;
+                              return Equals(_unknownFields, other._unknownFields);
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public override int GetHashCode() {
+                              int hash = 1;
+                              if (Tag1 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag1);
+                              if (Tag2 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag2);
+                              if (Tag3 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag3);
+                              if (_unknownFields != null) {
+                                hash ^= _unknownFields.GetHashCode();
+                              }
+                              return hash;
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public override string ToString() {
+                              return pb::JsonFormatter.ToDiagnosticString(this);
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public void WriteTo(pb::CodedOutputStream output) {
+                            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                              output.WriteRawMessage(this);
+                            #else
+                              if (Tag1 != 0F) {
+                                output.WriteRawTag(13);
+                                output.WriteFloat(Tag1);
+                              }
+                              if (Tag2 != 0F) {
+                                output.WriteRawTag(21);
+                                output.WriteFloat(Tag2);
+                              }
+                              if (Tag3 != 0F) {
+                                output.WriteRawTag(29);
+                                output.WriteFloat(Tag3);
+                              }
+                              if (_unknownFields != null) {
+                                _unknownFields.WriteTo(output);
+                              }
+                            #endif
+                            }
+
+                            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                              if (Tag1 != 0F) {
+                                output.WriteRawTag(13);
+                                output.WriteFloat(Tag1);
+                              }
+                              if (Tag2 != 0F) {
+                                output.WriteRawTag(21);
+                                output.WriteFloat(Tag2);
+                              }
+                              if (Tag3 != 0F) {
+                                output.WriteRawTag(29);
+                                output.WriteFloat(Tag3);
+                              }
+                              if (_unknownFields != null) {
+                                _unknownFields.WriteTo(ref output);
+                              }
+                            }
+                            #endif
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public int CalculateSize() {
+                              int size = 0;
+                              if (Tag1 != 0F) {
+                                size += 1 + 4;
+                              }
+                              if (Tag2 != 0F) {
+                                size += 1 + 4;
+                              }
+                              if (Tag3 != 0F) {
+                                size += 1 + 4;
+                              }
+                              if (_unknownFields != null) {
+                                size += _unknownFields.CalculateSize();
+                              }
+                              return size;
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public void MergeFrom(WhatIsThis other) {
+                              if (other == null) {
+                                return;
+                              }
+                              if (other.Tag1 != 0F) {
+                                Tag1 = other.Tag1;
+                              }
+                              if (other.Tag2 != 0F) {
+                                Tag2 = other.Tag2;
+                              }
+                              if (other.Tag3 != 0F) {
+                                Tag3 = other.Tag3;
+                              }
+                              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                            }
+
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            public void MergeFrom(pb::CodedInputStream input) {
+                            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                              input.ReadRawMessage(this);
+                            #else
+                              uint tag;
+                              while ((tag = input.ReadTag()) != 0) {
+                                switch(tag) {
+                                  default:
+                                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                                    break;
+                                  case 13: {
+                                    Tag1 = input.ReadFloat();
+                                    break;
+                                  }
+                                  case 21: {
+                                    Tag2 = input.ReadFloat();
+                                    break;
+                                  }
+                                  case 29: {
+                                    Tag3 = input.ReadFloat();
+                                    break;
+                                  }
+                                }
+                              }
+                            #endif
+                            }
+
+                            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                              uint tag;
+                              while ((tag = input.ReadTag()) != 0) {
+                                switch(tag) {
+                                  default:
+                                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                                    break;
+                                  case 13: {
+                                    Tag1 = input.ReadFloat();
+                                    break;
+                                  }
+                                  case 21: {
+                                    Tag2 = input.ReadFloat();
+                                    break;
+                                  }
+                                  case 29: {
+                                    Tag3 = input.ReadFloat();
+                                    break;
+                                  }
+                                }
+                              }
+                            }
+                            #endif
+
+                          }
+
+                        }
+                        #endregion
+
+                      }
+
+                    }
+                    #endregion
+
+                  }
+
+                }
+                #endregion
+
+              }
+
+            }
+            #endregion
+
+          }
+
+        }
+        #endregion
+
+      }
+
+    }
+    #endregion
+
+  }
+
   /// <summary>
   /// Base message type
   /// </summary>
@@ -3401,7 +6289,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3633,7 +6521,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3654,7 +6542,7 @@ namespace ZwiftPacketMonitor {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ZwiftCompanionToAppRiderMessage(ZwiftCompanionToAppRiderMessage other) : this() {
       myId_ = other.myId_;
-      tag10_ = other.tag10_;
+      sequence_ = other.sequence_;
       details_ = other.details_ != null ? other.details_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -3680,18 +6568,18 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "tag10" field.</summary>
-    public const int Tag10FieldNumber = 10;
-    private uint tag10_;
+    /// <summary>Field number for the "sequence" field.</summary>
+    public const int SequenceFieldNumber = 10;
+    private uint sequence_;
     /// <summary>
-    /// Zero for this type
+    /// This now seems to be a sequence number
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Tag10 {
-      get { return tag10_; }
+    public uint Sequence {
+      get { return sequence_; }
       set {
-        tag10_ = value;
+        sequence_ = value;
       }
     }
 
@@ -3723,7 +6611,7 @@ namespace ZwiftPacketMonitor {
         return true;
       }
       if (MyId != other.MyId) return false;
-      if (Tag10 != other.Tag10) return false;
+      if (Sequence != other.Sequence) return false;
       if (!object.Equals(Details, other.Details)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -3733,7 +6621,7 @@ namespace ZwiftPacketMonitor {
     public override int GetHashCode() {
       int hash = 1;
       if (MyId != 0) hash ^= MyId.GetHashCode();
-      if (Tag10 != 0) hash ^= Tag10.GetHashCode();
+      if (Sequence != 0) hash ^= Sequence.GetHashCode();
       if (details_ != null) hash ^= Details.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3761,9 +6649,9 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(18);
         output.WriteMessage(Details);
       }
-      if (Tag10 != 0) {
+      if (Sequence != 0) {
         output.WriteRawTag(80);
-        output.WriteUInt32(Tag10);
+        output.WriteUInt32(Sequence);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3783,9 +6671,9 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(18);
         output.WriteMessage(Details);
       }
-      if (Tag10 != 0) {
+      if (Sequence != 0) {
         output.WriteRawTag(80);
-        output.WriteUInt32(Tag10);
+        output.WriteUInt32(Sequence);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3800,8 +6688,8 @@ namespace ZwiftPacketMonitor {
       if (MyId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MyId);
       }
-      if (Tag10 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
+      if (Sequence != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Sequence);
       }
       if (details_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Details);
@@ -3821,8 +6709,8 @@ namespace ZwiftPacketMonitor {
       if (other.MyId != 0) {
         MyId = other.MyId;
       }
-      if (other.Tag10 != 0) {
-        Tag10 = other.Tag10;
+      if (other.Sequence != 0) {
+        Sequence = other.Sequence;
       }
       if (other.details_ != null) {
         if (details_ == null) {
@@ -3857,7 +6745,7 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 80: {
-            Tag10 = input.ReadUInt32();
+            Sequence = input.ReadUInt32();
             break;
           }
         }
@@ -3887,7 +6775,7 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 80: {
-            Tag10 = input.ReadUInt32();
+            Sequence = input.ReadUInt32();
             break;
           }
         }
@@ -3907,6 +6795,7 @@ namespace ZwiftPacketMonitor {
       {
         private static readonly pb::MessageParser<RiderMessage> _parser = new pb::MessageParser<RiderMessage>(() => new RiderMessage());
         private pb::UnknownFieldSet _unknownFields;
+        private int _hasBits0;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pb::MessageParser<RiderMessage> Parser { get { return _parser; } }
@@ -3934,12 +6823,16 @@ namespace ZwiftPacketMonitor {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public RiderMessage(RiderMessage other) : this() {
+          _hasBits0 = other._hasBits0;
           tag1_ = other.tag1_;
           tag2_ = other.tag2_;
           tag3_ = other.tag3_;
           tag5_ = other.tag5_;
           tag7_ = other.tag7_;
+          tag8_ = other.tag8_;
+          tag10_ = other.tag10_;
           riderId_ = other.riderId_;
+          data_ = other.data_ != null ? other.data_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -3964,6 +6857,9 @@ namespace ZwiftPacketMonitor {
         /// <summary>Field number for the "tag2" field.</summary>
         public const int Tag2FieldNumber = 2;
         private uint tag2_;
+        /// <summary>
+        /// Possible type, have seen values 1, 2 and 22 (left/right/straight), 29
+        /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public uint Tag2 {
@@ -4009,15 +6905,90 @@ namespace ZwiftPacketMonitor {
           }
         }
 
+        /// <summary>Field number for the "tag8" field.</summary>
+        public const int Tag8FieldNumber = 8;
+        private uint tag8_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag8 {
+          get { if ((_hasBits0 & 1) != 0) { return tag8_; } else { return 0; } }
+          set {
+            _hasBits0 |= 1;
+            tag8_ = value;
+          }
+        }
+        /// <summary>Gets whether the "tag8" field is set</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool HasTag8 {
+          get { return (_hasBits0 & 1) != 0; }
+        }
+        /// <summary>Clears the value of the "tag8" field</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void ClearTag8() {
+          _hasBits0 &= ~1;
+        }
+
+        /// <summary>Field number for the "tag10" field.</summary>
+        public const int Tag10FieldNumber = 10;
+        private uint tag10_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag10 {
+          get { if ((_hasBits0 & 2) != 0) { return tag10_; } else { return 0; } }
+          set {
+            _hasBits0 |= 2;
+            tag10_ = value;
+          }
+        }
+        /// <summary>Gets whether the "tag10" field is set</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool HasTag10 {
+          get { return (_hasBits0 & 2) != 0; }
+        }
+        /// <summary>Clears the value of the "tag10" field</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void ClearTag10() {
+          _hasBits0 &= ~2;
+        }
+
         /// <summary>Field number for the "rider_id" field.</summary>
         public const int RiderIdFieldNumber = 19;
         private uint riderId_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public uint RiderId {
-          get { return riderId_; }
+          get { if ((_hasBits0 & 4) != 0) { return riderId_; } else { return 0; } }
           set {
+            _hasBits0 |= 4;
             riderId_ = value;
+          }
+        }
+        /// <summary>Gets whether the "rider_id" field is set</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool HasRiderId {
+          get { return (_hasBits0 & 4) != 0; }
+        }
+        /// <summary>Clears the value of the "rider_id" field</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void ClearRiderId() {
+          _hasBits0 &= ~4;
+        }
+
+        /// <summary>Field number for the "data" field.</summary>
+        public const int DataFieldNumber = 21;
+        private global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData data_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData Data {
+          get { return data_; }
+          set {
+            data_ = value;
           }
         }
 
@@ -4041,7 +7012,10 @@ namespace ZwiftPacketMonitor {
           if (Tag3 != other.Tag3) return false;
           if (Tag5 != other.Tag5) return false;
           if (Tag7 != other.Tag7) return false;
+          if (Tag8 != other.Tag8) return false;
+          if (Tag10 != other.Tag10) return false;
           if (RiderId != other.RiderId) return false;
+          if (!object.Equals(Data, other.Data)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -4054,7 +7028,10 @@ namespace ZwiftPacketMonitor {
           if (Tag3 != 0) hash ^= Tag3.GetHashCode();
           if (Tag5 != 0) hash ^= Tag5.GetHashCode();
           if (Tag7 != 0) hash ^= Tag7.GetHashCode();
-          if (RiderId != 0) hash ^= RiderId.GetHashCode();
+          if (HasTag8) hash ^= Tag8.GetHashCode();
+          if (HasTag10) hash ^= Tag10.GetHashCode();
+          if (HasRiderId) hash ^= RiderId.GetHashCode();
+          if (data_ != null) hash ^= Data.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -4093,9 +7070,21 @@ namespace ZwiftPacketMonitor {
             output.WriteRawTag(56);
             output.WriteUInt32(Tag7);
           }
-          if (RiderId != 0) {
+          if (HasTag8) {
+            output.WriteRawTag(64);
+            output.WriteUInt32(Tag8);
+          }
+          if (HasTag10) {
+            output.WriteRawTag(80);
+            output.WriteUInt32(Tag10);
+          }
+          if (HasRiderId) {
             output.WriteRawTag(152, 1);
             output.WriteUInt32(RiderId);
+          }
+          if (data_ != null) {
+            output.WriteRawTag(170, 1);
+            output.WriteMessage(Data);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -4127,9 +7116,21 @@ namespace ZwiftPacketMonitor {
             output.WriteRawTag(56);
             output.WriteUInt32(Tag7);
           }
-          if (RiderId != 0) {
+          if (HasTag8) {
+            output.WriteRawTag(64);
+            output.WriteUInt32(Tag8);
+          }
+          if (HasTag10) {
+            output.WriteRawTag(80);
+            output.WriteUInt32(Tag10);
+          }
+          if (HasRiderId) {
             output.WriteRawTag(152, 1);
             output.WriteUInt32(RiderId);
+          }
+          if (data_ != null) {
+            output.WriteRawTag(170, 1);
+            output.WriteMessage(Data);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(ref output);
@@ -4156,8 +7157,17 @@ namespace ZwiftPacketMonitor {
           if (Tag7 != 0) {
             size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag7);
           }
-          if (RiderId != 0) {
+          if (HasTag8) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag8);
+          }
+          if (HasTag10) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
+          }
+          if (HasRiderId) {
             size += 2 + pb::CodedOutputStream.ComputeUInt32Size(RiderId);
+          }
+          if (data_ != null) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Data);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -4186,8 +7196,20 @@ namespace ZwiftPacketMonitor {
           if (other.Tag7 != 0) {
             Tag7 = other.Tag7;
           }
-          if (other.RiderId != 0) {
+          if (other.HasTag8) {
+            Tag8 = other.Tag8;
+          }
+          if (other.HasTag10) {
+            Tag10 = other.Tag10;
+          }
+          if (other.HasRiderId) {
             RiderId = other.RiderId;
+          }
+          if (other.data_ != null) {
+            if (data_ == null) {
+              Data = new global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData();
+            }
+            Data.MergeFrom(other.Data);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -4224,8 +7246,23 @@ namespace ZwiftPacketMonitor {
                 Tag7 = input.ReadUInt32();
                 break;
               }
+              case 64: {
+                Tag8 = input.ReadUInt32();
+                break;
+              }
+              case 80: {
+                Tag10 = input.ReadUInt32();
+                break;
+              }
               case 152: {
                 RiderId = input.ReadUInt32();
+                break;
+              }
+              case 170: {
+                if (data_ == null) {
+                  Data = new global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData();
+                }
+                input.ReadMessage(Data);
                 break;
               }
             }
@@ -4263,14 +7300,2953 @@ namespace ZwiftPacketMonitor {
                 Tag7 = input.ReadUInt32();
                 break;
               }
+              case 64: {
+                Tag8 = input.ReadUInt32();
+                break;
+              }
+              case 80: {
+                Tag10 = input.ReadUInt32();
+                break;
+              }
               case 152: {
                 RiderId = input.ReadUInt32();
+                break;
+              }
+              case 170: {
+                if (data_ == null) {
+                  Data = new global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData();
+                }
+                input.ReadMessage(Data);
                 break;
               }
             }
           }
         }
         #endif
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the RiderMessage message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static partial class Types {
+          public sealed partial class RiderMessageData : pb::IMessage<RiderMessageData>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<RiderMessageData> _parser = new pb::MessageParser<RiderMessageData>(() => new RiderMessageData());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<RiderMessageData> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public RiderMessageData() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public RiderMessageData(RiderMessageData other) : this() {
+              tag1_ = other.tag1_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public RiderMessageData Clone() {
+              return new RiderMessageData(this);
+            }
+
+            /// <summary>Field number for the "tag1" field.</summary>
+            public const int Tag1FieldNumber = 1;
+            private uint tag1_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public uint Tag1 {
+              get { return tag1_; }
+              set {
+                tag1_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as RiderMessageData);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(RiderMessageData other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Tag1 != other.Tag1) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (Tag1 != 0) {
+                output.WriteRawTag(8);
+                output.WriteUInt32(Tag1);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (Tag1 != 0) {
+                output.WriteRawTag(8);
+                output.WriteUInt32(Tag1);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (Tag1 != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(RiderMessageData other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Tag1 != 0) {
+                Tag1 = other.Tag1;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 8: {
+                    Tag1 = input.ReadUInt32();
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 8: {
+                    Tag1 = input.ReadUInt32();
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the RiderMessageData message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static partial class Types {
+              public sealed partial class RiderMessageSubData : pb::IMessage<RiderMessageSubData>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<RiderMessageSubData> _parser = new pb::MessageParser<RiderMessageSubData>(() => new RiderMessageSubData());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<RiderMessageSubData> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Descriptor.NestedTypes[0]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public RiderMessageSubData() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public RiderMessageSubData(RiderMessageSubData other) : this() {
+                  tag1_ = other.tag1_;
+                  worldName_ = other.worldName_;
+                  tag4_ = other.tag4_;
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public RiderMessageSubData Clone() {
+                  return new RiderMessageSubData(this);
+                }
+
+                /// <summary>Field number for the "tag1" field.</summary>
+                public const int Tag1FieldNumber = 1;
+                private uint tag1_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag1 {
+                  get { return tag1_; }
+                  set {
+                    tag1_ = value;
+                  }
+                }
+
+                /// <summary>Field number for the "world_name" field.</summary>
+                public const int WorldNameFieldNumber = 3;
+                private string worldName_ = "";
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string WorldName {
+                  get { return worldName_; }
+                  set {
+                    worldName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "tag4" field.</summary>
+                public const int Tag4FieldNumber = 4;
+                private uint tag4_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public uint Tag4 {
+                  get { return tag4_; }
+                  set {
+                    tag4_ = value;
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as RiderMessageSubData);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(RiderMessageSubData other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (Tag1 != other.Tag1) return false;
+                  if (WorldName != other.WorldName) return false;
+                  if (Tag4 != other.Tag4) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+                  if (WorldName.Length != 0) hash ^= WorldName.GetHashCode();
+                  if (Tag4 != 0) hash ^= Tag4.GetHashCode();
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (Tag1 != 0) {
+                    output.WriteRawTag(8);
+                    output.WriteUInt32(Tag1);
+                  }
+                  if (WorldName.Length != 0) {
+                    output.WriteRawTag(26);
+                    output.WriteString(WorldName);
+                  }
+                  if (Tag4 != 0) {
+                    output.WriteRawTag(32);
+                    output.WriteUInt32(Tag4);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (Tag1 != 0) {
+                    output.WriteRawTag(8);
+                    output.WriteUInt32(Tag1);
+                  }
+                  if (WorldName.Length != 0) {
+                    output.WriteRawTag(26);
+                    output.WriteString(WorldName);
+                  }
+                  if (Tag4 != 0) {
+                    output.WriteRawTag(32);
+                    output.WriteUInt32(Tag4);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (Tag1 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+                  }
+                  if (WorldName.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(WorldName);
+                  }
+                  if (Tag4 != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag4);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(RiderMessageSubData other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.Tag1 != 0) {
+                    Tag1 = other.Tag1;
+                  }
+                  if (other.WorldName.Length != 0) {
+                    WorldName = other.WorldName;
+                  }
+                  if (other.Tag4 != 0) {
+                    Tag4 = other.Tag4;
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 8: {
+                        Tag1 = input.ReadUInt32();
+                        break;
+                      }
+                      case 26: {
+                        WorldName = input.ReadString();
+                        break;
+                      }
+                      case 32: {
+                        Tag4 = input.ReadUInt32();
+                        break;
+                      }
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                      case 8: {
+                        Tag1 = input.ReadUInt32();
+                        break;
+                      }
+                      case 26: {
+                        WorldName = input.ReadString();
+                        break;
+                      }
+                      case 32: {
+                        Tag4 = input.ReadUInt32();
+                        break;
+                      }
+                    }
+                  }
+                }
+                #endif
+
+              }
+
+            }
+            #endregion
+
+          }
+
+        }
+        #endregion
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class ZwiftCompanionToAppEndActivityMessage : pb::IMessage<ZwiftCompanionToAppEndActivityMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ZwiftCompanionToAppEndActivityMessage> _parser = new pb::MessageParser<ZwiftCompanionToAppEndActivityMessage>(() => new ZwiftCompanionToAppEndActivityMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ZwiftCompanionToAppEndActivityMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppEndActivityMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppEndActivityMessage(ZwiftCompanionToAppEndActivityMessage other) : this() {
+      tag1_ = other.tag1_;
+      data_ = other.data_ != null ? other.data_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppEndActivityMessage Clone() {
+      return new ZwiftCompanionToAppEndActivityMessage(this);
+    }
+
+    /// <summary>Field number for the "tag1" field.</summary>
+    public const int Tag1FieldNumber = 1;
+    private uint tag1_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag1 {
+      get { return tag1_; }
+      set {
+        tag1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "data" field.</summary>
+    public const int DataFieldNumber = 16;
+    private global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData data_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData Data {
+      get { return data_; }
+      set {
+        data_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ZwiftCompanionToAppEndActivityMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ZwiftCompanionToAppEndActivityMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Tag1 != other.Tag1) return false;
+      if (!object.Equals(Data, other.Data)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+      if (data_ != null) hash ^= Data.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (data_ != null) {
+        output.WriteRawTag(130, 1);
+        output.WriteMessage(Data);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (data_ != null) {
+        output.WriteRawTag(130, 1);
+        output.WriteMessage(Data);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Tag1 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+      }
+      if (data_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Data);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ZwiftCompanionToAppEndActivityMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Tag1 != 0) {
+        Tag1 = other.Tag1;
+      }
+      if (other.data_ != null) {
+        if (data_ == null) {
+          Data = new global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData();
+        }
+        Data.MergeFrom(other.Data);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 130: {
+            if (data_ == null) {
+              Data = new global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData();
+            }
+            input.ReadMessage(Data);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 130: {
+            if (data_ == null) {
+              Data = new global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData();
+            }
+            input.ReadMessage(Data);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ZwiftCompanionToAppEndActivityMessage message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Types {
+      public sealed partial class EndActivityData : pb::IMessage<EndActivityData>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
+        private static readonly pb::MessageParser<EndActivityData> _parser = new pb::MessageParser<EndActivityData>(() => new EndActivityData());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pb::MessageParser<EndActivityData> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public EndActivityData() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public EndActivityData(EndActivityData other) : this() {
+          tag1_ = other.tag1_;
+          activityName_ = other.activityName_;
+          tag4_ = other.tag4_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public EndActivityData Clone() {
+          return new EndActivityData(this);
+        }
+
+        /// <summary>Field number for the "tag1" field.</summary>
+        public const int Tag1FieldNumber = 1;
+        private uint tag1_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag1 {
+          get { return tag1_; }
+          set {
+            tag1_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "activity_name" field.</summary>
+        public const int ActivityNameFieldNumber = 3;
+        private string activityName_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public string ActivityName {
+          get { return activityName_; }
+          set {
+            activityName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "tag4" field.</summary>
+        public const int Tag4FieldNumber = 4;
+        private uint tag4_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag4 {
+          get { return tag4_; }
+          set {
+            tag4_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override bool Equals(object other) {
+          return Equals(other as EndActivityData);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool Equals(EndActivityData other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Tag1 != other.Tag1) return false;
+          if (ActivityName != other.ActivityName) return false;
+          if (Tag4 != other.Tag4) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+          if (ActivityName.Length != 0) hash ^= ActivityName.GetHashCode();
+          if (Tag4 != 0) hash ^= Tag4.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (Tag1 != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(Tag1);
+          }
+          if (ActivityName.Length != 0) {
+            output.WriteRawTag(26);
+            output.WriteString(ActivityName);
+          }
+          if (Tag4 != 0) {
+            output.WriteRawTag(32);
+            output.WriteUInt32(Tag4);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Tag1 != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(Tag1);
+          }
+          if (ActivityName.Length != 0) {
+            output.WriteRawTag(26);
+            output.WriteString(ActivityName);
+          }
+          if (Tag4 != 0) {
+            output.WriteRawTag(32);
+            output.WriteUInt32(Tag4);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public int CalculateSize() {
+          int size = 0;
+          if (Tag1 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+          }
+          if (ActivityName.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(ActivityName);
+          }
+          if (Tag4 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag4);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(EndActivityData other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Tag1 != 0) {
+            Tag1 = other.Tag1;
+          }
+          if (other.ActivityName.Length != 0) {
+            ActivityName = other.ActivityName;
+          }
+          if (other.Tag4 != 0) {
+            Tag4 = other.Tag4;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                Tag1 = input.ReadUInt32();
+                break;
+              }
+              case 26: {
+                ActivityName = input.ReadString();
+                break;
+              }
+              case 32: {
+                Tag4 = input.ReadUInt32();
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                Tag1 = input.ReadUInt32();
+                break;
+              }
+              case 26: {
+                ActivityName = input.ReadString();
+                break;
+              }
+              case 32: {
+                Tag4 = input.ReadUInt32();
+                break;
+              }
+            }
+          }
+        }
+        #endif
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class ZwiftCompanionToAppRideOnMessage : pb::IMessage<ZwiftCompanionToAppRideOnMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ZwiftCompanionToAppRideOnMessage> _parser = new pb::MessageParser<ZwiftCompanionToAppRideOnMessage>(() => new ZwiftCompanionToAppRideOnMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ZwiftCompanionToAppRideOnMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppRideOnMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppRideOnMessage(ZwiftCompanionToAppRideOnMessage other) : this() {
+      tag1_ = other.tag1_;
+      tag10_ = other.tag10_;
+      rideOn_ = other.rideOn_ != null ? other.rideOn_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppRideOnMessage Clone() {
+      return new ZwiftCompanionToAppRideOnMessage(this);
+    }
+
+    /// <summary>Field number for the "tag1" field.</summary>
+    public const int Tag1FieldNumber = 1;
+    private uint tag1_;
+    /// <summary>
+    /// These fields are always there
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag1 {
+      get { return tag1_; }
+      set {
+        tag1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag10" field.</summary>
+    public const int Tag10FieldNumber = 10;
+    private uint tag10_;
+    /// <summary>
+    /// 391 for this type
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag10 {
+      get { return tag10_; }
+      set {
+        tag10_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ride_on" field.</summary>
+    public const int RideOnFieldNumber = 2;
+    private global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Types.RideOn rideOn_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Types.RideOn RideOn {
+      get { return rideOn_; }
+      set {
+        rideOn_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ZwiftCompanionToAppRideOnMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ZwiftCompanionToAppRideOnMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Tag1 != other.Tag1) return false;
+      if (Tag10 != other.Tag10) return false;
+      if (!object.Equals(RideOn, other.RideOn)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+      if (Tag10 != 0) hash ^= Tag10.GetHashCode();
+      if (rideOn_ != null) hash ^= RideOn.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (rideOn_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(RideOn);
+      }
+      if (Tag10 != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Tag10);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (rideOn_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(RideOn);
+      }
+      if (Tag10 != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Tag10);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Tag1 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+      }
+      if (Tag10 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
+      }
+      if (rideOn_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RideOn);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ZwiftCompanionToAppRideOnMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Tag1 != 0) {
+        Tag1 = other.Tag1;
+      }
+      if (other.Tag10 != 0) {
+        Tag10 = other.Tag10;
+      }
+      if (other.rideOn_ != null) {
+        if (rideOn_ == null) {
+          RideOn = new global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Types.RideOn();
+        }
+        RideOn.MergeFrom(other.RideOn);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 18: {
+            if (rideOn_ == null) {
+              RideOn = new global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Types.RideOn();
+            }
+            input.ReadMessage(RideOn);
+            break;
+          }
+          case 80: {
+            Tag10 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 18: {
+            if (rideOn_ == null) {
+              RideOn = new global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Types.RideOn();
+            }
+            input.ReadMessage(RideOn);
+            break;
+          }
+          case 80: {
+            Tag10 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ZwiftCompanionToAppRideOnMessage message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Types {
+      public sealed partial class RideOn : pb::IMessage<RideOn>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
+        private static readonly pb::MessageParser<RideOn> _parser = new pb::MessageParser<RideOn>(() => new RideOn());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pb::MessageParser<RideOn> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public RideOn() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public RideOn(RideOn other) : this() {
+          tag1_ = other.tag1_;
+          tag2_ = other.tag2_;
+          tag3_ = other.tag3_;
+          otherRiderId_ = other.otherRiderId_;
+          profileUrl_ = other.profileUrl_;
+          tag7_ = other.tag7_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public RideOn Clone() {
+          return new RideOn(this);
+        }
+
+        /// <summary>Field number for the "tag1" field.</summary>
+        public const int Tag1FieldNumber = 1;
+        private uint tag1_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag1 {
+          get { return tag1_; }
+          set {
+            tag1_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "tag2" field.</summary>
+        public const int Tag2FieldNumber = 2;
+        private uint tag2_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag2 {
+          get { return tag2_; }
+          set {
+            tag2_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "tag3" field.</summary>
+        public const int Tag3FieldNumber = 3;
+        private uint tag3_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag3 {
+          get { return tag3_; }
+          set {
+            tag3_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "other_rider_id" field.</summary>
+        public const int OtherRiderIdFieldNumber = 5;
+        private uint otherRiderId_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint OtherRiderId {
+          get { return otherRiderId_; }
+          set {
+            otherRiderId_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "profile_url" field.</summary>
+        public const int ProfileUrlFieldNumber = 6;
+        private string profileUrl_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public string ProfileUrl {
+          get { return profileUrl_; }
+          set {
+            profileUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "tag7" field.</summary>
+        public const int Tag7FieldNumber = 7;
+        private uint tag7_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public uint Tag7 {
+          get { return tag7_; }
+          set {
+            tag7_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override bool Equals(object other) {
+          return Equals(other as RideOn);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool Equals(RideOn other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Tag1 != other.Tag1) return false;
+          if (Tag2 != other.Tag2) return false;
+          if (Tag3 != other.Tag3) return false;
+          if (OtherRiderId != other.OtherRiderId) return false;
+          if (ProfileUrl != other.ProfileUrl) return false;
+          if (Tag7 != other.Tag7) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+          if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+          if (Tag3 != 0) hash ^= Tag3.GetHashCode();
+          if (OtherRiderId != 0) hash ^= OtherRiderId.GetHashCode();
+          if (ProfileUrl.Length != 0) hash ^= ProfileUrl.GetHashCode();
+          if (Tag7 != 0) hash ^= Tag7.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (Tag1 != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(Tag1);
+          }
+          if (Tag2 != 0) {
+            output.WriteRawTag(16);
+            output.WriteUInt32(Tag2);
+          }
+          if (Tag3 != 0) {
+            output.WriteRawTag(24);
+            output.WriteUInt32(Tag3);
+          }
+          if (OtherRiderId != 0) {
+            output.WriteRawTag(40);
+            output.WriteUInt32(OtherRiderId);
+          }
+          if (ProfileUrl.Length != 0) {
+            output.WriteRawTag(50);
+            output.WriteString(ProfileUrl);
+          }
+          if (Tag7 != 0) {
+            output.WriteRawTag(56);
+            output.WriteUInt32(Tag7);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Tag1 != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(Tag1);
+          }
+          if (Tag2 != 0) {
+            output.WriteRawTag(16);
+            output.WriteUInt32(Tag2);
+          }
+          if (Tag3 != 0) {
+            output.WriteRawTag(24);
+            output.WriteUInt32(Tag3);
+          }
+          if (OtherRiderId != 0) {
+            output.WriteRawTag(40);
+            output.WriteUInt32(OtherRiderId);
+          }
+          if (ProfileUrl.Length != 0) {
+            output.WriteRawTag(50);
+            output.WriteString(ProfileUrl);
+          }
+          if (Tag7 != 0) {
+            output.WriteRawTag(56);
+            output.WriteUInt32(Tag7);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public int CalculateSize() {
+          int size = 0;
+          if (Tag1 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+          }
+          if (Tag2 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
+          }
+          if (Tag3 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag3);
+          }
+          if (OtherRiderId != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OtherRiderId);
+          }
+          if (ProfileUrl.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(ProfileUrl);
+          }
+          if (Tag7 != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag7);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(RideOn other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Tag1 != 0) {
+            Tag1 = other.Tag1;
+          }
+          if (other.Tag2 != 0) {
+            Tag2 = other.Tag2;
+          }
+          if (other.Tag3 != 0) {
+            Tag3 = other.Tag3;
+          }
+          if (other.OtherRiderId != 0) {
+            OtherRiderId = other.OtherRiderId;
+          }
+          if (other.ProfileUrl.Length != 0) {
+            ProfileUrl = other.ProfileUrl;
+          }
+          if (other.Tag7 != 0) {
+            Tag7 = other.Tag7;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                Tag1 = input.ReadUInt32();
+                break;
+              }
+              case 16: {
+                Tag2 = input.ReadUInt32();
+                break;
+              }
+              case 24: {
+                Tag3 = input.ReadUInt32();
+                break;
+              }
+              case 40: {
+                OtherRiderId = input.ReadUInt32();
+                break;
+              }
+              case 50: {
+                ProfileUrl = input.ReadString();
+                break;
+              }
+              case 56: {
+                Tag7 = input.ReadUInt32();
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                Tag1 = input.ReadUInt32();
+                break;
+              }
+              case 16: {
+                Tag2 = input.ReadUInt32();
+                break;
+              }
+              case 24: {
+                Tag3 = input.ReadUInt32();
+                break;
+              }
+              case 40: {
+                OtherRiderId = input.ReadUInt32();
+                break;
+              }
+              case 50: {
+                ProfileUrl = input.ReadString();
+                break;
+              }
+              case 56: {
+                Tag7 = input.ReadUInt32();
+                break;
+              }
+            }
+          }
+        }
+        #endif
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class ZwiftCompanionToAppDeviceInfoMessage : pb::IMessage<ZwiftCompanionToAppDeviceInfoMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ZwiftCompanionToAppDeviceInfoMessage> _parser = new pb::MessageParser<ZwiftCompanionToAppDeviceInfoMessage>(() => new ZwiftCompanionToAppDeviceInfoMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ZwiftCompanionToAppDeviceInfoMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppDeviceInfoMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppDeviceInfoMessage(ZwiftCompanionToAppDeviceInfoMessage other) : this() {
+      tag1_ = other.tag1_;
+      tag10_ = other.tag10_;
+      deviceInfo_ = other.deviceInfo_ != null ? other.deviceInfo_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppDeviceInfoMessage Clone() {
+      return new ZwiftCompanionToAppDeviceInfoMessage(this);
+    }
+
+    /// <summary>Field number for the "tag1" field.</summary>
+    public const int Tag1FieldNumber = 1;
+    private uint tag1_;
+    /// <summary>
+    /// These fields are always there
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag1 {
+      get { return tag1_; }
+      set {
+        tag1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag10" field.</summary>
+    public const int Tag10FieldNumber = 10;
+    private uint tag10_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag10 {
+      get { return tag10_; }
+      set {
+        tag10_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "device_info" field.</summary>
+    public const int DeviceInfoFieldNumber = 2;
+    private global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo deviceInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo DeviceInfo {
+      get { return deviceInfo_; }
+      set {
+        deviceInfo_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ZwiftCompanionToAppDeviceInfoMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ZwiftCompanionToAppDeviceInfoMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Tag1 != other.Tag1) return false;
+      if (Tag10 != other.Tag10) return false;
+      if (!object.Equals(DeviceInfo, other.DeviceInfo)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+      if (Tag10 != 0) hash ^= Tag10.GetHashCode();
+      if (deviceInfo_ != null) hash ^= DeviceInfo.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (deviceInfo_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(DeviceInfo);
+      }
+      if (Tag10 != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Tag10);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Tag1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Tag1);
+      }
+      if (deviceInfo_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(DeviceInfo);
+      }
+      if (Tag10 != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Tag10);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Tag1 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
+      }
+      if (Tag10 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
+      }
+      if (deviceInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DeviceInfo);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ZwiftCompanionToAppDeviceInfoMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Tag1 != 0) {
+        Tag1 = other.Tag1;
+      }
+      if (other.Tag10 != 0) {
+        Tag10 = other.Tag10;
+      }
+      if (other.deviceInfo_ != null) {
+        if (deviceInfo_ == null) {
+          DeviceInfo = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo();
+        }
+        DeviceInfo.MergeFrom(other.DeviceInfo);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 18: {
+            if (deviceInfo_ == null) {
+              DeviceInfo = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo();
+            }
+            input.ReadMessage(DeviceInfo);
+            break;
+          }
+          case 80: {
+            Tag10 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Tag1 = input.ReadUInt32();
+            break;
+          }
+          case 18: {
+            if (deviceInfo_ == null) {
+              DeviceInfo = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo();
+            }
+            input.ReadMessage(DeviceInfo);
+            break;
+          }
+          case 80: {
+            Tag10 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ZwiftCompanionToAppDeviceInfoMessage message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Types {
+      public sealed partial class DeviceInfo : pb::IMessage<DeviceInfo>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
+        private static readonly pb::MessageParser<DeviceInfo> _parser = new pb::MessageParser<DeviceInfo>(() => new DeviceInfo());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pb::MessageParser<DeviceInfo> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public DeviceInfo() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public DeviceInfo(DeviceInfo other) : this() {
+          device_ = other.device_ != null ? other.device_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public DeviceInfo Clone() {
+          return new DeviceInfo(this);
+        }
+
+        /// <summary>Field number for the "device" field.</summary>
+        public const int DeviceFieldNumber = 21;
+        private global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice device_;
+        /// <summary>
+        /// For type 29 messages
+        /// </summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice Device {
+          get { return device_; }
+          set {
+            device_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override bool Equals(object other) {
+          return Equals(other as DeviceInfo);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool Equals(DeviceInfo other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!object.Equals(Device, other.Device)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (device_ != null) hash ^= Device.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (device_ != null) {
+            output.WriteRawTag(170, 1);
+            output.WriteMessage(Device);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (device_ != null) {
+            output.WriteRawTag(170, 1);
+            output.WriteMessage(Device);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public int CalculateSize() {
+          int size = 0;
+          if (device_ != null) {
+            size += 2 + pb::CodedOutputStream.ComputeMessageSize(Device);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(DeviceInfo other) {
+          if (other == null) {
+            return;
+          }
+          if (other.device_ != null) {
+            if (device_ == null) {
+              Device = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice();
+            }
+            Device.MergeFrom(other.Device);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 170: {
+                if (device_ == null) {
+                  Device = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice();
+                }
+                input.ReadMessage(Device);
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 170: {
+                if (device_ == null) {
+                  Device = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice();
+                }
+                input.ReadMessage(Device);
+                break;
+              }
+            }
+          }
+        }
+        #endif
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the DeviceInfo message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static partial class Types {
+          public sealed partial class ZwiftCompanionDevice : pb::IMessage<ZwiftCompanionDevice>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<ZwiftCompanionDevice> _parser = new pb::MessageParser<ZwiftCompanionDevice>(() => new ZwiftCompanionDevice());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<ZwiftCompanionDevice> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public ZwiftCompanionDevice() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public ZwiftCompanionDevice(ZwiftCompanionDevice other) : this() {
+              tag1_ = other.tag1_;
+              version_ = other.version_ != null ? other.version_.Clone() : null;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public ZwiftCompanionDevice Clone() {
+              return new ZwiftCompanionDevice(this);
+            }
+
+            /// <summary>Field number for the "tag1" field.</summary>
+            public const int Tag1FieldNumber = 1;
+            private int tag1_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int Tag1 {
+              get { return tag1_; }
+              set {
+                tag1_ = value;
+              }
+            }
+
+            /// <summary>Field number for the "version" field.</summary>
+            public const int VersionFieldNumber = 5;
+            private global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version version_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version Version {
+              get { return version_; }
+              set {
+                version_ = value;
+              }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as ZwiftCompanionDevice);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(ZwiftCompanionDevice other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Tag1 != other.Tag1) return false;
+              if (!object.Equals(Version, other.Version)) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+              if (version_ != null) hash ^= Version.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (Tag1 != 0) {
+                output.WriteRawTag(8);
+                output.WriteInt32(Tag1);
+              }
+              if (version_ != null) {
+                output.WriteRawTag(42);
+                output.WriteMessage(Version);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (Tag1 != 0) {
+                output.WriteRawTag(8);
+                output.WriteInt32(Tag1);
+              }
+              if (version_ != null) {
+                output.WriteRawTag(42);
+                output.WriteMessage(Version);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (Tag1 != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag1);
+              }
+              if (version_ != null) {
+                size += 1 + pb::CodedOutputStream.ComputeMessageSize(Version);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(ZwiftCompanionDevice other) {
+              if (other == null) {
+                return;
+              }
+              if (other.Tag1 != 0) {
+                Tag1 = other.Tag1;
+              }
+              if (other.version_ != null) {
+                if (version_ == null) {
+                  Version = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version();
+                }
+                Version.MergeFrom(other.Version);
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 8: {
+                    Tag1 = input.ReadInt32();
+                    break;
+                  }
+                  case 42: {
+                    if (version_ == null) {
+                      Version = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version();
+                    }
+                    input.ReadMessage(Version);
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 8: {
+                    Tag1 = input.ReadInt32();
+                    break;
+                  }
+                  case 42: {
+                    if (version_ == null) {
+                      Version = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version();
+                    }
+                    input.ReadMessage(Version);
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+            #region Nested types
+            /// <summary>Container for nested types declared in the ZwiftCompanionDevice message type.</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static partial class Types {
+              public sealed partial class Version : pb::IMessage<Version>
+              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  , pb::IBufferMessage
+              #endif
+              {
+                private static readonly pb::MessageParser<Version> _parser = new pb::MessageParser<Version>(() => new Version());
+                private pb::UnknownFieldSet _unknownFields;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pb::MessageParser<Version> Parser { get { return _parser; } }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static pbr::MessageDescriptor Descriptor {
+                  get { return global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Descriptor.NestedTypes[0]; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                pbr::MessageDescriptor pb::IMessage.Descriptor {
+                  get { return Descriptor; }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Version() {
+                  OnConstruction();
+                }
+
+                partial void OnConstruction();
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Version(Version other) : this() {
+                  appVersion_ = other.appVersion_;
+                  osVersion_ = other.osVersion_;
+                  os_ = other.os_;
+                  device_ = other.device_;
+                  tag5_ = other.tag5_ != null ? other.tag5_.Clone() : null;
+                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public Version Clone() {
+                  return new Version(this);
+                }
+
+                /// <summary>Field number for the "app_version" field.</summary>
+                public const int AppVersionFieldNumber = 1;
+                private string appVersion_ = "";
+                /// <summary>
+                /// Version of the Zwift Companion app
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string AppVersion {
+                  get { return appVersion_; }
+                  set {
+                    appVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "os_version" field.</summary>
+                public const int OsVersionFieldNumber = 2;
+                private string osVersion_ = "";
+                /// <summary>
+                /// Version of the device OS
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string OsVersion {
+                  get { return osVersion_; }
+                  set {
+                    osVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "os" field.</summary>
+                public const int OsFieldNumber = 3;
+                private string os_ = "";
+                /// <summary>
+                /// Type of the device OS
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Os {
+                  get { return os_; }
+                  set {
+                    os_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "device" field.</summary>
+                public const int DeviceFieldNumber = 4;
+                private string device_ = "";
+                /// <summary>
+                /// Device model
+                /// </summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public string Device {
+                  get { return device_; }
+                  set {
+                    device_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                  }
+                }
+
+                /// <summary>Field number for the "tag5" field.</summary>
+                public const int Tag5FieldNumber = 5;
+                private global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing tag5_;
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing Tag5 {
+                  get { return tag5_; }
+                  set {
+                    tag5_ = value;
+                  }
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override bool Equals(object other) {
+                  return Equals(other as Version);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public bool Equals(Version other) {
+                  if (ReferenceEquals(other, null)) {
+                    return false;
+                  }
+                  if (ReferenceEquals(other, this)) {
+                    return true;
+                  }
+                  if (AppVersion != other.AppVersion) return false;
+                  if (OsVersion != other.OsVersion) return false;
+                  if (Os != other.Os) return false;
+                  if (Device != other.Device) return false;
+                  if (!object.Equals(Tag5, other.Tag5)) return false;
+                  return Equals(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override int GetHashCode() {
+                  int hash = 1;
+                  if (AppVersion.Length != 0) hash ^= AppVersion.GetHashCode();
+                  if (OsVersion.Length != 0) hash ^= OsVersion.GetHashCode();
+                  if (Os.Length != 0) hash ^= Os.GetHashCode();
+                  if (Device.Length != 0) hash ^= Device.GetHashCode();
+                  if (tag5_ != null) hash ^= Tag5.GetHashCode();
+                  if (_unknownFields != null) {
+                    hash ^= _unknownFields.GetHashCode();
+                  }
+                  return hash;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public override string ToString() {
+                  return pb::JsonFormatter.ToDiagnosticString(this);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void WriteTo(pb::CodedOutputStream output) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  output.WriteRawMessage(this);
+                #else
+                  if (AppVersion.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(AppVersion);
+                  }
+                  if (OsVersion.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(OsVersion);
+                  }
+                  if (Os.Length != 0) {
+                    output.WriteRawTag(26);
+                    output.WriteString(Os);
+                  }
+                  if (Device.Length != 0) {
+                    output.WriteRawTag(34);
+                    output.WriteString(Device);
+                  }
+                  if (tag5_ != null) {
+                    output.WriteRawTag(42);
+                    output.WriteMessage(Tag5);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(output);
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                  if (AppVersion.Length != 0) {
+                    output.WriteRawTag(10);
+                    output.WriteString(AppVersion);
+                  }
+                  if (OsVersion.Length != 0) {
+                    output.WriteRawTag(18);
+                    output.WriteString(OsVersion);
+                  }
+                  if (Os.Length != 0) {
+                    output.WriteRawTag(26);
+                    output.WriteString(Os);
+                  }
+                  if (Device.Length != 0) {
+                    output.WriteRawTag(34);
+                    output.WriteString(Device);
+                  }
+                  if (tag5_ != null) {
+                    output.WriteRawTag(42);
+                    output.WriteMessage(Tag5);
+                  }
+                  if (_unknownFields != null) {
+                    _unknownFields.WriteTo(ref output);
+                  }
+                }
+                #endif
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public int CalculateSize() {
+                  int size = 0;
+                  if (AppVersion.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(AppVersion);
+                  }
+                  if (OsVersion.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(OsVersion);
+                  }
+                  if (Os.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Os);
+                  }
+                  if (Device.Length != 0) {
+                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Device);
+                  }
+                  if (tag5_ != null) {
+                    size += 1 + pb::CodedOutputStream.ComputeMessageSize(Tag5);
+                  }
+                  if (_unknownFields != null) {
+                    size += _unknownFields.CalculateSize();
+                  }
+                  return size;
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(Version other) {
+                  if (other == null) {
+                    return;
+                  }
+                  if (other.AppVersion.Length != 0) {
+                    AppVersion = other.AppVersion;
+                  }
+                  if (other.OsVersion.Length != 0) {
+                    OsVersion = other.OsVersion;
+                  }
+                  if (other.Os.Length != 0) {
+                    Os = other.Os;
+                  }
+                  if (other.Device.Length != 0) {
+                    Device = other.Device;
+                  }
+                  if (other.tag5_ != null) {
+                    if (tag5_ == null) {
+                      Tag5 = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing();
+                    }
+                    Tag5.MergeFrom(other.Tag5);
+                  }
+                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                }
+
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public void MergeFrom(pb::CodedInputStream input) {
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                  input.ReadRawMessage(this);
+                #else
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                        break;
+                      case 10: {
+                        AppVersion = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        OsVersion = input.ReadString();
+                        break;
+                      }
+                      case 26: {
+                        Os = input.ReadString();
+                        break;
+                      }
+                      case 34: {
+                        Device = input.ReadString();
+                        break;
+                      }
+                      case 42: {
+                        if (tag5_ == null) {
+                          Tag5 = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing();
+                        }
+                        input.ReadMessage(Tag5);
+                        break;
+                      }
+                    }
+                  }
+                #endif
+                }
+
+                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                  uint tag;
+                  while ((tag = input.ReadTag()) != 0) {
+                    switch(tag) {
+                      default:
+                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                        break;
+                      case 10: {
+                        AppVersion = input.ReadString();
+                        break;
+                      }
+                      case 18: {
+                        OsVersion = input.ReadString();
+                        break;
+                      }
+                      case 26: {
+                        Os = input.ReadString();
+                        break;
+                      }
+                      case 34: {
+                        Device = input.ReadString();
+                        break;
+                      }
+                      case 42: {
+                        if (tag5_ == null) {
+                          Tag5 = new global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing();
+                        }
+                        input.ReadMessage(Tag5);
+                        break;
+                      }
+                    }
+                  }
+                }
+                #endif
+
+                #region Nested types
+                /// <summary>Container for nested types declared in the Version message type.</summary>
+                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                public static partial class Types {
+                  public sealed partial class SomeThing : pb::IMessage<SomeThing>
+                  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                      , pb::IBufferMessage
+                  #endif
+                  {
+                    private static readonly pb::MessageParser<SomeThing> _parser = new pb::MessageParser<SomeThing>(() => new SomeThing());
+                    private pb::UnknownFieldSet _unknownFields;
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public static pb::MessageParser<SomeThing> Parser { get { return _parser; } }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public static pbr::MessageDescriptor Descriptor {
+                      get { return global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Descriptor.NestedTypes[0]; }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    pbr::MessageDescriptor pb::IMessage.Descriptor {
+                      get { return Descriptor; }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public SomeThing() {
+                      OnConstruction();
+                    }
+
+                    partial void OnConstruction();
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public SomeThing(SomeThing other) : this() {
+                      tag1_ = other.tag1_;
+                      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public SomeThing Clone() {
+                      return new SomeThing(this);
+                    }
+
+                    /// <summary>Field number for the "tag1" field.</summary>
+                    public const int Tag1FieldNumber = 1;
+                    private int tag1_;
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public int Tag1 {
+                      get { return tag1_; }
+                      set {
+                        tag1_ = value;
+                      }
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public override bool Equals(object other) {
+                      return Equals(other as SomeThing);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public bool Equals(SomeThing other) {
+                      if (ReferenceEquals(other, null)) {
+                        return false;
+                      }
+                      if (ReferenceEquals(other, this)) {
+                        return true;
+                      }
+                      if (Tag1 != other.Tag1) return false;
+                      return Equals(_unknownFields, other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public override int GetHashCode() {
+                      int hash = 1;
+                      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
+                      if (_unknownFields != null) {
+                        hash ^= _unknownFields.GetHashCode();
+                      }
+                      return hash;
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public override string ToString() {
+                      return pb::JsonFormatter.ToDiagnosticString(this);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public void WriteTo(pb::CodedOutputStream output) {
+                    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                      output.WriteRawMessage(this);
+                    #else
+                      if (Tag1 != 0) {
+                        output.WriteRawTag(8);
+                        output.WriteInt32(Tag1);
+                      }
+                      if (_unknownFields != null) {
+                        _unknownFields.WriteTo(output);
+                      }
+                    #endif
+                    }
+
+                    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+                      if (Tag1 != 0) {
+                        output.WriteRawTag(8);
+                        output.WriteInt32(Tag1);
+                      }
+                      if (_unknownFields != null) {
+                        _unknownFields.WriteTo(ref output);
+                      }
+                    }
+                    #endif
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public int CalculateSize() {
+                      int size = 0;
+                      if (Tag1 != 0) {
+                        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag1);
+                      }
+                      if (_unknownFields != null) {
+                        size += _unknownFields.CalculateSize();
+                      }
+                      return size;
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public void MergeFrom(SomeThing other) {
+                      if (other == null) {
+                        return;
+                      }
+                      if (other.Tag1 != 0) {
+                        Tag1 = other.Tag1;
+                      }
+                      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+                    }
+
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    public void MergeFrom(pb::CodedInputStream input) {
+                    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                      input.ReadRawMessage(this);
+                    #else
+                      uint tag;
+                      while ((tag = input.ReadTag()) != 0) {
+                        switch(tag) {
+                          default:
+                            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                            break;
+                          case 8: {
+                            Tag1 = input.ReadInt32();
+                            break;
+                          }
+                        }
+                      }
+                    #endif
+                    }
+
+                    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+                    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+                    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+                    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+                      uint tag;
+                      while ((tag = input.ReadTag()) != 0) {
+                        switch(tag) {
+                          default:
+                            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                            break;
+                          case 8: {
+                            Tag1 = input.ReadInt32();
+                            break;
+                          }
+                        }
+                      }
+                    }
+                    #endif
+
+                  }
+
+                }
+                #endregion
+
+              }
+
+            }
+            #endregion
+
+          }
+
+        }
+        #endregion
 
       }
 
@@ -4293,7 +10269,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4707,7 +10683,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5438,7 +11414,7 @@ namespace ZwiftPacketMonitor {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[7]; }
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

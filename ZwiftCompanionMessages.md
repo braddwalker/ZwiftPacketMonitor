@@ -50,6 +50,13 @@ Tag 1 can either be the `rider_id` but also 1, or 2.
 
 This message doesn't have a tag 10.
 
+### Tag 1 value `rider_id`
+
+Tag 2 -> tag 1 can have value 1 or 2.
+
+- `1` -> has tag 19 set to the `rider_id` but doesn't have tag 8
+- `2` -> has tag 8 set but doesn't have tag 19
+
 ### Notes
 
 blah
@@ -60,13 +67,14 @@ blah
 | --- | --------- | ----- | ----- |
 | 0   | app to pc | Zwift |
 
+It looks like there is some handshake going on between the desktop and companion app where the desktop app sends a few messages that the companion app echoes back.
 
 ### In the PCAP dumps
 
 192.168.1.53 - pc
 192.168.1.55 - mobile device
 
-DST port 21587 is the port on the mobile device.
+The port `21587` is the port on the mobile device.
 
 => `outgoing` packets are the packets that flow from the Zwift Companion app to the Zwift Desktop app
 => `incoming` packets are the packets that flow from the Zwift Desktop app to the Zwitft Companion app

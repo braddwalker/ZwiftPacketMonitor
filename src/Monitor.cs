@@ -9,6 +9,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Net;
+using Google.Protobuf;
+using Google.Protobuf.Reflection;
 using Microsoft.Extensions.Logging;
 using PacketDotNet;
 
@@ -25,7 +27,7 @@ namespace ZwiftPacketMonitor
     /// This is a .NET port of the Node zwift-packet-monitor project (https://github.com/jeroni7100/zwift-packet-monitor).
     ///</summary>
     ///<author>Brad Walker - https://github.com/braddwalker/ZwiftPacketMonitor/</author>
-    public class Monitor 
+    public class Monitor
     {
         /// <summary>
         /// The default Zwift UDP data port
@@ -36,7 +38,7 @@ namespace ZwiftPacketMonitor
         /// The default Zwift TCP data port
         /// </summary>
         private const int ZWIFT_TCP_PORT = 3023;
-        
+
         /// <summary>
         /// The default Zwift TCP data port used by Zwift Companion
         /// </summary>
@@ -91,7 +93,7 @@ namespace ZwiftPacketMonitor
         /// A flag that indicates whether packet capture is currently running or not
         /// </summary>
         /// <value>true if running</value>
-        public bool IsRunning {get; private set;}
+        public bool IsRunning { get; private set; }
 
         private LibPcapLiveDevice _device;
         private readonly ILogger<Monitor> _logger;
@@ -105,7 +107,7 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// Creates a new instance of the monitor class.
         /// </summary>
-        public Monitor(ILogger<Monitor> logger, PacketAssembler packetAssembler, PacketAssembler companionPacketAssemblerPcToApp) 
+        public Monitor(ILogger<Monitor> logger, PacketAssembler packetAssembler, PacketAssembler companionPacketAssemblerPcToApp, PacketAssembler companionPacketAssemblerAppToPc)
         {
             _logger = logger ?? throw new ArgumentException(nameof(logger));
 
@@ -124,7 +126,7 @@ namespace ZwiftPacketMonitor
                 DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming);
             };
 
-            _companionPacketAssemblerAppToPc = companionPacketAssemblerPcToApp;
+            _companionPacketAssemblerAppToPc = companionPacketAssemblerAppToPc;
             _companionPacketAssemblerAppToPc.PayloadReady += (s, e) =>
             {
                 // Only incoming TCP payloads are coming through here
@@ -138,80 +140,92 @@ namespace ZwiftPacketMonitor
             var handler = IncomingEventPositionsEvent;
             if (handler != null)
             {
-                try {
+                try
+                {
                     handler(this, e);
                 }
-                catch {
+                catch
+                {
                     // Don't let downstream exceptions bubble up
                 }
             }
-        }  
+        }
 
         private void OnIncomingMeetupEvent(MeetupEventArgs e)
         {
             var handler = IncomingMeetupEvent;
             if (handler != null)
             {
-                try {
+                try
+                {
                     handler(this, e);
                 }
-                catch {
+                catch
+                {
                     // Don't let downstream exceptions bubble up
                 }
             }
-        }  
+        }
 
         private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
         {
             var handler = IncomingChatMessageEvent;
             if (handler != null)
             {
-                try {
+                try
+                {
                     handler(this, e);
                 }
-                catch {
+                catch
+                {
                     // Don't let downstream exceptions bubble up
                 }
             }
-        }  
+        }
 
         private void OnIncomingRideOnGivenEvent(RideOnGivenEventArgs e)
         {
             var handler = IncomingRideOnGivenEvent;
             if (handler != null)
             {
-                try {
+                try
+                {
                     handler(this, e);
                 }
-                catch {
+                catch
+                {
                     // Don't let downstream exceptions bubble up
                 }
             }
-        }  
+        }
 
         private void OnIncomingPlayerEnteredWorldEvent(PlayerEnteredWorldEventArgs e)
         {
             var handler = IncomingPlayerEnteredWorldEvent;
             if (handler != null)
             {
-                try {
+                try
+                {
                     handler(this, e);
                 }
-                catch {
+                catch
+                {
                     // Don't let downstream exceptions bubble up
                 }
             }
-        }      
+        }
 
         private void OnIncomingPlayerEvent(PlayerStateEventArgs e)
         {
             var handler = IncomingPlayerEvent;
             if (handler != null)
             {
-                try {
+                try
+                {
                     handler(this, e);
                 }
-                catch {
+                catch
+                {
                     // Don't let downstream exceptions bubble up
                 }
             }
@@ -222,10 +236,12 @@ namespace ZwiftPacketMonitor
             var handler = OutgoingPlayerEvent;
             if (handler != null)
             {
-                try {
+                try
+                {
                     handler(this, e);
                 }
-                catch {
+                catch
+                {
                     // Don't let downstream exceptions bubble up
                 }
             }
@@ -236,10 +252,12 @@ namespace ZwiftPacketMonitor
             var handler = IncomingPlayerTimeSyncEvent;
             if (handler != null)
             {
-                try {
+                try
+                {
                     handler(this, e);
                 }
-                catch {
+                catch
+                {
                     // Don't let downstream exceptions bubble up
                 }
             }
@@ -252,7 +270,7 @@ namespace ZwiftPacketMonitor
         /// <param name="cancellationToken">An optional cancellation token</param>
         /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
-        {            
+        {
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
             var devices = LibPcapLiveDeviceList.Instance;
 
@@ -267,19 +285,19 @@ namespace ZwiftPacketMonitor
                 if (Regex.IsMatch(networkInterface, "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"))
                 {
                     _logger.LogDebug($"Searching for device matching {networkInterface}");
-                    _device = devices.FirstOrDefault(d => 
-                        d.Addresses != null && d.Addresses.Any(a => 
-                            a.Addr != null && a.Addr.ipAddress != null && 
+                    _device = devices.FirstOrDefault(d =>
+                        d.Addresses != null && d.Addresses.Any(a =>
+                            a.Addr != null && a.Addr.ipAddress != null &&
                                 a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
                 }
-                else 
+                else
                 {
-                    _device = devices.FirstOrDefault(x => 
+                    _device = devices.FirstOrDefault(x =>
                         x.Name.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase));
 
                     if (_device == null) // still unresolved, search by friendly name (ie. ipconfig /all)
                     {
-                        _device = devices.FirstOrDefault(x => 
+                        _device = devices.FirstOrDefault(x =>
                             x.Interface.FriendlyName != null && x.Interface.FriendlyName.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase));
                     }
                 }
@@ -319,21 +337,22 @@ namespace ZwiftPacketMonitor
             }
             else
             {
-                await Task.Run(() => { 
+                await Task.Run(() =>
+                {
                     _device.StopCapture();
                     _device = null;
                 }, cancellationToken);
             }
         }
 
-        private string GetInterfaceDisplayName(LibPcapLiveDevice device) 
+        private string GetInterfaceDisplayName(LibPcapLiveDevice device)
         {
             return (device.Addresses[0]?.Addr?.ipAddress == null ? device.Name : device.Addresses[0].Addr.ipAddress.ToString());
         }
 
         protected void device_OnPacketArrival(object sender, PacketCapture e)
         {
-            try 
+            try
             {
                 var packet = Packet.ParsePacket(e.Device.LinkType, e.Data.ToArray());
                 var tcpPacket = packet.Extract<TcpPacket>();
@@ -341,8 +360,8 @@ namespace ZwiftPacketMonitor
 
                 var protoBytes = Array.Empty<byte>();
                 var direction = Direction.Unknown;
-                
-                if (tcpPacket != null) 
+
+                if (tcpPacket != null)
                 {
                     int srcPort = tcpPacket.SourcePort;
                     int dstPort = tcpPacket.DestinationPort;
@@ -382,21 +401,24 @@ namespace ZwiftPacketMonitor
                         direction = Direction.Incoming;
                     }
                     // Outgoing packet
-                    else if (dstPort == ZWIFT_UDP_PORT) 
+                    else if (dstPort == ZWIFT_UDP_PORT)
                     {
                         // Outgoing packets *may* have some a metadata header that's not part of the protobuf.
                         // This is sort of a magic number at the moment -- not sure if the first byte is coincidentally 0x06, 
                         // or if the header (if there is one) is always 5 bytes long
                         int skip = 5;
 
-                        if (packetBytes[skip] == 0x08) {
+                        if (packetBytes[skip] == 0x08)
+                        {
                             // NOOP, as the protobuf payload looks like it starts after the initial skip estimate
                         }
-                        else if (packetBytes[0] == 0x08) {
+                        else if (packetBytes[0] == 0x08)
+                        {
                             // protobuf payload starts at the beginning
                             skip = 0;
                         }
-                        else {
+                        else
+                        {
                             // Use the first byte as an indicator of how far into the payload we need to look
                             // in order to find the beginning of the protobuf
                             skip = packetBytes[0] - 1;
@@ -421,71 +443,222 @@ namespace ZwiftPacketMonitor
         {
             if (direction == Direction.Incoming)
             {
-                var packetData = ZwiftAppToCompanion.Parser.ParseFrom(buffer);
-
-                if (packetData.Tag1 == 1)
-                {
-                    var messageTypeOne = ZwiftAppToCompanionMessageTypeOne.Parser.ParseFrom(buffer);
-                }
-                else if (packetData.CompanionMessage2 != null)
-                {
-                    var messageType = packetData.CompanionMessage2.Type;
-
-                    StoreMessageType(messageType, buffer, direction);
-
-                    _logger.LogInformation("Found type {messageType} message", messageType);
-                }
-                //else if (packetData.Tag10 == 0) // For this message type this always seems to be zero
-                //{
-                //    var bigPacket = ZwiftCompanionMessageRiderPosition.Parser.ParseFrom(buffer);
-                //    var clockTime = DateTimeOffset.FromUnixTimeSeconds((long)bigPacket.ClockTime);
-                //    //_logger.LogInformation($"[{_tcpPacketCounter:00000}] {packetData.Tag10:000}: ZwiftCompanionMessageRiderPosition: {clockTime:yyyy-MM-dd HH:mm:ssZ} {bigPacket.Tag5} {bigPacket.Tag6:0.000000} {bigPacket.Tag7:0.000000} {bigPacket.Tag8:0.000000}");
-                //}
-                else
-                {
-                    StoreMessageType(999, buffer, direction);
-                }
+                DeserializeAndDispatchIncomingMessage(buffer, direction);
             }
             else if (direction == Direction.Outgoing)
             {
-                var message = ZwiftCompanionToApp.Parser.ParseFrom(buffer);
-
-                if (message.Tag1 == 0)
-                {
-                    var typeZero = ZwiftCompanionToAppMessageValueZero.Parser.ParseFrom(buffer);
-
-                    _logger.LogInformation("Received type zero message");
-
-                    StoreMessageType(0, buffer, direction);
-                }
-                else if (message.Tag1 == 1)
-                {
-                    var typeOne = ZwiftCompanionToAppMessageValueOne.Parser.ParseFrom(buffer);
-
-                    _logger.LogInformation("Received type one message");
-
-                    StoreMessageType(1, buffer, direction);
-                }
-                else if (message.Tag1 == 2)
-                {
-                    var typeTwo = ZwiftCompanionToAppMessageValueTwo.Parser.ParseFrom(buffer);
-
-                    _logger.LogInformation("Received type two message");
-
-                    StoreMessageType(2, buffer, direction);
-                }
-                else
-                {
-                    StoreMessageType(999, buffer, direction);
-                }
+                DeserializeAndDispatchOutgoingMessage(buffer, direction);
             }
 
             _tcpPacketCounter++;
         }
 
-        private void StoreMessageType(uint messageType, byte[] buffer, Direction direction)
+        private void DeserializeAndDispatchOutgoingMessage(byte[] buffer, Direction direction)
         {
-            var basePath = $"c:\\git\\temp\\zwift\\companion-04-tcp-apptozwift";
+            var message = ZwiftCompanionToApp.Parser.ParseFrom(buffer);
+
+            if (message.Tag1 == 0)
+            {
+                var typeZero = ZwiftCompanionToAppMessageValueZero.Parser.ParseFrom(buffer);
+
+                _logger.LogInformation("Sent a type zero message");
+
+                StoreMessageType(0, buffer, direction);
+            }
+            else if (message.Tag1 == 1)
+            {
+                var typeOne = ZwiftCompanionToAppMessageValueOne.Parser.ParseFrom(buffer);
+
+                _logger.LogInformation("Sent a type one message");
+
+                StoreMessageType(1, buffer, direction);
+            }
+            else if (message.Tag1 == 2)
+            {
+                var typeTwo = ZwiftCompanionToAppMessageValueTwo.Parser.ParseFrom(buffer);
+
+                _logger.LogInformation("Sent a type two message");
+
+                StoreMessageType(2, buffer, direction);
+            }
+            else if (message.Tag10 == 0)
+            {
+                var riderMessage = ZwiftCompanionToAppRiderMessage.Parser.ParseFrom(buffer);
+
+                if (riderMessage.Details != null)
+                {
+                    _logger.LogInformation("Sent a type zero rider message");
+
+                    StoreMessageType(300, buffer, direction, 40);
+                }
+            }
+            else if (message.Tag10 == 1)
+            {
+                var riderMessage = ZwiftCompanionToAppRiderMessage.Parser.ParseFrom(buffer);
+
+                if (riderMessage.Details != null)
+                {
+                    _logger.LogInformation("Sent a type one rider message");
+
+                    StoreMessageType(301, buffer, direction, 40);
+                }
+            }
+            else if (message.Tag10 == 391 && buffer.Length > 8)
+            {
+                var rideOn = ZwiftCompanionToAppRideOnMessage.Parser.ParseFrom(buffer);
+
+                _logger.LogInformation("Sent a ride-on message to {other_rider_id}", rideOn.RideOn.OtherRiderId);
+
+                StoreMessageType(391, buffer, direction, 20);
+            }
+            else if (message.Tag10 == 3567 && buffer.Length > 8)
+            {
+                _logger.LogInformation("Sent a type 3567 message");
+
+                StoreMessageType(3567, buffer, direction, 25);
+            }
+            else if (message.Tag1 > 10000)
+            {
+                if (buffer.Length <= 10)
+                {
+                    _logger.LogDebug("Found a heartbeat message");
+                }
+                else
+                {
+                    var riderMessage = ZwiftCompanionToAppRiderMessage.Parser.ParseFrom(buffer);
+                    
+                    // Seems to be a command form the companion app to the desktop app
+                    if (riderMessage.Details.Tag2 == 22)
+                    {
+                        switch (riderMessage.Details.Tag10)
+                        {
+                            case 1010:
+                                _logger.LogInformation("Sent TURN LEFT command");
+                                return;
+                            case 1011:
+                                _logger.LogInformation("Sent GO STRAIGHT command");
+                                return;
+                            case 1012:
+                                _logger.LogInformation("Sent TURN RIGHT command");
+                                return;
+                            default:
+                                break;
+                        }
+                    }
+                    else if (riderMessage.Details.Tag2 == 29 && riderMessage.Details.Data.Tag1 == 4) // Device info
+                    {
+                        var deviceInfoVersion = ZwiftCompanionToAppDeviceInfoMessage.Parser.ParseFrom(buffer).DeviceInfo.Device.Version;
+
+                        var deviceString =
+                            $"{deviceInfoVersion.Os} ({deviceInfoVersion.OsVersion}) on {deviceInfoVersion.Device} {deviceInfoVersion.AppVersion}";
+
+                        _logger.LogInformation("Sent device info to the Zwift Desktop app: {data}", deviceString);
+
+                        return;
+                    }
+                    else if (riderMessage.Details.Tag2 == 29 && riderMessage.Details.Data.Tag1 == 15) // End activity?
+                    {
+                        var endActivity = ZwiftCompanionToAppEndActivityMessage.Parser.ParseFrom(riderMessage.Details.Data.ToByteArray());
+
+                        var subject = $"{endActivity.Data.ActivityName}";
+
+                        _logger.LogInformation("Sent (possible) end activity command: {subject}", subject);
+
+                        return;
+                    }
+                    else
+                    {
+                        _logger.LogInformation("Found a rider detail message of type: " + riderMessage.Details.Tag2);
+                    }
+
+                    StoreMessageType(riderMessage.Details.Tag2, buffer, direction);
+                }
+            }
+            else
+            {
+                _logger.LogInformation("Sent a message that we don't recognize yet");
+
+                StoreMessageType(999, buffer, direction);
+            }
+        }
+
+        private void DeserializeAndDispatchIncomingMessage(byte[] buffer, Direction direction)
+        {
+            var storeEntireMessage = false;
+
+            var packetData = ZwiftAppToCompanion.Parser.ParseFrom(buffer);
+            
+            foreach (var item in packetData.Items)
+            {
+                if (item.Tag2 == 2)
+                {
+                    var powerUp = ZwiftAppToCompanionPowerUpMessage.Parser.ParseFrom(item.ToByteArray());
+
+                    _logger.LogInformation("Received power up {power_up}", powerUp.PowerUp);
+                }
+                else if (item.Tag2 == 4)
+                {
+                    var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
+                    
+                    if (buttonMessage.Tag8 == 5) // Wave
+                    {
+                        _logger.LogInformation("Received WAVE command");
+                    }
+                    else if (buttonMessage.Tag8 == 6) // Ride on
+                    {
+                        _logger.LogInformation("Received RIDE ON command");
+                    }
+                    else if (buttonMessage.Tag8 == 1010) // Turn Left
+                    {
+                        _logger.LogInformation("Received TURN LEFT command");
+                    }
+                    else if (buttonMessage.Tag8 == 1011) // Go Straight
+                    {
+                        _logger.LogInformation("Received GO STRAIGHT command");
+                    }
+                    else if (buttonMessage.Tag8 == 1012) // Turn right
+                    {
+                        _logger.LogInformation("Received TURN RIGHT command");
+                    }
+                    else if (buttonMessage.Tag8 == 1034) // Discard leightweight
+                    {
+                        _logger.LogInformation("Received DISCARD LIGHTWEIGHT command");
+                    }
+                    else if (buttonMessage.Tag8 == 1060) // POWER GRAPH
+                    {
+                        _logger.LogInformation("Received POWER GRAPH command");
+                    }
+                    else if (buttonMessage.Tag8 == 1081) // HUD
+                    {
+                        _logger.LogInformation("Received HUD command");
+                    }
+                    // It appears value 23 is something empty
+                    // and we should most likely ignore it as 
+                    // it's not very interesting
+                    else if (buttonMessage.Tag8 != 23)
+                    {
+                        StoreMessageType(item.Tag2, item.ToByteArray(), direction, 40);
+                    }
+                }
+                else if(item.Tag2 != 13)
+                {
+                    _logger.LogInformation("Received type {type} message", item.Tag2);
+
+                    storeEntireMessage = true;
+
+                    StoreMessageType(item.Tag2, item.ToByteArray(), direction);
+                }
+            }
+
+            if (storeEntireMessage)
+            {
+                StoreMessageType(0, buffer, direction);
+            }
+        }
+
+        private void StoreMessageType(uint messageType, byte[] buffer, Direction direction, int maxNumberOfMessages = 10)
+        {
+            var basePath = $"c:\\git\\temp\\zwift\\companion-05-tcp";
 
             if (!Directory.Exists(basePath))
             {
@@ -499,7 +672,7 @@ namespace ZwiftPacketMonitor
                 _messageTypeCounters.Add(type, 0);
             }
 
-            if (_messageTypeCounters[type] < 10)
+            if (_messageTypeCounters[type] < maxNumberOfMessages)
             {
                 File.WriteAllBytes(
                     $"{basePath}\\{_tcpPacketCounter:00000}-{direction.ToString().ToLower()}-{messageType:000}.bin",
@@ -514,13 +687,13 @@ namespace ZwiftPacketMonitor
             // If we have any data to deserialize at this point, let's continue
             if (buffer?.Length > 0)
             {
-                try 
+                try
                 {
                     // Depending on the direction, we need to use different protobuf parsers
                     if (direction == Direction.Outgoing)
                     {
                         var packetData = ClientToServer.Parser.ParseFrom(buffer);
-                        if (packetData.State != null) 
+                        if (packetData.State != null)
                         {
                             // Dispatch the event
                             OnOutgoingPlayerEvent(new PlayerStateEventArgs()
@@ -536,7 +709,7 @@ namespace ZwiftPacketMonitor
                         // Dispatch each player state individually
                         foreach (var player in packetData.PlayerStates)
                         {
-                            if (player != null) 
+                            if (player != null)
                             {
                                 // Dispatch the event
                                 OnIncomingPlayerEvent(new PlayerStateEventArgs()
@@ -561,9 +734,9 @@ namespace ZwiftPacketMonitor
                             try
                             {
                                 switch (pu.Tag3)
-                                {                                    
+                                {
                                     case 4:
-                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
+                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs()
                                         {
                                             RideOn = RideOn.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
@@ -587,7 +760,7 @@ namespace ZwiftPacketMonitor
                                         });
                                         break;
                                     case 6:
-                                        // meetup create/update? 6 has the same payload as 10
+                                    // meetup create/update? 6 has the same payload as 10
                                     case 10:
                                         // join meetup?
                                         OnIncomingMeetupEvent(new MeetupEventArgs()
@@ -599,11 +772,11 @@ namespace ZwiftPacketMonitor
                                     case 109:
                                     case 110:
                                     case 106:
-                                        //File.WriteAllBytes(@"c:\git\temp\zwift\pl106.bin", buffer);
-                                        //File.WriteAllBytes(@"c:\git\temp\zwift\pl106-payload.bin", pu.Payload.ToByteArray());
-                                        //_logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
-                                        //var data = Payload106.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                        //break;
+                                    //File.WriteAllBytes(@"c:\git\temp\zwift\pl106.bin", buffer);
+                                    //File.WriteAllBytes(@"c:\git\temp\zwift\pl106-payload.bin", pu.Payload.ToByteArray());
+                                    //_logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
+                                    //var data = Payload106.Parser.ParseFrom(pu.Payload.ToByteArray());
+                                    //break;
                                     case 116:
                                         //File.WriteAllBytes(@"c:\git\temp\zwift\pl116.bin", buffer);
                                         //File.WriteAllBytes(@"c:\git\temp\zwift\pl116-payload.bin", pu.Payload.ToByteArray());
@@ -616,7 +789,7 @@ namespace ZwiftPacketMonitor
                                     default:
                                         _logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
                                         break;
-                                }                            
+                                }
                             }
                             catch (Exception e)
                             {
@@ -625,11 +798,11 @@ namespace ZwiftPacketMonitor
                         }
                     }
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}\n\r");
                 }
-                
+
                 //File.WriteAllBytes($@"c:\git\temp\zwift\companion-02-{(isTcp ? "tcp" : "udp")}\packet-{_udpPacketCounter:00000}.bin", buffer);
                 //_udpPacketCounter++;   
             }
@@ -637,7 +810,7 @@ namespace ZwiftPacketMonitor
 
         private void OnIncomingMessage116Event(Message116EventArgs eventArgs)
         {
-            
+
         }
     }
 
@@ -650,13 +823,13 @@ namespace ZwiftPacketMonitor
     /// This enumeration defines whether a given packet of data
     /// is incoming from the remote server, or outgoing from the local client
     /// </summary>
-   public enum Direction 
-   {
-       // Default value
-       Unknown,
-       // Incoming from the remote server
-       Incoming,
-       // Outgoing from the local client
-       Outgoing
-   }
+    public enum Direction
+    {
+        // Default value
+        Unknown,
+        // Incoming from the remote server
+        Incoming,
+        // Outgoing from the local client
+        Outgoing
+    }
 }
