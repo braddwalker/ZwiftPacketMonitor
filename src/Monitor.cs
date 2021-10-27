@@ -457,31 +457,7 @@ namespace ZwiftPacketMonitor
         {
             var message = ZwiftCompanionToApp.Parser.ParseFrom(buffer);
 
-            if (message.Tag1 == 0)
-            {
-                var typeZero = ZwiftCompanionToAppMessageValueZero.Parser.ParseFrom(buffer);
-
-                _logger.LogInformation("Sent a type zero message");
-
-                StoreMessageType(0, buffer, direction);
-            }
-            else if (message.Tag1 == 1)
-            {
-                var typeOne = ZwiftCompanionToAppMessageValueOne.Parser.ParseFrom(buffer);
-
-                _logger.LogInformation("Sent a type one message");
-
-                StoreMessageType(1, buffer, direction);
-            }
-            else if (message.Tag1 == 2)
-            {
-                var typeTwo = ZwiftCompanionToAppMessageValueTwo.Parser.ParseFrom(buffer);
-
-                _logger.LogInformation("Sent a type two message");
-
-                StoreMessageType(2, buffer, direction);
-            }
-            else if (message.Tag1 > 10000)
+            if (message.Tag1 > 10000)
             {
                 if (buffer.Length <= 10)
                 {
