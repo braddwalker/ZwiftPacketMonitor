@@ -576,12 +576,15 @@ namespace ZwiftPacketMonitor
 
             foreach (var item in packetData.Items)
             {
-                switch (item.Tag2)
+                switch (item.Type)
                 {
                     case 2:
                         var powerUp = ZwiftAppToCompanionPowerUpMessage.Parser.ParseFrom(item.ToByteArray());
 
                         _logger.LogInformation("Received power up {power_up}", powerUp.PowerUp);
+                        break;
+                    case 3:
+                        _logger.LogDebug("Received a type 3 message that we don't understand yet");
                         break;
                     case 4:
                         var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
@@ -593,7 +596,7 @@ namespace ZwiftPacketMonitor
                         var activityDetails =
                             ZwiftAppToCompanionActivityDetailsMessage.Parser.ParseFrom(item.ToByteArray());
 
-                        switch (activityDetails.Details.Tag1)
+                        switch (activityDetails.Details.Type)
                         {
                             case 3:
                                 _logger.LogInformation(
@@ -602,59 +605,74 @@ namespace ZwiftPacketMonitor
                                 break;
                             case 5:
                                 {
-                                    var rider = activityDetails
-                                        .Details
-                                        .RiderData
-                                        .Sub
-                                        ?.FirstOrDefault()
-                                        ?.Rider;
-
-                                    if (rider != null)
+                                    foreach (var s in activityDetails.Details.RiderData.Sub)
                                     {
-                                        var subject = $"{rider.Description} ({rider.RiderId})";
+                                        if (s?.Riders != null && s.Riders.Any())
+                                        {
+                                            foreach (var rider in s.Riders)
+                                            {
+                                                var subject = $"{rider.Description} ({rider.RiderId})";
 
-                                        _logger.LogDebug("Received our own rider position: {subject}", subject);
-                                    }
-                                    else
-                                    {
-                                        _logger.LogDebug("Received some position information without rider details");
-                                        StoreMessageType(item.Tag2 * 1000 + activityDetails.Details.Tag1, item.ToByteArray(),
-                                            direction, 50);
+                                                _logger.LogDebug("Received our own rider position: {subject}", subject);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            _logger.LogDebug("Received some position information without rider details");
+                                        }
                                     }
 
                                     break;
                                 }
                             case 6:
-                                // This contains a string but no idea what it means
+                                // This contains an empty string but no idea what it means
                                 _logger.LogDebug("Received a activity details subtype with {type}",
-                                    activityDetails.Details.Tag1);
+                                    activityDetails.Details.Type);
+                                break;
+                            case 7:
+                                _logger.LogDebug("Received a type 7 message that we don't understand yet. Tag 11[].8.1 contains a rider id");
+                                break;
+                            case 10:
+                                _logger.LogDebug("Received a type 10 message that we don't understand yet");
                                 break;
                             case 17:
-                            // Rider nearby?
+                            case 18:
                             case 19:
+                                // Rider nearby?
                                 {
                                     var rider = activityDetails
                                         .Details
-                                        .OtherRider;
+                                        ?.OtherRider;
 
-                                    var subject = $"{rider.FirstName?.Trim()} {rider.LastName?.Trim()} ({rider.RiderId})";
-                                    _logger.LogDebug("Received rider nearby position for {subject}", subject);
+                                    if (rider != null)
+                                    {
+                                        var subject = $"{rider.FirstName?.Trim()} {rider.LastName?.Trim()} ({rider.RiderId})";
+
+                                        _logger.LogDebug("Received rider nearby position for {subject}", subject);
+                                    }
+
                                     break;
                                 }
+                            case 20:
+                                _logger.LogDebug("Received a type 20 message that we don't understand yet");
+                                break;
+                            case 21:
+                                _logger.LogDebug("Received a type 21 message that we don't understand yet");
+                                break;
                             default:
                                 _logger.LogDebug("Received a activity details subtype with {type}",
-                                    activityDetails.Details.Tag1);
+                                    activityDetails.Details.Type);
                                 storeEntireMessage = true;
                                 break;
                         }
 
                         break;
                     default:
-                        _logger.LogWarning("Received type {type} message", item.Tag2);
+                        _logger.LogWarning("Received type {type} message", item.Type);
 
                         storeEntireMessage = true;
 
-                        StoreMessageType(item.Tag2, item.ToByteArray(), direction);
+                        StoreMessageType(item.Type, item.ToByteArray(), direction);
 
                         break;
                 }
@@ -715,7 +733,7 @@ namespace ZwiftPacketMonitor
                         "Received a button available that we don't recognise {type}",
                         buttonMessage.TypeId);
 
-                    StoreMessageType(item.Tag2, item.ToByteArray(), direction, 40);
+                    StoreMessageType(item.Type, item.ToByteArray(), direction, 40);
 
                     break;
             }
