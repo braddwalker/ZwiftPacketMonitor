@@ -194,7 +194,7 @@ message ZwiftCompanionToAppRiderMessage
     message RiderMessage
     {
         uint32 tag1 = 1;
-        uint32 tag2 = 2; // Possible type, have seen values 1, 2, 16, 22 (left/right/straight), 29
+        uint32 type = 2; // Possible type, have seen values 1, 2, 16, 22 (left/right/straight), 29
         uint32 tag3 = 3;
         uint32 tag5 = 5;
         uint32 tag7 = 7;

@@ -100,7 +100,7 @@ namespace ZwiftPacketMonitor {
             "TWVzc2FnZRIMCgRteUlkGAEgASgNEhAKCHNlcXVlbmNlGAogASgNElYKB2Rl",
             "dGFpbHMYAiABKAsyQC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5p",
             "b25Ub0FwcFJpZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2VIAIgBARqKAwoMUmlk",
-            "ZXJNZXNzYWdlEgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0YWcz",
+            "ZXJNZXNzYWdlEgwKBHRhZzEYASABKA0SDAoEdHlwZRgCIAEoDRIMCgR0YWcz",
             "GAMgASgNEgwKBHRhZzUYBSABKA0SDAoEdGFnNxgHIAEoDRIRCgR0YWc4GAgg",
             "ASgNSACIAQESEgoFdGFnMTAYCiABKA1IAYgBARIVCghyaWRlcl9pZBgTIAEo",
             "DUgCiAEBEmQKBGRhdGEYFSABKAsyUS5ad2lmdFBhY2tldE1vbml0b3IuWndp",
@@ -150,7 +150,7 @@ namespace ZwiftPacketMonitor {
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Parser, new[]{ "Sub" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Types.Sub), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Types.Sub.Parser, new[]{ "Index", "Riders", "RepeatedIndex" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag5", "Tag6", "FirstName", "LastName", "Tag9", "Tag10", "Tag11", "Tag12", "Tag13", "Tag14", "Tag15", "Tag16", "Tag17", "Tag18", "ProfileUrl" }, new[]{ "ProfileUrl" }, null, null, null)})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToApp), global::ZwiftPacketMonitor.ZwiftCompanionToApp.Parser, new[]{ "Tag1", "Tag10" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Parser, new[]{ "MyId", "Sequence", "Details" }, new[]{ "Details" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag5", "Tag7", "Tag8", "Tag10", "RiderId", "Data" }, new[]{ "Tag8", "Tag10", "RiderId", "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Parser, new[]{ "Tag1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData.Parser, new[]{ "Tag1", "WorldName", "Tag4" }, null, null, null, null)})})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Parser, new[]{ "MyId", "Sequence", "Details" }, new[]{ "Details" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Parser, new[]{ "Tag1", "Type", "Tag3", "Tag5", "Tag7", "Tag8", "Tag10", "RiderId", "Data" }, new[]{ "Tag8", "Tag10", "RiderId", "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Parser, new[]{ "Tag1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData.Parser, new[]{ "Tag1", "WorldName", "Tag4" }, null, null, null, null)})})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Parser, new[]{ "Tag1", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData), global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData.Parser, new[]{ "Tag1", "ActivityName", "Tag4" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Parser, new[]{ "Tag1", "Tag2", "Tag3", "OtherRiderId", "ProfileUrl", "Tag7" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Parser, new[]{ "Tag1", "Tag10", "DeviceInfo" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Parser, new[]{ "Device" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Parser, new[]{ "Tag1", "Version" }, new[]{ "Version" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Parser, new[]{ "AppVersion", "OsVersion", "Os", "Device", "Tag5" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing.Parser, new[]{ "Tag1" }, null, null, null, null)})})})}),
@@ -7045,7 +7045,7 @@ namespace ZwiftPacketMonitor {
         public RiderMessage(RiderMessage other) : this() {
           _hasBits0 = other._hasBits0;
           tag1_ = other.tag1_;
-          tag2_ = other.tag2_;
+          type_ = other.type_;
           tag3_ = other.tag3_;
           tag5_ = other.tag5_;
           tag7_ = other.tag7_;
@@ -7074,18 +7074,18 @@ namespace ZwiftPacketMonitor {
           }
         }
 
-        /// <summary>Field number for the "tag2" field.</summary>
-        public const int Tag2FieldNumber = 2;
-        private uint tag2_;
+        /// <summary>Field number for the "type" field.</summary>
+        public const int TypeFieldNumber = 2;
+        private uint type_;
         /// <summary>
         /// Possible type, have seen values 1, 2, 16, 22 (left/right/straight), 29
         /// </summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public uint Tag2 {
-          get { return tag2_; }
+        public uint Type {
+          get { return type_; }
           set {
-            tag2_ = value;
+            type_ = value;
           }
         }
 
@@ -7228,7 +7228,7 @@ namespace ZwiftPacketMonitor {
             return true;
           }
           if (Tag1 != other.Tag1) return false;
-          if (Tag2 != other.Tag2) return false;
+          if (Type != other.Type) return false;
           if (Tag3 != other.Tag3) return false;
           if (Tag5 != other.Tag5) return false;
           if (Tag7 != other.Tag7) return false;
@@ -7244,7 +7244,7 @@ namespace ZwiftPacketMonitor {
         public override int GetHashCode() {
           int hash = 1;
           if (Tag1 != 0) hash ^= Tag1.GetHashCode();
-          if (Tag2 != 0) hash ^= Tag2.GetHashCode();
+          if (Type != 0) hash ^= Type.GetHashCode();
           if (Tag3 != 0) hash ^= Tag3.GetHashCode();
           if (Tag5 != 0) hash ^= Tag5.GetHashCode();
           if (Tag7 != 0) hash ^= Tag7.GetHashCode();
@@ -7274,9 +7274,9 @@ namespace ZwiftPacketMonitor {
             output.WriteRawTag(8);
             output.WriteUInt32(Tag1);
           }
-          if (Tag2 != 0) {
+          if (Type != 0) {
             output.WriteRawTag(16);
-            output.WriteUInt32(Tag2);
+            output.WriteUInt32(Type);
           }
           if (Tag3 != 0) {
             output.WriteRawTag(24);
@@ -7320,9 +7320,9 @@ namespace ZwiftPacketMonitor {
             output.WriteRawTag(8);
             output.WriteUInt32(Tag1);
           }
-          if (Tag2 != 0) {
+          if (Type != 0) {
             output.WriteRawTag(16);
-            output.WriteUInt32(Tag2);
+            output.WriteUInt32(Type);
           }
           if (Tag3 != 0) {
             output.WriteRawTag(24);
@@ -7365,8 +7365,8 @@ namespace ZwiftPacketMonitor {
           if (Tag1 != 0) {
             size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag1);
           }
-          if (Tag2 != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag2);
+          if (Type != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Type);
           }
           if (Tag3 != 0) {
             size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag3);
@@ -7404,8 +7404,8 @@ namespace ZwiftPacketMonitor {
           if (other.Tag1 != 0) {
             Tag1 = other.Tag1;
           }
-          if (other.Tag2 != 0) {
-            Tag2 = other.Tag2;
+          if (other.Type != 0) {
+            Type = other.Type;
           }
           if (other.Tag3 != 0) {
             Tag3 = other.Tag3;
@@ -7451,7 +7451,7 @@ namespace ZwiftPacketMonitor {
                 break;
               }
               case 16: {
-                Tag2 = input.ReadUInt32();
+                Type = input.ReadUInt32();
                 break;
               }
               case 24: {
@@ -7505,7 +7505,7 @@ namespace ZwiftPacketMonitor {
                 break;
               }
               case 16: {
-                Tag2 = input.ReadUInt32();
+                Type = input.ReadUInt32();
                 break;
               }
               case 24: {

@@ -482,14 +482,14 @@ namespace ZwiftPacketMonitor
 
             if (riderMessage.Details != null)
             {
-                switch (riderMessage.Details.Tag2)
+                switch (riderMessage.Details.Type)
                 {
                     case 14:
                         _logger.LogInformation("Sent a type 14 command but no clue what it is");
 
-                        StoreMessageType(riderMessage.Details.Tag2, buffer, direction);
+                        StoreMessageType(riderMessage.Details.Type, buffer, direction);
 
-                        break;
+                        return;
                     case 16:
                         var rideOn = ZwiftCompanionToAppRideOnMessage.Parser.ParseFrom(riderMessage.Details.ToByteArray());
 
@@ -501,7 +501,7 @@ namespace ZwiftPacketMonitor
                     case 20:
                         _logger.LogInformation("Sent a type 20 command but no idea what it is");
 
-                        StoreMessageType(riderMessage.Details.Tag2, buffer, direction);
+                        StoreMessageType(riderMessage.Details.Type, buffer, direction);
 
                         return;
                     // Seems to be a command form the companion app to the desktop app
@@ -526,7 +526,7 @@ namespace ZwiftPacketMonitor
                     case 28:
                         _logger.LogInformation("Possibly sent our own rider id sync command");
 
-                        StoreMessageType(riderMessage.Details.Tag2, buffer, direction);
+                        StoreMessageType(riderMessage.Details.Type, buffer, direction);
 
                         return;
                     // Device info
@@ -555,9 +555,9 @@ namespace ZwiftPacketMonitor
                             return;
                         }
                     default:
-                        _logger.LogInformation("Found a rider detail message of type: " + riderMessage.Details.Tag2);
+                        _logger.LogInformation("Found a rider detail message of type: " + riderMessage.Details.Type);
 
-                        StoreMessageType(riderMessage.Details.Tag2, buffer, direction);
+                        StoreMessageType(riderMessage.Details.Type, buffer, direction);
 
                         return;
                 }
@@ -578,6 +578,9 @@ namespace ZwiftPacketMonitor
             {
                 switch (item.Type)
                 {
+                    case 1:
+                        // Empty, ignore this
+                        break;
                     case 2:
                         var powerUp = ZwiftAppToCompanionPowerUpMessage.Parser.ParseFrom(item.ToByteArray());
 
@@ -590,6 +593,9 @@ namespace ZwiftPacketMonitor
                         var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
 
                         DispatchButtonMessage(direction, buttonMessage, item);
+                        break;
+                    case 9:
+                        _logger.LogDebug("Received a type 9 message that we don't understand yet");
                         break;
                     // Activity details?
                     case 13:
@@ -658,6 +664,10 @@ namespace ZwiftPacketMonitor
                                 break;
                             case 21:
                                 _logger.LogDebug("Received a type 21 message that we don't understand yet");
+                                break;
+                            case 23:
+                                _logger.LogDebug("Received a type 21 message that we don't understand yet");
+                                storeEntireMessage = true;
                                 break;
                             default:
                                 _logger.LogDebug("Received a activity details subtype with {type}",
