@@ -481,42 +481,6 @@ namespace ZwiftPacketMonitor
 
                 StoreMessageType(2, buffer, direction);
             }
-            else if (message.Tag10 == 0)
-            {
-                var riderMessage = ZwiftCompanionToAppRiderMessage.Parser.ParseFrom(buffer);
-
-                if (riderMessage.Details != null)
-                {
-                    _logger.LogInformation("Sent a type zero rider message");
-
-                    StoreMessageType(300, buffer, direction, 40);
-                }
-            }
-            else if (message.Tag10 == 1)
-            {
-                var riderMessage = ZwiftCompanionToAppRiderMessage.Parser.ParseFrom(buffer);
-
-                if (riderMessage.Details != null)
-                {
-                    _logger.LogInformation("Sent a type one rider message");
-
-                    StoreMessageType(301, buffer, direction, 40);
-                }
-            }
-            else if (message.Tag10 == 391 && buffer.Length > 8)
-            {
-                var rideOn = ZwiftCompanionToAppRideOnMessage.Parser.ParseFrom(buffer);
-
-                _logger.LogInformation("Sent a ride-on message to {other_rider_id}", rideOn.RideOn.OtherRiderId);
-
-                StoreMessageType(391, buffer, direction, 20);
-            }
-            else if (message.Tag10 == 3567 && buffer.Length > 8)
-            {
-                _logger.LogInformation("Sent a type 3567 message");
-
-                StoreMessageType(3567, buffer, direction, 25);
-            }
             else if (message.Tag1 > 10000)
             {
                 if (buffer.Length <= 10)
@@ -526,12 +490,25 @@ namespace ZwiftPacketMonitor
                 else
                 {
                     var riderMessage = ZwiftCompanionToAppRiderMessage.Parser.ParseFrom(buffer);
-                    
-                    // Seems to be a command form the companion app to the desktop app
-                    if (riderMessage.Details.Tag2 == 22)
+
+                    if (riderMessage.Details.Tag2 == 16)
                     {
-                        switch (riderMessage.Details.Tag10)
+                        var rideOn = ZwiftCompanionToAppRideOnMessage.Parser.ParseFrom(riderMessage.Details.ToByteArray());
+
+                        _logger.LogInformation("Possibly sent a ride-on message to {other_rider_id}", rideOn.OtherRiderId);
+                    }
+                    else if (riderMessage.Details.Tag2 == 20)
+                    {
+
+                    }
+                    // Seems to be a command form the companion app to the desktop app
+                    else if (riderMessage.Details.Tag2 == 22)
+                    {
+                        switch (riderMessage.Details.Tag10) // Tag10 seems to be the type of command
                         {
+                            case 6:
+                                _logger.LogInformation("Possibly sent RIDE ON command");
+                                return;
                             case 1010:
                                 _logger.LogInformation("Sent TURN LEFT command");
                                 return;
@@ -544,6 +521,12 @@ namespace ZwiftPacketMonitor
                             default:
                                 break;
                         }
+                    }
+                    else if (riderMessage.Details.Tag2 == 28)
+                    {
+                        _logger.LogInformation("Possibly sent our own rider id sync command");
+
+                        StoreMessageType(riderMessage.Details.Tag2, buffer, direction);
                     }
                     else if (riderMessage.Details.Tag2 == 29 && riderMessage.Details.Data.Tag1 == 4) // Device info
                     {
@@ -599,45 +582,100 @@ namespace ZwiftPacketMonitor
                 else if (item.Tag2 == 4)
                 {
                     var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
-                    
-                    if (buttonMessage.Tag8 == 5) // Wave
+
+                    if (buttonMessage.TypeId == 4) // Elbow flick
                     {
-                        _logger.LogInformation("Received WAVE command");
+                        // Would we get this if someone is drafting us?
+                        _logger.LogInformation("Received ELBOW FLICK button available");
                     }
-                    else if (buttonMessage.Tag8 == 6) // Ride on
+                    else if (buttonMessage.TypeId == 5) // Wave
                     {
-                        _logger.LogInformation("Received RIDE ON command");
+                        _logger.LogInformation("Received WAVE button available");
                     }
-                    else if (buttonMessage.Tag8 == 1010) // Turn Left
+                    else if (buttonMessage.TypeId == 6) // Ride on
                     {
-                        _logger.LogInformation("Received TURN LEFT command");
+                        _logger.LogInformation("Received RIDE ON button available");
                     }
-                    else if (buttonMessage.Tag8 == 1011) // Go Straight
+                    else if (buttonMessage.TypeId == 1010) // Turn Left
                     {
-                        _logger.LogInformation("Received GO STRAIGHT command");
+                        _logger.LogInformation("Received TURN LEFT button available");
                     }
-                    else if (buttonMessage.Tag8 == 1012) // Turn right
+                    else if (buttonMessage.TypeId == 1011) // Go Straight
                     {
-                        _logger.LogInformation("Received TURN RIGHT command");
+                        _logger.LogInformation("Received GO STRAIGHT button available");
                     }
-                    else if (buttonMessage.Tag8 == 1034) // Discard leightweight
+                    else if (buttonMessage.TypeId == 1012) // Turn right
                     {
-                        _logger.LogInformation("Received DISCARD LIGHTWEIGHT command");
+                        _logger.LogInformation("Received TURN RIGHT button available");
                     }
-                    else if (buttonMessage.Tag8 == 1060) // POWER GRAPH
+                    else if (buttonMessage.TypeId == 1034) // Discard leightweight
                     {
-                        _logger.LogInformation("Received POWER GRAPH command");
+                        _logger.LogInformation("Received DISCARD LIGHTWEIGHT button available");
                     }
-                    else if (buttonMessage.Tag8 == 1081) // HUD
+                    else if (buttonMessage.TypeId == 1060) // POWER GRAPH
                     {
-                        _logger.LogInformation("Received HUD command");
+                        _logger.LogInformation("Received POWER GRAPH button available");
+                    }
+                    else if (buttonMessage.TypeId == 1081) // HUD
+                    {
+                        _logger.LogInformation("Received HUD button available");
                     }
                     // It appears value 23 is something empty
                     // and we should most likely ignore it as 
                     // it's not very interesting
-                    else if (buttonMessage.Tag8 != 23)
+                    else if (buttonMessage.TypeId != 23)
                     {
                         StoreMessageType(item.Tag2, item.ToByteArray(), direction, 40);
+                    }
+                }
+                else if (item.Tag2 == 13) // Activity details?
+                {
+                    // Tag 1.11[1].21.4.2 contains the activity id on Zwift
+                    var activityDetails = ZwiftAppToCompanionActivityDetailsMessage.Parser.ParseFrom(item.ToByteArray());
+
+                    if (activityDetails.Details.Tag1 == 3)
+                    {
+                        _logger.LogInformation(
+                            "Received activity details, activity id {activity_id}",
+                            activityDetails.Details.Data.ActivityId);
+                    }
+                    else if (activityDetails.Details.Tag1 == 5)
+                    {
+                        var rider = activityDetails
+                            .Details
+                            .RiderData
+                            .Sub
+                            .Rider;
+
+                        if (rider != null)
+                        {
+                            var subject = $"{rider.Description} ({rider.RiderId})";
+
+                            _logger.LogDebug("Received our own rider position: {subject}", subject);
+                        }
+                        else
+                        {
+                            StoreMessageType(item.Tag2, item.ToByteArray(), direction, 50);
+                        }
+                    }
+                    else if (activityDetails.Details.Tag1 == 6)
+                    {
+                        // This contains a string but no idea what it means
+                        _logger.LogDebug("Received a activity details subtype with {type}", activityDetails.Details.Tag1);
+                    }
+                    else if (activityDetails.Details.Tag1 == 17) // Rider nearby?
+                    {
+                        var rider = activityDetails
+                            .Details
+                            .OtherRider;
+
+                        var subject = $"{rider.FirstName?.Trim()} {rider.LastName?.Trim()} ({rider.RiderId})";
+                        _logger.LogDebug("Received rider nearby position for {subject}", subject);
+                    }
+                    else
+                    {
+                        _logger.LogDebug("Received a activity details subtype with {type}", activityDetails.Details.Tag1);
+                        storeEntireMessage = true;
                     }
                 }
                 else if(item.Tag2 != 13)

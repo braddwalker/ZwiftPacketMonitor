@@ -61,11 +61,99 @@ message ZwiftAppToCompanionButtonMessage
 {
     uint32 tag1 = 1;
     uint32 tag2 = 4;
-    uint32 tag8 = 8;
+    uint32 type_id = 8; // This is the numerical value for title (tag 10)
     uint32 tag9 = 9;
-    string title = 10;
+    string title = 10; // TURN LEFT, ELBOW FLICK, HUD etc. Not sure if this could be localized...
     string image_url = 11;
     uint32 tag13 = 13;
+}
+
+message ZwiftAppToCompanionActivityDetailsMessage
+{
+    uint32 tag1 = 1;
+    uint32 tag2 = 2; // Always 13 for this type
+
+    message ActivityDetails
+    {
+        uint32 tag1 = 1; // World id perhaps?
+
+        message ActivityDetailsData
+        {
+            uint32 tag1 = 1;
+            uint64 activity_id = 2;
+            uint32 tag3 = 3;
+            uint32 tag4 = 4;
+            uint32 tag7 = 7;
+            uint32 tag8 = 8;
+            uint32 tag10 = 10;
+            uint32 tag11 = 11;
+            uint32 tag12 = 12;
+        }
+
+        optional ActivityDetailsData data = 4;
+
+        message Rider
+        {
+            uint32 rider_id = 1;
+            uint32 tag2 = 2;
+            message WhatIsThis
+            {
+                float tag1 = 1;
+                float tag2 = 2;
+                float tag3 = 3;
+            }
+            WhatIsThis some_data = 3;
+            optional string profile_url = 5;
+            uint32 second_rider_id = 6; // This is appearing twice...
+            uint32 tag7 = 7;
+            string description = 11;
+            uint32 tag12 = 12;
+            float tag13 = 13;
+            uint32 tag16 = 16;
+            uint32 tag18 = 18;
+            double tag19 = 19;
+            uint32 tag20 = 20;
+        }
+
+        message ActivityDetailsRiderData
+        {
+            message Sub
+            {
+                uint32 tag1 = 1;
+                Rider rider = 2;
+                uint32 tag3 = 3;
+            }
+            
+            Sub sub = 1;
+        }
+
+        optional ActivityDetailsRiderData rider_data = 6;
+
+        message OtherRider
+        {
+            uint32 tag1 = 1;
+            uint32 tag2 = 2;
+            uint32 rider_id = 3;
+            uint32 tag4 = 4;
+            uint64 tag5 = 5;
+            uint32 tag6 = 6;
+            string first_name = 7;
+            string last_name = 8;
+            int64 tag9 = 9;
+            string profile_url = 10;
+            uint32 tag11 = 11;
+            uint32 tag12 = 12;
+            uint32 tag13 = 13;
+            uint32 tag14 = 14;
+            uint32 tag15 = 15;
+            uint32 tag16 = 16;
+            uint32 tag17 = 17;
+            uint32 tag18 = 18;
+        }
+        optional OtherRider other_rider = 18;
+    }
+
+    ActivityDetails details = 21;
 }
 
 message ZwiftAppToCompanionMessageTypeOne
@@ -123,7 +211,7 @@ message ZwiftAppToCompanionMessageTypeTwo
                     }
                     optional MoreMoreDataOne data_1 = 1;
 
-                    message MoreMoreDataTwo
+                    message Rider
                     {
                         uint32 rider_id = 1;
                         uint32 tag2 = 2;
@@ -134,7 +222,7 @@ message ZwiftAppToCompanionMessageTypeTwo
                             float tag3 = 3;
                         }
                         WhatIsThis some_data = 3;
-                        string profile_url = 5;
+                        optional string profile_url = 5;
                         uint32 second_rider_id = 6; // This is appearing twice...
                         uint32 tag7 = 7;
                         string description = 11;
@@ -145,7 +233,7 @@ message ZwiftAppToCompanionMessageTypeTwo
                         double tag19 = 19;
                         uint32 tag20 = 20;
                     }
-                    optional MoreMoreDataTwo data_2 = 2;
+                    optional Rider data_2 = 2;
 
                     optional uint32 tag3 = 3;
                     float tag6 = 6;
@@ -192,7 +280,7 @@ message ZwiftCompanionToAppRiderMessage
     message RiderMessage
     {
         uint32 tag1 = 1;
-        uint32 tag2 = 2; // Possible type, have seen values 1, 2 and 22 (left/right/straight), 29
+        uint32 tag2 = 2; // Possible type, have seen values 1, 2, 16, 22 (left/right/straight), 29
         uint32 tag3 = 3;
         uint32 tag5 = 5;
         uint32 tag7 = 7;
@@ -234,20 +322,12 @@ message ZwiftCompanionToAppEndActivityMessage
 
 message ZwiftCompanionToAppRideOnMessage
 {
-    // These fields are always there
-    uint32 tag1 = 1; // Our own Zwift rider_id
-    uint32 tag10 = 10; // 391 for this type
-
-    message RideOn {
-        uint32 tag1 = 1;
-        uint32 tag2 = 2;
-        uint32 tag3 = 3;
-        uint32 other_rider_id = 5;
-        string profile_url = 6;
-        uint32 tag7 = 7;
-    }
-
-    RideOn ride_on = 2;
+    uint32 tag1 = 1;
+    uint32 tag2 = 2; // Always 16 for this type
+    uint32 tag3 = 3;
+    uint32 other_rider_id = 5;
+    string profile_url = 6;
+    uint32 tag7 = 7;
 }
 
 message ZwiftCompanionToAppDeviceInfoMessage
