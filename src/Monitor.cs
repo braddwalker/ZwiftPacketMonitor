@@ -491,6 +491,26 @@ namespace ZwiftPacketMonitor
                 {
                     var riderMessage = ZwiftCompanionToAppRiderMessage.Parser.ParseFrom(buffer);
 
+                    if (riderMessage.Details == null)
+                    {
+                        if (message.Tag10 == 0)
+                        {
+                            var typeTag10Zero = ZwiftCompanionToAppMessageTag10Zero.Parser.ParseFrom(buffer);
+
+                            _logger.LogDebug("Sent a tag 10 = 0 type message");
+
+                            StoreMessageType(100, buffer, direction);
+
+                            return;
+                        }
+
+                        _logger.LogWarning("Sent a message that we don't recognize yet");
+
+                        StoreMessageType(999, buffer, direction);
+                            
+                        return;
+                    }
+
                     if (riderMessage.Details.Tag2 == 16)
                     {
                         var rideOn = ZwiftCompanionToAppRideOnMessage.Parser.ParseFrom(riderMessage.Details.ToByteArray());
@@ -663,7 +683,7 @@ namespace ZwiftPacketMonitor
                         // This contains a string but no idea what it means
                         _logger.LogDebug("Received a activity details subtype with {type}", activityDetails.Details.Tag1);
                     }
-                    else if (activityDetails.Details.Tag1 == 17) // Rider nearby?
+                    else if (activityDetails.Details.Tag1 == 17 || activityDetails.Details.Tag1 == 19) // Rider nearby?
                     {
                         var rider = activityDetails
                             .Details

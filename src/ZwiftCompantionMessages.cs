@@ -46,11 +46,11 @@ namespace ZwiftPacketMonitor {
             "chgGIAEoCRIYChBiYWNrZ3JvdW5kX2NvbG9yGAwgASgJIo4BCiBad2lmdEFw",
             "cFRvQ29tcGFuaW9uQnV0dG9uTWVzc2FnZRIMCgR0YWcxGAEgASgNEgwKBHRh",
             "ZzIYBCABKA0SDwoHdHlwZV9pZBgIIAEoDRIMCgR0YWc5GAkgASgNEg0KBXRp",
-            "dGxlGAogASgJEhEKCWltYWdlX3VybBgLIAEoCRINCgV0YWcxMxgNIAEoDSLY",
+            "dGxlGAogASgJEhEKCWltYWdlX3VybBgLIAEoCRINCgV0YWcxMxgNIAEoDSL8",
             "DQopWndpZnRBcHBUb0NvbXBhbmlvbkFjdGl2aXR5RGV0YWlsc01lc3NhZ2US",
             "DAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEl4KB2RldGFpbHMYFSABKAsy",
             "TS5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRBcHBUb0NvbXBhbmlvbkFjdGl2",
-            "aXR5RGV0YWlsc01lc3NhZ2UuQWN0aXZpdHlEZXRhaWxzGq4MCg9BY3Rpdml0",
+            "aXR5RGV0YWlsc01lc3NhZ2UuQWN0aXZpdHlEZXRhaWxzGtIMCg9BY3Rpdml0",
             "eURldGFpbHMSDAoEdGFnMRgBIAEoDRJ0CgRkYXRhGAQgASgLMmEuWndpZnRQ",
             "YWNrZXRNb25pdG9yLlp3aWZ0QXBwVG9Db21wYW5pb25BY3Rpdml0eURldGFp",
             "bHNNZXNzYWdlLkFjdGl2aXR5RGV0YWlscy5BY3Rpdml0eURldGFpbHNEYXRh",
@@ -78,86 +78,91 @@ namespace ZwiftPacketMonitor {
             "RGV0YWlsc1JpZGVyRGF0YS5TdWIahQEKA1N1YhIMCgR0YWcxGAEgASgNEmIK",
             "BXJpZGVyGAIgASgLMlMuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0QXBwVG9D",
             "b21wYW5pb25BY3Rpdml0eURldGFpbHNNZXNzYWdlLkFjdGl2aXR5RGV0YWls",
-            "cy5SaWRlchIMCgR0YWczGAMgASgNGqYCCgpPdGhlclJpZGVyEgwKBHRhZzEY",
+            "cy5SaWRlchIMCgR0YWczGAMgASgNGsoCCgpPdGhlclJpZGVyEgwKBHRhZzEY",
             "ASABKA0SDAoEdGFnMhgCIAEoDRIQCghyaWRlcl9pZBgDIAEoDRIMCgR0YWc0",
             "GAQgASgNEgwKBHRhZzUYBSABKAQSDAoEdGFnNhgGIAEoDRISCgpmaXJzdF9u",
-            "YW1lGAcgASgJEhEKCWxhc3RfbmFtZRgIIAEoCRIMCgR0YWc5GAkgASgDEhMK",
-            "C3Byb2ZpbGVfdXJsGAogASgJEg0KBXRhZzExGAsgASgNEg0KBXRhZzEyGAwg",
-            "ASgNEg0KBXRhZzEzGA0gASgNEg0KBXRhZzE0GA4gASgNEg0KBXRhZzE1GA8g",
-            "ASgNEg0KBXRhZzE2GBAgASgNEg0KBXRhZzE3GBEgASgNEg0KBXRhZzE4GBIg",
-            "ASgNQgcKBV9kYXRhQg0KC19yaWRlcl9kYXRhQg4KDF9vdGhlcl9yaWRlciLD",
-            "AgohWndpZnRBcHBUb0NvbXBhbmlvbk1lc3NhZ2VUeXBlT25lEgwKBHRhZzEY",
-            "ASABKA0SDAoEdGFnMhgCIAEoDRIQCghyaWRlcl9pZBgDIAEoDRIMCgR0YWc0",
-            "GAQgASgNEgwKBHRhZzYYBiABKA0SDAoEdGFnNxgHIAEoDRJpCgp0eXBlX3Ro",
-            "cmVlGAsgASgLMlUuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0QXBwVG9Db21w",
-            "YW5pb25NZXNzYWdlVHlwZU9uZS5ad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2Fn",
-            "ZVRocmVlEg0KBXRhZzEyGAwgASgNGkwKH1p3aWZ0QXBwVG9Db21wYW5pb25N",
-            "ZXNzYWdlVGhyZWUSDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEg0KBXRh",
-            "ZzE5GBMgASgNIjIKE1p3aWZ0Q29tcGFuaW9uVG9BcHASDAoEdGFnMRgBIAEo",
-            "DRINCgV0YWcxMBgKIAEoDSKyBAofWndpZnRDb21wYW5pb25Ub0FwcFJpZGVy",
-            "TWVzc2FnZRIMCgRteUlkGAEgASgNEhAKCHNlcXVlbmNlGAogASgNElYKB2Rl",
-            "dGFpbHMYAiABKAsyQC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5p",
-            "b25Ub0FwcFJpZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2VIAIgBARqKAwoMUmlk",
-            "ZXJNZXNzYWdlEgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0YWcz",
-            "GAMgASgNEgwKBHRhZzUYBSABKA0SDAoEdGFnNxgHIAEoDRIRCgR0YWc4GAgg",
-            "ASgNSACIAQESEgoFdGFnMTAYCiABKA1IAYgBARIVCghyaWRlcl9pZBgTIAEo",
-            "DUgCiAEBEmQKBGRhdGEYFSABKAsyUS5ad2lmdFBhY2tldE1vbml0b3IuWndp",
-            "ZnRDb21wYW5pb25Ub0FwcFJpZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2UuUmlk",
-            "ZXJNZXNzYWdlRGF0YUgDiAEBGmcKEFJpZGVyTWVzc2FnZURhdGESDAoEdGFn",
-            "MRgBIAEoDRpFChNSaWRlck1lc3NhZ2VTdWJEYXRhEgwKBHRhZzEYASABKA0S",
-            "EgoKd29ybGRfbmFtZRgDIAEoCRIMCgR0YWc0GAQgASgNQgcKBV90YWc4QggK",
-            "Bl90YWcxMEILCglfcmlkZXJfaWRCBwoFX2RhdGFCCgoIX2RldGFpbHMi1AEK",
-            "JVp3aWZ0Q29tcGFuaW9uVG9BcHBFbmRBY3Rpdml0eU1lc3NhZ2USDAoEdGFn",
-            "MRgBIAEoDRJXCgRkYXRhGBAgASgLMkkuWndpZnRQYWNrZXRNb25pdG9yLlp3",
-            "aWZ0Q29tcGFuaW9uVG9BcHBFbmRBY3Rpdml0eU1lc3NhZ2UuRW5kQWN0aXZp",
-            "dHlEYXRhGkQKD0VuZEFjdGl2aXR5RGF0YRIMCgR0YWcxGAEgASgNEhUKDWFj",
-            "dGl2aXR5X25hbWUYAyABKAkSDAoEdGFnNBgEIAEoDSKHAQogWndpZnRDb21w",
-            "YW5pb25Ub0FwcFJpZGVPbk1lc3NhZ2USDAoEdGFnMRgBIAEoDRIMCgR0YWcy",
-            "GAIgASgNEgwKBHRhZzMYAyABKA0SFgoOb3RoZXJfcmlkZXJfaWQYBSABKA0S",
-            "EwoLcHJvZmlsZV91cmwYBiABKAkSDAoEdGFnNxgHIAEoDSKnBQokWndpZnRD",
-            "b21wYW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlEgwKBHRhZzEYASABKA0S",
-            "DQoFdGFnMTAYCiABKA0SWAoLZGV2aWNlX2luZm8YAiABKAsyQy5ad2lmdFBh",
-            "Y2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcERldmljZUluZm9NZXNz",
-            "YWdlLkRldmljZUluZm8ahwQKCkRldmljZUluZm8SaAoGZGV2aWNlGBUgASgL",
-            "MlguWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBEZXZp",
-            "Y2VJbmZvTWVzc2FnZS5EZXZpY2VJbmZvLlp3aWZ0Q29tcGFuaW9uRGV2aWNl",
-            "Go4DChRad2lmdENvbXBhbmlvbkRldmljZRIMCgR0YWcxGAEgASgFEnYKB3Zl",
-            "cnNpb24YBSABKAsyYC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5p",
-            "b25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRldmljZUluZm8uWndpZnRDb21w",
-            "YW5pb25EZXZpY2UuVmVyc2lvbkgAiAEBGuMBCgdWZXJzaW9uEhMKC2FwcF92",
-            "ZXJzaW9uGAEgASgJEhIKCm9zX3ZlcnNpb24YAiABKAkSCgoCb3MYAyABKAkS",
-            "DgoGZGV2aWNlGAQgASgJEngKBHRhZzUYBSABKAsyai5ad2lmdFBhY2tldE1v",
-            "bml0b3IuWndpZnRDb21wYW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRl",
-            "dmljZUluZm8uWndpZnRDb21wYW5pb25EZXZpY2UuVmVyc2lvbi5Tb21lVGhp",
-            "bmcaGQoJU29tZVRoaW5nEgwKBHRhZzEYASABKAVCCgoIX3ZlcnNpb24iiAEK",
-            "I1p3aWZ0Q29tcGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVaZXJvEgwKBHRhZzEY",
-            "ASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0YWczGAMgASgNEgwKBHRhZzQYBCAB",
-            "KA0SDAoEdGFnNhgGIAEoDRIMCgR0YWc3GAcgASgNEg0KBXRhZzEyGAwgASgN",
-            "Ip0CCiJad2lmdENvbXBhbmlvblRvQXBwTWVzc2FnZVZhbHVlT25lEgwKBHRh",
-            "ZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0YWczGAMgASgNEgwKBHRhZzQY",
-            "BCABKA0SDAoEdGFnNhgGIAEoDRIMCgR0YWc3GAcgASgNElcKCHN1Yl9pdGVt",
-            "GAsgASgLMkUuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9B",
-            "cHBNZXNzYWdlVmFsdWVPbmUuVHlwZU9uZVN1Ykl0ZW0SDQoFdGFnMTIYDCAB",
-            "KA0aOwoOVHlwZU9uZVN1Ykl0ZW0SDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIg",
-            "ASgNEg0KBXRhZzE5GBMgASgNIrcGCiJad2lmdENvbXBhbmlvblRvQXBwTWVz",
-            "c2FnZVZhbHVlVHdvEgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0",
-            "YWczGAMgASgNEgwKBHRhZzQYBCABKA0SDAoEdGFnNhgGIAEoDRIMCgR0YWc3",
-            "GAcgASgNElcKCHN1Yl9pdGVtGAsgAygLMkUuWndpZnRQYWNrZXRNb25pdG9y",
-            "Llp3aWZ0Q29tcGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVUd28uVHlwZVR3b1N1",
-            "Ykl0ZW0SDQoFdGFnMTIYDCABKA0a1AQKDlR5cGVUd29TdWJJdGVtEgwKBHRh",
-            "ZzEYASABKA0SDAoEdGFnMhgCIAEoDRJmCgRkYXRhGBUgASgLMlguWndpZnRQ",
-            "YWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVU",
-            "d28uVHlwZVR3b1N1Ykl0ZW0uVHlwZVR3b1N1Ykl0ZW1EYXRhGr0DChJUeXBl",
-            "VHdvU3ViSXRlbURhdGESDAoEdGFnMRgBIAEoDRJvCgRkYXRhGAQgASgLMmEu",
+            "YW1lGAcgASgJEhEKCWxhc3RfbmFtZRgIIAEoCRIMCgR0YWc5GAkgASgDEg0K",
+            "BXRhZzEwGAogASgJEg0KBXRhZzExGAsgASgNEg0KBXRhZzEyGAwgASgNEg0K",
+            "BXRhZzEzGA0gASgNEg0KBXRhZzE0GA4gASgNEg0KBXRhZzE1GA8gASgNEg0K",
+            "BXRhZzE2GBAgASgNEg0KBXRhZzE3GBEgASgNEg0KBXRhZzE4GBIgASgNEhgK",
+            "C3Byb2ZpbGVfdXJsGBMgASgJSACIAQFCDgoMX3Byb2ZpbGVfdXJsQgcKBV9k",
+            "YXRhQg0KC19yaWRlcl9kYXRhQg4KDF9vdGhlcl9yaWRlciLDAgohWndpZnRB",
+            "cHBUb0NvbXBhbmlvbk1lc3NhZ2VUeXBlT25lEgwKBHRhZzEYASABKA0SDAoE",
+            "dGFnMhgCIAEoDRIQCghyaWRlcl9pZBgDIAEoDRIMCgR0YWc0GAQgASgNEgwK",
+            "BHRhZzYYBiABKA0SDAoEdGFnNxgHIAEoDRJpCgp0eXBlX3RocmVlGAsgASgL",
+            "MlUuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0QXBwVG9Db21wYW5pb25NZXNz",
+            "YWdlVHlwZU9uZS5ad2lmdEFwcFRvQ29tcGFuaW9uTWVzc2FnZVRocmVlEg0K",
+            "BXRhZzEyGAwgASgNGkwKH1p3aWZ0QXBwVG9Db21wYW5pb25NZXNzYWdlVGhy",
+            "ZWUSDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEg0KBXRhZzE5GBMgASgN",
+            "IjIKE1p3aWZ0Q29tcGFuaW9uVG9BcHASDAoEdGFnMRgBIAEoDRINCgV0YWcx",
+            "MBgKIAEoDSKyBAofWndpZnRDb21wYW5pb25Ub0FwcFJpZGVyTWVzc2FnZRIM",
+            "CgRteUlkGAEgASgNEhAKCHNlcXVlbmNlGAogASgNElYKB2RldGFpbHMYAiAB",
+            "KAsyQC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcFJp",
+            "ZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2VIAIgBARqKAwoMUmlkZXJNZXNzYWdl",
+            "EgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0YWczGAMgASgNEgwK",
+            "BHRhZzUYBSABKA0SDAoEdGFnNxgHIAEoDRIRCgR0YWc4GAggASgNSACIAQES",
+            "EgoFdGFnMTAYCiABKA1IAYgBARIVCghyaWRlcl9pZBgTIAEoDUgCiAEBEmQK",
+            "BGRhdGEYFSABKAsyUS5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5p",
+            "b25Ub0FwcFJpZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2UuUmlkZXJNZXNzYWdl",
+            "RGF0YUgDiAEBGmcKEFJpZGVyTWVzc2FnZURhdGESDAoEdGFnMRgBIAEoDRpF",
+            "ChNSaWRlck1lc3NhZ2VTdWJEYXRhEgwKBHRhZzEYASABKA0SEgoKd29ybGRf",
+            "bmFtZRgDIAEoCRIMCgR0YWc0GAQgASgNQgcKBV90YWc4QggKBl90YWcxMEIL",
+            "CglfcmlkZXJfaWRCBwoFX2RhdGFCCgoIX2RldGFpbHMi1AEKJVp3aWZ0Q29t",
+            "cGFuaW9uVG9BcHBFbmRBY3Rpdml0eU1lc3NhZ2USDAoEdGFnMRgBIAEoDRJX",
+            "CgRkYXRhGBAgASgLMkkuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFu",
+            "aW9uVG9BcHBFbmRBY3Rpdml0eU1lc3NhZ2UuRW5kQWN0aXZpdHlEYXRhGkQK",
+            "D0VuZEFjdGl2aXR5RGF0YRIMCgR0YWcxGAEgASgNEhUKDWFjdGl2aXR5X25h",
+            "bWUYAyABKAkSDAoEdGFnNBgEIAEoDSKHAQogWndpZnRDb21wYW5pb25Ub0Fw",
+            "cFJpZGVPbk1lc3NhZ2USDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEgwK",
+            "BHRhZzMYAyABKA0SFgoOb3RoZXJfcmlkZXJfaWQYBSABKA0SEwoLcHJvZmls",
+            "ZV91cmwYBiABKAkSDAoEdGFnNxgHIAEoDSKnBQokWndpZnRDb21wYW5pb25U",
+            "b0FwcERldmljZUluZm9NZXNzYWdlEgwKBHRhZzEYASABKA0SDQoFdGFnMTAY",
+            "CiABKA0SWAoLZGV2aWNlX2luZm8YAiABKAsyQy5ad2lmdFBhY2tldE1vbml0",
+            "b3IuWndpZnRDb21wYW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRldmlj",
+            "ZUluZm8ahwQKCkRldmljZUluZm8SaAoGZGV2aWNlGBUgASgLMlguWndpZnRQ",
+            "YWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBEZXZpY2VJbmZvTWVz",
+            "c2FnZS5EZXZpY2VJbmZvLlp3aWZ0Q29tcGFuaW9uRGV2aWNlGo4DChRad2lm",
+            "dENvbXBhbmlvbkRldmljZRIMCgR0YWcxGAEgASgFEnYKB3ZlcnNpb24YBSAB",
+            "KAsyYC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcERl",
+            "dmljZUluZm9NZXNzYWdlLkRldmljZUluZm8uWndpZnRDb21wYW5pb25EZXZp",
+            "Y2UuVmVyc2lvbkgAiAEBGuMBCgdWZXJzaW9uEhMKC2FwcF92ZXJzaW9uGAEg",
+            "ASgJEhIKCm9zX3ZlcnNpb24YAiABKAkSCgoCb3MYAyABKAkSDgoGZGV2aWNl",
+            "GAQgASgJEngKBHRhZzUYBSABKAsyai5ad2lmdFBhY2tldE1vbml0b3IuWndp",
+            "ZnRDb21wYW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRldmljZUluZm8u",
+            "WndpZnRDb21wYW5pb25EZXZpY2UuVmVyc2lvbi5Tb21lVGhpbmcaGQoJU29t",
+            "ZVRoaW5nEgwKBHRhZzEYASABKAVCCgoIX3ZlcnNpb24iiAEKI1p3aWZ0Q29t",
+            "cGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVaZXJvEgwKBHRhZzEYASABKA0SDAoE",
+            "dGFnMhgCIAEoDRIMCgR0YWczGAMgASgNEgwKBHRhZzQYBCABKA0SDAoEdGFn",
+            "NhgGIAEoDRIMCgR0YWc3GAcgASgNEg0KBXRhZzEyGAwgASgNIp0CCiJad2lm",
+            "dENvbXBhbmlvblRvQXBwTWVzc2FnZVZhbHVlT25lEgwKBHRhZzEYASABKA0S",
+            "DAoEdGFnMhgCIAEoDRIMCgR0YWczGAMgASgNEgwKBHRhZzQYBCABKA0SDAoE",
+            "dGFnNhgGIAEoDRIMCgR0YWc3GAcgASgNElcKCHN1Yl9pdGVtGAsgASgLMkUu",
             "WndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBNZXNzYWdl",
-            "VmFsdWVUd28uVHlwZVR3b1N1Ykl0ZW0uVHlwZVR3b1N1Ykl0ZW1EYXRhLk1v",
-            "cmVEYXRhGqcCCghNb3JlRGF0YRIMCgR0YWcxGAEgASgNEgwKBHRhZzIYAiAB",
-            "KAQSDAoEdGFnMxgDIAEoDRIMCgR0YWc0GAQgASgNEnwKBGRhdGEYBiABKAsy",
-            "bi5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcE1lc3Nh",
-            "Z2VWYWx1ZVR3by5UeXBlVHdvU3ViSXRlbS5UeXBlVHdvU3ViSXRlbURhdGEu",
-            "TW9yZURhdGEuRXZlbk1vcmVEYXRhEgwKBHRhZzcYByABKA0SDAoEdGFnOBgI",
-            "IAEoDRINCgV0YWcxMBgKIAEoDRINCgV0YWcxMRgLIAEoDRINCgV0YWcxMhgM",
-            "IAEoDRocCgxFdmVuTW9yZURhdGESDAoEdGFnNhgGIAEoAmIGcHJvdG8z"));
+            "VmFsdWVPbmUuVHlwZU9uZVN1Ykl0ZW0SDQoFdGFnMTIYDCABKA0aOwoOVHlw",
+            "ZU9uZVN1Ykl0ZW0SDAoEdGFnMRgBIAEoDRIMCgR0YWcyGAIgASgNEg0KBXRh",
+            "ZzE5GBMgASgNIrcGCiJad2lmdENvbXBhbmlvblRvQXBwTWVzc2FnZVZhbHVl",
+            "VHdvEgwKBHRhZzEYASABKA0SDAoEdGFnMhgCIAEoDRIMCgR0YWczGAMgASgN",
+            "EgwKBHRhZzQYBCABKA0SDAoEdGFnNhgGIAEoDRIMCgR0YWc3GAcgASgNElcK",
+            "CHN1Yl9pdGVtGAsgAygLMkUuWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29t",
+            "cGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVUd28uVHlwZVR3b1N1Ykl0ZW0SDQoF",
+            "dGFnMTIYDCABKA0a1AQKDlR5cGVUd29TdWJJdGVtEgwKBHRhZzEYASABKA0S",
+            "DAoEdGFnMhgCIAEoDRJmCgRkYXRhGBUgASgLMlguWndpZnRQYWNrZXRNb25p",
+            "dG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVUd28uVHlwZVR3",
+            "b1N1Ykl0ZW0uVHlwZVR3b1N1Ykl0ZW1EYXRhGr0DChJUeXBlVHdvU3ViSXRl",
+            "bURhdGESDAoEdGFnMRgBIAEoDRJvCgRkYXRhGAQgASgLMmEuWndpZnRQYWNr",
+            "ZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBNZXNzYWdlVmFsdWVUd28u",
+            "VHlwZVR3b1N1Ykl0ZW0uVHlwZVR3b1N1Ykl0ZW1EYXRhLk1vcmVEYXRhGqcC",
+            "CghNb3JlRGF0YRIMCgR0YWcxGAEgASgNEgwKBHRhZzIYAiABKAQSDAoEdGFn",
+            "MxgDIAEoDRIMCgR0YWc0GAQgASgNEnwKBGRhdGEYBiABKAsybi5ad2lmdFBh",
+            "Y2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcE1lc3NhZ2VWYWx1ZVR3",
+            "by5UeXBlVHdvU3ViSXRlbS5UeXBlVHdvU3ViSXRlbURhdGEuTW9yZURhdGEu",
+            "RXZlbk1vcmVEYXRhEgwKBHRhZzcYByABKA0SDAoEdGFnOBgIIAEoDRINCgV0",
+            "YWcxMBgKIAEoDRINCgV0YWcxMRgLIAEoDRINCgV0YWcxMhgMIAEoDRocCgxF",
+            "dmVuTW9yZURhdGESDAoEdGFnNhgGIAEoAiKkAQojWndpZnRDb21wYW5pb25U",
+            "b0FwcE1lc3NhZ2VUYWcxMFplcm8SDAoEbXlJZBgBIAEoDRIMCgR0YWczGAMg",
+            "ASgCEgwKBHRhZzQYBCABKAISDAoEdGFnNRgFIAEoAhIMCgR0YWc2GAYgASgC",
+            "EgwKBHRhZzcYByABKAISDAoEdGFnOBgIIAEoAhIMCgR0YWc5GAkgASgBEg0K",
+            "BXRhZzEwGAogASgNYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -168,7 +173,7 @@ namespace ZwiftPacketMonitor {
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Parser, new[]{ "Tag1", "Tag2", "Details" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Parser, new[]{ "Tag1", "Data", "RiderData", "OtherRider" }, new[]{ "Data", "RiderData", "OtherRider" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsData), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsData.Parser, new[]{ "Tag1", "ActivityId", "Tag3", "Tag4", "Tag7", "Tag8", "Tag10", "Tag11", "Tag12" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.Rider), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.Rider.Parser, new[]{ "RiderId", "Tag2", "SomeData", "ProfileUrl", "SecondRiderId", "Tag7", "Description", "Tag12", "Tag13", "Tag16", "Tag18", "Tag19", "Tag20" }, new[]{ "ProfileUrl" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.Rider.Types.WhatIsThis), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.Rider.Types.WhatIsThis.Parser, new[]{ "Tag1", "Tag2", "Tag3" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Parser, new[]{ "Sub" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Types.Sub), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Types.Sub.Parser, new[]{ "Tag1", "Rider", "Tag3" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag5", "Tag6", "FirstName", "LastName", "Tag9", "ProfileUrl", "Tag11", "Tag12", "Tag13", "Tag14", "Tag15", "Tag16", "Tag17", "Tag18" }, null, null, null, null)})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag5", "Tag6", "FirstName", "LastName", "Tag9", "Tag10", "Tag11", "Tag12", "Tag13", "Tag14", "Tag15", "Tag16", "Tag17", "Tag18", "ProfileUrl" }, new[]{ "ProfileUrl" }, null, null, null)})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag6", "Tag7", "TypeThree", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree), global::ZwiftPacketMonitor.ZwiftAppToCompanionMessageTypeOne.Types.ZwiftAppToCompanionMessageThree.Parser, new[]{ "Tag1", "Tag2", "Tag19" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToApp), global::ZwiftPacketMonitor.ZwiftCompanionToApp.Parser, new[]{ "Tag1", "Tag10" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Parser, new[]{ "MyId", "Sequence", "Details" }, new[]{ "Details" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag5", "Tag7", "Tag8", "Tag10", "RiderId", "Data" }, new[]{ "Tag8", "Tag10", "RiderId", "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Parser, new[]{ "Tag1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData.Parser, new[]{ "Tag1", "WorldName", "Tag4" }, null, null, null, null)})})}),
@@ -177,7 +182,8 @@ namespace ZwiftPacketMonitor {
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Parser, new[]{ "Tag1", "Tag10", "DeviceInfo" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Parser, new[]{ "Device" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Parser, new[]{ "Tag1", "Version" }, new[]{ "Version" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Parser, new[]{ "AppVersion", "OsVersion", "Os", "Device", "Tag5" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing.Parser, new[]{ "Tag1" }, null, null, null, null)})})})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueZero), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueZero.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Tag6", "Tag7", "Tag12" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueOne), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueOne.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Tag6", "Tag7", "SubItem", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueOne.Types.TypeOneSubItem), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueOne.Types.TypeOneSubItem.Parser, new[]{ "Tag1", "Tag2", "Tag19" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Tag6", "Tag7", "SubItem", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Parser, new[]{ "Tag1", "Tag2", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Parser, new[]{ "Tag1", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Data", "Tag7", "Tag8", "Tag10", "Tag11", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Parser, new[]{ "Tag6" }, null, null, null, null)})})})})
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Tag6", "Tag7", "SubItem", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Parser, new[]{ "Tag1", "Tag2", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Parser, new[]{ "Tag1", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Tag4", "Data", "Tag7", "Tag8", "Tag10", "Tag11", "Tag12" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageValueTwo.Types.TypeTwoSubItem.Types.TypeTwoSubItemData.Types.MoreData.Types.EvenMoreData.Parser, new[]{ "Tag6" }, null, null, null, null)})})})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageTag10Zero), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageTag10Zero.Parser, new[]{ "MyId", "Tag3", "Tag4", "Tag5", "Tag6", "Tag7", "Tag8", "Tag9", "Tag10" }, null, null, null, null)
           }));
     }
     #endregion
@@ -5131,7 +5137,7 @@ namespace ZwiftPacketMonitor {
               firstName_ = other.firstName_;
               lastName_ = other.lastName_;
               tag9_ = other.tag9_;
-              profileUrl_ = other.profileUrl_;
+              tag10_ = other.tag10_;
               tag11_ = other.tag11_;
               tag12_ = other.tag12_;
               tag13_ = other.tag13_;
@@ -5140,6 +5146,7 @@ namespace ZwiftPacketMonitor {
               tag16_ = other.tag16_;
               tag17_ = other.tag17_;
               tag18_ = other.tag18_;
+              profileUrl_ = other.profileUrl_;
               _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
             }
 
@@ -5257,15 +5264,15 @@ namespace ZwiftPacketMonitor {
               }
             }
 
-            /// <summary>Field number for the "profile_url" field.</summary>
-            public const int ProfileUrlFieldNumber = 10;
-            private string profileUrl_ = "";
+            /// <summary>Field number for the "tag10" field.</summary>
+            public const int Tag10FieldNumber = 10;
+            private string tag10_ = "";
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public string ProfileUrl {
-              get { return profileUrl_; }
+            public string Tag10 {
+              get { return tag10_; }
               set {
-                profileUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+                tag10_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
               }
             }
 
@@ -5365,6 +5372,30 @@ namespace ZwiftPacketMonitor {
               }
             }
 
+            /// <summary>Field number for the "profile_url" field.</summary>
+            public const int ProfileUrlFieldNumber = 19;
+            private string profileUrl_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string ProfileUrl {
+              get { return profileUrl_ ?? ""; }
+              set {
+                profileUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+            /// <summary>Gets whether the "profile_url" field is set</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool HasProfileUrl {
+              get { return profileUrl_ != null; }
+            }
+            /// <summary>Clears the value of the "profile_url" field</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void ClearProfileUrl() {
+              profileUrl_ = null;
+            }
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
             public override bool Equals(object other) {
@@ -5389,7 +5420,7 @@ namespace ZwiftPacketMonitor {
               if (FirstName != other.FirstName) return false;
               if (LastName != other.LastName) return false;
               if (Tag9 != other.Tag9) return false;
-              if (ProfileUrl != other.ProfileUrl) return false;
+              if (Tag10 != other.Tag10) return false;
               if (Tag11 != other.Tag11) return false;
               if (Tag12 != other.Tag12) return false;
               if (Tag13 != other.Tag13) return false;
@@ -5398,6 +5429,7 @@ namespace ZwiftPacketMonitor {
               if (Tag16 != other.Tag16) return false;
               if (Tag17 != other.Tag17) return false;
               if (Tag18 != other.Tag18) return false;
+              if (ProfileUrl != other.ProfileUrl) return false;
               return Equals(_unknownFields, other._unknownFields);
             }
 
@@ -5414,7 +5446,7 @@ namespace ZwiftPacketMonitor {
               if (FirstName.Length != 0) hash ^= FirstName.GetHashCode();
               if (LastName.Length != 0) hash ^= LastName.GetHashCode();
               if (Tag9 != 0L) hash ^= Tag9.GetHashCode();
-              if (ProfileUrl.Length != 0) hash ^= ProfileUrl.GetHashCode();
+              if (Tag10.Length != 0) hash ^= Tag10.GetHashCode();
               if (Tag11 != 0) hash ^= Tag11.GetHashCode();
               if (Tag12 != 0) hash ^= Tag12.GetHashCode();
               if (Tag13 != 0) hash ^= Tag13.GetHashCode();
@@ -5423,6 +5455,7 @@ namespace ZwiftPacketMonitor {
               if (Tag16 != 0) hash ^= Tag16.GetHashCode();
               if (Tag17 != 0) hash ^= Tag17.GetHashCode();
               if (Tag18 != 0) hash ^= Tag18.GetHashCode();
+              if (HasProfileUrl) hash ^= ProfileUrl.GetHashCode();
               if (_unknownFields != null) {
                 hash ^= _unknownFields.GetHashCode();
               }
@@ -5477,9 +5510,9 @@ namespace ZwiftPacketMonitor {
                 output.WriteRawTag(72);
                 output.WriteInt64(Tag9);
               }
-              if (ProfileUrl.Length != 0) {
+              if (Tag10.Length != 0) {
                 output.WriteRawTag(82);
-                output.WriteString(ProfileUrl);
+                output.WriteString(Tag10);
               }
               if (Tag11 != 0) {
                 output.WriteRawTag(88);
@@ -5512,6 +5545,10 @@ namespace ZwiftPacketMonitor {
               if (Tag18 != 0) {
                 output.WriteRawTag(144, 1);
                 output.WriteUInt32(Tag18);
+              }
+              if (HasProfileUrl) {
+                output.WriteRawTag(154, 1);
+                output.WriteString(ProfileUrl);
               }
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(output);
@@ -5559,9 +5596,9 @@ namespace ZwiftPacketMonitor {
                 output.WriteRawTag(72);
                 output.WriteInt64(Tag9);
               }
-              if (ProfileUrl.Length != 0) {
+              if (Tag10.Length != 0) {
                 output.WriteRawTag(82);
-                output.WriteString(ProfileUrl);
+                output.WriteString(Tag10);
               }
               if (Tag11 != 0) {
                 output.WriteRawTag(88);
@@ -5594,6 +5631,10 @@ namespace ZwiftPacketMonitor {
               if (Tag18 != 0) {
                 output.WriteRawTag(144, 1);
                 output.WriteUInt32(Tag18);
+              }
+              if (HasProfileUrl) {
+                output.WriteRawTag(154, 1);
+                output.WriteString(ProfileUrl);
               }
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(ref output);
@@ -5632,8 +5673,8 @@ namespace ZwiftPacketMonitor {
               if (Tag9 != 0L) {
                 size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag9);
               }
-              if (ProfileUrl.Length != 0) {
-                size += 1 + pb::CodedOutputStream.ComputeStringSize(ProfileUrl);
+              if (Tag10.Length != 0) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Tag10);
               }
               if (Tag11 != 0) {
                 size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag11);
@@ -5658,6 +5699,9 @@ namespace ZwiftPacketMonitor {
               }
               if (Tag18 != 0) {
                 size += 2 + pb::CodedOutputStream.ComputeUInt32Size(Tag18);
+              }
+              if (HasProfileUrl) {
+                size += 2 + pb::CodedOutputStream.ComputeStringSize(ProfileUrl);
               }
               if (_unknownFields != null) {
                 size += _unknownFields.CalculateSize();
@@ -5698,8 +5742,8 @@ namespace ZwiftPacketMonitor {
               if (other.Tag9 != 0L) {
                 Tag9 = other.Tag9;
               }
-              if (other.ProfileUrl.Length != 0) {
-                ProfileUrl = other.ProfileUrl;
+              if (other.Tag10.Length != 0) {
+                Tag10 = other.Tag10;
               }
               if (other.Tag11 != 0) {
                 Tag11 = other.Tag11;
@@ -5724,6 +5768,9 @@ namespace ZwiftPacketMonitor {
               }
               if (other.Tag18 != 0) {
                 Tag18 = other.Tag18;
+              }
+              if (other.HasProfileUrl) {
+                ProfileUrl = other.ProfileUrl;
               }
               _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
             }
@@ -5777,7 +5824,7 @@ namespace ZwiftPacketMonitor {
                     break;
                   }
                   case 82: {
-                    ProfileUrl = input.ReadString();
+                    Tag10 = input.ReadString();
                     break;
                   }
                   case 88: {
@@ -5810,6 +5857,10 @@ namespace ZwiftPacketMonitor {
                   }
                   case 144: {
                     Tag18 = input.ReadUInt32();
+                    break;
+                  }
+                  case 154: {
+                    ProfileUrl = input.ReadString();
                     break;
                   }
                 }
@@ -5864,7 +5915,7 @@ namespace ZwiftPacketMonitor {
                     break;
                   }
                   case 82: {
-                    ProfileUrl = input.ReadString();
+                    Tag10 = input.ReadString();
                     break;
                   }
                   case 88: {
@@ -5897,6 +5948,10 @@ namespace ZwiftPacketMonitor {
                   }
                   case 144: {
                     Tag18 = input.ReadUInt32();
+                    break;
+                  }
+                  case 154: {
+                    ProfileUrl = input.ReadString();
                     break;
                   }
                 }
@@ -13191,6 +13246,491 @@ namespace ZwiftPacketMonitor {
 
     }
     #endregion
+
+  }
+
+  public sealed partial class ZwiftCompanionToAppMessageTag10Zero : pb::IMessage<ZwiftCompanionToAppMessageTag10Zero>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ZwiftCompanionToAppMessageTag10Zero> _parser = new pb::MessageParser<ZwiftCompanionToAppMessageTag10Zero>(() => new ZwiftCompanionToAppMessageTag10Zero());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ZwiftCompanionToAppMessageTag10Zero> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftCompantionMessagesReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppMessageTag10Zero() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppMessageTag10Zero(ZwiftCompanionToAppMessageTag10Zero other) : this() {
+      myId_ = other.myId_;
+      tag3_ = other.tag3_;
+      tag4_ = other.tag4_;
+      tag5_ = other.tag5_;
+      tag6_ = other.tag6_;
+      tag7_ = other.tag7_;
+      tag8_ = other.tag8_;
+      tag9_ = other.tag9_;
+      tag10_ = other.tag10_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ZwiftCompanionToAppMessageTag10Zero Clone() {
+      return new ZwiftCompanionToAppMessageTag10Zero(this);
+    }
+
+    /// <summary>Field number for the "myId" field.</summary>
+    public const int MyIdFieldNumber = 1;
+    private uint myId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MyId {
+      get { return myId_; }
+      set {
+        myId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag3" field.</summary>
+    public const int Tag3FieldNumber = 3;
+    private float tag3_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Tag3 {
+      get { return tag3_; }
+      set {
+        tag3_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag4" field.</summary>
+    public const int Tag4FieldNumber = 4;
+    private float tag4_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Tag4 {
+      get { return tag4_; }
+      set {
+        tag4_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag5" field.</summary>
+    public const int Tag5FieldNumber = 5;
+    private float tag5_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Tag5 {
+      get { return tag5_; }
+      set {
+        tag5_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag6" field.</summary>
+    public const int Tag6FieldNumber = 6;
+    private float tag6_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Tag6 {
+      get { return tag6_; }
+      set {
+        tag6_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag7" field.</summary>
+    public const int Tag7FieldNumber = 7;
+    private float tag7_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Tag7 {
+      get { return tag7_; }
+      set {
+        tag7_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag8" field.</summary>
+    public const int Tag8FieldNumber = 8;
+    private float tag8_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Tag8 {
+      get { return tag8_; }
+      set {
+        tag8_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag9" field.</summary>
+    public const int Tag9FieldNumber = 9;
+    private double tag9_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double Tag9 {
+      get { return tag9_; }
+      set {
+        tag9_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tag10" field.</summary>
+    public const int Tag10FieldNumber = 10;
+    private uint tag10_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Tag10 {
+      get { return tag10_; }
+      set {
+        tag10_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ZwiftCompanionToAppMessageTag10Zero);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ZwiftCompanionToAppMessageTag10Zero other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MyId != other.MyId) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag3, other.Tag3)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag4, other.Tag4)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag5, other.Tag5)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag6, other.Tag6)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag7, other.Tag7)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag8, other.Tag8)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Tag9, other.Tag9)) return false;
+      if (Tag10 != other.Tag10) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MyId != 0) hash ^= MyId.GetHashCode();
+      if (Tag3 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag3);
+      if (Tag4 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag4);
+      if (Tag5 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag5);
+      if (Tag6 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag6);
+      if (Tag7 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag7);
+      if (Tag8 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag8);
+      if (Tag9 != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Tag9);
+      if (Tag10 != 0) hash ^= Tag10.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (MyId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(MyId);
+      }
+      if (Tag3 != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Tag3);
+      }
+      if (Tag4 != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Tag4);
+      }
+      if (Tag5 != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(Tag5);
+      }
+      if (Tag6 != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(Tag6);
+      }
+      if (Tag7 != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(Tag7);
+      }
+      if (Tag8 != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(Tag8);
+      }
+      if (Tag9 != 0D) {
+        output.WriteRawTag(73);
+        output.WriteDouble(Tag9);
+      }
+      if (Tag10 != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Tag10);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MyId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(MyId);
+      }
+      if (Tag3 != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(Tag3);
+      }
+      if (Tag4 != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Tag4);
+      }
+      if (Tag5 != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(Tag5);
+      }
+      if (Tag6 != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(Tag6);
+      }
+      if (Tag7 != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(Tag7);
+      }
+      if (Tag8 != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(Tag8);
+      }
+      if (Tag9 != 0D) {
+        output.WriteRawTag(73);
+        output.WriteDouble(Tag9);
+      }
+      if (Tag10 != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Tag10);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (MyId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MyId);
+      }
+      if (Tag3 != 0F) {
+        size += 1 + 4;
+      }
+      if (Tag4 != 0F) {
+        size += 1 + 4;
+      }
+      if (Tag5 != 0F) {
+        size += 1 + 4;
+      }
+      if (Tag6 != 0F) {
+        size += 1 + 4;
+      }
+      if (Tag7 != 0F) {
+        size += 1 + 4;
+      }
+      if (Tag8 != 0F) {
+        size += 1 + 4;
+      }
+      if (Tag9 != 0D) {
+        size += 1 + 8;
+      }
+      if (Tag10 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ZwiftCompanionToAppMessageTag10Zero other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MyId != 0) {
+        MyId = other.MyId;
+      }
+      if (other.Tag3 != 0F) {
+        Tag3 = other.Tag3;
+      }
+      if (other.Tag4 != 0F) {
+        Tag4 = other.Tag4;
+      }
+      if (other.Tag5 != 0F) {
+        Tag5 = other.Tag5;
+      }
+      if (other.Tag6 != 0F) {
+        Tag6 = other.Tag6;
+      }
+      if (other.Tag7 != 0F) {
+        Tag7 = other.Tag7;
+      }
+      if (other.Tag8 != 0F) {
+        Tag8 = other.Tag8;
+      }
+      if (other.Tag9 != 0D) {
+        Tag9 = other.Tag9;
+      }
+      if (other.Tag10 != 0) {
+        Tag10 = other.Tag10;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            MyId = input.ReadUInt32();
+            break;
+          }
+          case 29: {
+            Tag3 = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            Tag4 = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            Tag5 = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            Tag6 = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            Tag7 = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            Tag8 = input.ReadFloat();
+            break;
+          }
+          case 73: {
+            Tag9 = input.ReadDouble();
+            break;
+          }
+          case 80: {
+            Tag10 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            MyId = input.ReadUInt32();
+            break;
+          }
+          case 29: {
+            Tag3 = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            Tag4 = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            Tag5 = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            Tag6 = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            Tag7 = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            Tag8 = input.ReadFloat();
+            break;
+          }
+          case 73: {
+            Tag9 = input.ReadDouble();
+            break;
+          }
+          case 80: {
+            Tag10 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
