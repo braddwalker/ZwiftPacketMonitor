@@ -75,7 +75,7 @@ message ZwiftAppToCompanionActivityDetailsMessage
 
     message ActivityDetails
     {
-        uint32 tag1 = 1; // World id perhaps?
+        uint32 tag1 = 1; // Appears to be a detail type that specifies which info is available
 
         message ActivityDetailsData
         {
@@ -120,11 +120,11 @@ message ZwiftAppToCompanionActivityDetailsMessage
             message Sub
             {
                 uint32 tag1 = 1;
-                Rider rider = 2;
+                optional Rider rider = 2;
                 uint32 tag3 = 3;
             }
             
-            Sub sub = 1;
+            repeated Sub sub = 1;
         }
 
         optional ActivityDetailsRiderData rider_data = 6;
