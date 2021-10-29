@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using SharpPcap;
@@ -10,7 +9,6 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Net;
 using Google.Protobuf;
-using Google.Protobuf.Reflection;
 using Microsoft.Extensions.Logging;
 using PacketDotNet;
 
@@ -479,8 +477,6 @@ namespace ZwiftPacketMonitor
                 var clockTime = DateTimeOffset.FromUnixTimeSeconds((long)typeTag10Zero.ClockTime);
                 _logger.LogDebug("Sent a tag 10 = 0 type message with timestamp {clock_time}", clockTime);
 
-                StoreMessageType(100, buffer, direction, sequenceNumber);
-
                 return;
             }
 
@@ -519,18 +515,12 @@ namespace ZwiftPacketMonitor
                                 return;
                             case 1010:
                                 _logger.LogInformation("Sent TURN LEFT command");
-
-                                StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
                                 return;
                             case 1011:
                                 _logger.LogInformation("Sent GO STRAIGHT command");
-
-                                StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
                                 return;
                             case 1012:
                                 _logger.LogInformation("Sent TURN RIGHT command");
-
-                                StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
                                 return;
                         }
 
@@ -600,7 +590,6 @@ namespace ZwiftPacketMonitor
                         break;
                     case 3:
                         _logger.LogDebug("Received a type 3 message that we don't understand yet");
-                        //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNumber, 40);
                         break;
                     case 4:
                         var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
@@ -609,7 +598,6 @@ namespace ZwiftPacketMonitor
                         break;
                     case 9:
                         _logger.LogDebug("Received a type 9 message that we don't understand yet");
-                        //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNumber, 40);
                         break;
                     // Activity details?
                     case 13:
@@ -676,15 +664,12 @@ namespace ZwiftPacketMonitor
                                 }
                             case 20:
                                 _logger.LogDebug("Received a type 20 message that we don't understand yet");
-                                StoreMessageType(20, item.ToByteArray(), direction, sequenceNumber, 50);
                                 break;
                             case 21:
                                 _logger.LogDebug("Received a type 21 message that we don't understand yet");
-                                StoreMessageType(21, item.ToByteArray(), direction, sequenceNumber, 50);
                                 break;
                             case 23:
                                 _logger.LogDebug("Received a type 21 message that we don't understand yet");
-                                StoreMessageType(23, item.ToByteArray(), direction, sequenceNumber, 50);
                                 storeEntireMessage = true;
                                 break;
                             default:
@@ -739,17 +724,14 @@ namespace ZwiftPacketMonitor
                 // Turn Left
                 case 1010:
                     _logger.LogDebug("Received TURN LEFT button available");
-                    //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
                     break;
                 // Go Straight
                 case 1011:
                     _logger.LogDebug("Received GO STRAIGHT button available");
-                    //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
                     break;
                 // Turn right
                 case 1012:
                     _logger.LogDebug("Received TURN RIGHT button available");
-                    //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
                     break;
                 // Discard leightweight
                 case 1030:
