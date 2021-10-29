@@ -8,6 +8,7 @@ namespace ZwiftPacketMonitor
 {
     public class PayloadReadyEventArgs : EventArgs {
         public byte[] Payload { get; set; }
+        public uint SequenceNumber { get; set; }
     }
 
     /// <summary>
@@ -23,6 +24,7 @@ namespace ZwiftPacketMonitor
         private int _assembledLen;
         private byte[] _payload;
         private bool _complete;
+        private uint _startingSequenceNumber = 0;
 
         public PacketAssembler(ILogger<PacketAssembler> logger)
         {
@@ -52,6 +54,11 @@ namespace ZwiftPacketMonitor
         public void Assemble(TcpPacket packet)
         {
             packet = packet ?? throw new ArgumentException(nameof(packet));
+
+            if (_startingSequenceNumber == 0)
+            {
+                _startingSequenceNumber = packet.SequenceNumber;
+            }
 
             try
             {
@@ -113,7 +120,7 @@ namespace ZwiftPacketMonitor
 
                             if (payload.Length > 0)
                             {
-                                OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload });
+                                OnPayloadReady(new PayloadReadyEventArgs() { Payload = payload, SequenceNumber = _startingSequenceNumber });
 
                                 // No need to decode the payload if debug isn't enabled
                                 if (_logger.IsEnabled(LogLevel.Debug))
@@ -145,6 +152,7 @@ namespace ZwiftPacketMonitor
             _payload = null;
             _assembledLen = 0;
             _complete = false;
+            _startingSequenceNumber = 0;
         }
 
         private static int ToUInt16(byte[] buffer, int start, int count)

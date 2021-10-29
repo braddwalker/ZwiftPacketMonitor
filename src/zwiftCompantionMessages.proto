@@ -199,7 +199,7 @@ message ZwiftCompanionToAppRiderMessage
         uint32 tag5 = 5;
         uint32 tag7 = 7;
         optional uint32 tag8 = 8;
-        optional uint32 tag10 = 10;
+        optional uint32 command_type = 10;
         optional uint32 rider_id = 19;
 
         message RiderMessageData
@@ -281,6 +281,6 @@ message ZwiftCompanionToAppMessageTag10Zero
     float tag6 = 6;
     float tag7 = 7;
     float tag8 = 8;
-    double tag9 = 9;
+    double clock_time = 9;
     uint32 tag10 = 10;
 }

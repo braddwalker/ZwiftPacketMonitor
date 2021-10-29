@@ -100,9 +100,8 @@ namespace ZwiftPacketMonitor
         private readonly PacketAssembler _packetAssembler;
         private readonly PacketAssembler _companionPacketAssemblerPcToApp;
         private readonly PacketAssembler _companionPacketAssemblerAppToPc;
-        private int _tcpPacketCounter = 0;
-        private int _udpPacketCounter = 0;
         private readonly Dictionary<string, int> _messageTypeCounters = new Dictionary<string, int>();
+        private DateTime? _offset;
 
         /// <summary>
         /// Creates a new instance of the monitor class.
@@ -123,14 +122,14 @@ namespace ZwiftPacketMonitor
             _companionPacketAssemblerPcToApp.PayloadReady += (s, e) =>
             {
                 // Only incoming TCP payloads are coming through here
-                DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming);
+                DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming, e.SequenceNumber);
             };
 
             _companionPacketAssemblerAppToPc = companionPacketAssemblerAppToPc;
             _companionPacketAssemblerAppToPc.PayloadReady += (s, e) =>
             {
                 // Only incoming TCP payloads are coming through here
-                DeserializeAndDispatchCompanion(e.Payload, Direction.Outgoing);
+                DeserializeAndDispatchCompanion(e.Payload, Direction.Outgoing, e.SequenceNumber);
             };
 
         }
@@ -357,12 +356,19 @@ namespace ZwiftPacketMonitor
                 var packet = Packet.ParsePacket(e.Device.LinkType, e.Data.ToArray());
                 var tcpPacket = packet.Extract<TcpPacket>();
                 var udpPacket = packet.Extract<UdpPacket>();
-
+                
                 var protoBytes = Array.Empty<byte>();
                 var direction = Direction.Unknown;
 
                 if (tcpPacket != null)
                 {
+                    if (_offset == null)
+                    {
+                        _offset = e.Header.Timeval.Date;
+                    }
+
+                    tcpPacket.SequenceNumber = (uint)(e.Header.Timeval.Date - _offset.Value).TotalMilliseconds;
+
                     int srcPort = tcpPacket.SourcePort;
                     int dstPort = tcpPacket.DestinationPort;
 
@@ -439,21 +445,19 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        private void DeserializeAndDispatchCompanion(byte[] buffer, Direction direction)
+        private void DeserializeAndDispatchCompanion(byte[] buffer, Direction direction, uint sequenceNumber)
         {
             if (direction == Direction.Incoming)
             {
-                DeserializeAndDispatchIncomingMessage(buffer, direction);
+                DeserializeAndDispatchIncomingMessage(buffer, direction, sequenceNumber);
             }
             else if (direction == Direction.Outgoing)
             {
-                DeserializeAndDispatchOutgoingMessage(buffer, direction);
+                DeserializeAndDispatchOutgoingMessage(buffer, direction, sequenceNumber);
             }
-
-            _tcpPacketCounter++;
         }
 
-        private void DeserializeAndDispatchOutgoingMessage(byte[] buffer, Direction direction)
+        private void DeserializeAndDispatchOutgoingMessage(byte[] buffer, Direction direction, uint sequenceNumber)
         {
             var message = ZwiftCompanionToApp.Parser.ParseFrom(buffer);
 
@@ -472,10 +476,10 @@ namespace ZwiftPacketMonitor
             if (riderMessage.Details == null && message.Tag10 == 0)
             {
                 var typeTag10Zero = ZwiftCompanionToAppMessageTag10Zero.Parser.ParseFrom(buffer);
+                var clockTime = DateTimeOffset.FromUnixTimeSeconds((long)typeTag10Zero.ClockTime);
+                _logger.LogDebug("Sent a tag 10 = 0 type message with timestamp {clock_time}", clockTime);
 
-                _logger.LogDebug("Sent a tag 10 = 0 type message");
-
-                StoreMessageType(100, buffer, direction);
+                StoreMessageType(100, buffer, direction, sequenceNumber);
 
                 return;
             }
@@ -487,13 +491,15 @@ namespace ZwiftPacketMonitor
                     case 14:
                         _logger.LogInformation("Sent a type 14 command but no clue what it is");
 
-                        StoreMessageType(riderMessage.Details.Type, buffer, direction);
+                        StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
 
                         return;
                     case 16:
+                        // I don't think this is a ride-on because it happens _a lot_....
+
                         var rideOn = ZwiftCompanionToAppRideOnMessage.Parser.ParseFrom(riderMessage.Details.ToByteArray());
 
-                        _logger.LogInformation(
+                        _logger.LogDebug(
                             "Possibly sent a ride-on message to {other_rider_id}",
                             rideOn.OtherRiderId);
 
@@ -501,24 +507,30 @@ namespace ZwiftPacketMonitor
                     case 20:
                         _logger.LogInformation("Sent a type 20 command but no idea what it is");
 
-                        StoreMessageType(riderMessage.Details.Type, buffer, direction);
+                        StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
 
                         return;
                     // Seems to be a command form the companion app to the desktop app
-                    case 22:
-                        switch (riderMessage.Details.Tag10) // Tag10 seems to be the type of command
+                    case 22 when riderMessage.Details.HasCommandType:
+                        switch (riderMessage.Details.CommandType) // Tag10 seems to be the type of command
                         {
                             case 6:
                                 _logger.LogInformation("Possibly sent RIDE ON command");
                                 return;
                             case 1010:
                                 _logger.LogInformation("Sent TURN LEFT command");
+
+                                StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
                                 return;
                             case 1011:
                                 _logger.LogInformation("Sent GO STRAIGHT command");
+
+                                StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
                                 return;
                             case 1012:
                                 _logger.LogInformation("Sent TURN RIGHT command");
+
+                                StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
                                 return;
                         }
 
@@ -526,7 +538,7 @@ namespace ZwiftPacketMonitor
                     case 28:
                         _logger.LogInformation("Possibly sent our own rider id sync command");
 
-                        StoreMessageType(riderMessage.Details.Type, buffer, direction);
+                        StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
 
                         return;
                     // Device info
@@ -557,7 +569,7 @@ namespace ZwiftPacketMonitor
                     default:
                         _logger.LogInformation("Found a rider detail message of type: " + riderMessage.Details.Type);
 
-                        StoreMessageType(riderMessage.Details.Type, buffer, direction);
+                        StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
 
                         return;
                 }
@@ -565,10 +577,10 @@ namespace ZwiftPacketMonitor
 
             _logger.LogWarning("Sent a message that we don't recognize yet");
 
-            StoreMessageType(999, buffer, direction);
+            StoreMessageType(999, buffer, direction, sequenceNumber);
         }
 
-        private void DeserializeAndDispatchIncomingMessage(byte[] buffer, Direction direction)
+        private void DeserializeAndDispatchIncomingMessage(byte[] buffer, Direction direction, uint sequenceNumber)
         {
             var storeEntireMessage = false;
 
@@ -588,14 +600,16 @@ namespace ZwiftPacketMonitor
                         break;
                     case 3:
                         _logger.LogDebug("Received a type 3 message that we don't understand yet");
+                        //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNumber, 40);
                         break;
                     case 4:
                         var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
 
-                        DispatchButtonMessage(direction, buttonMessage, item);
+                        DispatchButtonMessage(direction, buttonMessage, item, sequenceNumber);
                         break;
                     case 9:
                         _logger.LogDebug("Received a type 9 message that we don't understand yet");
+                        //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNumber, 40);
                         break;
                     // Activity details?
                     case 13:
@@ -619,7 +633,8 @@ namespace ZwiftPacketMonitor
                                             {
                                                 var subject = $"{rider.Description} ({rider.RiderId})";
 
-                                                _logger.LogDebug("Received our own rider position: {subject}", subject);
+                                                _logger.LogDebug("Received our own rider information: {subject}", subject);
+                                                // It seems that this data doesn't ever change during the session....
                                             }
                                         }
                                         else
@@ -636,7 +651,7 @@ namespace ZwiftPacketMonitor
                                     activityDetails.Details.Type);
                                 break;
                             case 7:
-                                _logger.LogDebug("Received a type 7 message that we don't understand yet. Tag 11[].8.1 contains a rider id");
+                                _logger.LogDebug("Received a type 7 message that we don't understand yet. Tag 11[].8.1 contains a rider id"); // No not really
                                 break;
                             case 10:
                                 _logger.LogDebug("Received a type 10 message that we don't understand yet");
@@ -661,12 +676,15 @@ namespace ZwiftPacketMonitor
                                 }
                             case 20:
                                 _logger.LogDebug("Received a type 20 message that we don't understand yet");
+                                StoreMessageType(20, item.ToByteArray(), direction, sequenceNumber, 50);
                                 break;
                             case 21:
                                 _logger.LogDebug("Received a type 21 message that we don't understand yet");
+                                StoreMessageType(21, item.ToByteArray(), direction, sequenceNumber, 50);
                                 break;
                             case 23:
                                 _logger.LogDebug("Received a type 21 message that we don't understand yet");
+                                StoreMessageType(23, item.ToByteArray(), direction, sequenceNumber, 50);
                                 storeEntireMessage = true;
                                 break;
                             default:
@@ -682,7 +700,7 @@ namespace ZwiftPacketMonitor
 
                         storeEntireMessage = true;
 
-                        StoreMessageType(item.Type, item.ToByteArray(), direction);
+                        StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNumber);
 
                         break;
                 }
@@ -690,68 +708,83 @@ namespace ZwiftPacketMonitor
 
             if (storeEntireMessage)
             {
-                StoreMessageType(0, buffer, direction);
+                StoreMessageType(0, buffer, direction, sequenceNumber);
             }
         }
 
-        private void DispatchButtonMessage(Direction direction, ZwiftAppToCompanionButtonMessage buttonMessage, ZwiftAppToCompanion.Types.SubItem item)
+        private void DispatchButtonMessage(
+            Direction direction, 
+            ZwiftAppToCompanionButtonMessage buttonMessage,
+            ZwiftAppToCompanion.Types.SubItem item, 
+            uint sequenceNummber)
         {
             switch (buttonMessage.TypeId)
             {
                 // Elbow flick
                 case 4:
                     // Would we get this if someone is drafting us?
-                    _logger.LogInformation("Received ELBOW FLICK button available");
+                    _logger.LogDebug("Received ELBOW FLICK button available");
                     break;
                 // Wave
                 case 5:
-                    _logger.LogInformation("Received WAVE button available");
+                    _logger.LogDebug("Received WAVE button available");
                     break;
                 // Ride on
                 case 6:
-                    _logger.LogInformation("Received RIDE ON button available");
+                    _logger.LogDebug("Received RIDE ON button available");
                     break;
                 case 23:
                     // It appears value 23 is something empty
                     break;
                 // Turn Left
                 case 1010:
-                    _logger.LogInformation("Received TURN LEFT button available");
+                    _logger.LogDebug("Received TURN LEFT button available");
+                    //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
                     break;
                 // Go Straight
                 case 1011:
-                    _logger.LogInformation("Received GO STRAIGHT button available");
+                    _logger.LogDebug("Received GO STRAIGHT button available");
+                    //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
                     break;
                 // Turn right
                 case 1012:
-                    _logger.LogInformation("Received TURN RIGHT button available");
+                    _logger.LogDebug("Received TURN RIGHT button available");
+                    //StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
                     break;
                 // Discard leightweight
+                case 1030:
+                    _logger.LogDebug("Received DISCARD AERO button available");
+                    break;
                 case 1034:
-                    _logger.LogInformation("Received DISCARD LIGHTWEIGHT button available");
+                    _logger.LogDebug("Received DISCARD LIGHTWEIGHT button available");
                     break;
                 // POWER GRAPH
                 case 1060:
-                    _logger.LogInformation("Received POWER GRAPH button available");
+                    _logger.LogDebug("Received POWER GRAPH button available");
                     break;
                 // HUD
                 case 1081:
-                    _logger.LogInformation("Received HUD button available");
+                    _logger.LogDebug("Received HUD button available");
                     break;
                 default:
                     _logger.LogWarning(
                         "Received a button available that we don't recognise {type}",
                         buttonMessage.TypeId);
 
-                    StoreMessageType(item.Type, item.ToByteArray(), direction, 40);
+                    StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
 
                     break;
             }
         }
 
-        private void StoreMessageType(uint messageType, byte[] buffer, Direction direction, int maxNumberOfMessages = 10)
+        private void StoreMessageType(
+            uint messageType, 
+            byte[] buffer, 
+            Direction direction, 
+            uint sequenceNummber,
+            int maxNumberOfMessages = 10)
         {
-            var basePath = $"c:\\git\\temp\\zwift\\companion-05-tcp";
+            var basePath = $"c:\\git\\temp\\zwift\\companion-04-tcp";
 
             if (!Directory.Exists(basePath))
             {
@@ -768,7 +801,7 @@ namespace ZwiftPacketMonitor
             if (_messageTypeCounters[type] < maxNumberOfMessages)
             {
                 File.WriteAllBytes(
-                    $"{basePath}\\{_tcpPacketCounter:00000}-{direction.ToString().ToLower()}-{messageType:000}.bin",
+                    $"{basePath}\\{sequenceNummber:000000}-{direction.ToString().ToLower()}-{messageType:000}.bin",
                     buffer);
 
                 _messageTypeCounters[type]++;

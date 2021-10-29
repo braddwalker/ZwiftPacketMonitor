@@ -96,46 +96,47 @@ namespace ZwiftPacketMonitor {
             "KA0SDQoFdGFnMTgYEiABKA0SGAoLcHJvZmlsZV91cmwYEyABKAlIAIgBAUIO",
             "CgxfcHJvZmlsZV91cmxCBwoFX2RhdGFCDQoLX3JpZGVyX2RhdGFCDgoMX290",
             "aGVyX3JpZGVyIjIKE1p3aWZ0Q29tcGFuaW9uVG9BcHASDAoEdGFnMRgBIAEo",
-            "DRINCgV0YWcxMBgKIAEoDSKyBAofWndpZnRDb21wYW5pb25Ub0FwcFJpZGVy",
+            "DRINCgV0YWcxMBgKIAEoDSLABAofWndpZnRDb21wYW5pb25Ub0FwcFJpZGVy",
             "TWVzc2FnZRIMCgRteUlkGAEgASgNEhAKCHNlcXVlbmNlGAogASgNElYKB2Rl",
             "dGFpbHMYAiABKAsyQC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5p",
-            "b25Ub0FwcFJpZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2VIAIgBARqKAwoMUmlk",
+            "b25Ub0FwcFJpZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2VIAIgBARqYAwoMUmlk",
             "ZXJNZXNzYWdlEgwKBHRhZzEYASABKA0SDAoEdHlwZRgCIAEoDRIMCgR0YWcz",
             "GAMgASgNEgwKBHRhZzUYBSABKA0SDAoEdGFnNxgHIAEoDRIRCgR0YWc4GAgg",
-            "ASgNSACIAQESEgoFdGFnMTAYCiABKA1IAYgBARIVCghyaWRlcl9pZBgTIAEo",
-            "DUgCiAEBEmQKBGRhdGEYFSABKAsyUS5ad2lmdFBhY2tldE1vbml0b3IuWndp",
-            "ZnRDb21wYW5pb25Ub0FwcFJpZGVyTWVzc2FnZS5SaWRlck1lc3NhZ2UuUmlk",
-            "ZXJNZXNzYWdlRGF0YUgDiAEBGmcKEFJpZGVyTWVzc2FnZURhdGESDAoEdGFn",
-            "MRgBIAEoDRpFChNSaWRlck1lc3NhZ2VTdWJEYXRhEgwKBHRhZzEYASABKA0S",
-            "EgoKd29ybGRfbmFtZRgDIAEoCRIMCgR0YWc0GAQgASgNQgcKBV90YWc4QggK",
-            "Bl90YWcxMEILCglfcmlkZXJfaWRCBwoFX2RhdGFCCgoIX2RldGFpbHMi1AEK",
-            "JVp3aWZ0Q29tcGFuaW9uVG9BcHBFbmRBY3Rpdml0eU1lc3NhZ2USDAoEdGFn",
-            "MRgBIAEoDRJXCgRkYXRhGBAgASgLMkkuWndpZnRQYWNrZXRNb25pdG9yLlp3",
-            "aWZ0Q29tcGFuaW9uVG9BcHBFbmRBY3Rpdml0eU1lc3NhZ2UuRW5kQWN0aXZp",
-            "dHlEYXRhGkQKD0VuZEFjdGl2aXR5RGF0YRIMCgR0YWcxGAEgASgNEhUKDWFj",
-            "dGl2aXR5X25hbWUYAyABKAkSDAoEdGFnNBgEIAEoDSKHAQogWndpZnRDb21w",
-            "YW5pb25Ub0FwcFJpZGVPbk1lc3NhZ2USDAoEdGFnMRgBIAEoDRIMCgR0YWcy",
-            "GAIgASgNEgwKBHRhZzMYAyABKA0SFgoOb3RoZXJfcmlkZXJfaWQYBSABKA0S",
-            "EwoLcHJvZmlsZV91cmwYBiABKAkSDAoEdGFnNxgHIAEoDSKnBQokWndpZnRD",
-            "b21wYW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlEgwKBHRhZzEYASABKA0S",
-            "DQoFdGFnMTAYCiABKA0SWAoLZGV2aWNlX2luZm8YAiABKAsyQy5ad2lmdFBh",
-            "Y2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcERldmljZUluZm9NZXNz",
-            "YWdlLkRldmljZUluZm8ahwQKCkRldmljZUluZm8SaAoGZGV2aWNlGBUgASgL",
-            "MlguWndpZnRQYWNrZXRNb25pdG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBEZXZp",
-            "Y2VJbmZvTWVzc2FnZS5EZXZpY2VJbmZvLlp3aWZ0Q29tcGFuaW9uRGV2aWNl",
-            "Go4DChRad2lmdENvbXBhbmlvbkRldmljZRIMCgR0YWcxGAEgASgFEnYKB3Zl",
-            "cnNpb24YBSABKAsyYC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21wYW5p",
-            "b25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRldmljZUluZm8uWndpZnRDb21w",
-            "YW5pb25EZXZpY2UuVmVyc2lvbkgAiAEBGuMBCgdWZXJzaW9uEhMKC2FwcF92",
-            "ZXJzaW9uGAEgASgJEhIKCm9zX3ZlcnNpb24YAiABKAkSCgoCb3MYAyABKAkS",
-            "DgoGZGV2aWNlGAQgASgJEngKBHRhZzUYBSABKAsyai5ad2lmdFBhY2tldE1v",
-            "bml0b3IuWndpZnRDb21wYW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRl",
-            "dmljZUluZm8uWndpZnRDb21wYW5pb25EZXZpY2UuVmVyc2lvbi5Tb21lVGhp",
-            "bmcaGQoJU29tZVRoaW5nEgwKBHRhZzEYASABKAVCCgoIX3ZlcnNpb24ipAEK",
-            "I1p3aWZ0Q29tcGFuaW9uVG9BcHBNZXNzYWdlVGFnMTBaZXJvEgwKBG15SWQY",
-            "ASABKA0SDAoEdGFnMxgDIAEoAhIMCgR0YWc0GAQgASgCEgwKBHRhZzUYBSAB",
-            "KAISDAoEdGFnNhgGIAEoAhIMCgR0YWc3GAcgASgCEgwKBHRhZzgYCCABKAIS",
-            "DAoEdGFnORgJIAEoARINCgV0YWcxMBgKIAEoDWIGcHJvdG8z"));
+            "ASgNSACIAQESGQoMY29tbWFuZF90eXBlGAogASgNSAGIAQESFQoIcmlkZXJf",
+            "aWQYEyABKA1IAogBARJkCgRkYXRhGBUgASgLMlEuWndpZnRQYWNrZXRNb25p",
+            "dG9yLlp3aWZ0Q29tcGFuaW9uVG9BcHBSaWRlck1lc3NhZ2UuUmlkZXJNZXNz",
+            "YWdlLlJpZGVyTWVzc2FnZURhdGFIA4gBARpnChBSaWRlck1lc3NhZ2VEYXRh",
+            "EgwKBHRhZzEYASABKA0aRQoTUmlkZXJNZXNzYWdlU3ViRGF0YRIMCgR0YWcx",
+            "GAEgASgNEhIKCndvcmxkX25hbWUYAyABKAkSDAoEdGFnNBgEIAEoDUIHCgVf",
+            "dGFnOEIPCg1fY29tbWFuZF90eXBlQgsKCV9yaWRlcl9pZEIHCgVfZGF0YUIK",
+            "CghfZGV0YWlscyLUAQolWndpZnRDb21wYW5pb25Ub0FwcEVuZEFjdGl2aXR5",
+            "TWVzc2FnZRIMCgR0YWcxGAEgASgNElcKBGRhdGEYECABKAsySS5ad2lmdFBh",
+            "Y2tldE1vbml0b3IuWndpZnRDb21wYW5pb25Ub0FwcEVuZEFjdGl2aXR5TWVz",
+            "c2FnZS5FbmRBY3Rpdml0eURhdGEaRAoPRW5kQWN0aXZpdHlEYXRhEgwKBHRh",
+            "ZzEYASABKA0SFQoNYWN0aXZpdHlfbmFtZRgDIAEoCRIMCgR0YWc0GAQgASgN",
+            "IocBCiBad2lmdENvbXBhbmlvblRvQXBwUmlkZU9uTWVzc2FnZRIMCgR0YWcx",
+            "GAEgASgNEgwKBHRhZzIYAiABKA0SDAoEdGFnMxgDIAEoDRIWCg5vdGhlcl9y",
+            "aWRlcl9pZBgFIAEoDRITCgtwcm9maWxlX3VybBgGIAEoCRIMCgR0YWc3GAcg",
+            "ASgNIqcFCiRad2lmdENvbXBhbmlvblRvQXBwRGV2aWNlSW5mb01lc3NhZ2US",
+            "DAoEdGFnMRgBIAEoDRINCgV0YWcxMBgKIAEoDRJYCgtkZXZpY2VfaW5mbxgC",
+            "IAEoCzJDLlp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlvblRvQXBw",
+            "RGV2aWNlSW5mb01lc3NhZ2UuRGV2aWNlSW5mbxqHBAoKRGV2aWNlSW5mbxJo",
+            "CgZkZXZpY2UYFSABKAsyWC5ad2lmdFBhY2tldE1vbml0b3IuWndpZnRDb21w",
+            "YW5pb25Ub0FwcERldmljZUluZm9NZXNzYWdlLkRldmljZUluZm8uWndpZnRD",
+            "b21wYW5pb25EZXZpY2UajgMKFFp3aWZ0Q29tcGFuaW9uRGV2aWNlEgwKBHRh",
+            "ZzEYASABKAUSdgoHdmVyc2lvbhgFIAEoCzJgLlp3aWZ0UGFja2V0TW9uaXRv",
+            "ci5ad2lmdENvbXBhbmlvblRvQXBwRGV2aWNlSW5mb01lc3NhZ2UuRGV2aWNl",
+            "SW5mby5ad2lmdENvbXBhbmlvbkRldmljZS5WZXJzaW9uSACIAQEa4wEKB1Zl",
+            "cnNpb24SEwoLYXBwX3ZlcnNpb24YASABKAkSEgoKb3NfdmVyc2lvbhgCIAEo",
+            "CRIKCgJvcxgDIAEoCRIOCgZkZXZpY2UYBCABKAkSeAoEdGFnNRgFIAEoCzJq",
+            "Llp3aWZ0UGFja2V0TW9uaXRvci5ad2lmdENvbXBhbmlvblRvQXBwRGV2aWNl",
+            "SW5mb01lc3NhZ2UuRGV2aWNlSW5mby5ad2lmdENvbXBhbmlvbkRldmljZS5W",
+            "ZXJzaW9uLlNvbWVUaGluZxoZCglTb21lVGhpbmcSDAoEdGFnMRgBIAEoBUIK",
+            "CghfdmVyc2lvbiKqAQojWndpZnRDb21wYW5pb25Ub0FwcE1lc3NhZ2VUYWcx",
+            "MFplcm8SDAoEbXlJZBgBIAEoDRIMCgR0YWczGAMgASgCEgwKBHRhZzQYBCAB",
+            "KAISDAoEdGFnNRgFIAEoAhIMCgR0YWc2GAYgASgCEgwKBHRhZzcYByABKAIS",
+            "DAoEdGFnOBgIIAEoAhISCgpjbG9ja190aW1lGAkgASgBEg0KBXRhZzEwGAog",
+            "ASgNYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -150,11 +151,11 @@ namespace ZwiftPacketMonitor {
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Parser, new[]{ "Sub" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Types.Sub), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.ActivityDetailsRiderData.Types.Sub.Parser, new[]{ "Index", "Riders", "RepeatedIndex" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider), global::ZwiftPacketMonitor.ZwiftAppToCompanionActivityDetailsMessage.Types.ActivityDetails.Types.OtherRider.Parser, new[]{ "Tag1", "Tag2", "RiderId", "Tag4", "Tag5", "Tag6", "FirstName", "LastName", "Tag9", "Tag10", "Tag11", "Tag12", "Tag13", "Tag14", "Tag15", "Tag16", "Tag17", "Tag18", "ProfileUrl" }, new[]{ "ProfileUrl" }, null, null, null)})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToApp), global::ZwiftPacketMonitor.ZwiftCompanionToApp.Parser, new[]{ "Tag1", "Tag10" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Parser, new[]{ "MyId", "Sequence", "Details" }, new[]{ "Details" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Parser, new[]{ "Tag1", "Type", "Tag3", "Tag5", "Tag7", "Tag8", "Tag10", "RiderId", "Data" }, new[]{ "Tag8", "Tag10", "RiderId", "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Parser, new[]{ "Tag1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData.Parser, new[]{ "Tag1", "WorldName", "Tag4" }, null, null, null, null)})})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Parser, new[]{ "MyId", "Sequence", "Details" }, new[]{ "Details" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Parser, new[]{ "Tag1", "Type", "Tag3", "Tag5", "Tag7", "Tag8", "CommandType", "RiderId", "Data" }, new[]{ "Tag8", "CommandType", "RiderId", "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Parser, new[]{ "Tag1" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData), global::ZwiftPacketMonitor.ZwiftCompanionToAppRiderMessage.Types.RiderMessage.Types.RiderMessageData.Types.RiderMessageSubData.Parser, new[]{ "Tag1", "WorldName", "Tag4" }, null, null, null, null)})})}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Parser, new[]{ "Tag1", "Data" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData), global::ZwiftPacketMonitor.ZwiftCompanionToAppEndActivityMessage.Types.EndActivityData.Parser, new[]{ "Tag1", "ActivityName", "Tag4" }, null, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppRideOnMessage.Parser, new[]{ "Tag1", "Tag2", "Tag3", "OtherRiderId", "ProfileUrl", "Tag7" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Parser, new[]{ "Tag1", "Tag10", "DeviceInfo" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Parser, new[]{ "Device" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Parser, new[]{ "Tag1", "Version" }, new[]{ "Version" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Parser, new[]{ "AppVersion", "OsVersion", "Os", "Device", "Tag5" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing), global::ZwiftPacketMonitor.ZwiftCompanionToAppDeviceInfoMessage.Types.DeviceInfo.Types.ZwiftCompanionDevice.Types.Version.Types.SomeThing.Parser, new[]{ "Tag1" }, null, null, null, null)})})})}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageTag10Zero), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageTag10Zero.Parser, new[]{ "MyId", "Tag3", "Tag4", "Tag5", "Tag6", "Tag7", "Tag8", "Tag9", "Tag10" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageTag10Zero), global::ZwiftPacketMonitor.ZwiftCompanionToAppMessageTag10Zero.Parser, new[]{ "MyId", "Tag3", "Tag4", "Tag5", "Tag6", "Tag7", "Tag8", "ClockTime", "Tag10" }, null, null, null, null)
           }));
     }
     #endregion
@@ -7050,7 +7051,7 @@ namespace ZwiftPacketMonitor {
           tag5_ = other.tag5_;
           tag7_ = other.tag7_;
           tag8_ = other.tag8_;
-          tag10_ = other.tag10_;
+          commandType_ = other.commandType_;
           riderId_ = other.riderId_;
           data_ = other.data_ != null ? other.data_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -7150,28 +7151,28 @@ namespace ZwiftPacketMonitor {
           _hasBits0 &= ~1;
         }
 
-        /// <summary>Field number for the "tag10" field.</summary>
-        public const int Tag10FieldNumber = 10;
-        private uint tag10_;
+        /// <summary>Field number for the "command_type" field.</summary>
+        public const int CommandTypeFieldNumber = 10;
+        private uint commandType_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public uint Tag10 {
-          get { if ((_hasBits0 & 2) != 0) { return tag10_; } else { return 0; } }
+        public uint CommandType {
+          get { if ((_hasBits0 & 2) != 0) { return commandType_; } else { return 0; } }
           set {
             _hasBits0 |= 2;
-            tag10_ = value;
+            commandType_ = value;
           }
         }
-        /// <summary>Gets whether the "tag10" field is set</summary>
+        /// <summary>Gets whether the "command_type" field is set</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool HasTag10 {
+        public bool HasCommandType {
           get { return (_hasBits0 & 2) != 0; }
         }
-        /// <summary>Clears the value of the "tag10" field</summary>
+        /// <summary>Clears the value of the "command_type" field</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void ClearTag10() {
+        public void ClearCommandType() {
           _hasBits0 &= ~2;
         }
 
@@ -7233,7 +7234,7 @@ namespace ZwiftPacketMonitor {
           if (Tag5 != other.Tag5) return false;
           if (Tag7 != other.Tag7) return false;
           if (Tag8 != other.Tag8) return false;
-          if (Tag10 != other.Tag10) return false;
+          if (CommandType != other.CommandType) return false;
           if (RiderId != other.RiderId) return false;
           if (!object.Equals(Data, other.Data)) return false;
           return Equals(_unknownFields, other._unknownFields);
@@ -7249,7 +7250,7 @@ namespace ZwiftPacketMonitor {
           if (Tag5 != 0) hash ^= Tag5.GetHashCode();
           if (Tag7 != 0) hash ^= Tag7.GetHashCode();
           if (HasTag8) hash ^= Tag8.GetHashCode();
-          if (HasTag10) hash ^= Tag10.GetHashCode();
+          if (HasCommandType) hash ^= CommandType.GetHashCode();
           if (HasRiderId) hash ^= RiderId.GetHashCode();
           if (data_ != null) hash ^= Data.GetHashCode();
           if (_unknownFields != null) {
@@ -7294,9 +7295,9 @@ namespace ZwiftPacketMonitor {
             output.WriteRawTag(64);
             output.WriteUInt32(Tag8);
           }
-          if (HasTag10) {
+          if (HasCommandType) {
             output.WriteRawTag(80);
-            output.WriteUInt32(Tag10);
+            output.WriteUInt32(CommandType);
           }
           if (HasRiderId) {
             output.WriteRawTag(152, 1);
@@ -7340,9 +7341,9 @@ namespace ZwiftPacketMonitor {
             output.WriteRawTag(64);
             output.WriteUInt32(Tag8);
           }
-          if (HasTag10) {
+          if (HasCommandType) {
             output.WriteRawTag(80);
-            output.WriteUInt32(Tag10);
+            output.WriteUInt32(CommandType);
           }
           if (HasRiderId) {
             output.WriteRawTag(152, 1);
@@ -7380,8 +7381,8 @@ namespace ZwiftPacketMonitor {
           if (HasTag8) {
             size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag8);
           }
-          if (HasTag10) {
-            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Tag10);
+          if (HasCommandType) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CommandType);
           }
           if (HasRiderId) {
             size += 2 + pb::CodedOutputStream.ComputeUInt32Size(RiderId);
@@ -7419,8 +7420,8 @@ namespace ZwiftPacketMonitor {
           if (other.HasTag8) {
             Tag8 = other.Tag8;
           }
-          if (other.HasTag10) {
-            Tag10 = other.Tag10;
+          if (other.HasCommandType) {
+            CommandType = other.CommandType;
           }
           if (other.HasRiderId) {
             RiderId = other.RiderId;
@@ -7471,7 +7472,7 @@ namespace ZwiftPacketMonitor {
                 break;
               }
               case 80: {
-                Tag10 = input.ReadUInt32();
+                CommandType = input.ReadUInt32();
                 break;
               }
               case 152: {
@@ -7525,7 +7526,7 @@ namespace ZwiftPacketMonitor {
                 break;
               }
               case 80: {
-                Tag10 = input.ReadUInt32();
+                CommandType = input.ReadUInt32();
                 break;
               }
               case 152: {
@@ -10233,7 +10234,7 @@ namespace ZwiftPacketMonitor {
       tag6_ = other.tag6_;
       tag7_ = other.tag7_;
       tag8_ = other.tag8_;
-      tag9_ = other.tag9_;
+      clockTime_ = other.clockTime_;
       tag10_ = other.tag10_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -10328,15 +10329,15 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "tag9" field.</summary>
-    public const int Tag9FieldNumber = 9;
-    private double tag9_;
+    /// <summary>Field number for the "clock_time" field.</summary>
+    public const int ClockTimeFieldNumber = 9;
+    private double clockTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double Tag9 {
-      get { return tag9_; }
+    public double ClockTime {
+      get { return clockTime_; }
       set {
-        tag9_ = value;
+        clockTime_ = value;
       }
     }
 
@@ -10374,7 +10375,7 @@ namespace ZwiftPacketMonitor {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag6, other.Tag6)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag7, other.Tag7)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Tag8, other.Tag8)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Tag9, other.Tag9)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(ClockTime, other.ClockTime)) return false;
       if (Tag10 != other.Tag10) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -10390,7 +10391,7 @@ namespace ZwiftPacketMonitor {
       if (Tag6 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag6);
       if (Tag7 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag7);
       if (Tag8 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Tag8);
-      if (Tag9 != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Tag9);
+      if (ClockTime != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(ClockTime);
       if (Tag10 != 0) hash ^= Tag10.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -10438,9 +10439,9 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(69);
         output.WriteFloat(Tag8);
       }
-      if (Tag9 != 0D) {
+      if (ClockTime != 0D) {
         output.WriteRawTag(73);
-        output.WriteDouble(Tag9);
+        output.WriteDouble(ClockTime);
       }
       if (Tag10 != 0) {
         output.WriteRawTag(80);
@@ -10484,9 +10485,9 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(69);
         output.WriteFloat(Tag8);
       }
-      if (Tag9 != 0D) {
+      if (ClockTime != 0D) {
         output.WriteRawTag(73);
-        output.WriteDouble(Tag9);
+        output.WriteDouble(ClockTime);
       }
       if (Tag10 != 0) {
         output.WriteRawTag(80);
@@ -10523,7 +10524,7 @@ namespace ZwiftPacketMonitor {
       if (Tag8 != 0F) {
         size += 1 + 4;
       }
-      if (Tag9 != 0D) {
+      if (ClockTime != 0D) {
         size += 1 + 8;
       }
       if (Tag10 != 0) {
@@ -10562,8 +10563,8 @@ namespace ZwiftPacketMonitor {
       if (other.Tag8 != 0F) {
         Tag8 = other.Tag8;
       }
-      if (other.Tag9 != 0D) {
-        Tag9 = other.Tag9;
+      if (other.ClockTime != 0D) {
+        ClockTime = other.ClockTime;
       }
       if (other.Tag10 != 0) {
         Tag10 = other.Tag10;
@@ -10612,7 +10613,7 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 73: {
-            Tag9 = input.ReadDouble();
+            ClockTime = input.ReadDouble();
             break;
           }
           case 80: {
@@ -10663,7 +10664,7 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 73: {
-            Tag9 = input.ReadDouble();
+            ClockTime = input.ReadDouble();
             break;
           }
           case 80: {
