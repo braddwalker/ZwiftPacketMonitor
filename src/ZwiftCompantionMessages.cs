@@ -136,7 +136,7 @@ namespace ZwiftPacketMonitor {
             "MFplcm8SDAoEbXlJZBgBIAEoDRIMCgR0YWczGAMgASgCEgwKBHRhZzQYBCAB",
             "KAISDAoEdGFnNRgFIAEoAhIMCgR0YWc2GAYgASgCEgwKBHRhZzcYByABKAIS",
             "DAoEdGFnOBgIIAEoAhISCgpjbG9ja190aW1lGAkgASgBEg0KBXRhZzEwGAog",
-            "ASgNYgZwcm90bzM="));
+            "ASgNQhWqAhJad2lmdFBhY2tldE1vbml0b3JiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

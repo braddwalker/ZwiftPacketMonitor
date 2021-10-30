@@ -1,5 +1,6 @@
 syntax="proto3";
 package ZwiftPacketMonitor;
+option csharp_namespace="ZwiftPacketMonitor";
 
 ////////////////////////////////////////////////////////////////
 ////// Zwift Desktop app to Zwift Companion app messages //////
