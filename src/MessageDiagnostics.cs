@@ -7,10 +7,20 @@ namespace ZwiftPacketMonitor
     {
         private readonly Dictionary<string, int> _messageTypeCounters = new();
         private string _outputPath;
+        private bool _initialized;
 
         public void OutputTo(string outputPath)
         {
             _outputPath = outputPath;
+            if (!string.IsNullOrEmpty(_outputPath))
+            {
+                if (!Directory.Exists(_outputPath))
+                {
+                    Directory.CreateDirectory(_outputPath);
+                } 
+                
+                _initialized = true;
+            }
         }
 
         public void StoreMessageType(
@@ -20,9 +30,10 @@ namespace ZwiftPacketMonitor
             uint sequenceNummber,
             int maxNumberOfMessages = 10)
         {
-            if (!Directory.Exists(_outputPath))
+            // If no output path is set we don't want to store anything
+            if (!_initialized)
             {
-                Directory.CreateDirectory(_outputPath);
+                return;
             }
 
             var type = $"{direction.ToString().ToLower()}-{messageType}";
