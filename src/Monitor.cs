@@ -370,7 +370,7 @@ namespace ZwiftPacketMonitor
                         _offset = e.Header.Timeval.Date;
                     }
 
-                    tcpPacket.SequenceNumber = (uint)(e.Header.Timeval.Date - _offset.Value).TotalMilliseconds;
+                    tcpPacket.SequenceNumber = (uint)(e.Header.Timeval.Date - _offset.Value).TotalSeconds;
 
                     int srcPort = tcpPacket.SourcePort;
                     int dstPort = tcpPacket.DestinationPort;

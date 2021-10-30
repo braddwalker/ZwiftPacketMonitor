@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ZwiftPacketMonitor
 {
@@ -43,14 +45,23 @@ namespace ZwiftPacketMonitor
                 _messageTypeCounters.Add(type, 0);
             }
 
-            if (_messageTypeCounters[type] < maxNumberOfMessages)
-            {
+            //if (_messageTypeCounters[type] < maxNumberOfMessages)
+            //{
                 File.WriteAllBytes(
                     $"{_outputPath}\\{sequenceNummber:000000}-{direction.ToString().ToLower()}-{messageType:000}.bin",
                     buffer);
 
                 _messageTypeCounters[type]++;
-            }
+            //}
+        }
+
+        public string GetSummary()
+        {
+            return string.Join(
+                Environment.NewLine,
+                _messageTypeCounters
+                    .Select(kv => $"{kv.Key.PadLeft(20)}: {kv.Value:#######}")
+                    .ToList());
         }
     }
 }

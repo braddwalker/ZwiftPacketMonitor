@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using Google.Protobuf;
@@ -49,17 +50,21 @@ namespace ZwiftPacketMonitor
                 var clockTime = DateTimeOffset.FromUnixTimeSeconds((long)typeTag10Zero.ClockTime);
                 _logger.LogDebug("Sent a tag 10 = 0 type message with timestamp {clock_time}", clockTime);
 
+                _messageDiagnostics.StoreMessageType(10, buffer, Direction.Outgoing, sequenceNumber);
+
                 return;
             }
 
             if (riderMessage.Details != null)
             {
+                //_messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
+
                 switch (riderMessage.Details.Type)
                 {
                     case 14:
                         _logger.LogInformation("Sent a type 14 command but no clue what it is");
 
-                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
+                        //_messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
 
                         return;
                     case 16:
@@ -78,7 +83,7 @@ namespace ZwiftPacketMonitor
                     // Seems to be a command form the companion app to the desktop app
                     case 22 when riderMessage.Details.HasCommandType:
                         OnCommandSent(riderMessage.Details.CommandType);
-                        _messageDiagnostics.StoreMessageType(22, buffer, Direction.Outgoing, sequenceNumber, 200);
+                        //_messageDiagnostics.StoreMessageType(22, buffer, Direction.Outgoing, sequenceNumber, 200);
                         return;
                     case 28:
                         _logger.LogInformation("Possibly sent our own rider id sync command");
@@ -112,7 +117,7 @@ namespace ZwiftPacketMonitor
                     default:
                         _logger.LogInformation("Found a rider detail message of type: " + riderMessage.Details.Type);
 
-                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
+                        //_messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
 
                         return;
                 }
@@ -131,13 +136,17 @@ namespace ZwiftPacketMonitor
 
             foreach (var item in packetData.Items)
             {
+                var byteArray = item.ToByteArray();
+
+                //_messageDiagnostics.StoreMessageType(item.Type, byteArray, Direction.Incoming, sequenceNumber);
+
                 switch (item.Type)
                 {
                     case 1:
                         // Empty, ignore this
                         break;
                     case 2:
-                        var powerUp = ZwiftAppToCompanionPowerUpMessage.Parser.ParseFrom(item.ToByteArray());
+                        var powerUp = ZwiftAppToCompanionPowerUpMessage.Parser.ParseFrom(byteArray);
 
                         _logger.LogInformation("Received power up {power_up}", powerUp.PowerUp);
                         break;
@@ -145,11 +154,11 @@ namespace ZwiftPacketMonitor
                         _logger.LogDebug("Received a type 3 message that we don't understand yet");
                         break;
                     case 4:
-                        var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
+                        var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(byteArray);
                         
                         OnCommandAvailable(buttonMessage.TypeId, buttonMessage.Title);
                         
-                        _messageDiagnostics.StoreMessageType(4, item.ToByteArray(), Direction.Incoming, sequenceNumber, 200);
+                        _messageDiagnostics.StoreMessageType(4, byteArray, Direction.Incoming, sequenceNumber, 200);
 
                         break;
                     case 9:
@@ -158,7 +167,7 @@ namespace ZwiftPacketMonitor
                     // Activity details?
                     case 13:
                         var activityDetails =
-                            ZwiftAppToCompanionActivityDetailsMessage.Parser.ParseFrom(item.ToByteArray());
+                            ZwiftAppToCompanionActivityDetailsMessage.Parser.ParseFrom(byteArray);
 
                         switch (activityDetails.Details.Type)
                         {
@@ -173,11 +182,25 @@ namespace ZwiftPacketMonitor
                                 {
                                     if (s?.Riders != null && s.Riders.Any())
                                     {
+                                        // This seems to be us
+                                        if (s.Index == 10)
+                                        {
+                                            var rider = s.Riders.Single();
+                                            var subject = $"{rider.Description} ({rider.RiderId})";
+                                            _logger.LogDebug("Received our own rider information: {subject}", subject);
+
+                                            var line = $"{rider.SomeData.Latitude};{rider.SomeData.Tag2};{rider.SomeData.Longitude}\n";
+
+                                            File.AppendAllLines(
+                                                @"c:\git\temp\zwift\companion-to-app-stream-05-myposition.csv", 
+                                                new [] {line});
+                                        }
+
                                         foreach (var rider in s.Riders)
                                         {
                                             var subject = $"{rider.Description} ({rider.RiderId})";
 
-                                            _logger.LogDebug("Received our own rider information: {subject}", subject);
+                                            _logger.LogDebug("Received rider information: {subject}", subject);
                                             // It seems that this data doesn't ever change during the session....
                                         }
                                     }
@@ -241,16 +264,16 @@ namespace ZwiftPacketMonitor
 
                         storeEntireMessage = true;
 
-                        _messageDiagnostics.StoreMessageType(item.Type, item.ToByteArray(), Direction.Incoming, sequenceNumber);
+                        _messageDiagnostics.StoreMessageType(item.Type, byteArray, Direction.Incoming, sequenceNumber);
 
                         break;
                 }
             }
 
-            if (storeEntireMessage)
-            {
-                _messageDiagnostics.StoreMessageType(0, buffer, Direction.Incoming, sequenceNumber);
-            }
+            //if (storeEntireMessage)
+            //{
+            //    _messageDiagnostics.StoreMessageType(0, buffer, Direction.Incoming, sequenceNumber);
+            //}
         }
 
         private void OnCommandSent(uint numericalCommandType)

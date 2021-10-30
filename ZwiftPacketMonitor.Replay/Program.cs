@@ -29,8 +29,9 @@ namespace ZwiftPacketMonitor.Replay
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
             var replay = serviceProvider.GetService<Replayer>();
-            serviceProvider
-                .GetRequiredService<MessageDiagnostics>()
+            var messageDiagnostics = serviceProvider
+                .GetRequiredService<MessageDiagnostics>();
+            messageDiagnostics
                 .OutputTo(
                     Path.Combine(
                         Path.GetDirectoryName(path), 
@@ -40,15 +41,17 @@ namespace ZwiftPacketMonitor.Replay
 
             decoder.CommandAvailable += (_, eventArgs) =>
             {
-                logger.LogInformation("Command {type} is now available", eventArgs.CommandType);
+                //logger.LogInformation("Command {type} is now available", eventArgs.CommandType);
             };
 
             decoder.CommandSent += (_, eventArgs) =>
             {
-                logger.LogInformation("Sent a {type} command", eventArgs.CommandType);
+                //logger.LogInformation("Sent a {type} command", eventArgs.CommandType);
             };
 
             replay.FromCapture(path);
+
+            logger.LogInformation("Messages captured:\n{summary}", messageDiagnostics.GetSummary());
         }
     }
 }

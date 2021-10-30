@@ -91,7 +91,7 @@ message ZwiftAppToCompanionButtonMessage
 message ZwiftAppToCompanionActivityDetailsMessage
 {
     uint32 sequence = 1;
-    uint32 tag2 = 2; // Always 13 for this type
+    uint32 type = 2; // Always 13 for this type
 
     message ActivityDetails
     {
@@ -118,9 +118,9 @@ message ZwiftAppToCompanionActivityDetailsMessage
             uint32 tag2 = 2;
             message WhatIsThis
             {
-                float tag1 = 1;
+                float latitude = 1; // Latitude
                 float tag2 = 2;
-                float tag3 = 3;
+                float longitude = 3; // Longitude
             }
             WhatIsThis some_data = 3;
             optional string profile_url = 5;
