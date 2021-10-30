@@ -7,14 +7,24 @@ namespace ZwiftPacketMonitor
 {
     public class CompanionPacketDecoder
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<CompanionPacketDecoder> _logger;
         private readonly MessageDiagnostics _messageDiagnostics;
 
-        public CompanionPacketDecoder(MessageDiagnostics messageDiagnostics, ILogger logger)
+        public CompanionPacketDecoder(MessageDiagnostics messageDiagnostics, ILogger<CompanionPacketDecoder> logger)
         {
             _messageDiagnostics = messageDiagnostics;
             _logger = logger;
         }
+
+        /// <summary>
+        /// Raised when the Zwift desktop app indicates that a command has become available to the companion app
+        /// </summary>
+        public event EventHandler<EventArgs> CommandAvailable;
+        /// <summary>
+        /// Raised when the companion app sends a command to the desktop app
+        /// </summary>
+        public event EventHandler<EventArgs> CommandSent;
+
 
         public void DecodeOutgoing(byte[] buffer, uint sequenceNumber)
         {
@@ -69,21 +79,7 @@ namespace ZwiftPacketMonitor
                         return;
                     // Seems to be a command form the companion app to the desktop app
                     case 22 when riderMessage.Details.HasCommandType:
-                        switch (riderMessage.Details.CommandType) // Tag10 seems to be the type of command
-                        {
-                            case 6:
-                                _logger.LogInformation("Possibly sent RIDE ON command");
-                                return;
-                            case 1010:
-                                _logger.LogInformation("Sent TURN LEFT command");
-                                return;
-                            case 1011:
-                                _logger.LogInformation("Sent GO STRAIGHT command");
-                                return;
-                            case 1012:
-                                _logger.LogInformation("Sent TURN RIGHT command");
-                                return;
-                        }
+                        OnCommandSent(riderMessage.Details.CommandType);
 
                         break;
                     case 28:
@@ -154,8 +150,9 @@ namespace ZwiftPacketMonitor
                         break;
                     case 4:
                         var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
+                        
+                        OnCommandAvailable(buttonMessage.TypeId, buttonMessage.Title);
 
-                        DispatchButtonMessage(Direction.Incoming, buttonMessage, item, sequenceNumber);
                         break;
                     case 9:
                         _logger.LogDebug("Received a type 9 message that we don't understand yet");
@@ -258,65 +255,49 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        public void DispatchButtonMessage(
-            Direction direction, 
-            ZwiftAppToCompanionButtonMessage buttonMessage,
-            ZwiftAppToCompanion.Types.SubItem item, 
-            uint sequenceNummber)
+        private void OnCommandSent(uint numericalCommandType)
         {
-            switch (buttonMessage.TypeId)
+            var commandType = CommandType.Unknown;
+
+            if (Enum.IsDefined(typeof(CommandType), numericalCommandType))
             {
-                // Elbow flick
-                case 4:
-                    // Would we get this if someone is drafting us?
-                    _logger.LogDebug("Received ELBOW FLICK button available");
-                    break;
-                // Wave
-                case 5:
-                    _logger.LogDebug("Received WAVE button available");
-                    break;
-                // Ride on
-                case 6:
-                    _logger.LogDebug("Received RIDE ON button available");
-                    break;
-                case 23:
-                    // It appears value 23 is something empty
-                    break;
-                // Turn Left
-                case 1010:
-                    _logger.LogDebug("Received TURN LEFT button available");
-                    break;
-                // Go Straight
-                case 1011:
-                    _logger.LogDebug("Received GO STRAIGHT button available");
-                    break;
-                // Turn right
-                case 1012:
-                    _logger.LogDebug("Received TURN RIGHT button available");
-                    break;
-                // Discard leightweight
-                case 1030:
-                    _logger.LogDebug("Received DISCARD AERO button available");
-                    break;
-                case 1034:
-                    _logger.LogDebug("Received DISCARD LIGHTWEIGHT button available");
-                    break;
-                // POWER GRAPH
-                case 1060:
-                    _logger.LogDebug("Received POWER GRAPH button available");
-                    break;
-                // HUD
-                case 1081:
-                    _logger.LogDebug("Received HUD button available");
-                    break;
-                default:
-                    _logger.LogWarning(
-                        "Received a button available that we don't recognise {type}",
-                        buttonMessage.TypeId);
+                commandType =  (CommandType)numericalCommandType;
+            }
+            else
+            {
+                _logger.LogWarning("Sent unknown command {type}", numericalCommandType);
+            }
 
-                    _messageDiagnostics.StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
+            try
+            {
+                CommandSent?.Invoke(this, new CommandSentEventArgs { CommandType =  commandType });
+            }
+            catch
+            {
+                // Ignore exceptions from event handlers.
+            }
+        }
 
-                    break;
+        private void OnCommandAvailable(uint numericalCommandType, string description)
+        {
+            var commandType = CommandType.Unknown;
+
+            if (Enum.IsDefined(typeof(CommandType), numericalCommandType))
+            {
+                commandType =  (CommandType)numericalCommandType;
+            }
+            else
+            {
+                _logger.LogWarning("Did not recognise command {type} ({description})", numericalCommandType, description);
+            }
+
+            try
+            {
+                CommandAvailable?.Invoke(this, new CommandAvailableEventArgs { CommandType =  commandType });
+            }
+            catch
+            {
+                // Ignore exceptions from event handlers.
             }
         }
     }
