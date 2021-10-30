@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using System.Threading;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
 
@@ -22,11 +20,16 @@ namespace ZwiftPacketMonitor
         /// Raised when the Zwift desktop app indicates that a command has become available to the companion app
         /// </summary>
         public event EventHandler<CommandAvailableEventArgs> CommandAvailable;
+
         /// <summary>
         /// Raised when the companion app sends a command to the desktop app
         /// </summary>
         public event EventHandler<CommandSentEventArgs> CommandSent;
 
+        /// <summary>
+        /// Raised when the position of the rider is sent to the companion app
+        /// </summary>
+        public event EventHandler<RiderPositionEventArgs> RiderPosition;
 
         public void DecodeOutgoing(byte[] buffer, uint sequenceNumber)
         {
@@ -186,14 +189,13 @@ namespace ZwiftPacketMonitor
                                         if (s.Index == 10)
                                         {
                                             var rider = s.Riders.Single();
-                                            var subject = $"{rider.Description} ({rider.RiderId})";
-                                            _logger.LogDebug("Received our own rider information: {subject}", subject);
 
-                                            var line = $"{rider.SomeData.Latitude};{rider.SomeData.Tag2};{rider.SomeData.Longitude}\n";
+                                            _logger.LogDebug("Received our own rider position");
 
-                                            File.AppendAllLines(
-                                                @"c:\git\temp\zwift\companion-to-app-stream-05-myposition.csv", 
-                                                new [] {line});
+                                            OnRiderPosition(
+                                                rider.Position.Latitude, 
+                                                rider.Position.Longitude,
+                                                rider.Position.Altitude);
                                         }
 
                                         foreach (var rider in s.Riders)
@@ -201,7 +203,6 @@ namespace ZwiftPacketMonitor
                                             var subject = $"{rider.Description} ({rider.RiderId})";
 
                                             _logger.LogDebug("Received rider information: {subject}", subject);
-                                            // It seems that this data doesn't ever change during the session....
                                         }
                                     }
                                     else
@@ -325,6 +326,19 @@ namespace ZwiftPacketMonitor
             try
             {
                 CommandAvailable?.Invoke(this, new CommandAvailableEventArgs { CommandType =  commandType });
+            }
+            catch
+            {
+                // Ignore exceptions from event handlers.
+            }
+        }
+
+        private void OnRiderPosition(float latitude, float longitude, float altitude)
+        {
+            try
+            {
+                RiderPosition?.Invoke(this,
+                    new RiderPositionEventArgs { Latitude = latitude, Longitude = longitude, Altitude = altitude });
             }
             catch
             {

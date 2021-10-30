@@ -116,13 +116,13 @@ message ZwiftAppToCompanionActivityDetailsMessage
         {
             uint32 rider_id = 1;
             uint32 tag2 = 2;
-            message WhatIsThis
+            message RiderPosition
             {
                 float latitude = 1; // Latitude
-                float tag2 = 2;
+                float altitude = 2; // Wild guess...
                 float longitude = 3; // Longitude
             }
-            WhatIsThis some_data = 3;
+            RiderPosition position = 3;
             optional string profile_url = 5;
             uint32 second_rider_id = 6; // This is appearing twice...
             uint32 tag7 = 7;
