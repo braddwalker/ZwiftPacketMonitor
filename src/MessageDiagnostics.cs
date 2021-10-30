@@ -17,7 +17,7 @@ namespace ZwiftPacketMonitor
                 if (!Directory.Exists(_outputPath))
                 {
                     Directory.CreateDirectory(_outputPath);
-                } 
+                }
                 
                 _initialized = true;
             }

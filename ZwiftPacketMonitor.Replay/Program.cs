@@ -29,27 +29,23 @@ namespace ZwiftPacketMonitor.Replay
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
             var replay = serviceProvider.GetService<Replayer>();
-            serviceProvider.GetRequiredService<MessageDiagnostics>().OutputTo(Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path)));
+            serviceProvider
+                .GetRequiredService<MessageDiagnostics>()
+                .OutputTo(
+                    Path.Combine(
+                        Path.GetDirectoryName(path), 
+                        Path.GetFileNameWithoutExtension(path)));
 
-            replay.IncomingPlayerEvent += (s, e) =>
+            var decoder = serviceProvider.GetRequiredService<CompanionPacketDecoder>();
+
+            decoder.CommandAvailable += (_, eventArgs) =>
             {
-                logger.LogInformation($"INCOMING: {e.PlayerState}");
+                logger.LogInformation("Command {type} is now available", eventArgs.CommandType);
             };
-            replay.OutgoingPlayerEvent += (s, e) =>
+
+            decoder.CommandSent += (_, eventArgs) =>
             {
-                logger.LogInformation($"OUTGOING: {e.PlayerState}");
-            };
-            replay.IncomingChatMessageEvent += (s, e) =>
-            {
-                logger.LogInformation($"CHAT: {e.Message}");
-            };
-            replay.IncomingPlayerEnteredWorldEvent += (s, e) =>
-            {
-                logger.LogInformation($"WORLD: {e.PlayerUpdate}");
-            };
-            replay.IncomingRideOnGivenEvent += (s, e) =>
-            {
-                logger.LogInformation($"RIDEON: {e.RideOn}");
+                logger.LogInformation("Sent a {type} command", eventArgs.CommandType);
             };
 
             replay.FromCapture(path);

@@ -2835,6 +2835,9 @@ namespace ZwiftPacketMonitor {
     /// <summary>Field number for the "tag9" field.</summary>
     public const int Tag9FieldNumber = 9;
     private uint tag9_;
+    /// <summary>
+    /// This is 0 for type_id 23 or HUD off, 1 for all others but can be 3 for POWER_GRAPH. Could it be 0 = turn off, 1 = turn on, 3 = toggle?
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Tag9 {

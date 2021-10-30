@@ -6,7 +6,7 @@
         ElbowFlick = 4,
         Wave = 5,
         RideOn = 6,
-        SomethingEmpty = 23,
+        SomethingEmpty = 23, // I suspect this is a  "reset" type thing
         TurnLeft = 1010,
         GoStraight = 1011,
         TurnRight = 1012,

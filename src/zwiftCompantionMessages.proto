@@ -81,7 +81,7 @@ message ZwiftAppToCompanionButtonMessage
     uint32 tag1 = 1;
     uint32 tag2 = 4;
     uint32 type_id = 8; // This is the numerical value for title (tag 10)
-    uint32 tag9 = 9;
+    uint32 tag9 = 9; // This is 0 for type_id 23 or HUD off, 1 for all others but can be 3 for POWER_GRAPH. Could it be 0 = turn off, 1 = turn on, 3 = toggle?
     string title = 10; // TURN LEFT, ELBOW FLICK, HUD etc. Not sure if this could be localized...
     string image_url = 11;
     uint32 tag13 = 13;

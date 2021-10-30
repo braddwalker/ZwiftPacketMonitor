@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
 
@@ -19,11 +20,11 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// Raised when the Zwift desktop app indicates that a command has become available to the companion app
         /// </summary>
-        public event EventHandler<EventArgs> CommandAvailable;
+        public event EventHandler<CommandAvailableEventArgs> CommandAvailable;
         /// <summary>
         /// Raised when the companion app sends a command to the desktop app
         /// </summary>
-        public event EventHandler<EventArgs> CommandSent;
+        public event EventHandler<CommandSentEventArgs> CommandSent;
 
 
         public void DecodeOutgoing(byte[] buffer, uint sequenceNumber)
@@ -73,19 +74,14 @@ namespace ZwiftPacketMonitor
                         return;
                     case 20:
                         _logger.LogInformation("Sent a type 20 command but no idea what it is");
-
-                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
-
                         return;
                     // Seems to be a command form the companion app to the desktop app
                     case 22 when riderMessage.Details.HasCommandType:
                         OnCommandSent(riderMessage.Details.CommandType);
-
-                        break;
+                        _messageDiagnostics.StoreMessageType(22, buffer, Direction.Outgoing, sequenceNumber, 200);
+                        return;
                     case 28:
                         _logger.LogInformation("Possibly sent our own rider id sync command");
-
-                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber, 40);
 
                         return;
                     // Device info
@@ -152,6 +148,8 @@ namespace ZwiftPacketMonitor
                         var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(item.ToByteArray());
                         
                         OnCommandAvailable(buttonMessage.TypeId, buttonMessage.Title);
+                        
+                        _messageDiagnostics.StoreMessageType(4, item.ToByteArray(), Direction.Incoming, sequenceNumber, 200);
 
                         break;
                     case 9:
@@ -259,11 +257,16 @@ namespace ZwiftPacketMonitor
         {
             var commandType = CommandType.Unknown;
 
-            if (Enum.IsDefined(typeof(CommandType), numericalCommandType))
+            try
             {
-                commandType =  (CommandType)numericalCommandType;
+                commandType = (CommandType)numericalCommandType;
             }
-            else
+            catch 
+            {
+                // Nop
+            }
+
+            if (commandType == CommandType.Unknown)
             {
                 _logger.LogWarning("Sent unknown command {type}", numericalCommandType);
             }
@@ -282,11 +285,16 @@ namespace ZwiftPacketMonitor
         {
             var commandType = CommandType.Unknown;
 
-            if (Enum.IsDefined(typeof(CommandType), numericalCommandType))
+            try
             {
-                commandType =  (CommandType)numericalCommandType;
+                commandType = (CommandType)numericalCommandType;
             }
-            else
+            catch 
+            {
+                // Nop
+            }
+
+            if (commandType == CommandType.Unknown)
             {
                 _logger.LogWarning("Did not recognise command {type} ({description})", numericalCommandType, description);
             }
