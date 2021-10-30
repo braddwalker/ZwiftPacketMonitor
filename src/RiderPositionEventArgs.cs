@@ -1,6 +1,8 @@
-﻿namespace ZwiftPacketMonitor
+﻿using System;
+
+namespace ZwiftPacketMonitor
 {
-    public class RiderPositionEventArgs
+    public class RiderPositionEventArgs : EventArgs
     {
         public float Latitude { get; set; }
         public float Longitude { get; set; }

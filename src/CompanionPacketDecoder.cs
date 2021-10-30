@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
@@ -31,6 +32,11 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<RiderPositionEventArgs> RiderPosition;
 
+        /// <summary>
+        /// Raised when a power up is rewarded in the game
+        /// </summary>
+        public event EventHandler<PowerUpEventArgs> PowerUp;
+
         public void DecodeOutgoing(byte[] buffer, uint sequenceNumber)
         {
             var message = ZwiftCompanionToApp.Parser.ParseFrom(buffer);
@@ -53,46 +59,37 @@ namespace ZwiftPacketMonitor
                 var clockTime = DateTimeOffset.FromUnixTimeSeconds((long)typeTag10Zero.ClockTime);
                 _logger.LogDebug("Sent a tag 10 = 0 type message with timestamp {clock_time}", clockTime);
 
-                _messageDiagnostics.StoreMessageType(10, buffer, Direction.Outgoing, sequenceNumber);
-
                 return;
             }
 
             if (riderMessage.Details != null)
             {
-                //_messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
-
                 switch (riderMessage.Details.Type)
                 {
                     case 14:
-                        _logger.LogInformation("Sent a type 14 command but no clue what it is");
-
-                        //_messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
-
+                        _logger.LogInformation("Sent a type 14 message");
                         return;
                     case 16:
-                        // I don't think this is a ride-on because it happens _a lot_....
+                        {
+                            // I don't think this is a ride-on because it happens _a lot_....
 
-                        var rideOn = ZwiftCompanionToAppRideOnMessage.Parser.ParseFrom(riderMessage.Details.ToByteArray());
+                            var rideOn = ZwiftCompanionToAppRideOnMessage.Parser.ParseFrom(riderMessage.Details.ToByteArray());
 
-                        _logger.LogDebug(
-                            "Possibly sent a ride-on message to {other_rider_id}",
-                            rideOn.OtherRiderId);
+                            _logger.LogDebug(
+                                "Possibly sent a ride-on message to {other_rider_id}",
+                                rideOn.OtherRiderId);
 
-                        return;
+                            return;
+                        }
                     case 20:
-                        _logger.LogInformation("Sent a type 20 command but no idea what it is");
+                        _logger.LogInformation("Sent a type 20 message");
                         return;
-                    // Seems to be a command form the companion app to the desktop app
                     case 22 when riderMessage.Details.HasCommandType:
                         OnCommandSent(riderMessage.Details.CommandType);
-                        //_messageDiagnostics.StoreMessageType(22, buffer, Direction.Outgoing, sequenceNumber, 200);
                         return;
                     case 28:
                         _logger.LogInformation("Possibly sent our own rider id sync command");
-
                         return;
-                    // Device info
                     case 29 when riderMessage.Details.Data.Tag1 == 4:
                         {
                             var deviceInfoVersion = ZwiftCompanionToAppDeviceInfoMessage.Parser.ParseFrom(buffer).DeviceInfo
@@ -105,7 +102,6 @@ namespace ZwiftPacketMonitor
 
                             return;
                         }
-                    // End activity?
                     case 29 when riderMessage.Details.Data.Tag1 == 15:
                         {
                             var endActivity =
@@ -118,9 +114,9 @@ namespace ZwiftPacketMonitor
                             return;
                         }
                     default:
-                        _logger.LogInformation("Found a rider detail message of type: " + riderMessage.Details.Type);
+                        _logger.LogInformation("Found a rider detail message of type {type} that we don't understand", riderMessage.Details.Type);
 
-                        //_messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
+                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
 
                         return;
                 }
@@ -133,148 +129,156 @@ namespace ZwiftPacketMonitor
 
         public void DecodeIncoming(byte[] buffer, uint sequenceNumber)
         {
-            var storeEntireMessage = false;
-
             var packetData = ZwiftAppToCompanion.Parser.ParseFrom(buffer);
 
             foreach (var item in packetData.Items)
             {
                 var byteArray = item.ToByteArray();
 
-                //_messageDiagnostics.StoreMessageType(item.Type, byteArray, Direction.Incoming, sequenceNumber);
-
                 switch (item.Type)
                 {
                     case 1:
+                    case 3:
+                    case 6:
                         // Empty, ignore this
                         break;
                     case 2:
                         var powerUp = ZwiftAppToCompanionPowerUpMessage.Parser.ParseFrom(byteArray);
 
-                        _logger.LogInformation("Received power up {power_up}", powerUp.PowerUp);
-                        break;
-                    case 3:
-                        _logger.LogDebug("Received a type 3 message that we don't understand yet");
+                        _logger.LogDebug("Received power up {power_up}", powerUp.PowerUp);
+
+                        OnPowerUp(powerUp.PowerUp);
+
                         break;
                     case 4:
                         var buttonMessage = ZwiftAppToCompanionButtonMessage.Parser.ParseFrom(byteArray);
-                        
+
                         OnCommandAvailable(buttonMessage.TypeId, buttonMessage.Title);
-                        
-                        _messageDiagnostics.StoreMessageType(4, byteArray, Direction.Incoming, sequenceNumber, 200);
 
                         break;
                     case 9:
                         _logger.LogDebug("Received a type 9 message that we don't understand yet");
                         break;
-                    // Activity details?
                     case 13:
-                        var activityDetails =
-                            ZwiftAppToCompanionActivityDetailsMessage.Parser.ParseFrom(byteArray);
+                        var activityDetails = ZwiftAppToCompanionActivityDetailsMessage.Parser.ParseFrom(byteArray);
 
-                        switch (activityDetails.Details.Type)
-                        {
-                            case 3:
-                                _logger.LogInformation(
-                                    "Received activity details, activity id {activity_id}",
-                                    activityDetails.Details.Data.ActivityId);
-                                break;
-                            case 5:
-                            {
-                                foreach (var s in activityDetails.Details.RiderData.Sub)
-                                {
-                                    if (s?.Riders != null && s.Riders.Any())
-                                    {
-                                        // This seems to be us
-                                        if (s.Index == 10)
-                                        {
-                                            var rider = s.Riders.Single();
-
-                                            _logger.LogDebug("Received our own rider position");
-
-                                            OnRiderPosition(
-                                                rider.Position.Latitude, 
-                                                rider.Position.Longitude,
-                                                rider.Position.Altitude);
-                                        }
-
-                                        foreach (var rider in s.Riders)
-                                        {
-                                            var subject = $"{rider.Description} ({rider.RiderId})";
-
-                                            _logger.LogDebug("Received rider information: {subject}", subject);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        _logger.LogDebug("Received some position information without rider details");
-                                    }
-                                }
-
-                                break;
-                            }
-                            case 6:
-                                // This contains an empty string but no idea what it means
-                                _logger.LogDebug("Received a activity details subtype with {type}",
-                                    activityDetails.Details.Type);
-                                break;
-                            case 7:
-                                _logger.LogDebug("Received a type 7 message that we don't understand yet. Tag 11[].8.1 contains a rider id"); // No not really
-                                break;
-                            case 10:
-                                _logger.LogDebug("Received a type 10 message that we don't understand yet");
-                                break;
-                            case 17:
-                            case 18:
-                            case 19:
-                                // Rider nearby?
-                            {
-                                var rider = activityDetails
-                                    .Details
-                                    ?.OtherRider;
-
-                                if (rider != null)
-                                {
-                                    var subject = $"{rider.FirstName?.Trim()} {rider.LastName?.Trim()} ({rider.RiderId})";
-
-                                    _logger.LogDebug("Received rider nearby position for {subject}", subject);
-                                }
-
-                                break;
-                            }
-                            case 20:
-                                _logger.LogDebug("Received a type 20 message that we don't understand yet");
-                                break;
-                            case 21:
-                                _logger.LogDebug("Received a type 21 message that we don't understand yet");
-                                break;
-                            case 23:
-                                _logger.LogDebug("Received a type 21 message that we don't understand yet");
-                                storeEntireMessage = true;
-                                break;
-                            default:
-                                _logger.LogDebug("Received a activity details subtype with {type}",
-                                    activityDetails.Details.Type);
-                                storeEntireMessage = true;
-                                break;
-                        }
+                        HandleType13IncomingMessage(sequenceNumber, activityDetails);
 
                         break;
                     default:
                         _logger.LogWarning("Received type {type} message", item.Type);
-
-                        storeEntireMessage = true;
 
                         _messageDiagnostics.StoreMessageType(item.Type, byteArray, Direction.Incoming, sequenceNumber);
 
                         break;
                 }
             }
+        }
 
-            //if (storeEntireMessage)
-            //{
-            //    _messageDiagnostics.StoreMessageType(0, buffer, Direction.Incoming, sequenceNumber);
-            //}
+        private void HandleType13IncomingMessage(
+            uint sequenceNumber,
+            ZwiftAppToCompanionActivityDetailsMessage activityDetails)
+        {
+            switch (activityDetails.Details.Type)
+            {
+                case 3:
+                    _logger.LogInformation(
+                        "Received activity details, activity id {activity_id}",
+                        activityDetails.Details.Data.ActivityId);
+                    break;
+                case 5:
+                    {
+                        // This item type either has our position or that of a bunch of others
+                        // so let's first see if we can deal with our position first.
+                        if (activityDetails.Details.RiderData.Sub.Count == 1 &&
+                            activityDetails.Details.RiderData.Sub[0].Index == 10)
+                        {
+                            var rider = activityDetails.Details.RiderData.Sub[0].Riders[0];
+
+                            _logger.LogDebug("Received our own rider position");
+
+                            OnRiderPosition(
+                                rider.Position.Latitude,
+                                rider.Position.Longitude,
+                                rider.Position.Altitude);
+
+                            break;
+                        }
+
+                        foreach (var s in activityDetails.Details.RiderData.Sub)
+                        {
+                            if (s?.Riders != null && s.Riders.Any())
+                            {
+                                foreach (var rider in s.Riders)
+                                {
+                                    var subject = $"{rider.Description} ({rider.RiderId})";
+
+                                    _logger.LogDebug("Received rider information: {subject}", subject);
+                                }
+                            }
+                            else
+                            {
+                                _logger.LogDebug("Received some position information without rider details");
+                            }
+                        }
+
+                        break;
+                    }
+                case 6:
+                    // Ignore
+                    break;
+                case 7:
+                    // Ignore, comes by lots of times
+                    break;
+                case 10:
+                    // Ignore, this has very limited data that I have no idea about what it means
+                    break;
+                case 18:
+                    // Ignore, this has very limited data that I have no idea about what it means
+                    break;
+                case 17:
+                case 19:
+                    // Rider nearby?
+                    {
+                        var rider = activityDetails
+                            .Details
+                            ?.OtherRider;
+
+                        if (rider != null)
+                        {
+                            var subject = $"{rider.FirstName?.Trim()} {rider.LastName?.Trim()} ({rider.RiderId})";
+
+                            _logger.LogDebug("Received rider nearby position for {subject}", subject);
+                        }
+
+                        break;
+                    }
+                case 20:
+                    // Ignore, contains very little data and is similar to type 21
+                    break;
+                case 21:
+                    // Ignore, contains very little data
+                    break;
+                default:
+                    _logger.LogDebug("Received a activity details subtype with {type} that we don't understand yet",
+                        activityDetails.Details.Type);
+
+                    _messageDiagnostics.StoreMessageType(activityDetails.Details.Type, activityDetails.ToByteArray(), Direction.Incoming,
+                        sequenceNumber);
+                    break;
+            }
+        }
+
+        private void OnPowerUp(string type)
+        {
+            try
+            {
+                PowerUp?.Invoke(this, new PowerUpEventArgs { Type = type });
+            }
+            catch
+            {
+                // Ignore exceptions from event handlers.
+            }
         }
 
         private void OnCommandSent(uint numericalCommandType)
@@ -285,7 +289,7 @@ namespace ZwiftPacketMonitor
             {
                 commandType = (CommandType)numericalCommandType;
             }
-            catch 
+            catch
             {
                 // Nop
             }
@@ -297,7 +301,7 @@ namespace ZwiftPacketMonitor
 
             try
             {
-                CommandSent?.Invoke(this, new CommandSentEventArgs { CommandType =  commandType });
+                CommandSent?.Invoke(this, new CommandSentEventArgs { CommandType = commandType });
             }
             catch
             {
@@ -313,7 +317,7 @@ namespace ZwiftPacketMonitor
             {
                 commandType = (CommandType)numericalCommandType;
             }
-            catch 
+            catch
             {
                 // Nop
             }
@@ -325,7 +329,7 @@ namespace ZwiftPacketMonitor
 
             try
             {
-                CommandAvailable?.Invoke(this, new CommandAvailableEventArgs { CommandType =  commandType });
+                CommandAvailable?.Invoke(this, new CommandAvailableEventArgs { CommandType = commandType });
             }
             catch
             {
