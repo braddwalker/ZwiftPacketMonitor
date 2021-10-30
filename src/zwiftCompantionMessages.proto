@@ -6,7 +6,7 @@ option csharp_namespace="ZwiftPacketMonitor";
 ////// Zwift Desktop app to Zwift Companion app messages //////
 ////////////////////////////////////////////////////////////////
 
-// Base message type
+// Base message type for Zwift Desktop app to Zwift Companion app messages
 message ZwiftAppToCompanion
 {
     // These fields are always there
@@ -64,6 +64,7 @@ message ZwiftAppToCompanionMessageRiderPosition {
     uint32 tag10 = 10; // Seems to always be zero for this message type
 }
 
+// Received when a power-up has become available
 message ZwiftAppToCompanionPowerUpMessage
 {
     uint32 tag1 = 1;
@@ -74,6 +75,7 @@ message ZwiftAppToCompanionPowerUpMessage
     string background_color = 12;
 }
 
+// Received when an action has become available
 message ZwiftAppToCompanionButtonMessage
 {
     uint32 tag1 = 1;
@@ -85,6 +87,7 @@ message ZwiftAppToCompanionButtonMessage
     uint32 tag13 = 13;
 }
 
+// Received when the desktop app sends information to the companion app
 message ZwiftAppToCompanionActivityDetailsMessage
 {
     uint32 sequence = 1;
@@ -178,7 +181,7 @@ message ZwiftAppToCompanionActivityDetailsMessage
 ////// Zwift Companion app to Zwift Desktop app messages //////
 ////////////////////////////////////////////////////////////////
 
-// Base message type
+// Base message type for Zwift Companion app to Zwift Desktop app messages
 message ZwiftCompanionToApp
 {
     // These fields are always there
@@ -221,6 +224,7 @@ message ZwiftCompanionToAppRiderMessage
     optional RiderMessage details = 2;
 }
 
+// A message sent to the desktop app to end the current activity
 message ZwiftCompanionToAppEndActivityMessage
 {
     uint32 tag1 = 1;
@@ -235,6 +239,7 @@ message ZwiftCompanionToAppEndActivityMessage
     EndActivityData data = 16;
 }
 
+// Give a ride-on to another rider
 message ZwiftCompanionToAppRideOnMessage
 {
     uint32 tag1 = 1;
@@ -245,6 +250,7 @@ message ZwiftCompanionToAppRideOnMessage
     uint32 tag7 = 7;
 }
 
+// Informs the desktop app of the version of the companion app
 message ZwiftCompanionToAppDeviceInfoMessage
 {
     // These fields are always there

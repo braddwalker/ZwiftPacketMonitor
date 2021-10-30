@@ -163,7 +163,7 @@ namespace ZwiftPacketMonitor {
   }
   #region Messages
   /// <summary>
-  /// Base message type
+  /// Base message type for Zwift Desktop app to Zwift Companion app messages
   /// </summary>
   public sealed partial class ZwiftAppToCompanion : pb::IMessage<ZwiftAppToCompanion>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -2360,6 +2360,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  /// Received when a power-up has become available
+  /// </summary>
   public sealed partial class ZwiftAppToCompanionPowerUpMessage : pb::IMessage<ZwiftAppToCompanionPowerUpMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2737,6 +2740,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  /// Received when an action has become available
+  /// </summary>
   public sealed partial class ZwiftAppToCompanionButtonMessage : pb::IMessage<ZwiftAppToCompanionButtonMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -3154,6 +3160,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  /// Received when the desktop app sends information to the companion app
+  /// </summary>
   public sealed partial class ZwiftAppToCompanionActivityDetailsMessage : pb::IMessage<ZwiftAppToCompanionActivityDetailsMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -6494,7 +6503,7 @@ namespace ZwiftPacketMonitor {
   }
 
   /// <summary>
-  /// Base message type
+  /// Base message type for Zwift Companion app to Zwift Desktop app messages
   /// </summary>
   public sealed partial class ZwiftCompanionToApp : pb::IMessage<ZwiftCompanionToApp>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -8020,6 +8029,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  /// A message sent to the desktop app to end the current activity
+  /// </summary>
   public sealed partial class ZwiftCompanionToAppEndActivityMessage : pb::IMessage<ZwiftCompanionToAppEndActivityMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -8526,6 +8538,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  /// Give a ride-on to another rider
+  /// </summary>
   public sealed partial class ZwiftCompanionToAppRideOnMessage : pb::IMessage<ZwiftCompanionToAppRideOnMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -8903,6 +8918,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  /// Informs the desktop app of the version of the companion app
+  /// </summary>
   public sealed partial class ZwiftCompanionToAppDeviceInfoMessage : pb::IMessage<ZwiftCompanionToAppDeviceInfoMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
