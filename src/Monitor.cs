@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using SharpPcap;
 using SharpPcap.LibPcap;
@@ -102,13 +100,18 @@ namespace ZwiftPacketMonitor
         private readonly PacketAssembler _packetAssembler;
         private readonly PacketAssembler _companionPacketAssemblerPcToApp;
         private readonly PacketAssembler _companionPacketAssemblerAppToPc;
-        private readonly Dictionary<string, int> _messageTypeCounters = new();
+        private readonly MessageDiagnostics _messageDiagnostics;
         private DateTime? _offset;
 
         /// <summary>
         /// Creates a new instance of the monitor class.
         /// </summary>
-        public Monitor(ILogger<Monitor> logger, PacketAssembler packetAssembler, PacketAssembler companionPacketAssemblerPcToApp, PacketAssembler companionPacketAssemblerAppToPc)
+        public Monitor(
+            ILogger<Monitor> logger, 
+            PacketAssembler packetAssembler, 
+            PacketAssembler companionPacketAssemblerPcToApp, 
+            PacketAssembler companionPacketAssemblerAppToPc, 
+            MessageDiagnostics messageDiagnostics)
         {
             _logger = logger ?? throw new ArgumentException(nameof(logger));
 
@@ -123,14 +126,13 @@ namespace ZwiftPacketMonitor
             _companionPacketAssemblerPcToApp = companionPacketAssemblerPcToApp;
             _companionPacketAssemblerPcToApp.PayloadReady += (_, e) =>
             {
-                // Only incoming TCP payloads are coming through here
                 DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming, e.SequenceNumber);
             };
 
             _companionPacketAssemblerAppToPc = companionPacketAssemblerAppToPc;
+            _messageDiagnostics = messageDiagnostics;
             _companionPacketAssemblerAppToPc.PayloadReady += (_, e) =>
             {
-                // Only incoming TCP payloads are coming through here
                 DeserializeAndDispatchCompanion(e.Payload, Direction.Outgoing, e.SequenceNumber);
             };
 
@@ -491,7 +493,7 @@ namespace ZwiftPacketMonitor
                     case 14:
                         _logger.LogInformation("Sent a type 14 command but no clue what it is");
 
-                        StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
+                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
 
                         return;
                     case 16:
@@ -507,7 +509,7 @@ namespace ZwiftPacketMonitor
                     case 20:
                         _logger.LogInformation("Sent a type 20 command but no idea what it is");
 
-                        StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
+                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
 
                         return;
                     // Seems to be a command form the companion app to the desktop app
@@ -532,7 +534,7 @@ namespace ZwiftPacketMonitor
                     case 28:
                         _logger.LogInformation("Possibly sent our own rider id sync command");
 
-                        StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
+                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber, 40);
 
                         return;
                     // Device info
@@ -563,7 +565,7 @@ namespace ZwiftPacketMonitor
                     default:
                         _logger.LogInformation("Found a rider detail message of type: " + riderMessage.Details.Type);
 
-                        StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
+                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, direction, sequenceNumber);
 
                         return;
                 }
@@ -571,7 +573,7 @@ namespace ZwiftPacketMonitor
 
             _logger.LogWarning("Sent a message that we don't recognize yet");
 
-            StoreMessageType(999, buffer, direction, sequenceNumber);
+            _messageDiagnostics.StoreMessageType(999, buffer, direction, sequenceNumber);
         }
 
         private void DeserializeAndDispatchIncomingMessage(byte[] buffer, Direction direction, uint sequenceNumber)
@@ -689,7 +691,7 @@ namespace ZwiftPacketMonitor
 
                         storeEntireMessage = true;
 
-                        StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNumber);
+                        _messageDiagnostics.StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNumber);
 
                         break;
                 }
@@ -697,7 +699,7 @@ namespace ZwiftPacketMonitor
 
             if (storeEntireMessage)
             {
-                StoreMessageType(0, buffer, direction, sequenceNumber);
+                _messageDiagnostics.StoreMessageType(0, buffer, direction, sequenceNumber);
             }
         }
 
@@ -757,40 +759,9 @@ namespace ZwiftPacketMonitor
                         "Received a button available that we don't recognise {type}",
                         buttonMessage.TypeId);
 
-                    StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
+                    _messageDiagnostics.StoreMessageType(item.Type, item.ToByteArray(), direction, sequenceNummber, 40);
 
                     break;
-            }
-        }
-
-        private void StoreMessageType(
-            uint messageType, 
-            byte[] buffer, 
-            Direction direction, 
-            uint sequenceNummber,
-            int maxNumberOfMessages = 10)
-        {
-            var basePath = $"c:\\git\\temp\\zwift\\companion-04-tcp";
-
-            if (!Directory.Exists(basePath))
-            {
-                Directory.CreateDirectory(basePath);
-            }
-
-            var type = $"{direction.ToString().ToLower()}-{messageType}";
-
-            if (!_messageTypeCounters.ContainsKey(type))
-            {
-                _messageTypeCounters.Add(type, 0);
-            }
-
-            if (_messageTypeCounters[type] < maxNumberOfMessages)
-            {
-                File.WriteAllBytes(
-                    $"{basePath}\\{sequenceNummber:000000}-{direction.ToString().ToLower()}-{messageType:000}.bin",
-                    buffer);
-
-                _messageTypeCounters[type]++;
             }
         }
 

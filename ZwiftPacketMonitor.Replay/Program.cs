@@ -29,7 +29,8 @@ namespace ZwiftPacketMonitor.Replay
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
             var replay = serviceProvider.GetService<Replayer>();
-            
+            serviceProvider.GetRequiredService<MessageDiagnostics>().OutputTo($"c:\\git\\temp\\zwift\\companion-04-tcp");
+
             //replay.IncomingPlayerEvent += (s, e) =>
             //{
             //    logger.LogInformation($"INCOMING: {e.PlayerState}");
