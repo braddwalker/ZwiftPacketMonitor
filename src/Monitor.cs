@@ -30,21 +30,25 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// The default Zwift UDP data port
         /// </summary>
+        // ReSharper disable once InconsistentNaming
         private const int ZWIFT_UDP_PORT = 3022;
 
         /// <summary>
         /// The default Zwift TCP data port
         /// </summary>
+        // ReSharper disable once InconsistentNaming
         private const int ZWIFT_TCP_PORT = 3023;
 
         /// <summary>
         /// The default Zwift TCP data port used by Zwift Companion
         /// </summary>
+        // ReSharper disable once InconsistentNaming
         private const int ZWIFT_COMPANION_TCP_PORT = 21587;
 
         /// <summary>
         /// Default read timeout for packet capture
         /// </summary>
+        // ReSharper disable once InconsistentNaming
         private const int READ_TIMEOUT = 1000;
 
         /// <summary>
@@ -98,7 +102,7 @@ namespace ZwiftPacketMonitor
         private readonly PacketAssembler _packetAssembler;
         private readonly PacketAssembler _companionPacketAssemblerPcToApp;
         private readonly PacketAssembler _companionPacketAssemblerAppToPc;
-        private readonly Dictionary<string, int> _messageTypeCounters = new Dictionary<string, int>();
+        private readonly Dictionary<string, int> _messageTypeCounters = new();
         private DateTime? _offset;
 
         /// <summary>
@@ -109,22 +113,22 @@ namespace ZwiftPacketMonitor
             _logger = logger ?? throw new ArgumentException(nameof(logger));
 
             // Setup the packet assembler and callback
-            this._packetAssembler = packetAssembler ?? throw new ArgumentException(nameof(packetAssembler));
-            this._packetAssembler.PayloadReady += (s, e) =>
+            _packetAssembler = packetAssembler ?? throw new ArgumentException(nameof(packetAssembler));
+            _packetAssembler.PayloadReady += (_, e) =>
             {
                 // Only incoming TCP payloads are coming through here
-                DeserializeAndDispatch(e.Payload, Direction.Incoming, isTcp: true);
+                DeserializeAndDispatch(e.Payload, Direction.Incoming);
             };
 
             _companionPacketAssemblerPcToApp = companionPacketAssemblerPcToApp;
-            _companionPacketAssemblerPcToApp.PayloadReady += (s, e) =>
+            _companionPacketAssemblerPcToApp.PayloadReady += (_, e) =>
             {
                 // Only incoming TCP payloads are coming through here
                 DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming, e.SequenceNumber);
             };
 
             _companionPacketAssemblerAppToPc = companionPacketAssemblerAppToPc;
-            _companionPacketAssemblerAppToPc.PayloadReady += (s, e) =>
+            _companionPacketAssemblerAppToPc.PayloadReady += (_, e) =>
             {
                 // Only incoming TCP payloads are coming through here
                 DeserializeAndDispatchCompanion(e.Payload, Direction.Outgoing, e.SequenceNumber);
@@ -310,7 +314,7 @@ namespace ZwiftPacketMonitor
             // Open the device for capturing
             _device.Open(mode: DeviceModes.Promiscuous | DeviceModes.DataTransferUdp | DeviceModes.NoCaptureLocal, read_timeout: READ_TIMEOUT);
             _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
-            _device.OnPacketArrival += new PacketArrivalEventHandler(device_OnPacketArrival);
+            _device.OnPacketArrival += device_OnPacketArrival;
 
             IsRunning = true;
 
@@ -790,7 +794,7 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        private void DeserializeAndDispatch(byte[] buffer, Direction direction, bool isTcp = false)
+        private void DeserializeAndDispatch(byte[] buffer, Direction direction)
         {
             // If we have any data to deserialize at this point, let's continue
             if (buffer?.Length > 0)
@@ -876,24 +880,6 @@ namespace ZwiftPacketMonitor
                                             Meetup = Meetup.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-                                    case 102:
-                                    case 109:
-                                    case 110:
-                                    case 106:
-                                    //File.WriteAllBytes(@"c:\git\temp\zwift\pl106.bin", buffer);
-                                    //File.WriteAllBytes(@"c:\git\temp\zwift\pl106-payload.bin", pu.Payload.ToByteArray());
-                                    //_logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
-                                    //var data = Payload106.Parser.ParseFrom(pu.Payload.ToByteArray());
-                                    //break;
-                                    case 116:
-                                        //File.WriteAllBytes(@"c:\git\temp\zwift\pl116.bin", buffer);
-                                        //File.WriteAllBytes(@"c:\git\temp\zwift\pl116-payload.bin", pu.Payload.ToByteArray());
-                                        //_logger.LogWarning($"116 payload: {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
-                                        //OnIncomingMessage116Event(new Message116EventArgs
-                                        //{
-                                        //    Message = Payload116.Parser.ParseFrom(pu.Payload.ToByteArray())
-                                        //});
-                                        break;
                                     default:
                                         _logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
                                         break;
@@ -910,34 +896,7 @@ namespace ZwiftPacketMonitor
                 {
                     _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}\n\r");
                 }
-
-                //File.WriteAllBytes($@"c:\git\temp\zwift\companion-02-{(isTcp ? "tcp" : "udp")}\packet-{_udpPacketCounter:00000}.bin", buffer);
-                //_udpPacketCounter++;   
             }
         }
-
-        private void OnIncomingMessage116Event(Message116EventArgs eventArgs)
-        {
-
-        }
-    }
-
-    internal class Message116EventArgs
-    {
-        public Payload116 Message { get; set; }
-    }
-
-    /// <summary>
-    /// This enumeration defines whether a given packet of data
-    /// is incoming from the remote server, or outgoing from the local client
-    /// </summary>
-    public enum Direction
-    {
-        // Default value
-        Unknown,
-        // Incoming from the remote server
-        Incoming,
-        // Outgoing from the local client
-        Outgoing
     }
 }
