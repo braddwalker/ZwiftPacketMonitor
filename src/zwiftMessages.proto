@@ -187,50 +187,6 @@ message Payload109 {
     // format to be determined
 }
 
-message Payload106 {
-    bool tag2 = 2;
-    // bool tag3 = 3;
-    // message SubPayload {
-    //     int64 tag1 = 1;
-    //     int32 tag2 = 2;
-    //     bool tag3 = 3;
-    //     bool tag4 = 4;
-    //     int32 tag5 = 5;
-    //     string tag7 = 7;
-    //     string tag8 = 8;
-    //     int64 tag9 = 9;
-    //     string timestamp = 10;
-    //     int32 tag11 = 11;
-    //     bool tag12 = 12;
-    //     int32 tag13 = 13;
-    //     bool tag14 = 14;
-    //     int32 tag15 = 15;
-    //     bool tag16 = 16;
-    //     string timestamp2 = 17;
-    //     bool tag18 = 18;
-    //     bool tag19 = 19;
-    //     bool tag20 = 20;
-    //     int64 tag21 = 21;
-    // }
-    // int64 tag5 = 5;
-    // int64 tag9 = 9;
-    // int64 tag14 = 14;
-    // int64 tag15 = 15;
-    
-}
-
-message Payload116 {
-    int64 tag2 = 2;
-    bytes tag4 = 4;
-    int64 tag5 = 5;
-    int64 tag6 = 6;
-    int64 tag7 = 7;
-    int64 tag8 = 8;
-    int64 tag9 = 9;
-    int64 tag11 = 11;
-    int64 tag14 = 14;
-    int64 tag15 = 15;
-}
 
 message EventPositions {
     int32 position = 1;
