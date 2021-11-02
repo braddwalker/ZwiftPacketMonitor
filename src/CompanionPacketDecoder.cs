@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using Google.Protobuf;
 using Microsoft.Extensions.Logging;
@@ -37,6 +36,16 @@ namespace ZwiftPacketMonitor
         /// </summary>
         public event EventHandler<PowerUpEventArgs> PowerUp;
 
+        /// <summary>
+        /// Raised when a heart beat message is received
+        /// </summary>
+        public event EventHandler<EventArgs> HeartBeat;
+
+        /// <summary>
+        /// Raised when activity details are received
+        /// </summary>
+        public event EventHandler<ActivityDetailsEventArgs> ActivityDetails;
+
         public void DecodeOutgoing(byte[] buffer, uint sequenceNumber)
         {
             var message = ZwiftCompanionToApp.Parser.ParseFrom(buffer);
@@ -46,8 +55,7 @@ namespace ZwiftPacketMonitor
             // is any proper data in it...
             if (buffer.Length <= 10)
             {
-                _logger.LogDebug("Found a heartbeat message");
-
+                OnHeartBeat();
                 return;
             }
 
@@ -144,9 +152,7 @@ namespace ZwiftPacketMonitor
                         break;
                     case 2:
                         var powerUp = ZwiftAppToCompanionPowerUpMessage.Parser.ParseFrom(byteArray);
-
-                        _logger.LogDebug("Received power up {power_up}", powerUp.PowerUp);
-
+                        
                         OnPowerUp(powerUp.PowerUp);
 
                         break;
@@ -182,9 +188,7 @@ namespace ZwiftPacketMonitor
             switch (activityDetails.Details.Type)
             {
                 case 3:
-                    _logger.LogInformation(
-                        "Received activity details, activity id {activity_id}",
-                        activityDetails.Details.Data.ActivityId);
+                    OnActivityDetails(activityDetails.Details.Data.ActivityId);
                     break;
                 case 5:
                     {
@@ -194,8 +198,6 @@ namespace ZwiftPacketMonitor
                             activityDetails.Details.RiderData.Sub[0].Index == 10)
                         {
                             var rider = activityDetails.Details.RiderData.Sub[0].Riders[0];
-
-                            _logger.LogDebug("Received our own rider position");
 
                             OnRiderPosition(
                                 rider.Position.Latitude,
@@ -215,10 +217,6 @@ namespace ZwiftPacketMonitor
 
                                     _logger.LogDebug("Received rider information: {subject}", subject);
                                 }
-                            }
-                            else
-                            {
-                                _logger.LogDebug("Received some position information without rider details");
                             }
                         }
 
@@ -266,6 +264,21 @@ namespace ZwiftPacketMonitor
                     _messageDiagnostics.StoreMessageType(activityDetails.Details.Type, activityDetails.ToByteArray(), Direction.Incoming,
                         sequenceNumber);
                     break;
+            }
+        }
+
+        private void OnActivityDetails(ulong activityId)
+        {
+            try
+            {
+                ActivityDetails?.Invoke(this, new ActivityDetailsEventArgs
+                {
+                    ActivityId = activityId
+                });
+            }
+            catch
+            {
+                // Ignore exceptions from event handlers.
             }
         }
 
@@ -343,6 +356,18 @@ namespace ZwiftPacketMonitor
             {
                 RiderPosition?.Invoke(this,
                     new RiderPositionEventArgs { Latitude = latitude, Longitude = longitude, Altitude = altitude });
+            }
+            catch
+            {
+                // Ignore exceptions from event handlers.
+            }
+        }
+
+        private void OnHeartBeat()
+        {
+            try
+            {
+                HeartBeat?.Invoke(this, EventArgs.Empty);
             }
             catch
             {
