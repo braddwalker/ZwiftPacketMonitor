@@ -29,9 +29,9 @@ namespace ZwiftPacketMonitor.Replay
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
             var replay = serviceProvider.GetService<Replayer>();
-            var messageDiagnostics = serviceProvider
-                .GetRequiredService<MessageDiagnostics>();
-            messageDiagnostics
+            var messageWriter = serviceProvider.GetRequiredService<IMessageWriter>();
+            
+            messageWriter
                 .OutputTo(
                     Path.Combine(
                         Path.GetDirectoryName(path), 
@@ -51,7 +51,7 @@ namespace ZwiftPacketMonitor.Replay
 
             replay.FromCapture(path);
 
-            logger.LogInformation("Messages captured:\n{summary}", messageDiagnostics.GetSummary());
+            logger.LogInformation("Messages captured:\n{summary}", messageWriter.GetSummary());
         }
     }
 }

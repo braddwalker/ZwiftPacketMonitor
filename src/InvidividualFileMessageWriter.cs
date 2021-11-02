@@ -5,15 +5,17 @@ using System.Linq;
 
 namespace ZwiftPacketMonitor
 {
-    public class MessageDiagnostics
+    public class InvidividualFileMessageWriter : IMessageWriter
     {
         private readonly Dictionary<string, int> _messageTypeCounters = new();
+        private readonly Dictionary<string, int> _messageTypeLimits = new();
         private string _outputPath;
         private bool _initialized;
 
         public void OutputTo(string outputPath)
         {
             _outputPath = outputPath;
+
             if (!string.IsNullOrEmpty(_outputPath))
             {
                 if (!Directory.Exists(_outputPath))
@@ -29,8 +31,7 @@ namespace ZwiftPacketMonitor
             uint messageType, 
             byte[] buffer, 
             Direction direction, 
-            uint sequenceNummber,
-            int maxNumberOfMessages = 10)
+            uint sequenceNummber)
         {
             // If no output path is set we don't want to store anything
             if (!_initialized)
@@ -45,14 +46,39 @@ namespace ZwiftPacketMonitor
                 _messageTypeCounters.Add(type, 0);
             }
 
-            //if (_messageTypeCounters[type] < maxNumberOfMessages)
-            //{
+            // Only store a message when the limit for that type
+            // hasn't been reached yet to prevent a potentially
+            // large amount of files being written.
+            if (_messageTypeCounters[type] < GetMaxNumberOfMessagesForType(type))
+            {
                 File.WriteAllBytes(
                     $"{_outputPath}\\{sequenceNummber:000000}-{direction.ToString().ToLower()}-{messageType:000}.bin",
                     buffer);
 
                 _messageTypeCounters[type]++;
-            //}
+            }
+        }
+
+        private int GetMaxNumberOfMessagesForType(string type)
+        {
+            if (_messageTypeLimits.ContainsKey(type))
+            {
+                return _messageTypeLimits[type];
+            }
+
+            return 10;
+        }
+
+        public void SetMaxNUmberOfMessagesForType(string type, int count)
+        {
+            if (!_messageTypeLimits.ContainsKey(type))
+            {
+                _messageTypeLimits.Add(type, count);
+            }
+            else
+            {
+                _messageTypeLimits[type] = count;
+            }
         }
 
         public string GetSummary()

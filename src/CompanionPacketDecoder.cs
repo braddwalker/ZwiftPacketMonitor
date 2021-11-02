@@ -8,11 +8,11 @@ namespace ZwiftPacketMonitor
     public class CompanionPacketDecoder
     {
         private readonly ILogger<CompanionPacketDecoder> _logger;
-        private readonly MessageDiagnostics _messageDiagnostics;
+        private readonly IMessageWriter _invidividualFileMessageWriter;
 
-        public CompanionPacketDecoder(MessageDiagnostics messageDiagnostics, ILogger<CompanionPacketDecoder> logger)
+        public CompanionPacketDecoder(IMessageWriter invidividualFileMessageWriter, ILogger<CompanionPacketDecoder> logger)
         {
-            _messageDiagnostics = messageDiagnostics;
+            _invidividualFileMessageWriter = invidividualFileMessageWriter ?? new NopMessageWriter();
             _logger = logger;
         }
 
@@ -124,7 +124,7 @@ namespace ZwiftPacketMonitor
                     default:
                         _logger.LogDebug("Found a rider detail message of type {type} that we don't understand", riderMessage.Details.Type);
 
-                        _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
+                        _invidividualFileMessageWriter.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
 
                         return;
                 }
@@ -132,7 +132,7 @@ namespace ZwiftPacketMonitor
 
             _logger.LogWarning("Sent a message that we don't recognize yet");
 
-            _messageDiagnostics.StoreMessageType(999, buffer, Direction.Outgoing, sequenceNumber);
+            _invidividualFileMessageWriter.StoreMessageType(999, buffer, Direction.Outgoing, sequenceNumber);
         }
 
         public void DecodeIncoming(byte[] buffer, uint sequenceNumber)
@@ -174,7 +174,7 @@ namespace ZwiftPacketMonitor
                     default:
                         _logger.LogWarning("Received type {type} message", item.Type);
 
-                        _messageDiagnostics.StoreMessageType(item.Type, byteArray, Direction.Incoming, sequenceNumber);
+                        _invidividualFileMessageWriter.StoreMessageType(item.Type, byteArray, Direction.Incoming, sequenceNumber);
 
                         break;
                 }
@@ -261,7 +261,7 @@ namespace ZwiftPacketMonitor
                     _logger.LogDebug("Received a activity details subtype with {type} that we don't understand yet",
                         activityDetails.Details.Type);
 
-                    _messageDiagnostics.StoreMessageType(activityDetails.Details.Type, activityDetails.ToByteArray(), Direction.Incoming,
+                    _invidividualFileMessageWriter.StoreMessageType(activityDetails.Details.Type, activityDetails.ToByteArray(), Direction.Incoming,
                         sequenceNumber);
                     break;
             }
