@@ -317,6 +317,15 @@ namespace ZwiftPacketMonitor
             // Open the device for capturing
             _device.Open(mode: DeviceModes.Promiscuous | DeviceModes.DataTransferUdp | DeviceModes.NoCaptureLocal, read_timeout: READ_TIMEOUT);
             _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
+
+            // When the companion packet decoder is provided also capture Zwift Companion packets
+            if (_companionPacketDecoder != null)
+            {
+                _logger.LogDebug($"Starting packet capture Zwift Companion, TCP: {ZWIFT_COMPANION_TCP_PORT}");
+
+                _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT} or tcp port {ZWIFT_COMPANION_TCP_PORT}";
+            }
+
             _device.OnPacketArrival += device_OnPacketArrival;
 
             IsRunning = true;
