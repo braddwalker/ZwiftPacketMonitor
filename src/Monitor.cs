@@ -122,19 +122,21 @@ namespace ZwiftPacketMonitor
                 DeserializeAndDispatch(e.Payload, Direction.Incoming);
             };
 
-            _companionPacketAssemblerPcToApp = companionPacketAssemblerPcToApp;
-            _companionPacketAssemblerPcToApp.PayloadReady += (_, e) =>
+            if (companionPacketDecoder != null)
             {
-                DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming, e.SequenceNumber);
-            };
+                _companionPacketAssemblerPcToApp = companionPacketAssemblerPcToApp;
+                _companionPacketAssemblerPcToApp.PayloadReady += (_, e) =>
+                {
+                    DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming, e.SequenceNumber);
+                };
 
-            _companionPacketAssemblerAppToPc = companionPacketAssemblerAppToPc;
-            _companionPacketDecoder = companionPacketDecoder;
-            _companionPacketAssemblerAppToPc.PayloadReady += (_, e) =>
-            {
-                DeserializeAndDispatchCompanion(e.Payload, Direction.Outgoing, e.SequenceNumber);
-            };
-
+                _companionPacketAssemblerAppToPc = companionPacketAssemblerAppToPc;
+                _companionPacketDecoder = companionPacketDecoder;
+                _companionPacketAssemblerAppToPc.PayloadReady += (_, e) =>
+                {
+                    DeserializeAndDispatchCompanion(e.Payload, Direction.Outgoing, e.SequenceNumber);
+                };
+            }
         }
 
         private void OnIncomingEventPositionsEvent(EventPositionsEventArgs e)
