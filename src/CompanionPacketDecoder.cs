@@ -162,7 +162,7 @@ namespace ZwiftPacketMonitor
                     case 13:
                         var activityDetails = ZwiftAppToCompanionActivityDetailsMessage.Parser.ParseFrom(byteArray);
 
-                        HandleType13IncomingMessage(sequenceNumber, activityDetails);
+                        DecodeIncomingActivityDetailsMessage(sequenceNumber, activityDetails);
 
                         break;
                     default:
@@ -175,7 +175,7 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        private void HandleType13IncomingMessage(
+        private void DecodeIncomingActivityDetailsMessage(
             uint sequenceNumber,
             ZwiftAppToCompanionActivityDetailsMessage activityDetails)
         {
