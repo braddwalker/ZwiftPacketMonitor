@@ -75,7 +75,7 @@ namespace ZwiftPacketMonitor
                 switch (riderMessage.Details.Type)
                 {
                     case 14:
-                        _logger.LogInformation("Sent a type 14 message");
+                        _logger.LogDebug("Sent a type 14 message");
                         return;
                     case 16:
                         {
@@ -90,13 +90,13 @@ namespace ZwiftPacketMonitor
                             return;
                         }
                     case 20:
-                        _logger.LogInformation("Sent a type 20 message");
+                        _logger.LogDebug("Sent a type 20 message");
                         return;
                     case 22 when riderMessage.Details.HasCommandType:
                         OnCommandSent(riderMessage.Details.CommandType);
                         return;
                     case 28:
-                        _logger.LogInformation("Possibly sent our own rider id sync command");
+                        _logger.LogDebug("Possibly sent our own rider id sync command");
                         return;
                     case 29 when riderMessage.Details.Data.Tag1 == 4:
                         {
@@ -106,7 +106,7 @@ namespace ZwiftPacketMonitor
                             var deviceString =
                                 $"{deviceInfoVersion.Os} ({deviceInfoVersion.OsVersion}) on {deviceInfoVersion.Device} {deviceInfoVersion.AppVersion}";
 
-                            _logger.LogInformation("Sent device info to the Zwift Desktop app: {data}", deviceString);
+                            _logger.LogDebug("Sent device info to the Zwift Desktop app: {data}", deviceString);
 
                             return;
                         }
@@ -117,12 +117,12 @@ namespace ZwiftPacketMonitor
 
                             var subject = $"{endActivity.Data.ActivityName}";
 
-                            _logger.LogInformation("Sent (possible) end activity command: {subject}", subject);
+                            _logger.LogDebug("Sent (possible) end activity command: {subject}", subject);
 
                             return;
                         }
                     default:
-                        _logger.LogInformation("Found a rider detail message of type {type} that we don't understand", riderMessage.Details.Type);
+                        _logger.LogDebug("Found a rider detail message of type {type} that we don't understand", riderMessage.Details.Type);
 
                         _messageDiagnostics.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
 
