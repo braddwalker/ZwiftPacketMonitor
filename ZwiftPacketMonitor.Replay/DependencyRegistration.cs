@@ -15,8 +15,6 @@ namespace ZwiftPacketMonitor.Replay
 
             serviceCollection.AddZwiftPacketMonitoring();
             serviceCollection.AddZwiftCompanionPacketMonitoring();
-            
-            serviceCollection.AddSingleton<Replayer>();
 
             serviceCollection.AddSingleton<InvidividualFileMessageWriter>();
             serviceCollection.AddSingleton<IMessageWriter, InvidividualFileMessageWriter>();

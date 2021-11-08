@@ -28,17 +28,17 @@ namespace ZwiftPacketMonitor.Replay
             var serviceProvider = DependencyRegistration.Register();
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
-            var replay = serviceProvider.GetService<Replayer>();
+            var monitor = serviceProvider.GetRequiredService<Monitor>();
             
             // Register events for Zwift Companion messages
             var decoder = serviceProvider.GetRequiredService<CompanionPacketDecoder>();
             RegisterZwiftCompanionEvents(decoder, logger);
 
             // Register events for Zwift Desktop app messages
-            RegisterZwiftDesktopEvents(replay, logger);
+            RegisterZwiftDesktopEvents(monitor, logger);
 
             // Replay the packet capture
-            replay.FromCapture(path);
+            monitor.StartCaptureAsync(path).GetAwaiter().GetResult();
         }
 
         private static void RegisterZwiftCompanionEvents(CompanionPacketDecoder decoder, ILogger<Program>? logger)
@@ -54,13 +54,13 @@ namespace ZwiftPacketMonitor.Replay
             };
         }
 
-        private static void RegisterZwiftDesktopEvents(Replayer replay, ILogger<Program> logger)
+        private static void RegisterZwiftDesktopEvents(Monitor monitor, ILogger<Program> logger)
         {
-            replay.IncomingPlayerEvent += (s, e) => { logger.LogInformation($"INCOMING: {e.PlayerState}"); };
-            replay.OutgoingPlayerEvent += (s, e) => { logger.LogInformation($"OUTGOING: {e.PlayerState}"); };
-            replay.IncomingChatMessageEvent += (s, e) => { logger.LogInformation($"CHAT: {e.Message}"); };
-            replay.IncomingPlayerEnteredWorldEvent += (s, e) => { logger.LogInformation($"WORLD: {e.PlayerUpdate}"); };
-            replay.IncomingRideOnGivenEvent += (s, e) => { logger.LogInformation($"RIDEON: {e.RideOn}"); };
+            monitor.IncomingPlayerEvent += (s, e) => { logger.LogInformation($"INCOMING: {e.PlayerState}"); };
+            monitor.OutgoingPlayerEvent += (s, e) => { logger.LogInformation($"OUTGOING: {e.PlayerState}"); };
+            monitor.IncomingChatMessageEvent += (s, e) => { logger.LogInformation($"CHAT: {e.Message}"); };
+            monitor.IncomingPlayerEnteredWorldEvent += (s, e) => { logger.LogInformation($"WORLD: {e.PlayerUpdate}"); };
+            monitor.IncomingRideOnGivenEvent += (s, e) => { logger.LogInformation($"RIDEON: {e.RideOn}"); };
         }
     }
 }

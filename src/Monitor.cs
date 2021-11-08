@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using SharpPcap;
 using SharpPcap.LibPcap;
@@ -94,7 +95,7 @@ namespace ZwiftPacketMonitor
         /// <value>true if running</value>
         public bool IsRunning { get; private set; }
 
-        private LibPcapLiveDevice _device;
+        private PcapDevice _device;
         private readonly ILogger<Monitor> _logger;
         private readonly PacketAssembler _packetAssembler;
         private readonly PacketAssembler _companionPacketAssemblerPcToApp;
@@ -106,10 +107,10 @@ namespace ZwiftPacketMonitor
         /// Creates a new instance of the monitor class.
         /// </summary>
         public Monitor(
-            ILogger<Monitor> logger, 
-            PacketAssembler packetAssembler, 
-            PacketAssembler companionPacketAssemblerPcToApp, 
-            PacketAssembler companionPacketAssemblerAppToPc, 
+            ILogger<Monitor> logger,
+            PacketAssembler packetAssembler,
+            PacketAssembler companionPacketAssemblerPcToApp,
+            PacketAssembler companionPacketAssemblerAppToPc,
             CompanionPacketDecoder companionPacketDecoder)
         {
             _logger = logger ?? throw new ArgumentException(nameof(logger));
@@ -270,11 +271,38 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// Starts the network monitor and begins dispatching events
         /// </summary>
-        /// <param name="networkInterface">The name or IP address of the network interface to attach to</param>
+        /// <param name="networkInterface">The name or IP address of the network interface to attach to or a fully qualified path to a PCAP capture file</param>
         /// <param name="cancellationToken">An optional cancellation token</param>
         /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {
+            var deviceOpenFlags = DeviceModes.None;
+
+            // Check if networkInterface is a file path.
+            // Do this before using the default list of interfaces because
+            // a user will almost always have privileges to open a file
+            // but not always the list of interfaces.
+            if (!string.IsNullOrEmpty(networkInterface))
+            {
+                try
+                {
+                    var fileInfo = new FileInfo(networkInterface);
+                    if (fileInfo.Exists)
+                    {
+                        _logger.LogDebug("Replaying packets from capture file {fileName}", fileInfo.Name);
+
+                        _device = new CaptureFileReaderDevice(fileInfo.FullName);
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException("The provided file does not exist", networkInterface);
+                    }
+                }
+                catch (ArgumentException)
+                {
+                }
+            }
+
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
             var devices = LibPcapLiveDeviceList.Instance;
 
@@ -283,7 +311,7 @@ namespace ZwiftPacketMonitor
             {
                 _device = devices.FirstOrDefault(d => d.Addresses.Count > 0);
             }
-            else
+            else if (_device == null)
             {
                 // See if we can find the desired interface by name
                 if (Regex.IsMatch(networkInterface, "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"))
@@ -292,7 +320,7 @@ namespace ZwiftPacketMonitor
                     _device = devices.FirstOrDefault(d =>
                         d.Addresses != null && d.Addresses.Any(a =>
                             a.Addr != null && a.Addr.ipAddress != null &&
-                                a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
+                            a.Addr.ipAddress.Equals(IPAddress.Parse(networkInterface))));
                 }
                 else
                 {
@@ -302,9 +330,14 @@ namespace ZwiftPacketMonitor
                     if (_device == null) // still unresolved, search by friendly name (ie. ipconfig /all)
                     {
                         _device = devices.FirstOrDefault(x =>
-                            x.Interface.FriendlyName != null && x.Interface.FriendlyName.Equals(networkInterface, StringComparison.InvariantCultureIgnoreCase));
+                            x.Interface.FriendlyName != null && x.Interface.FriendlyName.Equals(networkInterface,
+                                StringComparison.InvariantCultureIgnoreCase));
                     }
                 }
+
+                _logger.LogDebug($"Starting packet capture on {GetInterfaceDisplayName((LibPcapLiveDevice)_device)} UDP:{ZWIFT_UDP_PORT}, TCP: {ZWIFT_TCP_PORT}");
+
+                deviceOpenFlags = DeviceModes.Promiscuous | DeviceModes.DataTransferUdp | DeviceModes.NoCaptureLocal;
             }
 
             if (_device == null)
@@ -312,10 +345,8 @@ namespace ZwiftPacketMonitor
                 throw new ArgumentException($"Interface {networkInterface} not found");
             }
 
-            _logger.LogDebug($"Starting packet capture on {GetInterfaceDisplayName(_device)} UDP:{ZWIFT_UDP_PORT}, TCP: {ZWIFT_TCP_PORT}");
-
             // Open the device for capturing
-            _device.Open(mode: DeviceModes.Promiscuous | DeviceModes.DataTransferUdp | DeviceModes.NoCaptureLocal, read_timeout: READ_TIMEOUT);
+            _device.Open(mode: deviceOpenFlags, read_timeout: READ_TIMEOUT);
             _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
 
             // When the companion packet decoder is provided also capture Zwift Companion packets
@@ -370,7 +401,7 @@ namespace ZwiftPacketMonitor
                 var packet = Packet.ParsePacket(e.Device.LinkType, e.Data.ToArray());
                 var tcpPacket = packet.Extract<TcpPacket>();
                 var udpPacket = packet.Extract<UdpPacket>();
-                
+
                 var protoBytes = Array.Empty<byte>();
                 var direction = Direction.Unknown;
 
