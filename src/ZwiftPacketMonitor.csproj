@@ -2,19 +2,19 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <id>ZwiftPacketMonitor</id>
-    <Version>1.2.9</Version>
+    <Version>1.3.0</Version>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Authors>Brad Walker (@braddwalker)</Authors>
+    <Authors>Brad Walker (@braddwalker), Sander van Vliet (@sandermvanvliet / @codenizer)</Authors>
     <Description>This is a port of the node zwift-packet-monitor project which monitors Zwift network packets</Description>
-    <Title>Captures TCP and UDP packets produced/consumed by the Zwift online cycling simulator</Title>
+    <Title>Captures TCP and UDP packets produced/consumed by the Zwift online cycling simulator and Zwift Companion app</Title>
     <PackageProjectUrl>https://github.com/braddwalker/ZwiftPacketMonitor</PackageProjectUrl>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <!-- forward compatibility with expcted upcoming nuget changes https://github.com/NuGet/Home/wiki/Embedding-and-displaying-NuGet-READMEs -->
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageId>ZwiftPacketMonitor</PackageId>
     <PackageTags>zwift, network, packet, protobuf</PackageTags>
-    <PackageReleaseNotes>Added support for SharpPcap 6.0 after breaking changes.  Changed TargetFramework to net5.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for capturing and decoding Zwift Companion messages</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/braddwalker/ZwiftPacketMonitor</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
