@@ -84,12 +84,12 @@ Debugging is hard but it's even harder when having to do a Zwift work out at the
 To make life easier you can replay Zwift messages from a PCAP capture file instead of a network device so that you can debug and analyse without having to run Zwift at the same time.
 Capture packets using SharpCap or Wireshark and save the results to a file, then run `ZwiftPacketMonitor.Replay.exe <path to capture file>` and see the messages flow by.
 
-You can also use the `Monitor` class directly by providing the full path to a capture file to the `StartCapture` method:
+You can also use the `Monitor` class directly by providing the full path to a capture file to the `StartCaptureFromFileAsync` method:
 
 ```csharp
 // Replay the packet capture
 var path = "c:\temp\zwift-captures\capture-session-1.pcap";
-await monitor.StartCaptureAsync(path)
+await monitor.StartCaptureFromFileAsync(path)
 ```
 
 ## Generating message classes

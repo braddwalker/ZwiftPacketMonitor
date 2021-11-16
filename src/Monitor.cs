@@ -268,38 +268,11 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// Starts the network monitor and begins dispatching events
         /// </summary>
-        /// <param name="networkInterface">The name or IP address of the network interface to attach to or a fully qualified path to a PCAP capture file</param>
+        /// <param name="networkInterface">The name or IP address of the network interface to attach to</param>
         /// <param name="cancellationToken">An optional cancellation token</param>
         /// <returns>A Task representing the running packet capture</returns>
         public async Task StartCaptureAsync(string networkInterface, CancellationToken cancellationToken = default)
         {
-            var deviceOpenFlags = DeviceModes.None;
-
-            // Check if networkInterface is a file path.
-            // Do this before using the default list of interfaces because
-            // a user will almost always have privileges to open a file
-            // but not always the list of interfaces.
-            if (!string.IsNullOrEmpty(networkInterface))
-            {
-                try
-                {
-                    var fileInfo = new FileInfo(networkInterface);
-                    if (fileInfo.Exists)
-                    {
-                        _logger.LogDebug($"Replaying packets from capture file {fileInfo.Name}");
-
-                        _device = new CaptureFileReaderDevice(fileInfo.FullName);
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException("The provided file does not exist", networkInterface);
-                    }
-                }
-                catch (ArgumentException)
-                {
-                }
-            }
-
             // This will blow up if caller doesn't have sufficient privs to attach to network devices
             var devices = LibPcapLiveDeviceList.Instance;
 
@@ -308,7 +281,7 @@ namespace ZwiftPacketMonitor
             {
                 _device = devices.FirstOrDefault(d => d.Addresses.Count > 0);
             }
-            else if (_device == null)
+            else
             {
                 // See if we can find the desired interface by name
                 if (Regex.IsMatch(networkInterface, "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"))
@@ -333,13 +306,49 @@ namespace ZwiftPacketMonitor
                 }
 
                 _logger.LogDebug($"Starting packet capture on {GetInterfaceDisplayName((LibPcapLiveDevice)_device)} UDP:{ZWIFT_UDP_PORT}, TCP: {ZWIFT_TCP_PORT}");
-
-                deviceOpenFlags = DeviceModes.Promiscuous | DeviceModes.DataTransferUdp | DeviceModes.NoCaptureLocal;
             }
 
             if (_device == null)
             {
                 throw new ArgumentException($"Interface {networkInterface} not found");
+            }
+
+            // Open the device for capturing
+            _device.Open(mode: DeviceModes.Promiscuous | DeviceModes.DataTransferUdp | DeviceModes.NoCaptureLocal, read_timeout: READ_TIMEOUT);
+            _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT} or tcp port {ZWIFT_COMPANION_TCP_PORT}";
+
+            _device.OnPacketArrival += device_OnPacketArrival;
+
+            IsRunning = true;
+
+            // Start capture 'INFINTE' number of packets
+            await Task.Run(() => { _device.Capture(); }, cancellationToken);
+        }
+
+        /// <summary>
+        /// Starts reading packets from file and begins dispatching events
+        /// </summary>
+        /// <param name="path">The fully qualified path to a PCAP capture file</param>
+        /// <param name="cancellationToken">An optional cancellation token</param>
+        /// <returns>A Task representing the running packet capture</returns>
+        public async Task StartCaptureFromFileAsync(string path, CancellationToken cancellationToken)
+        {
+            var deviceOpenFlags = DeviceModes.None;
+
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentException("path cannot be empty", nameof(path));
+            }
+
+            if(File.Exists(path))
+            {
+                _logger.LogDebug($"Replaying packets from capture file {path}");
+
+                _device = new CaptureFileReaderDevice(path);
+            }
+            else
+            {
+                throw new FileNotFoundException("The provided file does not exist", path);
             }
 
             // Open the device for capturing
