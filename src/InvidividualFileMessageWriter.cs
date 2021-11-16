@@ -5,6 +5,14 @@ using System.Linq;
 
 namespace ZwiftPacketMonitor
 {
+    /// <summary>
+    /// Write each packet to a separate file to a folder on disk for debugging and/or reverse engineering purposes
+    /// </summary>
+    /// <remarks>
+    /// <para>You would register this class in the <see cref="Microsoft.Extensions.DependencyInjection.IServiceCollection"/> when you want to debug Protobuf message formats.
+    /// Depending on the message type the first 10 messages will be stored, you can control that limit using <see cref="SetMaxNUmberOfMessagesForType"/>.</para>
+    /// <para>By default the <see cref="NopMessageWriter"/> is registered and no messages are written anywhere.</para>
+    /// </remarks>
     public class InvidividualFileMessageWriter : IMessageWriter
     {
         private readonly Dictionary<string, int> _messageTypeCounters = new();
