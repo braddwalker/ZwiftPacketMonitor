@@ -123,21 +123,18 @@ namespace ZwiftPacketMonitor
                 DeserializeAndDispatch(e.Payload, Direction.Incoming);
             };
 
-            if (companionPacketDecoder != null)
+            _companionPacketDecoder = companionPacketDecoder ?? throw new ArgumentException(nameof(companionPacketDecoder));
+            _companionPacketAssemblerPcToApp = companionPacketAssemblerPcToApp;
+            _companionPacketAssemblerPcToApp.PayloadReady += (_, e) =>
             {
-                _companionPacketAssemblerPcToApp = companionPacketAssemblerPcToApp;
-                _companionPacketAssemblerPcToApp.PayloadReady += (_, e) =>
-                {
-                    DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming, e.SequenceNumber);
-                };
+                DeserializeAndDispatchCompanion(e.Payload, Direction.Incoming, e.SequenceNumber);
+            };
 
-                _companionPacketAssemblerAppToPc = companionPacketAssemblerAppToPc;
-                _companionPacketDecoder = companionPacketDecoder;
-                _companionPacketAssemblerAppToPc.PayloadReady += (_, e) =>
-                {
-                    DeserializeAndDispatchCompanion(e.Payload, Direction.Outgoing, e.SequenceNumber);
-                };
-            }
+            _companionPacketAssemblerAppToPc = companionPacketAssemblerAppToPc;
+            _companionPacketAssemblerAppToPc.PayloadReady += (_, e) =>
+            {
+                DeserializeAndDispatchCompanion(e.Payload, Direction.Outgoing, e.SequenceNumber);
+            };
         }
 
         private void OnIncomingEventPositionsEvent(EventPositionsEventArgs e)
@@ -347,15 +344,7 @@ namespace ZwiftPacketMonitor
 
             // Open the device for capturing
             _device.Open(mode: deviceOpenFlags, read_timeout: READ_TIMEOUT);
-            _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT}";
-
-            // When the companion packet decoder is provided also capture Zwift Companion packets
-            if (_companionPacketDecoder != null)
-            {
-                _logger.LogDebug($"Starting packet capture Zwift Companion, TCP: {ZWIFT_COMPANION_TCP_PORT}");
-
-                _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT} or tcp port {ZWIFT_COMPANION_TCP_PORT}";
-            }
+            _device.Filter = $"udp port {ZWIFT_UDP_PORT} or tcp port {ZWIFT_TCP_PORT} or tcp port {ZWIFT_COMPANION_TCP_PORT}";
 
             _device.OnPacketArrival += device_OnPacketArrival;
 

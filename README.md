@@ -47,20 +47,16 @@ See the included ZwiftPacketMonitor.Demo project for a complete working example.
 
 In addition to capturing messages from the Zwift Desktop app (the actual game) it is also possible to listen for the messages sent to and from the Zwift Companion app running on a mobile device.
 
-This is handled through the `CompanionPacketDecoder` class which exposes the various events that will be raised when the relevant message is captured. By default these messages are not captured by the `Monitor`, only when a `CompanionPacketDecoder` instance is passed the messages will be captured.
+This is handled through the `CompanionPacketDecoder` class which exposes the various events that will be raised when the relevant message is captured.
 
 ```csharp
 var serviceCollection = new ServiceCollection();
 serviceCollection.AddZwiftPacketMonitoring();
 
-// Register Zwift Companion monitoring
-serviceCollection.AddZwiftCompanionPacketMonitoring();
-
 var serviceProvider = serviceCollection.BuildServiceProvider(); 
 var logger = serviceProvider.GetService<ILogger<Program>>();
 var monitor = serviceProvider.GetService<Monitor>();
 var companionPacketDecoder = serviceProvider.GetService<CompanionPacketDecoder>();
-
 
 companionPacketDecoder.CommandAvailable += (_, eventArgs) =>
 {

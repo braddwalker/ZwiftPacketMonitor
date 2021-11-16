@@ -14,7 +14,6 @@ namespace ZwiftPacketMonitor.Replay
                 .Configure<LoggerFilterOptions>(configure => configure.MinLevel = LogLevel.Information);
 
             serviceCollection.AddZwiftPacketMonitoring();
-            serviceCollection.AddZwiftCompanionPacketMonitoring();
 
             serviceCollection.AddSingleton<InvidividualFileMessageWriter>();
             serviceCollection.AddSingleton<IMessageWriter, InvidividualFileMessageWriter>();
