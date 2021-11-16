@@ -65,7 +65,7 @@ namespace ZwiftPacketMonitor
             {
                 var typeTag10Zero = ZwiftCompanionToAppMessageTag10Zero.Parser.ParseFrom(buffer);
                 var clockTime = DateTimeOffset.FromUnixTimeSeconds((long)typeTag10Zero.ClockTime);
-                _logger.LogDebug("Sent a tag 10 = 0 type message with timestamp {clock_time}", clockTime);
+                _logger.LogDebug($"Sent a tag 10 = 0 type message with timestamp {clockTime}");
 
                 return;
             }
@@ -106,7 +106,7 @@ namespace ZwiftPacketMonitor
                             var deviceString =
                                 $"{deviceInfoVersion.Os} ({deviceInfoVersion.OsVersion}) on {deviceInfoVersion.Device} {deviceInfoVersion.AppVersion}";
 
-                            _logger.LogDebug("Sent device info to the Zwift Desktop app: {data}", deviceString);
+                            _logger.LogDebug($"Sent device info to the Zwift Desktop app: {deviceString}");
 
                             return;
                         }
@@ -117,12 +117,12 @@ namespace ZwiftPacketMonitor
 
                             var subject = $"{endActivity.Data.ActivityName}";
 
-                            _logger.LogDebug("Sent (possible) end activity command: {subject}", subject);
+                            _logger.LogDebug($"Sent (possible) end activity command: {subject}");
 
                             return;
                         }
                     default:
-                        _logger.LogDebug("Found a rider detail message of type {type} that we don't understand", riderMessage.Details.Type);
+                        _logger.LogDebug($"Found a rider detail message of type {riderMessage.Details.Type} that we don't understand");
 
                         _invidividualFileMessageWriter.StoreMessageType(riderMessage.Details.Type, buffer, Direction.Outgoing, sequenceNumber);
 
@@ -172,7 +172,7 @@ namespace ZwiftPacketMonitor
 
                         break;
                     default:
-                        _logger.LogWarning("Received type {type} message", item.Type);
+                        _logger.LogWarning($"Received type {item.Type} message");
 
                         _invidividualFileMessageWriter.StoreMessageType(item.Type, byteArray, Direction.Incoming, sequenceNumber);
 
@@ -215,7 +215,7 @@ namespace ZwiftPacketMonitor
                                 {
                                     var subject = $"{rider.Description} ({rider.RiderId})";
 
-                                    _logger.LogDebug("Received rider information: {subject}", subject);
+                                    _logger.LogDebug($"Received rider information: {subject}");
                                 }
                             }
                         }
@@ -246,7 +246,7 @@ namespace ZwiftPacketMonitor
                         {
                             var subject = $"{rider.FirstName?.Trim()} {rider.LastName?.Trim()} ({rider.RiderId})";
 
-                            _logger.LogDebug("Received rider nearby position for {subject}", subject);
+                            _logger.LogDebug($"Received rider nearby position for {subject}");
                         }
 
                         break;
@@ -258,8 +258,7 @@ namespace ZwiftPacketMonitor
                     // Ignore, contains very little data
                     break;
                 default:
-                    _logger.LogDebug("Received a activity details subtype with {type} that we don't understand yet",
-                        activityDetails.Details.Type);
+                    _logger.LogDebug($"Received a activity details subtype with {activityDetails.Details.Type} that we don't understand yet");
 
                     _invidividualFileMessageWriter.StoreMessageType(activityDetails.Details.Type, activityDetails.ToByteArray(), Direction.Incoming,
                         sequenceNumber);
@@ -309,7 +308,7 @@ namespace ZwiftPacketMonitor
 
             if (commandType == CommandType.Unknown)
             {
-                _logger.LogWarning("Sent unknown command {type}", numericalCommandType);
+                _logger.LogWarning($"Sent unknown command {numericalCommandType}");
             }
 
             try
@@ -337,7 +336,7 @@ namespace ZwiftPacketMonitor
 
             if (commandType == CommandType.Unknown)
             {
-                _logger.LogWarning("Did not recognise command {type} ({description})", numericalCommandType, description);
+                _logger.LogWarning($"Did not recognise command {numericalCommandType} ({description})");
             }
 
             try

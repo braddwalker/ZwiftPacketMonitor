@@ -286,7 +286,7 @@ namespace ZwiftPacketMonitor
                     var fileInfo = new FileInfo(networkInterface);
                     if (fileInfo.Exists)
                     {
-                        _logger.LogDebug("Replaying packets from capture file {fileName}", fileInfo.Name);
+                        _logger.LogDebug($"Replaying packets from capture file {fileInfo.Name}");
 
                         _device = new CaptureFileReaderDevice(fileInfo.FullName);
                     }
