@@ -331,7 +331,7 @@ namespace ZwiftPacketMonitor
         /// <param name="path">The fully qualified path to a PCAP capture file</param>
         /// <param name="cancellationToken">An optional cancellation token</param>
         /// <returns>A Task representing the running packet capture</returns>
-        public async Task StartCaptureFromFileAsync(string path, CancellationToken cancellationToken)
+        public async Task StartCaptureFromFileAsync(string path, CancellationToken cancellationToken = default)
         {
             var deviceOpenFlags = DeviceModes.None;
 
