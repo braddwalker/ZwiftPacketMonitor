@@ -52,7 +52,7 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// This event gets invoked when a remote player enteres the world
         /// </summary>
-        public event EventHandler<PlayerEnteredWorldEventArgs> IncomingPlayerEnteredWorldEvent;
+        public event EventHandler<SegmentResultEventArgs> IncomingSegmentResultEvent;
 
         /// <summary>
         /// This event gets invoked when a remote player gives a ride on to another player
@@ -62,22 +62,72 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// This event gets invoked when a remote player sends a chat message
         /// </summary>
-        public event EventHandler<ChatMessageEventArgs> IncomingChatMessageEvent;
+        public event EventHandler<SocialPlayerActionEventArgs> IncomingSocialPlayerActionEvent;
 
         /// <summary>
         /// This event gets invoked when a remote player's world time needs to be synced
         /// </summary>
-        public event EventHandler<PlayerTimeSyncEventArgs> IncomingPlayerTimeSyncEvent;
+        public event EventHandler<PlayerLeftWorldEventArgs> IncomingPlayerLeftWorldEvent;
 
         /// <summary>
         /// This event gets invoked when a meetup gets scheduled or updated
         /// </summary>
-        public event EventHandler<MeetupEventArgs> IncomingMeetupEvent;
+        public event EventHandler<EventProtobufEventArgs> IncomingEventProtobufEvent;
+
+        /// <summary>
+        /// This event gets invoked when the player joined event
+        /// </summary>
+        public event EventHandler<PlayerJoinedEventArgs> IncomingPlayerJoinedEvent;
+
+        /// <summary>
+        /// This event gets invoked when the player left event
+        /// </summary>
+        public event EventHandler<PlayerLeftEventArgs> IncomingPlayerLeftEvent;
+
+        /// <summary>
+        /// This event gets invoked when the player invited to event
+        /// </summary>
+        public event EventHandler<EventInviteEventArgs> IncomingEventInviteEvent;
+
+        /// <summary>
+        /// This event gets invoked when notable moment occurred
+        /// </summary>
+        public event EventHandler<NotableEventArgs> IncomingNotableEvent;
+
+        /// <summary>
+        /// This event gets invoked when group event occurred
+        /// </summary>
+        public event EventHandler<GroupEventArgs> IncomingGroupEvent;
+
+        /// <summary>
+        /// This event gets invoked when bike action occurred
+        /// </summary>
+        public event EventHandler<BikeActionEventArgs> IncomingBikeActionEvent;
+
+        /// <summary>
+        /// This event gets invoked when no-payload WorldAttribute received
+        /// </summary>
+        public event EventHandler<NoPayloadWaEventArgs> IncomingNoPayloadWaEvent;
+
+        /// <summary>
+        /// This event gets invoked when string message WorldAttribute received
+        /// </summary>
+        public event EventHandler<MessageWaEventArgs> IncomingMessageWaEvent;
+
+        /// <summary>
+        /// This event gets invoked when time-sync WorldAttribute received
+        /// </summary>
+        public event EventHandler<FloatTimeWaEventArgs> IncomingFloatTimeWaEvent;
+
+        /// <summary>
+        /// This event gets invoked when 'flag' WorldAttribute received
+        /// </summary>
+        public event EventHandler<FlagWaEventArgs> IncomingFlagWaEvent;
 
         /// <summary>
         /// This event gets invoked during events and reports rider positions
         /// </summary>
-        public event EventHandler<EventPositionsEventArgs> IncomingEventPositionsEvent;
+        public event EventHandler<EventSubgroupPlacementsEventArgs> IncomingEventSubgroupPlacementsEvent;
 
         /// <summary>
         /// A flag that indicates whether packet capture is currently running or not
@@ -105,9 +155,9 @@ namespace ZwiftPacketMonitor
             };
         }
 
-        private void OnIncomingEventPositionsEvent(EventPositionsEventArgs e)
+        private void OnIncomingEventSubgroupPlacementsEvent(EventSubgroupPlacementsEventArgs e)
         {
-            var handler = IncomingEventPositionsEvent;
+            var handler = IncomingEventSubgroupPlacementsEvent;
             if (handler != null)
             {
                 try {
@@ -119,9 +169,9 @@ namespace ZwiftPacketMonitor
             }
         }  
 
-        private void OnIncomingMeetupEvent(MeetupEventArgs e)
+        private void OnIncomingMeetupEvent(EventProtobufEventArgs e)
         {
-            var handler = IncomingMeetupEvent;
+            var handler = IncomingEventProtobufEvent;
             if (handler != null)
             {
                 try {
@@ -133,9 +183,149 @@ namespace ZwiftPacketMonitor
             }
         }  
 
-        private void OnIncomingChatMessageEvent(ChatMessageEventArgs e)
+        private void OnIncomingPlayerLeftEvent(PlayerLeftEventArgs e)
         {
-            var handler = IncomingChatMessageEvent;
+            var handler = IncomingPlayerLeftEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingPlayerJoinedEvent(PlayerJoinedEventArgs e)
+        {
+            var handler = IncomingPlayerJoinedEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingEventInviteEvent(EventInviteEventArgs e)
+        {
+            var handler = IncomingEventInviteEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }
+
+        private void OnIncomingNotableEvent(NotableEventArgs e)
+        {
+            var handler = IncomingNotableEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingGroupEvent(GroupEventArgs e)
+        {
+            var handler = IncomingGroupEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingBikeActionEvent(BikeActionEventArgs e)
+        {
+            var handler = IncomingBikeActionEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingNoPayloadWaEvent(NoPayloadWaEventArgs e)
+        {
+            var handler = IncomingNoPayloadWaEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingMessageWaEvent(MessageWaEventArgs e)
+        {
+            var handler = IncomingMessageWaEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingFloatTimeWaEvent(FloatTimeWaEventArgs e)
+        {
+            var handler = IncomingFloatTimeWaEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingFlagWaEvent(FlagWaEventArgs e)
+        {
+            var handler = IncomingFlagWaEvent;
+            if (handler != null)
+            {
+                try {
+                    handler(this, e);
+                }
+                catch {
+                    // Don't let downstream exceptions bubble up
+                }
+            }
+        }  
+
+        private void OnIncomingSocialPlayerActionEvent(SocialPlayerActionEventArgs e)
+        {
+            var handler = IncomingSocialPlayerActionEvent;
             if (handler != null)
             {
                 try {
@@ -161,9 +351,9 @@ namespace ZwiftPacketMonitor
             }
         }  
 
-        private void OnIncomingPlayerEnteredWorldEvent(PlayerEnteredWorldEventArgs e)
+        private void OnIncomingSegmentResultEvent(SegmentResultEventArgs e)
         {
-            var handler = IncomingPlayerEnteredWorldEvent;
+            var handler = IncomingSegmentResultEvent;
             if (handler != null)
             {
                 try {
@@ -203,9 +393,9 @@ namespace ZwiftPacketMonitor
             }
         }
 
-        private void OnIncomingPlayerTimeSyncEvent(PlayerTimeSyncEventArgs e)
+        private void OnIncomingPlayerLeftWorldEvent(PlayerLeftWorldEventArgs e)
         {
-            var handler = IncomingPlayerTimeSyncEvent;
+            var handler = IncomingPlayerLeftWorldEvent;
             if (handler != null)
             {
                 try {
@@ -349,26 +539,22 @@ namespace ZwiftPacketMonitor
                     else if (dstPort == ZWIFT_UDP_PORT) 
                     {
                         // Outgoing packets *may* have some a metadata header that's not part of the protobuf.
-                        // This is sort of a magic number at the moment -- not sure if the first byte is coincidentally 0x06, 
-                        // or if the header (if there is one) is always 5 bytes long
-                        int skip = 5;
-
-                        if (packetBytes[skip] == 0x08) {
-                            // NOOP, as the protobuf payload looks like it starts after the initial skip estimate
-                        }
-                        else if (packetBytes[0] == 0x08) {
-                            // protobuf payload starts at the beginning
-                            skip = 0;
-                        }
-                        else {
+                        int skip = 0; //regular frame format with no header
+                        if (packetBytes[0] == 0xDF)
+                        {
+                            skip = 1; // case 1. 0xDF (header is 'don't forward byte')
+                        } else if (packetBytes[0] == 0x06) {
+                            skip = 5; // case 2. 0x06 & <int32:PlayerId> = 5 bytes to ignore (header 'voronoiOrDieByte')
+                        } else {
                             // Use the first byte as an indicator of how far into the payload we need to look
                             // in order to find the beginning of the protobuf
+                            // ??? ursoft: did not see this case in decompiled code
                             skip = packetBytes[0] - 1;
                         }
 
                         // Pluck the protobuf data from the packet payload
                         protoBytes = packetBytes.Skip(skip).ToArray();
-                        protoBytes = protoBytes.Take(protoBytes.Length - 4).ToArray();
+                        protoBytes = protoBytes.Take(protoBytes.Length - 4).ToArray(); // payload hash: 4 bytes, ignored
                         direction = Direction.Outgoing;
                     }
 
@@ -418,12 +604,12 @@ namespace ZwiftPacketMonitor
                             }
                         }
 
-                        if (packetData.EventPositions != null)
+                        if (packetData.EvSubgroupPs != null)
                         {
                             // Dispatch the event
-                            OnIncomingEventPositionsEvent(new EventPositionsEventArgs()
+                            OnIncomingEventSubgroupPlacementsEvent(new EventSubgroupPlacementsEventArgs()
                             {
-                                EventPositions = packetData.EventPositions,
+                                EvSubgroupPs = packetData.EvSubgroupPs,
                             });
                         }
 
@@ -432,50 +618,151 @@ namespace ZwiftPacketMonitor
                         {
                             try
                             {
-                                switch (pu.Tag3)
-                                {                                    
-                                    case 4:
-                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs() 
+                                switch (pu.WaType)
+                                {
+                                    case WA_TYPE.WatRideOn:
+                                        OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs()
                                         {
                                             RideOn = RideOn.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-                                    case 5:
-                                        OnIncomingChatMessageEvent(new ChatMessageEventArgs()
+                                    case WA_TYPE.WatSpa:
+                                        OnIncomingSocialPlayerActionEvent(new SocialPlayerActionEventArgs()
                                         {
-                                            Message = Chat.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            SocialPlayerAction = SocialPlayerAction.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-                                    case 105:
-                                        OnIncomingPlayerEnteredWorldEvent(new PlayerEnteredWorldEventArgs()
+                                    case WA_TYPE.WatSr:
+                                        OnIncomingSegmentResultEvent(new SegmentResultEventArgs()
                                         {
-                                            PlayerUpdate = Payload105.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            SegmentResult = SegmentResult.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-                                    case 3:
-                                        OnIncomingPlayerTimeSyncEvent(new PlayerTimeSyncEventArgs()
+                                    case WA_TYPE.WatRelogin:
+                                    case WA_TYPE.WatLeave:
+                                        OnIncomingPlayerLeftWorldEvent(new PlayerLeftWorldEventArgs()
                                         {
-                                            TimeSync = TimeSync.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            PlayerLeftWorld = PlayerLeftWorld.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            WaType = pu.WaType,
                                         });
                                         break;
-                                    case 6:
-                                        // meetup create/update? 6 has the same payload as 10
-                                    case 10:
-                                        // join meetup?
-                                        OnIncomingMeetupEvent(new MeetupEventArgs()
+                                    case WA_TYPE.WatEvent:
+                                        OnIncomingMeetupEvent(new EventProtobufEventArgs()
                                         {
-                                            Meetup = Meetup.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            EventProtobuf = EventProtobuf.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                         });
                                         break;
-                                    case 102:
-                                    case 109:
-                                    case 110:
-                                        // Haven't been able to decode these yet
+                                    case WA_TYPE.WatJoinE:
+                                        OnIncomingPlayerJoinedEvent(new PlayerJoinedEventArgs()
+                                        {
+                                            PlayerJoinedEvent = PlayerJoinedEvent.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
                                         break;
+                                    case WA_TYPE.WatLeftE:
+                                        OnIncomingPlayerLeftEvent(new PlayerLeftEventArgs()
+                                        {
+                                            PlayerLeftEvent = PlayerLeftEvent.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        }); //did not checked yet
+                                        break;
+                                    case WA_TYPE.WatInvW:
+                                        OnIncomingEventInviteEvent(new EventInviteEventArgs()
+                                        {
+                                            EventInviteProto = EventInviteProto.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                        });
+                                        break;
+                                    case WA_TYPE.WatGrpM:
+                                    case WA_TYPE.WatPriM:
+                                        OnIncomingMessageWaEvent(new MessageWaEventArgs()
+                                        {
+                                            //Message = StringProto.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            WaType = pu.WaType,
+                                        }); //did not checked yet
+                                        break;
+                                    case WA_TYPE.WatWtime: //check: 4-byte world time, int or float?
+                                    case WA_TYPE.WatRtime: //check: float road time
+                                        OnIncomingFloatTimeWaEvent(new FloatTimeWaEventArgs()
+                                        {
+                                            FloatTime = BitConverter.ToSingle(pu.Payload.ToByteArray()),  //did not checked yet
+                                            WaType = pu.WaType,
+                                        });
+                                        break;
+                                    case WA_TYPE.WatFlag:
+                                        OnIncomingFlagWaEvent(new FlagWaEventArgs()
+                                        {
+                                            FlagWaInfo = new FlagWaInfo(pu.Payload.ToByteArray())
+                                        });
+                                        break;
+/*todo:
+                                    case WA_TYPE.WatRla:
+                                    case WA_TYPE.WatLate:
+                                    case WA_TYPE.WatRh:
+                                    case WA_TYPE.WatStats:
+                                    case WA_TYPE.WatFence:
+                                    case WA_TYPE.WatBnGe:
+                                    case WA_TYPE.WatPpi:*/
+                                    case WA_TYPE.WatBAct:
+                                        if (pu.Payload.Length == 16)
+                                        {
+                                            var bytes = pu.Payload.ToByteArray();
+                                            OnIncomingBikeActionEvent(new BikeActionEventArgs()
+                                            {
+                                                BaHexStr = BitConverter.ToString(bytes),
+                                                PlayerId = BitConverter.ToInt64(bytes, 0), //did not checked yet
+                                                BikeAction = (BikeAction)BitConverter.ToInt32(bytes, 8), //did not checked yet
+                                            });
+                                            return;
+                                        }
+                                        _logger.LogWarning($"Unknown WatBAct contents: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
+                                        break;
+                                    case WA_TYPE.WatGe:
+                                        if (pu.Payload.Length == 40)
+                                        {
+                                            var bytes = pu.Payload.ToByteArray();
+                                            if (bytes[0] == 1 && bytes[1] == 0 && /* version */
+                                                bytes[2] == 36 && bytes[3] == 0 /* length */ )
+                                            {
+                                                OnIncomingGroupEvent(new GroupEventArgs()
+                                                {
+                                                    GeHexStr = BitConverter.ToString(bytes),
+                                                    PlayerId = BitConverter.ToInt64(bytes, 8), //did not checked yet
+                                                    GeKindStr = (bytes[25] != 0) ? "UserSignedup" : "UserRegistered", //did not checked yet
+                                                });
+                                                return;
+                                            }
+                                        }
+                                        _logger.LogWarning($"Unknown WatGe contents: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
+                                        break;
+                                    case WA_TYPE.WatRqProf:
+                                    case WA_TYPE.WatKicked:
+                                    case WA_TYPE.WatNone:
+                                        OnIncomingNoPayloadWaEvent(new NoPayloadWaEventArgs()
+                                        {
+                                            WaType = pu.WaType,
+                                        }); //did not checked yet
+                                        break;
+                                    case WA_TYPE.WatNm:
+                                        if (pu.Payload.Length == 48)
+                                        {
+                                            var bytes = pu.Payload.ToByteArray();
+                                            if (bytes[0] == 1 && bytes[1] == 0 && /* version */
+                                                bytes[2] == 0x2c && bytes[3] == 0 /* length */ )
+                                            {
+                                                OnIncomingNotableEvent(new NotableEventArgs()
+                                                {
+                                                    NotableHexStr = BitConverter.ToString(bytes),
+                                                    PlayerId = BitConverter.ToInt64(bytes, 8), //did not checked yet
+                                                });
+                                                return;
+                                            }
+                                        }
+                                        _logger.LogWarning($"Unknown WatNm contents: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
+                                        break;
+                                    case WA_TYPE.WatUnk0:
+                                    case WA_TYPE.WatUnk1:
                                     default:
-                                        _logger.LogWarning($"Unknown tag {pu.Tag3}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
+                                        _logger.LogWarning($"Unknown tag {pu.WaType}: {pu}, {BitConverter.ToString(pu.Payload.ToByteArray()).Replace("-", "")}");
                                         break;
-                                }                            
+                                }
                             }
                             catch (Exception e)
                             {
@@ -487,16 +774,16 @@ namespace ZwiftPacketMonitor
                 catch (Exception ex) 
                 {
                     _logger.LogError(ex, $"ERROR: Actual: {buffer?.Length}, PayloadData: {BitConverter.ToString(buffer).Replace("-", "")}\n\r");
-                }   
+                }
             }
         }
-   }
+    }
 
     /// <summary>
     /// This enumeration defines whether a given packet of data
     /// is incoming from the remote server, or outgoing from the local client
     /// </summary>
-   public enum Direction 
+    public enum Direction 
    {
        // Default value
        Unknown,

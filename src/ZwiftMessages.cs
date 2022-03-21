@@ -24,492 +24,677 @@ namespace ZwiftPacketMonitor {
     static ZwiftMessagesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChN6d2lmdE1lc3NhZ2VzLnByb3RvEhJad2lmdFBhY2tldE1vbml0b3IikAYK",
-            "Bk1lZXR1cBIKCgJpZBgBIAEoBRIMCgR0YWcyGAIgASgFEgwKBG5hbWUYAyAB",
-            "KAkSEwoLZGVzY3JpcHRpb24YBCABKAkSEgoKc3RhcnRfdGltZRgFIAEoAxIQ",
-            "CghkaXN0YW5jZRgHIAEoBxIMCgR0YWc4GAggASgFEjwKDG1lZXR1cF9pbm5l",
-            "chgKIAEoCzImLlp3aWZ0UGFja2V0TW9uaXRvci5NZWV0dXAuTWVldHVwSW5u",
-            "ZXISEQoJdGh1bWJuYWlsGAwgASgJEhAKCGR1cmF0aW9uGA0gASgFEgsKA2Yx",
-            "NBgOIAEoAxILCgNmMTcYESABKAUSCwoDZjE4GBIgASgFEgsKA2YyMhgWIAEo",
-            "BRILCgNmMjMYFyABKAUSGAoQbWVldHVwX29ubHlfdmlldxgYIAEoBRILCgNm",
-            "MjUYGSABKAUSCwoDZjI3GBsgASgFEgsKA2YyOBgcIAEoBRILCgNmMjkYHSAB",
-            "KAUSCwoDZjM0GCIgASgFEgsKA2YzNRgjIAEoBRqIAwoLTWVldHVwSW5uZXIS",
-            "CgoCaWQYASABKAUSDAoEbmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEo",
-            "CRIKCgJmNxgHIAEoCRIKCgJmOBgIIAEoAxIKCgJmORgJIAEoAxILCgNmMTAY",
-            "CiABKAMSCwoDZjExGAsgASgDEgsKA2YxMhgMIAEoAxILCgNmMTMYDSABKAMS",
-            "CwoDZjE0GA4gASgDEgsKA2YxNRgPIAEoAxILCgNmMTYYECABKAMSCwoDZjE3",
-            "GBEgASgDEgsKA2YxOBgSIAEoAxILCgNmMjIYFiABKAMSEAoIZGlzdGFuY2UY",
-            "GCABKAcSCwoDZjI1GBkgASgDEgsKA2YyORgdIAEoBRILCgNmMzAYHiABKAUS",
-            "CwoDZjMxGB8gASgFEgsKA2YzMhggIAEoBxILCgNmMzMYISABKAcSEAoIZHVy",
-            "YXRpb24YIiABKAUSCwoDZjQyGCogASgDEgsKA2Y0NBgsIAEoAxILCgNmNDYY",
-            "LiABKAUSCwoDZjQ3GC8gASgFItMDCgtQbGF5ZXJTdGF0ZRIKCgJpZBgBIAEo",
-            "BRIRCgl3b3JsZFRpbWUYAiABKAMSEAoIZGlzdGFuY2UYAyABKAUSEAoIcm9h",
-            "ZFRpbWUYBCABKAUSDAoEbGFwcxgFIAEoBRINCgVzcGVlZBgGIAEoBRIUCgxy",
-            "b2FkUG9zaXRpb24YCCABKAUSEgoKY2FkZW5jZVVIehgJIAEoBRIRCgloZWFy",
-            "dHJhdGUYCyABKAUSDQoFcG93ZXIYDCABKAUSDwoHaGVhZGluZxgNIAEoAxIM",
-            "CgRsZWFuGA4gASgFEhAKCGNsaW1iaW5nGA8gASgFEgwKBHRpbWUYECABKAUS",
-            "CwoDZjE5GBMgASgFEgsKA2YyMBgUIAEoBRIQCghwcm9ncmVzcxgVIAEoBRIX",
-            "Cg9jdXN0b21pc2F0aW9uSWQYFiABKAMSFAoManVzdFdhdGNoaW5nGBcgASgF",
-            "EhAKCGNhbG9yaWVzGBggASgFEgkKAXgYGSABKAISEAoIYWx0aXR1ZGUYGiAB",
-            "KAISCQoBeRgbIAEoAhIXCg93YXRjaGluZ1JpZGVySWQYHCABKAUSDwoHZ3Jv",
-            "dXBJZBgdIAEoBRINCgVzcG9ydBgfIAEoAxILCgNmMzQYIiABKAIi5AEKDkNs",
-            "aWVudFRvU2VydmVyEhEKCWNvbm5lY3RlZBgBIAEoBRIQCghyaWRlcl9pZBgC",
-            "IAEoBRISCgp3b3JsZF90aW1lGAMgASgDEg0KBXNlcW5vGAQgASgFEi4KBXN0",
-            "YXRlGAcgASgLMh8uWndpZnRQYWNrZXRNb25pdG9yLlBsYXllclN0YXRlEgwK",
-            "BHRhZzgYCCABKAMSDAoEdGFnORgJIAEoAxITCgtsYXN0X3VwZGF0ZRgKIAEo",
-            "AxINCgV0YWcxMRgLIAEoAxIaChJsYXN0X3BsYXllcl91cGRhdGUYDCABKAMi",
-            "EQoPVW5rbm93bk1lc3NhZ2UxIhAKDlVua25vd25NZXNzYWdlIssBCgxQbGF5",
-            "ZXJVcGRhdGUSDAoEdGFnMRgBIAEoAxIMCgR0YWcyGAIgASgFEgwKBHRhZzMY",
-            "AyABKAUSDwoHcGF5bG9hZBgEIAEoDBIMCgR0YWc1GAUgASgDEgwKBHRhZzYY",
-            "BiABKAMSDAoEdGFnNxgHIAEoAxIMCgR0YWc4GAggASgDEgwKBHRhZzkYCSAB",
-            "KAMSDQoFdGFnMTEYCyABKAMSDQoFdGFnMTIYDCABKAMSDQoFdGFnMTQYDiAB",
-            "KAMSDQoFdGFnMTUYDyABKAMi9gEKClBheWxvYWQxMDUSCgoCZjEYASABKAMS",
-            "EAoIcmlkZXJfaWQYAiABKAUSCgoCZjMYAyABKAUSCgoCZjQYBCABKAMSCgoC",
-            "ZjUYBSABKAMSCgoCZjYYBiABKAMSEQoJZmlyc3ROYW1lGAcgASgJEhAKCGxh",
-            "c3ROYW1lGAggASgJEgoKAmY5GAkgASgDEgsKA2YxMRgLIAEoAxILCgNmMTIY",
-            "DCABKAUSCwoDZjEzGA0gASgFEgsKA2YxNBgOIAEoBRILCgNmMTUYDyABKAUS",
-            "CwoDZjE2GBAgASgFEg4KBmY3ZGF0ZRgRIAEoCRILCgNmMTkYEyABKAUiqwEK",
-            "BENoYXQSEAoIcmlkZXJfaWQYASABKAUSEwoLdG9fcmlkZXJfaWQYAiABKAUS",
-            "CgoCZjMYAyABKAUSEQoJZmlyc3ROYW1lGAQgASgJEhAKCGxhc3ROYW1lGAUg",
-            "ASgJEg8KB21lc3NhZ2UYBiABKAkSDgoGYXZhdGFyGAcgASgJEhMKC2NvdW50",
-            "cnlDb2RlGAggASgFEhUKDWV2ZW50U3ViZ3JvdXAYCyABKAUiaQoGUmlkZU9u",
-            "EhAKCHJpZGVyX2lkGAEgASgFEhMKC3RvX3JpZGVyX2lkGAIgASgFEhEKCWZp",
-            "cnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3VudHJ5Q29k",
-            "ZRgFIAEoBSIiCghQYXlsb2FkMhIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoAyI8",
-            "CghUaW1lU3luYxIQCghyaWRlcl9pZBgBIAEoBRISCgp3b3JsZF90aW1lGAIg",
-            "ASgDEgoKAmYzGAMgASgFIgwKClBheWxvYWQxMTAiDAoKUGF5bG9hZDEwOSKx",
-            "AQoORXZlbnRQb3NpdGlvbnMSEAoIcG9zaXRpb24YASABKAUSUQoSZXZlbnRS",
-            "aWRlclBvc2l0aW9uGAQgAygLMjUuWndpZnRQYWNrZXRNb25pdG9yLkV2ZW50",
-            "UG9zaXRpb25zLkV2ZW50UmlkZXJQb3NpdGlvbhISCgpudW1fcmlkZXJzGHQg",
-            "ASgFGiYKEkV2ZW50UmlkZXJQb3NpdGlvbhIQCghyaWRlcl9pZBgBIAEoBSLB",
-            "AwoOU2VydmVyVG9DbGllbnQSDAoEdGFnMRgBIAEoBRIQCghyaWRlcl9pZBgC",
-            "IAEoBRISCgp3b3JsZF90aW1lGAMgASgDEg0KBXNlcW5vGAQgASgFEjYKDXBs",
-            "YXllcl9zdGF0ZXMYCCADKAsyHy5ad2lmdFBhY2tldE1vbml0b3IuUGxheWVy",
-            "U3RhdGUSOAoOcGxheWVyX3VwZGF0ZXMYCSADKAsyIC5ad2lmdFBhY2tldE1v",
-            "bml0b3IuUGxheWVyVXBkYXRlEg0KBXRhZzExGAsgASgDEhAKCGxvY2FsX2lw",
-            "GAwgASgJEg0KBXRhZzE1GA8gASgFEg0KBXRhZzE3GBEgASgDEhAKCG51bV9t",
-            "c2dzGBIgASgFEg4KBm1zZ251bRgTIAEoBRI7Cg9ldmVudF9wb3NpdGlvbnMY",
-            "FyABKAsyIi5ad2lmdFBhY2tldE1vbml0b3IuRXZlbnRQb3NpdGlvbnMSLQoI",
-            "c2VydmVyczEYGCABKAsyGy5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVyMRIt",
-            "CghzZXJ2ZXJzMhgZIAEoCzIbLlp3aWZ0UGFja2V0TW9uaXRvci5TZXJ2ZXIy",
-            "IlcKDVNlcnZlckFkZHJlc3MSCgoCZjEYASABKAUSCgoCZjIYAiABKAUSCgoC",
-            "aXAYAyABKAkSCgoCZjQYBCABKAUSCgoCZjUYBSABKAcSCgoCZjYYBiABKAci",
-            "ZgoKU2VydmVyUG9vbBIKCgJmMRgBIAEoBRIKCgJmMhgCIAEoBRI0CglhZGRy",
-            "ZXNzZXMYAyADKAsyIS5ad2lmdFBhY2tldE1vbml0b3IuU2VydmVyQWRkcmVz",
-            "cxIKCgJmNBgEIAEoBSJDCgdTZXJ2ZXIyEiwKBHBvb2wYASADKAsyHi5ad2lm",
-            "dFBhY2tldE1vbml0b3IuU2VydmVyUG9vbBIKCgJmMhgCIAEoBSJjCgdTZXJ2",
-            "ZXIxEjQKCWFkZHJlc3NlcxgBIAMoCzIhLlp3aWZ0UGFja2V0TW9uaXRvci5T",
-            "ZXJ2ZXJBZGRyZXNzEgoKAmYyGAIgASgFEgoKAmYzGAMgASgFEgoKAmY0GAQg",
-            "ASgFInUKD1dvcmxkQXR0cmlidXRlcxIQCgh3b3JsZF9pZBgBIAEoBRIMCgRu",
-            "YW1lGAIgASgJEgwKBHRhZzMYAyABKAMSDAoEdGFnNRgEIAEoAxISCgp3b3Js",
-            "ZF90aW1lGAYgASgDEhIKCmNsb2NrX3RpbWUYByABKAMiJAoOV29ybGRBdHRy",
-            "aWJ1dGUSEgoKd29ybGRfdGltZRgCIAEoAyKpAQoVRXZlbnRTdWJncm91cFBy",
-            "b3RvYnVmEgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkSDQoFcnVsZXMYCCAB",
-            "KAUSDQoFcm91dGUYFiABKAUSDAoEbGFwcxgZIAEoBRIVCg1zdGFydExvY2F0",
-            "aW9uGB0gASgFEg0KBWxhYmVsGB4gASgFEhAKCHBhY2VUeXBlGB8gASgFEhIK",
-            "CmplcnNleUhhc2gYJCABKAUihAIKD1JpZGVyQXR0cmlidXRlcxIKCgJmMhgC",
-            "IAEoBRIKCgJmMxgDIAEoBRJOChBhdHRyaWJ1dGVNZXNzYWdlGAQgASgLMjQu",
-            "WndpZnRQYWNrZXRNb25pdG9yLlJpZGVyQXR0cmlidXRlcy5BdHRyaWJ1dGVN",
-            "ZXNzYWdlEg8KB3RoZWlySWQYCiABKAUSCwoDZjEzGA0gASgFGmsKEEF0dHJp",
-            "YnV0ZU1lc3NhZ2USDAoEbXlJZBgBIAEoBRIPCgd0aGVpcklkGAIgASgFEhEK",
-            "CWZpcnN0TmFtZRgDIAEoCRIQCghsYXN0TmFtZRgEIAEoCRITCgtjb3VudHJ5",
-            "Q29kZRgFIAEoBWIGcHJvdG8z"));
+            "ChN6d2lmdE1lc3NhZ2VzLnByb3RvEhJad2lmdFBhY2tldE1vbml0b3IitgEK",
+            "DU5vdGFibGVNb21lbnQSEwoLYWN0aXZpdHlfaWQYASABKAQSNQoEdHlwZRgC",
+            "IAEoDjInLlp3aWZ0UGFja2V0TW9uaXRvci5Ob3RhYmxlTW9tZW50VHlwZVpH",
+            "EhAKCHByaW9yaXR5GAMgASgNEhQKDGluY2lkZW50VGltZRgEIAEoBBIMCgRh",
+            "dXgxGAUgASgJEgwKBGF1eDIYBiABKAkSFQoNbGFyZ2VJbWFnZVVybBgHIAEo",
+            "CSJ6ChVNaWNyb3NlcnZpY2VFdmVudERhdGESDAoEbmFtZRgBIAEoCRIaChJl",
+            "eHRlcm5hbFJlc291cmNlSWQYAiABKAwSNwoKdmlzaWJpbGl0eRgDIAEoDjIj",
+            "Llp3aWZ0UGFja2V0TW9uaXRvci5FdmVudFZpc2liaWxpdHkiRAoTRXZlbnRT",
+            "ZXJpZXNQcm90b2J1ZhIKCgJpZBgBIAEoBBIMCgRuYW1lGAIgASgJEhMKC2Rl",
+            "c2NyaXB0aW9uGAMgASgJIn8KFUV2ZW50VGltZVRyaWFsT3B0aW9ucxIcChR0",
+            "aW1lR2FwQmV0d2VlblJvd3NNcxgBIAEoDRIPCgdtYXhSb3dzGAIgASgNEhcK",
+            "D21heFJpZGVyc1BlclJvdxgDIAEoDRIOCgZldnRfZjQYBCABKA0SDgoGZXZ0",
+            "X2Y1GAUgASgEIssHCg1FdmVudFByb3RvYnVmEgoKAmlkGAEgASgDEhQKDHNl",
+            "cnZlcl9yZWFsbRgCIAEoAxIMCgRuYW1lGAMgASgJEhMKC2Rlc2NyaXB0aW9u",
+            "GAQgASgJEhMKC2V2ZW50X3N0YXJ0GAUgASgDEgwKBGVfZjYYBiABKAkSGAoQ",
+            "ZGlzdGFuY2VJbk1ldGVycxgHIAEoAhIMCgRsYXBzGAggASgFEgwKBGVfZjkY",
+            "CSABKAUSOwoIY2F0ZWdvcnkYCiABKAsyKS5ad2lmdFBhY2tldE1vbml0b3Iu",
+            "RXZlbnRTdWJncm91cFByb3RvYnVmEg0KBWVfZjExGAsgASgJEhEKCXRodW1i",
+            "bmFpbBgMIAEoCRIZChFkdXJhdGlvbkluU2Vjb25kcxgNIAEoBRIQCghyb3V0",
+            "ZV9pZBgOIAEoAxIQCghydWxlc19pZBgPIAEoAxINCgVlX2YxNhgQIAEoBRIP",
+            "Cgd2aXNpYmxlGBEgASgIEhIKCmplcnNleUhhc2gYEiABKAMSDQoFZV9mMTkY",
+            "EyABKAkSDQoFZV9mMjAYFCABKAkSDQoFZV9mMjEYFSABKAkSKAoFc3BvcnQY",
+            "FiABKA4yGS5ad2lmdFBhY2tldE1vbml0b3IuU3BvcnQSDQoFZV9mMjMYFyAB",
+            "KAMSMAoJZXZlbnRUeXBlGBggASgOMh0uWndpZnRQYWNrZXRNb25pdG9yLkV2",
+            "ZW50VHlwZRINCgVlX2YyNRgZIAEoBBINCgVlX2YyNhgaIAEoCRINCgVlX2Yy",
+            "NxgbIAEoBBIeChZvdmVycmlkZU1hcFByZWZlcmVuY2VzGBwgASgIEiIKGmlu",
+            "dmlzaWJsZVRvTm9uUGFydGljaXBhbnRzGB0gASgIEjkKCGV2U2VyaWVzGB4g",
+            "ASgLMicuWndpZnRQYWNrZXRNb25pdG9yLkV2ZW50U2VyaWVzUHJvdG9idWYS",
+            "DAoEdGFncxgfIAEoCRINCgVlX2YzMhggIAEoBBIOCgZlX3d0cmwYISABKAgS",
+            "GQoRbGF0ZUpvaW5Jbk1pbnV0ZXMYIiABKA0SEQoJY291cnNlX2lkGCMgASgE",
+            "EjYKA3R0bxgkIAEoCzIpLlp3aWZ0UGFja2V0TW9uaXRvci5FdmVudFRpbWVU",
+            "cmlhbE9wdGlvbnMSDQoFZV9mMzcYJSABKAkSDQoFZV9mMzgYJiABKAkSDQoF",
+            "ZV9mMzkYJyABKA0SNwoEbXNlZBgoIAEoCzIpLlp3aWZ0UGFja2V0TW9uaXRv",
+            "ci5NaWNyb3NlcnZpY2VFdmVudERhdGESDQoFZV9mNDEYKSADKA0inQUKC1Bs",
+            "YXllclN0YXRlEgoKAmlkGAEgASgFEhEKCXdvcmxkVGltZRgCIAEoAxIQCghk",
+            "aXN0YW5jZRgDIAEoBRIQCghyb2FkVGltZRgEIAEoBRIMCgRsYXBzGAUgASgF",
+            "Eg0KBXNwZWVkGAYgASgFEg0KBXBzX2Y3GAcgASgNEhQKDHJvYWRQb3NpdGlv",
+            "bhgIIAEoBRISCgpjYWRlbmNlVUh6GAkgASgFEg4KBnBzX2YxMBgKIAEoBRIR",
+            "CgloZWFydHJhdGUYCyABKAUSDQoFcG93ZXIYDCABKAUSDwoHaGVhZGluZxgN",
+            "IAEoAxIMCgRsZWFuGA4gASgFEhAKCGNsaW1iaW5nGA8gASgFEgwKBHRpbWUY",
+            "ECABKAUSDgoGcHNfZjE3GBEgASgFEhAKCGZyYW1lSHVlGBIgASgNEgsKA2Yx",
+            "ORgTIAEoBRILCgNmMjAYFCABKAUSEAoIcHJvZ3Jlc3MYFSABKAUSFwoPY3Vz",
+            "dG9taXNhdGlvbklkGBYgASgDEhQKDGp1c3RXYXRjaGluZxgXIAEoBRIQCghj",
+            "YWxvcmllcxgYIAEoBRIJCgF4GBkgASgCEgkKAXkYGiABKAISCQoBehgbIAEo",
+            "AhIXCg93YXRjaGluZ1JpZGVySWQYHCABKAMSDwoHZ3JvdXBJZBgdIAEoAxIo",
+            "CgVzcG9ydBgfIAEoDjIZLlp3aWZ0UGFja2V0TW9uaXRvci5TcG9ydBIOCgZw",
+            "c19mMzIYICABKAISDgoGcHNfZjMzGCEgASgNEhAKCGRpc3RfbGF0GCIgASgC",
+            "Eg0KBXdvcmxkGCMgASgFEg4KBnBzX2YzNhgkIAEoDRIOCgZwc19mMzcYJSAB",
+            "KA0SEAoIY2FuU3RlZXIYJiABKAgSDQoFcm91dGUYJyABKAUi4AIKDkNsaWVu",
+            "dFRvU2VydmVyEhQKDHNlcnZlcl9yZWFsbRgBIAEoBRIRCglwbGF5ZXJfaWQY",
+            "AiABKAUSEgoKd29ybGRfdGltZRgDIAEoAxINCgVzZXFubxgEIAEoBRIOCgZj",
+            "dHNfZjUYBSABKAUSDgoGY3RzX2Y2GAYgASgDEi4KBXN0YXRlGAcgASgLMh8u",
+            "WndpZnRQYWNrZXRNb25pdG9yLlBsYXllclN0YXRlEg4KBmN0c19mOBgIIAEo",
+            "CBIOCgZjdHNfZjkYCSABKAgSEwoLbGFzdF91cGRhdGUYCiABKAMSDwoHY3Rz",
+            "X2YxMRgLIAEoCBIaChJsYXN0X3BsYXllcl91cGRhdGUYDCABKAMSFAoMbGFy",
+            "Z193YV90aW1lGA0gASgDEg8KB2N0c19mMTQYDiABKAgSFAoMc3Vic1NlZ21l",
+            "bnRzGA8gAygDEhMKC3Vuc1NlZ21lbnRzGBAgAygDIkgKEVBsYXllckpvaW5l",
+            "ZEV2ZW50EhAKCGV2X3NnX2lkGAEgASgEEhEKCXBsYXllcl9pZBgCIAEoBBIO",
+            "CgZwamVfZjMYAyABKAQiRgoPUGxheWVyTGVmdEV2ZW50EhAKCGV2X3NnX2lk",
+            "GAEgASgEEhEKCXBsYXllcl9pZBgCIAEoBBIOCgZwbGVfZjMYAyABKAQiqgEK",
+            "E0ludml0ZWRQcm9maWxlUHJvdG8SDgoGaXBwX2YxGAEgASgEEg4KBmlwcF9m",
+            "MhgCIAEoCRIOCgZpcHBfZjMYAyABKAkSDgoGaXBwX2Y0GAQgASgJEg4KBmlw",
+            "cF9mNRgFIAEoCBIOCgZpcHBfZjYYBiABKAgSMwoLcGxheWVyX3R5cGUYByAB",
+            "KA4yHi5ad2lmdFBhY2tldE1vbml0b3IuUGxheWVyVHlwZSJfChBFdmVudElu",
+            "dml0ZVByb3RvEjgKB3Byb2ZpbGUYASABKAsyJy5ad2lmdFBhY2tldE1vbml0",
+            "b3IuSW52aXRlZFByb2ZpbGVQcm90bxIRCglpbnZpdGVfZjIYAiABKAQiwAIK",
+            "DldvcmxkQXR0cmlidXRlEg0KBXdhX2YxGAEgASgDEhQKDHNlcnZlcl9yZWFs",
+            "bRgCIAEoAxIsCgd3YV90eXBlGAMgASgOMhsuWndpZnRQYWNrZXRNb25pdG9y",
+            "LldBX1RZUEUSDwoHcGF5bG9hZBgEIAEoDBIXCg93b3JsZF90aW1lX2Jvcm4Y",
+            "BSABKAMSCQoBeBgGIAEoAxIJCgF5GAcgASgDEgkKAXoYCCABKAMSGQoRd29y",
+            "bGRfdGltZV9leHBpcmUYCSABKAMSDgoGcmVsX2lkGAogASgDEhIKCmltcG9y",
+            "dGFuY2UYCyABKAUSDgoGd2FfZjEyGAwgASgDEg4KBndhX2YxMxgNIAEoBRIR",
+            "Cgl0aW1lc3RhbXAYDiABKAMSDgoGd2FfZjE1GA8gASgFEg4KBndhX2YxNhgQ",
+            "IAEoAyK+BAoNU2VnbWVudFJlc3VsdBIKCgJpZBgBIAEoAxIRCglwbGF5ZXJf",
+            "aWQYAiABKAUSFAoMc2VydmVyX3JlYWxtGAMgASgDEhEKCWNvdXJzZV9pZBgE",
+            "IAEoAxISCgpzZWdtZW50X2lkGAUgASgDEhkKEWV2ZW50X3N1Ymdyb3VwX2lk",
+            "GAYgASgDEhMKC2ZpcnN0TmFtZUwxGAcgASgJEhAKCGxhc3ROYW1lGAggASgJ",
+            "EhIKCndvcmxkX3RpbWUYCSABKAQSFwoPZmluaXNoX3RpbWVfc3RyGAogASgJ",
+            "EhIKCmVsYXBzZWRfbXMYCyABKAQSMQoKcG93ZXJfdHlwZRgMIAEoDjIdLlp3",
+            "aWZ0UGFja2V0TW9uaXRvci5Qb3dlclR5cGUSFwoPd2VpZ2h0X2luX2dyYW1z",
+            "GA0gASgNEg4KBnNyX2YxNBgOIAEoDRIRCglhdmdfcG93ZXIYDyABKA0SDwoH",
+            "aXNfbWFsZRgQIAEoCBIgChhtYWdpY0xlYWRlcmJvYXJkQmlydGhkYXkYESAB",
+            "KAkSMwoLcGxheWVyX3R5cGUYEiABKA4yHi5ad2lmdFBhY2tldE1vbml0b3Iu",
+            "UGxheWVyVHlwZRIOCgZhdmdfaHIYEyABKA0SKAoFc3BvcnQYFCABKA4yGS5a",
+            "d2lmdFBhY2tldE1vbml0b3IuU3BvcnQSEwoLYWN0aXZpdHlfaWQYFSABKAQS",
+            "DgoGc3JfZjIyGBYgASgIEhgKEGZpcnN0TmFtZUwxX2NvcHkYFyABKAki0wIK",
+            "ElNvY2lhbFBsYXllckFjdGlvbhIRCglwbGF5ZXJfaWQYASABKAUSFAoMdG9f",
+            "cGxheWVyX2lkGAIgASgFEjwKCHNwYV90eXBlGAMgASgOMiouWndpZnRQYWNr",
+            "ZXRNb25pdG9yLlNvY2lhbFBsYXllckFjdGlvblR5cGUSEQoJZmlyc3ROYW1l",
+            "GAQgASgJEhAKCGxhc3ROYW1lGAUgASgJEg8KB21lc3NhZ2UYBiABKAkSDgoG",
+            "YXZhdGFyGAcgASgJEhMKC2NvdW50cnlDb2RlGAggASgFEi4KCGZsYWdUeXBl",
+            "GAkgASgOMhwuWndpZnRQYWNrZXRNb25pdG9yLkZsYWdUeXBlEjQKBm1nVHlw",
+            "ZRgKIAEoDjIkLlp3aWZ0UGFja2V0TW9uaXRvci5NZXNzYWdlR3JvdXBUeXBl",
+            "EhUKDWV2ZW50U3ViZ3JvdXAYCyABKAMiawoGUmlkZU9uEhEKCXBsYXllcl9p",
+            "ZBgBIAEoBRIUCgx0b19wbGF5ZXJfaWQYAiABKAUSEQoJZmlyc3ROYW1lGAMg",
+            "ASgJEhAKCGxhc3ROYW1lGAQgASgJEhMKC2NvdW50cnlDb2RlGAUgASgFIm4K",
+            "D1BsYXllckxlZnRXb3JsZBIRCglwbGF5ZXJfaWQYASABKAMSEgoKd29ybGRf",
+            "dGltZRgCIAEoAxIUCgxhbm90aGVyTG9naW4YAyABKAgSDgoGcGx3X2Y0GAQg",
+            "ASgIEg4KBnBsd19mNRgFIAMoEiJSChNQbGF5ZXJSb3V0ZURpc3RhbmNlEhEK",
+            "CXBsYXllcl9pZBgBIAEoBRIYChBkaXN0YW5jZV9jb3ZlcmVkGAIgASgCEg4K",
+            "BnByZF9mMxgDIAEoBSL4AgoXRXZlbnRTdWJncm91cFBsYWNlbWVudHMSEAoI",
+            "cG9zaXRpb24YASABKAUSOwoKcGxheWVyX3JkMRgCIAMoCzInLlp3aWZ0UGFj",
+            "a2V0TW9uaXRvci5QbGF5ZXJSb3V0ZURpc3RhbmNlEjsKCnBsYXllcl9yZDIY",
+            "AyADKAsyJy5ad2lmdFBhY2tldE1vbml0b3IuUGxheWVyUm91dGVEaXN0YW5j",
+            "ZRJDChJldmVudFJpZGVyUG9zaXRpb24YBCADKAsyJy5ad2lmdFBhY2tldE1v",
+            "bml0b3IuUGxheWVyUm91dGVEaXN0YW5jZRI7CgpwbGF5ZXJfcmQ0GAUgAygL",
+            "MicuWndpZnRQYWNrZXRNb25pdG9yLlBsYXllclJvdXRlRGlzdGFuY2USGAoQ",
+            "ZXZlbnRUb3RhbFJpZGVycxgGIAEoBRIVCg1iaWtlTmV0d29ya0lkGAcgASgF",
+            "Eg4KBmVzcF9mOBgIIAEoBRIOCgZlc3BfZjkYCSABKAIiUwoNUGxheWVyU3Vt",
+            "bWFyeRIPCgdwbHN1X2YxGAEgASgFEg8KB3Bsc3VfZjIYAiABKAUSDwoHcGxz",
+            "dV9mMxgDIAEoBRIPCgdwbHN1X2Y0GAQgASgFIswBCg9QbGF5ZXJTdW1tYXJp",
+            "ZXMSEAoIcGxzdXNfZjEYASABKBISEAoIcGxzdXNfZjIYAiABKBISEAoIcGxz",
+            "dXNfZjMYAyABKBESEAoIcGxzdXNfZjQYBCABKBESEAoIcGxzdXNfZjUYBSAB",
+            "KAUSEAoIcGxzdXNfZjYYBiABKAUSEAoIcGxzdXNfZjcYByABKAUSOwoQcGxh",
+            "eWVyX3N1bW1hcmllcxgIIAMoCzIhLlp3aWZ0UGFja2V0TW9uaXRvci5QbGF5",
+            "ZXJTdW1tYXJ5IooHCg5TZXJ2ZXJUb0NsaWVudBIUCgxzZXJ2ZXJfcmVhbG0Y",
+            "ASABKAMSEQoJcGxheWVyX2lkGAIgASgDEhIKCndvcmxkX3RpbWUYAyABKAMS",
+            "DQoFc2Vxbm8YBCABKAUSDgoGc3RjX2Y1GAUgASgFEi8KBnN0YXRlcxgIIAMo",
+            "CzIfLlp3aWZ0UGFja2V0TW9uaXRvci5QbGF5ZXJTdGF0ZRI6Cg5wbGF5ZXJf",
+            "dXBkYXRlcxgJIAMoCzIiLlp3aWZ0UGFja2V0TW9uaXRvci5Xb3JsZEF0dHJp",
+            "YnV0ZRIPCgdzdGNfZjEwGAogAygDEg8KB3N0Y19mMTEYCyABKAMSEwoLemNf",
+            "bG9jYWxfaXAYDCABKAkSDwoHc3RjX2YxMxgNIAEoAxIQCgh6d2lmdGVycxgO",
+            "IAEoBRIVCg16Y19sb2NhbF9wb3J0GA8gASgFEjMKC3pjX3Byb3RvY29sGBAg",
+            "ASgOMh4uWndpZnRQYWNrZXRNb25pdG9yLklQUHJvdG9jb2wSDwoHc3RjX2Yx",
+            "NxgRIAEoAxIQCghudW1fbXNncxgSIAEoBRIOCgZtc2dudW0YEyABKAUSFgoO",
+            "aGFzU2ltdWx0TG9naW4YFCABKAgSPQoQcGxheWVyX3N1bW1hcmllcxgVIAEo",
+            "CzIjLlp3aWZ0UGFja2V0TW9uaXRvci5QbGF5ZXJTdW1tYXJpZXMSQwoOZXZf",
+            "c3ViZ3JvdXBfcHMYFyABKAsyKy5ad2lmdFBhY2tldE1vbml0b3IuRXZlbnRT",
+            "dWJncm91cFBsYWNlbWVudHMSMQoKdWRwX2NvbmZpZxgYIAEoCzIdLlp3aWZ0",
+            "UGFja2V0TW9uaXRvci5VZHBDb25maWcSOgoQdWRwX2NvbmZpZ192b2RfMRgZ",
+            "IAEoCzIgLlp3aWZ0UGFja2V0TW9uaXRvci5VZHBDb25maWdWT0QSDwoHc3Rj",
+            "X2YyNhgaIAEoBRI6ChB1ZHBfY29uZmlnX3ZvZF8yGBsgASgLMiAuWndpZnRQ",
+            "YWNrZXRNb25pdG9yLlVkcENvbmZpZ1ZPRBI2Cg1wbGF5ZXJfc3RhdGVzGBwg",
+            "AygLMh8uWndpZnRQYWNrZXRNb25pdG9yLlBsYXllclN0YXRlEjEKCnRjcF9j",
+            "b25maWcYHSABKAsyHS5ad2lmdFBhY2tldE1vbml0b3IuVGNwQ29uZmlnEhMK",
+            "C2Fja1N1YnNTZWdtGB4gAygDImsKDFJlbGF5QWRkcmVzcxIQCghsYl9yZWFs",
+            "bRgBIAEoBRIRCglsYl9jb3Vyc2UYAiABKAUSCgoCaXAYAyABKAkSDAoEcG9y",
+            "dBgEIAEoBRINCgVyYV9mNRgFIAEoAhINCgVyYV9mNhgGIAEoAiKDAQoRUmVs",
+            "YXlBZGRyZXNzZXNWT0QSEAoIbGJfcmVhbG0YASABKAUSEQoJbGJfY291cnNl",
+            "GAIgASgFEjkKD3JlbGF5X2FkZHJlc3NlcxgDIAMoCzIgLlp3aWZ0UGFja2V0",
+            "TW9uaXRvci5SZWxheUFkZHJlc3MSDgoGcmF2X2Y0GAQgASgFIqABCgxVZHBD",
+            "b25maWdWT0QSQgoTcmVsYXlfYWRkcmVzc2VzX3ZvZBgBIAMoCzIlLlp3aWZ0",
+            "UGFja2V0TW9uaXRvci5SZWxheUFkZHJlc3Nlc1ZPRBIMCgRwb3J0GAIgASgF",
+            "Eg4KBnVjdl9mMxgDIAEoAxIOCgZ1Y3ZfZjQYBCABKAMSDgoGdWN2X2Y1GAUg",
+            "ASgCEg4KBnVjdl9mNhgGIAEoAiJzCglVZHBDb25maWcSOQoPcmVsYXlfYWRk",
+            "cmVzc2VzGAEgAygLMiAuWndpZnRQYWNrZXRNb25pdG9yLlJlbGF5QWRkcmVz",
+            "cxINCgV1Y19mMhgCIAEoBRINCgV1Y19mMxgDIAEoBRINCgV1Y19mNBgEIAEo",
+            "BSJLCgpUY3BBZGRyZXNzEgoKAmlwGAEgASgJEgwKBHBvcnQYAiABKAUSEAoI",
+            "bGJfcmVhbG0YAyABKAUSEQoJbGJfY291cnNlGAQgASgFIjoKCVRjcENvbmZp",
+            "ZxItCgVub2RlcxgBIAMoCzIeLlp3aWZ0UGFja2V0TW9uaXRvci5UY3BBZGRy",
+            "ZXNzItMHChVFdmVudFN1Ymdyb3VwUHJvdG9idWYSCgoCaWQYASABKAMSDAoE",
+            "bmFtZRgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEoCRIOCgZldnNfZjQYBCAB",
+            "KA0SDgoGZXZzX2Y1GAUgASgNEg4KBmV2c19mNhgGIAEoDRINCgVzY29kZRgH",
+            "IAEoCRIQCghydWxlc19pZBgIIAEoBRIZChFyZWdpc3RyYXRpb25TdGFydBgJ",
+            "IAEoBBIbChNyZWdpc3RyYXRpb25TdGFydFdUGAogASgEEhcKD3JlZ2lzdHJh",
+            "dGlvbkVuZBgLIAEoBBIZChFyZWdpc3RyYXRpb25FbmRXVBgMIAEoBBITCgts",
+            "aW5lVXBTdGFydBgNIAEoBBIVCg1saW5lVXBTdGFydFdUGA4gASgEEhEKCWxp",
+            "bmVVcEVuZBgPIAEoBBITCgtsaW5lVXBFbmRXVBgQIAEoBBIaChJldmVudFN1",
+            "Ymdyb3VwU3RhcnQYESABKAQSHAoUZXZlbnRTdWJncm91cFN0YXJ0V1QYEiAB",
+            "KAQSDwoHZXZzX2YxORgTIAEoBBIPCgdldnNfZjIwGBQgASgEEg8KB2V2c19m",
+            "MjEYFSABKAgSEAoIcm91dGVfaWQYFiABKAMSFgoOaW52aXRlZExlYWRlcnMY",
+            "FyADKAQSGAoQZGlzdGFuY2VJbk1ldGVycxgYIAEoAhIMCgRsYXBzGBkgASgF",
+            "EhUKDXN0YXJ0TG9jYXRpb24YHSABKAUSDQoFbGFiZWwYHiABKAUSEAoIcGFj",
+            "ZVR5cGUYHyABKAUSFQoNZnJvbVBhY2VWYWx1ZRggIAEoAhITCgt0b1BhY2VW",
+            "YWx1ZRghIAEoAhIZChFkdXJhdGlvbkluU2Vjb25kcxgiIAEoDRIPCgdldnNf",
+            "ZjM1GCMgASgNEhIKCmplcnNleUhhc2gYJCABKAMSDwoHZXZzX2YzNxglIAEo",
+            "CBIPCgdldnNfZjM4GCYgASgNEhQKDGF1eGlsaWFyeVVybBgnIAEoCRIQCghi",
+            "aWtlSGFzaBgoIAEoBBIXCg9pbnZpdGVkU3dlZXBlcnMYKSADKAQSDwoHZXZz",
+            "X2Y0MhgqIAEoBBIRCgljdXN0b21VcmwYKyABKAkSDwoHZXZzX2Y0NBgsIAEo",
+            "CBIMCgR0YWdzGC0gASgJEhkKEWxhdGVKb2luSW5NaW51dGVzGC4gASgNEhEK",
+            "CWNvdXJzZV9pZBgvIAEoBBIPCgdldnNfZjQ4GDAgASgEEhAKCHJvdXRlVXJs",
+            "GDEgASgJEg8KB2V2c19mNTAYMiADKAUSDwoHZXZzX2Y1MRgzIAEoCCrFBAoT",
+            "Tm90YWJsZU1vbWVudFR5cGVaRxIOCgpOTVRfTkVXX1BSEAASFAoQTk1UX0dB",
+            "SU5FRF9MRVZFTBAFEh4KGk5NVF9UUkFJTklOR19QTEFOX0NPTVBMRVRFEBMS",
+            "FQoRTk1UX1VOTE9DS0VEX0lURU0QBBIcChhOTVRfQUNISUVWRU1FTlRfVU5M",
+            "T0NLRUQQAhIZChVOTVRfTUlTU0lPTl9DT01QTEVURUQQAxIWChJOTVRfQ09N",
+            "UExFVEVEX0dPQUwQChIYChROTVRfTUVUX0RBSUxZX1RBUkdFVBABEhgKFE5N",
+            "VF9UT09LX0FSQ0hfSkVSU0VZEAgSGgoWTk1UX0ZJTklTSEVEX0NIQUxMRU5H",
+            "RRAREhYKEk5NVF9GSU5JU0hFRF9FVkVOVBANEhgKFE5NVF9GSU5JU0hFRF9X",
+            "T1JLT1VUEA8SFgoSTk1UX0FDVElWSVRZX0JFU1RTEBQSDgoKTk1UX1JJREVP",
+            "ThASEhIKDk5NVF9SSURFT05fSU5UEBYSEgoOTk1UX1FVSVRfRVZFTlQQDBIU",
+            "ChBOTVRfVVNFRF9QT1dFUlVQEAYSGgoWTk1UX1BBU1NFRF9USU1JTkdfQVJD",
+            "SBAHEhQKEE5NVF9DUkVBVEVEX0dPQUwQCRIUChBOTVRfSk9JTkVEX0VWRU5U",
+            "EAsSFwoTTk1UX1NUQVJURURfV09SS09VVBAOEhcKE05NVF9TVEFSVEVEX01J",
+            "U1NJT04QEBIeChpOTVRfSE9MSURBWV9FVkVOVF9DT01QTEVURRAVKmQKCUV2",
+            "ZW50VHlwZRIOCgpFVF9VTktOT1dOEAASCgoGRUZPTkRPEAESCAoEUkFDRRAC",
+            "Eg4KCkdST1VQX1JJREUQAxIRCg1HUk9VUF9XT1JLT1VUEAQSDgoKVElNRV9U",
+            "UklBTBAFKlYKD0V2ZW50VmlzaWJpbGl0eRILCgdFVl9OVUxMEAASEAoMRVZf",
+            "UFVCX1NIQVJFEAESEgoORVZfQllfUkVTT1VSQ0UQAhIQCgxFVl9TSEFSRUFC",
+            "TEUQAyquAwoHV0FfVFlQRRIMCghXQVRfVU5LMBAAEgwKCFdBVF9VTksxEAES",
+            "DQoJV0FUX0xFQVZFEAISDwoLV0FUX1JFTE9HSU4QAxIPCgtXQVRfUklERV9P",
+            "ThAEEgsKB1dBVF9TUEEQBRINCglXQVRfRVZFTlQQBhIOCgpXQVRfSk9JTl9F",
+            "EAcSDgoKV0FUX0xFRlRfRRAIEg8KC1dBVF9SUV9QUk9GEAkSDQoJV0FUX0lO",
+            "Vl9XEAoSDgoKV0FUX0tJQ0tFRBALEg0KCVdBVF9XVElNRRBkEg0KCVdBVF9S",
+            "VElNRRBlEg0KCVdBVF9CX0FDVBBmEg0KCVdBVF9HUlBfTRBnEg0KCVdBVF9Q",
+            "UklfTRBoEgoKBldBVF9TUhBpEgwKCFdBVF9GTEFHEGoSDAoIV0FUX05PTkUQ",
+            "axILCgdXQVRfUkxBEGwSCgoGV0FUX0dFEG0SCgoGV0FUX05NEG4SDAoIV0FU",
+            "X0xBVEUQbxIKCgZXQVRfUkgQcBINCglXQVRfU1RBVFMQcRINCglXQVRfRkVO",
+            "Q0UQchINCglXQVRfQk5fR0UQcxILCgdXQVRfUFBJEHQqLQoFU3BvcnQSCwoH",
+            "Q1lDTElORxAAEgsKB1JVTk5JTkcQARIKCgZST1dJTkcQAiqfAQoKUGxheWVy",
+            "VHlwZRIPCgtQTEFZRVJUWVBFMBAAEgoKBk5PUk1BTBABEg8KC1BST19DWUNM",
+            "SVNUEAISDwoLWldJRlRfU1RBRkYQAxIOCgpBTUJBU1NBRE9SEAQSDAoIVkVS",
+            "SUZJRUQQBRIHCgNaRUQQBhIHCgNaQUMQBxISCg5QUk9fVFJJQVRITEVURRAI",
+            "Eg4KClBST19SVU5ORVIQCSo+CglQb3dlclR5cGUSDgoKUFRfVklSVFVBTBAA",
+            "EgwKCFBUX01FVEVSEAESEwoGUFRfVU5LEP///////////wEqdgoWU29jaWFs",
+            "UGxheWVyQWN0aW9uVHlwZRIeChpTT0NJQUxfQUNUSU9OX1VOS05PV05fVFlQ",
+            "RRAAEhcKE1NPQ0lBTF9URVhUX01FU1NBR0UQARISCg5TT0NJQUxfUklERV9P",
+            "ThACEg8KC1NPQ0lBTF9GTEFHEAMqbAoIRmxhZ1R5cGUSFQoRRkxBR19UWVBF",
+            "X1VOS05PV04QABIYChRGTEFHX1RZUEVfSEFSQVNTTUVOVBABEhMKD0ZMQUdf",
+            "VFlQRV9GTElFUhACEhoKFkZMQUdfVFlQRV9CQURfTEFOR1VBR0UQAypgChBN",
+            "ZXNzYWdlR3JvdXBUeXBlEg8KC01HVF9VTktOT1dOEAASDgoKTUdUX0dMT0JB",
+            "TBABEg4KCk1HVF9ESVJFQ1QQAhINCglNR1RfRVZFTlQQAxIMCghNR1RfQ0xV",
+            "QhAEKisKCklQUHJvdG9jb2wSCwoHSVBQX1VOSxAAEgcKA1VEUBABEgcKA1RD",
+            "UBACYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Meetup), global::ZwiftPacketMonitor.Meetup.Parser, new[]{ "Id", "Tag2", "Name", "Description", "StartTime", "Distance", "Tag8", "MeetupInner", "Thumbnail", "Duration", "F14", "F17", "F18", "F22", "F23", "MeetupOnlyView", "F25", "F27", "F28", "F29", "F34", "F35" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Meetup.Types.MeetupInner), global::ZwiftPacketMonitor.Meetup.Types.MeetupInner.Parser, new[]{ "Id", "Name", "Description", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F22", "Distance", "F25", "F29", "F30", "F31", "F32", "F33", "Duration", "F42", "F44", "F46", "F47" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerState), global::ZwiftPacketMonitor.PlayerState.Parser, new[]{ "Id", "WorldTime", "Distance", "RoadTime", "Laps", "Speed", "RoadPosition", "CadenceUHz", "Heartrate", "Power", "Heading", "Lean", "Climbing", "Time", "F19", "F20", "Progress", "CustomisationId", "JustWatching", "Calories", "X", "Altitude", "Y", "WatchingRiderId", "GroupId", "Sport", "F34" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ClientToServer), global::ZwiftPacketMonitor.ClientToServer.Parser, new[]{ "Connected", "RiderId", "WorldTime", "Seqno", "State", "Tag8", "Tag9", "LastUpdate", "Tag11", "LastPlayerUpdate" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.UnknownMessage1), global::ZwiftPacketMonitor.UnknownMessage1.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.UnknownMessage), global::ZwiftPacketMonitor.UnknownMessage.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerUpdate), global::ZwiftPacketMonitor.PlayerUpdate.Parser, new[]{ "Tag1", "Tag2", "Tag3", "Payload", "Tag5", "Tag6", "Tag7", "Tag8", "Tag9", "Tag11", "Tag12", "Tag14", "Tag15" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload105), global::ZwiftPacketMonitor.Payload105.Parser, new[]{ "F1", "RiderId", "F3", "F4", "F5", "F6", "FirstName", "LastName", "F9", "F11", "F12", "F13", "F14", "F15", "F16", "F7Date", "F19" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Chat), global::ZwiftPacketMonitor.Chat.Parser, new[]{ "RiderId", "ToRiderId", "F3", "FirstName", "LastName", "Message", "Avatar", "CountryCode", "EventSubgroup" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.RideOn), global::ZwiftPacketMonitor.RideOn.Parser, new[]{ "RiderId", "ToRiderId", "FirstName", "LastName", "CountryCode" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload2), global::ZwiftPacketMonitor.Payload2.Parser, new[]{ "F1", "F2" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.TimeSync), global::ZwiftPacketMonitor.TimeSync.Parser, new[]{ "RiderId", "WorldTime", "F3" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload110), global::ZwiftPacketMonitor.Payload110.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Payload109), global::ZwiftPacketMonitor.Payload109.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventPositions), global::ZwiftPacketMonitor.EventPositions.Parser, new[]{ "Position", "EventRiderPosition", "NumRiders" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition), global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition.Parser, new[]{ "RiderId" }, null, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ServerToClient), global::ZwiftPacketMonitor.ServerToClient.Parser, new[]{ "Tag1", "RiderId", "WorldTime", "Seqno", "PlayerStates", "PlayerUpdates", "Tag11", "LocalIp", "Tag15", "Tag17", "NumMsgs", "Msgnum", "EventPositions", "Servers1", "Servers2" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ServerAddress), global::ZwiftPacketMonitor.ServerAddress.Parser, new[]{ "F1", "F2", "Ip", "F4", "F5", "F6" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ServerPool), global::ZwiftPacketMonitor.ServerPool.Parser, new[]{ "F1", "F2", "Addresses", "F4" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Server2), global::ZwiftPacketMonitor.Server2.Parser, new[]{ "Pool", "F2" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.Server1), global::ZwiftPacketMonitor.Server1.Parser, new[]{ "Addresses", "F2", "F3", "F4" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.WorldAttributes), global::ZwiftPacketMonitor.WorldAttributes.Parser, new[]{ "WorldId", "Name", "Tag3", "Tag5", "WorldTime", "ClockTime" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.WorldAttribute), global::ZwiftPacketMonitor.WorldAttribute.Parser, new[]{ "WorldTime" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventSubgroupProtobuf), global::ZwiftPacketMonitor.EventSubgroupProtobuf.Parser, new[]{ "Id", "Name", "Rules", "Route", "Laps", "StartLocation", "Label", "PaceType", "JerseyHash" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.RiderAttributes), global::ZwiftPacketMonitor.RiderAttributes.Parser, new[]{ "F2", "F3", "AttributeMessage", "TheirId", "F13" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage), global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage.Parser, new[]{ "MyId", "TheirId", "FirstName", "LastName", "CountryCode" }, null, null, null, null)})
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ZwiftPacketMonitor.NotableMomentTypeZG), typeof(global::ZwiftPacketMonitor.EventType), typeof(global::ZwiftPacketMonitor.EventVisibility), typeof(global::ZwiftPacketMonitor.WA_TYPE), typeof(global::ZwiftPacketMonitor.Sport), typeof(global::ZwiftPacketMonitor.PlayerType), typeof(global::ZwiftPacketMonitor.PowerType), typeof(global::ZwiftPacketMonitor.SocialPlayerActionType), typeof(global::ZwiftPacketMonitor.FlagType), typeof(global::ZwiftPacketMonitor.MessageGroupType), typeof(global::ZwiftPacketMonitor.IPProtocol), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.NotableMoment), global::ZwiftPacketMonitor.NotableMoment.Parser, new[]{ "ActivityId", "Type", "Priority", "IncidentTime", "Aux1", "Aux2", "LargeImageUrl" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.MicroserviceEventData), global::ZwiftPacketMonitor.MicroserviceEventData.Parser, new[]{ "Name", "ExternalResourceId", "Visibility" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventSeriesProtobuf), global::ZwiftPacketMonitor.EventSeriesProtobuf.Parser, new[]{ "Id", "Name", "Description" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventTimeTrialOptions), global::ZwiftPacketMonitor.EventTimeTrialOptions.Parser, new[]{ "TimeGapBetweenRowsMs", "MaxRows", "MaxRidersPerRow", "EvtF4", "EvtF5" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventProtobuf), global::ZwiftPacketMonitor.EventProtobuf.Parser, new[]{ "Id", "ServerRealm", "Name", "Description", "EventStart", "EF6", "DistanceInMeters", "Laps", "EF9", "Category", "EF11", "Thumbnail", "DurationInSeconds", "RouteId", "RulesId", "EF16", "Visible", "JerseyHash", "EF19", "EF20", "EF21", "Sport", "EF23", "EventType", "EF25", "EF26", "EF27", "OverrideMapPreferences", "InvisibleToNonParticipants", "EvSeries", "Tags", "EF32", "EWtrl", "LateJoinInMinutes", "CourseId", "Tto", "EF37", "EF38", "EF39", "Msed", "EF41" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerState), global::ZwiftPacketMonitor.PlayerState.Parser, new[]{ "Id", "WorldTime", "Distance", "RoadTime", "Laps", "Speed", "PsF7", "RoadPosition", "CadenceUHz", "PsF10", "Heartrate", "Power", "Heading", "Lean", "Climbing", "Time", "PsF17", "FrameHue", "F19", "F20", "Progress", "CustomisationId", "JustWatching", "Calories", "X", "Y", "Z", "WatchingRiderId", "GroupId", "Sport", "PsF32", "PsF33", "DistLat", "World", "PsF36", "PsF37", "CanSteer", "Route" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ClientToServer), global::ZwiftPacketMonitor.ClientToServer.Parser, new[]{ "ServerRealm", "PlayerId", "WorldTime", "Seqno", "CtsF5", "CtsF6", "State", "CtsF8", "CtsF9", "LastUpdate", "CtsF11", "LastPlayerUpdate", "LargWaTime", "CtsF14", "SubsSegments", "UnsSegments" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerJoinedEvent), global::ZwiftPacketMonitor.PlayerJoinedEvent.Parser, new[]{ "EvSgId", "PlayerId", "PjeF3" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerLeftEvent), global::ZwiftPacketMonitor.PlayerLeftEvent.Parser, new[]{ "EvSgId", "PlayerId", "PleF3" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.InvitedProfileProto), global::ZwiftPacketMonitor.InvitedProfileProto.Parser, new[]{ "IppF1", "IppF2", "IppF3", "IppF4", "IppF5", "IppF6", "PlayerType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventInviteProto), global::ZwiftPacketMonitor.EventInviteProto.Parser, new[]{ "Profile", "InviteF2" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.WorldAttribute), global::ZwiftPacketMonitor.WorldAttribute.Parser, new[]{ "WaF1", "ServerRealm", "WaType", "Payload", "WorldTimeBorn", "X", "Y", "Z", "WorldTimeExpire", "RelId", "Importance", "WaF12", "WaF13", "Timestamp", "WaF15", "WaF16" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.SegmentResult), global::ZwiftPacketMonitor.SegmentResult.Parser, new[]{ "Id", "PlayerId", "ServerRealm", "CourseId", "SegmentId", "EventSubgroupId", "FirstNameL1", "LastName", "WorldTime", "FinishTimeStr", "ElapsedMs", "PowerType", "WeightInGrams", "SrF14", "AvgPower", "IsMale", "MagicLeaderboardBirthday", "PlayerType", "AvgHr", "Sport", "ActivityId", "SrF22", "FirstNameL1Copy" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.SocialPlayerAction), global::ZwiftPacketMonitor.SocialPlayerAction.Parser, new[]{ "PlayerId", "ToPlayerId", "SpaType", "FirstName", "LastName", "Message", "Avatar", "CountryCode", "FlagType", "MgType", "EventSubgroup" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.RideOn), global::ZwiftPacketMonitor.RideOn.Parser, new[]{ "PlayerId", "ToPlayerId", "FirstName", "LastName", "CountryCode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerLeftWorld), global::ZwiftPacketMonitor.PlayerLeftWorld.Parser, new[]{ "PlayerId", "WorldTime", "AnotherLogin", "PlwF4", "PlwF5" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerRouteDistance), global::ZwiftPacketMonitor.PlayerRouteDistance.Parser, new[]{ "PlayerId", "DistanceCovered", "PrdF3" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventSubgroupPlacements), global::ZwiftPacketMonitor.EventSubgroupPlacements.Parser, new[]{ "Position", "PlayerRd1", "PlayerRd2", "EventRiderPosition", "PlayerRd4", "EventTotalRiders", "BikeNetworkId", "EspF8", "EspF9" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerSummary), global::ZwiftPacketMonitor.PlayerSummary.Parser, new[]{ "PlsuF1", "PlsuF2", "PlsuF3", "PlsuF4" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.PlayerSummaries), global::ZwiftPacketMonitor.PlayerSummaries.Parser, new[]{ "PlsusF1", "PlsusF2", "PlsusF3", "PlsusF4", "PlsusF5", "PlsusF6", "PlsusF7", "PlayerSummaries_" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.ServerToClient), global::ZwiftPacketMonitor.ServerToClient.Parser, new[]{ "ServerRealm", "PlayerId", "WorldTime", "Seqno", "StcF5", "States", "PlayerUpdates", "StcF10", "StcF11", "ZcLocalIp", "StcF13", "Zwifters", "ZcLocalPort", "ZcProtocol", "StcF17", "NumMsgs", "Msgnum", "HasSimultLogin", "PlayerSummaries", "EvSubgroupPs", "UdpConfig", "UdpConfigVod1", "StcF26", "UdpConfigVod2", "PlayerStates", "TcpConfig", "AckSubsSegm" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.RelayAddress), global::ZwiftPacketMonitor.RelayAddress.Parser, new[]{ "LbRealm", "LbCourse", "Ip", "Port", "RaF5", "RaF6" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.RelayAddressesVOD), global::ZwiftPacketMonitor.RelayAddressesVOD.Parser, new[]{ "LbRealm", "LbCourse", "RelayAddresses", "RavF4" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.UdpConfigVOD), global::ZwiftPacketMonitor.UdpConfigVOD.Parser, new[]{ "RelayAddressesVod", "Port", "UcvF3", "UcvF4", "UcvF5", "UcvF6" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.UdpConfig), global::ZwiftPacketMonitor.UdpConfig.Parser, new[]{ "RelayAddresses", "UcF2", "UcF3", "UcF4" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.TcpAddress), global::ZwiftPacketMonitor.TcpAddress.Parser, new[]{ "Ip", "Port", "LbRealm", "LbCourse" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.TcpConfig), global::ZwiftPacketMonitor.TcpConfig.Parser, new[]{ "Nodes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ZwiftPacketMonitor.EventSubgroupProtobuf), global::ZwiftPacketMonitor.EventSubgroupProtobuf.Parser, new[]{ "Id", "Name", "Description", "EvsF4", "EvsF5", "EvsF6", "Scode", "RulesId", "RegistrationStart", "RegistrationStartWT", "RegistrationEnd", "RegistrationEndWT", "LineUpStart", "LineUpStartWT", "LineUpEnd", "LineUpEndWT", "EventSubgroupStart", "EventSubgroupStartWT", "EvsF19", "EvsF20", "EvsF21", "RouteId", "InvitedLeaders", "DistanceInMeters", "Laps", "StartLocation", "Label", "PaceType", "FromPaceValue", "ToPaceValue", "DurationInSeconds", "EvsF35", "JerseyHash", "EvsF37", "EvsF38", "AuxiliaryUrl", "BikeHash", "InvitedSweepers", "EvsF42", "CustomUrl", "EvsF44", "Tags", "LateJoinInMinutes", "CourseId", "EvsF48", "RouteUrl", "EvsF50", "EvsF51" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum NotableMomentTypeZG {
+    [pbr::OriginalName("NMT_NEW_PR")] NmtNewPr = 0,
+    [pbr::OriginalName("NMT_GAINED_LEVEL")] NmtGainedLevel = 5,
+    [pbr::OriginalName("NMT_TRAINING_PLAN_COMPLETE")] NmtTrainingPlanComplete = 19,
+    [pbr::OriginalName("NMT_UNLOCKED_ITEM")] NmtUnlockedItem = 4,
+    [pbr::OriginalName("NMT_ACHIEVEMENT_UNLOCKED")] NmtAchievementUnlocked = 2,
+    [pbr::OriginalName("NMT_MISSION_COMPLETED")] NmtMissionCompleted = 3,
+    [pbr::OriginalName("NMT_COMPLETED_GOAL")] NmtCompletedGoal = 10,
+    [pbr::OriginalName("NMT_MET_DAILY_TARGET")] NmtMetDailyTarget = 1,
+    [pbr::OriginalName("NMT_TOOK_ARCH_JERSEY")] NmtTookArchJersey = 8,
+    [pbr::OriginalName("NMT_FINISHED_CHALLENGE")] NmtFinishedChallenge = 17,
+    [pbr::OriginalName("NMT_FINISHED_EVENT")] NmtFinishedEvent = 13,
+    [pbr::OriginalName("NMT_FINISHED_WORKOUT")] NmtFinishedWorkout = 15,
+    [pbr::OriginalName("NMT_ACTIVITY_BESTS")] NmtActivityBests = 20,
+    [pbr::OriginalName("NMT_RIDEON")] NmtRideon = 18,
+    /// <summary>
+    ///international
+    /// </summary>
+    [pbr::OriginalName("NMT_RIDEON_INT")] NmtRideonInt = 22,
+    [pbr::OriginalName("NMT_QUIT_EVENT")] NmtQuitEvent = 12,
+    [pbr::OriginalName("NMT_USED_POWERUP")] NmtUsedPowerup = 6,
+    [pbr::OriginalName("NMT_PASSED_TIMING_ARCH")] NmtPassedTimingArch = 7,
+    [pbr::OriginalName("NMT_CREATED_GOAL")] NmtCreatedGoal = 9,
+    [pbr::OriginalName("NMT_JOINED_EVENT")] NmtJoinedEvent = 11,
+    [pbr::OriginalName("NMT_STARTED_WORKOUT")] NmtStartedWorkout = 14,
+    [pbr::OriginalName("NMT_STARTED_MISSION")] NmtStartedMission = 16,
+    [pbr::OriginalName("NMT_HOLIDAY_EVENT_COMPLETE")] NmtHolidayEventComplete = 21,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum EventType {
+    [pbr::OriginalName("ET_UNKNOWN")] EtUnknown = 0,
+    [pbr::OriginalName("EFONDO")] Efondo = 1,
+    [pbr::OriginalName("RACE")] Race = 2,
+    [pbr::OriginalName("GROUP_RIDE")] GroupRide = 3,
+    [pbr::OriginalName("GROUP_WORKOUT")] GroupWorkout = 4,
+    [pbr::OriginalName("TIME_TRIAL")] TimeTrial = 5,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum EventVisibility {
+    [pbr::OriginalName("EV_NULL")] EvNull = 0,
+    /// <summary>
+    /// event public shareable
+    /// </summary>
+    [pbr::OriginalName("EV_PUB_SHARE")] EvPubShare = 1,
+    /// <summary>
+    /// event defined by resource
+    /// </summary>
+    [pbr::OriginalName("EV_BY_RESOURCE")] EvByResource = 2,
+    [pbr::OriginalName("EV_SHAREABLE")] EvShareable = 3,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum WA_TYPE {
+    [pbr::OriginalName("WAT_UNK0")] WatUnk0 = 0,
+    [pbr::OriginalName("WAT_UNK1")] WatUnk1 = 1,
+    /// <summary>
+    ///proto::PlayerLeftWorld
+    /// </summary>
+    [pbr::OriginalName("WAT_LEAVE")] WatLeave = 2,
+    /// <summary>
+    ///proto::PlayerLeftWorld
+    /// </summary>
+    [pbr::OriginalName("WAT_RELOGIN")] WatRelogin = 3,
+    /// <summary>
+    ///proto::RideOn
+    /// </summary>
+    [pbr::OriginalName("WAT_RIDE_ON")] WatRideOn = 4,
+    /// <summary>
+    ///proto::SocialPlayerAction (chat message)
+    /// </summary>
+    [pbr::OriginalName("WAT_SPA")] WatSpa = 5,
+    /// <summary>
+    ///proto::Event
+    /// </summary>
+    [pbr::OriginalName("WAT_EVENT")] WatEvent = 6,
+    /// <summary>
+    ///proto::PlayerJoinedEvent
+    /// </summary>
+    [pbr::OriginalName("WAT_JOIN_E")] WatJoinE = 7,
+    /// <summary>
+    ///proto::PlayerLeftEvent
+    /// </summary>
+    [pbr::OriginalName("WAT_LEFT_E")] WatLeftE = 8,
+    /// <summary>
+    ///proto::RequestProfileFromServer
+    /// </summary>
+    [pbr::OriginalName("WAT_RQ_PROF")] WatRqProf = 9,
+    /// <summary>
+    ///proto::ReceiveInvitationWorldAttribute
+    /// </summary>
+    [pbr::OriginalName("WAT_INV_W")] WatInvW = 10,
+    /// <summary>
+    ///no payload
+    /// </summary>
+    [pbr::OriginalName("WAT_KICKED")] WatKicked = 11,
+    /// <summary>
+    ///g_WorldTime := payload (GOD message, may be ignored if ZWIFT\CONFIG\IGNOREGODMESSAGES=1)
+    /// </summary>
+    [pbr::OriginalName("WAT_WTIME")] WatWtime = 100,
+    /// <summary>
+    ///BlimpEntity::SetRoadTime(payload), also GOD message
+    /// </summary>
+    [pbr::OriginalName("WAT_RTIME")] WatRtime = 101,
+    /// <summary>
+    ///BikeEntity::PerformAction(payload)
+    /// </summary>
+    [pbr::OriginalName("WAT_B_ACT")] WatBAct = 102,
+    /// <summary>
+    ///GroupMessage (may be ignored if ZWIFT\CONFIG\SHOWGROUPMSGS=1)
+    /// </summary>
+    [pbr::OriginalName("WAT_GRP_M")] WatGrpM = 103,
+    /// <summary>
+    ///PrivateMessage
+    /// </summary>
+    [pbr::OriginalName("WAT_PRI_M")] WatPriM = 104,
+    /// <summary>
+    ///proto::SegmentResult
+    /// </summary>
+    [pbr::OriginalName("WAT_SR")] WatSr = 105,
+    /// <summary>
+    ///Leaderboards::FlagSandbagger / Leaderboards::FlagCheater
+    /// </summary>
+    [pbr::OriginalName("WAT_FLAG")] WatFlag = 106,
+    /// <summary>
+    ///does nothing
+    /// </summary>
+    [pbr::OriginalName("WAT_NONE")] WatNone = 107,
+    /// <summary>
+    ///ZNETWORK_BroadcastRideLeaderAction
+    /// </summary>
+    [pbr::OriginalName("WAT_RLA")] WatRla = 108,
+    /// <summary>
+    ///GroupEvents::UserSignedup / GroupEvents::UserRegistered
+    /// </summary>
+    [pbr::OriginalName("WAT_GE")] WatGe = 109,
+    /// <summary>
+    ///notable moment + Play_Magic_Whoosh_Deep_Sparkle
+    /// </summary>
+    [pbr::OriginalName("WAT_NM")] WatNm = 110,
+    /// <summary>
+    ///ZNETWORK_INTERNAL_HandleLateJoinRequest
+    /// </summary>
+    [pbr::OriginalName("WAT_LATE")] WatLate = 111,
+    /// <summary>
+    ///ZNETWORK_INTERNAL_HandleRouteHashRequest
+    /// </summary>
+    [pbr::OriginalName("WAT_RH")] WatRh = 112,
+    /// <summary>
+    ///GLOBAL_MESSAGE_TYPE_RIDER_FENCE_STATS
+    /// </summary>
+    [pbr::OriginalName("WAT_STATS")] WatStats = 113,
+    /// <summary>
+    ///GLOBAL_MESSAGE_TYPE_GRFENCE_CONFIG
+    /// </summary>
+    [pbr::OriginalName("WAT_FENCE")] WatFence = 114,
+    /// <summary>
+    ///ZNETWORK_BroadcastBibNumberForGroupEvent
+    /// </summary>
+    [pbr::OriginalName("WAT_BN_GE")] WatBnGe = 115,
+    /// <summary>
+    ///ZNETWORK_INTERNAL_HandlePacePartnerInfo
+    /// </summary>
+    [pbr::OriginalName("WAT_PPI")] WatPpi = 116,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum Sport {
+    [pbr::OriginalName("CYCLING")] Cycling = 0,
+    [pbr::OriginalName("RUNNING")] Running = 1,
+    [pbr::OriginalName("ROWING")] Rowing = 2,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum PlayerType {
+    [pbr::OriginalName("PLAYERTYPE0")] _0 = 0,
+    [pbr::OriginalName("NORMAL")] Normal = 1,
+    [pbr::OriginalName("PRO_CYCLIST")] ProCyclist = 2,
+    [pbr::OriginalName("ZWIFT_STAFF")] ZwiftStaff = 3,
+    [pbr::OriginalName("AMBASSADOR")] Ambassador = 4,
+    [pbr::OriginalName("VERIFIED")] Verified = 5,
+    [pbr::OriginalName("ZED")] Zed = 6,
+    [pbr::OriginalName("ZAC")] Zac = 7,
+    [pbr::OriginalName("PRO_TRIATHLETE")] ProTriathlete = 8,
+    [pbr::OriginalName("PRO_RUNNER")] ProRunner = 9,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum PowerType {
+    [pbr::OriginalName("PT_VIRTUAL")] PtVirtual = 0,
+    [pbr::OriginalName("PT_METER")] PtMeter = 1,
+    [pbr::OriginalName("PT_UNK")] PtUnk = -1,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum SocialPlayerActionType {
+    [pbr::OriginalName("SOCIAL_ACTION_UNKNOWN_TYPE")] SocialActionUnknownType = 0,
+    [pbr::OriginalName("SOCIAL_TEXT_MESSAGE")] SocialTextMessage = 1,
+    [pbr::OriginalName("SOCIAL_RIDE_ON")] SocialRideOn = 2,
+    [pbr::OriginalName("SOCIAL_FLAG")] SocialFlag = 3,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum FlagType {
+    [pbr::OriginalName("FLAG_TYPE_UNKNOWN")] Unknown = 0,
+    [pbr::OriginalName("FLAG_TYPE_HARASSMENT")] Harassment = 1,
+    [pbr::OriginalName("FLAG_TYPE_FLIER")] Flier = 2,
+    [pbr::OriginalName("FLAG_TYPE_BAD_LANGUAGE")] BadLanguage = 3,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum MessageGroupType {
+    [pbr::OriginalName("MGT_UNKNOWN")] MgtUnknown = 0,
+    [pbr::OriginalName("MGT_GLOBAL")] MgtGlobal = 1,
+    [pbr::OriginalName("MGT_DIRECT")] MgtDirect = 2,
+    [pbr::OriginalName("MGT_EVENT")] MgtEvent = 3,
+    [pbr::OriginalName("MGT_CLUB")] MgtClub = 4,
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public enum IPProtocol {
+    [pbr::OriginalName("IPP_UNK")] IppUnk = 0,
+    [pbr::OriginalName("UDP")] Udp = 1,
+    [pbr::OriginalName("TCP")] Tcp = 2,
+  }
+
+  #endregion
+
   #region Messages
-  public sealed partial class Meetup : pb::IMessage<Meetup>
+  public sealed partial class NotableMoment : pb::IMessage<NotableMoment>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Meetup> _parser = new pb::MessageParser<Meetup>(() => new Meetup());
+    private static readonly pb::MessageParser<NotableMoment> _parser = new pb::MessageParser<NotableMoment>(() => new NotableMoment());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Meetup> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<NotableMoment> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Meetup() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public NotableMoment() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Meetup(Meetup other) : this() {
-      id_ = other.id_;
-      tag2_ = other.tag2_;
-      name_ = other.name_;
-      description_ = other.description_;
-      startTime_ = other.startTime_;
-      distance_ = other.distance_;
-      tag8_ = other.tag8_;
-      meetupInner_ = other.meetupInner_ != null ? other.meetupInner_.Clone() : null;
-      thumbnail_ = other.thumbnail_;
-      duration_ = other.duration_;
-      f14_ = other.f14_;
-      f17_ = other.f17_;
-      f18_ = other.f18_;
-      f22_ = other.f22_;
-      f23_ = other.f23_;
-      meetupOnlyView_ = other.meetupOnlyView_;
-      f25_ = other.f25_;
-      f27_ = other.f27_;
-      f28_ = other.f28_;
-      f29_ = other.f29_;
-      f34_ = other.f34_;
-      f35_ = other.f35_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public NotableMoment(NotableMoment other) : this() {
+      activityId_ = other.activityId_;
+      type_ = other.type_;
+      priority_ = other.priority_;
+      incidentTime_ = other.incidentTime_;
+      aux1_ = other.aux1_;
+      aux2_ = other.aux2_;
+      largeImageUrl_ = other.largeImageUrl_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Meetup Clone() {
-      return new Meetup(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public NotableMoment Clone() {
+      return new NotableMoment(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private int id_;
+    /// <summary>Field number for the "activity_id" field.</summary>
+    public const int ActivityIdFieldNumber = 1;
+    private ulong activityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
-      get { return id_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong ActivityId {
+      get { return activityId_; }
       set {
-        id_ = value;
+        activityId_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag2" field.</summary>
-    public const int Tag2FieldNumber = 2;
-    private int tag2_;
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private global::ZwiftPacketMonitor.NotableMomentTypeZG type_ = global::ZwiftPacketMonitor.NotableMomentTypeZG.NmtNewPr;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Tag2 {
-      get { return tag2_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.NotableMomentTypeZG Type {
+      get { return type_; }
       set {
-        tag2_ = value;
+        type_ = value;
       }
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 3;
-    private string name_ = "";
+    /// <summary>Field number for the "priority" field.</summary>
+    public const int PriorityFieldNumber = 3;
+    private uint priority_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Priority {
+      get { return priority_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        priority_ = value;
       }
     }
 
-    /// <summary>Field number for the "description" field.</summary>
-    public const int DescriptionFieldNumber = 4;
-    private string description_ = "";
+    /// <summary>Field number for the "incidentTime" field.</summary>
+    public const int IncidentTimeFieldNumber = 4;
+    private ulong incidentTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Description {
-      get { return description_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong IncidentTime {
+      get { return incidentTime_; }
       set {
-        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        incidentTime_ = value;
       }
     }
 
-    /// <summary>Field number for the "start_time" field.</summary>
-    public const int StartTimeFieldNumber = 5;
-    private long startTime_;
+    /// <summary>Field number for the "aux1" field.</summary>
+    public const int Aux1FieldNumber = 5;
+    private string aux1_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long StartTime {
-      get { return startTime_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Aux1 {
+      get { return aux1_; }
       set {
-        startTime_ = value;
+        aux1_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "distance" field.</summary>
-    public const int DistanceFieldNumber = 7;
-    private uint distance_;
+    /// <summary>Field number for the "aux2" field.</summary>
+    public const int Aux2FieldNumber = 6;
+    private string aux2_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint Distance {
-      get { return distance_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Aux2 {
+      get { return aux2_; }
       set {
-        distance_ = value;
+        aux2_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "tag8" field.</summary>
-    public const int Tag8FieldNumber = 8;
-    private int tag8_;
+    /// <summary>Field number for the "largeImageUrl" field.</summary>
+    public const int LargeImageUrlFieldNumber = 7;
+    private string largeImageUrl_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Tag8 {
-      get { return tag8_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string LargeImageUrl {
+      get { return largeImageUrl_; }
       set {
-        tag8_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "meetup_inner" field.</summary>
-    public const int MeetupInnerFieldNumber = 10;
-    private global::ZwiftPacketMonitor.Meetup.Types.MeetupInner meetupInner_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ZwiftPacketMonitor.Meetup.Types.MeetupInner MeetupInner {
-      get { return meetupInner_; }
-      set {
-        meetupInner_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "thumbnail" field.</summary>
-    public const int ThumbnailFieldNumber = 12;
-    private string thumbnail_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Thumbnail {
-      get { return thumbnail_; }
-      set {
-        thumbnail_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "duration" field.</summary>
-    public const int DurationFieldNumber = 13;
-    private int duration_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Duration {
-      get { return duration_; }
-      set {
-        duration_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f14" field.</summary>
-    public const int F14FieldNumber = 14;
-    private long f14_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long F14 {
-      get { return f14_; }
-      set {
-        f14_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f17" field.</summary>
-    public const int F17FieldNumber = 17;
-    private int f17_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F17 {
-      get { return f17_; }
-      set {
-        f17_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f18" field.</summary>
-    public const int F18FieldNumber = 18;
-    private int f18_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F18 {
-      get { return f18_; }
-      set {
-        f18_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f22" field.</summary>
-    public const int F22FieldNumber = 22;
-    private int f22_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F22 {
-      get { return f22_; }
-      set {
-        f22_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f23" field.</summary>
-    public const int F23FieldNumber = 23;
-    private int f23_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F23 {
-      get { return f23_; }
-      set {
-        f23_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "meetup_only_view" field.</summary>
-    public const int MeetupOnlyViewFieldNumber = 24;
-    private int meetupOnlyView_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int MeetupOnlyView {
-      get { return meetupOnlyView_; }
-      set {
-        meetupOnlyView_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f25" field.</summary>
-    public const int F25FieldNumber = 25;
-    private int f25_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F25 {
-      get { return f25_; }
-      set {
-        f25_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f27" field.</summary>
-    public const int F27FieldNumber = 27;
-    private int f27_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F27 {
-      get { return f27_; }
-      set {
-        f27_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f28" field.</summary>
-    public const int F28FieldNumber = 28;
-    private int f28_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F28 {
-      get { return f28_; }
-      set {
-        f28_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f29" field.</summary>
-    public const int F29FieldNumber = 29;
-    private int f29_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F29 {
-      get { return f29_; }
-      set {
-        f29_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f34" field.</summary>
-    public const int F34FieldNumber = 34;
-    private int f34_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F34 {
-      get { return f34_; }
-      set {
-        f34_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f35" field.</summary>
-    public const int F35FieldNumber = 35;
-    private int f35_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F35 {
-      get { return f35_; }
-      set {
-        f35_ = value;
+        largeImageUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Meetup);
+      return Equals(other as NotableMoment);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Meetup other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(NotableMoment other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
-      if (Tag2 != other.Tag2) return false;
-      if (Name != other.Name) return false;
-      if (Description != other.Description) return false;
-      if (StartTime != other.StartTime) return false;
-      if (Distance != other.Distance) return false;
-      if (Tag8 != other.Tag8) return false;
-      if (!object.Equals(MeetupInner, other.MeetupInner)) return false;
-      if (Thumbnail != other.Thumbnail) return false;
-      if (Duration != other.Duration) return false;
-      if (F14 != other.F14) return false;
-      if (F17 != other.F17) return false;
-      if (F18 != other.F18) return false;
-      if (F22 != other.F22) return false;
-      if (F23 != other.F23) return false;
-      if (MeetupOnlyView != other.MeetupOnlyView) return false;
-      if (F25 != other.F25) return false;
-      if (F27 != other.F27) return false;
-      if (F28 != other.F28) return false;
-      if (F29 != other.F29) return false;
-      if (F34 != other.F34) return false;
-      if (F35 != other.F35) return false;
+      if (ActivityId != other.ActivityId) return false;
+      if (Type != other.Type) return false;
+      if (Priority != other.Priority) return false;
+      if (IncidentTime != other.IncidentTime) return false;
+      if (Aux1 != other.Aux1) return false;
+      if (Aux2 != other.Aux2) return false;
+      if (LargeImageUrl != other.LargeImageUrl) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (Tag2 != 0) hash ^= Tag2.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Description.Length != 0) hash ^= Description.GetHashCode();
-      if (StartTime != 0L) hash ^= StartTime.GetHashCode();
-      if (Distance != 0) hash ^= Distance.GetHashCode();
-      if (Tag8 != 0) hash ^= Tag8.GetHashCode();
-      if (meetupInner_ != null) hash ^= MeetupInner.GetHashCode();
-      if (Thumbnail.Length != 0) hash ^= Thumbnail.GetHashCode();
-      if (Duration != 0) hash ^= Duration.GetHashCode();
-      if (F14 != 0L) hash ^= F14.GetHashCode();
-      if (F17 != 0) hash ^= F17.GetHashCode();
-      if (F18 != 0) hash ^= F18.GetHashCode();
-      if (F22 != 0) hash ^= F22.GetHashCode();
-      if (F23 != 0) hash ^= F23.GetHashCode();
-      if (MeetupOnlyView != 0) hash ^= MeetupOnlyView.GetHashCode();
-      if (F25 != 0) hash ^= F25.GetHashCode();
-      if (F27 != 0) hash ^= F27.GetHashCode();
-      if (F28 != 0) hash ^= F28.GetHashCode();
-      if (F29 != 0) hash ^= F29.GetHashCode();
-      if (F34 != 0) hash ^= F34.GetHashCode();
-      if (F35 != 0) hash ^= F35.GetHashCode();
+      if (ActivityId != 0UL) hash ^= ActivityId.GetHashCode();
+      if (Type != global::ZwiftPacketMonitor.NotableMomentTypeZG.NmtNewPr) hash ^= Type.GetHashCode();
+      if (Priority != 0) hash ^= Priority.GetHashCode();
+      if (IncidentTime != 0UL) hash ^= IncidentTime.GetHashCode();
+      if (Aux1.Length != 0) hash ^= Aux1.GetHashCode();
+      if (Aux2.Length != 0) hash ^= Aux2.GetHashCode();
+      if (LargeImageUrl.Length != 0) hash ^= LargeImageUrl.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -517,102 +702,44 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Id != 0) {
+      if (ActivityId != 0UL) {
         output.WriteRawTag(8);
-        output.WriteInt32(Id);
+        output.WriteUInt64(ActivityId);
       }
-      if (Tag2 != 0) {
+      if (Type != global::ZwiftPacketMonitor.NotableMomentTypeZG.NmtNewPr) {
         output.WriteRawTag(16);
-        output.WriteInt32(Tag2);
+        output.WriteEnum((int) Type);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Name);
+      if (Priority != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Priority);
       }
-      if (Description.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Description);
+      if (IncidentTime != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(IncidentTime);
       }
-      if (StartTime != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(StartTime);
+      if (Aux1.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Aux1);
       }
-      if (Distance != 0) {
-        output.WriteRawTag(61);
-        output.WriteFixed32(Distance);
+      if (Aux2.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Aux2);
       }
-      if (Tag8 != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(Tag8);
-      }
-      if (meetupInner_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(MeetupInner);
-      }
-      if (Thumbnail.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(Thumbnail);
-      }
-      if (Duration != 0) {
-        output.WriteRawTag(104);
-        output.WriteInt32(Duration);
-      }
-      if (F14 != 0L) {
-        output.WriteRawTag(112);
-        output.WriteInt64(F14);
-      }
-      if (F17 != 0) {
-        output.WriteRawTag(136, 1);
-        output.WriteInt32(F17);
-      }
-      if (F18 != 0) {
-        output.WriteRawTag(144, 1);
-        output.WriteInt32(F18);
-      }
-      if (F22 != 0) {
-        output.WriteRawTag(176, 1);
-        output.WriteInt32(F22);
-      }
-      if (F23 != 0) {
-        output.WriteRawTag(184, 1);
-        output.WriteInt32(F23);
-      }
-      if (MeetupOnlyView != 0) {
-        output.WriteRawTag(192, 1);
-        output.WriteInt32(MeetupOnlyView);
-      }
-      if (F25 != 0) {
-        output.WriteRawTag(200, 1);
-        output.WriteInt32(F25);
-      }
-      if (F27 != 0) {
-        output.WriteRawTag(216, 1);
-        output.WriteInt32(F27);
-      }
-      if (F28 != 0) {
-        output.WriteRawTag(224, 1);
-        output.WriteInt32(F28);
-      }
-      if (F29 != 0) {
-        output.WriteRawTag(232, 1);
-        output.WriteInt32(F29);
-      }
-      if (F34 != 0) {
-        output.WriteRawTag(144, 2);
-        output.WriteInt32(F34);
-      }
-      if (F35 != 0) {
-        output.WriteRawTag(152, 2);
-        output.WriteInt32(F35);
+      if (LargeImageUrl.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(LargeImageUrl);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -622,94 +749,35 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id != 0) {
+      if (ActivityId != 0UL) {
         output.WriteRawTag(8);
-        output.WriteInt32(Id);
+        output.WriteUInt64(ActivityId);
       }
-      if (Tag2 != 0) {
+      if (Type != global::ZwiftPacketMonitor.NotableMomentTypeZG.NmtNewPr) {
         output.WriteRawTag(16);
-        output.WriteInt32(Tag2);
+        output.WriteEnum((int) Type);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Name);
+      if (Priority != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Priority);
       }
-      if (Description.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Description);
+      if (IncidentTime != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(IncidentTime);
       }
-      if (StartTime != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(StartTime);
+      if (Aux1.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Aux1);
       }
-      if (Distance != 0) {
-        output.WriteRawTag(61);
-        output.WriteFixed32(Distance);
+      if (Aux2.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Aux2);
       }
-      if (Tag8 != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(Tag8);
-      }
-      if (meetupInner_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(MeetupInner);
-      }
-      if (Thumbnail.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(Thumbnail);
-      }
-      if (Duration != 0) {
-        output.WriteRawTag(104);
-        output.WriteInt32(Duration);
-      }
-      if (F14 != 0L) {
-        output.WriteRawTag(112);
-        output.WriteInt64(F14);
-      }
-      if (F17 != 0) {
-        output.WriteRawTag(136, 1);
-        output.WriteInt32(F17);
-      }
-      if (F18 != 0) {
-        output.WriteRawTag(144, 1);
-        output.WriteInt32(F18);
-      }
-      if (F22 != 0) {
-        output.WriteRawTag(176, 1);
-        output.WriteInt32(F22);
-      }
-      if (F23 != 0) {
-        output.WriteRawTag(184, 1);
-        output.WriteInt32(F23);
-      }
-      if (MeetupOnlyView != 0) {
-        output.WriteRawTag(192, 1);
-        output.WriteInt32(MeetupOnlyView);
-      }
-      if (F25 != 0) {
-        output.WriteRawTag(200, 1);
-        output.WriteInt32(F25);
-      }
-      if (F27 != 0) {
-        output.WriteRawTag(216, 1);
-        output.WriteInt32(F27);
-      }
-      if (F28 != 0) {
-        output.WriteRawTag(224, 1);
-        output.WriteInt32(F28);
-      }
-      if (F29 != 0) {
-        output.WriteRawTag(232, 1);
-        output.WriteInt32(F29);
-      }
-      if (F34 != 0) {
-        output.WriteRawTag(144, 2);
-        output.WriteInt32(F34);
-      }
-      if (F35 != 0) {
-        output.WriteRawTag(152, 2);
-        output.WriteInt32(F35);
+      if (LargeImageUrl.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(LargeImageUrl);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -718,73 +786,29 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      if (ActivityId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ActivityId);
       }
-      if (Tag2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag2);
+      if (Type != global::ZwiftPacketMonitor.NotableMomentTypeZG.NmtNewPr) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Priority != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Priority);
       }
-      if (Description.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      if (IncidentTime != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(IncidentTime);
       }
-      if (StartTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StartTime);
+      if (Aux1.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Aux1);
       }
-      if (Distance != 0) {
-        size += 1 + 4;
+      if (Aux2.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Aux2);
       }
-      if (Tag8 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag8);
-      }
-      if (meetupInner_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MeetupInner);
-      }
-      if (Thumbnail.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Thumbnail);
-      }
-      if (Duration != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Duration);
-      }
-      if (F14 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F14);
-      }
-      if (F17 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F17);
-      }
-      if (F18 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F18);
-      }
-      if (F22 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F22);
-      }
-      if (F23 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F23);
-      }
-      if (MeetupOnlyView != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(MeetupOnlyView);
-      }
-      if (F25 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F25);
-      }
-      if (F27 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F27);
-      }
-      if (F28 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F28);
-      }
-      if (F29 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F29);
-      }
-      if (F34 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F34);
-      }
-      if (F35 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F35);
+      if (LargeImageUrl.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LargeImageUrl);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -793,83 +817,37 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Meetup other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(NotableMoment other) {
       if (other == null) {
         return;
       }
-      if (other.Id != 0) {
-        Id = other.Id;
+      if (other.ActivityId != 0UL) {
+        ActivityId = other.ActivityId;
       }
-      if (other.Tag2 != 0) {
-        Tag2 = other.Tag2;
+      if (other.Type != global::ZwiftPacketMonitor.NotableMomentTypeZG.NmtNewPr) {
+        Type = other.Type;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Priority != 0) {
+        Priority = other.Priority;
       }
-      if (other.Description.Length != 0) {
-        Description = other.Description;
+      if (other.IncidentTime != 0UL) {
+        IncidentTime = other.IncidentTime;
       }
-      if (other.StartTime != 0L) {
-        StartTime = other.StartTime;
+      if (other.Aux1.Length != 0) {
+        Aux1 = other.Aux1;
       }
-      if (other.Distance != 0) {
-        Distance = other.Distance;
+      if (other.Aux2.Length != 0) {
+        Aux2 = other.Aux2;
       }
-      if (other.Tag8 != 0) {
-        Tag8 = other.Tag8;
-      }
-      if (other.meetupInner_ != null) {
-        if (meetupInner_ == null) {
-          MeetupInner = new global::ZwiftPacketMonitor.Meetup.Types.MeetupInner();
-        }
-        MeetupInner.MergeFrom(other.MeetupInner);
-      }
-      if (other.Thumbnail.Length != 0) {
-        Thumbnail = other.Thumbnail;
-      }
-      if (other.Duration != 0) {
-        Duration = other.Duration;
-      }
-      if (other.F14 != 0L) {
-        F14 = other.F14;
-      }
-      if (other.F17 != 0) {
-        F17 = other.F17;
-      }
-      if (other.F18 != 0) {
-        F18 = other.F18;
-      }
-      if (other.F22 != 0) {
-        F22 = other.F22;
-      }
-      if (other.F23 != 0) {
-        F23 = other.F23;
-      }
-      if (other.MeetupOnlyView != 0) {
-        MeetupOnlyView = other.MeetupOnlyView;
-      }
-      if (other.F25 != 0) {
-        F25 = other.F25;
-      }
-      if (other.F27 != 0) {
-        F27 = other.F27;
-      }
-      if (other.F28 != 0) {
-        F28 = other.F28;
-      }
-      if (other.F29 != 0) {
-        F29 = other.F29;
-      }
-      if (other.F34 != 0) {
-        F34 = other.F34;
-      }
-      if (other.F35 != 0) {
-        F35 = other.F35;
+      if (other.LargeImageUrl.Length != 0) {
+        LargeImageUrl = other.LargeImageUrl;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -881,94 +859,31 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Id = input.ReadInt32();
+            ActivityId = input.ReadUInt64();
             break;
           }
           case 16: {
-            Tag2 = input.ReadInt32();
+            Type = (global::ZwiftPacketMonitor.NotableMomentTypeZG) input.ReadEnum();
             break;
           }
-          case 26: {
-            Name = input.ReadString();
+          case 24: {
+            Priority = input.ReadUInt32();
             break;
           }
-          case 34: {
-            Description = input.ReadString();
+          case 32: {
+            IncidentTime = input.ReadUInt64();
             break;
           }
-          case 40: {
-            StartTime = input.ReadInt64();
+          case 42: {
+            Aux1 = input.ReadString();
             break;
           }
-          case 61: {
-            Distance = input.ReadFixed32();
+          case 50: {
+            Aux2 = input.ReadString();
             break;
           }
-          case 64: {
-            Tag8 = input.ReadInt32();
-            break;
-          }
-          case 82: {
-            if (meetupInner_ == null) {
-              MeetupInner = new global::ZwiftPacketMonitor.Meetup.Types.MeetupInner();
-            }
-            input.ReadMessage(MeetupInner);
-            break;
-          }
-          case 98: {
-            Thumbnail = input.ReadString();
-            break;
-          }
-          case 104: {
-            Duration = input.ReadInt32();
-            break;
-          }
-          case 112: {
-            F14 = input.ReadInt64();
-            break;
-          }
-          case 136: {
-            F17 = input.ReadInt32();
-            break;
-          }
-          case 144: {
-            F18 = input.ReadInt32();
-            break;
-          }
-          case 176: {
-            F22 = input.ReadInt32();
-            break;
-          }
-          case 184: {
-            F23 = input.ReadInt32();
-            break;
-          }
-          case 192: {
-            MeetupOnlyView = input.ReadInt32();
-            break;
-          }
-          case 200: {
-            F25 = input.ReadInt32();
-            break;
-          }
-          case 216: {
-            F27 = input.ReadInt32();
-            break;
-          }
-          case 224: {
-            F28 = input.ReadInt32();
-            break;
-          }
-          case 232: {
-            F29 = input.ReadInt32();
-            break;
-          }
-          case 272: {
-            F34 = input.ReadInt32();
-            break;
-          }
-          case 280: {
-            F35 = input.ReadInt32();
+          case 58: {
+            LargeImageUrl = input.ReadString();
             break;
           }
         }
@@ -978,6 +893,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -986,11 +902,2280 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Id = input.ReadInt32();
+            ActivityId = input.ReadUInt64();
             break;
           }
           case 16: {
-            Tag2 = input.ReadInt32();
+            Type = (global::ZwiftPacketMonitor.NotableMomentTypeZG) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            Priority = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            IncidentTime = input.ReadUInt64();
+            break;
+          }
+          case 42: {
+            Aux1 = input.ReadString();
+            break;
+          }
+          case 50: {
+            Aux2 = input.ReadString();
+            break;
+          }
+          case 58: {
+            LargeImageUrl = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class MicroserviceEventData : pb::IMessage<MicroserviceEventData>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MicroserviceEventData> _parser = new pb::MessageParser<MicroserviceEventData>(() => new MicroserviceEventData());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MicroserviceEventData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MicroserviceEventData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MicroserviceEventData(MicroserviceEventData other) : this() {
+      name_ = other.name_;
+      externalResourceId_ = other.externalResourceId_;
+      visibility_ = other.visibility_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MicroserviceEventData Clone() {
+      return new MicroserviceEventData(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    /// <summary>
+    /// "clubs" everywhere (json: microserviceName)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "externalResourceId" field.</summary>
+    public const int ExternalResourceIdFieldNumber = 2;
+    private pb::ByteString externalResourceId_ = pb::ByteString.Empty;
+    /// <summary>
+    /// different 16-byte bb4538bfd13346c99a4df2b3cc3b5d95 (json: microserviceExternalResourceId)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString ExternalResourceId {
+      get { return externalResourceId_; }
+      set {
+        externalResourceId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "visibility" field.</summary>
+    public const int VisibilityFieldNumber = 3;
+    private global::ZwiftPacketMonitor.EventVisibility visibility_ = global::ZwiftPacketMonitor.EventVisibility.EvNull;
+    /// <summary>
+    /// enum 1 (json: microserviceEventVisibility)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.EventVisibility Visibility {
+      get { return visibility_; }
+      set {
+        visibility_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MicroserviceEventData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MicroserviceEventData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (ExternalResourceId != other.ExternalResourceId) return false;
+      if (Visibility != other.Visibility) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (ExternalResourceId.Length != 0) hash ^= ExternalResourceId.GetHashCode();
+      if (Visibility != global::ZwiftPacketMonitor.EventVisibility.EvNull) hash ^= Visibility.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (ExternalResourceId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(ExternalResourceId);
+      }
+      if (Visibility != global::ZwiftPacketMonitor.EventVisibility.EvNull) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Visibility);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (ExternalResourceId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(ExternalResourceId);
+      }
+      if (Visibility != global::ZwiftPacketMonitor.EventVisibility.EvNull) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Visibility);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (ExternalResourceId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(ExternalResourceId);
+      }
+      if (Visibility != global::ZwiftPacketMonitor.EventVisibility.EvNull) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Visibility);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MicroserviceEventData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.ExternalResourceId.Length != 0) {
+        ExternalResourceId = other.ExternalResourceId;
+      }
+      if (other.Visibility != global::ZwiftPacketMonitor.EventVisibility.EvNull) {
+        Visibility = other.Visibility;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            ExternalResourceId = input.ReadBytes();
+            break;
+          }
+          case 24: {
+            Visibility = (global::ZwiftPacketMonitor.EventVisibility) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            ExternalResourceId = input.ReadBytes();
+            break;
+          }
+          case 24: {
+            Visibility = (global::ZwiftPacketMonitor.EventVisibility) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class EventSeriesProtobuf : pb::IMessage<EventSeriesProtobuf>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<EventSeriesProtobuf> _parser = new pb::MessageParser<EventSeriesProtobuf>(() => new EventSeriesProtobuf());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<EventSeriesProtobuf> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventSeriesProtobuf() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventSeriesProtobuf(EventSeriesProtobuf other) : this() {
+      id_ = other.id_;
+      name_ = other.name_;
+      description_ = other.description_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventSeriesProtobuf Clone() {
+      return new EventSeriesProtobuf(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private ulong id_;
+    /// <summary>
+    ///5445 or 1485
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    /// <summary>
+    ///INEOSVTC or "Fast Friday"
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 3;
+    private string description_ = "";
+    /// <summary>
+    ///"" or "Congratulations, you crushed another week of workouts! ..."
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as EventSeriesProtobuf);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(EventSeriesProtobuf other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Name != other.Name) return false;
+      if (Description != other.Description) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0UL) hash ^= Id.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Id);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(EventSeriesProtobuf other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0UL) {
+        Id = other.Id;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Id = input.ReadUInt64();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Id = input.ReadUInt64();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class EventTimeTrialOptions : pb::IMessage<EventTimeTrialOptions>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<EventTimeTrialOptions> _parser = new pb::MessageParser<EventTimeTrialOptions>(() => new EventTimeTrialOptions());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<EventTimeTrialOptions> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventTimeTrialOptions() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventTimeTrialOptions(EventTimeTrialOptions other) : this() {
+      timeGapBetweenRowsMs_ = other.timeGapBetweenRowsMs_;
+      maxRows_ = other.maxRows_;
+      maxRidersPerRow_ = other.maxRidersPerRow_;
+      evtF4_ = other.evtF4_;
+      evtF5_ = other.evtF5_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventTimeTrialOptions Clone() {
+      return new EventTimeTrialOptions(this);
+    }
+
+    /// <summary>Field number for the "timeGapBetweenRowsMs" field.</summary>
+    public const int TimeGapBetweenRowsMsFieldNumber = 1;
+    private uint timeGapBetweenRowsMs_;
+    /// <summary>
+    ///15000 everywhere
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TimeGapBetweenRowsMs {
+      get { return timeGapBetweenRowsMs_; }
+      set {
+        timeGapBetweenRowsMs_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "maxRows" field.</summary>
+    public const int MaxRowsFieldNumber = 2;
+    private uint maxRows_;
+    /// <summary>
+    ///50 or 25
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxRows {
+      get { return maxRows_; }
+      set {
+        maxRows_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "maxRidersPerRow" field.</summary>
+    public const int MaxRidersPerRowFieldNumber = 3;
+    private uint maxRidersPerRow_;
+    /// <summary>
+    ///10 everywhere
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxRidersPerRow {
+      get { return maxRidersPerRow_; }
+      set {
+        maxRidersPerRow_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evt_f4" field.</summary>
+    public const int EvtF4FieldNumber = 4;
+    private uint evtF4_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EvtF4 {
+      get { return evtF4_; }
+      set {
+        evtF4_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evt_f5" field.</summary>
+    public const int EvtF5FieldNumber = 5;
+    private ulong evtF5_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EvtF5 {
+      get { return evtF5_; }
+      set {
+        evtF5_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as EventTimeTrialOptions);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(EventTimeTrialOptions other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (TimeGapBetweenRowsMs != other.TimeGapBetweenRowsMs) return false;
+      if (MaxRows != other.MaxRows) return false;
+      if (MaxRidersPerRow != other.MaxRidersPerRow) return false;
+      if (EvtF4 != other.EvtF4) return false;
+      if (EvtF5 != other.EvtF5) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (TimeGapBetweenRowsMs != 0) hash ^= TimeGapBetweenRowsMs.GetHashCode();
+      if (MaxRows != 0) hash ^= MaxRows.GetHashCode();
+      if (MaxRidersPerRow != 0) hash ^= MaxRidersPerRow.GetHashCode();
+      if (EvtF4 != 0) hash ^= EvtF4.GetHashCode();
+      if (EvtF5 != 0UL) hash ^= EvtF5.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (TimeGapBetweenRowsMs != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(TimeGapBetweenRowsMs);
+      }
+      if (MaxRows != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(MaxRows);
+      }
+      if (MaxRidersPerRow != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(MaxRidersPerRow);
+      }
+      if (EvtF4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(EvtF4);
+      }
+      if (EvtF5 != 0UL) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(EvtF5);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (TimeGapBetweenRowsMs != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(TimeGapBetweenRowsMs);
+      }
+      if (MaxRows != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(MaxRows);
+      }
+      if (MaxRidersPerRow != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(MaxRidersPerRow);
+      }
+      if (EvtF4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(EvtF4);
+      }
+      if (EvtF5 != 0UL) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(EvtF5);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (TimeGapBetweenRowsMs != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TimeGapBetweenRowsMs);
+      }
+      if (MaxRows != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxRows);
+      }
+      if (MaxRidersPerRow != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxRidersPerRow);
+      }
+      if (EvtF4 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EvtF4);
+      }
+      if (EvtF5 != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(EvtF5);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(EventTimeTrialOptions other) {
+      if (other == null) {
+        return;
+      }
+      if (other.TimeGapBetweenRowsMs != 0) {
+        TimeGapBetweenRowsMs = other.TimeGapBetweenRowsMs;
+      }
+      if (other.MaxRows != 0) {
+        MaxRows = other.MaxRows;
+      }
+      if (other.MaxRidersPerRow != 0) {
+        MaxRidersPerRow = other.MaxRidersPerRow;
+      }
+      if (other.EvtF4 != 0) {
+        EvtF4 = other.EvtF4;
+      }
+      if (other.EvtF5 != 0UL) {
+        EvtF5 = other.EvtF5;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            TimeGapBetweenRowsMs = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            MaxRows = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            MaxRidersPerRow = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            EvtF4 = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            EvtF5 = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            TimeGapBetweenRowsMs = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            MaxRows = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            MaxRidersPerRow = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            EvtF4 = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            EvtF5 = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class EventProtobuf : pb::IMessage<EventProtobuf>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<EventProtobuf> _parser = new pb::MessageParser<EventProtobuf>(() => new EventProtobuf());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<EventProtobuf> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventProtobuf() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventProtobuf(EventProtobuf other) : this() {
+      id_ = other.id_;
+      serverRealm_ = other.serverRealm_;
+      name_ = other.name_;
+      description_ = other.description_;
+      eventStart_ = other.eventStart_;
+      eF6_ = other.eF6_;
+      distanceInMeters_ = other.distanceInMeters_;
+      laps_ = other.laps_;
+      eF9_ = other.eF9_;
+      category_ = other.category_ != null ? other.category_.Clone() : null;
+      eF11_ = other.eF11_;
+      thumbnail_ = other.thumbnail_;
+      durationInSeconds_ = other.durationInSeconds_;
+      routeId_ = other.routeId_;
+      rulesId_ = other.rulesId_;
+      eF16_ = other.eF16_;
+      visible_ = other.visible_;
+      jerseyHash_ = other.jerseyHash_;
+      eF19_ = other.eF19_;
+      eF20_ = other.eF20_;
+      eF21_ = other.eF21_;
+      sport_ = other.sport_;
+      eF23_ = other.eF23_;
+      eventType_ = other.eventType_;
+      eF25_ = other.eF25_;
+      eF26_ = other.eF26_;
+      eF27_ = other.eF27_;
+      overrideMapPreferences_ = other.overrideMapPreferences_;
+      invisibleToNonParticipants_ = other.invisibleToNonParticipants_;
+      evSeries_ = other.evSeries_ != null ? other.evSeries_.Clone() : null;
+      tags_ = other.tags_;
+      eF32_ = other.eF32_;
+      eWtrl_ = other.eWtrl_;
+      lateJoinInMinutes_ = other.lateJoinInMinutes_;
+      courseId_ = other.courseId_;
+      tto_ = other.tto_ != null ? other.tto_.Clone() : null;
+      eF37_ = other.eF37_;
+      eF38_ = other.eF38_;
+      eF39_ = other.eF39_;
+      msed_ = other.msed_ != null ? other.msed_.Clone() : null;
+      eF41_ = other.eF41_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventProtobuf Clone() {
+      return new EventProtobuf(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private long id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "server_realm" field.</summary>
+    public const int ServerRealmFieldNumber = 2;
+    private long serverRealm_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ServerRealm {
+      get { return serverRealm_; }
+      set {
+        serverRealm_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 4;
+    private string description_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "event_start" field.</summary>
+    public const int EventStartFieldNumber = 5;
+    private long eventStart_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EventStart {
+      get { return eventStart_; }
+      set {
+        eventStart_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f6" field.</summary>
+    public const int EF6FieldNumber = 6;
+    private string eF6_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EF6 {
+      get { return eF6_; }
+      set {
+        eF6_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "distanceInMeters" field.</summary>
+    public const int DistanceInMetersFieldNumber = 7;
+    private float distanceInMeters_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float DistanceInMeters {
+      get { return distanceInMeters_; }
+      set {
+        distanceInMeters_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "laps" field.</summary>
+    public const int LapsFieldNumber = 8;
+    private int laps_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Laps {
+      get { return laps_; }
+      set {
+        laps_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f9" field.</summary>
+    public const int EF9FieldNumber = 9;
+    private int eF9_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int EF9 {
+      get { return eF9_; }
+      set {
+        eF9_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "category" field.</summary>
+    public const int CategoryFieldNumber = 10;
+    private global::ZwiftPacketMonitor.EventSubgroupProtobuf category_;
+    /// <summary>
+    ///event_subgroup_size() &lt;= MAX_SUBGROUPS(6)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.EventSubgroupProtobuf Category {
+      get { return category_; }
+      set {
+        category_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f11" field.</summary>
+    public const int EF11FieldNumber = 11;
+    private string eF11_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EF11 {
+      get { return eF11_; }
+      set {
+        eF11_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "thumbnail" field.</summary>
+    public const int ThumbnailFieldNumber = 12;
+    private string thumbnail_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Thumbnail {
+      get { return thumbnail_; }
+      set {
+        thumbnail_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "durationInSeconds" field.</summary>
+    public const int DurationInSecondsFieldNumber = 13;
+    private int durationInSeconds_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int DurationInSeconds {
+      get { return durationInSeconds_; }
+      set {
+        durationInSeconds_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "route_id" field.</summary>
+    public const int RouteIdFieldNumber = 14;
+    private long routeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long RouteId {
+      get { return routeId_; }
+      set {
+        routeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rules_id" field.</summary>
+    public const int RulesIdFieldNumber = 15;
+    private long rulesId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long RulesId {
+      get { return rulesId_; }
+      set {
+        rulesId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f16" field.</summary>
+    public const int EF16FieldNumber = 16;
+    private int eF16_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int EF16 {
+      get { return eF16_; }
+      set {
+        eF16_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "visible" field.</summary>
+    public const int VisibleFieldNumber = 17;
+    private bool visible_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Visible {
+      get { return visible_; }
+      set {
+        visible_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "jerseyHash" field.</summary>
+    public const int JerseyHashFieldNumber = 18;
+    private long jerseyHash_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long JerseyHash {
+      get { return jerseyHash_; }
+      set {
+        jerseyHash_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f19" field.</summary>
+    public const int EF19FieldNumber = 19;
+    private string eF19_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EF19 {
+      get { return eF19_; }
+      set {
+        eF19_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "e_f20" field.</summary>
+    public const int EF20FieldNumber = 20;
+    private string eF20_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EF20 {
+      get { return eF20_; }
+      set {
+        eF20_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "e_f21" field.</summary>
+    public const int EF21FieldNumber = 21;
+    private string eF21_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EF21 {
+      get { return eF21_; }
+      set {
+        eF21_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "sport" field.</summary>
+    public const int SportFieldNumber = 22;
+    private global::ZwiftPacketMonitor.Sport sport_ = global::ZwiftPacketMonitor.Sport.Cycling;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.Sport Sport {
+      get { return sport_; }
+      set {
+        sport_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f23" field.</summary>
+    public const int EF23FieldNumber = 23;
+    private long eF23_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EF23 {
+      get { return eF23_; }
+      set {
+        eF23_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "eventType" field.</summary>
+    public const int EventTypeFieldNumber = 24;
+    private global::ZwiftPacketMonitor.EventType eventType_ = global::ZwiftPacketMonitor.EventType.EtUnknown;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.EventType EventType {
+      get { return eventType_; }
+      set {
+        eventType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f25" field.</summary>
+    public const int EF25FieldNumber = 25;
+    private ulong eF25_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EF25 {
+      get { return eF25_; }
+      set {
+        eF25_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f26" field.</summary>
+    public const int EF26FieldNumber = 26;
+    private string eF26_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EF26 {
+      get { return eF26_; }
+      set {
+        eF26_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "e_f27" field.</summary>
+    public const int EF27FieldNumber = 27;
+    private ulong eF27_;
+    /// <summary>
+    ///&lt;=4, ENUM?
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EF27 {
+      get { return eF27_; }
+      set {
+        eF27_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "overrideMapPreferences" field.</summary>
+    public const int OverrideMapPreferencesFieldNumber = 28;
+    private bool overrideMapPreferences_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool OverrideMapPreferences {
+      get { return overrideMapPreferences_; }
+      set {
+        overrideMapPreferences_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "invisibleToNonParticipants" field.</summary>
+    public const int InvisibleToNonParticipantsFieldNumber = 29;
+    private bool invisibleToNonParticipants_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool InvisibleToNonParticipants {
+      get { return invisibleToNonParticipants_; }
+      set {
+        invisibleToNonParticipants_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evSeries" field.</summary>
+    public const int EvSeriesFieldNumber = 30;
+    private global::ZwiftPacketMonitor.EventSeriesProtobuf evSeries_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.EventSeriesProtobuf EvSeries {
+      get { return evSeries_; }
+      set {
+        evSeries_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tags" field.</summary>
+    public const int TagsFieldNumber = 31;
+    private string tags_ = "";
+    /// <summary>
+    /// semi-colon delimited tags
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tags {
+      get { return tags_; }
+      set {
+        tags_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "e_f32" field.</summary>
+    public const int EF32FieldNumber = 32;
+    private ulong eF32_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EF32 {
+      get { return eF32_; }
+      set {
+        eF32_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_wtrl" field.</summary>
+    public const int EWtrlFieldNumber = 33;
+    private bool eWtrl_;
+    /// <summary>
+    ///WTRL (World Tactical Racing Leagues)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool EWtrl {
+      get { return eWtrl_; }
+      set {
+        eWtrl_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lateJoinInMinutes" field.</summary>
+    public const int LateJoinInMinutesFieldNumber = 34;
+    private uint lateJoinInMinutes_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LateJoinInMinutes {
+      get { return lateJoinInMinutes_; }
+      set {
+        lateJoinInMinutes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "course_id" field.</summary>
+    public const int CourseIdFieldNumber = 35;
+    private ulong courseId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong CourseId {
+      get { return courseId_; }
+      set {
+        courseId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tto" field.</summary>
+    public const int TtoFieldNumber = 36;
+    private global::ZwiftPacketMonitor.EventTimeTrialOptions tto_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.EventTimeTrialOptions Tto {
+      get { return tto_; }
+      set {
+        tto_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f37" field.</summary>
+    public const int EF37FieldNumber = 37;
+    private string eF37_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EF37 {
+      get { return eF37_; }
+      set {
+        eF37_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "e_f38" field.</summary>
+    public const int EF38FieldNumber = 38;
+    private string eF38_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EF38 {
+      get { return eF38_; }
+      set {
+        eF38_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "e_f39" field.</summary>
+    public const int EF39FieldNumber = 39;
+    private uint eF39_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EF39 {
+      get { return eF39_; }
+      set {
+        eF39_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "msed" field.</summary>
+    public const int MsedFieldNumber = 40;
+    private global::ZwiftPacketMonitor.MicroserviceEventData msed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.MicroserviceEventData Msed {
+      get { return msed_; }
+      set {
+        msed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "e_f41" field.</summary>
+    public const int EF41FieldNumber = 41;
+    private static readonly pb::FieldCodec<uint> _repeated_eF41_codec
+        = pb::FieldCodec.ForUInt32(330);
+    private readonly pbc::RepeatedField<uint> eF41_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> EF41 {
+      get { return eF41_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as EventProtobuf);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(EventProtobuf other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (ServerRealm != other.ServerRealm) return false;
+      if (Name != other.Name) return false;
+      if (Description != other.Description) return false;
+      if (EventStart != other.EventStart) return false;
+      if (EF6 != other.EF6) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DistanceInMeters, other.DistanceInMeters)) return false;
+      if (Laps != other.Laps) return false;
+      if (EF9 != other.EF9) return false;
+      if (!object.Equals(Category, other.Category)) return false;
+      if (EF11 != other.EF11) return false;
+      if (Thumbnail != other.Thumbnail) return false;
+      if (DurationInSeconds != other.DurationInSeconds) return false;
+      if (RouteId != other.RouteId) return false;
+      if (RulesId != other.RulesId) return false;
+      if (EF16 != other.EF16) return false;
+      if (Visible != other.Visible) return false;
+      if (JerseyHash != other.JerseyHash) return false;
+      if (EF19 != other.EF19) return false;
+      if (EF20 != other.EF20) return false;
+      if (EF21 != other.EF21) return false;
+      if (Sport != other.Sport) return false;
+      if (EF23 != other.EF23) return false;
+      if (EventType != other.EventType) return false;
+      if (EF25 != other.EF25) return false;
+      if (EF26 != other.EF26) return false;
+      if (EF27 != other.EF27) return false;
+      if (OverrideMapPreferences != other.OverrideMapPreferences) return false;
+      if (InvisibleToNonParticipants != other.InvisibleToNonParticipants) return false;
+      if (!object.Equals(EvSeries, other.EvSeries)) return false;
+      if (Tags != other.Tags) return false;
+      if (EF32 != other.EF32) return false;
+      if (EWtrl != other.EWtrl) return false;
+      if (LateJoinInMinutes != other.LateJoinInMinutes) return false;
+      if (CourseId != other.CourseId) return false;
+      if (!object.Equals(Tto, other.Tto)) return false;
+      if (EF37 != other.EF37) return false;
+      if (EF38 != other.EF38) return false;
+      if (EF39 != other.EF39) return false;
+      if (!object.Equals(Msed, other.Msed)) return false;
+      if(!eF41_.Equals(other.eF41_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0L) hash ^= Id.GetHashCode();
+      if (ServerRealm != 0L) hash ^= ServerRealm.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (EventStart != 0L) hash ^= EventStart.GetHashCode();
+      if (EF6.Length != 0) hash ^= EF6.GetHashCode();
+      if (DistanceInMeters != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DistanceInMeters);
+      if (Laps != 0) hash ^= Laps.GetHashCode();
+      if (EF9 != 0) hash ^= EF9.GetHashCode();
+      if (category_ != null) hash ^= Category.GetHashCode();
+      if (EF11.Length != 0) hash ^= EF11.GetHashCode();
+      if (Thumbnail.Length != 0) hash ^= Thumbnail.GetHashCode();
+      if (DurationInSeconds != 0) hash ^= DurationInSeconds.GetHashCode();
+      if (RouteId != 0L) hash ^= RouteId.GetHashCode();
+      if (RulesId != 0L) hash ^= RulesId.GetHashCode();
+      if (EF16 != 0) hash ^= EF16.GetHashCode();
+      if (Visible != false) hash ^= Visible.GetHashCode();
+      if (JerseyHash != 0L) hash ^= JerseyHash.GetHashCode();
+      if (EF19.Length != 0) hash ^= EF19.GetHashCode();
+      if (EF20.Length != 0) hash ^= EF20.GetHashCode();
+      if (EF21.Length != 0) hash ^= EF21.GetHashCode();
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) hash ^= Sport.GetHashCode();
+      if (EF23 != 0L) hash ^= EF23.GetHashCode();
+      if (EventType != global::ZwiftPacketMonitor.EventType.EtUnknown) hash ^= EventType.GetHashCode();
+      if (EF25 != 0UL) hash ^= EF25.GetHashCode();
+      if (EF26.Length != 0) hash ^= EF26.GetHashCode();
+      if (EF27 != 0UL) hash ^= EF27.GetHashCode();
+      if (OverrideMapPreferences != false) hash ^= OverrideMapPreferences.GetHashCode();
+      if (InvisibleToNonParticipants != false) hash ^= InvisibleToNonParticipants.GetHashCode();
+      if (evSeries_ != null) hash ^= EvSeries.GetHashCode();
+      if (Tags.Length != 0) hash ^= Tags.GetHashCode();
+      if (EF32 != 0UL) hash ^= EF32.GetHashCode();
+      if (EWtrl != false) hash ^= EWtrl.GetHashCode();
+      if (LateJoinInMinutes != 0) hash ^= LateJoinInMinutes.GetHashCode();
+      if (CourseId != 0UL) hash ^= CourseId.GetHashCode();
+      if (tto_ != null) hash ^= Tto.GetHashCode();
+      if (EF37.Length != 0) hash ^= EF37.GetHashCode();
+      if (EF38.Length != 0) hash ^= EF38.GetHashCode();
+      if (EF39 != 0) hash ^= EF39.GetHashCode();
+      if (msed_ != null) hash ^= Msed.GetHashCode();
+      hash ^= eF41_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Id);
+      }
+      if (ServerRealm != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(ServerRealm);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Description);
+      }
+      if (EventStart != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(EventStart);
+      }
+      if (EF6.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(EF6);
+      }
+      if (DistanceInMeters != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(DistanceInMeters);
+      }
+      if (Laps != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(Laps);
+      }
+      if (EF9 != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(EF9);
+      }
+      if (category_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(Category);
+      }
+      if (EF11.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(EF11);
+      }
+      if (Thumbnail.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Thumbnail);
+      }
+      if (DurationInSeconds != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(DurationInSeconds);
+      }
+      if (RouteId != 0L) {
+        output.WriteRawTag(112);
+        output.WriteInt64(RouteId);
+      }
+      if (RulesId != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(RulesId);
+      }
+      if (EF16 != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt32(EF16);
+      }
+      if (Visible != false) {
+        output.WriteRawTag(136, 1);
+        output.WriteBool(Visible);
+      }
+      if (JerseyHash != 0L) {
+        output.WriteRawTag(144, 1);
+        output.WriteInt64(JerseyHash);
+      }
+      if (EF19.Length != 0) {
+        output.WriteRawTag(154, 1);
+        output.WriteString(EF19);
+      }
+      if (EF20.Length != 0) {
+        output.WriteRawTag(162, 1);
+        output.WriteString(EF20);
+      }
+      if (EF21.Length != 0) {
+        output.WriteRawTag(170, 1);
+        output.WriteString(EF21);
+      }
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        output.WriteRawTag(176, 1);
+        output.WriteEnum((int) Sport);
+      }
+      if (EF23 != 0L) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt64(EF23);
+      }
+      if (EventType != global::ZwiftPacketMonitor.EventType.EtUnknown) {
+        output.WriteRawTag(192, 1);
+        output.WriteEnum((int) EventType);
+      }
+      if (EF25 != 0UL) {
+        output.WriteRawTag(200, 1);
+        output.WriteUInt64(EF25);
+      }
+      if (EF26.Length != 0) {
+        output.WriteRawTag(210, 1);
+        output.WriteString(EF26);
+      }
+      if (EF27 != 0UL) {
+        output.WriteRawTag(216, 1);
+        output.WriteUInt64(EF27);
+      }
+      if (OverrideMapPreferences != false) {
+        output.WriteRawTag(224, 1);
+        output.WriteBool(OverrideMapPreferences);
+      }
+      if (InvisibleToNonParticipants != false) {
+        output.WriteRawTag(232, 1);
+        output.WriteBool(InvisibleToNonParticipants);
+      }
+      if (evSeries_ != null) {
+        output.WriteRawTag(242, 1);
+        output.WriteMessage(EvSeries);
+      }
+      if (Tags.Length != 0) {
+        output.WriteRawTag(250, 1);
+        output.WriteString(Tags);
+      }
+      if (EF32 != 0UL) {
+        output.WriteRawTag(128, 2);
+        output.WriteUInt64(EF32);
+      }
+      if (EWtrl != false) {
+        output.WriteRawTag(136, 2);
+        output.WriteBool(EWtrl);
+      }
+      if (LateJoinInMinutes != 0) {
+        output.WriteRawTag(144, 2);
+        output.WriteUInt32(LateJoinInMinutes);
+      }
+      if (CourseId != 0UL) {
+        output.WriteRawTag(152, 2);
+        output.WriteUInt64(CourseId);
+      }
+      if (tto_ != null) {
+        output.WriteRawTag(162, 2);
+        output.WriteMessage(Tto);
+      }
+      if (EF37.Length != 0) {
+        output.WriteRawTag(170, 2);
+        output.WriteString(EF37);
+      }
+      if (EF38.Length != 0) {
+        output.WriteRawTag(178, 2);
+        output.WriteString(EF38);
+      }
+      if (EF39 != 0) {
+        output.WriteRawTag(184, 2);
+        output.WriteUInt32(EF39);
+      }
+      if (msed_ != null) {
+        output.WriteRawTag(194, 2);
+        output.WriteMessage(Msed);
+      }
+      eF41_.WriteTo(output, _repeated_eF41_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Id);
+      }
+      if (ServerRealm != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(ServerRealm);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Description);
+      }
+      if (EventStart != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(EventStart);
+      }
+      if (EF6.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(EF6);
+      }
+      if (DistanceInMeters != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(DistanceInMeters);
+      }
+      if (Laps != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(Laps);
+      }
+      if (EF9 != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(EF9);
+      }
+      if (category_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(Category);
+      }
+      if (EF11.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(EF11);
+      }
+      if (Thumbnail.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Thumbnail);
+      }
+      if (DurationInSeconds != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(DurationInSeconds);
+      }
+      if (RouteId != 0L) {
+        output.WriteRawTag(112);
+        output.WriteInt64(RouteId);
+      }
+      if (RulesId != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(RulesId);
+      }
+      if (EF16 != 0) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt32(EF16);
+      }
+      if (Visible != false) {
+        output.WriteRawTag(136, 1);
+        output.WriteBool(Visible);
+      }
+      if (JerseyHash != 0L) {
+        output.WriteRawTag(144, 1);
+        output.WriteInt64(JerseyHash);
+      }
+      if (EF19.Length != 0) {
+        output.WriteRawTag(154, 1);
+        output.WriteString(EF19);
+      }
+      if (EF20.Length != 0) {
+        output.WriteRawTag(162, 1);
+        output.WriteString(EF20);
+      }
+      if (EF21.Length != 0) {
+        output.WriteRawTag(170, 1);
+        output.WriteString(EF21);
+      }
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        output.WriteRawTag(176, 1);
+        output.WriteEnum((int) Sport);
+      }
+      if (EF23 != 0L) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt64(EF23);
+      }
+      if (EventType != global::ZwiftPacketMonitor.EventType.EtUnknown) {
+        output.WriteRawTag(192, 1);
+        output.WriteEnum((int) EventType);
+      }
+      if (EF25 != 0UL) {
+        output.WriteRawTag(200, 1);
+        output.WriteUInt64(EF25);
+      }
+      if (EF26.Length != 0) {
+        output.WriteRawTag(210, 1);
+        output.WriteString(EF26);
+      }
+      if (EF27 != 0UL) {
+        output.WriteRawTag(216, 1);
+        output.WriteUInt64(EF27);
+      }
+      if (OverrideMapPreferences != false) {
+        output.WriteRawTag(224, 1);
+        output.WriteBool(OverrideMapPreferences);
+      }
+      if (InvisibleToNonParticipants != false) {
+        output.WriteRawTag(232, 1);
+        output.WriteBool(InvisibleToNonParticipants);
+      }
+      if (evSeries_ != null) {
+        output.WriteRawTag(242, 1);
+        output.WriteMessage(EvSeries);
+      }
+      if (Tags.Length != 0) {
+        output.WriteRawTag(250, 1);
+        output.WriteString(Tags);
+      }
+      if (EF32 != 0UL) {
+        output.WriteRawTag(128, 2);
+        output.WriteUInt64(EF32);
+      }
+      if (EWtrl != false) {
+        output.WriteRawTag(136, 2);
+        output.WriteBool(EWtrl);
+      }
+      if (LateJoinInMinutes != 0) {
+        output.WriteRawTag(144, 2);
+        output.WriteUInt32(LateJoinInMinutes);
+      }
+      if (CourseId != 0UL) {
+        output.WriteRawTag(152, 2);
+        output.WriteUInt64(CourseId);
+      }
+      if (tto_ != null) {
+        output.WriteRawTag(162, 2);
+        output.WriteMessage(Tto);
+      }
+      if (EF37.Length != 0) {
+        output.WriteRawTag(170, 2);
+        output.WriteString(EF37);
+      }
+      if (EF38.Length != 0) {
+        output.WriteRawTag(178, 2);
+        output.WriteString(EF38);
+      }
+      if (EF39 != 0) {
+        output.WriteRawTag(184, 2);
+        output.WriteUInt32(EF39);
+      }
+      if (msed_ != null) {
+        output.WriteRawTag(194, 2);
+        output.WriteMessage(Msed);
+      }
+      eF41_.WriteTo(ref output, _repeated_eF41_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
+      }
+      if (ServerRealm != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ServerRealm);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (EventStart != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EventStart);
+      }
+      if (EF6.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(EF6);
+      }
+      if (DistanceInMeters != 0F) {
+        size += 1 + 4;
+      }
+      if (Laps != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Laps);
+      }
+      if (EF9 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(EF9);
+      }
+      if (category_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Category);
+      }
+      if (EF11.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(EF11);
+      }
+      if (Thumbnail.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Thumbnail);
+      }
+      if (DurationInSeconds != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DurationInSeconds);
+      }
+      if (RouteId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RouteId);
+      }
+      if (RulesId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RulesId);
+      }
+      if (EF16 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(EF16);
+      }
+      if (Visible != false) {
+        size += 2 + 1;
+      }
+      if (JerseyHash != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(JerseyHash);
+      }
+      if (EF19.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(EF19);
+      }
+      if (EF20.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(EF20);
+      }
+      if (EF21.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(EF21);
+      }
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) Sport);
+      }
+      if (EF23 != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(EF23);
+      }
+      if (EventType != global::ZwiftPacketMonitor.EventType.EtUnknown) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) EventType);
+      }
+      if (EF25 != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EF25);
+      }
+      if (EF26.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(EF26);
+      }
+      if (EF27 != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EF27);
+      }
+      if (OverrideMapPreferences != false) {
+        size += 2 + 1;
+      }
+      if (InvisibleToNonParticipants != false) {
+        size += 2 + 1;
+      }
+      if (evSeries_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(EvSeries);
+      }
+      if (Tags.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Tags);
+      }
+      if (EF32 != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EF32);
+      }
+      if (EWtrl != false) {
+        size += 2 + 1;
+      }
+      if (LateJoinInMinutes != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(LateJoinInMinutes);
+      }
+      if (CourseId != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(CourseId);
+      }
+      if (tto_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Tto);
+      }
+      if (EF37.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(EF37);
+      }
+      if (EF38.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(EF38);
+      }
+      if (EF39 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(EF39);
+      }
+      if (msed_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Msed);
+      }
+      size += eF41_.CalculateSize(_repeated_eF41_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(EventProtobuf other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0L) {
+        Id = other.Id;
+      }
+      if (other.ServerRealm != 0L) {
+        ServerRealm = other.ServerRealm;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      if (other.EventStart != 0L) {
+        EventStart = other.EventStart;
+      }
+      if (other.EF6.Length != 0) {
+        EF6 = other.EF6;
+      }
+      if (other.DistanceInMeters != 0F) {
+        DistanceInMeters = other.DistanceInMeters;
+      }
+      if (other.Laps != 0) {
+        Laps = other.Laps;
+      }
+      if (other.EF9 != 0) {
+        EF9 = other.EF9;
+      }
+      if (other.category_ != null) {
+        if (category_ == null) {
+          Category = new global::ZwiftPacketMonitor.EventSubgroupProtobuf();
+        }
+        Category.MergeFrom(other.Category);
+      }
+      if (other.EF11.Length != 0) {
+        EF11 = other.EF11;
+      }
+      if (other.Thumbnail.Length != 0) {
+        Thumbnail = other.Thumbnail;
+      }
+      if (other.DurationInSeconds != 0) {
+        DurationInSeconds = other.DurationInSeconds;
+      }
+      if (other.RouteId != 0L) {
+        RouteId = other.RouteId;
+      }
+      if (other.RulesId != 0L) {
+        RulesId = other.RulesId;
+      }
+      if (other.EF16 != 0) {
+        EF16 = other.EF16;
+      }
+      if (other.Visible != false) {
+        Visible = other.Visible;
+      }
+      if (other.JerseyHash != 0L) {
+        JerseyHash = other.JerseyHash;
+      }
+      if (other.EF19.Length != 0) {
+        EF19 = other.EF19;
+      }
+      if (other.EF20.Length != 0) {
+        EF20 = other.EF20;
+      }
+      if (other.EF21.Length != 0) {
+        EF21 = other.EF21;
+      }
+      if (other.Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        Sport = other.Sport;
+      }
+      if (other.EF23 != 0L) {
+        EF23 = other.EF23;
+      }
+      if (other.EventType != global::ZwiftPacketMonitor.EventType.EtUnknown) {
+        EventType = other.EventType;
+      }
+      if (other.EF25 != 0UL) {
+        EF25 = other.EF25;
+      }
+      if (other.EF26.Length != 0) {
+        EF26 = other.EF26;
+      }
+      if (other.EF27 != 0UL) {
+        EF27 = other.EF27;
+      }
+      if (other.OverrideMapPreferences != false) {
+        OverrideMapPreferences = other.OverrideMapPreferences;
+      }
+      if (other.InvisibleToNonParticipants != false) {
+        InvisibleToNonParticipants = other.InvisibleToNonParticipants;
+      }
+      if (other.evSeries_ != null) {
+        if (evSeries_ == null) {
+          EvSeries = new global::ZwiftPacketMonitor.EventSeriesProtobuf();
+        }
+        EvSeries.MergeFrom(other.EvSeries);
+      }
+      if (other.Tags.Length != 0) {
+        Tags = other.Tags;
+      }
+      if (other.EF32 != 0UL) {
+        EF32 = other.EF32;
+      }
+      if (other.EWtrl != false) {
+        EWtrl = other.EWtrl;
+      }
+      if (other.LateJoinInMinutes != 0) {
+        LateJoinInMinutes = other.LateJoinInMinutes;
+      }
+      if (other.CourseId != 0UL) {
+        CourseId = other.CourseId;
+      }
+      if (other.tto_ != null) {
+        if (tto_ == null) {
+          Tto = new global::ZwiftPacketMonitor.EventTimeTrialOptions();
+        }
+        Tto.MergeFrom(other.Tto);
+      }
+      if (other.EF37.Length != 0) {
+        EF37 = other.EF37;
+      }
+      if (other.EF38.Length != 0) {
+        EF38 = other.EF38;
+      }
+      if (other.EF39 != 0) {
+        EF39 = other.EF39;
+      }
+      if (other.msed_ != null) {
+        if (msed_ == null) {
+          Msed = new global::ZwiftPacketMonitor.MicroserviceEventData();
+        }
+        Msed.MergeFrom(other.Msed);
+      }
+      eF41_.Add(other.eF41_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Id = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            ServerRealm = input.ReadInt64();
             break;
           }
           case 26: {
@@ -1002,22 +3187,34 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 40: {
-            StartTime = input.ReadInt64();
+            EventStart = input.ReadInt64();
+            break;
+          }
+          case 50: {
+            EF6 = input.ReadString();
             break;
           }
           case 61: {
-            Distance = input.ReadFixed32();
+            DistanceInMeters = input.ReadFloat();
             break;
           }
           case 64: {
-            Tag8 = input.ReadInt32();
+            Laps = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            EF9 = input.ReadInt32();
             break;
           }
           case 82: {
-            if (meetupInner_ == null) {
-              MeetupInner = new global::ZwiftPacketMonitor.Meetup.Types.MeetupInner();
+            if (category_ == null) {
+              Category = new global::ZwiftPacketMonitor.EventSubgroupProtobuf();
             }
-            input.ReadMessage(MeetupInner);
+            input.ReadMessage(Category);
+            break;
+          }
+          case 90: {
+            EF11 = input.ReadString();
             break;
           }
           case 98: {
@@ -1025,55 +3222,321 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 104: {
-            Duration = input.ReadInt32();
+            DurationInSeconds = input.ReadInt32();
             break;
           }
           case 112: {
-            F14 = input.ReadInt64();
+            RouteId = input.ReadInt64();
+            break;
+          }
+          case 120: {
+            RulesId = input.ReadInt64();
+            break;
+          }
+          case 128: {
+            EF16 = input.ReadInt32();
             break;
           }
           case 136: {
-            F17 = input.ReadInt32();
+            Visible = input.ReadBool();
             break;
           }
           case 144: {
-            F18 = input.ReadInt32();
+            JerseyHash = input.ReadInt64();
+            break;
+          }
+          case 154: {
+            EF19 = input.ReadString();
+            break;
+          }
+          case 162: {
+            EF20 = input.ReadString();
+            break;
+          }
+          case 170: {
+            EF21 = input.ReadString();
             break;
           }
           case 176: {
-            F22 = input.ReadInt32();
+            Sport = (global::ZwiftPacketMonitor.Sport) input.ReadEnum();
             break;
           }
           case 184: {
-            F23 = input.ReadInt32();
+            EF23 = input.ReadInt64();
             break;
           }
           case 192: {
-            MeetupOnlyView = input.ReadInt32();
+            EventType = (global::ZwiftPacketMonitor.EventType) input.ReadEnum();
             break;
           }
           case 200: {
-            F25 = input.ReadInt32();
+            EF25 = input.ReadUInt64();
+            break;
+          }
+          case 210: {
+            EF26 = input.ReadString();
             break;
           }
           case 216: {
-            F27 = input.ReadInt32();
+            EF27 = input.ReadUInt64();
             break;
           }
           case 224: {
-            F28 = input.ReadInt32();
+            OverrideMapPreferences = input.ReadBool();
             break;
           }
           case 232: {
-            F29 = input.ReadInt32();
+            InvisibleToNonParticipants = input.ReadBool();
+            break;
+          }
+          case 242: {
+            if (evSeries_ == null) {
+              EvSeries = new global::ZwiftPacketMonitor.EventSeriesProtobuf();
+            }
+            input.ReadMessage(EvSeries);
+            break;
+          }
+          case 250: {
+            Tags = input.ReadString();
+            break;
+          }
+          case 256: {
+            EF32 = input.ReadUInt64();
+            break;
+          }
+          case 264: {
+            EWtrl = input.ReadBool();
             break;
           }
           case 272: {
-            F34 = input.ReadInt32();
+            LateJoinInMinutes = input.ReadUInt32();
             break;
           }
           case 280: {
-            F35 = input.ReadInt32();
+            CourseId = input.ReadUInt64();
+            break;
+          }
+          case 290: {
+            if (tto_ == null) {
+              Tto = new global::ZwiftPacketMonitor.EventTimeTrialOptions();
+            }
+            input.ReadMessage(Tto);
+            break;
+          }
+          case 298: {
+            EF37 = input.ReadString();
+            break;
+          }
+          case 306: {
+            EF38 = input.ReadString();
+            break;
+          }
+          case 312: {
+            EF39 = input.ReadUInt32();
+            break;
+          }
+          case 322: {
+            if (msed_ == null) {
+              Msed = new global::ZwiftPacketMonitor.MicroserviceEventData();
+            }
+            input.ReadMessage(Msed);
+            break;
+          }
+          case 330:
+          case 328: {
+            eF41_.AddEntriesFrom(input, _repeated_eF41_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Id = input.ReadInt64();
+            break;
+          }
+          case 16: {
+            ServerRealm = input.ReadInt64();
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            Description = input.ReadString();
+            break;
+          }
+          case 40: {
+            EventStart = input.ReadInt64();
+            break;
+          }
+          case 50: {
+            EF6 = input.ReadString();
+            break;
+          }
+          case 61: {
+            DistanceInMeters = input.ReadFloat();
+            break;
+          }
+          case 64: {
+            Laps = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            EF9 = input.ReadInt32();
+            break;
+          }
+          case 82: {
+            if (category_ == null) {
+              Category = new global::ZwiftPacketMonitor.EventSubgroupProtobuf();
+            }
+            input.ReadMessage(Category);
+            break;
+          }
+          case 90: {
+            EF11 = input.ReadString();
+            break;
+          }
+          case 98: {
+            Thumbnail = input.ReadString();
+            break;
+          }
+          case 104: {
+            DurationInSeconds = input.ReadInt32();
+            break;
+          }
+          case 112: {
+            RouteId = input.ReadInt64();
+            break;
+          }
+          case 120: {
+            RulesId = input.ReadInt64();
+            break;
+          }
+          case 128: {
+            EF16 = input.ReadInt32();
+            break;
+          }
+          case 136: {
+            Visible = input.ReadBool();
+            break;
+          }
+          case 144: {
+            JerseyHash = input.ReadInt64();
+            break;
+          }
+          case 154: {
+            EF19 = input.ReadString();
+            break;
+          }
+          case 162: {
+            EF20 = input.ReadString();
+            break;
+          }
+          case 170: {
+            EF21 = input.ReadString();
+            break;
+          }
+          case 176: {
+            Sport = (global::ZwiftPacketMonitor.Sport) input.ReadEnum();
+            break;
+          }
+          case 184: {
+            EF23 = input.ReadInt64();
+            break;
+          }
+          case 192: {
+            EventType = (global::ZwiftPacketMonitor.EventType) input.ReadEnum();
+            break;
+          }
+          case 200: {
+            EF25 = input.ReadUInt64();
+            break;
+          }
+          case 210: {
+            EF26 = input.ReadString();
+            break;
+          }
+          case 216: {
+            EF27 = input.ReadUInt64();
+            break;
+          }
+          case 224: {
+            OverrideMapPreferences = input.ReadBool();
+            break;
+          }
+          case 232: {
+            InvisibleToNonParticipants = input.ReadBool();
+            break;
+          }
+          case 242: {
+            if (evSeries_ == null) {
+              EvSeries = new global::ZwiftPacketMonitor.EventSeriesProtobuf();
+            }
+            input.ReadMessage(EvSeries);
+            break;
+          }
+          case 250: {
+            Tags = input.ReadString();
+            break;
+          }
+          case 256: {
+            EF32 = input.ReadUInt64();
+            break;
+          }
+          case 264: {
+            EWtrl = input.ReadBool();
+            break;
+          }
+          case 272: {
+            LateJoinInMinutes = input.ReadUInt32();
+            break;
+          }
+          case 280: {
+            CourseId = input.ReadUInt64();
+            break;
+          }
+          case 290: {
+            if (tto_ == null) {
+              Tto = new global::ZwiftPacketMonitor.EventTimeTrialOptions();
+            }
+            input.ReadMessage(Tto);
+            break;
+          }
+          case 298: {
+            EF37 = input.ReadString();
+            break;
+          }
+          case 306: {
+            EF38 = input.ReadString();
+            break;
+          }
+          case 312: {
+            EF39 = input.ReadUInt32();
+            break;
+          }
+          case 322: {
+            if (msed_ == null) {
+              Msed = new global::ZwiftPacketMonitor.MicroserviceEventData();
+            }
+            input.ReadMessage(Msed);
+            break;
+          }
+          case 330:
+          case 328: {
+            eF41_.AddEntriesFrom(ref input, _repeated_eF41_codec);
             break;
           }
         }
@@ -1081,1159 +3544,11 @@ namespace ZwiftPacketMonitor {
     }
     #endif
 
-    #region Nested types
-    /// <summary>Container for nested types declared in the Meetup message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public sealed partial class MeetupInner : pb::IMessage<MeetupInner>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<MeetupInner> _parser = new pb::MessageParser<MeetupInner>(() => new MeetupInner());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<MeetupInner> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::ZwiftPacketMonitor.Meetup.Descriptor.NestedTypes[0]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public MeetupInner() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public MeetupInner(MeetupInner other) : this() {
-          id_ = other.id_;
-          name_ = other.name_;
-          description_ = other.description_;
-          f7_ = other.f7_;
-          f8_ = other.f8_;
-          f9_ = other.f9_;
-          f10_ = other.f10_;
-          f11_ = other.f11_;
-          f12_ = other.f12_;
-          f13_ = other.f13_;
-          f14_ = other.f14_;
-          f15_ = other.f15_;
-          f16_ = other.f16_;
-          f17_ = other.f17_;
-          f18_ = other.f18_;
-          f22_ = other.f22_;
-          distance_ = other.distance_;
-          f25_ = other.f25_;
-          f29_ = other.f29_;
-          f30_ = other.f30_;
-          f31_ = other.f31_;
-          f32_ = other.f32_;
-          f33_ = other.f33_;
-          duration_ = other.duration_;
-          f42_ = other.f42_;
-          f44_ = other.f44_;
-          f46_ = other.f46_;
-          f47_ = other.f47_;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public MeetupInner Clone() {
-          return new MeetupInner(this);
-        }
-
-        /// <summary>Field number for the "id" field.</summary>
-        public const int IdFieldNumber = 1;
-        private int id_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int Id {
-          get { return id_; }
-          set {
-            id_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "name" field.</summary>
-        public const int NameFieldNumber = 2;
-        private string name_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string Name {
-          get { return name_; }
-          set {
-            name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "description" field.</summary>
-        public const int DescriptionFieldNumber = 3;
-        private string description_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string Description {
-          get { return description_; }
-          set {
-            description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "f7" field.</summary>
-        public const int F7FieldNumber = 7;
-        private string f7_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string F7 {
-          get { return f7_; }
-          set {
-            f7_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "f8" field.</summary>
-        public const int F8FieldNumber = 8;
-        private long f8_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F8 {
-          get { return f8_; }
-          set {
-            f8_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f9" field.</summary>
-        public const int F9FieldNumber = 9;
-        private long f9_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F9 {
-          get { return f9_; }
-          set {
-            f9_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f10" field.</summary>
-        public const int F10FieldNumber = 10;
-        private long f10_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F10 {
-          get { return f10_; }
-          set {
-            f10_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f11" field.</summary>
-        public const int F11FieldNumber = 11;
-        private long f11_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F11 {
-          get { return f11_; }
-          set {
-            f11_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f12" field.</summary>
-        public const int F12FieldNumber = 12;
-        private long f12_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F12 {
-          get { return f12_; }
-          set {
-            f12_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f13" field.</summary>
-        public const int F13FieldNumber = 13;
-        private long f13_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F13 {
-          get { return f13_; }
-          set {
-            f13_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f14" field.</summary>
-        public const int F14FieldNumber = 14;
-        private long f14_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F14 {
-          get { return f14_; }
-          set {
-            f14_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f15" field.</summary>
-        public const int F15FieldNumber = 15;
-        private long f15_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F15 {
-          get { return f15_; }
-          set {
-            f15_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f16" field.</summary>
-        public const int F16FieldNumber = 16;
-        private long f16_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F16 {
-          get { return f16_; }
-          set {
-            f16_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f17" field.</summary>
-        public const int F17FieldNumber = 17;
-        private long f17_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F17 {
-          get { return f17_; }
-          set {
-            f17_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f18" field.</summary>
-        public const int F18FieldNumber = 18;
-        private long f18_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F18 {
-          get { return f18_; }
-          set {
-            f18_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f22" field.</summary>
-        public const int F22FieldNumber = 22;
-        private long f22_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F22 {
-          get { return f22_; }
-          set {
-            f22_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "distance" field.</summary>
-        public const int DistanceFieldNumber = 24;
-        private uint distance_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public uint Distance {
-          get { return distance_; }
-          set {
-            distance_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f25" field.</summary>
-        public const int F25FieldNumber = 25;
-        private long f25_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F25 {
-          get { return f25_; }
-          set {
-            f25_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f29" field.</summary>
-        public const int F29FieldNumber = 29;
-        private int f29_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int F29 {
-          get { return f29_; }
-          set {
-            f29_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f30" field.</summary>
-        public const int F30FieldNumber = 30;
-        private int f30_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int F30 {
-          get { return f30_; }
-          set {
-            f30_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f31" field.</summary>
-        public const int F31FieldNumber = 31;
-        private int f31_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int F31 {
-          get { return f31_; }
-          set {
-            f31_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f32" field.</summary>
-        public const int F32FieldNumber = 32;
-        private uint f32_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public uint F32 {
-          get { return f32_; }
-          set {
-            f32_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f33" field.</summary>
-        public const int F33FieldNumber = 33;
-        private uint f33_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public uint F33 {
-          get { return f33_; }
-          set {
-            f33_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "duration" field.</summary>
-        public const int DurationFieldNumber = 34;
-        private int duration_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int Duration {
-          get { return duration_; }
-          set {
-            duration_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f42" field.</summary>
-        public const int F42FieldNumber = 42;
-        private long f42_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F42 {
-          get { return f42_; }
-          set {
-            f42_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f44" field.</summary>
-        public const int F44FieldNumber = 44;
-        private long f44_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public long F44 {
-          get { return f44_; }
-          set {
-            f44_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f46" field.</summary>
-        public const int F46FieldNumber = 46;
-        private int f46_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int F46 {
-          get { return f46_; }
-          set {
-            f46_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "f47" field.</summary>
-        public const int F47FieldNumber = 47;
-        private int f47_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int F47 {
-          get { return f47_; }
-          set {
-            f47_ = value;
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override bool Equals(object other) {
-          return Equals(other as MeetupInner);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(MeetupInner other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (Id != other.Id) return false;
-          if (Name != other.Name) return false;
-          if (Description != other.Description) return false;
-          if (F7 != other.F7) return false;
-          if (F8 != other.F8) return false;
-          if (F9 != other.F9) return false;
-          if (F10 != other.F10) return false;
-          if (F11 != other.F11) return false;
-          if (F12 != other.F12) return false;
-          if (F13 != other.F13) return false;
-          if (F14 != other.F14) return false;
-          if (F15 != other.F15) return false;
-          if (F16 != other.F16) return false;
-          if (F17 != other.F17) return false;
-          if (F18 != other.F18) return false;
-          if (F22 != other.F22) return false;
-          if (Distance != other.Distance) return false;
-          if (F25 != other.F25) return false;
-          if (F29 != other.F29) return false;
-          if (F30 != other.F30) return false;
-          if (F31 != other.F31) return false;
-          if (F32 != other.F32) return false;
-          if (F33 != other.F33) return false;
-          if (Duration != other.Duration) return false;
-          if (F42 != other.F42) return false;
-          if (F44 != other.F44) return false;
-          if (F46 != other.F46) return false;
-          if (F47 != other.F47) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (Id != 0) hash ^= Id.GetHashCode();
-          if (Name.Length != 0) hash ^= Name.GetHashCode();
-          if (Description.Length != 0) hash ^= Description.GetHashCode();
-          if (F7.Length != 0) hash ^= F7.GetHashCode();
-          if (F8 != 0L) hash ^= F8.GetHashCode();
-          if (F9 != 0L) hash ^= F9.GetHashCode();
-          if (F10 != 0L) hash ^= F10.GetHashCode();
-          if (F11 != 0L) hash ^= F11.GetHashCode();
-          if (F12 != 0L) hash ^= F12.GetHashCode();
-          if (F13 != 0L) hash ^= F13.GetHashCode();
-          if (F14 != 0L) hash ^= F14.GetHashCode();
-          if (F15 != 0L) hash ^= F15.GetHashCode();
-          if (F16 != 0L) hash ^= F16.GetHashCode();
-          if (F17 != 0L) hash ^= F17.GetHashCode();
-          if (F18 != 0L) hash ^= F18.GetHashCode();
-          if (F22 != 0L) hash ^= F22.GetHashCode();
-          if (Distance != 0) hash ^= Distance.GetHashCode();
-          if (F25 != 0L) hash ^= F25.GetHashCode();
-          if (F29 != 0) hash ^= F29.GetHashCode();
-          if (F30 != 0) hash ^= F30.GetHashCode();
-          if (F31 != 0) hash ^= F31.GetHashCode();
-          if (F32 != 0) hash ^= F32.GetHashCode();
-          if (F33 != 0) hash ^= F33.GetHashCode();
-          if (Duration != 0) hash ^= Duration.GetHashCode();
-          if (F42 != 0L) hash ^= F42.GetHashCode();
-          if (F44 != 0L) hash ^= F44.GetHashCode();
-          if (F46 != 0) hash ^= F46.GetHashCode();
-          if (F47 != 0) hash ^= F47.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          if (Id != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(Id);
-          }
-          if (Name.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Name);
-          }
-          if (Description.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Description);
-          }
-          if (F7.Length != 0) {
-            output.WriteRawTag(58);
-            output.WriteString(F7);
-          }
-          if (F8 != 0L) {
-            output.WriteRawTag(64);
-            output.WriteInt64(F8);
-          }
-          if (F9 != 0L) {
-            output.WriteRawTag(72);
-            output.WriteInt64(F9);
-          }
-          if (F10 != 0L) {
-            output.WriteRawTag(80);
-            output.WriteInt64(F10);
-          }
-          if (F11 != 0L) {
-            output.WriteRawTag(88);
-            output.WriteInt64(F11);
-          }
-          if (F12 != 0L) {
-            output.WriteRawTag(96);
-            output.WriteInt64(F12);
-          }
-          if (F13 != 0L) {
-            output.WriteRawTag(104);
-            output.WriteInt64(F13);
-          }
-          if (F14 != 0L) {
-            output.WriteRawTag(112);
-            output.WriteInt64(F14);
-          }
-          if (F15 != 0L) {
-            output.WriteRawTag(120);
-            output.WriteInt64(F15);
-          }
-          if (F16 != 0L) {
-            output.WriteRawTag(128, 1);
-            output.WriteInt64(F16);
-          }
-          if (F17 != 0L) {
-            output.WriteRawTag(136, 1);
-            output.WriteInt64(F17);
-          }
-          if (F18 != 0L) {
-            output.WriteRawTag(144, 1);
-            output.WriteInt64(F18);
-          }
-          if (F22 != 0L) {
-            output.WriteRawTag(176, 1);
-            output.WriteInt64(F22);
-          }
-          if (Distance != 0) {
-            output.WriteRawTag(197, 1);
-            output.WriteFixed32(Distance);
-          }
-          if (F25 != 0L) {
-            output.WriteRawTag(200, 1);
-            output.WriteInt64(F25);
-          }
-          if (F29 != 0) {
-            output.WriteRawTag(232, 1);
-            output.WriteInt32(F29);
-          }
-          if (F30 != 0) {
-            output.WriteRawTag(240, 1);
-            output.WriteInt32(F30);
-          }
-          if (F31 != 0) {
-            output.WriteRawTag(248, 1);
-            output.WriteInt32(F31);
-          }
-          if (F32 != 0) {
-            output.WriteRawTag(133, 2);
-            output.WriteFixed32(F32);
-          }
-          if (F33 != 0) {
-            output.WriteRawTag(141, 2);
-            output.WriteFixed32(F33);
-          }
-          if (Duration != 0) {
-            output.WriteRawTag(144, 2);
-            output.WriteInt32(Duration);
-          }
-          if (F42 != 0L) {
-            output.WriteRawTag(208, 2);
-            output.WriteInt64(F42);
-          }
-          if (F44 != 0L) {
-            output.WriteRawTag(224, 2);
-            output.WriteInt64(F44);
-          }
-          if (F46 != 0) {
-            output.WriteRawTag(240, 2);
-            output.WriteInt32(F46);
-          }
-          if (F47 != 0) {
-            output.WriteRawTag(248, 2);
-            output.WriteInt32(F47);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (Id != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(Id);
-          }
-          if (Name.Length != 0) {
-            output.WriteRawTag(18);
-            output.WriteString(Name);
-          }
-          if (Description.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(Description);
-          }
-          if (F7.Length != 0) {
-            output.WriteRawTag(58);
-            output.WriteString(F7);
-          }
-          if (F8 != 0L) {
-            output.WriteRawTag(64);
-            output.WriteInt64(F8);
-          }
-          if (F9 != 0L) {
-            output.WriteRawTag(72);
-            output.WriteInt64(F9);
-          }
-          if (F10 != 0L) {
-            output.WriteRawTag(80);
-            output.WriteInt64(F10);
-          }
-          if (F11 != 0L) {
-            output.WriteRawTag(88);
-            output.WriteInt64(F11);
-          }
-          if (F12 != 0L) {
-            output.WriteRawTag(96);
-            output.WriteInt64(F12);
-          }
-          if (F13 != 0L) {
-            output.WriteRawTag(104);
-            output.WriteInt64(F13);
-          }
-          if (F14 != 0L) {
-            output.WriteRawTag(112);
-            output.WriteInt64(F14);
-          }
-          if (F15 != 0L) {
-            output.WriteRawTag(120);
-            output.WriteInt64(F15);
-          }
-          if (F16 != 0L) {
-            output.WriteRawTag(128, 1);
-            output.WriteInt64(F16);
-          }
-          if (F17 != 0L) {
-            output.WriteRawTag(136, 1);
-            output.WriteInt64(F17);
-          }
-          if (F18 != 0L) {
-            output.WriteRawTag(144, 1);
-            output.WriteInt64(F18);
-          }
-          if (F22 != 0L) {
-            output.WriteRawTag(176, 1);
-            output.WriteInt64(F22);
-          }
-          if (Distance != 0) {
-            output.WriteRawTag(197, 1);
-            output.WriteFixed32(Distance);
-          }
-          if (F25 != 0L) {
-            output.WriteRawTag(200, 1);
-            output.WriteInt64(F25);
-          }
-          if (F29 != 0) {
-            output.WriteRawTag(232, 1);
-            output.WriteInt32(F29);
-          }
-          if (F30 != 0) {
-            output.WriteRawTag(240, 1);
-            output.WriteInt32(F30);
-          }
-          if (F31 != 0) {
-            output.WriteRawTag(248, 1);
-            output.WriteInt32(F31);
-          }
-          if (F32 != 0) {
-            output.WriteRawTag(133, 2);
-            output.WriteFixed32(F32);
-          }
-          if (F33 != 0) {
-            output.WriteRawTag(141, 2);
-            output.WriteFixed32(F33);
-          }
-          if (Duration != 0) {
-            output.WriteRawTag(144, 2);
-            output.WriteInt32(Duration);
-          }
-          if (F42 != 0L) {
-            output.WriteRawTag(208, 2);
-            output.WriteInt64(F42);
-          }
-          if (F44 != 0L) {
-            output.WriteRawTag(224, 2);
-            output.WriteInt64(F44);
-          }
-          if (F46 != 0) {
-            output.WriteRawTag(240, 2);
-            output.WriteInt32(F46);
-          }
-          if (F47 != 0) {
-            output.WriteRawTag(248, 2);
-            output.WriteInt32(F47);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int CalculateSize() {
-          int size = 0;
-          if (Id != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
-          }
-          if (Name.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-          }
-          if (Description.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
-          }
-          if (F7.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(F7);
-          }
-          if (F8 != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F8);
-          }
-          if (F9 != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F9);
-          }
-          if (F10 != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F10);
-          }
-          if (F11 != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F11);
-          }
-          if (F12 != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F12);
-          }
-          if (F13 != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F13);
-          }
-          if (F14 != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F14);
-          }
-          if (F15 != 0L) {
-            size += 1 + pb::CodedOutputStream.ComputeInt64Size(F15);
-          }
-          if (F16 != 0L) {
-            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F16);
-          }
-          if (F17 != 0L) {
-            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F17);
-          }
-          if (F18 != 0L) {
-            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F18);
-          }
-          if (F22 != 0L) {
-            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F22);
-          }
-          if (Distance != 0) {
-            size += 2 + 4;
-          }
-          if (F25 != 0L) {
-            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F25);
-          }
-          if (F29 != 0) {
-            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F29);
-          }
-          if (F30 != 0) {
-            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F30);
-          }
-          if (F31 != 0) {
-            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F31);
-          }
-          if (F32 != 0) {
-            size += 2 + 4;
-          }
-          if (F33 != 0) {
-            size += 2 + 4;
-          }
-          if (Duration != 0) {
-            size += 2 + pb::CodedOutputStream.ComputeInt32Size(Duration);
-          }
-          if (F42 != 0L) {
-            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F42);
-          }
-          if (F44 != 0L) {
-            size += 2 + pb::CodedOutputStream.ComputeInt64Size(F44);
-          }
-          if (F46 != 0) {
-            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F46);
-          }
-          if (F47 != 0) {
-            size += 2 + pb::CodedOutputStream.ComputeInt32Size(F47);
-          }
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(MeetupInner other) {
-          if (other == null) {
-            return;
-          }
-          if (other.Id != 0) {
-            Id = other.Id;
-          }
-          if (other.Name.Length != 0) {
-            Name = other.Name;
-          }
-          if (other.Description.Length != 0) {
-            Description = other.Description;
-          }
-          if (other.F7.Length != 0) {
-            F7 = other.F7;
-          }
-          if (other.F8 != 0L) {
-            F8 = other.F8;
-          }
-          if (other.F9 != 0L) {
-            F9 = other.F9;
-          }
-          if (other.F10 != 0L) {
-            F10 = other.F10;
-          }
-          if (other.F11 != 0L) {
-            F11 = other.F11;
-          }
-          if (other.F12 != 0L) {
-            F12 = other.F12;
-          }
-          if (other.F13 != 0L) {
-            F13 = other.F13;
-          }
-          if (other.F14 != 0L) {
-            F14 = other.F14;
-          }
-          if (other.F15 != 0L) {
-            F15 = other.F15;
-          }
-          if (other.F16 != 0L) {
-            F16 = other.F16;
-          }
-          if (other.F17 != 0L) {
-            F17 = other.F17;
-          }
-          if (other.F18 != 0L) {
-            F18 = other.F18;
-          }
-          if (other.F22 != 0L) {
-            F22 = other.F22;
-          }
-          if (other.Distance != 0) {
-            Distance = other.Distance;
-          }
-          if (other.F25 != 0L) {
-            F25 = other.F25;
-          }
-          if (other.F29 != 0) {
-            F29 = other.F29;
-          }
-          if (other.F30 != 0) {
-            F30 = other.F30;
-          }
-          if (other.F31 != 0) {
-            F31 = other.F31;
-          }
-          if (other.F32 != 0) {
-            F32 = other.F32;
-          }
-          if (other.F33 != 0) {
-            F33 = other.F33;
-          }
-          if (other.Duration != 0) {
-            Duration = other.Duration;
-          }
-          if (other.F42 != 0L) {
-            F42 = other.F42;
-          }
-          if (other.F44 != 0L) {
-            F44 = other.F44;
-          }
-          if (other.F46 != 0) {
-            F46 = other.F46;
-          }
-          if (other.F47 != 0) {
-            F47 = other.F47;
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 8: {
-                Id = input.ReadInt32();
-                break;
-              }
-              case 18: {
-                Name = input.ReadString();
-                break;
-              }
-              case 26: {
-                Description = input.ReadString();
-                break;
-              }
-              case 58: {
-                F7 = input.ReadString();
-                break;
-              }
-              case 64: {
-                F8 = input.ReadInt64();
-                break;
-              }
-              case 72: {
-                F9 = input.ReadInt64();
-                break;
-              }
-              case 80: {
-                F10 = input.ReadInt64();
-                break;
-              }
-              case 88: {
-                F11 = input.ReadInt64();
-                break;
-              }
-              case 96: {
-                F12 = input.ReadInt64();
-                break;
-              }
-              case 104: {
-                F13 = input.ReadInt64();
-                break;
-              }
-              case 112: {
-                F14 = input.ReadInt64();
-                break;
-              }
-              case 120: {
-                F15 = input.ReadInt64();
-                break;
-              }
-              case 128: {
-                F16 = input.ReadInt64();
-                break;
-              }
-              case 136: {
-                F17 = input.ReadInt64();
-                break;
-              }
-              case 144: {
-                F18 = input.ReadInt64();
-                break;
-              }
-              case 176: {
-                F22 = input.ReadInt64();
-                break;
-              }
-              case 197: {
-                Distance = input.ReadFixed32();
-                break;
-              }
-              case 200: {
-                F25 = input.ReadInt64();
-                break;
-              }
-              case 232: {
-                F29 = input.ReadInt32();
-                break;
-              }
-              case 240: {
-                F30 = input.ReadInt32();
-                break;
-              }
-              case 248: {
-                F31 = input.ReadInt32();
-                break;
-              }
-              case 261: {
-                F32 = input.ReadFixed32();
-                break;
-              }
-              case 269: {
-                F33 = input.ReadFixed32();
-                break;
-              }
-              case 272: {
-                Duration = input.ReadInt32();
-                break;
-              }
-              case 336: {
-                F42 = input.ReadInt64();
-                break;
-              }
-              case 352: {
-                F44 = input.ReadInt64();
-                break;
-              }
-              case 368: {
-                F46 = input.ReadInt32();
-                break;
-              }
-              case 376: {
-                F47 = input.ReadInt32();
-                break;
-              }
-            }
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-              case 8: {
-                Id = input.ReadInt32();
-                break;
-              }
-              case 18: {
-                Name = input.ReadString();
-                break;
-              }
-              case 26: {
-                Description = input.ReadString();
-                break;
-              }
-              case 58: {
-                F7 = input.ReadString();
-                break;
-              }
-              case 64: {
-                F8 = input.ReadInt64();
-                break;
-              }
-              case 72: {
-                F9 = input.ReadInt64();
-                break;
-              }
-              case 80: {
-                F10 = input.ReadInt64();
-                break;
-              }
-              case 88: {
-                F11 = input.ReadInt64();
-                break;
-              }
-              case 96: {
-                F12 = input.ReadInt64();
-                break;
-              }
-              case 104: {
-                F13 = input.ReadInt64();
-                break;
-              }
-              case 112: {
-                F14 = input.ReadInt64();
-                break;
-              }
-              case 120: {
-                F15 = input.ReadInt64();
-                break;
-              }
-              case 128: {
-                F16 = input.ReadInt64();
-                break;
-              }
-              case 136: {
-                F17 = input.ReadInt64();
-                break;
-              }
-              case 144: {
-                F18 = input.ReadInt64();
-                break;
-              }
-              case 176: {
-                F22 = input.ReadInt64();
-                break;
-              }
-              case 197: {
-                Distance = input.ReadFixed32();
-                break;
-              }
-              case 200: {
-                F25 = input.ReadInt64();
-                break;
-              }
-              case 232: {
-                F29 = input.ReadInt32();
-                break;
-              }
-              case 240: {
-                F30 = input.ReadInt32();
-                break;
-              }
-              case 248: {
-                F31 = input.ReadInt32();
-                break;
-              }
-              case 261: {
-                F32 = input.ReadFixed32();
-                break;
-              }
-              case 269: {
-                F33 = input.ReadFixed32();
-                break;
-              }
-              case 272: {
-                Duration = input.ReadInt32();
-                break;
-              }
-              case 336: {
-                F42 = input.ReadInt64();
-                break;
-              }
-              case 352: {
-                F44 = input.ReadInt64();
-                break;
-              }
-              case 368: {
-                F46 = input.ReadInt32();
-                break;
-              }
-              case 376: {
-                F47 = input.ReadInt32();
-                break;
-              }
-            }
-          }
-        }
-        #endif
-
-      }
-
-    }
-    #endregion
-
   }
 
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
   public sealed partial class PlayerState : pb::IMessage<PlayerState>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2242,19 +3557,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<PlayerState> _parser = new pb::MessageParser<PlayerState>(() => new PlayerState());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<PlayerState> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerState() {
       OnConstruction();
     }
@@ -2262,6 +3581,7 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerState(PlayerState other) : this() {
       id_ = other.id_;
       worldTime_ = other.worldTime_;
@@ -2269,14 +3589,18 @@ namespace ZwiftPacketMonitor {
       roadTime_ = other.roadTime_;
       laps_ = other.laps_;
       speed_ = other.speed_;
+      psF7_ = other.psF7_;
       roadPosition_ = other.roadPosition_;
       cadenceUHz_ = other.cadenceUHz_;
+      psF10_ = other.psF10_;
       heartrate_ = other.heartrate_;
       power_ = other.power_;
       heading_ = other.heading_;
       lean_ = other.lean_;
       climbing_ = other.climbing_;
       time_ = other.time_;
+      psF17_ = other.psF17_;
+      frameHue_ = other.frameHue_;
       f19_ = other.f19_;
       f20_ = other.f20_;
       progress_ = other.progress_;
@@ -2284,16 +3608,24 @@ namespace ZwiftPacketMonitor {
       justWatching_ = other.justWatching_;
       calories_ = other.calories_;
       x_ = other.x_;
-      altitude_ = other.altitude_;
       y_ = other.y_;
+      z_ = other.z_;
       watchingRiderId_ = other.watchingRiderId_;
       groupId_ = other.groupId_;
       sport_ = other.sport_;
-      f34_ = other.f34_;
+      psF32_ = other.psF32_;
+      psF33_ = other.psF33_;
+      distLat_ = other.distLat_;
+      world_ = other.world_;
+      psF36_ = other.psF36_;
+      psF37_ = other.psF37_;
+      canSteer_ = other.canSteer_;
+      route_ = other.route_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerState Clone() {
       return new PlayerState(this);
     }
@@ -2302,6 +3634,7 @@ namespace ZwiftPacketMonitor {
     public const int IdFieldNumber = 1;
     private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Id {
       get { return id_; }
       set {
@@ -2313,6 +3646,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 2;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -2324,6 +3658,7 @@ namespace ZwiftPacketMonitor {
     public const int DistanceFieldNumber = 3;
     private int distance_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Distance {
       get { return distance_; }
       set {
@@ -2335,6 +3670,7 @@ namespace ZwiftPacketMonitor {
     public const int RoadTimeFieldNumber = 4;
     private int roadTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RoadTime {
       get { return roadTime_; }
       set {
@@ -2346,6 +3682,7 @@ namespace ZwiftPacketMonitor {
     public const int LapsFieldNumber = 5;
     private int laps_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Laps {
       get { return laps_; }
       set {
@@ -2357,6 +3694,7 @@ namespace ZwiftPacketMonitor {
     public const int SpeedFieldNumber = 6;
     private int speed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Speed {
       get { return speed_; }
       set {
@@ -2364,10 +3702,23 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "ps_f7" field.</summary>
+    public const int PsF7FieldNumber = 7;
+    private uint psF7_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PsF7 {
+      get { return psF7_; }
+      set {
+        psF7_ = value;
+      }
+    }
+
     /// <summary>Field number for the "roadPosition" field.</summary>
     public const int RoadPositionFieldNumber = 8;
     private int roadPosition_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int RoadPosition {
       get { return roadPosition_; }
       set {
@@ -2379,6 +3730,7 @@ namespace ZwiftPacketMonitor {
     public const int CadenceUHzFieldNumber = 9;
     private int cadenceUHz_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CadenceUHz {
       get { return cadenceUHz_; }
       set {
@@ -2386,10 +3738,23 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "ps_f10" field.</summary>
+    public const int PsF10FieldNumber = 10;
+    private int psF10_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PsF10 {
+      get { return psF10_; }
+      set {
+        psF10_ = value;
+      }
+    }
+
     /// <summary>Field number for the "heartrate" field.</summary>
     public const int HeartrateFieldNumber = 11;
     private int heartrate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Heartrate {
       get { return heartrate_; }
       set {
@@ -2401,6 +3766,7 @@ namespace ZwiftPacketMonitor {
     public const int PowerFieldNumber = 12;
     private int power_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Power {
       get { return power_; }
       set {
@@ -2412,6 +3778,7 @@ namespace ZwiftPacketMonitor {
     public const int HeadingFieldNumber = 13;
     private long heading_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Heading {
       get { return heading_; }
       set {
@@ -2423,6 +3790,7 @@ namespace ZwiftPacketMonitor {
     public const int LeanFieldNumber = 14;
     private int lean_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Lean {
       get { return lean_; }
       set {
@@ -2434,6 +3802,7 @@ namespace ZwiftPacketMonitor {
     public const int ClimbingFieldNumber = 15;
     private int climbing_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Climbing {
       get { return climbing_; }
       set {
@@ -2445,6 +3814,7 @@ namespace ZwiftPacketMonitor {
     public const int TimeFieldNumber = 16;
     private int time_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Time {
       get { return time_; }
       set {
@@ -2452,10 +3822,35 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "ps_f17" field.</summary>
+    public const int PsF17FieldNumber = 17;
+    private int psF17_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PsF17 {
+      get { return psF17_; }
+      set {
+        psF17_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "frameHue" field.</summary>
+    public const int FrameHueFieldNumber = 18;
+    private uint frameHue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FrameHue {
+      get { return frameHue_; }
+      set {
+        frameHue_ = value;
+      }
+    }
+
     /// <summary>Field number for the "f19" field.</summary>
     public const int F19FieldNumber = 19;
     private int f19_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F19 {
       get { return f19_; }
       set {
@@ -2467,6 +3862,7 @@ namespace ZwiftPacketMonitor {
     public const int F20FieldNumber = 20;
     private int f20_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int F20 {
       get { return f20_; }
       set {
@@ -2478,6 +3874,7 @@ namespace ZwiftPacketMonitor {
     public const int ProgressFieldNumber = 21;
     private int progress_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Progress {
       get { return progress_; }
       set {
@@ -2489,6 +3886,7 @@ namespace ZwiftPacketMonitor {
     public const int CustomisationIdFieldNumber = 22;
     private long customisationId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long CustomisationId {
       get { return customisationId_; }
       set {
@@ -2500,6 +3898,7 @@ namespace ZwiftPacketMonitor {
     public const int JustWatchingFieldNumber = 23;
     private int justWatching_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int JustWatching {
       get { return justWatching_; }
       set {
@@ -2511,6 +3910,7 @@ namespace ZwiftPacketMonitor {
     public const int CaloriesFieldNumber = 24;
     private int calories_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Calories {
       get { return calories_; }
       set {
@@ -2522,6 +3922,7 @@ namespace ZwiftPacketMonitor {
     public const int XFieldNumber = 25;
     private float x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float X {
       get { return x_; }
       set {
@@ -2529,21 +3930,11 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "altitude" field.</summary>
-    public const int AltitudeFieldNumber = 26;
-    private float altitude_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float Altitude {
-      get { return altitude_; }
-      set {
-        altitude_ = value;
-      }
-    }
-
     /// <summary>Field number for the "y" field.</summary>
-    public const int YFieldNumber = 27;
+    public const int YFieldNumber = 26;
     private float y_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float Y {
       get { return y_; }
       set {
@@ -2551,11 +3942,24 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "z" field.</summary>
+    public const int ZFieldNumber = 27;
+    private float z_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Z {
+      get { return z_; }
+      set {
+        z_ = value;
+      }
+    }
+
     /// <summary>Field number for the "watchingRiderId" field.</summary>
     public const int WatchingRiderIdFieldNumber = 28;
-    private int watchingRiderId_;
+    private long watchingRiderId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int WatchingRiderId {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long WatchingRiderId {
       get { return watchingRiderId_; }
       set {
         watchingRiderId_ = value;
@@ -2564,9 +3968,10 @@ namespace ZwiftPacketMonitor {
 
     /// <summary>Field number for the "groupId" field.</summary>
     public const int GroupIdFieldNumber = 29;
-    private int groupId_;
+    private long groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int GroupId {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long GroupId {
       get { return groupId_; }
       set {
         groupId_ = value;
@@ -2575,35 +3980,123 @@ namespace ZwiftPacketMonitor {
 
     /// <summary>Field number for the "sport" field.</summary>
     public const int SportFieldNumber = 31;
-    private long sport_;
+    private global::ZwiftPacketMonitor.Sport sport_ = global::ZwiftPacketMonitor.Sport.Cycling;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Sport {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.Sport Sport {
       get { return sport_; }
       set {
         sport_ = value;
       }
     }
 
-    /// <summary>Field number for the "f34" field.</summary>
-    public const int F34FieldNumber = 34;
-    private float f34_;
+    /// <summary>Field number for the "ps_f32" field.</summary>
+    public const int PsF32FieldNumber = 32;
+    private float psF32_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float PsF32 {
+      get { return psF32_; }
+      set {
+        psF32_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ps_f33" field.</summary>
+    public const int PsF33FieldNumber = 33;
+    private uint psF33_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PsF33 {
+      get { return psF33_; }
+      set {
+        psF33_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dist_lat" field.</summary>
+    public const int DistLatFieldNumber = 34;
+    private float distLat_;
     /// <summary>
     /// actual distance moved included lateral movement
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float F34 {
-      get { return f34_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float DistLat {
+      get { return distLat_; }
       set {
-        f34_ = value;
+        distLat_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "world" field.</summary>
+    public const int WorldFieldNumber = 35;
+    private int world_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int World {
+      get { return world_; }
+      set {
+        world_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ps_f36" field.</summary>
+    public const int PsF36FieldNumber = 36;
+    private uint psF36_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PsF36 {
+      get { return psF36_; }
+      set {
+        psF36_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ps_f37" field.</summary>
+    public const int PsF37FieldNumber = 37;
+    private uint psF37_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PsF37 {
+      get { return psF37_; }
+      set {
+        psF37_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "canSteer" field.</summary>
+    public const int CanSteerFieldNumber = 38;
+    private bool canSteer_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool CanSteer {
+      get { return canSteer_; }
+      set {
+        canSteer_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "route" field.</summary>
+    public const int RouteFieldNumber = 39;
+    private int route_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Route {
+      get { return route_; }
+      set {
+        route_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as PlayerState);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(PlayerState other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -2617,14 +4110,18 @@ namespace ZwiftPacketMonitor {
       if (RoadTime != other.RoadTime) return false;
       if (Laps != other.Laps) return false;
       if (Speed != other.Speed) return false;
+      if (PsF7 != other.PsF7) return false;
       if (RoadPosition != other.RoadPosition) return false;
       if (CadenceUHz != other.CadenceUHz) return false;
+      if (PsF10 != other.PsF10) return false;
       if (Heartrate != other.Heartrate) return false;
       if (Power != other.Power) return false;
       if (Heading != other.Heading) return false;
       if (Lean != other.Lean) return false;
       if (Climbing != other.Climbing) return false;
       if (Time != other.Time) return false;
+      if (PsF17 != other.PsF17) return false;
+      if (FrameHue != other.FrameHue) return false;
       if (F19 != other.F19) return false;
       if (F20 != other.F20) return false;
       if (Progress != other.Progress) return false;
@@ -2632,16 +4129,24 @@ namespace ZwiftPacketMonitor {
       if (JustWatching != other.JustWatching) return false;
       if (Calories != other.Calories) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Altitude, other.Altitude)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Z, other.Z)) return false;
       if (WatchingRiderId != other.WatchingRiderId) return false;
       if (GroupId != other.GroupId) return false;
       if (Sport != other.Sport) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(F34, other.F34)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(PsF32, other.PsF32)) return false;
+      if (PsF33 != other.PsF33) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DistLat, other.DistLat)) return false;
+      if (World != other.World) return false;
+      if (PsF36 != other.PsF36) return false;
+      if (PsF37 != other.PsF37) return false;
+      if (CanSteer != other.CanSteer) return false;
+      if (Route != other.Route) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
@@ -2650,14 +4155,18 @@ namespace ZwiftPacketMonitor {
       if (RoadTime != 0) hash ^= RoadTime.GetHashCode();
       if (Laps != 0) hash ^= Laps.GetHashCode();
       if (Speed != 0) hash ^= Speed.GetHashCode();
+      if (PsF7 != 0) hash ^= PsF7.GetHashCode();
       if (RoadPosition != 0) hash ^= RoadPosition.GetHashCode();
       if (CadenceUHz != 0) hash ^= CadenceUHz.GetHashCode();
+      if (PsF10 != 0) hash ^= PsF10.GetHashCode();
       if (Heartrate != 0) hash ^= Heartrate.GetHashCode();
       if (Power != 0) hash ^= Power.GetHashCode();
       if (Heading != 0L) hash ^= Heading.GetHashCode();
       if (Lean != 0) hash ^= Lean.GetHashCode();
       if (Climbing != 0) hash ^= Climbing.GetHashCode();
       if (Time != 0) hash ^= Time.GetHashCode();
+      if (PsF17 != 0) hash ^= PsF17.GetHashCode();
+      if (FrameHue != 0) hash ^= FrameHue.GetHashCode();
       if (F19 != 0) hash ^= F19.GetHashCode();
       if (F20 != 0) hash ^= F20.GetHashCode();
       if (Progress != 0) hash ^= Progress.GetHashCode();
@@ -2665,12 +4174,19 @@ namespace ZwiftPacketMonitor {
       if (JustWatching != 0) hash ^= JustWatching.GetHashCode();
       if (Calories != 0) hash ^= Calories.GetHashCode();
       if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
-      if (Altitude != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Altitude);
       if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
-      if (WatchingRiderId != 0) hash ^= WatchingRiderId.GetHashCode();
-      if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      if (Sport != 0L) hash ^= Sport.GetHashCode();
-      if (F34 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(F34);
+      if (Z != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Z);
+      if (WatchingRiderId != 0L) hash ^= WatchingRiderId.GetHashCode();
+      if (GroupId != 0L) hash ^= GroupId.GetHashCode();
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) hash ^= Sport.GetHashCode();
+      if (PsF32 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(PsF32);
+      if (PsF33 != 0) hash ^= PsF33.GetHashCode();
+      if (DistLat != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DistLat);
+      if (World != 0) hash ^= World.GetHashCode();
+      if (PsF36 != 0) hash ^= PsF36.GetHashCode();
+      if (PsF37 != 0) hash ^= PsF37.GetHashCode();
+      if (CanSteer != false) hash ^= CanSteer.GetHashCode();
+      if (Route != 0) hash ^= Route.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2678,11 +4194,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -2711,6 +4229,10 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(48);
         output.WriteInt32(Speed);
       }
+      if (PsF7 != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(PsF7);
+      }
       if (RoadPosition != 0) {
         output.WriteRawTag(64);
         output.WriteInt32(RoadPosition);
@@ -2718,6 +4240,10 @@ namespace ZwiftPacketMonitor {
       if (CadenceUHz != 0) {
         output.WriteRawTag(72);
         output.WriteInt32(CadenceUHz);
+      }
+      if (PsF10 != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(PsF10);
       }
       if (Heartrate != 0) {
         output.WriteRawTag(88);
@@ -2742,6 +4268,14 @@ namespace ZwiftPacketMonitor {
       if (Time != 0) {
         output.WriteRawTag(128, 1);
         output.WriteInt32(Time);
+      }
+      if (PsF17 != 0) {
+        output.WriteRawTag(136, 1);
+        output.WriteInt32(PsF17);
+      }
+      if (FrameHue != 0) {
+        output.WriteRawTag(144, 1);
+        output.WriteUInt32(FrameHue);
       }
       if (F19 != 0) {
         output.WriteRawTag(152, 1);
@@ -2771,29 +4305,57 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(205, 1);
         output.WriteFloat(X);
       }
-      if (Altitude != 0F) {
-        output.WriteRawTag(213, 1);
-        output.WriteFloat(Altitude);
-      }
       if (Y != 0F) {
-        output.WriteRawTag(221, 1);
+        output.WriteRawTag(213, 1);
         output.WriteFloat(Y);
       }
-      if (WatchingRiderId != 0) {
+      if (Z != 0F) {
+        output.WriteRawTag(221, 1);
+        output.WriteFloat(Z);
+      }
+      if (WatchingRiderId != 0L) {
         output.WriteRawTag(224, 1);
-        output.WriteInt32(WatchingRiderId);
+        output.WriteInt64(WatchingRiderId);
       }
-      if (GroupId != 0) {
+      if (GroupId != 0L) {
         output.WriteRawTag(232, 1);
-        output.WriteInt32(GroupId);
+        output.WriteInt64(GroupId);
       }
-      if (Sport != 0L) {
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
         output.WriteRawTag(248, 1);
-        output.WriteInt64(Sport);
+        output.WriteEnum((int) Sport);
       }
-      if (F34 != 0F) {
+      if (PsF32 != 0F) {
+        output.WriteRawTag(133, 2);
+        output.WriteFloat(PsF32);
+      }
+      if (PsF33 != 0) {
+        output.WriteRawTag(136, 2);
+        output.WriteUInt32(PsF33);
+      }
+      if (DistLat != 0F) {
         output.WriteRawTag(149, 2);
-        output.WriteFloat(F34);
+        output.WriteFloat(DistLat);
+      }
+      if (World != 0) {
+        output.WriteRawTag(152, 2);
+        output.WriteInt32(World);
+      }
+      if (PsF36 != 0) {
+        output.WriteRawTag(160, 2);
+        output.WriteUInt32(PsF36);
+      }
+      if (PsF37 != 0) {
+        output.WriteRawTag(168, 2);
+        output.WriteUInt32(PsF37);
+      }
+      if (CanSteer != false) {
+        output.WriteRawTag(176, 2);
+        output.WriteBool(CanSteer);
+      }
+      if (Route != 0) {
+        output.WriteRawTag(184, 2);
+        output.WriteInt32(Route);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2803,6 +4365,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
         output.WriteRawTag(8);
@@ -2828,6 +4391,10 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(48);
         output.WriteInt32(Speed);
       }
+      if (PsF7 != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(PsF7);
+      }
       if (RoadPosition != 0) {
         output.WriteRawTag(64);
         output.WriteInt32(RoadPosition);
@@ -2835,6 +4402,10 @@ namespace ZwiftPacketMonitor {
       if (CadenceUHz != 0) {
         output.WriteRawTag(72);
         output.WriteInt32(CadenceUHz);
+      }
+      if (PsF10 != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(PsF10);
       }
       if (Heartrate != 0) {
         output.WriteRawTag(88);
@@ -2859,6 +4430,14 @@ namespace ZwiftPacketMonitor {
       if (Time != 0) {
         output.WriteRawTag(128, 1);
         output.WriteInt32(Time);
+      }
+      if (PsF17 != 0) {
+        output.WriteRawTag(136, 1);
+        output.WriteInt32(PsF17);
+      }
+      if (FrameHue != 0) {
+        output.WriteRawTag(144, 1);
+        output.WriteUInt32(FrameHue);
       }
       if (F19 != 0) {
         output.WriteRawTag(152, 1);
@@ -2888,29 +4467,57 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(205, 1);
         output.WriteFloat(X);
       }
-      if (Altitude != 0F) {
-        output.WriteRawTag(213, 1);
-        output.WriteFloat(Altitude);
-      }
       if (Y != 0F) {
-        output.WriteRawTag(221, 1);
+        output.WriteRawTag(213, 1);
         output.WriteFloat(Y);
       }
-      if (WatchingRiderId != 0) {
+      if (Z != 0F) {
+        output.WriteRawTag(221, 1);
+        output.WriteFloat(Z);
+      }
+      if (WatchingRiderId != 0L) {
         output.WriteRawTag(224, 1);
-        output.WriteInt32(WatchingRiderId);
+        output.WriteInt64(WatchingRiderId);
       }
-      if (GroupId != 0) {
+      if (GroupId != 0L) {
         output.WriteRawTag(232, 1);
-        output.WriteInt32(GroupId);
+        output.WriteInt64(GroupId);
       }
-      if (Sport != 0L) {
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
         output.WriteRawTag(248, 1);
-        output.WriteInt64(Sport);
+        output.WriteEnum((int) Sport);
       }
-      if (F34 != 0F) {
+      if (PsF32 != 0F) {
+        output.WriteRawTag(133, 2);
+        output.WriteFloat(PsF32);
+      }
+      if (PsF33 != 0) {
+        output.WriteRawTag(136, 2);
+        output.WriteUInt32(PsF33);
+      }
+      if (DistLat != 0F) {
         output.WriteRawTag(149, 2);
-        output.WriteFloat(F34);
+        output.WriteFloat(DistLat);
+      }
+      if (World != 0) {
+        output.WriteRawTag(152, 2);
+        output.WriteInt32(World);
+      }
+      if (PsF36 != 0) {
+        output.WriteRawTag(160, 2);
+        output.WriteUInt32(PsF36);
+      }
+      if (PsF37 != 0) {
+        output.WriteRawTag(168, 2);
+        output.WriteUInt32(PsF37);
+      }
+      if (CanSteer != false) {
+        output.WriteRawTag(176, 2);
+        output.WriteBool(CanSteer);
+      }
+      if (Route != 0) {
+        output.WriteRawTag(184, 2);
+        output.WriteInt32(Route);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2919,6 +4526,7 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Id != 0) {
@@ -2939,11 +4547,17 @@ namespace ZwiftPacketMonitor {
       if (Speed != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Speed);
       }
+      if (PsF7 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PsF7);
+      }
       if (RoadPosition != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(RoadPosition);
       }
       if (CadenceUHz != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(CadenceUHz);
+      }
+      if (PsF10 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PsF10);
       }
       if (Heartrate != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Heartrate);
@@ -2962,6 +4576,12 @@ namespace ZwiftPacketMonitor {
       }
       if (Time != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(Time);
+      }
+      if (PsF17 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(PsF17);
+      }
+      if (FrameHue != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(FrameHue);
       }
       if (F19 != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(F19);
@@ -2984,23 +4604,44 @@ namespace ZwiftPacketMonitor {
       if (X != 0F) {
         size += 2 + 4;
       }
-      if (Altitude != 0F) {
-        size += 2 + 4;
-      }
       if (Y != 0F) {
         size += 2 + 4;
       }
-      if (WatchingRiderId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(WatchingRiderId);
-      }
-      if (GroupId != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(GroupId);
-      }
-      if (Sport != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(Sport);
-      }
-      if (F34 != 0F) {
+      if (Z != 0F) {
         size += 2 + 4;
+      }
+      if (WatchingRiderId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(WatchingRiderId);
+      }
+      if (GroupId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(GroupId);
+      }
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) Sport);
+      }
+      if (PsF32 != 0F) {
+        size += 2 + 4;
+      }
+      if (PsF33 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(PsF33);
+      }
+      if (DistLat != 0F) {
+        size += 2 + 4;
+      }
+      if (World != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(World);
+      }
+      if (PsF36 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(PsF36);
+      }
+      if (PsF37 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(PsF37);
+      }
+      if (CanSteer != false) {
+        size += 2 + 1;
+      }
+      if (Route != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Route);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3009,6 +4650,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(PlayerState other) {
       if (other == null) {
         return;
@@ -3031,11 +4673,17 @@ namespace ZwiftPacketMonitor {
       if (other.Speed != 0) {
         Speed = other.Speed;
       }
+      if (other.PsF7 != 0) {
+        PsF7 = other.PsF7;
+      }
       if (other.RoadPosition != 0) {
         RoadPosition = other.RoadPosition;
       }
       if (other.CadenceUHz != 0) {
         CadenceUHz = other.CadenceUHz;
+      }
+      if (other.PsF10 != 0) {
+        PsF10 = other.PsF10;
       }
       if (other.Heartrate != 0) {
         Heartrate = other.Heartrate;
@@ -3054,6 +4702,12 @@ namespace ZwiftPacketMonitor {
       }
       if (other.Time != 0) {
         Time = other.Time;
+      }
+      if (other.PsF17 != 0) {
+        PsF17 = other.PsF17;
+      }
+      if (other.FrameHue != 0) {
+        FrameHue = other.FrameHue;
       }
       if (other.F19 != 0) {
         F19 = other.F19;
@@ -3076,28 +4730,50 @@ namespace ZwiftPacketMonitor {
       if (other.X != 0F) {
         X = other.X;
       }
-      if (other.Altitude != 0F) {
-        Altitude = other.Altitude;
-      }
       if (other.Y != 0F) {
         Y = other.Y;
       }
-      if (other.WatchingRiderId != 0) {
+      if (other.Z != 0F) {
+        Z = other.Z;
+      }
+      if (other.WatchingRiderId != 0L) {
         WatchingRiderId = other.WatchingRiderId;
       }
-      if (other.GroupId != 0) {
+      if (other.GroupId != 0L) {
         GroupId = other.GroupId;
       }
-      if (other.Sport != 0L) {
+      if (other.Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
         Sport = other.Sport;
       }
-      if (other.F34 != 0F) {
-        F34 = other.F34;
+      if (other.PsF32 != 0F) {
+        PsF32 = other.PsF32;
+      }
+      if (other.PsF33 != 0) {
+        PsF33 = other.PsF33;
+      }
+      if (other.DistLat != 0F) {
+        DistLat = other.DistLat;
+      }
+      if (other.World != 0) {
+        World = other.World;
+      }
+      if (other.PsF36 != 0) {
+        PsF36 = other.PsF36;
+      }
+      if (other.PsF37 != 0) {
+        PsF37 = other.PsF37;
+      }
+      if (other.CanSteer != false) {
+        CanSteer = other.CanSteer;
+      }
+      if (other.Route != 0) {
+        Route = other.Route;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -3132,12 +4808,20 @@ namespace ZwiftPacketMonitor {
             Speed = input.ReadInt32();
             break;
           }
+          case 56: {
+            PsF7 = input.ReadUInt32();
+            break;
+          }
           case 64: {
             RoadPosition = input.ReadInt32();
             break;
           }
           case 72: {
             CadenceUHz = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            PsF10 = input.ReadInt32();
             break;
           }
           case 88: {
@@ -3162,6 +4846,14 @@ namespace ZwiftPacketMonitor {
           }
           case 128: {
             Time = input.ReadInt32();
+            break;
+          }
+          case 136: {
+            PsF17 = input.ReadInt32();
+            break;
+          }
+          case 144: {
+            FrameHue = input.ReadUInt32();
             break;
           }
           case 152: {
@@ -3193,27 +4885,55 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 213: {
-            Altitude = input.ReadFloat();
-            break;
-          }
-          case 221: {
             Y = input.ReadFloat();
             break;
           }
+          case 221: {
+            Z = input.ReadFloat();
+            break;
+          }
           case 224: {
-            WatchingRiderId = input.ReadInt32();
+            WatchingRiderId = input.ReadInt64();
             break;
           }
           case 232: {
-            GroupId = input.ReadInt32();
+            GroupId = input.ReadInt64();
             break;
           }
           case 248: {
-            Sport = input.ReadInt64();
+            Sport = (global::ZwiftPacketMonitor.Sport) input.ReadEnum();
+            break;
+          }
+          case 261: {
+            PsF32 = input.ReadFloat();
+            break;
+          }
+          case 264: {
+            PsF33 = input.ReadUInt32();
             break;
           }
           case 277: {
-            F34 = input.ReadFloat();
+            DistLat = input.ReadFloat();
+            break;
+          }
+          case 280: {
+            World = input.ReadInt32();
+            break;
+          }
+          case 288: {
+            PsF36 = input.ReadUInt32();
+            break;
+          }
+          case 296: {
+            PsF37 = input.ReadUInt32();
+            break;
+          }
+          case 304: {
+            CanSteer = input.ReadBool();
+            break;
+          }
+          case 312: {
+            Route = input.ReadInt32();
             break;
           }
         }
@@ -3223,6 +4943,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -3254,12 +4975,20 @@ namespace ZwiftPacketMonitor {
             Speed = input.ReadInt32();
             break;
           }
+          case 56: {
+            PsF7 = input.ReadUInt32();
+            break;
+          }
           case 64: {
             RoadPosition = input.ReadInt32();
             break;
           }
           case 72: {
             CadenceUHz = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            PsF10 = input.ReadInt32();
             break;
           }
           case 88: {
@@ -3284,6 +5013,14 @@ namespace ZwiftPacketMonitor {
           }
           case 128: {
             Time = input.ReadInt32();
+            break;
+          }
+          case 136: {
+            PsF17 = input.ReadInt32();
+            break;
+          }
+          case 144: {
+            FrameHue = input.ReadUInt32();
             break;
           }
           case 152: {
@@ -3315,27 +5052,55 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 213: {
-            Altitude = input.ReadFloat();
-            break;
-          }
-          case 221: {
             Y = input.ReadFloat();
             break;
           }
+          case 221: {
+            Z = input.ReadFloat();
+            break;
+          }
           case 224: {
-            WatchingRiderId = input.ReadInt32();
+            WatchingRiderId = input.ReadInt64();
             break;
           }
           case 232: {
-            GroupId = input.ReadInt32();
+            GroupId = input.ReadInt64();
             break;
           }
           case 248: {
-            Sport = input.ReadInt64();
+            Sport = (global::ZwiftPacketMonitor.Sport) input.ReadEnum();
+            break;
+          }
+          case 261: {
+            PsF32 = input.ReadFloat();
+            break;
+          }
+          case 264: {
+            PsF33 = input.ReadUInt32();
             break;
           }
           case 277: {
-            F34 = input.ReadFloat();
+            DistLat = input.ReadFloat();
+            break;
+          }
+          case 280: {
+            World = input.ReadInt32();
+            break;
+          }
+          case 288: {
+            PsF36 = input.ReadUInt32();
+            break;
+          }
+          case 296: {
+            PsF37 = input.ReadUInt32();
+            break;
+          }
+          case 304: {
+            CanSteer = input.ReadBool();
+            break;
+          }
+          case 312: {
+            Route = input.ReadInt32();
             break;
           }
         }
@@ -3345,6 +5110,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
   public sealed partial class ClientToServer : pb::IMessage<ClientToServer>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -3353,19 +5121,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<ClientToServer> _parser = new pb::MessageParser<ClientToServer>(() => new ClientToServer());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<ClientToServer> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientToServer() {
       OnConstruction();
     }
@@ -3373,44 +5145,54 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientToServer(ClientToServer other) : this() {
-      connected_ = other.connected_;
-      riderId_ = other.riderId_;
+      serverRealm_ = other.serverRealm_;
+      playerId_ = other.playerId_;
       worldTime_ = other.worldTime_;
       seqno_ = other.seqno_;
+      ctsF5_ = other.ctsF5_;
+      ctsF6_ = other.ctsF6_;
       state_ = other.state_ != null ? other.state_.Clone() : null;
-      tag8_ = other.tag8_;
-      tag9_ = other.tag9_;
+      ctsF8_ = other.ctsF8_;
+      ctsF9_ = other.ctsF9_;
       lastUpdate_ = other.lastUpdate_;
-      tag11_ = other.tag11_;
+      ctsF11_ = other.ctsF11_;
       lastPlayerUpdate_ = other.lastPlayerUpdate_;
+      largWaTime_ = other.largWaTime_;
+      ctsF14_ = other.ctsF14_;
+      subsSegments_ = other.subsSegments_.Clone();
+      unsSegments_ = other.unsSegments_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientToServer Clone() {
       return new ClientToServer(this);
     }
 
-    /// <summary>Field number for the "connected" field.</summary>
-    public const int ConnectedFieldNumber = 1;
-    private int connected_;
+    /// <summary>Field number for the "server_realm" field.</summary>
+    public const int ServerRealmFieldNumber = 1;
+    private int serverRealm_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Connected {
-      get { return connected_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ServerRealm {
+      get { return serverRealm_; }
       set {
-        connected_ = value;
+        serverRealm_ = value;
       }
     }
 
-    /// <summary>Field number for the "rider_id" field.</summary>
-    public const int RiderIdFieldNumber = 2;
-    private int riderId_;
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 2;
+    private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int RiderId {
-      get { return riderId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayerId {
+      get { return playerId_; }
       set {
-        riderId_ = value;
+        playerId_ = value;
       }
     }
 
@@ -3418,6 +5200,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 3;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -3429,6 +5212,7 @@ namespace ZwiftPacketMonitor {
     public const int SeqnoFieldNumber = 4;
     private int seqno_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Seqno {
       get { return seqno_; }
       set {
@@ -3436,10 +5220,35 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "cts_f5" field.</summary>
+    public const int CtsF5FieldNumber = 5;
+    private int ctsF5_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CtsF5 {
+      get { return ctsF5_; }
+      set {
+        ctsF5_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cts_f6" field.</summary>
+    public const int CtsF6FieldNumber = 6;
+    private long ctsF6_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long CtsF6 {
+      get { return ctsF6_; }
+      set {
+        ctsF6_ = value;
+      }
+    }
+
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 7;
     private global::ZwiftPacketMonitor.PlayerState state_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::ZwiftPacketMonitor.PlayerState State {
       get { return state_; }
       set {
@@ -3447,25 +5256,27 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "tag8" field.</summary>
-    public const int Tag8FieldNumber = 8;
-    private long tag8_;
+    /// <summary>Field number for the "cts_f8" field.</summary>
+    public const int CtsF8FieldNumber = 8;
+    private bool ctsF8_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag8 {
-      get { return tag8_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool CtsF8 {
+      get { return ctsF8_; }
       set {
-        tag8_ = value;
+        ctsF8_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag9" field.</summary>
-    public const int Tag9FieldNumber = 9;
-    private long tag9_;
+    /// <summary>Field number for the "cts_f9" field.</summary>
+    public const int CtsF9FieldNumber = 9;
+    private bool ctsF9_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag9 {
-      get { return tag9_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool CtsF9 {
+      get { return ctsF9_; }
       set {
-        tag9_ = value;
+        ctsF9_ = value;
       }
     }
 
@@ -3473,6 +5284,7 @@ namespace ZwiftPacketMonitor {
     public const int LastUpdateFieldNumber = 10;
     private long lastUpdate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long LastUpdate {
       get { return lastUpdate_; }
       set {
@@ -3480,14 +5292,15 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "tag11" field.</summary>
-    public const int Tag11FieldNumber = 11;
-    private long tag11_;
+    /// <summary>Field number for the "cts_f11" field.</summary>
+    public const int CtsF11FieldNumber = 11;
+    private bool ctsF11_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag11 {
-      get { return tag11_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool CtsF11 {
+      get { return ctsF11_; }
       set {
-        tag11_ = value;
+        ctsF11_ = value;
       }
     }
 
@@ -3495,6 +5308,7 @@ namespace ZwiftPacketMonitor {
     public const int LastPlayerUpdateFieldNumber = 12;
     private long lastPlayerUpdate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long LastPlayerUpdate {
       get { return lastPlayerUpdate_; }
       set {
@@ -3502,12 +5316,60 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "larg_wa_time" field.</summary>
+    public const int LargWaTimeFieldNumber = 13;
+    private long largWaTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long LargWaTime {
+      get { return largWaTime_; }
+      set {
+        largWaTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cts_f14" field.</summary>
+    public const int CtsF14FieldNumber = 14;
+    private bool ctsF14_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool CtsF14 {
+      get { return ctsF14_; }
+      set {
+        ctsF14_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "subsSegments" field.</summary>
+    public const int SubsSegmentsFieldNumber = 15;
+    private static readonly pb::FieldCodec<long> _repeated_subsSegments_codec
+        = pb::FieldCodec.ForInt64(122);
+    private readonly pbc::RepeatedField<long> subsSegments_ = new pbc::RepeatedField<long>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<long> SubsSegments {
+      get { return subsSegments_; }
+    }
+
+    /// <summary>Field number for the "unsSegments" field.</summary>
+    public const int UnsSegmentsFieldNumber = 16;
+    private static readonly pb::FieldCodec<long> _repeated_unsSegments_codec
+        = pb::FieldCodec.ForInt64(130);
+    private readonly pbc::RepeatedField<long> unsSegments_ = new pbc::RepeatedField<long>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<long> UnsSegments {
+      get { return unsSegments_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as ClientToServer);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(ClientToServer other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -3515,32 +5377,45 @@ namespace ZwiftPacketMonitor {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Connected != other.Connected) return false;
-      if (RiderId != other.RiderId) return false;
+      if (ServerRealm != other.ServerRealm) return false;
+      if (PlayerId != other.PlayerId) return false;
       if (WorldTime != other.WorldTime) return false;
       if (Seqno != other.Seqno) return false;
+      if (CtsF5 != other.CtsF5) return false;
+      if (CtsF6 != other.CtsF6) return false;
       if (!object.Equals(State, other.State)) return false;
-      if (Tag8 != other.Tag8) return false;
-      if (Tag9 != other.Tag9) return false;
+      if (CtsF8 != other.CtsF8) return false;
+      if (CtsF9 != other.CtsF9) return false;
       if (LastUpdate != other.LastUpdate) return false;
-      if (Tag11 != other.Tag11) return false;
+      if (CtsF11 != other.CtsF11) return false;
       if (LastPlayerUpdate != other.LastPlayerUpdate) return false;
+      if (LargWaTime != other.LargWaTime) return false;
+      if (CtsF14 != other.CtsF14) return false;
+      if(!subsSegments_.Equals(other.subsSegments_)) return false;
+      if(!unsSegments_.Equals(other.unsSegments_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Connected != 0) hash ^= Connected.GetHashCode();
-      if (RiderId != 0) hash ^= RiderId.GetHashCode();
+      if (ServerRealm != 0) hash ^= ServerRealm.GetHashCode();
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       if (WorldTime != 0L) hash ^= WorldTime.GetHashCode();
       if (Seqno != 0) hash ^= Seqno.GetHashCode();
+      if (CtsF5 != 0) hash ^= CtsF5.GetHashCode();
+      if (CtsF6 != 0L) hash ^= CtsF6.GetHashCode();
       if (state_ != null) hash ^= State.GetHashCode();
-      if (Tag8 != 0L) hash ^= Tag8.GetHashCode();
-      if (Tag9 != 0L) hash ^= Tag9.GetHashCode();
+      if (CtsF8 != false) hash ^= CtsF8.GetHashCode();
+      if (CtsF9 != false) hash ^= CtsF9.GetHashCode();
       if (LastUpdate != 0L) hash ^= LastUpdate.GetHashCode();
-      if (Tag11 != 0L) hash ^= Tag11.GetHashCode();
+      if (CtsF11 != false) hash ^= CtsF11.GetHashCode();
       if (LastPlayerUpdate != 0L) hash ^= LastPlayerUpdate.GetHashCode();
+      if (LargWaTime != 0L) hash ^= LargWaTime.GetHashCode();
+      if (CtsF14 != false) hash ^= CtsF14.GetHashCode();
+      hash ^= subsSegments_.GetHashCode();
+      hash ^= unsSegments_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3548,22 +5423,24 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Connected != 0) {
+      if (ServerRealm != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Connected);
+        output.WriteInt32(ServerRealm);
       }
-      if (RiderId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(RiderId);
+        output.WriteInt32(PlayerId);
       }
       if (WorldTime != 0L) {
         output.WriteRawTag(24);
@@ -3573,30 +5450,48 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(32);
         output.WriteInt32(Seqno);
       }
+      if (CtsF5 != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(CtsF5);
+      }
+      if (CtsF6 != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(CtsF6);
+      }
       if (state_ != null) {
         output.WriteRawTag(58);
         output.WriteMessage(State);
       }
-      if (Tag8 != 0L) {
+      if (CtsF8 != false) {
         output.WriteRawTag(64);
-        output.WriteInt64(Tag8);
+        output.WriteBool(CtsF8);
       }
-      if (Tag9 != 0L) {
+      if (CtsF9 != false) {
         output.WriteRawTag(72);
-        output.WriteInt64(Tag9);
+        output.WriteBool(CtsF9);
       }
       if (LastUpdate != 0L) {
         output.WriteRawTag(80);
         output.WriteInt64(LastUpdate);
       }
-      if (Tag11 != 0L) {
+      if (CtsF11 != false) {
         output.WriteRawTag(88);
-        output.WriteInt64(Tag11);
+        output.WriteBool(CtsF11);
       }
       if (LastPlayerUpdate != 0L) {
         output.WriteRawTag(96);
         output.WriteInt64(LastPlayerUpdate);
       }
+      if (LargWaTime != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(LargWaTime);
+      }
+      if (CtsF14 != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(CtsF14);
+      }
+      subsSegments_.WriteTo(output, _repeated_subsSegments_codec);
+      unsSegments_.WriteTo(output, _repeated_unsSegments_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3605,14 +5500,15 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Connected != 0) {
+      if (ServerRealm != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Connected);
+        output.WriteInt32(ServerRealm);
       }
-      if (RiderId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(RiderId);
+        output.WriteInt32(PlayerId);
       }
       if (WorldTime != 0L) {
         output.WriteRawTag(24);
@@ -3622,30 +5518,48 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(32);
         output.WriteInt32(Seqno);
       }
+      if (CtsF5 != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(CtsF5);
+      }
+      if (CtsF6 != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(CtsF6);
+      }
       if (state_ != null) {
         output.WriteRawTag(58);
         output.WriteMessage(State);
       }
-      if (Tag8 != 0L) {
+      if (CtsF8 != false) {
         output.WriteRawTag(64);
-        output.WriteInt64(Tag8);
+        output.WriteBool(CtsF8);
       }
-      if (Tag9 != 0L) {
+      if (CtsF9 != false) {
         output.WriteRawTag(72);
-        output.WriteInt64(Tag9);
+        output.WriteBool(CtsF9);
       }
       if (LastUpdate != 0L) {
         output.WriteRawTag(80);
         output.WriteInt64(LastUpdate);
       }
-      if (Tag11 != 0L) {
+      if (CtsF11 != false) {
         output.WriteRawTag(88);
-        output.WriteInt64(Tag11);
+        output.WriteBool(CtsF11);
       }
       if (LastPlayerUpdate != 0L) {
         output.WriteRawTag(96);
         output.WriteInt64(LastPlayerUpdate);
       }
+      if (LargWaTime != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(LargWaTime);
+      }
+      if (CtsF14 != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(CtsF14);
+      }
+      subsSegments_.WriteTo(ref output, _repeated_subsSegments_codec);
+      unsSegments_.WriteTo(ref output, _repeated_unsSegments_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3653,13 +5567,14 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Connected != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Connected);
+      if (ServerRealm != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ServerRealm);
       }
-      if (RiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
       if (WorldTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(WorldTime);
@@ -3667,24 +5582,38 @@ namespace ZwiftPacketMonitor {
       if (Seqno != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seqno);
       }
+      if (CtsF5 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CtsF5);
+      }
+      if (CtsF6 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(CtsF6);
+      }
       if (state_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(State);
       }
-      if (Tag8 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag8);
+      if (CtsF8 != false) {
+        size += 1 + 1;
       }
-      if (Tag9 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag9);
+      if (CtsF9 != false) {
+        size += 1 + 1;
       }
       if (LastUpdate != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastUpdate);
       }
-      if (Tag11 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag11);
+      if (CtsF11 != false) {
+        size += 1 + 1;
       }
       if (LastPlayerUpdate != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastPlayerUpdate);
       }
+      if (LargWaTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(LargWaTime);
+      }
+      if (CtsF14 != false) {
+        size += 1 + 1;
+      }
+      size += subsSegments_.CalculateSize(_repeated_subsSegments_codec);
+      size += unsSegments_.CalculateSize(_repeated_unsSegments_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3692,15 +5621,16 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(ClientToServer other) {
       if (other == null) {
         return;
       }
-      if (other.Connected != 0) {
-        Connected = other.Connected;
+      if (other.ServerRealm != 0) {
+        ServerRealm = other.ServerRealm;
       }
-      if (other.RiderId != 0) {
-        RiderId = other.RiderId;
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
       if (other.WorldTime != 0L) {
         WorldTime = other.WorldTime;
@@ -3708,31 +5638,46 @@ namespace ZwiftPacketMonitor {
       if (other.Seqno != 0) {
         Seqno = other.Seqno;
       }
+      if (other.CtsF5 != 0) {
+        CtsF5 = other.CtsF5;
+      }
+      if (other.CtsF6 != 0L) {
+        CtsF6 = other.CtsF6;
+      }
       if (other.state_ != null) {
         if (state_ == null) {
           State = new global::ZwiftPacketMonitor.PlayerState();
         }
         State.MergeFrom(other.State);
       }
-      if (other.Tag8 != 0L) {
-        Tag8 = other.Tag8;
+      if (other.CtsF8 != false) {
+        CtsF8 = other.CtsF8;
       }
-      if (other.Tag9 != 0L) {
-        Tag9 = other.Tag9;
+      if (other.CtsF9 != false) {
+        CtsF9 = other.CtsF9;
       }
       if (other.LastUpdate != 0L) {
         LastUpdate = other.LastUpdate;
       }
-      if (other.Tag11 != 0L) {
-        Tag11 = other.Tag11;
+      if (other.CtsF11 != false) {
+        CtsF11 = other.CtsF11;
       }
       if (other.LastPlayerUpdate != 0L) {
         LastPlayerUpdate = other.LastPlayerUpdate;
       }
+      if (other.LargWaTime != 0L) {
+        LargWaTime = other.LargWaTime;
+      }
+      if (other.CtsF14 != false) {
+        CtsF14 = other.CtsF14;
+      }
+      subsSegments_.Add(other.subsSegments_);
+      unsSegments_.Add(other.unsSegments_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -3744,11 +5689,11 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Connected = input.ReadInt32();
+            ServerRealm = input.ReadInt32();
             break;
           }
           case 16: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 24: {
@@ -3759,6 +5704,14 @@ namespace ZwiftPacketMonitor {
             Seqno = input.ReadInt32();
             break;
           }
+          case 40: {
+            CtsF5 = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            CtsF6 = input.ReadInt64();
+            break;
+          }
           case 58: {
             if (state_ == null) {
               State = new global::ZwiftPacketMonitor.PlayerState();
@@ -3767,11 +5720,11 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 64: {
-            Tag8 = input.ReadInt64();
+            CtsF8 = input.ReadBool();
             break;
           }
           case 72: {
-            Tag9 = input.ReadInt64();
+            CtsF9 = input.ReadBool();
             break;
           }
           case 80: {
@@ -3779,11 +5732,29 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 88: {
-            Tag11 = input.ReadInt64();
+            CtsF11 = input.ReadBool();
             break;
           }
           case 96: {
             LastPlayerUpdate = input.ReadInt64();
+            break;
+          }
+          case 104: {
+            LargWaTime = input.ReadInt64();
+            break;
+          }
+          case 112: {
+            CtsF14 = input.ReadBool();
+            break;
+          }
+          case 122:
+          case 120: {
+            subsSegments_.AddEntriesFrom(input, _repeated_subsSegments_codec);
+            break;
+          }
+          case 130:
+          case 128: {
+            unsSegments_.AddEntriesFrom(input, _repeated_unsSegments_codec);
             break;
           }
         }
@@ -3793,6 +5764,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -3801,11 +5773,11 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Connected = input.ReadInt32();
+            ServerRealm = input.ReadInt32();
             break;
           }
           case 16: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 24: {
@@ -3816,6 +5788,14 @@ namespace ZwiftPacketMonitor {
             Seqno = input.ReadInt32();
             break;
           }
+          case 40: {
+            CtsF5 = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            CtsF6 = input.ReadInt64();
+            break;
+          }
           case 58: {
             if (state_ == null) {
               State = new global::ZwiftPacketMonitor.PlayerState();
@@ -3824,11 +5804,11 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 64: {
-            Tag8 = input.ReadInt64();
+            CtsF8 = input.ReadBool();
             break;
           }
           case 72: {
-            Tag9 = input.ReadInt64();
+            CtsF9 = input.ReadBool();
             break;
           }
           case 80: {
@@ -3836,13 +5816,31 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 88: {
-            Tag11 = input.ReadInt64();
+            CtsF11 = input.ReadBool();
             break;
           }
           case 96: {
             LastPlayerUpdate = input.ReadInt64();
             break;
           }
+          case 104: {
+            LargWaTime = input.ReadInt64();
+            break;
+          }
+          case 112: {
+            CtsF14 = input.ReadBool();
+            break;
+          }
+          case 122:
+          case 120: {
+            subsSegments_.AddEntriesFrom(ref input, _repeated_subsSegments_codec);
+            break;
+          }
+          case 130:
+          case 128: {
+            unsSegments_.AddEntriesFrom(ref input, _repeated_unsSegments_codec);
+            break;
+          }
         }
       }
     }
@@ -3851,66 +5849,118 @@ namespace ZwiftPacketMonitor {
   }
 
   /// <summary>
-  /// string firstName=7;
-  /// string lastName=8;
-  /// string timestamp=17;
+  ///checked 21/03/2022
   /// </summary>
-  public sealed partial class UnknownMessage1 : pb::IMessage<UnknownMessage1>
+  public sealed partial class PlayerJoinedEvent : pb::IMessage<PlayerJoinedEvent>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<UnknownMessage1> _parser = new pb::MessageParser<UnknownMessage1>(() => new UnknownMessage1());
+    private static readonly pb::MessageParser<PlayerJoinedEvent> _parser = new pb::MessageParser<PlayerJoinedEvent>(() => new PlayerJoinedEvent());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UnknownMessage1> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PlayerJoinedEvent> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnknownMessage1() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerJoinedEvent() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnknownMessage1(UnknownMessage1 other) : this() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerJoinedEvent(PlayerJoinedEvent other) : this() {
+      evSgId_ = other.evSgId_;
+      playerId_ = other.playerId_;
+      pjeF3_ = other.pjeF3_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnknownMessage1 Clone() {
-      return new UnknownMessage1(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerJoinedEvent Clone() {
+      return new PlayerJoinedEvent(this);
+    }
+
+    /// <summary>Field number for the "ev_sg_id" field.</summary>
+    public const int EvSgIdFieldNumber = 1;
+    private ulong evSgId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EvSgId {
+      get { return evSgId_; }
+      set {
+        evSgId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 2;
+    private ulong playerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "pje_f3" field.</summary>
+    public const int PjeF3FieldNumber = 3;
+    private ulong pjeF3_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong PjeF3 {
+      get { return pjeF3_; }
+      set {
+        pjeF3_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as UnknownMessage1);
+      return Equals(other as PlayerJoinedEvent);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UnknownMessage1 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PlayerJoinedEvent other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (EvSgId != other.EvSgId) return false;
+      if (PlayerId != other.PlayerId) return false;
+      if (PjeF3 != other.PjeF3) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (EvSgId != 0UL) hash ^= EvSgId.GetHashCode();
+      if (PlayerId != 0UL) hash ^= PlayerId.GetHashCode();
+      if (PjeF3 != 0UL) hash ^= PjeF3.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3918,15 +5968,29 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (EvSgId != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(EvSgId);
+      }
+      if (PlayerId != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(PlayerId);
+      }
+      if (PjeF3 != 0UL) {
+        output.WriteRawTag(24);
+        output.WriteUInt64(PjeF3);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3935,7 +5999,20 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (EvSgId != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(EvSgId);
+      }
+      if (PlayerId != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(PlayerId);
+      }
+      if (PjeF3 != 0UL) {
+        output.WriteRawTag(24);
+        output.WriteUInt64(PjeF3);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3943,8 +6020,18 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (EvSgId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(EvSgId);
+      }
+      if (PlayerId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PlayerId);
+      }
+      if (PjeF3 != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PjeF3);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3952,14 +6039,25 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UnknownMessage1 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PlayerJoinedEvent other) {
       if (other == null) {
         return;
+      }
+      if (other.EvSgId != 0UL) {
+        EvSgId = other.EvSgId;
+      }
+      if (other.PlayerId != 0UL) {
+        PlayerId = other.PlayerId;
+      }
+      if (other.PjeF3 != 0UL) {
+        PjeF3 = other.PjeF3;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -3970,6 +6068,18 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            EvSgId = input.ReadUInt64();
+            break;
+          }
+          case 16: {
+            PlayerId = input.ReadUInt64();
+            break;
+          }
+          case 24: {
+            PjeF3 = input.ReadUInt64();
+            break;
+          }
         }
       }
     #endif
@@ -3977,6 +6087,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -3984,6 +6095,18 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            EvSgId = input.ReadUInt64();
+            break;
+          }
+          case 16: {
+            PlayerId = input.ReadUInt64();
+            break;
+          }
+          case 24: {
+            PjeF3 = input.ReadUInt64();
+            break;
+          }
         }
       }
     }
@@ -3992,65 +6115,118 @@ namespace ZwiftPacketMonitor {
   }
 
   /// <summary>
-  /// int64 tag1=1;
-  /// UnknownMessage1 tag4=4;
+  ///checked 21/03/2022
   /// </summary>
-  public sealed partial class UnknownMessage : pb::IMessage<UnknownMessage>
+  public sealed partial class PlayerLeftEvent : pb::IMessage<PlayerLeftEvent>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<UnknownMessage> _parser = new pb::MessageParser<UnknownMessage>(() => new UnknownMessage());
+    private static readonly pb::MessageParser<PlayerLeftEvent> _parser = new pb::MessageParser<PlayerLeftEvent>(() => new PlayerLeftEvent());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<UnknownMessage> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PlayerLeftEvent> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnknownMessage() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerLeftEvent() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnknownMessage(UnknownMessage other) : this() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerLeftEvent(PlayerLeftEvent other) : this() {
+      evSgId_ = other.evSgId_;
+      playerId_ = other.playerId_;
+      pleF3_ = other.pleF3_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public UnknownMessage Clone() {
-      return new UnknownMessage(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerLeftEvent Clone() {
+      return new PlayerLeftEvent(this);
+    }
+
+    /// <summary>Field number for the "ev_sg_id" field.</summary>
+    public const int EvSgIdFieldNumber = 1;
+    private ulong evSgId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EvSgId {
+      get { return evSgId_; }
+      set {
+        evSgId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 2;
+    private ulong playerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ple_f3" field.</summary>
+    public const int PleF3FieldNumber = 3;
+    private ulong pleF3_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong PleF3 {
+      get { return pleF3_; }
+      set {
+        pleF3_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as UnknownMessage);
+      return Equals(other as PlayerLeftEvent);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(UnknownMessage other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PlayerLeftEvent other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (EvSgId != other.EvSgId) return false;
+      if (PlayerId != other.PlayerId) return false;
+      if (PleF3 != other.PleF3) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (EvSgId != 0UL) hash ^= EvSgId.GetHashCode();
+      if (PlayerId != 0UL) hash ^= PlayerId.GetHashCode();
+      if (PleF3 != 0UL) hash ^= PleF3.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4058,15 +6234,29 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (EvSgId != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(EvSgId);
+      }
+      if (PlayerId != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(PlayerId);
+      }
+      if (PleF3 != 0UL) {
+        output.WriteRawTag(24);
+        output.WriteUInt64(PleF3);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4075,7 +6265,20 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (EvSgId != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(EvSgId);
+      }
+      if (PlayerId != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(PlayerId);
+      }
+      if (PleF3 != 0UL) {
+        output.WriteRawTag(24);
+        output.WriteUInt64(PleF3);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -4083,8 +6286,18 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (EvSgId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(EvSgId);
+      }
+      if (PlayerId != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PlayerId);
+      }
+      if (PleF3 != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PleF3);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -4092,14 +6305,25 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(UnknownMessage other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PlayerLeftEvent other) {
       if (other == null) {
         return;
+      }
+      if (other.EvSgId != 0UL) {
+        EvSgId = other.EvSgId;
+      }
+      if (other.PlayerId != 0UL) {
+        PlayerId = other.PlayerId;
+      }
+      if (other.PleF3 != 0UL) {
+        PleF3 = other.PleF3;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -4110,6 +6334,18 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            EvSgId = input.ReadUInt64();
+            break;
+          }
+          case 16: {
+            PlayerId = input.ReadUInt64();
+            break;
+          }
+          case 24: {
+            PleF3 = input.ReadUInt64();
+            break;
+          }
         }
       }
     #endif
@@ -4117,6 +6353,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -4124,6 +6361,18 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            EvSgId = input.ReadUInt64();
+            break;
+          }
+          case 16: {
+            PlayerId = input.ReadUInt64();
+            break;
+          }
+          case 24: {
+            PleF3 = input.ReadUInt64();
+            break;
+          }
         }
       }
     }
@@ -4131,86 +6380,753 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class PlayerUpdate : pb::IMessage<PlayerUpdate>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class InvitedProfileProto : pb::IMessage<InvitedProfileProto>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<PlayerUpdate> _parser = new pb::MessageParser<PlayerUpdate>(() => new PlayerUpdate());
+    private static readonly pb::MessageParser<InvitedProfileProto> _parser = new pb::MessageParser<InvitedProfileProto>(() => new InvitedProfileProto());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<PlayerUpdate> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<InvitedProfileProto> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PlayerUpdate() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public InvitedProfileProto() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PlayerUpdate(PlayerUpdate other) : this() {
-      tag1_ = other.tag1_;
-      tag2_ = other.tag2_;
-      tag3_ = other.tag3_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public InvitedProfileProto(InvitedProfileProto other) : this() {
+      ippF1_ = other.ippF1_;
+      ippF2_ = other.ippF2_;
+      ippF3_ = other.ippF3_;
+      ippF4_ = other.ippF4_;
+      ippF5_ = other.ippF5_;
+      ippF6_ = other.ippF6_;
+      playerType_ = other.playerType_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public InvitedProfileProto Clone() {
+      return new InvitedProfileProto(this);
+    }
+
+    /// <summary>Field number for the "ipp_f1" field.</summary>
+    public const int IppF1FieldNumber = 1;
+    private ulong ippF1_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong IppF1 {
+      get { return ippF1_; }
+      set {
+        ippF1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ipp_f2" field.</summary>
+    public const int IppF2FieldNumber = 2;
+    private string ippF2_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string IppF2 {
+      get { return ippF2_; }
+      set {
+        ippF2_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ipp_f3" field.</summary>
+    public const int IppF3FieldNumber = 3;
+    private string ippF3_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string IppF3 {
+      get { return ippF3_; }
+      set {
+        ippF3_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ipp_f4" field.</summary>
+    public const int IppF4FieldNumber = 4;
+    private string ippF4_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string IppF4 {
+      get { return ippF4_; }
+      set {
+        ippF4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ipp_f5" field.</summary>
+    public const int IppF5FieldNumber = 5;
+    private bool ippF5_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IppF5 {
+      get { return ippF5_; }
+      set {
+        ippF5_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ipp_f6" field.</summary>
+    public const int IppF6FieldNumber = 6;
+    private bool ippF6_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IppF6 {
+      get { return ippF6_; }
+      set {
+        ippF6_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "player_type" field.</summary>
+    public const int PlayerTypeFieldNumber = 7;
+    private global::ZwiftPacketMonitor.PlayerType playerType_ = global::ZwiftPacketMonitor.PlayerType._0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.PlayerType PlayerType {
+      get { return playerType_; }
+      set {
+        playerType_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as InvitedProfileProto);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(InvitedProfileProto other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (IppF1 != other.IppF1) return false;
+      if (IppF2 != other.IppF2) return false;
+      if (IppF3 != other.IppF3) return false;
+      if (IppF4 != other.IppF4) return false;
+      if (IppF5 != other.IppF5) return false;
+      if (IppF6 != other.IppF6) return false;
+      if (PlayerType != other.PlayerType) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (IppF1 != 0UL) hash ^= IppF1.GetHashCode();
+      if (IppF2.Length != 0) hash ^= IppF2.GetHashCode();
+      if (IppF3.Length != 0) hash ^= IppF3.GetHashCode();
+      if (IppF4.Length != 0) hash ^= IppF4.GetHashCode();
+      if (IppF5 != false) hash ^= IppF5.GetHashCode();
+      if (IppF6 != false) hash ^= IppF6.GetHashCode();
+      if (PlayerType != global::ZwiftPacketMonitor.PlayerType._0) hash ^= PlayerType.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (IppF1 != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(IppF1);
+      }
+      if (IppF2.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(IppF2);
+      }
+      if (IppF3.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(IppF3);
+      }
+      if (IppF4.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(IppF4);
+      }
+      if (IppF5 != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(IppF5);
+      }
+      if (IppF6 != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IppF6);
+      }
+      if (PlayerType != global::ZwiftPacketMonitor.PlayerType._0) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) PlayerType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (IppF1 != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(IppF1);
+      }
+      if (IppF2.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(IppF2);
+      }
+      if (IppF3.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(IppF3);
+      }
+      if (IppF4.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(IppF4);
+      }
+      if (IppF5 != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(IppF5);
+      }
+      if (IppF6 != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(IppF6);
+      }
+      if (PlayerType != global::ZwiftPacketMonitor.PlayerType._0) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) PlayerType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (IppF1 != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(IppF1);
+      }
+      if (IppF2.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IppF2);
+      }
+      if (IppF3.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IppF3);
+      }
+      if (IppF4.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IppF4);
+      }
+      if (IppF5 != false) {
+        size += 1 + 1;
+      }
+      if (IppF6 != false) {
+        size += 1 + 1;
+      }
+      if (PlayerType != global::ZwiftPacketMonitor.PlayerType._0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PlayerType);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(InvitedProfileProto other) {
+      if (other == null) {
+        return;
+      }
+      if (other.IppF1 != 0UL) {
+        IppF1 = other.IppF1;
+      }
+      if (other.IppF2.Length != 0) {
+        IppF2 = other.IppF2;
+      }
+      if (other.IppF3.Length != 0) {
+        IppF3 = other.IppF3;
+      }
+      if (other.IppF4.Length != 0) {
+        IppF4 = other.IppF4;
+      }
+      if (other.IppF5 != false) {
+        IppF5 = other.IppF5;
+      }
+      if (other.IppF6 != false) {
+        IppF6 = other.IppF6;
+      }
+      if (other.PlayerType != global::ZwiftPacketMonitor.PlayerType._0) {
+        PlayerType = other.PlayerType;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            IppF1 = input.ReadUInt64();
+            break;
+          }
+          case 18: {
+            IppF2 = input.ReadString();
+            break;
+          }
+          case 26: {
+            IppF3 = input.ReadString();
+            break;
+          }
+          case 34: {
+            IppF4 = input.ReadString();
+            break;
+          }
+          case 40: {
+            IppF5 = input.ReadBool();
+            break;
+          }
+          case 48: {
+            IppF6 = input.ReadBool();
+            break;
+          }
+          case 56: {
+            PlayerType = (global::ZwiftPacketMonitor.PlayerType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            IppF1 = input.ReadUInt64();
+            break;
+          }
+          case 18: {
+            IppF2 = input.ReadString();
+            break;
+          }
+          case 26: {
+            IppF3 = input.ReadString();
+            break;
+          }
+          case 34: {
+            IppF4 = input.ReadString();
+            break;
+          }
+          case 40: {
+            IppF5 = input.ReadBool();
+            break;
+          }
+          case 48: {
+            IppF6 = input.ReadBool();
+            break;
+          }
+          case 56: {
+            PlayerType = (global::ZwiftPacketMonitor.PlayerType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class EventInviteProto : pb::IMessage<EventInviteProto>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<EventInviteProto> _parser = new pb::MessageParser<EventInviteProto>(() => new EventInviteProto());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<EventInviteProto> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventInviteProto() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventInviteProto(EventInviteProto other) : this() {
+      profile_ = other.profile_ != null ? other.profile_.Clone() : null;
+      inviteF2_ = other.inviteF2_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventInviteProto Clone() {
+      return new EventInviteProto(this);
+    }
+
+    /// <summary>Field number for the "profile" field.</summary>
+    public const int ProfileFieldNumber = 1;
+    private global::ZwiftPacketMonitor.InvitedProfileProto profile_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.InvitedProfileProto Profile {
+      get { return profile_; }
+      set {
+        profile_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "invite_f2" field.</summary>
+    public const int InviteF2FieldNumber = 2;
+    private ulong inviteF2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong InviteF2 {
+      get { return inviteF2_; }
+      set {
+        inviteF2_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as EventInviteProto);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(EventInviteProto other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Profile, other.Profile)) return false;
+      if (InviteF2 != other.InviteF2) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (profile_ != null) hash ^= Profile.GetHashCode();
+      if (InviteF2 != 0UL) hash ^= InviteF2.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (profile_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Profile);
+      }
+      if (InviteF2 != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(InviteF2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (profile_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Profile);
+      }
+      if (InviteF2 != 0UL) {
+        output.WriteRawTag(16);
+        output.WriteUInt64(InviteF2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (profile_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Profile);
+      }
+      if (InviteF2 != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(InviteF2);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(EventInviteProto other) {
+      if (other == null) {
+        return;
+      }
+      if (other.profile_ != null) {
+        if (profile_ == null) {
+          Profile = new global::ZwiftPacketMonitor.InvitedProfileProto();
+        }
+        Profile.MergeFrom(other.Profile);
+      }
+      if (other.InviteF2 != 0UL) {
+        InviteF2 = other.InviteF2;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (profile_ == null) {
+              Profile = new global::ZwiftPacketMonitor.InvitedProfileProto();
+            }
+            input.ReadMessage(Profile);
+            break;
+          }
+          case 16: {
+            InviteF2 = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (profile_ == null) {
+              Profile = new global::ZwiftPacketMonitor.InvitedProfileProto();
+            }
+            input.ReadMessage(Profile);
+            break;
+          }
+          case 16: {
+            InviteF2 = input.ReadUInt64();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class WorldAttribute : pb::IMessage<WorldAttribute>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<WorldAttribute> _parser = new pb::MessageParser<WorldAttribute>(() => new WorldAttribute());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<WorldAttribute> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public WorldAttribute() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public WorldAttribute(WorldAttribute other) : this() {
+      waF1_ = other.waF1_;
+      serverRealm_ = other.serverRealm_;
+      waType_ = other.waType_;
       payload_ = other.payload_;
-      tag5_ = other.tag5_;
-      tag6_ = other.tag6_;
-      tag7_ = other.tag7_;
-      tag8_ = other.tag8_;
-      tag9_ = other.tag9_;
-      tag11_ = other.tag11_;
-      tag12_ = other.tag12_;
-      tag14_ = other.tag14_;
-      tag15_ = other.tag15_;
+      worldTimeBorn_ = other.worldTimeBorn_;
+      x_ = other.x_;
+      y_ = other.y_;
+      z_ = other.z_;
+      worldTimeExpire_ = other.worldTimeExpire_;
+      relId_ = other.relId_;
+      importance_ = other.importance_;
+      waF12_ = other.waF12_;
+      waF13_ = other.waF13_;
+      timestamp_ = other.timestamp_;
+      waF15_ = other.waF15_;
+      waF16_ = other.waF16_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public PlayerUpdate Clone() {
-      return new PlayerUpdate(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public WorldAttribute Clone() {
+      return new WorldAttribute(this);
     }
 
-    /// <summary>Field number for the "tag1" field.</summary>
-    public const int Tag1FieldNumber = 1;
-    private long tag1_;
+    /// <summary>Field number for the "wa_f1" field.</summary>
+    public const int WaF1FieldNumber = 1;
+    private long waF1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag1 {
-      get { return tag1_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long WaF1 {
+      get { return waF1_; }
       set {
-        tag1_ = value;
+        waF1_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag2" field.</summary>
-    public const int Tag2FieldNumber = 2;
-    private int tag2_;
+    /// <summary>Field number for the "server_realm" field.</summary>
+    public const int ServerRealmFieldNumber = 2;
+    private long serverRealm_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Tag2 {
-      get { return tag2_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ServerRealm {
+      get { return serverRealm_; }
       set {
-        tag2_ = value;
+        serverRealm_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag3" field.</summary>
-    public const int Tag3FieldNumber = 3;
-    private int tag3_;
+    /// <summary>Field number for the "wa_type" field.</summary>
+    public const int WaTypeFieldNumber = 3;
+    private global::ZwiftPacketMonitor.WA_TYPE waType_ = global::ZwiftPacketMonitor.WA_TYPE.WatUnk0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Tag3 {
-      get { return tag3_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.WA_TYPE WaType {
+      get { return waType_; }
       set {
-        tag3_ = value;
+        waType_ = value;
       }
     }
 
@@ -4218,6 +7134,7 @@ namespace ZwiftPacketMonitor {
     public const int PayloadFieldNumber = 4;
     private pb::ByteString payload_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pb::ByteString Payload {
       get { return payload_; }
       set {
@@ -4225,150 +7142,204 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "tag5" field.</summary>
-    public const int Tag5FieldNumber = 5;
-    private long tag5_;
+    /// <summary>Field number for the "world_time_born" field.</summary>
+    public const int WorldTimeBornFieldNumber = 5;
+    private long worldTimeBorn_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag5 {
-      get { return tag5_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long WorldTimeBorn {
+      get { return worldTimeBorn_; }
       set {
-        tag5_ = value;
+        worldTimeBorn_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag6" field.</summary>
-    public const int Tag6FieldNumber = 6;
-    private long tag6_;
+    /// <summary>Field number for the "x" field.</summary>
+    public const int XFieldNumber = 6;
+    private long x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag6 {
-      get { return tag6_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long X {
+      get { return x_; }
       set {
-        tag6_ = value;
+        x_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag7" field.</summary>
-    public const int Tag7FieldNumber = 7;
-    private long tag7_;
+    /// <summary>Field number for the "y" field.</summary>
+    public const int YFieldNumber = 7;
+    private long y_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag7 {
-      get { return tag7_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Y {
+      get { return y_; }
       set {
-        tag7_ = value;
+        y_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag8" field.</summary>
-    public const int Tag8FieldNumber = 8;
-    private long tag8_;
+    /// <summary>Field number for the "z" field.</summary>
+    public const int ZFieldNumber = 8;
+    private long z_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag8 {
-      get { return tag8_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Z {
+      get { return z_; }
       set {
-        tag8_ = value;
+        z_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag9" field.</summary>
-    public const int Tag9FieldNumber = 9;
-    private long tag9_;
+    /// <summary>Field number for the "world_time_expire" field.</summary>
+    public const int WorldTimeExpireFieldNumber = 9;
+    private long worldTimeExpire_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag9 {
-      get { return tag9_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long WorldTimeExpire {
+      get { return worldTimeExpire_; }
       set {
-        tag9_ = value;
+        worldTimeExpire_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag11" field.</summary>
-    public const int Tag11FieldNumber = 11;
-    private long tag11_;
+    /// <summary>Field number for the "rel_id" field.</summary>
+    public const int RelIdFieldNumber = 10;
+    private long relId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag11 {
-      get { return tag11_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long RelId {
+      get { return relId_; }
       set {
-        tag11_ = value;
+        relId_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag12" field.</summary>
-    public const int Tag12FieldNumber = 12;
-    private long tag12_;
+    /// <summary>Field number for the "importance" field.</summary>
+    public const int ImportanceFieldNumber = 11;
+    private int importance_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag12 {
-      get { return tag12_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Importance {
+      get { return importance_; }
       set {
-        tag12_ = value;
+        importance_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag14" field.</summary>
-    public const int Tag14FieldNumber = 14;
-    private long tag14_;
+    /// <summary>Field number for the "wa_f12" field.</summary>
+    public const int WaF12FieldNumber = 12;
+    private long waF12_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag14 {
-      get { return tag14_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long WaF12 {
+      get { return waF12_; }
       set {
-        tag14_ = value;
+        waF12_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag15" field.</summary>
-    public const int Tag15FieldNumber = 15;
-    private long tag15_;
+    /// <summary>Field number for the "wa_f13" field.</summary>
+    public const int WaF13FieldNumber = 13;
+    private int waF13_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag15 {
-      get { return tag15_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int WaF13 {
+      get { return waF13_; }
       set {
-        tag15_ = value;
+        waF13_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "timestamp" field.</summary>
+    public const int TimestampFieldNumber = 14;
+    private long timestamp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Timestamp {
+      get { return timestamp_; }
+      set {
+        timestamp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "wa_f15" field.</summary>
+    public const int WaF15FieldNumber = 15;
+    private int waF15_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int WaF15 {
+      get { return waF15_; }
+      set {
+        waF15_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "wa_f16" field.</summary>
+    public const int WaF16FieldNumber = 16;
+    private long waF16_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long WaF16 {
+      get { return waF16_; }
+      set {
+        waF16_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as PlayerUpdate);
+      return Equals(other as WorldAttribute);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(PlayerUpdate other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(WorldAttribute other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Tag1 != other.Tag1) return false;
-      if (Tag2 != other.Tag2) return false;
-      if (Tag3 != other.Tag3) return false;
+      if (WaF1 != other.WaF1) return false;
+      if (ServerRealm != other.ServerRealm) return false;
+      if (WaType != other.WaType) return false;
       if (Payload != other.Payload) return false;
-      if (Tag5 != other.Tag5) return false;
-      if (Tag6 != other.Tag6) return false;
-      if (Tag7 != other.Tag7) return false;
-      if (Tag8 != other.Tag8) return false;
-      if (Tag9 != other.Tag9) return false;
-      if (Tag11 != other.Tag11) return false;
-      if (Tag12 != other.Tag12) return false;
-      if (Tag14 != other.Tag14) return false;
-      if (Tag15 != other.Tag15) return false;
+      if (WorldTimeBorn != other.WorldTimeBorn) return false;
+      if (X != other.X) return false;
+      if (Y != other.Y) return false;
+      if (Z != other.Z) return false;
+      if (WorldTimeExpire != other.WorldTimeExpire) return false;
+      if (RelId != other.RelId) return false;
+      if (Importance != other.Importance) return false;
+      if (WaF12 != other.WaF12) return false;
+      if (WaF13 != other.WaF13) return false;
+      if (Timestamp != other.Timestamp) return false;
+      if (WaF15 != other.WaF15) return false;
+      if (WaF16 != other.WaF16) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Tag1 != 0L) hash ^= Tag1.GetHashCode();
-      if (Tag2 != 0) hash ^= Tag2.GetHashCode();
-      if (Tag3 != 0) hash ^= Tag3.GetHashCode();
+      if (WaF1 != 0L) hash ^= WaF1.GetHashCode();
+      if (ServerRealm != 0L) hash ^= ServerRealm.GetHashCode();
+      if (WaType != global::ZwiftPacketMonitor.WA_TYPE.WatUnk0) hash ^= WaType.GetHashCode();
       if (Payload.Length != 0) hash ^= Payload.GetHashCode();
-      if (Tag5 != 0L) hash ^= Tag5.GetHashCode();
-      if (Tag6 != 0L) hash ^= Tag6.GetHashCode();
-      if (Tag7 != 0L) hash ^= Tag7.GetHashCode();
-      if (Tag8 != 0L) hash ^= Tag8.GetHashCode();
-      if (Tag9 != 0L) hash ^= Tag9.GetHashCode();
-      if (Tag11 != 0L) hash ^= Tag11.GetHashCode();
-      if (Tag12 != 0L) hash ^= Tag12.GetHashCode();
-      if (Tag14 != 0L) hash ^= Tag14.GetHashCode();
-      if (Tag15 != 0L) hash ^= Tag15.GetHashCode();
+      if (WorldTimeBorn != 0L) hash ^= WorldTimeBorn.GetHashCode();
+      if (X != 0L) hash ^= X.GetHashCode();
+      if (Y != 0L) hash ^= Y.GetHashCode();
+      if (Z != 0L) hash ^= Z.GetHashCode();
+      if (WorldTimeExpire != 0L) hash ^= WorldTimeExpire.GetHashCode();
+      if (RelId != 0L) hash ^= RelId.GetHashCode();
+      if (Importance != 0) hash ^= Importance.GetHashCode();
+      if (WaF12 != 0L) hash ^= WaF12.GetHashCode();
+      if (WaF13 != 0) hash ^= WaF13.GetHashCode();
+      if (Timestamp != 0L) hash ^= Timestamp.GetHashCode();
+      if (WaF15 != 0) hash ^= WaF15.GetHashCode();
+      if (WaF16 != 0L) hash ^= WaF16.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4376,66 +7347,80 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Tag1 != 0L) {
+      if (WaF1 != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt64(Tag1);
+        output.WriteInt64(WaF1);
       }
-      if (Tag2 != 0) {
+      if (ServerRealm != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt32(Tag2);
+        output.WriteInt64(ServerRealm);
       }
-      if (Tag3 != 0) {
+      if (WaType != global::ZwiftPacketMonitor.WA_TYPE.WatUnk0) {
         output.WriteRawTag(24);
-        output.WriteInt32(Tag3);
+        output.WriteEnum((int) WaType);
       }
       if (Payload.Length != 0) {
         output.WriteRawTag(34);
         output.WriteBytes(Payload);
       }
-      if (Tag5 != 0L) {
+      if (WorldTimeBorn != 0L) {
         output.WriteRawTag(40);
-        output.WriteInt64(Tag5);
+        output.WriteInt64(WorldTimeBorn);
       }
-      if (Tag6 != 0L) {
+      if (X != 0L) {
         output.WriteRawTag(48);
-        output.WriteInt64(Tag6);
+        output.WriteInt64(X);
       }
-      if (Tag7 != 0L) {
+      if (Y != 0L) {
         output.WriteRawTag(56);
-        output.WriteInt64(Tag7);
+        output.WriteInt64(Y);
       }
-      if (Tag8 != 0L) {
+      if (Z != 0L) {
         output.WriteRawTag(64);
-        output.WriteInt64(Tag8);
+        output.WriteInt64(Z);
       }
-      if (Tag9 != 0L) {
+      if (WorldTimeExpire != 0L) {
         output.WriteRawTag(72);
-        output.WriteInt64(Tag9);
+        output.WriteInt64(WorldTimeExpire);
       }
-      if (Tag11 != 0L) {
+      if (RelId != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(RelId);
+      }
+      if (Importance != 0) {
         output.WriteRawTag(88);
-        output.WriteInt64(Tag11);
+        output.WriteInt32(Importance);
       }
-      if (Tag12 != 0L) {
+      if (WaF12 != 0L) {
         output.WriteRawTag(96);
-        output.WriteInt64(Tag12);
+        output.WriteInt64(WaF12);
       }
-      if (Tag14 != 0L) {
+      if (WaF13 != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(WaF13);
+      }
+      if (Timestamp != 0L) {
         output.WriteRawTag(112);
-        output.WriteInt64(Tag14);
+        output.WriteInt64(Timestamp);
       }
-      if (Tag15 != 0L) {
+      if (WaF15 != 0) {
         output.WriteRawTag(120);
-        output.WriteInt64(Tag15);
+        output.WriteInt32(WaF15);
+      }
+      if (WaF16 != 0L) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt64(WaF16);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4445,58 +7430,71 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Tag1 != 0L) {
+      if (WaF1 != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt64(Tag1);
+        output.WriteInt64(WaF1);
       }
-      if (Tag2 != 0) {
+      if (ServerRealm != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt32(Tag2);
+        output.WriteInt64(ServerRealm);
       }
-      if (Tag3 != 0) {
+      if (WaType != global::ZwiftPacketMonitor.WA_TYPE.WatUnk0) {
         output.WriteRawTag(24);
-        output.WriteInt32(Tag3);
+        output.WriteEnum((int) WaType);
       }
       if (Payload.Length != 0) {
         output.WriteRawTag(34);
         output.WriteBytes(Payload);
       }
-      if (Tag5 != 0L) {
+      if (WorldTimeBorn != 0L) {
         output.WriteRawTag(40);
-        output.WriteInt64(Tag5);
+        output.WriteInt64(WorldTimeBorn);
       }
-      if (Tag6 != 0L) {
+      if (X != 0L) {
         output.WriteRawTag(48);
-        output.WriteInt64(Tag6);
+        output.WriteInt64(X);
       }
-      if (Tag7 != 0L) {
+      if (Y != 0L) {
         output.WriteRawTag(56);
-        output.WriteInt64(Tag7);
+        output.WriteInt64(Y);
       }
-      if (Tag8 != 0L) {
+      if (Z != 0L) {
         output.WriteRawTag(64);
-        output.WriteInt64(Tag8);
+        output.WriteInt64(Z);
       }
-      if (Tag9 != 0L) {
+      if (WorldTimeExpire != 0L) {
         output.WriteRawTag(72);
-        output.WriteInt64(Tag9);
+        output.WriteInt64(WorldTimeExpire);
       }
-      if (Tag11 != 0L) {
+      if (RelId != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(RelId);
+      }
+      if (Importance != 0) {
         output.WriteRawTag(88);
-        output.WriteInt64(Tag11);
+        output.WriteInt32(Importance);
       }
-      if (Tag12 != 0L) {
+      if (WaF12 != 0L) {
         output.WriteRawTag(96);
-        output.WriteInt64(Tag12);
+        output.WriteInt64(WaF12);
       }
-      if (Tag14 != 0L) {
+      if (WaF13 != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(WaF13);
+      }
+      if (Timestamp != 0L) {
         output.WriteRawTag(112);
-        output.WriteInt64(Tag14);
+        output.WriteInt64(Timestamp);
       }
-      if (Tag15 != 0L) {
+      if (WaF15 != 0) {
         output.WriteRawTag(120);
-        output.WriteInt64(Tag15);
+        output.WriteInt32(WaF15);
+      }
+      if (WaF16 != 0L) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt64(WaF16);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -4505,46 +7503,56 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Tag1 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag1);
+      if (WaF1 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(WaF1);
       }
-      if (Tag2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag2);
+      if (ServerRealm != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ServerRealm);
       }
-      if (Tag3 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag3);
+      if (WaType != global::ZwiftPacketMonitor.WA_TYPE.WatUnk0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) WaType);
       }
       if (Payload.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Payload);
       }
-      if (Tag5 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag5);
+      if (WorldTimeBorn != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(WorldTimeBorn);
       }
-      if (Tag6 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag6);
+      if (X != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(X);
       }
-      if (Tag7 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag7);
+      if (Y != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Y);
       }
-      if (Tag8 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag8);
+      if (Z != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Z);
       }
-      if (Tag9 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag9);
+      if (WorldTimeExpire != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(WorldTimeExpire);
       }
-      if (Tag11 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag11);
+      if (RelId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RelId);
       }
-      if (Tag12 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag12);
+      if (Importance != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Importance);
       }
-      if (Tag14 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag14);
+      if (WaF12 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(WaF12);
       }
-      if (Tag15 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag15);
+      if (WaF13 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(WaF13);
+      }
+      if (Timestamp != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Timestamp);
+      }
+      if (WaF15 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(WaF15);
+      }
+      if (WaF16 != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(WaF16);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4553,53 +7561,64 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(PlayerUpdate other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(WorldAttribute other) {
       if (other == null) {
         return;
       }
-      if (other.Tag1 != 0L) {
-        Tag1 = other.Tag1;
+      if (other.WaF1 != 0L) {
+        WaF1 = other.WaF1;
       }
-      if (other.Tag2 != 0) {
-        Tag2 = other.Tag2;
+      if (other.ServerRealm != 0L) {
+        ServerRealm = other.ServerRealm;
       }
-      if (other.Tag3 != 0) {
-        Tag3 = other.Tag3;
+      if (other.WaType != global::ZwiftPacketMonitor.WA_TYPE.WatUnk0) {
+        WaType = other.WaType;
       }
       if (other.Payload.Length != 0) {
         Payload = other.Payload;
       }
-      if (other.Tag5 != 0L) {
-        Tag5 = other.Tag5;
+      if (other.WorldTimeBorn != 0L) {
+        WorldTimeBorn = other.WorldTimeBorn;
       }
-      if (other.Tag6 != 0L) {
-        Tag6 = other.Tag6;
+      if (other.X != 0L) {
+        X = other.X;
       }
-      if (other.Tag7 != 0L) {
-        Tag7 = other.Tag7;
+      if (other.Y != 0L) {
+        Y = other.Y;
       }
-      if (other.Tag8 != 0L) {
-        Tag8 = other.Tag8;
+      if (other.Z != 0L) {
+        Z = other.Z;
       }
-      if (other.Tag9 != 0L) {
-        Tag9 = other.Tag9;
+      if (other.WorldTimeExpire != 0L) {
+        WorldTimeExpire = other.WorldTimeExpire;
       }
-      if (other.Tag11 != 0L) {
-        Tag11 = other.Tag11;
+      if (other.RelId != 0L) {
+        RelId = other.RelId;
       }
-      if (other.Tag12 != 0L) {
-        Tag12 = other.Tag12;
+      if (other.Importance != 0) {
+        Importance = other.Importance;
       }
-      if (other.Tag14 != 0L) {
-        Tag14 = other.Tag14;
+      if (other.WaF12 != 0L) {
+        WaF12 = other.WaF12;
       }
-      if (other.Tag15 != 0L) {
-        Tag15 = other.Tag15;
+      if (other.WaF13 != 0) {
+        WaF13 = other.WaF13;
+      }
+      if (other.Timestamp != 0L) {
+        Timestamp = other.Timestamp;
+      }
+      if (other.WaF15 != 0) {
+        WaF15 = other.WaF15;
+      }
+      if (other.WaF16 != 0L) {
+        WaF16 = other.WaF16;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -4611,15 +7630,15 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Tag1 = input.ReadInt64();
+            WaF1 = input.ReadInt64();
             break;
           }
           case 16: {
-            Tag2 = input.ReadInt32();
+            ServerRealm = input.ReadInt64();
             break;
           }
           case 24: {
-            Tag3 = input.ReadInt32();
+            WaType = (global::ZwiftPacketMonitor.WA_TYPE) input.ReadEnum();
             break;
           }
           case 34: {
@@ -4627,39 +7646,51 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 40: {
-            Tag5 = input.ReadInt64();
+            WorldTimeBorn = input.ReadInt64();
             break;
           }
           case 48: {
-            Tag6 = input.ReadInt64();
+            X = input.ReadInt64();
             break;
           }
           case 56: {
-            Tag7 = input.ReadInt64();
+            Y = input.ReadInt64();
             break;
           }
           case 64: {
-            Tag8 = input.ReadInt64();
+            Z = input.ReadInt64();
             break;
           }
           case 72: {
-            Tag9 = input.ReadInt64();
+            WorldTimeExpire = input.ReadInt64();
+            break;
+          }
+          case 80: {
+            RelId = input.ReadInt64();
             break;
           }
           case 88: {
-            Tag11 = input.ReadInt64();
+            Importance = input.ReadInt32();
             break;
           }
           case 96: {
-            Tag12 = input.ReadInt64();
+            WaF12 = input.ReadInt64();
+            break;
+          }
+          case 104: {
+            WaF13 = input.ReadInt32();
             break;
           }
           case 112: {
-            Tag14 = input.ReadInt64();
+            Timestamp = input.ReadInt64();
             break;
           }
           case 120: {
-            Tag15 = input.ReadInt64();
+            WaF15 = input.ReadInt32();
+            break;
+          }
+          case 128: {
+            WaF16 = input.ReadInt64();
             break;
           }
         }
@@ -4669,6 +7700,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -4677,15 +7709,15 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Tag1 = input.ReadInt64();
+            WaF1 = input.ReadInt64();
             break;
           }
           case 16: {
-            Tag2 = input.ReadInt32();
+            ServerRealm = input.ReadInt64();
             break;
           }
           case 24: {
-            Tag3 = input.ReadInt32();
+            WaType = (global::ZwiftPacketMonitor.WA_TYPE) input.ReadEnum();
             break;
           }
           case 34: {
@@ -4693,39 +7725,51 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 40: {
-            Tag5 = input.ReadInt64();
+            WorldTimeBorn = input.ReadInt64();
             break;
           }
           case 48: {
-            Tag6 = input.ReadInt64();
+            X = input.ReadInt64();
             break;
           }
           case 56: {
-            Tag7 = input.ReadInt64();
+            Y = input.ReadInt64();
             break;
           }
           case 64: {
-            Tag8 = input.ReadInt64();
+            Z = input.ReadInt64();
             break;
           }
           case 72: {
-            Tag9 = input.ReadInt64();
+            WorldTimeExpire = input.ReadInt64();
+            break;
+          }
+          case 80: {
+            RelId = input.ReadInt64();
             break;
           }
           case 88: {
-            Tag11 = input.ReadInt64();
+            Importance = input.ReadInt32();
             break;
           }
           case 96: {
-            Tag12 = input.ReadInt64();
+            WaF12 = input.ReadInt64();
+            break;
+          }
+          case 104: {
+            WaF13 = input.ReadInt32();
             break;
           }
           case 112: {
-            Tag14 = input.ReadInt64();
+            Timestamp = input.ReadInt64();
             break;
           }
           case 120: {
-            Tag15 = input.ReadInt64();
+            WaF15 = input.ReadInt32();
+            break;
+          }
+          case 128: {
+            WaF16 = input.ReadInt64();
             break;
           }
         }
@@ -4736,142 +7780,155 @@ namespace ZwiftPacketMonitor {
   }
 
   /// <summary>
-  /// player entered world ?
+  ///checked 21/03/2022
   /// </summary>
-  public sealed partial class Payload105 : pb::IMessage<Payload105>
+  public sealed partial class SegmentResult : pb::IMessage<SegmentResult>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Payload105> _parser = new pb::MessageParser<Payload105>(() => new Payload105());
+    private static readonly pb::MessageParser<SegmentResult> _parser = new pb::MessageParser<SegmentResult>(() => new SegmentResult());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Payload105> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<SegmentResult> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[6]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload105() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SegmentResult() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload105(Payload105 other) : this() {
-      f1_ = other.f1_;
-      riderId_ = other.riderId_;
-      f3_ = other.f3_;
-      f4_ = other.f4_;
-      f5_ = other.f5_;
-      f6_ = other.f6_;
-      firstName_ = other.firstName_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SegmentResult(SegmentResult other) : this() {
+      id_ = other.id_;
+      playerId_ = other.playerId_;
+      serverRealm_ = other.serverRealm_;
+      courseId_ = other.courseId_;
+      segmentId_ = other.segmentId_;
+      eventSubgroupId_ = other.eventSubgroupId_;
+      firstNameL1_ = other.firstNameL1_;
       lastName_ = other.lastName_;
-      f9_ = other.f9_;
-      f11_ = other.f11_;
-      f12_ = other.f12_;
-      f13_ = other.f13_;
-      f14_ = other.f14_;
-      f15_ = other.f15_;
-      f16_ = other.f16_;
-      f7Date_ = other.f7Date_;
-      f19_ = other.f19_;
+      worldTime_ = other.worldTime_;
+      finishTimeStr_ = other.finishTimeStr_;
+      elapsedMs_ = other.elapsedMs_;
+      powerType_ = other.powerType_;
+      weightInGrams_ = other.weightInGrams_;
+      srF14_ = other.srF14_;
+      avgPower_ = other.avgPower_;
+      isMale_ = other.isMale_;
+      magicLeaderboardBirthday_ = other.magicLeaderboardBirthday_;
+      playerType_ = other.playerType_;
+      avgHr_ = other.avgHr_;
+      sport_ = other.sport_;
+      activityId_ = other.activityId_;
+      srF22_ = other.srF22_;
+      firstNameL1Copy_ = other.firstNameL1Copy_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload105 Clone() {
-      return new Payload105(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SegmentResult Clone() {
+      return new SegmentResult(this);
     }
 
-    /// <summary>Field number for the "f1" field.</summary>
-    public const int F1FieldNumber = 1;
-    private long f1_;
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private long id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long F1 {
-      get { return f1_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Id {
+      get { return id_; }
       set {
-        f1_ = value;
+        id_ = value;
       }
     }
 
-    /// <summary>Field number for the "rider_id" field.</summary>
-    public const int RiderIdFieldNumber = 2;
-    private int riderId_;
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 2;
+    private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int RiderId {
-      get { return riderId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayerId {
+      get { return playerId_; }
       set {
-        riderId_ = value;
+        playerId_ = value;
       }
     }
 
-    /// <summary>Field number for the "f3" field.</summary>
-    public const int F3FieldNumber = 3;
-    private int f3_;
+    /// <summary>Field number for the "server_realm" field.</summary>
+    public const int ServerRealmFieldNumber = 3;
+    private long serverRealm_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F3 {
-      get { return f3_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ServerRealm {
+      get { return serverRealm_; }
       set {
-        f3_ = value;
+        serverRealm_ = value;
       }
     }
 
-    /// <summary>Field number for the "f4" field.</summary>
-    public const int F4FieldNumber = 4;
-    private long f4_;
-    /// <summary>
-    /// int32?
-    /// </summary>
+    /// <summary>Field number for the "course_id" field.</summary>
+    public const int CourseIdFieldNumber = 4;
+    private long courseId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long F4 {
-      get { return f4_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long CourseId {
+      get { return courseId_; }
       set {
-        f4_ = value;
+        courseId_ = value;
       }
     }
 
-    /// <summary>Field number for the "f5" field.</summary>
-    public const int F5FieldNumber = 5;
-    private long f5_;
+    /// <summary>Field number for the "segment_id" field.</summary>
+    public const int SegmentIdFieldNumber = 5;
+    private long segmentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long F5 {
-      get { return f5_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long SegmentId {
+      get { return segmentId_; }
       set {
-        f5_ = value;
+        segmentId_ = value;
       }
     }
 
-    /// <summary>Field number for the "f6" field.</summary>
-    public const int F6FieldNumber = 6;
-    private long f6_;
-    /// <summary>
-    /// int32?
-    /// </summary>
+    /// <summary>Field number for the "event_subgroup_id" field.</summary>
+    public const int EventSubgroupIdFieldNumber = 6;
+    private long eventSubgroupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long F6 {
-      get { return f6_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EventSubgroupId {
+      get { return eventSubgroupId_; }
       set {
-        f6_ = value;
+        eventSubgroupId_ = value;
       }
     }
 
-    /// <summary>Field number for the "firstName" field.</summary>
-    public const int FirstNameFieldNumber = 7;
-    private string firstName_ = "";
+    /// <summary>Field number for the "firstNameL1" field.</summary>
+    public const int FirstNameL1FieldNumber = 7;
+    private string firstNameL1_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string FirstName {
-      get { return firstName_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string FirstNameL1 {
+      get { return firstNameL1_; }
       set {
-        firstName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        firstNameL1_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -4879,6 +7936,7 @@ namespace ZwiftPacketMonitor {
     public const int LastNameFieldNumber = 8;
     private string lastName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LastName {
       get { return lastName_; }
       set {
@@ -4886,158 +7944,260 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "f9" field.</summary>
-    public const int F9FieldNumber = 9;
-    private long f9_;
+    /// <summary>Field number for the "world_time" field.</summary>
+    public const int WorldTimeFieldNumber = 9;
+    private ulong worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long F9 {
-      get { return f9_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong WorldTime {
+      get { return worldTime_; }
       set {
-        f9_ = value;
+        worldTime_ = value;
       }
     }
 
-    /// <summary>Field number for the "f11" field.</summary>
-    public const int F11FieldNumber = 11;
-    private long f11_;
+    /// <summary>Field number for the "finish_time_str" field.</summary>
+    public const int FinishTimeStrFieldNumber = 10;
+    private string finishTimeStr_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long F11 {
-      get { return f11_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string FinishTimeStr {
+      get { return finishTimeStr_; }
       set {
-        f11_ = value;
+        finishTimeStr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "f12" field.</summary>
-    public const int F12FieldNumber = 12;
-    private int f12_;
+    /// <summary>Field number for the "elapsed_ms" field.</summary>
+    public const int ElapsedMsFieldNumber = 11;
+    private ulong elapsedMs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F12 {
-      get { return f12_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong ElapsedMs {
+      get { return elapsedMs_; }
       set {
-        f12_ = value;
+        elapsedMs_ = value;
       }
     }
 
-    /// <summary>Field number for the "f13" field.</summary>
-    public const int F13FieldNumber = 13;
-    private int f13_;
+    /// <summary>Field number for the "power_type" field.</summary>
+    public const int PowerTypeFieldNumber = 12;
+    private global::ZwiftPacketMonitor.PowerType powerType_ = global::ZwiftPacketMonitor.PowerType.PtVirtual;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F13 {
-      get { return f13_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.PowerType PowerType {
+      get { return powerType_; }
       set {
-        f13_ = value;
+        powerType_ = value;
       }
     }
 
-    /// <summary>Field number for the "f14" field.</summary>
-    public const int F14FieldNumber = 14;
-    private int f14_;
+    /// <summary>Field number for the "weight_in_grams" field.</summary>
+    public const int WeightInGramsFieldNumber = 13;
+    private uint weightInGrams_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F14 {
-      get { return f14_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint WeightInGrams {
+      get { return weightInGrams_; }
       set {
-        f14_ = value;
+        weightInGrams_ = value;
       }
     }
 
-    /// <summary>Field number for the "f15" field.</summary>
-    public const int F15FieldNumber = 15;
-    private int f15_;
+    /// <summary>Field number for the "sr_f14" field.</summary>
+    public const int SrF14FieldNumber = 14;
+    private uint srF14_;
+    /// <summary>
+    ///always 0
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F15 {
-      get { return f15_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SrF14 {
+      get { return srF14_; }
       set {
-        f15_ = value;
+        srF14_ = value;
       }
     }
 
-    /// <summary>Field number for the "f16" field.</summary>
-    public const int F16FieldNumber = 16;
-    private int f16_;
+    /// <summary>Field number for the "avg_power" field.</summary>
+    public const int AvgPowerFieldNumber = 15;
+    private uint avgPower_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F16 {
-      get { return f16_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvgPower {
+      get { return avgPower_; }
       set {
-        f16_ = value;
+        avgPower_ = value;
       }
     }
 
-    /// <summary>Field number for the "f7date" field.</summary>
-    public const int F7DateFieldNumber = 17;
-    private string f7Date_ = "";
+    /// <summary>Field number for the "is_male" field.</summary>
+    public const int IsMaleFieldNumber = 16;
+    private bool isMale_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string F7Date {
-      get { return f7Date_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsMale {
+      get { return isMale_; }
       set {
-        f7Date_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        isMale_ = value;
       }
     }
 
-    /// <summary>Field number for the "f19" field.</summary>
-    public const int F19FieldNumber = 19;
-    private int f19_;
+    /// <summary>Field number for the "magicLeaderboardBirthday" field.</summary>
+    public const int MagicLeaderboardBirthdayFieldNumber = 17;
+    private string magicLeaderboardBirthday_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F19 {
-      get { return f19_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string MagicLeaderboardBirthday {
+      get { return magicLeaderboardBirthday_; }
       set {
-        f19_ = value;
+        magicLeaderboardBirthday_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "player_type" field.</summary>
+    public const int PlayerTypeFieldNumber = 18;
+    private global::ZwiftPacketMonitor.PlayerType playerType_ = global::ZwiftPacketMonitor.PlayerType._0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.PlayerType PlayerType {
+      get { return playerType_; }
+      set {
+        playerType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avg_hr" field.</summary>
+    public const int AvgHrFieldNumber = 19;
+    private uint avgHr_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvgHr {
+      get { return avgHr_; }
+      set {
+        avgHr_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sport" field.</summary>
+    public const int SportFieldNumber = 20;
+    private global::ZwiftPacketMonitor.Sport sport_ = global::ZwiftPacketMonitor.Sport.Cycling;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.Sport Sport {
+      get { return sport_; }
+      set {
+        sport_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "activity_id" field.</summary>
+    public const int ActivityIdFieldNumber = 21;
+    private ulong activityId_;
+    /// <summary>
+    ///may be -1
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong ActivityId {
+      get { return activityId_; }
+      set {
+        activityId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sr_f22" field.</summary>
+    public const int SrF22FieldNumber = 22;
+    private bool srF22_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool SrF22 {
+      get { return srF22_; }
+      set {
+        srF22_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "firstNameL1_copy" field.</summary>
+    public const int FirstNameL1CopyFieldNumber = 23;
+    private string firstNameL1Copy_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string FirstNameL1Copy {
+      get { return firstNameL1Copy_; }
+      set {
+        firstNameL1Copy_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Payload105);
+      return Equals(other as SegmentResult);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Payload105 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(SegmentResult other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (F1 != other.F1) return false;
-      if (RiderId != other.RiderId) return false;
-      if (F3 != other.F3) return false;
-      if (F4 != other.F4) return false;
-      if (F5 != other.F5) return false;
-      if (F6 != other.F6) return false;
-      if (FirstName != other.FirstName) return false;
+      if (Id != other.Id) return false;
+      if (PlayerId != other.PlayerId) return false;
+      if (ServerRealm != other.ServerRealm) return false;
+      if (CourseId != other.CourseId) return false;
+      if (SegmentId != other.SegmentId) return false;
+      if (EventSubgroupId != other.EventSubgroupId) return false;
+      if (FirstNameL1 != other.FirstNameL1) return false;
       if (LastName != other.LastName) return false;
-      if (F9 != other.F9) return false;
-      if (F11 != other.F11) return false;
-      if (F12 != other.F12) return false;
-      if (F13 != other.F13) return false;
-      if (F14 != other.F14) return false;
-      if (F15 != other.F15) return false;
-      if (F16 != other.F16) return false;
-      if (F7Date != other.F7Date) return false;
-      if (F19 != other.F19) return false;
+      if (WorldTime != other.WorldTime) return false;
+      if (FinishTimeStr != other.FinishTimeStr) return false;
+      if (ElapsedMs != other.ElapsedMs) return false;
+      if (PowerType != other.PowerType) return false;
+      if (WeightInGrams != other.WeightInGrams) return false;
+      if (SrF14 != other.SrF14) return false;
+      if (AvgPower != other.AvgPower) return false;
+      if (IsMale != other.IsMale) return false;
+      if (MagicLeaderboardBirthday != other.MagicLeaderboardBirthday) return false;
+      if (PlayerType != other.PlayerType) return false;
+      if (AvgHr != other.AvgHr) return false;
+      if (Sport != other.Sport) return false;
+      if (ActivityId != other.ActivityId) return false;
+      if (SrF22 != other.SrF22) return false;
+      if (FirstNameL1Copy != other.FirstNameL1Copy) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (F1 != 0L) hash ^= F1.GetHashCode();
-      if (RiderId != 0) hash ^= RiderId.GetHashCode();
-      if (F3 != 0) hash ^= F3.GetHashCode();
-      if (F4 != 0L) hash ^= F4.GetHashCode();
-      if (F5 != 0L) hash ^= F5.GetHashCode();
-      if (F6 != 0L) hash ^= F6.GetHashCode();
-      if (FirstName.Length != 0) hash ^= FirstName.GetHashCode();
+      if (Id != 0L) hash ^= Id.GetHashCode();
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
+      if (ServerRealm != 0L) hash ^= ServerRealm.GetHashCode();
+      if (CourseId != 0L) hash ^= CourseId.GetHashCode();
+      if (SegmentId != 0L) hash ^= SegmentId.GetHashCode();
+      if (EventSubgroupId != 0L) hash ^= EventSubgroupId.GetHashCode();
+      if (FirstNameL1.Length != 0) hash ^= FirstNameL1.GetHashCode();
       if (LastName.Length != 0) hash ^= LastName.GetHashCode();
-      if (F9 != 0L) hash ^= F9.GetHashCode();
-      if (F11 != 0L) hash ^= F11.GetHashCode();
-      if (F12 != 0) hash ^= F12.GetHashCode();
-      if (F13 != 0) hash ^= F13.GetHashCode();
-      if (F14 != 0) hash ^= F14.GetHashCode();
-      if (F15 != 0) hash ^= F15.GetHashCode();
-      if (F16 != 0) hash ^= F16.GetHashCode();
-      if (F7Date.Length != 0) hash ^= F7Date.GetHashCode();
-      if (F19 != 0) hash ^= F19.GetHashCode();
+      if (WorldTime != 0UL) hash ^= WorldTime.GetHashCode();
+      if (FinishTimeStr.Length != 0) hash ^= FinishTimeStr.GetHashCode();
+      if (ElapsedMs != 0UL) hash ^= ElapsedMs.GetHashCode();
+      if (PowerType != global::ZwiftPacketMonitor.PowerType.PtVirtual) hash ^= PowerType.GetHashCode();
+      if (WeightInGrams != 0) hash ^= WeightInGrams.GetHashCode();
+      if (SrF14 != 0) hash ^= SrF14.GetHashCode();
+      if (AvgPower != 0) hash ^= AvgPower.GetHashCode();
+      if (IsMale != false) hash ^= IsMale.GetHashCode();
+      if (MagicLeaderboardBirthday.Length != 0) hash ^= MagicLeaderboardBirthday.GetHashCode();
+      if (PlayerType != global::ZwiftPacketMonitor.PlayerType._0) hash ^= PlayerType.GetHashCode();
+      if (AvgHr != 0) hash ^= AvgHr.GetHashCode();
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) hash ^= Sport.GetHashCode();
+      if (ActivityId != 0UL) hash ^= ActivityId.GetHashCode();
+      if (SrF22 != false) hash ^= SrF22.GetHashCode();
+      if (FirstNameL1Copy.Length != 0) hash ^= FirstNameL1Copy.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5045,82 +8205,108 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (F1 != 0L) {
+      if (Id != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt64(F1);
+        output.WriteInt64(Id);
       }
-      if (RiderId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(RiderId);
+        output.WriteInt32(PlayerId);
       }
-      if (F3 != 0) {
+      if (ServerRealm != 0L) {
         output.WriteRawTag(24);
-        output.WriteInt32(F3);
+        output.WriteInt64(ServerRealm);
       }
-      if (F4 != 0L) {
+      if (CourseId != 0L) {
         output.WriteRawTag(32);
-        output.WriteInt64(F4);
+        output.WriteInt64(CourseId);
       }
-      if (F5 != 0L) {
+      if (SegmentId != 0L) {
         output.WriteRawTag(40);
-        output.WriteInt64(F5);
+        output.WriteInt64(SegmentId);
       }
-      if (F6 != 0L) {
+      if (EventSubgroupId != 0L) {
         output.WriteRawTag(48);
-        output.WriteInt64(F6);
+        output.WriteInt64(EventSubgroupId);
       }
-      if (FirstName.Length != 0) {
+      if (FirstNameL1.Length != 0) {
         output.WriteRawTag(58);
-        output.WriteString(FirstName);
+        output.WriteString(FirstNameL1);
       }
       if (LastName.Length != 0) {
         output.WriteRawTag(66);
         output.WriteString(LastName);
       }
-      if (F9 != 0L) {
+      if (WorldTime != 0UL) {
         output.WriteRawTag(72);
-        output.WriteInt64(F9);
+        output.WriteUInt64(WorldTime);
       }
-      if (F11 != 0L) {
+      if (FinishTimeStr.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(FinishTimeStr);
+      }
+      if (ElapsedMs != 0UL) {
         output.WriteRawTag(88);
-        output.WriteInt64(F11);
+        output.WriteUInt64(ElapsedMs);
       }
-      if (F12 != 0) {
+      if (PowerType != global::ZwiftPacketMonitor.PowerType.PtVirtual) {
         output.WriteRawTag(96);
-        output.WriteInt32(F12);
+        output.WriteEnum((int) PowerType);
       }
-      if (F13 != 0) {
+      if (WeightInGrams != 0) {
         output.WriteRawTag(104);
-        output.WriteInt32(F13);
+        output.WriteUInt32(WeightInGrams);
       }
-      if (F14 != 0) {
+      if (SrF14 != 0) {
         output.WriteRawTag(112);
-        output.WriteInt32(F14);
+        output.WriteUInt32(SrF14);
       }
-      if (F15 != 0) {
+      if (AvgPower != 0) {
         output.WriteRawTag(120);
-        output.WriteInt32(F15);
+        output.WriteUInt32(AvgPower);
       }
-      if (F16 != 0) {
+      if (IsMale != false) {
         output.WriteRawTag(128, 1);
-        output.WriteInt32(F16);
+        output.WriteBool(IsMale);
       }
-      if (F7Date.Length != 0) {
+      if (MagicLeaderboardBirthday.Length != 0) {
         output.WriteRawTag(138, 1);
-        output.WriteString(F7Date);
+        output.WriteString(MagicLeaderboardBirthday);
       }
-      if (F19 != 0) {
+      if (PlayerType != global::ZwiftPacketMonitor.PlayerType._0) {
+        output.WriteRawTag(144, 1);
+        output.WriteEnum((int) PlayerType);
+      }
+      if (AvgHr != 0) {
         output.WriteRawTag(152, 1);
-        output.WriteInt32(F19);
+        output.WriteUInt32(AvgHr);
+      }
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        output.WriteRawTag(160, 1);
+        output.WriteEnum((int) Sport);
+      }
+      if (ActivityId != 0UL) {
+        output.WriteRawTag(168, 1);
+        output.WriteUInt64(ActivityId);
+      }
+      if (SrF22 != false) {
+        output.WriteRawTag(176, 1);
+        output.WriteBool(SrF22);
+      }
+      if (FirstNameL1Copy.Length != 0) {
+        output.WriteRawTag(186, 1);
+        output.WriteString(FirstNameL1Copy);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -5130,74 +8316,99 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (F1 != 0L) {
+      if (Id != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt64(F1);
+        output.WriteInt64(Id);
       }
-      if (RiderId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(RiderId);
+        output.WriteInt32(PlayerId);
       }
-      if (F3 != 0) {
+      if (ServerRealm != 0L) {
         output.WriteRawTag(24);
-        output.WriteInt32(F3);
+        output.WriteInt64(ServerRealm);
       }
-      if (F4 != 0L) {
+      if (CourseId != 0L) {
         output.WriteRawTag(32);
-        output.WriteInt64(F4);
+        output.WriteInt64(CourseId);
       }
-      if (F5 != 0L) {
+      if (SegmentId != 0L) {
         output.WriteRawTag(40);
-        output.WriteInt64(F5);
+        output.WriteInt64(SegmentId);
       }
-      if (F6 != 0L) {
+      if (EventSubgroupId != 0L) {
         output.WriteRawTag(48);
-        output.WriteInt64(F6);
+        output.WriteInt64(EventSubgroupId);
       }
-      if (FirstName.Length != 0) {
+      if (FirstNameL1.Length != 0) {
         output.WriteRawTag(58);
-        output.WriteString(FirstName);
+        output.WriteString(FirstNameL1);
       }
       if (LastName.Length != 0) {
         output.WriteRawTag(66);
         output.WriteString(LastName);
       }
-      if (F9 != 0L) {
+      if (WorldTime != 0UL) {
         output.WriteRawTag(72);
-        output.WriteInt64(F9);
+        output.WriteUInt64(WorldTime);
       }
-      if (F11 != 0L) {
+      if (FinishTimeStr.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(FinishTimeStr);
+      }
+      if (ElapsedMs != 0UL) {
         output.WriteRawTag(88);
-        output.WriteInt64(F11);
+        output.WriteUInt64(ElapsedMs);
       }
-      if (F12 != 0) {
+      if (PowerType != global::ZwiftPacketMonitor.PowerType.PtVirtual) {
         output.WriteRawTag(96);
-        output.WriteInt32(F12);
+        output.WriteEnum((int) PowerType);
       }
-      if (F13 != 0) {
+      if (WeightInGrams != 0) {
         output.WriteRawTag(104);
-        output.WriteInt32(F13);
+        output.WriteUInt32(WeightInGrams);
       }
-      if (F14 != 0) {
+      if (SrF14 != 0) {
         output.WriteRawTag(112);
-        output.WriteInt32(F14);
+        output.WriteUInt32(SrF14);
       }
-      if (F15 != 0) {
+      if (AvgPower != 0) {
         output.WriteRawTag(120);
-        output.WriteInt32(F15);
+        output.WriteUInt32(AvgPower);
       }
-      if (F16 != 0) {
+      if (IsMale != false) {
         output.WriteRawTag(128, 1);
-        output.WriteInt32(F16);
+        output.WriteBool(IsMale);
       }
-      if (F7Date.Length != 0) {
+      if (MagicLeaderboardBirthday.Length != 0) {
         output.WriteRawTag(138, 1);
-        output.WriteString(F7Date);
+        output.WriteString(MagicLeaderboardBirthday);
       }
-      if (F19 != 0) {
+      if (PlayerType != global::ZwiftPacketMonitor.PlayerType._0) {
+        output.WriteRawTag(144, 1);
+        output.WriteEnum((int) PlayerType);
+      }
+      if (AvgHr != 0) {
         output.WriteRawTag(152, 1);
-        output.WriteInt32(F19);
+        output.WriteUInt32(AvgHr);
+      }
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        output.WriteRawTag(160, 1);
+        output.WriteEnum((int) Sport);
+      }
+      if (ActivityId != 0UL) {
+        output.WriteRawTag(168, 1);
+        output.WriteUInt64(ActivityId);
+      }
+      if (SrF22 != false) {
+        output.WriteRawTag(176, 1);
+        output.WriteBool(SrF22);
+      }
+      if (FirstNameL1Copy.Length != 0) {
+        output.WriteRawTag(186, 1);
+        output.WriteString(FirstNameL1Copy);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -5206,58 +8417,77 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (F1 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F1);
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
       }
-      if (RiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
-      if (F3 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F3);
+      if (ServerRealm != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ServerRealm);
       }
-      if (F4 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F4);
+      if (CourseId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(CourseId);
       }
-      if (F5 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F5);
+      if (SegmentId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(SegmentId);
       }
-      if (F6 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F6);
+      if (EventSubgroupId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EventSubgroupId);
       }
-      if (FirstName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(FirstName);
+      if (FirstNameL1.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FirstNameL1);
       }
       if (LastName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(LastName);
       }
-      if (F9 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F9);
+      if (WorldTime != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(WorldTime);
       }
-      if (F11 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F11);
+      if (FinishTimeStr.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FinishTimeStr);
       }
-      if (F12 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F12);
+      if (ElapsedMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ElapsedMs);
       }
-      if (F13 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F13);
+      if (PowerType != global::ZwiftPacketMonitor.PowerType.PtVirtual) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PowerType);
       }
-      if (F14 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F14);
+      if (WeightInGrams != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WeightInGrams);
       }
-      if (F15 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F15);
+      if (SrF14 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SrF14);
       }
-      if (F16 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F16);
+      if (AvgPower != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvgPower);
       }
-      if (F7Date.Length != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(F7Date);
+      if (IsMale != false) {
+        size += 2 + 1;
       }
-      if (F19 != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(F19);
+      if (MagicLeaderboardBirthday.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(MagicLeaderboardBirthday);
+      }
+      if (PlayerType != global::ZwiftPacketMonitor.PlayerType._0) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) PlayerType);
+      }
+      if (AvgHr != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(AvgHr);
+      }
+      if (Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) Sport);
+      }
+      if (ActivityId != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(ActivityId);
+      }
+      if (SrF22 != false) {
+        size += 2 + 1;
+      }
+      if (FirstNameL1Copy.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(FirstNameL1Copy);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5266,65 +8496,85 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Payload105 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(SegmentResult other) {
       if (other == null) {
         return;
       }
-      if (other.F1 != 0L) {
-        F1 = other.F1;
+      if (other.Id != 0L) {
+        Id = other.Id;
       }
-      if (other.RiderId != 0) {
-        RiderId = other.RiderId;
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
-      if (other.F3 != 0) {
-        F3 = other.F3;
+      if (other.ServerRealm != 0L) {
+        ServerRealm = other.ServerRealm;
       }
-      if (other.F4 != 0L) {
-        F4 = other.F4;
+      if (other.CourseId != 0L) {
+        CourseId = other.CourseId;
       }
-      if (other.F5 != 0L) {
-        F5 = other.F5;
+      if (other.SegmentId != 0L) {
+        SegmentId = other.SegmentId;
       }
-      if (other.F6 != 0L) {
-        F6 = other.F6;
+      if (other.EventSubgroupId != 0L) {
+        EventSubgroupId = other.EventSubgroupId;
       }
-      if (other.FirstName.Length != 0) {
-        FirstName = other.FirstName;
+      if (other.FirstNameL1.Length != 0) {
+        FirstNameL1 = other.FirstNameL1;
       }
       if (other.LastName.Length != 0) {
         LastName = other.LastName;
       }
-      if (other.F9 != 0L) {
-        F9 = other.F9;
+      if (other.WorldTime != 0UL) {
+        WorldTime = other.WorldTime;
       }
-      if (other.F11 != 0L) {
-        F11 = other.F11;
+      if (other.FinishTimeStr.Length != 0) {
+        FinishTimeStr = other.FinishTimeStr;
       }
-      if (other.F12 != 0) {
-        F12 = other.F12;
+      if (other.ElapsedMs != 0UL) {
+        ElapsedMs = other.ElapsedMs;
       }
-      if (other.F13 != 0) {
-        F13 = other.F13;
+      if (other.PowerType != global::ZwiftPacketMonitor.PowerType.PtVirtual) {
+        PowerType = other.PowerType;
       }
-      if (other.F14 != 0) {
-        F14 = other.F14;
+      if (other.WeightInGrams != 0) {
+        WeightInGrams = other.WeightInGrams;
       }
-      if (other.F15 != 0) {
-        F15 = other.F15;
+      if (other.SrF14 != 0) {
+        SrF14 = other.SrF14;
       }
-      if (other.F16 != 0) {
-        F16 = other.F16;
+      if (other.AvgPower != 0) {
+        AvgPower = other.AvgPower;
       }
-      if (other.F7Date.Length != 0) {
-        F7Date = other.F7Date;
+      if (other.IsMale != false) {
+        IsMale = other.IsMale;
       }
-      if (other.F19 != 0) {
-        F19 = other.F19;
+      if (other.MagicLeaderboardBirthday.Length != 0) {
+        MagicLeaderboardBirthday = other.MagicLeaderboardBirthday;
+      }
+      if (other.PlayerType != global::ZwiftPacketMonitor.PlayerType._0) {
+        PlayerType = other.PlayerType;
+      }
+      if (other.AvgHr != 0) {
+        AvgHr = other.AvgHr;
+      }
+      if (other.Sport != global::ZwiftPacketMonitor.Sport.Cycling) {
+        Sport = other.Sport;
+      }
+      if (other.ActivityId != 0UL) {
+        ActivityId = other.ActivityId;
+      }
+      if (other.SrF22 != false) {
+        SrF22 = other.SrF22;
+      }
+      if (other.FirstNameL1Copy.Length != 0) {
+        FirstNameL1Copy = other.FirstNameL1Copy;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -5336,31 +8586,31 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            F1 = input.ReadInt64();
+            Id = input.ReadInt64();
             break;
           }
           case 16: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 24: {
-            F3 = input.ReadInt32();
+            ServerRealm = input.ReadInt64();
             break;
           }
           case 32: {
-            F4 = input.ReadInt64();
+            CourseId = input.ReadInt64();
             break;
           }
           case 40: {
-            F5 = input.ReadInt64();
+            SegmentId = input.ReadInt64();
             break;
           }
           case 48: {
-            F6 = input.ReadInt64();
+            EventSubgroupId = input.ReadInt64();
             break;
           }
           case 58: {
-            FirstName = input.ReadString();
+            FirstNameL1 = input.ReadString();
             break;
           }
           case 66: {
@@ -5368,39 +8618,63 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 72: {
-            F9 = input.ReadInt64();
+            WorldTime = input.ReadUInt64();
+            break;
+          }
+          case 82: {
+            FinishTimeStr = input.ReadString();
             break;
           }
           case 88: {
-            F11 = input.ReadInt64();
+            ElapsedMs = input.ReadUInt64();
             break;
           }
           case 96: {
-            F12 = input.ReadInt32();
+            PowerType = (global::ZwiftPacketMonitor.PowerType) input.ReadEnum();
             break;
           }
           case 104: {
-            F13 = input.ReadInt32();
+            WeightInGrams = input.ReadUInt32();
             break;
           }
           case 112: {
-            F14 = input.ReadInt32();
+            SrF14 = input.ReadUInt32();
             break;
           }
           case 120: {
-            F15 = input.ReadInt32();
+            AvgPower = input.ReadUInt32();
             break;
           }
           case 128: {
-            F16 = input.ReadInt32();
+            IsMale = input.ReadBool();
             break;
           }
           case 138: {
-            F7Date = input.ReadString();
+            MagicLeaderboardBirthday = input.ReadString();
+            break;
+          }
+          case 144: {
+            PlayerType = (global::ZwiftPacketMonitor.PlayerType) input.ReadEnum();
             break;
           }
           case 152: {
-            F19 = input.ReadInt32();
+            AvgHr = input.ReadUInt32();
+            break;
+          }
+          case 160: {
+            Sport = (global::ZwiftPacketMonitor.Sport) input.ReadEnum();
+            break;
+          }
+          case 168: {
+            ActivityId = input.ReadUInt64();
+            break;
+          }
+          case 176: {
+            SrF22 = input.ReadBool();
+            break;
+          }
+          case 186: {
+            FirstNameL1Copy = input.ReadString();
             break;
           }
         }
@@ -5410,6 +8684,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -5418,31 +8693,31 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            F1 = input.ReadInt64();
+            Id = input.ReadInt64();
             break;
           }
           case 16: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 24: {
-            F3 = input.ReadInt32();
+            ServerRealm = input.ReadInt64();
             break;
           }
           case 32: {
-            F4 = input.ReadInt64();
+            CourseId = input.ReadInt64();
             break;
           }
           case 40: {
-            F5 = input.ReadInt64();
+            SegmentId = input.ReadInt64();
             break;
           }
           case 48: {
-            F6 = input.ReadInt64();
+            EventSubgroupId = input.ReadInt64();
             break;
           }
           case 58: {
-            FirstName = input.ReadString();
+            FirstNameL1 = input.ReadString();
             break;
           }
           case 66: {
@@ -5450,39 +8725,63 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 72: {
-            F9 = input.ReadInt64();
+            WorldTime = input.ReadUInt64();
+            break;
+          }
+          case 82: {
+            FinishTimeStr = input.ReadString();
             break;
           }
           case 88: {
-            F11 = input.ReadInt64();
+            ElapsedMs = input.ReadUInt64();
             break;
           }
           case 96: {
-            F12 = input.ReadInt32();
+            PowerType = (global::ZwiftPacketMonitor.PowerType) input.ReadEnum();
             break;
           }
           case 104: {
-            F13 = input.ReadInt32();
+            WeightInGrams = input.ReadUInt32();
             break;
           }
           case 112: {
-            F14 = input.ReadInt32();
+            SrF14 = input.ReadUInt32();
             break;
           }
           case 120: {
-            F15 = input.ReadInt32();
+            AvgPower = input.ReadUInt32();
             break;
           }
           case 128: {
-            F16 = input.ReadInt32();
+            IsMale = input.ReadBool();
             break;
           }
           case 138: {
-            F7Date = input.ReadString();
+            MagicLeaderboardBirthday = input.ReadString();
+            break;
+          }
+          case 144: {
+            PlayerType = (global::ZwiftPacketMonitor.PlayerType) input.ReadEnum();
             break;
           }
           case 152: {
-            F19 = input.ReadInt32();
+            AvgHr = input.ReadUInt32();
+            break;
+          }
+          case 160: {
+            Sport = (global::ZwiftPacketMonitor.Sport) input.ReadEnum();
+            break;
+          }
+          case 168: {
+            ActivityId = input.ReadUInt64();
+            break;
+          }
+          case 176: {
+            SrF22 = input.ReadBool();
+            break;
+          }
+          case 186: {
+            FirstNameL1Copy = input.ReadString();
             break;
           }
         }
@@ -5492,88 +8791,99 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class Chat : pb::IMessage<Chat>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class SocialPlayerAction : pb::IMessage<SocialPlayerAction>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Chat> _parser = new pb::MessageParser<Chat>(() => new Chat());
+    private static readonly pb::MessageParser<SocialPlayerAction> _parser = new pb::MessageParser<SocialPlayerAction>(() => new SocialPlayerAction());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Chat> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<SocialPlayerAction> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[7]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Chat() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SocialPlayerAction() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Chat(Chat other) : this() {
-      riderId_ = other.riderId_;
-      toRiderId_ = other.toRiderId_;
-      f3_ = other.f3_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SocialPlayerAction(SocialPlayerAction other) : this() {
+      playerId_ = other.playerId_;
+      toPlayerId_ = other.toPlayerId_;
+      spaType_ = other.spaType_;
       firstName_ = other.firstName_;
       lastName_ = other.lastName_;
       message_ = other.message_;
       avatar_ = other.avatar_;
       countryCode_ = other.countryCode_;
+      flagType_ = other.flagType_;
+      mgType_ = other.mgType_;
       eventSubgroup_ = other.eventSubgroup_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Chat Clone() {
-      return new Chat(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SocialPlayerAction Clone() {
+      return new SocialPlayerAction(this);
     }
 
-    /// <summary>Field number for the "rider_id" field.</summary>
-    public const int RiderIdFieldNumber = 1;
-    private int riderId_;
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int RiderId {
-      get { return riderId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayerId {
+      get { return playerId_; }
       set {
-        riderId_ = value;
+        playerId_ = value;
       }
     }
 
-    /// <summary>Field number for the "to_rider_id" field.</summary>
-    public const int ToRiderIdFieldNumber = 2;
-    private int toRiderId_;
+    /// <summary>Field number for the "to_player_id" field.</summary>
+    public const int ToPlayerIdFieldNumber = 2;
+    private int toPlayerId_;
     /// <summary>
     /// 0 if public message
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ToRiderId {
-      get { return toRiderId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ToPlayerId {
+      get { return toPlayerId_; }
       set {
-        toRiderId_ = value;
+        toPlayerId_ = value;
       }
     }
 
-    /// <summary>Field number for the "f3" field.</summary>
-    public const int F3FieldNumber = 3;
-    private int f3_;
-    /// <summary>
-    /// always value 1 ?
-    /// </summary>
+    /// <summary>Field number for the "spa_type" field.</summary>
+    public const int SpaTypeFieldNumber = 3;
+    private global::ZwiftPacketMonitor.SocialPlayerActionType spaType_ = global::ZwiftPacketMonitor.SocialPlayerActionType.SocialActionUnknownType;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F3 {
-      get { return f3_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.SocialPlayerActionType SpaType {
+      get { return spaType_; }
       set {
-        f3_ = value;
+        spaType_ = value;
       }
     }
 
@@ -5581,6 +8891,7 @@ namespace ZwiftPacketMonitor {
     public const int FirstNameFieldNumber = 4;
     private string firstName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string FirstName {
       get { return firstName_; }
       set {
@@ -5592,6 +8903,7 @@ namespace ZwiftPacketMonitor {
     public const int LastNameFieldNumber = 5;
     private string lastName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LastName {
       get { return lastName_; }
       set {
@@ -5603,6 +8915,7 @@ namespace ZwiftPacketMonitor {
     public const int MessageFieldNumber = 6;
     private string message_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Message {
       get { return message_; }
       set {
@@ -5614,6 +8927,7 @@ namespace ZwiftPacketMonitor {
     public const int AvatarFieldNumber = 7;
     private string avatar_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Avatar {
       get { return avatar_; }
       set {
@@ -5625,6 +8939,7 @@ namespace ZwiftPacketMonitor {
     public const int CountryCodeFieldNumber = 8;
     private int countryCode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CountryCode {
       get { return countryCode_; }
       set {
@@ -5632,11 +8947,36 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "flagType" field.</summary>
+    public const int FlagTypeFieldNumber = 9;
+    private global::ZwiftPacketMonitor.FlagType flagType_ = global::ZwiftPacketMonitor.FlagType.Unknown;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.FlagType FlagType {
+      get { return flagType_; }
+      set {
+        flagType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "mgType" field.</summary>
+    public const int MgTypeFieldNumber = 10;
+    private global::ZwiftPacketMonitor.MessageGroupType mgType_ = global::ZwiftPacketMonitor.MessageGroupType.MgtUnknown;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.MessageGroupType MgType {
+      get { return mgType_; }
+      set {
+        mgType_ = value;
+      }
+    }
+
     /// <summary>Field number for the "eventSubgroup" field.</summary>
     public const int EventSubgroupFieldNumber = 11;
-    private int eventSubgroup_;
+    private long eventSubgroup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int EventSubgroup {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EventSubgroup {
       get { return eventSubgroup_; }
       set {
         eventSubgroup_ = value;
@@ -5644,42 +8984,49 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Chat);
+      return Equals(other as SocialPlayerAction);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Chat other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(SocialPlayerAction other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (RiderId != other.RiderId) return false;
-      if (ToRiderId != other.ToRiderId) return false;
-      if (F3 != other.F3) return false;
+      if (PlayerId != other.PlayerId) return false;
+      if (ToPlayerId != other.ToPlayerId) return false;
+      if (SpaType != other.SpaType) return false;
       if (FirstName != other.FirstName) return false;
       if (LastName != other.LastName) return false;
       if (Message != other.Message) return false;
       if (Avatar != other.Avatar) return false;
       if (CountryCode != other.CountryCode) return false;
+      if (FlagType != other.FlagType) return false;
+      if (MgType != other.MgType) return false;
       if (EventSubgroup != other.EventSubgroup) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (RiderId != 0) hash ^= RiderId.GetHashCode();
-      if (ToRiderId != 0) hash ^= ToRiderId.GetHashCode();
-      if (F3 != 0) hash ^= F3.GetHashCode();
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
+      if (ToPlayerId != 0) hash ^= ToPlayerId.GetHashCode();
+      if (SpaType != global::ZwiftPacketMonitor.SocialPlayerActionType.SocialActionUnknownType) hash ^= SpaType.GetHashCode();
       if (FirstName.Length != 0) hash ^= FirstName.GetHashCode();
       if (LastName.Length != 0) hash ^= LastName.GetHashCode();
       if (Message.Length != 0) hash ^= Message.GetHashCode();
       if (Avatar.Length != 0) hash ^= Avatar.GetHashCode();
       if (CountryCode != 0) hash ^= CountryCode.GetHashCode();
-      if (EventSubgroup != 0) hash ^= EventSubgroup.GetHashCode();
+      if (FlagType != global::ZwiftPacketMonitor.FlagType.Unknown) hash ^= FlagType.GetHashCode();
+      if (MgType != global::ZwiftPacketMonitor.MessageGroupType.MgtUnknown) hash ^= MgType.GetHashCode();
+      if (EventSubgroup != 0L) hash ^= EventSubgroup.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5687,26 +9034,28 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RiderId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(RiderId);
+        output.WriteInt32(PlayerId);
       }
-      if (ToRiderId != 0) {
+      if (ToPlayerId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(ToRiderId);
+        output.WriteInt32(ToPlayerId);
       }
-      if (F3 != 0) {
+      if (SpaType != global::ZwiftPacketMonitor.SocialPlayerActionType.SocialActionUnknownType) {
         output.WriteRawTag(24);
-        output.WriteInt32(F3);
+        output.WriteEnum((int) SpaType);
       }
       if (FirstName.Length != 0) {
         output.WriteRawTag(34);
@@ -5728,9 +9077,17 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(64);
         output.WriteInt32(CountryCode);
       }
-      if (EventSubgroup != 0) {
+      if (FlagType != global::ZwiftPacketMonitor.FlagType.Unknown) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) FlagType);
+      }
+      if (MgType != global::ZwiftPacketMonitor.MessageGroupType.MgtUnknown) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) MgType);
+      }
+      if (EventSubgroup != 0L) {
         output.WriteRawTag(88);
-        output.WriteInt32(EventSubgroup);
+        output.WriteInt64(EventSubgroup);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -5740,18 +9097,19 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RiderId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(RiderId);
+        output.WriteInt32(PlayerId);
       }
-      if (ToRiderId != 0) {
+      if (ToPlayerId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(ToRiderId);
+        output.WriteInt32(ToPlayerId);
       }
-      if (F3 != 0) {
+      if (SpaType != global::ZwiftPacketMonitor.SocialPlayerActionType.SocialActionUnknownType) {
         output.WriteRawTag(24);
-        output.WriteInt32(F3);
+        output.WriteEnum((int) SpaType);
       }
       if (FirstName.Length != 0) {
         output.WriteRawTag(34);
@@ -5773,9 +9131,17 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(64);
         output.WriteInt32(CountryCode);
       }
-      if (EventSubgroup != 0) {
+      if (FlagType != global::ZwiftPacketMonitor.FlagType.Unknown) {
+        output.WriteRawTag(72);
+        output.WriteEnum((int) FlagType);
+      }
+      if (MgType != global::ZwiftPacketMonitor.MessageGroupType.MgtUnknown) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) MgType);
+      }
+      if (EventSubgroup != 0L) {
         output.WriteRawTag(88);
-        output.WriteInt32(EventSubgroup);
+        output.WriteInt64(EventSubgroup);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -5784,16 +9150,17 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (RiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
-      if (ToRiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ToRiderId);
+      if (ToPlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ToPlayerId);
       }
-      if (F3 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F3);
+      if (SpaType != global::ZwiftPacketMonitor.SocialPlayerActionType.SocialActionUnknownType) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SpaType);
       }
       if (FirstName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FirstName);
@@ -5810,8 +9177,14 @@ namespace ZwiftPacketMonitor {
       if (CountryCode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(CountryCode);
       }
-      if (EventSubgroup != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(EventSubgroup);
+      if (FlagType != global::ZwiftPacketMonitor.FlagType.Unknown) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) FlagType);
+      }
+      if (MgType != global::ZwiftPacketMonitor.MessageGroupType.MgtUnknown) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MgType);
+      }
+      if (EventSubgroup != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EventSubgroup);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5820,18 +9193,19 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Chat other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(SocialPlayerAction other) {
       if (other == null) {
         return;
       }
-      if (other.RiderId != 0) {
-        RiderId = other.RiderId;
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
-      if (other.ToRiderId != 0) {
-        ToRiderId = other.ToRiderId;
+      if (other.ToPlayerId != 0) {
+        ToPlayerId = other.ToPlayerId;
       }
-      if (other.F3 != 0) {
-        F3 = other.F3;
+      if (other.SpaType != global::ZwiftPacketMonitor.SocialPlayerActionType.SocialActionUnknownType) {
+        SpaType = other.SpaType;
       }
       if (other.FirstName.Length != 0) {
         FirstName = other.FirstName;
@@ -5848,13 +9222,20 @@ namespace ZwiftPacketMonitor {
       if (other.CountryCode != 0) {
         CountryCode = other.CountryCode;
       }
-      if (other.EventSubgroup != 0) {
+      if (other.FlagType != global::ZwiftPacketMonitor.FlagType.Unknown) {
+        FlagType = other.FlagType;
+      }
+      if (other.MgType != global::ZwiftPacketMonitor.MessageGroupType.MgtUnknown) {
+        MgType = other.MgType;
+      }
+      if (other.EventSubgroup != 0L) {
         EventSubgroup = other.EventSubgroup;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -5866,15 +9247,15 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 16: {
-            ToRiderId = input.ReadInt32();
+            ToPlayerId = input.ReadInt32();
             break;
           }
           case 24: {
-            F3 = input.ReadInt32();
+            SpaType = (global::ZwiftPacketMonitor.SocialPlayerActionType) input.ReadEnum();
             break;
           }
           case 34: {
@@ -5897,8 +9278,16 @@ namespace ZwiftPacketMonitor {
             CountryCode = input.ReadInt32();
             break;
           }
+          case 72: {
+            FlagType = (global::ZwiftPacketMonitor.FlagType) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            MgType = (global::ZwiftPacketMonitor.MessageGroupType) input.ReadEnum();
+            break;
+          }
           case 88: {
-            EventSubgroup = input.ReadInt32();
+            EventSubgroup = input.ReadInt64();
             break;
           }
         }
@@ -5908,6 +9297,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -5916,15 +9306,15 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 16: {
-            ToRiderId = input.ReadInt32();
+            ToPlayerId = input.ReadInt32();
             break;
           }
           case 24: {
-            F3 = input.ReadInt32();
+            SpaType = (global::ZwiftPacketMonitor.SocialPlayerActionType) input.ReadEnum();
             break;
           }
           case 34: {
@@ -5947,8 +9337,16 @@ namespace ZwiftPacketMonitor {
             CountryCode = input.ReadInt32();
             break;
           }
+          case 72: {
+            FlagType = (global::ZwiftPacketMonitor.FlagType) input.ReadEnum();
+            break;
+          }
+          case 80: {
+            MgType = (global::ZwiftPacketMonitor.MessageGroupType) input.ReadEnum();
+            break;
+          }
           case 88: {
-            EventSubgroup = input.ReadInt32();
+            EventSubgroup = input.ReadInt64();
             break;
           }
         }
@@ -5958,6 +9356,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
   public sealed partial class RideOn : pb::IMessage<RideOn>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -5966,19 +9367,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<RideOn> _parser = new pb::MessageParser<RideOn>(() => new RideOn());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<RideOn> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[8]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RideOn() {
       OnConstruction();
     }
@@ -5986,9 +9391,10 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RideOn(RideOn other) : this() {
-      riderId_ = other.riderId_;
-      toRiderId_ = other.toRiderId_;
+      playerId_ = other.playerId_;
+      toPlayerId_ = other.toPlayerId_;
       firstName_ = other.firstName_;
       lastName_ = other.lastName_;
       countryCode_ = other.countryCode_;
@@ -5996,29 +9402,32 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RideOn Clone() {
       return new RideOn(this);
     }
 
-    /// <summary>Field number for the "rider_id" field.</summary>
-    public const int RiderIdFieldNumber = 1;
-    private int riderId_;
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private int playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int RiderId {
-      get { return riderId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayerId {
+      get { return playerId_; }
       set {
-        riderId_ = value;
+        playerId_ = value;
       }
     }
 
-    /// <summary>Field number for the "to_rider_id" field.</summary>
-    public const int ToRiderIdFieldNumber = 2;
-    private int toRiderId_;
+    /// <summary>Field number for the "to_player_id" field.</summary>
+    public const int ToPlayerIdFieldNumber = 2;
+    private int toPlayerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ToRiderId {
-      get { return toRiderId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ToPlayerId {
+      get { return toPlayerId_; }
       set {
-        toRiderId_ = value;
+        toPlayerId_ = value;
       }
     }
 
@@ -6026,6 +9435,7 @@ namespace ZwiftPacketMonitor {
     public const int FirstNameFieldNumber = 3;
     private string firstName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string FirstName {
       get { return firstName_; }
       set {
@@ -6037,6 +9447,7 @@ namespace ZwiftPacketMonitor {
     public const int LastNameFieldNumber = 4;
     private string lastName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string LastName {
       get { return lastName_; }
       set {
@@ -6048,6 +9459,7 @@ namespace ZwiftPacketMonitor {
     public const int CountryCodeFieldNumber = 5;
     private int countryCode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CountryCode {
       get { return countryCode_; }
       set {
@@ -6056,11 +9468,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as RideOn);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(RideOn other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -6068,8 +9482,8 @@ namespace ZwiftPacketMonitor {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (RiderId != other.RiderId) return false;
-      if (ToRiderId != other.ToRiderId) return false;
+      if (PlayerId != other.PlayerId) return false;
+      if (ToPlayerId != other.ToPlayerId) return false;
       if (FirstName != other.FirstName) return false;
       if (LastName != other.LastName) return false;
       if (CountryCode != other.CountryCode) return false;
@@ -6077,10 +9491,11 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (RiderId != 0) hash ^= RiderId.GetHashCode();
-      if (ToRiderId != 0) hash ^= ToRiderId.GetHashCode();
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
+      if (ToPlayerId != 0) hash ^= ToPlayerId.GetHashCode();
       if (FirstName.Length != 0) hash ^= FirstName.GetHashCode();
       if (LastName.Length != 0) hash ^= LastName.GetHashCode();
       if (CountryCode != 0) hash ^= CountryCode.GetHashCode();
@@ -6091,22 +9506,24 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RiderId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(RiderId);
+        output.WriteInt32(PlayerId);
       }
-      if (ToRiderId != 0) {
+      if (ToPlayerId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(ToRiderId);
+        output.WriteInt32(ToPlayerId);
       }
       if (FirstName.Length != 0) {
         output.WriteRawTag(26);
@@ -6128,14 +9545,15 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RiderId != 0) {
+      if (PlayerId != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(RiderId);
+        output.WriteInt32(PlayerId);
       }
-      if (ToRiderId != 0) {
+      if (ToPlayerId != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(ToRiderId);
+        output.WriteInt32(ToPlayerId);
       }
       if (FirstName.Length != 0) {
         output.WriteRawTag(26);
@@ -6156,13 +9574,14 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (RiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
       }
-      if (ToRiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ToRiderId);
+      if (ToPlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ToPlayerId);
       }
       if (FirstName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FirstName);
@@ -6180,15 +9599,16 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(RideOn other) {
       if (other == null) {
         return;
       }
-      if (other.RiderId != 0) {
-        RiderId = other.RiderId;
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
       }
-      if (other.ToRiderId != 0) {
-        ToRiderId = other.ToRiderId;
+      if (other.ToPlayerId != 0) {
+        ToPlayerId = other.ToPlayerId;
       }
       if (other.FirstName.Length != 0) {
         FirstName = other.FirstName;
@@ -6203,6 +9623,7 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -6214,11 +9635,11 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 16: {
-            ToRiderId = input.ReadInt32();
+            ToPlayerId = input.ReadInt32();
             break;
           }
           case 26: {
@@ -6240,6 +9661,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -6248,11 +9670,11 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt32();
             break;
           }
           case 16: {
-            ToRiderId = input.ReadInt32();
+            ToPlayerId = input.ReadInt32();
             break;
           }
           case 26: {
@@ -6274,269 +9696,77 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class Payload2 : pb::IMessage<Payload2>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class PlayerLeftWorld : pb::IMessage<PlayerLeftWorld>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Payload2> _parser = new pb::MessageParser<Payload2>(() => new Payload2());
+    private static readonly pb::MessageParser<PlayerLeftWorld> _parser = new pb::MessageParser<PlayerLeftWorld>(() => new PlayerLeftWorld());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Payload2> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PlayerLeftWorld> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[9]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload2() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerLeftWorld() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload2(Payload2 other) : this() {
-      f1_ = other.f1_;
-      f2_ = other.f2_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload2 Clone() {
-      return new Payload2(this);
-    }
-
-    /// <summary>Field number for the "f1" field.</summary>
-    public const int F1FieldNumber = 1;
-    private int f1_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F1 {
-      get { return f1_; }
-      set {
-        f1_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f2" field.</summary>
-    public const int F2FieldNumber = 2;
-    private long f2_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long F2 {
-      get { return f2_; }
-      set {
-        f2_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Payload2);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Payload2 other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (F1 != other.F1) return false;
-      if (F2 != other.F2) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (F1 != 0) hash ^= F1.GetHashCode();
-      if (F2 != 0L) hash ^= F2.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (F1 != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(F1);
-      }
-      if (F2 != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(F2);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (F1 != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(F1);
-      }
-      if (F2 != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(F2);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (F1 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F1);
-      }
-      if (F2 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(F2);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Payload2 other) {
-      if (other == null) {
-        return;
-      }
-      if (other.F1 != 0) {
-        F1 = other.F1;
-      }
-      if (other.F2 != 0L) {
-        F2 = other.F2;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            F1 = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            F2 = input.ReadInt64();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 8: {
-            F1 = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            F2 = input.ReadInt64();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  public sealed partial class TimeSync : pb::IMessage<TimeSync>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<TimeSync> _parser = new pb::MessageParser<TimeSync>(() => new TimeSync());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<TimeSync> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[10]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TimeSync() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TimeSync(TimeSync other) : this() {
-      riderId_ = other.riderId_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerLeftWorld(PlayerLeftWorld other) : this() {
+      playerId_ = other.playerId_;
       worldTime_ = other.worldTime_;
-      f3_ = other.f3_;
+      anotherLogin_ = other.anotherLogin_;
+      plwF4_ = other.plwF4_;
+      plwF5_ = other.plwF5_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TimeSync Clone() {
-      return new TimeSync(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerLeftWorld Clone() {
+      return new PlayerLeftWorld(this);
     }
 
-    /// <summary>Field number for the "rider_id" field.</summary>
-    public const int RiderIdFieldNumber = 1;
-    private int riderId_;
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private long playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int RiderId {
-      get { return riderId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long PlayerId {
+      get { return playerId_; }
       set {
-        riderId_ = value;
+        playerId_ = value;
       }
     }
 
     /// <summary>Field number for the "world_time" field.</summary>
     public const int WorldTimeFieldNumber = 2;
     private long worldTime_;
+    /// <summary>
+    /// not sure
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -6544,42 +9774,76 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "f3" field.</summary>
-    public const int F3FieldNumber = 3;
-    private int f3_;
+    /// <summary>Field number for the "anotherLogin" field.</summary>
+    public const int AnotherLoginFieldNumber = 3;
+    private bool anotherLogin_;
+    /// <summary>
+    /// user profile logged in twice -> one of them should be logged out
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F3 {
-      get { return f3_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool AnotherLogin {
+      get { return anotherLogin_; }
       set {
-        f3_ = value;
+        anotherLogin_ = value;
       }
     }
 
+    /// <summary>Field number for the "plw_f4" field.</summary>
+    public const int PlwF4FieldNumber = 4;
+    private bool plwF4_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as TimeSync);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool PlwF4 {
+      get { return plwF4_; }
+      set {
+        plwF4_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plw_f5" field.</summary>
+    public const int PlwF5FieldNumber = 5;
+    private static readonly pb::FieldCodec<long> _repeated_plwF5_codec
+        = pb::FieldCodec.ForSInt64(42);
+    private readonly pbc::RepeatedField<long> plwF5_ = new pbc::RepeatedField<long>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<long> PlwF5 {
+      get { return plwF5_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(TimeSync other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PlayerLeftWorld);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PlayerLeftWorld other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (RiderId != other.RiderId) return false;
+      if (PlayerId != other.PlayerId) return false;
       if (WorldTime != other.WorldTime) return false;
-      if (F3 != other.F3) return false;
+      if (AnotherLogin != other.AnotherLogin) return false;
+      if (PlwF4 != other.PlwF4) return false;
+      if(!plwF5_.Equals(other.plwF5_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (RiderId != 0) hash ^= RiderId.GetHashCode();
+      if (PlayerId != 0L) hash ^= PlayerId.GetHashCode();
       if (WorldTime != 0L) hash ^= WorldTime.GetHashCode();
-      if (F3 != 0) hash ^= F3.GetHashCode();
+      if (AnotherLogin != false) hash ^= AnotherLogin.GetHashCode();
+      if (PlwF4 != false) hash ^= PlwF4.GetHashCode();
+      hash ^= plwF5_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6587,27 +9851,34 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RiderId != 0) {
+      if (PlayerId != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt32(RiderId);
+        output.WriteInt64(PlayerId);
       }
       if (WorldTime != 0L) {
         output.WriteRawTag(16);
         output.WriteInt64(WorldTime);
       }
-      if (F3 != 0) {
+      if (AnotherLogin != false) {
         output.WriteRawTag(24);
-        output.WriteInt32(F3);
+        output.WriteBool(AnotherLogin);
       }
+      if (PlwF4 != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(PlwF4);
+      }
+      plwF5_.WriteTo(output, _repeated_plwF5_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -6616,19 +9887,25 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RiderId != 0) {
+      if (PlayerId != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt32(RiderId);
+        output.WriteInt64(PlayerId);
       }
       if (WorldTime != 0L) {
         output.WriteRawTag(16);
         output.WriteInt64(WorldTime);
       }
-      if (F3 != 0) {
+      if (AnotherLogin != false) {
         output.WriteRawTag(24);
-        output.WriteInt32(F3);
+        output.WriteBool(AnotherLogin);
       }
+      if (PlwF4 != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(PlwF4);
+      }
+      plwF5_.WriteTo(ref output, _repeated_plwF5_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -6636,17 +9913,22 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (RiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
+      if (PlayerId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(PlayerId);
       }
       if (WorldTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(WorldTime);
       }
-      if (F3 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F3);
+      if (AnotherLogin != false) {
+        size += 1 + 1;
       }
+      if (PlwF4 != false) {
+        size += 1 + 1;
+      }
+      size += plwF5_.CalculateSize(_repeated_plwF5_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -6654,23 +9936,29 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(TimeSync other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PlayerLeftWorld other) {
       if (other == null) {
         return;
       }
-      if (other.RiderId != 0) {
-        RiderId = other.RiderId;
+      if (other.PlayerId != 0L) {
+        PlayerId = other.PlayerId;
       }
       if (other.WorldTime != 0L) {
         WorldTime = other.WorldTime;
       }
-      if (other.F3 != 0) {
-        F3 = other.F3;
+      if (other.AnotherLogin != false) {
+        AnotherLogin = other.AnotherLogin;
       }
+      if (other.PlwF4 != false) {
+        PlwF4 = other.PlwF4;
+      }
+      plwF5_.Add(other.plwF5_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -6682,7 +9970,7 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt64();
             break;
           }
           case 16: {
@@ -6690,7 +9978,16 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 24: {
-            F3 = input.ReadInt32();
+            AnotherLogin = input.ReadBool();
+            break;
+          }
+          case 32: {
+            PlwF4 = input.ReadBool();
+            break;
+          }
+          case 42:
+          case 40: {
+            plwF5_.AddEntriesFrom(input, _repeated_plwF5_codec);
             break;
           }
         }
@@ -6700,6 +9997,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -6708,7 +10006,7 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt64();
             break;
           }
           case 16: {
@@ -6716,7 +10014,16 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 24: {
-            F3 = input.ReadInt32();
+            AnotherLogin = input.ReadBool();
+            break;
+          }
+          case 32: {
+            PlwF4 = input.ReadBool();
+            break;
+          }
+          case 42:
+          case 40: {
+            plwF5_.AddEntriesFrom(ref input, _repeated_plwF5_codec);
             break;
           }
         }
@@ -6727,64 +10034,121 @@ namespace ZwiftPacketMonitor {
   }
 
   /// <summary>
-  /// format to be determined
+  ///checked 21/03/2022
   /// </summary>
-  public sealed partial class Payload110 : pb::IMessage<Payload110>
+  public sealed partial class PlayerRouteDistance : pb::IMessage<PlayerRouteDistance>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Payload110> _parser = new pb::MessageParser<Payload110>(() => new Payload110());
+    private static readonly pb::MessageParser<PlayerRouteDistance> _parser = new pb::MessageParser<PlayerRouteDistance>(() => new PlayerRouteDistance());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Payload110> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PlayerRouteDistance> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[11]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload110() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerRouteDistance() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload110(Payload110 other) : this() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerRouteDistance(PlayerRouteDistance other) : this() {
+      playerId_ = other.playerId_;
+      distanceCovered_ = other.distanceCovered_;
+      prdF3_ = other.prdF3_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload110 Clone() {
-      return new Payload110(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerRouteDistance Clone() {
+      return new PlayerRouteDistance(this);
+    }
+
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 1;
+    private int playerId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlayerId {
+      get { return playerId_; }
+      set {
+        playerId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "distance_covered" field.</summary>
+    public const int DistanceCoveredFieldNumber = 2;
+    private float distanceCovered_;
+    /// <summary>
+    ///not sure
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float DistanceCovered {
+      get { return distanceCovered_; }
+      set {
+        distanceCovered_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "prd_f3" field.</summary>
+    public const int PrdF3FieldNumber = 3;
+    private int prdF3_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PrdF3 {
+      get { return prdF3_; }
+      set {
+        prdF3_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Payload110);
+      return Equals(other as PlayerRouteDistance);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Payload110 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PlayerRouteDistance other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (PlayerId != other.PlayerId) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DistanceCovered, other.DistanceCovered)) return false;
+      if (PrdF3 != other.PrdF3) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
+      if (DistanceCovered != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DistanceCovered);
+      if (PrdF3 != 0) hash ^= PrdF3.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6792,15 +10156,29 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (PlayerId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PlayerId);
+      }
+      if (DistanceCovered != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(DistanceCovered);
+      }
+      if (PrdF3 != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PrdF3);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -6809,7 +10187,20 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PlayerId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PlayerId);
+      }
+      if (DistanceCovered != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(DistanceCovered);
+      }
+      if (PrdF3 != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PrdF3);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -6817,8 +10208,18 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (PlayerId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerId);
+      }
+      if (DistanceCovered != 0F) {
+        size += 1 + 4;
+      }
+      if (PrdF3 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PrdF3);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -6826,14 +10227,25 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Payload110 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PlayerRouteDistance other) {
       if (other == null) {
         return;
+      }
+      if (other.PlayerId != 0) {
+        PlayerId = other.PlayerId;
+      }
+      if (other.DistanceCovered != 0F) {
+        DistanceCovered = other.DistanceCovered;
+      }
+      if (other.PrdF3 != 0) {
+        PrdF3 = other.PrdF3;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -6844,6 +10256,18 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            PlayerId = input.ReadInt32();
+            break;
+          }
+          case 21: {
+            DistanceCovered = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            PrdF3 = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -6851,6 +10275,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -6858,6 +10283,18 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            PlayerId = input.ReadInt32();
+            break;
+          }
+          case 21: {
+            DistanceCovered = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            PrdF3 = input.ReadInt32();
+            break;
+          }
         }
       }
     }
@@ -6866,188 +10303,65 @@ namespace ZwiftPacketMonitor {
   }
 
   /// <summary>
-  /// format to be determined
+  ///checked 21/03/2022
   /// </summary>
-  public sealed partial class Payload109 : pb::IMessage<Payload109>
+  public sealed partial class EventSubgroupPlacements : pb::IMessage<EventSubgroupPlacements>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Payload109> _parser = new pb::MessageParser<Payload109>(() => new Payload109());
+    private static readonly pb::MessageParser<EventSubgroupPlacements> _parser = new pb::MessageParser<EventSubgroupPlacements>(() => new EventSubgroupPlacements());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Payload109> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<EventSubgroupPlacements> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[12]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload109() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventSubgroupPlacements() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload109(Payload109 other) : this() {
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Payload109 Clone() {
-      return new Payload109(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as Payload109);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Payload109 other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Payload109 other) {
-      if (other == null) {
-        return;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-        }
-      }
-    }
-    #endif
-
-  }
-
-  public sealed partial class EventPositions : pb::IMessage<EventPositions>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<EventPositions> _parser = new pb::MessageParser<EventPositions>(() => new EventPositions());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<EventPositions> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[13]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public EventPositions() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public EventPositions(EventPositions other) : this() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventSubgroupPlacements(EventSubgroupPlacements other) : this() {
       position_ = other.position_;
+      playerRd1_ = other.playerRd1_.Clone();
+      playerRd2_ = other.playerRd2_.Clone();
       eventRiderPosition_ = other.eventRiderPosition_.Clone();
-      numRiders_ = other.numRiders_;
+      playerRd4_ = other.playerRd4_.Clone();
+      eventTotalRiders_ = other.eventTotalRiders_;
+      bikeNetworkId_ = other.bikeNetworkId_;
+      espF8_ = other.espF8_;
+      espF9_ = other.espF9_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public EventPositions Clone() {
-      return new EventPositions(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public EventSubgroupPlacements Clone() {
+      return new EventSubgroupPlacements(this);
     }
 
     /// <summary>Field number for the "position" field.</summary>
     public const int PositionFieldNumber = 1;
     private int position_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Position {
       get { return position_; }
       set {
@@ -7055,34 +10369,110 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "player_rd1" field.</summary>
+    public const int PlayerRd1FieldNumber = 2;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerRouteDistance> _repeated_playerRd1_codec
+        = pb::FieldCodec.ForMessage(18, global::ZwiftPacketMonitor.PlayerRouteDistance.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance> playerRd1_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance> PlayerRd1 {
+      get { return playerRd1_; }
+    }
+
+    /// <summary>Field number for the "player_rd2" field.</summary>
+    public const int PlayerRd2FieldNumber = 3;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerRouteDistance> _repeated_playerRd2_codec
+        = pb::FieldCodec.ForMessage(26, global::ZwiftPacketMonitor.PlayerRouteDistance.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance> playerRd2_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance> PlayerRd2 {
+      get { return playerRd2_; }
+    }
+
     /// <summary>Field number for the "eventRiderPosition" field.</summary>
     public const int EventRiderPositionFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition> _repeated_eventRiderPosition_codec
-        = pb::FieldCodec.ForMessage(34, global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition.Parser);
-    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition> eventRiderPosition_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition>();
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerRouteDistance> _repeated_eventRiderPosition_codec
+        = pb::FieldCodec.ForMessage(34, global::ZwiftPacketMonitor.PlayerRouteDistance.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance> eventRiderPosition_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ZwiftPacketMonitor.EventPositions.Types.EventRiderPosition> EventRiderPosition {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance> EventRiderPosition {
       get { return eventRiderPosition_; }
     }
 
-    /// <summary>Field number for the "num_riders" field.</summary>
-    public const int NumRidersFieldNumber = 116;
-    private int numRiders_;
+    /// <summary>Field number for the "player_rd4" field.</summary>
+    public const int PlayerRd4FieldNumber = 5;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerRouteDistance> _repeated_playerRd4_codec
+        = pb::FieldCodec.ForMessage(42, global::ZwiftPacketMonitor.PlayerRouteDistance.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance> playerRd4_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int NumRiders {
-      get { return numRiders_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerRouteDistance> PlayerRd4 {
+      get { return playerRd4_; }
+    }
+
+    /// <summary>Field number for the "eventTotalRiders" field.</summary>
+    public const int EventTotalRidersFieldNumber = 6;
+    private int eventTotalRiders_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int EventTotalRiders {
+      get { return eventTotalRiders_; }
       set {
-        numRiders_ = value;
+        eventTotalRiders_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "bikeNetworkId" field.</summary>
+    public const int BikeNetworkIdFieldNumber = 7;
+    private int bikeNetworkId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int BikeNetworkId {
+      get { return bikeNetworkId_; }
+      set {
+        bikeNetworkId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "esp_f8" field.</summary>
+    public const int EspF8FieldNumber = 8;
+    private int espF8_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int EspF8 {
+      get { return espF8_; }
+      set {
+        espF8_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "esp_f9" field.</summary>
+    public const int EspF9FieldNumber = 9;
+    private float espF9_;
+    /// <summary>
+    ///or fixed
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float EspF9 {
+      get { return espF9_; }
+      set {
+        espF9_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as EventPositions);
+      return Equals(other as EventSubgroupPlacements);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(EventPositions other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(EventSubgroupPlacements other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -7090,17 +10480,30 @@ namespace ZwiftPacketMonitor {
         return true;
       }
       if (Position != other.Position) return false;
+      if(!playerRd1_.Equals(other.playerRd1_)) return false;
+      if(!playerRd2_.Equals(other.playerRd2_)) return false;
       if(!eventRiderPosition_.Equals(other.eventRiderPosition_)) return false;
-      if (NumRiders != other.NumRiders) return false;
+      if(!playerRd4_.Equals(other.playerRd4_)) return false;
+      if (EventTotalRiders != other.EventTotalRiders) return false;
+      if (BikeNetworkId != other.BikeNetworkId) return false;
+      if (EspF8 != other.EspF8) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(EspF9, other.EspF9)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Position != 0) hash ^= Position.GetHashCode();
+      hash ^= playerRd1_.GetHashCode();
+      hash ^= playerRd2_.GetHashCode();
       hash ^= eventRiderPosition_.GetHashCode();
-      if (NumRiders != 0) hash ^= NumRiders.GetHashCode();
+      hash ^= playerRd4_.GetHashCode();
+      if (EventTotalRiders != 0) hash ^= EventTotalRiders.GetHashCode();
+      if (BikeNetworkId != 0) hash ^= BikeNetworkId.GetHashCode();
+      if (EspF8 != 0) hash ^= EspF8.GetHashCode();
+      if (EspF9 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(EspF9);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -7108,11 +10511,13 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -7121,10 +10526,25 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(8);
         output.WriteInt32(Position);
       }
+      playerRd1_.WriteTo(output, _repeated_playerRd1_codec);
+      playerRd2_.WriteTo(output, _repeated_playerRd2_codec);
       eventRiderPosition_.WriteTo(output, _repeated_eventRiderPosition_codec);
-      if (NumRiders != 0) {
-        output.WriteRawTag(160, 7);
-        output.WriteInt32(NumRiders);
+      playerRd4_.WriteTo(output, _repeated_playerRd4_codec);
+      if (EventTotalRiders != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(EventTotalRiders);
+      }
+      if (BikeNetworkId != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(BikeNetworkId);
+      }
+      if (EspF8 != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(EspF8);
+      }
+      if (EspF9 != 0F) {
+        output.WriteRawTag(77);
+        output.WriteFloat(EspF9);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -7134,15 +10554,31 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Position != 0) {
         output.WriteRawTag(8);
         output.WriteInt32(Position);
       }
+      playerRd1_.WriteTo(ref output, _repeated_playerRd1_codec);
+      playerRd2_.WriteTo(ref output, _repeated_playerRd2_codec);
       eventRiderPosition_.WriteTo(ref output, _repeated_eventRiderPosition_codec);
-      if (NumRiders != 0) {
-        output.WriteRawTag(160, 7);
-        output.WriteInt32(NumRiders);
+      playerRd4_.WriteTo(ref output, _repeated_playerRd4_codec);
+      if (EventTotalRiders != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(EventTotalRiders);
+      }
+      if (BikeNetworkId != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(BikeNetworkId);
+      }
+      if (EspF8 != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(EspF8);
+      }
+      if (EspF9 != 0F) {
+        output.WriteRawTag(77);
+        output.WriteFloat(EspF9);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -7151,14 +10587,27 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Position != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Position);
       }
+      size += playerRd1_.CalculateSize(_repeated_playerRd1_codec);
+      size += playerRd2_.CalculateSize(_repeated_playerRd2_codec);
       size += eventRiderPosition_.CalculateSize(_repeated_eventRiderPosition_codec);
-      if (NumRiders != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(NumRiders);
+      size += playerRd4_.CalculateSize(_repeated_playerRd4_codec);
+      if (EventTotalRiders != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(EventTotalRiders);
+      }
+      if (BikeNetworkId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BikeNetworkId);
+      }
+      if (EspF8 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(EspF8);
+      }
+      if (EspF9 != 0F) {
+        size += 1 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -7167,21 +10616,35 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(EventPositions other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(EventSubgroupPlacements other) {
       if (other == null) {
         return;
       }
       if (other.Position != 0) {
         Position = other.Position;
       }
+      playerRd1_.Add(other.playerRd1_);
+      playerRd2_.Add(other.playerRd2_);
       eventRiderPosition_.Add(other.eventRiderPosition_);
-      if (other.NumRiders != 0) {
-        NumRiders = other.NumRiders;
+      playerRd4_.Add(other.playerRd4_);
+      if (other.EventTotalRiders != 0) {
+        EventTotalRiders = other.EventTotalRiders;
+      }
+      if (other.BikeNetworkId != 0) {
+        BikeNetworkId = other.BikeNetworkId;
+      }
+      if (other.EspF8 != 0) {
+        EspF8 = other.EspF8;
+      }
+      if (other.EspF9 != 0F) {
+        EspF9 = other.EspF9;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -7196,12 +10659,36 @@ namespace ZwiftPacketMonitor {
             Position = input.ReadInt32();
             break;
           }
+          case 18: {
+            playerRd1_.AddEntriesFrom(input, _repeated_playerRd1_codec);
+            break;
+          }
+          case 26: {
+            playerRd2_.AddEntriesFrom(input, _repeated_playerRd2_codec);
+            break;
+          }
           case 34: {
             eventRiderPosition_.AddEntriesFrom(input, _repeated_eventRiderPosition_codec);
             break;
           }
-          case 928: {
-            NumRiders = input.ReadInt32();
+          case 42: {
+            playerRd4_.AddEntriesFrom(input, _repeated_playerRd4_codec);
+            break;
+          }
+          case 48: {
+            EventTotalRiders = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            BikeNetworkId = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            EspF8 = input.ReadInt32();
+            break;
+          }
+          case 77: {
+            EspF9 = input.ReadFloat();
             break;
           }
         }
@@ -7211,6 +10698,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -7222,12 +10710,36 @@ namespace ZwiftPacketMonitor {
             Position = input.ReadInt32();
             break;
           }
+          case 18: {
+            playerRd1_.AddEntriesFrom(ref input, _repeated_playerRd1_codec);
+            break;
+          }
+          case 26: {
+            playerRd2_.AddEntriesFrom(ref input, _repeated_playerRd2_codec);
+            break;
+          }
           case 34: {
             eventRiderPosition_.AddEntriesFrom(ref input, _repeated_eventRiderPosition_codec);
             break;
           }
-          case 928: {
-            NumRiders = input.ReadInt32();
+          case 42: {
+            playerRd4_.AddEntriesFrom(ref input, _repeated_playerRd4_codec);
+            break;
+          }
+          case 48: {
+            EventTotalRiders = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            BikeNetworkId = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            EspF8 = input.ReadInt32();
+            break;
+          }
+          case 77: {
+            EspF9 = input.ReadFloat();
             break;
           }
         }
@@ -7235,190 +10747,760 @@ namespace ZwiftPacketMonitor {
     }
     #endif
 
-    #region Nested types
-    /// <summary>Container for nested types declared in the EventPositions message type.</summary>
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class PlayerSummary : pb::IMessage<PlayerSummary>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PlayerSummary> _parser = new pb::MessageParser<PlayerSummary>(() => new PlayerSummary());
+    private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public sealed partial class EventRiderPosition : pb::IMessage<EventRiderPosition>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<EventRiderPosition> _parser = new pb::MessageParser<EventRiderPosition>(() => new EventRiderPosition());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<EventRiderPosition> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PlayerSummary> Parser { get { return _parser; } }
 
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::ZwiftPacketMonitor.EventPositions.Descriptor.NestedTypes[0]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public EventRiderPosition() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public EventRiderPosition(EventRiderPosition other) : this() {
-          riderId_ = other.riderId_;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public EventRiderPosition Clone() {
-          return new EventRiderPosition(this);
-        }
-
-        /// <summary>Field number for the "rider_id" field.</summary>
-        public const int RiderIdFieldNumber = 1;
-        private int riderId_;
-        /// <summary>
-        /// ?? float distance_covered = 2; 
-        /// </summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int RiderId {
-          get { return riderId_; }
-          set {
-            riderId_ = value;
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override bool Equals(object other) {
-          return Equals(other as EventRiderPosition);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(EventRiderPosition other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (RiderId != other.RiderId) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (RiderId != 0) hash ^= RiderId.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          if (RiderId != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(RiderId);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (RiderId != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(RiderId);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int CalculateSize() {
-          int size = 0;
-          if (RiderId != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
-          }
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(EventRiderPosition other) {
-          if (other == null) {
-            return;
-          }
-          if (other.RiderId != 0) {
-            RiderId = other.RiderId;
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 8: {
-                RiderId = input.ReadInt32();
-                break;
-              }
-            }
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-              case 8: {
-                RiderId = input.ReadInt32();
-                break;
-              }
-            }
-          }
-        }
-        #endif
-
-      }
-
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[18]; }
     }
-    #endregion
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerSummary() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerSummary(PlayerSummary other) : this() {
+      plsuF1_ = other.plsuF1_;
+      plsuF2_ = other.plsuF2_;
+      plsuF3_ = other.plsuF3_;
+      plsuF4_ = other.plsuF4_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerSummary Clone() {
+      return new PlayerSummary(this);
+    }
+
+    /// <summary>Field number for the "plsu_f1" field.</summary>
+    public const int PlsuF1FieldNumber = 1;
+    private int plsuF1_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsuF1 {
+      get { return plsuF1_; }
+      set {
+        plsuF1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsu_f2" field.</summary>
+    public const int PlsuF2FieldNumber = 2;
+    private int plsuF2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsuF2 {
+      get { return plsuF2_; }
+      set {
+        plsuF2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsu_f3" field.</summary>
+    public const int PlsuF3FieldNumber = 3;
+    private int plsuF3_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsuF3 {
+      get { return plsuF3_; }
+      set {
+        plsuF3_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsu_f4" field.</summary>
+    public const int PlsuF4FieldNumber = 4;
+    private int plsuF4_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsuF4 {
+      get { return plsuF4_; }
+      set {
+        plsuF4_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PlayerSummary);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PlayerSummary other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PlsuF1 != other.PlsuF1) return false;
+      if (PlsuF2 != other.PlsuF2) return false;
+      if (PlsuF3 != other.PlsuF3) return false;
+      if (PlsuF4 != other.PlsuF4) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PlsuF1 != 0) hash ^= PlsuF1.GetHashCode();
+      if (PlsuF2 != 0) hash ^= PlsuF2.GetHashCode();
+      if (PlsuF3 != 0) hash ^= PlsuF3.GetHashCode();
+      if (PlsuF4 != 0) hash ^= PlsuF4.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (PlsuF1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PlsuF1);
+      }
+      if (PlsuF2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PlsuF2);
+      }
+      if (PlsuF3 != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PlsuF3);
+      }
+      if (PlsuF4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(PlsuF4);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PlsuF1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PlsuF1);
+      }
+      if (PlsuF2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(PlsuF2);
+      }
+      if (PlsuF3 != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(PlsuF3);
+      }
+      if (PlsuF4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(PlsuF4);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (PlsuF1 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlsuF1);
+      }
+      if (PlsuF2 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlsuF2);
+      }
+      if (PlsuF3 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlsuF3);
+      }
+      if (PlsuF4 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlsuF4);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PlayerSummary other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PlsuF1 != 0) {
+        PlsuF1 = other.PlsuF1;
+      }
+      if (other.PlsuF2 != 0) {
+        PlsuF2 = other.PlsuF2;
+      }
+      if (other.PlsuF3 != 0) {
+        PlsuF3 = other.PlsuF3;
+      }
+      if (other.PlsuF4 != 0) {
+        PlsuF4 = other.PlsuF4;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            PlsuF1 = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            PlsuF2 = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            PlsuF3 = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            PlsuF4 = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            PlsuF1 = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            PlsuF2 = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            PlsuF3 = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            PlsuF4 = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
   }
 
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class PlayerSummaries : pb::IMessage<PlayerSummaries>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PlayerSummaries> _parser = new pb::MessageParser<PlayerSummaries>(() => new PlayerSummaries());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PlayerSummaries> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[19]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerSummaries() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerSummaries(PlayerSummaries other) : this() {
+      plsusF1_ = other.plsusF1_;
+      plsusF2_ = other.plsusF2_;
+      plsusF3_ = other.plsusF3_;
+      plsusF4_ = other.plsusF4_;
+      plsusF5_ = other.plsusF5_;
+      plsusF6_ = other.plsusF6_;
+      plsusF7_ = other.plsusF7_;
+      playerSummaries_ = other.playerSummaries_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PlayerSummaries Clone() {
+      return new PlayerSummaries(this);
+    }
+
+    /// <summary>Field number for the "plsus_f1" field.</summary>
+    public const int PlsusF1FieldNumber = 1;
+    private long plsusF1_;
+    /// <summary>
+    ///stored as int32
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long PlsusF1 {
+      get { return plsusF1_; }
+      set {
+        plsusF1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsus_f2" field.</summary>
+    public const int PlsusF2FieldNumber = 2;
+    private long plsusF2_;
+    /// <summary>
+    ///stored as int32
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long PlsusF2 {
+      get { return plsusF2_; }
+      set {
+        plsusF2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsus_f3" field.</summary>
+    public const int PlsusF3FieldNumber = 3;
+    private int plsusF3_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsusF3 {
+      get { return plsusF3_; }
+      set {
+        plsusF3_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsus_f4" field.</summary>
+    public const int PlsusF4FieldNumber = 4;
+    private int plsusF4_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsusF4 {
+      get { return plsusF4_; }
+      set {
+        plsusF4_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsus_f5" field.</summary>
+    public const int PlsusF5FieldNumber = 5;
+    private int plsusF5_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsusF5 {
+      get { return plsusF5_; }
+      set {
+        plsusF5_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsus_f6" field.</summary>
+    public const int PlsusF6FieldNumber = 6;
+    private int plsusF6_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsusF6 {
+      get { return plsusF6_; }
+      set {
+        plsusF6_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plsus_f7" field.</summary>
+    public const int PlsusF7FieldNumber = 7;
+    private int plsusF7_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int PlsusF7 {
+      get { return plsusF7_; }
+      set {
+        plsusF7_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "player_summaries" field.</summary>
+    public const int PlayerSummaries_FieldNumber = 8;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerSummary> _repeated_playerSummaries_codec
+        = pb::FieldCodec.ForMessage(66, global::ZwiftPacketMonitor.PlayerSummary.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerSummary> playerSummaries_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerSummary>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerSummary> PlayerSummaries_ {
+      get { return playerSummaries_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PlayerSummaries);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PlayerSummaries other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PlsusF1 != other.PlsusF1) return false;
+      if (PlsusF2 != other.PlsusF2) return false;
+      if (PlsusF3 != other.PlsusF3) return false;
+      if (PlsusF4 != other.PlsusF4) return false;
+      if (PlsusF5 != other.PlsusF5) return false;
+      if (PlsusF6 != other.PlsusF6) return false;
+      if (PlsusF7 != other.PlsusF7) return false;
+      if(!playerSummaries_.Equals(other.playerSummaries_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PlsusF1 != 0L) hash ^= PlsusF1.GetHashCode();
+      if (PlsusF2 != 0L) hash ^= PlsusF2.GetHashCode();
+      if (PlsusF3 != 0) hash ^= PlsusF3.GetHashCode();
+      if (PlsusF4 != 0) hash ^= PlsusF4.GetHashCode();
+      if (PlsusF5 != 0) hash ^= PlsusF5.GetHashCode();
+      if (PlsusF6 != 0) hash ^= PlsusF6.GetHashCode();
+      if (PlsusF7 != 0) hash ^= PlsusF7.GetHashCode();
+      hash ^= playerSummaries_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (PlsusF1 != 0L) {
+        output.WriteRawTag(8);
+        output.WriteSInt64(PlsusF1);
+      }
+      if (PlsusF2 != 0L) {
+        output.WriteRawTag(16);
+        output.WriteSInt64(PlsusF2);
+      }
+      if (PlsusF3 != 0) {
+        output.WriteRawTag(24);
+        output.WriteSInt32(PlsusF3);
+      }
+      if (PlsusF4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteSInt32(PlsusF4);
+      }
+      if (PlsusF5 != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(PlsusF5);
+      }
+      if (PlsusF6 != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(PlsusF6);
+      }
+      if (PlsusF7 != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(PlsusF7);
+      }
+      playerSummaries_.WriteTo(output, _repeated_playerSummaries_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PlsusF1 != 0L) {
+        output.WriteRawTag(8);
+        output.WriteSInt64(PlsusF1);
+      }
+      if (PlsusF2 != 0L) {
+        output.WriteRawTag(16);
+        output.WriteSInt64(PlsusF2);
+      }
+      if (PlsusF3 != 0) {
+        output.WriteRawTag(24);
+        output.WriteSInt32(PlsusF3);
+      }
+      if (PlsusF4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteSInt32(PlsusF4);
+      }
+      if (PlsusF5 != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(PlsusF5);
+      }
+      if (PlsusF6 != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(PlsusF6);
+      }
+      if (PlsusF7 != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(PlsusF7);
+      }
+      playerSummaries_.WriteTo(ref output, _repeated_playerSummaries_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (PlsusF1 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeSInt64Size(PlsusF1);
+      }
+      if (PlsusF2 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeSInt64Size(PlsusF2);
+      }
+      if (PlsusF3 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(PlsusF3);
+      }
+      if (PlsusF4 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(PlsusF4);
+      }
+      if (PlsusF5 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlsusF5);
+      }
+      if (PlsusF6 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlsusF6);
+      }
+      if (PlsusF7 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlsusF7);
+      }
+      size += playerSummaries_.CalculateSize(_repeated_playerSummaries_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PlayerSummaries other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PlsusF1 != 0L) {
+        PlsusF1 = other.PlsusF1;
+      }
+      if (other.PlsusF2 != 0L) {
+        PlsusF2 = other.PlsusF2;
+      }
+      if (other.PlsusF3 != 0) {
+        PlsusF3 = other.PlsusF3;
+      }
+      if (other.PlsusF4 != 0) {
+        PlsusF4 = other.PlsusF4;
+      }
+      if (other.PlsusF5 != 0) {
+        PlsusF5 = other.PlsusF5;
+      }
+      if (other.PlsusF6 != 0) {
+        PlsusF6 = other.PlsusF6;
+      }
+      if (other.PlsusF7 != 0) {
+        PlsusF7 = other.PlsusF7;
+      }
+      playerSummaries_.Add(other.playerSummaries_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            PlsusF1 = input.ReadSInt64();
+            break;
+          }
+          case 16: {
+            PlsusF2 = input.ReadSInt64();
+            break;
+          }
+          case 24: {
+            PlsusF3 = input.ReadSInt32();
+            break;
+          }
+          case 32: {
+            PlsusF4 = input.ReadSInt32();
+            break;
+          }
+          case 40: {
+            PlsusF5 = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            PlsusF6 = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            PlsusF7 = input.ReadInt32();
+            break;
+          }
+          case 66: {
+            playerSummaries_.AddEntriesFrom(input, _repeated_playerSummaries_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            PlsusF1 = input.ReadSInt64();
+            break;
+          }
+          case 16: {
+            PlsusF2 = input.ReadSInt64();
+            break;
+          }
+          case 24: {
+            PlsusF3 = input.ReadSInt32();
+            break;
+          }
+          case 32: {
+            PlsusF4 = input.ReadSInt32();
+            break;
+          }
+          case 40: {
+            PlsusF5 = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            PlsusF6 = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            PlsusF7 = input.ReadInt32();
+            break;
+          }
+          case 66: {
+            playerSummaries_.AddEntriesFrom(ref input, _repeated_playerSummaries_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
   public sealed partial class ServerToClient : pb::IMessage<ServerToClient>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -7427,19 +11509,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<ServerToClient> _parser = new pb::MessageParser<ServerToClient>(() => new ServerToClient());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<ServerToClient> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[14]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerToClient() {
       OnConstruction();
     }
@@ -7447,49 +11533,65 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerToClient(ServerToClient other) : this() {
-      tag1_ = other.tag1_;
-      riderId_ = other.riderId_;
+      serverRealm_ = other.serverRealm_;
+      playerId_ = other.playerId_;
       worldTime_ = other.worldTime_;
       seqno_ = other.seqno_;
-      playerStates_ = other.playerStates_.Clone();
+      stcF5_ = other.stcF5_;
+      states_ = other.states_.Clone();
       playerUpdates_ = other.playerUpdates_.Clone();
-      tag11_ = other.tag11_;
-      localIp_ = other.localIp_;
-      tag15_ = other.tag15_;
-      tag17_ = other.tag17_;
+      stcF10_ = other.stcF10_.Clone();
+      stcF11_ = other.stcF11_;
+      zcLocalIp_ = other.zcLocalIp_;
+      stcF13_ = other.stcF13_;
+      zwifters_ = other.zwifters_;
+      zcLocalPort_ = other.zcLocalPort_;
+      zcProtocol_ = other.zcProtocol_;
+      stcF17_ = other.stcF17_;
       numMsgs_ = other.numMsgs_;
       msgnum_ = other.msgnum_;
-      eventPositions_ = other.eventPositions_ != null ? other.eventPositions_.Clone() : null;
-      servers1_ = other.servers1_ != null ? other.servers1_.Clone() : null;
-      servers2_ = other.servers2_ != null ? other.servers2_.Clone() : null;
+      hasSimultLogin_ = other.hasSimultLogin_;
+      playerSummaries_ = other.playerSummaries_ != null ? other.playerSummaries_.Clone() : null;
+      evSubgroupPs_ = other.evSubgroupPs_ != null ? other.evSubgroupPs_.Clone() : null;
+      udpConfig_ = other.udpConfig_ != null ? other.udpConfig_.Clone() : null;
+      udpConfigVod1_ = other.udpConfigVod1_ != null ? other.udpConfigVod1_.Clone() : null;
+      stcF26_ = other.stcF26_;
+      udpConfigVod2_ = other.udpConfigVod2_ != null ? other.udpConfigVod2_.Clone() : null;
+      playerStates_ = other.playerStates_.Clone();
+      tcpConfig_ = other.tcpConfig_ != null ? other.tcpConfig_.Clone() : null;
+      ackSubsSegm_ = other.ackSubsSegm_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ServerToClient Clone() {
       return new ServerToClient(this);
     }
 
-    /// <summary>Field number for the "tag1" field.</summary>
-    public const int Tag1FieldNumber = 1;
-    private int tag1_;
+    /// <summary>Field number for the "server_realm" field.</summary>
+    public const int ServerRealmFieldNumber = 1;
+    private long serverRealm_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Tag1 {
-      get { return tag1_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ServerRealm {
+      get { return serverRealm_; }
       set {
-        tag1_ = value;
+        serverRealm_ = value;
       }
     }
 
-    /// <summary>Field number for the "rider_id" field.</summary>
-    public const int RiderIdFieldNumber = 2;
-    private int riderId_;
+    /// <summary>Field number for the "player_id" field.</summary>
+    public const int PlayerIdFieldNumber = 2;
+    private long playerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int RiderId {
-      get { return riderId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long PlayerId {
+      get { return playerId_; }
       set {
-        riderId_ = value;
+        playerId_ = value;
       }
     }
 
@@ -7497,6 +11599,7 @@ namespace ZwiftPacketMonitor {
     public const int WorldTimeFieldNumber = 3;
     private long worldTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long WorldTime {
       get { return worldTime_; }
       set {
@@ -7508,6 +11611,7 @@ namespace ZwiftPacketMonitor {
     public const int SeqnoFieldNumber = 4;
     private int seqno_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Seqno {
       get { return seqno_; }
       set {
@@ -7515,67 +11619,132 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "player_states" field.</summary>
-    public const int PlayerStatesFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerState> _repeated_playerStates_codec
-        = pb::FieldCodec.ForMessage(66, global::ZwiftPacketMonitor.PlayerState.Parser);
-    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState> playerStates_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState>();
+    /// <summary>Field number for the "stc_f5" field.</summary>
+    public const int StcF5FieldNumber = 5;
+    private int stcF5_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState> PlayerStates {
-      get { return playerStates_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int StcF5 {
+      get { return stcF5_; }
+      set {
+        stcF5_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "states" field.</summary>
+    public const int StatesFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerState> _repeated_states_codec
+        = pb::FieldCodec.ForMessage(66, global::ZwiftPacketMonitor.PlayerState.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState> states_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState> States {
+      get { return states_; }
     }
 
     /// <summary>Field number for the "player_updates" field.</summary>
     public const int PlayerUpdatesFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerUpdate> _repeated_playerUpdates_codec
-        = pb::FieldCodec.ForMessage(74, global::ZwiftPacketMonitor.PlayerUpdate.Parser);
-    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerUpdate> playerUpdates_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerUpdate>();
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.WorldAttribute> _repeated_playerUpdates_codec
+        = pb::FieldCodec.ForMessage(74, global::ZwiftPacketMonitor.WorldAttribute.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.WorldAttribute> playerUpdates_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.WorldAttribute>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerUpdate> PlayerUpdates {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.WorldAttribute> PlayerUpdates {
       get { return playerUpdates_; }
     }
 
-    /// <summary>Field number for the "tag11" field.</summary>
-    public const int Tag11FieldNumber = 11;
-    private long tag11_;
+    /// <summary>Field number for the "stc_f10" field.</summary>
+    public const int StcF10FieldNumber = 10;
+    private static readonly pb::FieldCodec<long> _repeated_stcF10_codec
+        = pb::FieldCodec.ForInt64(82);
+    private readonly pbc::RepeatedField<long> stcF10_ = new pbc::RepeatedField<long>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag11 {
-      get { return tag11_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<long> StcF10 {
+      get { return stcF10_; }
+    }
+
+    /// <summary>Field number for the "stc_f11" field.</summary>
+    public const int StcF11FieldNumber = 11;
+    private long stcF11_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long StcF11 {
+      get { return stcF11_; }
       set {
-        tag11_ = value;
+        stcF11_ = value;
       }
     }
 
-    /// <summary>Field number for the "local_ip" field.</summary>
-    public const int LocalIpFieldNumber = 12;
-    private string localIp_ = "";
+    /// <summary>Field number for the "zc_local_ip" field.</summary>
+    public const int ZcLocalIpFieldNumber = 12;
+    private string zcLocalIp_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string LocalIp {
-      get { return localIp_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ZcLocalIp {
+      get { return zcLocalIp_; }
       set {
-        localIp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        zcLocalIp_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "tag15" field.</summary>
-    public const int Tag15FieldNumber = 15;
-    private int tag15_;
+    /// <summary>Field number for the "stc_f13" field.</summary>
+    public const int StcF13FieldNumber = 13;
+    private long stcF13_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Tag15 {
-      get { return tag15_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long StcF13 {
+      get { return stcF13_; }
       set {
-        tag15_ = value;
+        stcF13_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag17" field.</summary>
-    public const int Tag17FieldNumber = 17;
-    private long tag17_;
+    /// <summary>Field number for the "zwifters" field.</summary>
+    public const int ZwiftersFieldNumber = 14;
+    private int zwifters_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag17 {
-      get { return tag17_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Zwifters {
+      get { return zwifters_; }
       set {
-        tag17_ = value;
+        zwifters_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "zc_local_port" field.</summary>
+    public const int ZcLocalPortFieldNumber = 15;
+    private int zcLocalPort_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ZcLocalPort {
+      get { return zcLocalPort_; }
+      set {
+        zcLocalPort_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "zc_protocol" field.</summary>
+    public const int ZcProtocolFieldNumber = 16;
+    private global::ZwiftPacketMonitor.IPProtocol zcProtocol_ = global::ZwiftPacketMonitor.IPProtocol.IppUnk;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.IPProtocol ZcProtocol {
+      get { return zcProtocol_; }
+      set {
+        zcProtocol_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stc_f17" field.</summary>
+    public const int StcF17FieldNumber = 17;
+    private long stcF17_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long StcF17 {
+      get { return stcF17_; }
+      set {
+        stcF17_ = value;
       }
     }
 
@@ -7583,6 +11752,7 @@ namespace ZwiftPacketMonitor {
     public const int NumMsgsFieldNumber = 18;
     private int numMsgs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int NumMsgs {
       get { return numMsgs_; }
       set {
@@ -7594,6 +11764,7 @@ namespace ZwiftPacketMonitor {
     public const int MsgnumFieldNumber = 19;
     private int msgnum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Msgnum {
       get { return msgnum_; }
       set {
@@ -7601,45 +11772,132 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "event_positions" field.</summary>
-    public const int EventPositionsFieldNumber = 23;
-    private global::ZwiftPacketMonitor.EventPositions eventPositions_;
+    /// <summary>Field number for the "hasSimultLogin" field.</summary>
+    public const int HasSimultLoginFieldNumber = 20;
+    private bool hasSimultLogin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ZwiftPacketMonitor.EventPositions EventPositions {
-      get { return eventPositions_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasSimultLogin {
+      get { return hasSimultLogin_; }
       set {
-        eventPositions_ = value;
+        hasSimultLogin_ = value;
       }
     }
 
-    /// <summary>Field number for the "servers1" field.</summary>
-    public const int Servers1FieldNumber = 24;
-    private global::ZwiftPacketMonitor.Server1 servers1_;
+    /// <summary>Field number for the "player_summaries" field.</summary>
+    public const int PlayerSummariesFieldNumber = 21;
+    private global::ZwiftPacketMonitor.PlayerSummaries playerSummaries_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ZwiftPacketMonitor.Server1 Servers1 {
-      get { return servers1_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.PlayerSummaries PlayerSummaries {
+      get { return playerSummaries_; }
       set {
-        servers1_ = value;
+        playerSummaries_ = value;
       }
     }
 
-    /// <summary>Field number for the "servers2" field.</summary>
-    public const int Servers2FieldNumber = 25;
-    private global::ZwiftPacketMonitor.Server2 servers2_;
+    /// <summary>Field number for the "ev_subgroup_ps" field.</summary>
+    public const int EvSubgroupPsFieldNumber = 23;
+    private global::ZwiftPacketMonitor.EventSubgroupPlacements evSubgroupPs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ZwiftPacketMonitor.Server2 Servers2 {
-      get { return servers2_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.EventSubgroupPlacements EvSubgroupPs {
+      get { return evSubgroupPs_; }
       set {
-        servers2_ = value;
+        evSubgroupPs_ = value;
       }
     }
 
+    /// <summary>Field number for the "udp_config" field.</summary>
+    public const int UdpConfigFieldNumber = 24;
+    private global::ZwiftPacketMonitor.UdpConfig udpConfig_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.UdpConfig UdpConfig {
+      get { return udpConfig_; }
+      set {
+        udpConfig_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "udp_config_vod_1" field.</summary>
+    public const int UdpConfigVod1FieldNumber = 25;
+    private global::ZwiftPacketMonitor.UdpConfigVOD udpConfigVod1_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.UdpConfigVOD UdpConfigVod1 {
+      get { return udpConfigVod1_; }
+      set {
+        udpConfigVod1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stc_f26" field.</summary>
+    public const int StcF26FieldNumber = 26;
+    private int stcF26_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int StcF26 {
+      get { return stcF26_; }
+      set {
+        stcF26_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "udp_config_vod_2" field.</summary>
+    public const int UdpConfigVod2FieldNumber = 27;
+    private global::ZwiftPacketMonitor.UdpConfigVOD udpConfigVod2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.UdpConfigVOD UdpConfigVod2 {
+      get { return udpConfigVod2_; }
+      set {
+        udpConfigVod2_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "player_states" field.</summary>
+    public const int PlayerStatesFieldNumber = 28;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.PlayerState> _repeated_playerStates_codec
+        = pb::FieldCodec.ForMessage(226, global::ZwiftPacketMonitor.PlayerState.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState> playerStates_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.PlayerState> PlayerStates {
+      get { return playerStates_; }
+    }
+
+    /// <summary>Field number for the "tcp_config" field.</summary>
+    public const int TcpConfigFieldNumber = 29;
+    private global::ZwiftPacketMonitor.TcpConfig tcpConfig_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ZwiftPacketMonitor.TcpConfig TcpConfig {
+      get { return tcpConfig_; }
+      set {
+        tcpConfig_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ackSubsSegm" field.</summary>
+    public const int AckSubsSegmFieldNumber = 30;
+    private static readonly pb::FieldCodec<long> _repeated_ackSubsSegm_codec
+        = pb::FieldCodec.ForInt64(242);
+    private readonly pbc::RepeatedField<long> ackSubsSegm_ = new pbc::RepeatedField<long>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<long> AckSubsSegm {
+      get { return ackSubsSegm_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as ServerToClient);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(ServerToClient other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -7647,42 +11905,67 @@ namespace ZwiftPacketMonitor {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Tag1 != other.Tag1) return false;
-      if (RiderId != other.RiderId) return false;
+      if (ServerRealm != other.ServerRealm) return false;
+      if (PlayerId != other.PlayerId) return false;
       if (WorldTime != other.WorldTime) return false;
       if (Seqno != other.Seqno) return false;
-      if(!playerStates_.Equals(other.playerStates_)) return false;
+      if (StcF5 != other.StcF5) return false;
+      if(!states_.Equals(other.states_)) return false;
       if(!playerUpdates_.Equals(other.playerUpdates_)) return false;
-      if (Tag11 != other.Tag11) return false;
-      if (LocalIp != other.LocalIp) return false;
-      if (Tag15 != other.Tag15) return false;
-      if (Tag17 != other.Tag17) return false;
+      if(!stcF10_.Equals(other.stcF10_)) return false;
+      if (StcF11 != other.StcF11) return false;
+      if (ZcLocalIp != other.ZcLocalIp) return false;
+      if (StcF13 != other.StcF13) return false;
+      if (Zwifters != other.Zwifters) return false;
+      if (ZcLocalPort != other.ZcLocalPort) return false;
+      if (ZcProtocol != other.ZcProtocol) return false;
+      if (StcF17 != other.StcF17) return false;
       if (NumMsgs != other.NumMsgs) return false;
       if (Msgnum != other.Msgnum) return false;
-      if (!object.Equals(EventPositions, other.EventPositions)) return false;
-      if (!object.Equals(Servers1, other.Servers1)) return false;
-      if (!object.Equals(Servers2, other.Servers2)) return false;
+      if (HasSimultLogin != other.HasSimultLogin) return false;
+      if (!object.Equals(PlayerSummaries, other.PlayerSummaries)) return false;
+      if (!object.Equals(EvSubgroupPs, other.EvSubgroupPs)) return false;
+      if (!object.Equals(UdpConfig, other.UdpConfig)) return false;
+      if (!object.Equals(UdpConfigVod1, other.UdpConfigVod1)) return false;
+      if (StcF26 != other.StcF26) return false;
+      if (!object.Equals(UdpConfigVod2, other.UdpConfigVod2)) return false;
+      if(!playerStates_.Equals(other.playerStates_)) return false;
+      if (!object.Equals(TcpConfig, other.TcpConfig)) return false;
+      if(!ackSubsSegm_.Equals(other.ackSubsSegm_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Tag1 != 0) hash ^= Tag1.GetHashCode();
-      if (RiderId != 0) hash ^= RiderId.GetHashCode();
+      if (ServerRealm != 0L) hash ^= ServerRealm.GetHashCode();
+      if (PlayerId != 0L) hash ^= PlayerId.GetHashCode();
       if (WorldTime != 0L) hash ^= WorldTime.GetHashCode();
       if (Seqno != 0) hash ^= Seqno.GetHashCode();
-      hash ^= playerStates_.GetHashCode();
+      if (StcF5 != 0) hash ^= StcF5.GetHashCode();
+      hash ^= states_.GetHashCode();
       hash ^= playerUpdates_.GetHashCode();
-      if (Tag11 != 0L) hash ^= Tag11.GetHashCode();
-      if (LocalIp.Length != 0) hash ^= LocalIp.GetHashCode();
-      if (Tag15 != 0) hash ^= Tag15.GetHashCode();
-      if (Tag17 != 0L) hash ^= Tag17.GetHashCode();
+      hash ^= stcF10_.GetHashCode();
+      if (StcF11 != 0L) hash ^= StcF11.GetHashCode();
+      if (ZcLocalIp.Length != 0) hash ^= ZcLocalIp.GetHashCode();
+      if (StcF13 != 0L) hash ^= StcF13.GetHashCode();
+      if (Zwifters != 0) hash ^= Zwifters.GetHashCode();
+      if (ZcLocalPort != 0) hash ^= ZcLocalPort.GetHashCode();
+      if (ZcProtocol != global::ZwiftPacketMonitor.IPProtocol.IppUnk) hash ^= ZcProtocol.GetHashCode();
+      if (StcF17 != 0L) hash ^= StcF17.GetHashCode();
       if (NumMsgs != 0) hash ^= NumMsgs.GetHashCode();
       if (Msgnum != 0) hash ^= Msgnum.GetHashCode();
-      if (eventPositions_ != null) hash ^= EventPositions.GetHashCode();
-      if (servers1_ != null) hash ^= Servers1.GetHashCode();
-      if (servers2_ != null) hash ^= Servers2.GetHashCode();
+      if (HasSimultLogin != false) hash ^= HasSimultLogin.GetHashCode();
+      if (playerSummaries_ != null) hash ^= PlayerSummaries.GetHashCode();
+      if (evSubgroupPs_ != null) hash ^= EvSubgroupPs.GetHashCode();
+      if (udpConfig_ != null) hash ^= UdpConfig.GetHashCode();
+      if (udpConfigVod1_ != null) hash ^= UdpConfigVod1.GetHashCode();
+      if (StcF26 != 0) hash ^= StcF26.GetHashCode();
+      if (udpConfigVod2_ != null) hash ^= UdpConfigVod2.GetHashCode();
+      hash ^= playerStates_.GetHashCode();
+      if (tcpConfig_ != null) hash ^= TcpConfig.GetHashCode();
+      hash ^= ackSubsSegm_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -7690,22 +11973,24 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Tag1 != 0) {
+      if (ServerRealm != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt32(Tag1);
+        output.WriteInt64(ServerRealm);
       }
-      if (RiderId != 0) {
+      if (PlayerId != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt32(RiderId);
+        output.WriteInt64(PlayerId);
       }
       if (WorldTime != 0L) {
         output.WriteRawTag(24);
@@ -7715,23 +12000,40 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(32);
         output.WriteInt32(Seqno);
       }
-      playerStates_.WriteTo(output, _repeated_playerStates_codec);
+      if (StcF5 != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(StcF5);
+      }
+      states_.WriteTo(output, _repeated_states_codec);
       playerUpdates_.WriteTo(output, _repeated_playerUpdates_codec);
-      if (Tag11 != 0L) {
+      stcF10_.WriteTo(output, _repeated_stcF10_codec);
+      if (StcF11 != 0L) {
         output.WriteRawTag(88);
-        output.WriteInt64(Tag11);
+        output.WriteInt64(StcF11);
       }
-      if (LocalIp.Length != 0) {
+      if (ZcLocalIp.Length != 0) {
         output.WriteRawTag(98);
-        output.WriteString(LocalIp);
+        output.WriteString(ZcLocalIp);
       }
-      if (Tag15 != 0) {
+      if (StcF13 != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(StcF13);
+      }
+      if (Zwifters != 0) {
+        output.WriteRawTag(112);
+        output.WriteInt32(Zwifters);
+      }
+      if (ZcLocalPort != 0) {
         output.WriteRawTag(120);
-        output.WriteInt32(Tag15);
+        output.WriteInt32(ZcLocalPort);
       }
-      if (Tag17 != 0L) {
+      if (ZcProtocol != global::ZwiftPacketMonitor.IPProtocol.IppUnk) {
+        output.WriteRawTag(128, 1);
+        output.WriteEnum((int) ZcProtocol);
+      }
+      if (StcF17 != 0L) {
         output.WriteRawTag(136, 1);
-        output.WriteInt64(Tag17);
+        output.WriteInt64(StcF17);
       }
       if (NumMsgs != 0) {
         output.WriteRawTag(144, 1);
@@ -7741,18 +12043,40 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(152, 1);
         output.WriteInt32(Msgnum);
       }
-      if (eventPositions_ != null) {
+      if (HasSimultLogin != false) {
+        output.WriteRawTag(160, 1);
+        output.WriteBool(HasSimultLogin);
+      }
+      if (playerSummaries_ != null) {
+        output.WriteRawTag(170, 1);
+        output.WriteMessage(PlayerSummaries);
+      }
+      if (evSubgroupPs_ != null) {
         output.WriteRawTag(186, 1);
-        output.WriteMessage(EventPositions);
+        output.WriteMessage(EvSubgroupPs);
       }
-      if (servers1_ != null) {
+      if (udpConfig_ != null) {
         output.WriteRawTag(194, 1);
-        output.WriteMessage(Servers1);
+        output.WriteMessage(UdpConfig);
       }
-      if (servers2_ != null) {
+      if (udpConfigVod1_ != null) {
         output.WriteRawTag(202, 1);
-        output.WriteMessage(Servers2);
+        output.WriteMessage(UdpConfigVod1);
       }
+      if (StcF26 != 0) {
+        output.WriteRawTag(208, 1);
+        output.WriteInt32(StcF26);
+      }
+      if (udpConfigVod2_ != null) {
+        output.WriteRawTag(218, 1);
+        output.WriteMessage(UdpConfigVod2);
+      }
+      playerStates_.WriteTo(output, _repeated_playerStates_codec);
+      if (tcpConfig_ != null) {
+        output.WriteRawTag(234, 1);
+        output.WriteMessage(TcpConfig);
+      }
+      ackSubsSegm_.WriteTo(output, _repeated_ackSubsSegm_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -7761,14 +12085,15 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Tag1 != 0) {
+      if (ServerRealm != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt32(Tag1);
+        output.WriteInt64(ServerRealm);
       }
-      if (RiderId != 0) {
+      if (PlayerId != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt32(RiderId);
+        output.WriteInt64(PlayerId);
       }
       if (WorldTime != 0L) {
         output.WriteRawTag(24);
@@ -7778,23 +12103,40 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(32);
         output.WriteInt32(Seqno);
       }
-      playerStates_.WriteTo(ref output, _repeated_playerStates_codec);
+      if (StcF5 != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(StcF5);
+      }
+      states_.WriteTo(ref output, _repeated_states_codec);
       playerUpdates_.WriteTo(ref output, _repeated_playerUpdates_codec);
-      if (Tag11 != 0L) {
+      stcF10_.WriteTo(ref output, _repeated_stcF10_codec);
+      if (StcF11 != 0L) {
         output.WriteRawTag(88);
-        output.WriteInt64(Tag11);
+        output.WriteInt64(StcF11);
       }
-      if (LocalIp.Length != 0) {
+      if (ZcLocalIp.Length != 0) {
         output.WriteRawTag(98);
-        output.WriteString(LocalIp);
+        output.WriteString(ZcLocalIp);
       }
-      if (Tag15 != 0) {
+      if (StcF13 != 0L) {
+        output.WriteRawTag(104);
+        output.WriteInt64(StcF13);
+      }
+      if (Zwifters != 0) {
+        output.WriteRawTag(112);
+        output.WriteInt32(Zwifters);
+      }
+      if (ZcLocalPort != 0) {
         output.WriteRawTag(120);
-        output.WriteInt32(Tag15);
+        output.WriteInt32(ZcLocalPort);
       }
-      if (Tag17 != 0L) {
+      if (ZcProtocol != global::ZwiftPacketMonitor.IPProtocol.IppUnk) {
+        output.WriteRawTag(128, 1);
+        output.WriteEnum((int) ZcProtocol);
+      }
+      if (StcF17 != 0L) {
         output.WriteRawTag(136, 1);
-        output.WriteInt64(Tag17);
+        output.WriteInt64(StcF17);
       }
       if (NumMsgs != 0) {
         output.WriteRawTag(144, 1);
@@ -7804,18 +12146,40 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(152, 1);
         output.WriteInt32(Msgnum);
       }
-      if (eventPositions_ != null) {
+      if (HasSimultLogin != false) {
+        output.WriteRawTag(160, 1);
+        output.WriteBool(HasSimultLogin);
+      }
+      if (playerSummaries_ != null) {
+        output.WriteRawTag(170, 1);
+        output.WriteMessage(PlayerSummaries);
+      }
+      if (evSubgroupPs_ != null) {
         output.WriteRawTag(186, 1);
-        output.WriteMessage(EventPositions);
+        output.WriteMessage(EvSubgroupPs);
       }
-      if (servers1_ != null) {
+      if (udpConfig_ != null) {
         output.WriteRawTag(194, 1);
-        output.WriteMessage(Servers1);
+        output.WriteMessage(UdpConfig);
       }
-      if (servers2_ != null) {
+      if (udpConfigVod1_ != null) {
         output.WriteRawTag(202, 1);
-        output.WriteMessage(Servers2);
+        output.WriteMessage(UdpConfigVod1);
       }
+      if (StcF26 != 0) {
+        output.WriteRawTag(208, 1);
+        output.WriteInt32(StcF26);
+      }
+      if (udpConfigVod2_ != null) {
+        output.WriteRawTag(218, 1);
+        output.WriteMessage(UdpConfigVod2);
+      }
+      playerStates_.WriteTo(ref output, _repeated_playerStates_codec);
+      if (tcpConfig_ != null) {
+        output.WriteRawTag(234, 1);
+        output.WriteMessage(TcpConfig);
+      }
+      ackSubsSegm_.WriteTo(ref output, _repeated_ackSubsSegm_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -7823,13 +12187,14 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Tag1 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag1);
+      if (ServerRealm != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ServerRealm);
       }
-      if (RiderId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RiderId);
+      if (PlayerId != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(PlayerId);
       }
       if (WorldTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(WorldTime);
@@ -7837,19 +12202,32 @@ namespace ZwiftPacketMonitor {
       if (Seqno != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seqno);
       }
-      size += playerStates_.CalculateSize(_repeated_playerStates_codec);
+      if (StcF5 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(StcF5);
+      }
+      size += states_.CalculateSize(_repeated_states_codec);
       size += playerUpdates_.CalculateSize(_repeated_playerUpdates_codec);
-      if (Tag11 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag11);
+      size += stcF10_.CalculateSize(_repeated_stcF10_codec);
+      if (StcF11 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StcF11);
       }
-      if (LocalIp.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(LocalIp);
+      if (ZcLocalIp.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ZcLocalIp);
       }
-      if (Tag15 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Tag15);
+      if (StcF13 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StcF13);
       }
-      if (Tag17 != 0L) {
-        size += 2 + pb::CodedOutputStream.ComputeInt64Size(Tag17);
+      if (Zwifters != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Zwifters);
+      }
+      if (ZcLocalPort != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ZcLocalPort);
+      }
+      if (ZcProtocol != global::ZwiftPacketMonitor.IPProtocol.IppUnk) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) ZcProtocol);
+      }
+      if (StcF17 != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(StcF17);
       }
       if (NumMsgs != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(NumMsgs);
@@ -7857,15 +12235,32 @@ namespace ZwiftPacketMonitor {
       if (Msgnum != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(Msgnum);
       }
-      if (eventPositions_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(EventPositions);
+      if (HasSimultLogin != false) {
+        size += 2 + 1;
       }
-      if (servers1_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Servers1);
+      if (playerSummaries_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PlayerSummaries);
       }
-      if (servers2_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Servers2);
+      if (evSubgroupPs_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(EvSubgroupPs);
       }
+      if (udpConfig_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UdpConfig);
+      }
+      if (udpConfigVod1_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UdpConfigVod1);
+      }
+      if (StcF26 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(StcF26);
+      }
+      if (udpConfigVod2_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UdpConfigVod2);
+      }
+      size += playerStates_.CalculateSize(_repeated_playerStates_codec);
+      if (tcpConfig_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(TcpConfig);
+      }
+      size += ackSubsSegm_.CalculateSize(_repeated_ackSubsSegm_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -7873,15 +12268,16 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(ServerToClient other) {
       if (other == null) {
         return;
       }
-      if (other.Tag1 != 0) {
-        Tag1 = other.Tag1;
+      if (other.ServerRealm != 0L) {
+        ServerRealm = other.ServerRealm;
       }
-      if (other.RiderId != 0) {
-        RiderId = other.RiderId;
+      if (other.PlayerId != 0L) {
+        PlayerId = other.PlayerId;
       }
       if (other.WorldTime != 0L) {
         WorldTime = other.WorldTime;
@@ -7889,19 +12285,32 @@ namespace ZwiftPacketMonitor {
       if (other.Seqno != 0) {
         Seqno = other.Seqno;
       }
-      playerStates_.Add(other.playerStates_);
+      if (other.StcF5 != 0) {
+        StcF5 = other.StcF5;
+      }
+      states_.Add(other.states_);
       playerUpdates_.Add(other.playerUpdates_);
-      if (other.Tag11 != 0L) {
-        Tag11 = other.Tag11;
+      stcF10_.Add(other.stcF10_);
+      if (other.StcF11 != 0L) {
+        StcF11 = other.StcF11;
       }
-      if (other.LocalIp.Length != 0) {
-        LocalIp = other.LocalIp;
+      if (other.ZcLocalIp.Length != 0) {
+        ZcLocalIp = other.ZcLocalIp;
       }
-      if (other.Tag15 != 0) {
-        Tag15 = other.Tag15;
+      if (other.StcF13 != 0L) {
+        StcF13 = other.StcF13;
       }
-      if (other.Tag17 != 0L) {
-        Tag17 = other.Tag17;
+      if (other.Zwifters != 0) {
+        Zwifters = other.Zwifters;
+      }
+      if (other.ZcLocalPort != 0) {
+        ZcLocalPort = other.ZcLocalPort;
+      }
+      if (other.ZcProtocol != global::ZwiftPacketMonitor.IPProtocol.IppUnk) {
+        ZcProtocol = other.ZcProtocol;
+      }
+      if (other.StcF17 != 0L) {
+        StcF17 = other.StcF17;
       }
       if (other.NumMsgs != 0) {
         NumMsgs = other.NumMsgs;
@@ -7909,28 +12318,55 @@ namespace ZwiftPacketMonitor {
       if (other.Msgnum != 0) {
         Msgnum = other.Msgnum;
       }
-      if (other.eventPositions_ != null) {
-        if (eventPositions_ == null) {
-          EventPositions = new global::ZwiftPacketMonitor.EventPositions();
-        }
-        EventPositions.MergeFrom(other.EventPositions);
+      if (other.HasSimultLogin != false) {
+        HasSimultLogin = other.HasSimultLogin;
       }
-      if (other.servers1_ != null) {
-        if (servers1_ == null) {
-          Servers1 = new global::ZwiftPacketMonitor.Server1();
+      if (other.playerSummaries_ != null) {
+        if (playerSummaries_ == null) {
+          PlayerSummaries = new global::ZwiftPacketMonitor.PlayerSummaries();
         }
-        Servers1.MergeFrom(other.Servers1);
+        PlayerSummaries.MergeFrom(other.PlayerSummaries);
       }
-      if (other.servers2_ != null) {
-        if (servers2_ == null) {
-          Servers2 = new global::ZwiftPacketMonitor.Server2();
+      if (other.evSubgroupPs_ != null) {
+        if (evSubgroupPs_ == null) {
+          EvSubgroupPs = new global::ZwiftPacketMonitor.EventSubgroupPlacements();
         }
-        Servers2.MergeFrom(other.Servers2);
+        EvSubgroupPs.MergeFrom(other.EvSubgroupPs);
       }
+      if (other.udpConfig_ != null) {
+        if (udpConfig_ == null) {
+          UdpConfig = new global::ZwiftPacketMonitor.UdpConfig();
+        }
+        UdpConfig.MergeFrom(other.UdpConfig);
+      }
+      if (other.udpConfigVod1_ != null) {
+        if (udpConfigVod1_ == null) {
+          UdpConfigVod1 = new global::ZwiftPacketMonitor.UdpConfigVOD();
+        }
+        UdpConfigVod1.MergeFrom(other.UdpConfigVod1);
+      }
+      if (other.StcF26 != 0) {
+        StcF26 = other.StcF26;
+      }
+      if (other.udpConfigVod2_ != null) {
+        if (udpConfigVod2_ == null) {
+          UdpConfigVod2 = new global::ZwiftPacketMonitor.UdpConfigVOD();
+        }
+        UdpConfigVod2.MergeFrom(other.UdpConfigVod2);
+      }
+      playerStates_.Add(other.playerStates_);
+      if (other.tcpConfig_ != null) {
+        if (tcpConfig_ == null) {
+          TcpConfig = new global::ZwiftPacketMonitor.TcpConfig();
+        }
+        TcpConfig.MergeFrom(other.TcpConfig);
+      }
+      ackSubsSegm_.Add(other.ackSubsSegm_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -7942,11 +12378,11 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Tag1 = input.ReadInt32();
+            ServerRealm = input.ReadInt64();
             break;
           }
           case 16: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt64();
             break;
           }
           case 24: {
@@ -7957,28 +12393,49 @@ namespace ZwiftPacketMonitor {
             Seqno = input.ReadInt32();
             break;
           }
+          case 40: {
+            StcF5 = input.ReadInt32();
+            break;
+          }
           case 66: {
-            playerStates_.AddEntriesFrom(input, _repeated_playerStates_codec);
+            states_.AddEntriesFrom(input, _repeated_states_codec);
             break;
           }
           case 74: {
             playerUpdates_.AddEntriesFrom(input, _repeated_playerUpdates_codec);
             break;
           }
+          case 82:
+          case 80: {
+            stcF10_.AddEntriesFrom(input, _repeated_stcF10_codec);
+            break;
+          }
           case 88: {
-            Tag11 = input.ReadInt64();
+            StcF11 = input.ReadInt64();
             break;
           }
           case 98: {
-            LocalIp = input.ReadString();
+            ZcLocalIp = input.ReadString();
+            break;
+          }
+          case 104: {
+            StcF13 = input.ReadInt64();
+            break;
+          }
+          case 112: {
+            Zwifters = input.ReadInt32();
             break;
           }
           case 120: {
-            Tag15 = input.ReadInt32();
+            ZcLocalPort = input.ReadInt32();
+            break;
+          }
+          case 128: {
+            ZcProtocol = (global::ZwiftPacketMonitor.IPProtocol) input.ReadEnum();
             break;
           }
           case 136: {
-            Tag17 = input.ReadInt64();
+            StcF17 = input.ReadInt64();
             break;
           }
           case 144: {
@@ -7989,25 +12446,63 @@ namespace ZwiftPacketMonitor {
             Msgnum = input.ReadInt32();
             break;
           }
-          case 186: {
-            if (eventPositions_ == null) {
-              EventPositions = new global::ZwiftPacketMonitor.EventPositions();
+          case 160: {
+            HasSimultLogin = input.ReadBool();
+            break;
+          }
+          case 170: {
+            if (playerSummaries_ == null) {
+              PlayerSummaries = new global::ZwiftPacketMonitor.PlayerSummaries();
             }
-            input.ReadMessage(EventPositions);
+            input.ReadMessage(PlayerSummaries);
+            break;
+          }
+          case 186: {
+            if (evSubgroupPs_ == null) {
+              EvSubgroupPs = new global::ZwiftPacketMonitor.EventSubgroupPlacements();
+            }
+            input.ReadMessage(EvSubgroupPs);
             break;
           }
           case 194: {
-            if (servers1_ == null) {
-              Servers1 = new global::ZwiftPacketMonitor.Server1();
+            if (udpConfig_ == null) {
+              UdpConfig = new global::ZwiftPacketMonitor.UdpConfig();
             }
-            input.ReadMessage(Servers1);
+            input.ReadMessage(UdpConfig);
             break;
           }
           case 202: {
-            if (servers2_ == null) {
-              Servers2 = new global::ZwiftPacketMonitor.Server2();
+            if (udpConfigVod1_ == null) {
+              UdpConfigVod1 = new global::ZwiftPacketMonitor.UdpConfigVOD();
             }
-            input.ReadMessage(Servers2);
+            input.ReadMessage(UdpConfigVod1);
+            break;
+          }
+          case 208: {
+            StcF26 = input.ReadInt32();
+            break;
+          }
+          case 218: {
+            if (udpConfigVod2_ == null) {
+              UdpConfigVod2 = new global::ZwiftPacketMonitor.UdpConfigVOD();
+            }
+            input.ReadMessage(UdpConfigVod2);
+            break;
+          }
+          case 226: {
+            playerStates_.AddEntriesFrom(input, _repeated_playerStates_codec);
+            break;
+          }
+          case 234: {
+            if (tcpConfig_ == null) {
+              TcpConfig = new global::ZwiftPacketMonitor.TcpConfig();
+            }
+            input.ReadMessage(TcpConfig);
+            break;
+          }
+          case 242:
+          case 240: {
+            ackSubsSegm_.AddEntriesFrom(input, _repeated_ackSubsSegm_codec);
             break;
           }
         }
@@ -8017,6 +12512,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -8025,11 +12521,11 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Tag1 = input.ReadInt32();
+            ServerRealm = input.ReadInt64();
             break;
           }
           case 16: {
-            RiderId = input.ReadInt32();
+            PlayerId = input.ReadInt64();
             break;
           }
           case 24: {
@@ -8040,28 +12536,49 @@ namespace ZwiftPacketMonitor {
             Seqno = input.ReadInt32();
             break;
           }
+          case 40: {
+            StcF5 = input.ReadInt32();
+            break;
+          }
           case 66: {
-            playerStates_.AddEntriesFrom(ref input, _repeated_playerStates_codec);
+            states_.AddEntriesFrom(ref input, _repeated_states_codec);
             break;
           }
           case 74: {
             playerUpdates_.AddEntriesFrom(ref input, _repeated_playerUpdates_codec);
             break;
           }
+          case 82:
+          case 80: {
+            stcF10_.AddEntriesFrom(ref input, _repeated_stcF10_codec);
+            break;
+          }
           case 88: {
-            Tag11 = input.ReadInt64();
+            StcF11 = input.ReadInt64();
             break;
           }
           case 98: {
-            LocalIp = input.ReadString();
+            ZcLocalIp = input.ReadString();
+            break;
+          }
+          case 104: {
+            StcF13 = input.ReadInt64();
+            break;
+          }
+          case 112: {
+            Zwifters = input.ReadInt32();
             break;
           }
           case 120: {
-            Tag15 = input.ReadInt32();
+            ZcLocalPort = input.ReadInt32();
+            break;
+          }
+          case 128: {
+            ZcProtocol = (global::ZwiftPacketMonitor.IPProtocol) input.ReadEnum();
             break;
           }
           case 136: {
-            Tag17 = input.ReadInt64();
+            StcF17 = input.ReadInt64();
             break;
           }
           case 144: {
@@ -8072,25 +12589,63 @@ namespace ZwiftPacketMonitor {
             Msgnum = input.ReadInt32();
             break;
           }
-          case 186: {
-            if (eventPositions_ == null) {
-              EventPositions = new global::ZwiftPacketMonitor.EventPositions();
+          case 160: {
+            HasSimultLogin = input.ReadBool();
+            break;
+          }
+          case 170: {
+            if (playerSummaries_ == null) {
+              PlayerSummaries = new global::ZwiftPacketMonitor.PlayerSummaries();
             }
-            input.ReadMessage(EventPositions);
+            input.ReadMessage(PlayerSummaries);
+            break;
+          }
+          case 186: {
+            if (evSubgroupPs_ == null) {
+              EvSubgroupPs = new global::ZwiftPacketMonitor.EventSubgroupPlacements();
+            }
+            input.ReadMessage(EvSubgroupPs);
             break;
           }
           case 194: {
-            if (servers1_ == null) {
-              Servers1 = new global::ZwiftPacketMonitor.Server1();
+            if (udpConfig_ == null) {
+              UdpConfig = new global::ZwiftPacketMonitor.UdpConfig();
             }
-            input.ReadMessage(Servers1);
+            input.ReadMessage(UdpConfig);
             break;
           }
           case 202: {
-            if (servers2_ == null) {
-              Servers2 = new global::ZwiftPacketMonitor.Server2();
+            if (udpConfigVod1_ == null) {
+              UdpConfigVod1 = new global::ZwiftPacketMonitor.UdpConfigVOD();
             }
-            input.ReadMessage(Servers2);
+            input.ReadMessage(UdpConfigVod1);
+            break;
+          }
+          case 208: {
+            StcF26 = input.ReadInt32();
+            break;
+          }
+          case 218: {
+            if (udpConfigVod2_ == null) {
+              UdpConfigVod2 = new global::ZwiftPacketMonitor.UdpConfigVOD();
+            }
+            input.ReadMessage(UdpConfigVod2);
+            break;
+          }
+          case 226: {
+            playerStates_.AddEntriesFrom(ref input, _repeated_playerStates_codec);
+            break;
+          }
+          case 234: {
+            if (tcpConfig_ == null) {
+              TcpConfig = new global::ZwiftPacketMonitor.TcpConfig();
+            }
+            input.ReadMessage(TcpConfig);
+            break;
+          }
+          case 242:
+          case 240: {
+            ackSubsSegm_.AddEntriesFrom(ref input, _repeated_ackSubsSegm_codec);
             break;
           }
         }
@@ -8100,68 +12655,85 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class ServerAddress : pb::IMessage<ServerAddress>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class RelayAddress : pb::IMessage<RelayAddress>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<ServerAddress> _parser = new pb::MessageParser<ServerAddress>(() => new ServerAddress());
+    private static readonly pb::MessageParser<RelayAddress> _parser = new pb::MessageParser<RelayAddress>(() => new RelayAddress());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ServerAddress> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<RelayAddress> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[15]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerAddress() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RelayAddress() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerAddress(ServerAddress other) : this() {
-      f1_ = other.f1_;
-      f2_ = other.f2_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RelayAddress(RelayAddress other) : this() {
+      lbRealm_ = other.lbRealm_;
+      lbCourse_ = other.lbCourse_;
       ip_ = other.ip_;
-      f4_ = other.f4_;
-      f5_ = other.f5_;
-      f6_ = other.f6_;
+      port_ = other.port_;
+      raF5_ = other.raF5_;
+      raF6_ = other.raF6_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerAddress Clone() {
-      return new ServerAddress(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RelayAddress Clone() {
+      return new RelayAddress(this);
     }
 
-    /// <summary>Field number for the "f1" field.</summary>
-    public const int F1FieldNumber = 1;
-    private int f1_;
+    /// <summary>Field number for the "lb_realm" field.</summary>
+    public const int LbRealmFieldNumber = 1;
+    private int lbRealm_;
+    /// <summary>
+    /// load balancing cluster: server realm or 0 (generic)
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F1 {
-      get { return f1_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int LbRealm {
+      get { return lbRealm_; }
       set {
-        f1_ = value;
+        lbRealm_ = value;
       }
     }
 
-    /// <summary>Field number for the "f2" field.</summary>
-    public const int F2FieldNumber = 2;
-    private int f2_;
+    /// <summary>Field number for the "lb_course" field.</summary>
+    public const int LbCourseFieldNumber = 2;
+    private int lbCourse_;
+    /// <summary>
+    /// load balancing cluster: course id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F2 {
-      get { return f2_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int LbCourse {
+      get { return lbCourse_; }
       set {
-        f2_ = value;
+        lbCourse_ = value;
       }
     }
 
@@ -8169,6 +12741,7 @@ namespace ZwiftPacketMonitor {
     public const int IpFieldNumber = 3;
     private string ip_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Ip {
       get { return ip_; }
       set {
@@ -8176,70 +12749,82 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "f4" field.</summary>
-    public const int F4FieldNumber = 4;
-    private int f4_;
+    /// <summary>Field number for the "port" field.</summary>
+    public const int PortFieldNumber = 4;
+    private int port_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F4 {
-      get { return f4_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Port {
+      get { return port_; }
       set {
-        f4_ = value;
+        port_ = value;
       }
     }
 
-    /// <summary>Field number for the "f5" field.</summary>
-    public const int F5FieldNumber = 5;
-    private uint f5_;
+    /// <summary>Field number for the "ra_f5" field.</summary>
+    public const int RaF5FieldNumber = 5;
+    private float raF5_;
+    /// <summary>
+    ///or fixed
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint F5 {
-      get { return f5_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float RaF5 {
+      get { return raF5_; }
       set {
-        f5_ = value;
+        raF5_ = value;
       }
     }
 
-    /// <summary>Field number for the "f6" field.</summary>
-    public const int F6FieldNumber = 6;
-    private uint f6_;
+    /// <summary>Field number for the "ra_f6" field.</summary>
+    public const int RaF6FieldNumber = 6;
+    private float raF6_;
+    /// <summary>
+    ///or fixed
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint F6 {
-      get { return f6_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float RaF6 {
+      get { return raF6_; }
       set {
-        f6_ = value;
+        raF6_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as ServerAddress);
+      return Equals(other as RelayAddress);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ServerAddress other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(RelayAddress other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (F1 != other.F1) return false;
-      if (F2 != other.F2) return false;
+      if (LbRealm != other.LbRealm) return false;
+      if (LbCourse != other.LbCourse) return false;
       if (Ip != other.Ip) return false;
-      if (F4 != other.F4) return false;
-      if (F5 != other.F5) return false;
-      if (F6 != other.F6) return false;
+      if (Port != other.Port) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(RaF5, other.RaF5)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(RaF6, other.RaF6)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (F1 != 0) hash ^= F1.GetHashCode();
-      if (F2 != 0) hash ^= F2.GetHashCode();
+      if (LbRealm != 0) hash ^= LbRealm.GetHashCode();
+      if (LbCourse != 0) hash ^= LbCourse.GetHashCode();
       if (Ip.Length != 0) hash ^= Ip.GetHashCode();
-      if (F4 != 0) hash ^= F4.GetHashCode();
-      if (F5 != 0) hash ^= F5.GetHashCode();
-      if (F6 != 0) hash ^= F6.GetHashCode();
+      if (Port != 0) hash ^= Port.GetHashCode();
+      if (RaF5 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(RaF5);
+      if (RaF6 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(RaF6);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -8247,38 +12832,40 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (F1 != 0) {
+      if (LbRealm != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(F1);
+        output.WriteInt32(LbRealm);
       }
-      if (F2 != 0) {
+      if (LbCourse != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(LbCourse);
       }
       if (Ip.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Ip);
       }
-      if (F4 != 0) {
+      if (Port != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(F4);
+        output.WriteInt32(Port);
       }
-      if (F5 != 0) {
+      if (RaF5 != 0F) {
         output.WriteRawTag(45);
-        output.WriteFixed32(F5);
+        output.WriteFloat(RaF5);
       }
-      if (F6 != 0) {
+      if (RaF6 != 0F) {
         output.WriteRawTag(53);
-        output.WriteFixed32(F6);
+        output.WriteFloat(RaF6);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -8288,30 +12875,31 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (F1 != 0) {
+      if (LbRealm != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(F1);
+        output.WriteInt32(LbRealm);
       }
-      if (F2 != 0) {
+      if (LbCourse != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(LbCourse);
       }
       if (Ip.Length != 0) {
         output.WriteRawTag(26);
         output.WriteString(Ip);
       }
-      if (F4 != 0) {
+      if (Port != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(F4);
+        output.WriteInt32(Port);
       }
-      if (F5 != 0) {
+      if (RaF5 != 0F) {
         output.WriteRawTag(45);
-        output.WriteFixed32(F5);
+        output.WriteFloat(RaF5);
       }
-      if (F6 != 0) {
+      if (RaF6 != 0F) {
         output.WriteRawTag(53);
-        output.WriteFixed32(F6);
+        output.WriteFloat(RaF6);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -8320,24 +12908,25 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (F1 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F1);
+      if (LbRealm != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LbRealm);
       }
-      if (F2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F2);
+      if (LbCourse != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LbCourse);
       }
       if (Ip.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Ip);
       }
-      if (F4 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F4);
+      if (Port != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Port);
       }
-      if (F5 != 0) {
+      if (RaF5 != 0F) {
         size += 1 + 4;
       }
-      if (F6 != 0) {
+      if (RaF6 != 0F) {
         size += 1 + 4;
       }
       if (_unknownFields != null) {
@@ -8347,32 +12936,34 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ServerAddress other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(RelayAddress other) {
       if (other == null) {
         return;
       }
-      if (other.F1 != 0) {
-        F1 = other.F1;
+      if (other.LbRealm != 0) {
+        LbRealm = other.LbRealm;
       }
-      if (other.F2 != 0) {
-        F2 = other.F2;
+      if (other.LbCourse != 0) {
+        LbCourse = other.LbCourse;
       }
       if (other.Ip.Length != 0) {
         Ip = other.Ip;
       }
-      if (other.F4 != 0) {
-        F4 = other.F4;
+      if (other.Port != 0) {
+        Port = other.Port;
       }
-      if (other.F5 != 0) {
-        F5 = other.F5;
+      if (other.RaF5 != 0F) {
+        RaF5 = other.RaF5;
       }
-      if (other.F6 != 0) {
-        F6 = other.F6;
+      if (other.RaF6 != 0F) {
+        RaF6 = other.RaF6;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -8384,11 +12975,11 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            F1 = input.ReadInt32();
+            LbRealm = input.ReadInt32();
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            LbCourse = input.ReadInt32();
             break;
           }
           case 26: {
@@ -8396,15 +12987,15 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 32: {
-            F4 = input.ReadInt32();
+            Port = input.ReadInt32();
             break;
           }
           case 45: {
-            F5 = input.ReadFixed32();
+            RaF5 = input.ReadFloat();
             break;
           }
           case 53: {
-            F6 = input.ReadFixed32();
+            RaF6 = input.ReadFloat();
             break;
           }
         }
@@ -8414,6 +13005,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -8422,11 +13014,11 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            F1 = input.ReadInt32();
+            LbRealm = input.ReadInt32();
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            LbCourse = input.ReadInt32();
             break;
           }
           case 26: {
@@ -8434,15 +13026,15 @@ namespace ZwiftPacketMonitor {
             break;
           }
           case 32: {
-            F4 = input.ReadInt32();
+            Port = input.ReadInt32();
             break;
           }
           case 45: {
-            F5 = input.ReadFixed32();
+            RaF5 = input.ReadFloat();
             break;
           }
           case 53: {
-            F6 = input.ReadFixed32();
+            RaF6 = input.ReadFloat();
             break;
           }
         }
@@ -8452,117 +13044,139 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class ServerPool : pb::IMessage<ServerPool>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class RelayAddressesVOD : pb::IMessage<RelayAddressesVOD>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<ServerPool> _parser = new pb::MessageParser<ServerPool>(() => new ServerPool());
+    private static readonly pb::MessageParser<RelayAddressesVOD> _parser = new pb::MessageParser<RelayAddressesVOD>(() => new RelayAddressesVOD());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ServerPool> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<RelayAddressesVOD> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[16]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerPool() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RelayAddressesVOD() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerPool(ServerPool other) : this() {
-      f1_ = other.f1_;
-      f2_ = other.f2_;
-      addresses_ = other.addresses_.Clone();
-      f4_ = other.f4_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RelayAddressesVOD(RelayAddressesVOD other) : this() {
+      lbRealm_ = other.lbRealm_;
+      lbCourse_ = other.lbCourse_;
+      relayAddresses_ = other.relayAddresses_.Clone();
+      ravF4_ = other.ravF4_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ServerPool Clone() {
-      return new ServerPool(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public RelayAddressesVOD Clone() {
+      return new RelayAddressesVOD(this);
     }
 
-    /// <summary>Field number for the "f1" field.</summary>
-    public const int F1FieldNumber = 1;
-    private int f1_;
+    /// <summary>Field number for the "lb_realm" field.</summary>
+    public const int LbRealmFieldNumber = 1;
+    private int lbRealm_;
+    /// <summary>
+    /// load balancing cluster: server realm or 0 (generic)
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F1 {
-      get { return f1_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int LbRealm {
+      get { return lbRealm_; }
       set {
-        f1_ = value;
+        lbRealm_ = value;
       }
     }
 
-    /// <summary>Field number for the "f2" field.</summary>
-    public const int F2FieldNumber = 2;
-    private int f2_;
+    /// <summary>Field number for the "lb_course" field.</summary>
+    public const int LbCourseFieldNumber = 2;
+    private int lbCourse_;
+    /// <summary>
+    /// load balancing cluster: course id
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F2 {
-      get { return f2_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int LbCourse {
+      get { return lbCourse_; }
       set {
-        f2_ = value;
+        lbCourse_ = value;
       }
     }
 
-    /// <summary>Field number for the "addresses" field.</summary>
-    public const int AddressesFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.ServerAddress> _repeated_addresses_codec
-        = pb::FieldCodec.ForMessage(26, global::ZwiftPacketMonitor.ServerAddress.Parser);
-    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress> addresses_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress>();
+    /// <summary>Field number for the "relay_addresses" field.</summary>
+    public const int RelayAddressesFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.RelayAddress> _repeated_relayAddresses_codec
+        = pb::FieldCodec.ForMessage(26, global::ZwiftPacketMonitor.RelayAddress.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddress> relayAddresses_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddress>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress> Addresses {
-      get { return addresses_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddress> RelayAddresses {
+      get { return relayAddresses_; }
     }
 
-    /// <summary>Field number for the "f4" field.</summary>
-    public const int F4FieldNumber = 4;
-    private int f4_;
+    /// <summary>Field number for the "rav_f4" field.</summary>
+    public const int RavF4FieldNumber = 4;
+    private int ravF4_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F4 {
-      get { return f4_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int RavF4 {
+      get { return ravF4_; }
       set {
-        f4_ = value;
+        ravF4_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as ServerPool);
+      return Equals(other as RelayAddressesVOD);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ServerPool other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(RelayAddressesVOD other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (F1 != other.F1) return false;
-      if (F2 != other.F2) return false;
-      if(!addresses_.Equals(other.addresses_)) return false;
-      if (F4 != other.F4) return false;
+      if (LbRealm != other.LbRealm) return false;
+      if (LbCourse != other.LbCourse) return false;
+      if(!relayAddresses_.Equals(other.relayAddresses_)) return false;
+      if (RavF4 != other.RavF4) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (F1 != 0) hash ^= F1.GetHashCode();
-      if (F2 != 0) hash ^= F2.GetHashCode();
-      hash ^= addresses_.GetHashCode();
-      if (F4 != 0) hash ^= F4.GetHashCode();
+      if (LbRealm != 0) hash ^= LbRealm.GetHashCode();
+      if (LbCourse != 0) hash ^= LbCourse.GetHashCode();
+      hash ^= relayAddresses_.GetHashCode();
+      if (RavF4 != 0) hash ^= RavF4.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -8570,27 +13184,29 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (F1 != 0) {
+      if (LbRealm != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(F1);
+        output.WriteInt32(LbRealm);
       }
-      if (F2 != 0) {
+      if (LbCourse != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(LbCourse);
       }
-      addresses_.WriteTo(output, _repeated_addresses_codec);
-      if (F4 != 0) {
+      relayAddresses_.WriteTo(output, _repeated_relayAddresses_codec);
+      if (RavF4 != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(F4);
+        output.WriteInt32(RavF4);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -8600,19 +13216,20 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (F1 != 0) {
+      if (LbRealm != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(F1);
+        output.WriteInt32(LbRealm);
       }
-      if (F2 != 0) {
+      if (LbCourse != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(LbCourse);
       }
-      addresses_.WriteTo(ref output, _repeated_addresses_codec);
-      if (F4 != 0) {
+      relayAddresses_.WriteTo(ref output, _repeated_relayAddresses_codec);
+      if (RavF4 != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(F4);
+        output.WriteInt32(RavF4);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -8621,17 +13238,18 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (F1 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F1);
+      if (LbRealm != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LbRealm);
       }
-      if (F2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F2);
+      if (LbCourse != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LbCourse);
       }
-      size += addresses_.CalculateSize(_repeated_addresses_codec);
-      if (F4 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F4);
+      size += relayAddresses_.CalculateSize(_repeated_relayAddresses_codec);
+      if (RavF4 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RavF4);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -8640,24 +13258,26 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ServerPool other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(RelayAddressesVOD other) {
       if (other == null) {
         return;
       }
-      if (other.F1 != 0) {
-        F1 = other.F1;
+      if (other.LbRealm != 0) {
+        LbRealm = other.LbRealm;
       }
-      if (other.F2 != 0) {
-        F2 = other.F2;
+      if (other.LbCourse != 0) {
+        LbCourse = other.LbCourse;
       }
-      addresses_.Add(other.addresses_);
-      if (other.F4 != 0) {
-        F4 = other.F4;
+      relayAddresses_.Add(other.relayAddresses_);
+      if (other.RavF4 != 0) {
+        RavF4 = other.RavF4;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -8669,19 +13289,19 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            F1 = input.ReadInt32();
+            LbRealm = input.ReadInt32();
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            LbCourse = input.ReadInt32();
             break;
           }
           case 26: {
-            addresses_.AddEntriesFrom(input, _repeated_addresses_codec);
+            relayAddresses_.AddEntriesFrom(input, _repeated_relayAddresses_codec);
             break;
           }
           case 32: {
-            F4 = input.ReadInt32();
+            RavF4 = input.ReadInt32();
             break;
           }
         }
@@ -8691,6 +13311,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -8699,19 +13320,19 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            F1 = input.ReadInt32();
+            LbRealm = input.ReadInt32();
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            LbCourse = input.ReadInt32();
             break;
           }
           case 26: {
-            addresses_.AddEntriesFrom(ref input, _repeated_addresses_codec);
+            relayAddresses_.AddEntriesFrom(ref input, _repeated_relayAddresses_codec);
             break;
           }
           case 32: {
-            F4 = input.ReadInt32();
+            RavF4 = input.ReadInt32();
             break;
           }
         }
@@ -8721,89 +13342,169 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class Server2 : pb::IMessage<Server2>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class UdpConfigVOD : pb::IMessage<UdpConfigVOD>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Server2> _parser = new pb::MessageParser<Server2>(() => new Server2());
+    private static readonly pb::MessageParser<UdpConfigVOD> _parser = new pb::MessageParser<UdpConfigVOD>(() => new UdpConfigVOD());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Server2> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<UdpConfigVOD> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[17]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Server2() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UdpConfigVOD() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Server2(Server2 other) : this() {
-      pool_ = other.pool_.Clone();
-      f2_ = other.f2_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UdpConfigVOD(UdpConfigVOD other) : this() {
+      relayAddressesVod_ = other.relayAddressesVod_.Clone();
+      port_ = other.port_;
+      ucvF3_ = other.ucvF3_;
+      ucvF4_ = other.ucvF4_;
+      ucvF5_ = other.ucvF5_;
+      ucvF6_ = other.ucvF6_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Server2 Clone() {
-      return new Server2(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UdpConfigVOD Clone() {
+      return new UdpConfigVOD(this);
     }
 
-    /// <summary>Field number for the "pool" field.</summary>
-    public const int PoolFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.ServerPool> _repeated_pool_codec
-        = pb::FieldCodec.ForMessage(10, global::ZwiftPacketMonitor.ServerPool.Parser);
-    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.ServerPool> pool_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.ServerPool>();
+    /// <summary>Field number for the "relay_addresses_vod" field.</summary>
+    public const int RelayAddressesVodFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.RelayAddressesVOD> _repeated_relayAddressesVod_codec
+        = pb::FieldCodec.ForMessage(10, global::ZwiftPacketMonitor.RelayAddressesVOD.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddressesVOD> relayAddressesVod_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddressesVOD>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ZwiftPacketMonitor.ServerPool> Pool {
-      get { return pool_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddressesVOD> RelayAddressesVod {
+      get { return relayAddressesVod_; }
     }
 
-    /// <summary>Field number for the "f2" field.</summary>
-    public const int F2FieldNumber = 2;
-    private int f2_;
+    /// <summary>Field number for the "port" field.</summary>
+    public const int PortFieldNumber = 2;
+    private int port_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F2 {
-      get { return f2_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Port {
+      get { return port_; }
       set {
-        f2_ = value;
+        port_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ucv_f3" field.</summary>
+    public const int UcvF3FieldNumber = 3;
+    private long ucvF3_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long UcvF3 {
+      get { return ucvF3_; }
+      set {
+        ucvF3_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ucv_f4" field.</summary>
+    public const int UcvF4FieldNumber = 4;
+    private long ucvF4_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long UcvF4 {
+      get { return ucvF4_; }
+      set {
+        ucvF4_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ucv_f5" field.</summary>
+    public const int UcvF5FieldNumber = 5;
+    private float ucvF5_;
+    /// <summary>
+    ///or fixed
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float UcvF5 {
+      get { return ucvF5_; }
+      set {
+        ucvF5_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ucv_f6" field.</summary>
+    public const int UcvF6FieldNumber = 6;
+    private float ucvF6_;
+    /// <summary>
+    ///or fixed
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float UcvF6 {
+      get { return ucvF6_; }
+      set {
+        ucvF6_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Server2);
+      return Equals(other as UdpConfigVOD);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Server2 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(UdpConfigVOD other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!pool_.Equals(other.pool_)) return false;
-      if (F2 != other.F2) return false;
+      if(!relayAddressesVod_.Equals(other.relayAddressesVod_)) return false;
+      if (Port != other.Port) return false;
+      if (UcvF3 != other.UcvF3) return false;
+      if (UcvF4 != other.UcvF4) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(UcvF5, other.UcvF5)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(UcvF6, other.UcvF6)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= pool_.GetHashCode();
-      if (F2 != 0) hash ^= F2.GetHashCode();
+      hash ^= relayAddressesVod_.GetHashCode();
+      if (Port != 0) hash ^= Port.GetHashCode();
+      if (UcvF3 != 0L) hash ^= UcvF3.GetHashCode();
+      if (UcvF4 != 0L) hash ^= UcvF4.GetHashCode();
+      if (UcvF5 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(UcvF5);
+      if (UcvF6 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(UcvF6);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -8811,19 +13512,37 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      pool_.WriteTo(output, _repeated_pool_codec);
-      if (F2 != 0) {
+      relayAddressesVod_.WriteTo(output, _repeated_relayAddressesVod_codec);
+      if (Port != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(Port);
+      }
+      if (UcvF3 != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(UcvF3);
+      }
+      if (UcvF4 != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(UcvF4);
+      }
+      if (UcvF5 != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(UcvF5);
+      }
+      if (UcvF6 != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(UcvF6);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -8833,11 +13552,28 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      pool_.WriteTo(ref output, _repeated_pool_codec);
-      if (F2 != 0) {
+      relayAddressesVod_.WriteTo(ref output, _repeated_relayAddressesVod_codec);
+      if (Port != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(Port);
+      }
+      if (UcvF3 != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(UcvF3);
+      }
+      if (UcvF4 != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(UcvF4);
+      }
+      if (UcvF5 != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(UcvF5);
+      }
+      if (UcvF6 != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(UcvF6);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -8846,11 +13582,24 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += pool_.CalculateSize(_repeated_pool_codec);
-      if (F2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F2);
+      size += relayAddressesVod_.CalculateSize(_repeated_relayAddressesVod_codec);
+      if (Port != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Port);
+      }
+      if (UcvF3 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UcvF3);
+      }
+      if (UcvF4 != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UcvF4);
+      }
+      if (UcvF5 != 0F) {
+        size += 1 + 4;
+      }
+      if (UcvF6 != 0F) {
+        size += 1 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -8859,18 +13608,32 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Server2 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(UdpConfigVOD other) {
       if (other == null) {
         return;
       }
-      pool_.Add(other.pool_);
-      if (other.F2 != 0) {
-        F2 = other.F2;
+      relayAddressesVod_.Add(other.relayAddressesVod_);
+      if (other.Port != 0) {
+        Port = other.Port;
+      }
+      if (other.UcvF3 != 0L) {
+        UcvF3 = other.UcvF3;
+      }
+      if (other.UcvF4 != 0L) {
+        UcvF4 = other.UcvF4;
+      }
+      if (other.UcvF5 != 0F) {
+        UcvF5 = other.UcvF5;
+      }
+      if (other.UcvF6 != 0F) {
+        UcvF6 = other.UcvF6;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -8882,11 +13645,27 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            pool_.AddEntriesFrom(input, _repeated_pool_codec);
+            relayAddressesVod_.AddEntriesFrom(input, _repeated_relayAddressesVod_codec);
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            Port = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            UcvF3 = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            UcvF4 = input.ReadInt64();
+            break;
+          }
+          case 45: {
+            UcvF5 = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            UcvF6 = input.ReadFloat();
             break;
           }
         }
@@ -8896,6 +13675,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -8904,11 +13684,27 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            pool_.AddEntriesFrom(ref input, _repeated_pool_codec);
+            relayAddressesVod_.AddEntriesFrom(ref input, _repeated_relayAddressesVod_codec);
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            Port = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            UcvF3 = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            UcvF4 = input.ReadInt64();
+            break;
+          }
+          case 45: {
+            UcvF5 = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            UcvF6 = input.ReadFloat();
             break;
           }
         }
@@ -8918,117 +13714,133 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class Server1 : pb::IMessage<Server1>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class UdpConfig : pb::IMessage<UdpConfig>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Server1> _parser = new pb::MessageParser<Server1>(() => new Server1());
+    private static readonly pb::MessageParser<UdpConfig> _parser = new pb::MessageParser<UdpConfig>(() => new UdpConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Server1> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<UdpConfig> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[18]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Server1() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UdpConfig() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Server1(Server1 other) : this() {
-      addresses_ = other.addresses_.Clone();
-      f2_ = other.f2_;
-      f3_ = other.f3_;
-      f4_ = other.f4_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UdpConfig(UdpConfig other) : this() {
+      relayAddresses_ = other.relayAddresses_.Clone();
+      ucF2_ = other.ucF2_;
+      ucF3_ = other.ucF3_;
+      ucF4_ = other.ucF4_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Server1 Clone() {
-      return new Server1(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UdpConfig Clone() {
+      return new UdpConfig(this);
     }
 
-    /// <summary>Field number for the "addresses" field.</summary>
-    public const int AddressesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.ServerAddress> _repeated_addresses_codec
-        = pb::FieldCodec.ForMessage(10, global::ZwiftPacketMonitor.ServerAddress.Parser);
-    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress> addresses_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress>();
+    /// <summary>Field number for the "relay_addresses" field.</summary>
+    public const int RelayAddressesFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.RelayAddress> _repeated_relayAddresses_codec
+        = pb::FieldCodec.ForMessage(10, global::ZwiftPacketMonitor.RelayAddress.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddress> relayAddresses_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddress>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::ZwiftPacketMonitor.ServerAddress> Addresses {
-      get { return addresses_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.RelayAddress> RelayAddresses {
+      get { return relayAddresses_; }
     }
 
-    /// <summary>Field number for the "f2" field.</summary>
-    public const int F2FieldNumber = 2;
-    private int f2_;
+    /// <summary>Field number for the "uc_f2" field.</summary>
+    public const int UcF2FieldNumber = 2;
+    private int ucF2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F2 {
-      get { return f2_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int UcF2 {
+      get { return ucF2_; }
       set {
-        f2_ = value;
+        ucF2_ = value;
       }
     }
 
-    /// <summary>Field number for the "f3" field.</summary>
-    public const int F3FieldNumber = 3;
-    private int f3_;
+    /// <summary>Field number for the "uc_f3" field.</summary>
+    public const int UcF3FieldNumber = 3;
+    private int ucF3_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F3 {
-      get { return f3_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int UcF3 {
+      get { return ucF3_; }
       set {
-        f3_ = value;
+        ucF3_ = value;
       }
     }
 
-    /// <summary>Field number for the "f4" field.</summary>
-    public const int F4FieldNumber = 4;
-    private int f4_;
+    /// <summary>Field number for the "uc_f4" field.</summary>
+    public const int UcF4FieldNumber = 4;
+    private int ucF4_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F4 {
-      get { return f4_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int UcF4 {
+      get { return ucF4_; }
       set {
-        f4_ = value;
+        ucF4_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Server1);
+      return Equals(other as UdpConfig);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Server1 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(UdpConfig other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!addresses_.Equals(other.addresses_)) return false;
-      if (F2 != other.F2) return false;
-      if (F3 != other.F3) return false;
-      if (F4 != other.F4) return false;
+      if(!relayAddresses_.Equals(other.relayAddresses_)) return false;
+      if (UcF2 != other.UcF2) return false;
+      if (UcF3 != other.UcF3) return false;
+      if (UcF4 != other.UcF4) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= addresses_.GetHashCode();
-      if (F2 != 0) hash ^= F2.GetHashCode();
-      if (F3 != 0) hash ^= F3.GetHashCode();
-      if (F4 != 0) hash ^= F4.GetHashCode();
+      hash ^= relayAddresses_.GetHashCode();
+      if (UcF2 != 0) hash ^= UcF2.GetHashCode();
+      if (UcF3 != 0) hash ^= UcF3.GetHashCode();
+      if (UcF4 != 0) hash ^= UcF4.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -9036,27 +13848,29 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      addresses_.WriteTo(output, _repeated_addresses_codec);
-      if (F2 != 0) {
+      relayAddresses_.WriteTo(output, _repeated_relayAddresses_codec);
+      if (UcF2 != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(UcF2);
       }
-      if (F3 != 0) {
+      if (UcF3 != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(F3);
+        output.WriteInt32(UcF3);
       }
-      if (F4 != 0) {
+      if (UcF4 != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(F4);
+        output.WriteInt32(UcF4);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -9066,19 +13880,20 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      addresses_.WriteTo(ref output, _repeated_addresses_codec);
-      if (F2 != 0) {
+      relayAddresses_.WriteTo(ref output, _repeated_relayAddresses_codec);
+      if (UcF2 != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(F2);
+        output.WriteInt32(UcF2);
       }
-      if (F3 != 0) {
+      if (UcF3 != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(F3);
+        output.WriteInt32(UcF3);
       }
-      if (F4 != 0) {
+      if (UcF4 != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(F4);
+        output.WriteInt32(UcF4);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -9087,17 +13902,18 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += addresses_.CalculateSize(_repeated_addresses_codec);
-      if (F2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F2);
+      size += relayAddresses_.CalculateSize(_repeated_relayAddresses_codec);
+      if (UcF2 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UcF2);
       }
-      if (F3 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F3);
+      if (UcF3 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UcF3);
       }
-      if (F4 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F4);
+      if (UcF4 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UcF4);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -9106,24 +13922,26 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Server1 other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(UdpConfig other) {
       if (other == null) {
         return;
       }
-      addresses_.Add(other.addresses_);
-      if (other.F2 != 0) {
-        F2 = other.F2;
+      relayAddresses_.Add(other.relayAddresses_);
+      if (other.UcF2 != 0) {
+        UcF2 = other.UcF2;
       }
-      if (other.F3 != 0) {
-        F3 = other.F3;
+      if (other.UcF3 != 0) {
+        UcF3 = other.UcF3;
       }
-      if (other.F4 != 0) {
-        F4 = other.F4;
+      if (other.UcF4 != 0) {
+        UcF4 = other.UcF4;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -9135,19 +13953,19 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            addresses_.AddEntriesFrom(input, _repeated_addresses_codec);
+            relayAddresses_.AddEntriesFrom(input, _repeated_relayAddresses_codec);
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            UcF2 = input.ReadInt32();
             break;
           }
           case 24: {
-            F3 = input.ReadInt32();
+            UcF3 = input.ReadInt32();
             break;
           }
           case 32: {
-            F4 = input.ReadInt32();
+            UcF4 = input.ReadInt32();
             break;
           }
         }
@@ -9157,6 +13975,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -9165,19 +13984,19 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            addresses_.AddEntriesFrom(ref input, _repeated_addresses_codec);
+            relayAddresses_.AddEntriesFrom(ref input, _repeated_relayAddresses_codec);
             break;
           }
           case 16: {
-            F2 = input.ReadInt32();
+            UcF2 = input.ReadInt32();
             break;
           }
           case 24: {
-            F3 = input.ReadInt32();
+            UcF3 = input.ReadInt32();
             break;
           }
           case 32: {
-            F4 = input.ReadInt32();
+            UcF4 = input.ReadInt32();
             break;
           }
         }
@@ -9187,146 +14006,140 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class WorldAttributes : pb::IMessage<WorldAttributes>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class TcpAddress : pb::IMessage<TcpAddress>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<WorldAttributes> _parser = new pb::MessageParser<WorldAttributes>(() => new WorldAttributes());
+    private static readonly pb::MessageParser<TcpAddress> _parser = new pb::MessageParser<TcpAddress>(() => new TcpAddress());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<WorldAttributes> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<TcpAddress> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[19]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WorldAttributes() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TcpAddress() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WorldAttributes(WorldAttributes other) : this() {
-      worldId_ = other.worldId_;
-      name_ = other.name_;
-      tag3_ = other.tag3_;
-      tag5_ = other.tag5_;
-      worldTime_ = other.worldTime_;
-      clockTime_ = other.clockTime_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TcpAddress(TcpAddress other) : this() {
+      ip_ = other.ip_;
+      port_ = other.port_;
+      lbRealm_ = other.lbRealm_;
+      lbCourse_ = other.lbCourse_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WorldAttributes Clone() {
-      return new WorldAttributes(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TcpAddress Clone() {
+      return new TcpAddress(this);
     }
 
-    /// <summary>Field number for the "world_id" field.</summary>
-    public const int WorldIdFieldNumber = 1;
-    private int worldId_;
+    /// <summary>Field number for the "ip" field.</summary>
+    public const int IpFieldNumber = 1;
+    private string ip_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int WorldId {
-      get { return worldId_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Ip {
+      get { return ip_; }
       set {
-        worldId_ = value;
+        ip_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 2;
-    private string name_ = "";
+    /// <summary>Field number for the "port" field.</summary>
+    public const int PortFieldNumber = 2;
+    private int port_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Port {
+      get { return port_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        port_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag3" field.</summary>
-    public const int Tag3FieldNumber = 3;
-    private long tag3_;
+    /// <summary>Field number for the "lb_realm" field.</summary>
+    public const int LbRealmFieldNumber = 3;
+    private int lbRealm_;
+    /// <summary>
+    ///load balancing cluster: server realm or 0 (generic)
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag3 {
-      get { return tag3_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int LbRealm {
+      get { return lbRealm_; }
       set {
-        tag3_ = value;
+        lbRealm_ = value;
       }
     }
 
-    /// <summary>Field number for the "tag5" field.</summary>
-    public const int Tag5FieldNumber = 4;
-    private long tag5_;
+    /// <summary>Field number for the "lb_course" field.</summary>
+    public const int LbCourseFieldNumber = 4;
+    private int lbCourse_;
+    /// <summary>
+    ///load balancing cluster: course id (see also TcpAddressService::updateAddresses)
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Tag5 {
-      get { return tag5_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int LbCourse {
+      get { return lbCourse_; }
       set {
-        tag5_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "world_time" field.</summary>
-    public const int WorldTimeFieldNumber = 6;
-    private long worldTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long WorldTime {
-      get { return worldTime_; }
-      set {
-        worldTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "clock_time" field.</summary>
-    public const int ClockTimeFieldNumber = 7;
-    private long clockTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long ClockTime {
-      get { return clockTime_; }
-      set {
-        clockTime_ = value;
+        lbCourse_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as WorldAttributes);
+      return Equals(other as TcpAddress);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(WorldAttributes other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(TcpAddress other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (WorldId != other.WorldId) return false;
-      if (Name != other.Name) return false;
-      if (Tag3 != other.Tag3) return false;
-      if (Tag5 != other.Tag5) return false;
-      if (WorldTime != other.WorldTime) return false;
-      if (ClockTime != other.ClockTime) return false;
+      if (Ip != other.Ip) return false;
+      if (Port != other.Port) return false;
+      if (LbRealm != other.LbRealm) return false;
+      if (LbCourse != other.LbCourse) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (WorldId != 0) hash ^= WorldId.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Tag3 != 0L) hash ^= Tag3.GetHashCode();
-      if (Tag5 != 0L) hash ^= Tag5.GetHashCode();
-      if (WorldTime != 0L) hash ^= WorldTime.GetHashCode();
-      if (ClockTime != 0L) hash ^= ClockTime.GetHashCode();
+      if (Ip.Length != 0) hash ^= Ip.GetHashCode();
+      if (Port != 0) hash ^= Port.GetHashCode();
+      if (LbRealm != 0) hash ^= LbRealm.GetHashCode();
+      if (LbCourse != 0) hash ^= LbCourse.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -9334,38 +14147,32 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (WorldId != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(WorldId);
+      if (Ip.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Ip);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Name);
+      if (Port != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Port);
       }
-      if (Tag3 != 0L) {
+      if (LbRealm != 0) {
         output.WriteRawTag(24);
-        output.WriteInt64(Tag3);
+        output.WriteInt32(LbRealm);
       }
-      if (Tag5 != 0L) {
+      if (LbCourse != 0) {
         output.WriteRawTag(32);
-        output.WriteInt64(Tag5);
-      }
-      if (WorldTime != 0L) {
-        output.WriteRawTag(48);
-        output.WriteInt64(WorldTime);
-      }
-      if (ClockTime != 0L) {
-        output.WriteRawTag(56);
-        output.WriteInt64(ClockTime);
+        output.WriteInt32(LbCourse);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -9375,30 +14182,23 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (WorldId != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(WorldId);
+      if (Ip.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Ip);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Name);
+      if (Port != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Port);
       }
-      if (Tag3 != 0L) {
+      if (LbRealm != 0) {
         output.WriteRawTag(24);
-        output.WriteInt64(Tag3);
+        output.WriteInt32(LbRealm);
       }
-      if (Tag5 != 0L) {
+      if (LbCourse != 0) {
         output.WriteRawTag(32);
-        output.WriteInt64(Tag5);
-      }
-      if (WorldTime != 0L) {
-        output.WriteRawTag(48);
-        output.WriteInt64(WorldTime);
-      }
-      if (ClockTime != 0L) {
-        output.WriteRawTag(56);
-        output.WriteInt64(ClockTime);
+        output.WriteInt32(LbCourse);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -9407,25 +14207,20 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (WorldId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(WorldId);
+      if (Ip.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Ip);
       }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (Port != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Port);
       }
-      if (Tag3 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag3);
+      if (LbRealm != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LbRealm);
       }
-      if (Tag5 != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Tag5);
-      }
-      if (WorldTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(WorldTime);
-      }
-      if (ClockTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ClockTime);
+      if (LbCourse != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LbCourse);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -9434,32 +14229,28 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(WorldAttributes other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(TcpAddress other) {
       if (other == null) {
         return;
       }
-      if (other.WorldId != 0) {
-        WorldId = other.WorldId;
+      if (other.Ip.Length != 0) {
+        Ip = other.Ip;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.Port != 0) {
+        Port = other.Port;
       }
-      if (other.Tag3 != 0L) {
-        Tag3 = other.Tag3;
+      if (other.LbRealm != 0) {
+        LbRealm = other.LbRealm;
       }
-      if (other.Tag5 != 0L) {
-        Tag5 = other.Tag5;
-      }
-      if (other.WorldTime != 0L) {
-        WorldTime = other.WorldTime;
-      }
-      if (other.ClockTime != 0L) {
-        ClockTime = other.ClockTime;
+      if (other.LbCourse != 0) {
+        LbCourse = other.LbCourse;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -9470,28 +14261,20 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            WorldId = input.ReadInt32();
+          case 10: {
+            Ip = input.ReadString();
             break;
           }
-          case 18: {
-            Name = input.ReadString();
+          case 16: {
+            Port = input.ReadInt32();
             break;
           }
           case 24: {
-            Tag3 = input.ReadInt64();
+            LbRealm = input.ReadInt32();
             break;
           }
           case 32: {
-            Tag5 = input.ReadInt64();
-            break;
-          }
-          case 48: {
-            WorldTime = input.ReadInt64();
-            break;
-          }
-          case 56: {
-            ClockTime = input.ReadInt64();
+            LbCourse = input.ReadInt32();
             break;
           }
         }
@@ -9501,6 +14284,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -9508,28 +14292,20 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            WorldId = input.ReadInt32();
+          case 10: {
+            Ip = input.ReadString();
             break;
           }
-          case 18: {
-            Name = input.ReadString();
+          case 16: {
+            Port = input.ReadInt32();
             break;
           }
           case 24: {
-            Tag3 = input.ReadInt64();
+            LbRealm = input.ReadInt32();
             break;
           }
           case 32: {
-            Tag5 = input.ReadInt64();
-            break;
-          }
-          case 48: {
-            WorldTime = input.ReadInt64();
-            break;
-          }
-          case 56: {
-            ClockTime = input.ReadInt64();
+            LbCourse = input.ReadInt32();
             break;
           }
         }
@@ -9539,76 +14315,88 @@ namespace ZwiftPacketMonitor {
 
   }
 
-  public sealed partial class WorldAttribute : pb::IMessage<WorldAttribute>
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
+  public sealed partial class TcpConfig : pb::IMessage<TcpConfig>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<WorldAttribute> _parser = new pb::MessageParser<WorldAttribute>(() => new WorldAttribute());
+    private static readonly pb::MessageParser<TcpConfig> _parser = new pb::MessageParser<TcpConfig>(() => new TcpConfig());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<WorldAttribute> Parser { get { return _parser; } }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<TcpConfig> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[20]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WorldAttribute() {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TcpConfig() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WorldAttribute(WorldAttribute other) : this() {
-      worldTime_ = other.worldTime_;
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TcpConfig(TcpConfig other) : this() {
+      nodes_ = other.nodes_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WorldAttribute Clone() {
-      return new WorldAttribute(this);
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TcpConfig Clone() {
+      return new TcpConfig(this);
     }
 
-    /// <summary>Field number for the "world_time" field.</summary>
-    public const int WorldTimeFieldNumber = 2;
-    private long worldTime_;
+    /// <summary>Field number for the "nodes" field.</summary>
+    public const int NodesFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::ZwiftPacketMonitor.TcpAddress> _repeated_nodes_codec
+        = pb::FieldCodec.ForMessage(10, global::ZwiftPacketMonitor.TcpAddress.Parser);
+    private readonly pbc::RepeatedField<global::ZwiftPacketMonitor.TcpAddress> nodes_ = new pbc::RepeatedField<global::ZwiftPacketMonitor.TcpAddress>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long WorldTime {
-      get { return worldTime_; }
-      set {
-        worldTime_ = value;
-      }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ZwiftPacketMonitor.TcpAddress> Nodes {
+      get { return nodes_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as WorldAttribute);
+      return Equals(other as TcpConfig);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(WorldAttribute other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(TcpConfig other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (WorldTime != other.WorldTime) return false;
+      if(!nodes_.Equals(other.nodes_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (WorldTime != 0L) hash ^= WorldTime.GetHashCode();
+      hash ^= nodes_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -9616,19 +14404,18 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (WorldTime != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(WorldTime);
-      }
+      nodes_.WriteTo(output, _repeated_nodes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -9637,11 +14424,9 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (WorldTime != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(WorldTime);
-      }
+      nodes_.WriteTo(ref output, _repeated_nodes_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -9649,11 +14434,10 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (WorldTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(WorldTime);
-      }
+      size += nodes_.CalculateSize(_repeated_nodes_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -9661,17 +14445,17 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(WorldAttribute other) {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(TcpConfig other) {
       if (other == null) {
         return;
       }
-      if (other.WorldTime != 0L) {
-        WorldTime = other.WorldTime;
-      }
+      nodes_.Add(other.nodes_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -9682,8 +14466,8 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            WorldTime = input.ReadInt64();
+          case 10: {
+            nodes_.AddEntriesFrom(input, _repeated_nodes_codec);
             break;
           }
         }
@@ -9693,6 +14477,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -9700,8 +14485,8 @@ namespace ZwiftPacketMonitor {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            WorldTime = input.ReadInt64();
+          case 10: {
+            nodes_.AddEntriesFrom(ref input, _repeated_nodes_codec);
             break;
           }
         }
@@ -9711,6 +14496,9 @@ namespace ZwiftPacketMonitor {
 
   }
 
+  /// <summary>
+  ///checked 21/03/2022
+  /// </summary>
   public sealed partial class EventSubgroupProtobuf : pb::IMessage<EventSubgroupProtobuf>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -9719,19 +14507,23 @@ namespace ZwiftPacketMonitor {
     private static readonly pb::MessageParser<EventSubgroupProtobuf> _parser = new pb::MessageParser<EventSubgroupProtobuf>(() => new EventSubgroupProtobuf());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<EventSubgroupProtobuf> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[21]; }
+      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventSubgroupProtobuf() {
       OnConstruction();
     }
@@ -9739,29 +14531,71 @@ namespace ZwiftPacketMonitor {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventSubgroupProtobuf(EventSubgroupProtobuf other) : this() {
       id_ = other.id_;
       name_ = other.name_;
-      rules_ = other.rules_;
-      route_ = other.route_;
+      description_ = other.description_;
+      evsF4_ = other.evsF4_;
+      evsF5_ = other.evsF5_;
+      evsF6_ = other.evsF6_;
+      scode_ = other.scode_;
+      rulesId_ = other.rulesId_;
+      registrationStart_ = other.registrationStart_;
+      registrationStartWT_ = other.registrationStartWT_;
+      registrationEnd_ = other.registrationEnd_;
+      registrationEndWT_ = other.registrationEndWT_;
+      lineUpStart_ = other.lineUpStart_;
+      lineUpStartWT_ = other.lineUpStartWT_;
+      lineUpEnd_ = other.lineUpEnd_;
+      lineUpEndWT_ = other.lineUpEndWT_;
+      eventSubgroupStart_ = other.eventSubgroupStart_;
+      eventSubgroupStartWT_ = other.eventSubgroupStartWT_;
+      evsF19_ = other.evsF19_;
+      evsF20_ = other.evsF20_;
+      evsF21_ = other.evsF21_;
+      routeId_ = other.routeId_;
+      invitedLeaders_ = other.invitedLeaders_.Clone();
+      distanceInMeters_ = other.distanceInMeters_;
       laps_ = other.laps_;
       startLocation_ = other.startLocation_;
       label_ = other.label_;
       paceType_ = other.paceType_;
+      fromPaceValue_ = other.fromPaceValue_;
+      toPaceValue_ = other.toPaceValue_;
+      durationInSeconds_ = other.durationInSeconds_;
+      evsF35_ = other.evsF35_;
       jerseyHash_ = other.jerseyHash_;
+      evsF37_ = other.evsF37_;
+      evsF38_ = other.evsF38_;
+      auxiliaryUrl_ = other.auxiliaryUrl_;
+      bikeHash_ = other.bikeHash_;
+      invitedSweepers_ = other.invitedSweepers_.Clone();
+      evsF42_ = other.evsF42_;
+      customUrl_ = other.customUrl_;
+      evsF44_ = other.evsF44_;
+      tags_ = other.tags_;
+      lateJoinInMinutes_ = other.lateJoinInMinutes_;
+      courseId_ = other.courseId_;
+      evsF48_ = other.evsF48_;
+      routeUrl_ = other.routeUrl_;
+      evsF50_ = other.evsF50_.Clone();
+      evsF51_ = other.evsF51_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EventSubgroupProtobuf Clone() {
       return new EventSubgroupProtobuf(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
     public const int IdFieldNumber = 1;
-    private int id_;
+    private long id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Id {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Id {
       get { return id_; }
       set {
         id_ = value;
@@ -9772,6 +14606,7 @@ namespace ZwiftPacketMonitor {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Name {
       get { return name_; }
       set {
@@ -9779,25 +14614,281 @@ namespace ZwiftPacketMonitor {
       }
     }
 
-    /// <summary>Field number for the "rules" field.</summary>
-    public const int RulesFieldNumber = 8;
-    private int rules_;
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 3;
+    private string description_ = "";
+    /// <summary>
+    /// ex: "Welcome to our sociable early morning/evening social group ride."
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Rules {
-      get { return rules_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Description {
+      get { return description_; }
       set {
-        rules_ = value;
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "route" field.</summary>
-    public const int RouteFieldNumber = 22;
-    private int route_;
+    /// <summary>Field number for the "evs_f4" field.</summary>
+    public const int EvsF4FieldNumber = 4;
+    private uint evsF4_;
+    /// <summary>
+    /// ""
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Route {
-      get { return route_; }
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EvsF4 {
+      get { return evsF4_; }
       set {
-        route_ = value;
+        evsF4_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evs_f5" field.</summary>
+    public const int EvsF5FieldNumber = 5;
+    private uint evsF5_;
+    /// <summary>
+    /// 154 and others
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EvsF5 {
+      get { return evsF5_; }
+      set {
+        evsF5_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evs_f6" field.</summary>
+    public const int EvsF6FieldNumber = 6;
+    private uint evsF6_;
+    /// <summary>
+    /// 0
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EvsF6 {
+      get { return evsF6_; }
+      set {
+        evsF6_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "scode" field.</summary>
+    public const int ScodeFieldNumber = 7;
+    private string scode_ = "";
+    /// <summary>
+    /// ex: "PT3600S"
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Scode {
+      get { return scode_; }
+      set {
+        scode_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "rules_id" field.</summary>
+    public const int RulesIdFieldNumber = 8;
+    private int rulesId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int RulesId {
+      get { return rulesId_; }
+      set {
+        rulesId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "registrationStart" field.</summary>
+    public const int RegistrationStartFieldNumber = 9;
+    private ulong registrationStart_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong RegistrationStart {
+      get { return registrationStart_; }
+      set {
+        registrationStart_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "registrationStartWT" field.</summary>
+    public const int RegistrationStartWTFieldNumber = 10;
+    private ulong registrationStartWT_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong RegistrationStartWT {
+      get { return registrationStartWT_; }
+      set {
+        registrationStartWT_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "registrationEnd" field.</summary>
+    public const int RegistrationEndFieldNumber = 11;
+    private ulong registrationEnd_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong RegistrationEnd {
+      get { return registrationEnd_; }
+      set {
+        registrationEnd_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "registrationEndWT" field.</summary>
+    public const int RegistrationEndWTFieldNumber = 12;
+    private ulong registrationEndWT_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong RegistrationEndWT {
+      get { return registrationEndWT_; }
+      set {
+        registrationEndWT_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lineUpStart" field.</summary>
+    public const int LineUpStartFieldNumber = 13;
+    private ulong lineUpStart_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong LineUpStart {
+      get { return lineUpStart_; }
+      set {
+        lineUpStart_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lineUpStartWT" field.</summary>
+    public const int LineUpStartWTFieldNumber = 14;
+    private ulong lineUpStartWT_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong LineUpStartWT {
+      get { return lineUpStartWT_; }
+      set {
+        lineUpStartWT_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lineUpEnd" field.</summary>
+    public const int LineUpEndFieldNumber = 15;
+    private ulong lineUpEnd_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong LineUpEnd {
+      get { return lineUpEnd_; }
+      set {
+        lineUpEnd_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lineUpEndWT" field.</summary>
+    public const int LineUpEndWTFieldNumber = 16;
+    private ulong lineUpEndWT_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong LineUpEndWT {
+      get { return lineUpEndWT_; }
+      set {
+        lineUpEndWT_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "eventSubgroupStart" field.</summary>
+    public const int EventSubgroupStartFieldNumber = 17;
+    private ulong eventSubgroupStart_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EventSubgroupStart {
+      get { return eventSubgroupStart_; }
+      set {
+        eventSubgroupStart_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "eventSubgroupStartWT" field.</summary>
+    public const int EventSubgroupStartWTFieldNumber = 18;
+    private ulong eventSubgroupStartWT_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EventSubgroupStartWT {
+      get { return eventSubgroupStartWT_; }
+      set {
+        eventSubgroupStartWT_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evs_f19" field.</summary>
+    public const int EvsF19FieldNumber = 19;
+    private ulong evsF19_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EvsF19 {
+      get { return evsF19_; }
+      set {
+        evsF19_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evs_f20" field.</summary>
+    public const int EvsF20FieldNumber = 20;
+    private ulong evsF20_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EvsF20 {
+      get { return evsF20_; }
+      set {
+        evsF20_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evs_f21" field.</summary>
+    public const int EvsF21FieldNumber = 21;
+    private bool evsF21_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool EvsF21 {
+      get { return evsF21_; }
+      set {
+        evsF21_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "route_id" field.</summary>
+    public const int RouteIdFieldNumber = 22;
+    private long routeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long RouteId {
+      get { return routeId_; }
+      set {
+        routeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "invitedLeaders" field.</summary>
+    public const int InvitedLeadersFieldNumber = 23;
+    private static readonly pb::FieldCodec<ulong> _repeated_invitedLeaders_codec
+        = pb::FieldCodec.ForUInt64(186);
+    private readonly pbc::RepeatedField<ulong> invitedLeaders_ = new pbc::RepeatedField<ulong>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<ulong> InvitedLeaders {
+      get { return invitedLeaders_; }
+    }
+
+    /// <summary>Field number for the "distanceInMeters" field.</summary>
+    public const int DistanceInMetersFieldNumber = 24;
+    private float distanceInMeters_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float DistanceInMeters {
+      get { return distanceInMeters_; }
+      set {
+        distanceInMeters_ = value;
       }
     }
 
@@ -9805,6 +14896,7 @@ namespace ZwiftPacketMonitor {
     public const int LapsFieldNumber = 25;
     private int laps_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Laps {
       get { return laps_; }
       set {
@@ -9816,6 +14908,7 @@ namespace ZwiftPacketMonitor {
     public const int StartLocationFieldNumber = 29;
     private int startLocation_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int StartLocation {
       get { return startLocation_; }
       set {
@@ -9827,6 +14920,7 @@ namespace ZwiftPacketMonitor {
     public const int LabelFieldNumber = 30;
     private int label_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Label {
       get { return label_; }
       set {
@@ -9838,6 +14932,7 @@ namespace ZwiftPacketMonitor {
     public const int PaceTypeFieldNumber = 31;
     private int paceType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int PaceType {
       get { return paceType_; }
       set {
@@ -9845,23 +14940,267 @@ namespace ZwiftPacketMonitor {
       }
     }
 
+    /// <summary>Field number for the "fromPaceValue" field.</summary>
+    public const int FromPaceValueFieldNumber = 32;
+    private float fromPaceValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float FromPaceValue {
+      get { return fromPaceValue_; }
+      set {
+        fromPaceValue_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "toPaceValue" field.</summary>
+    public const int ToPaceValueFieldNumber = 33;
+    private float toPaceValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float ToPaceValue {
+      get { return toPaceValue_; }
+      set {
+        toPaceValue_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "durationInSeconds" field.</summary>
+    public const int DurationInSecondsFieldNumber = 34;
+    private uint durationInSeconds_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DurationInSeconds {
+      get { return durationInSeconds_; }
+      set {
+        durationInSeconds_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evs_f35" field.</summary>
+    public const int EvsF35FieldNumber = 35;
+    private uint evsF35_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EvsF35 {
+      get { return evsF35_; }
+      set {
+        evsF35_ = value;
+      }
+    }
+
     /// <summary>Field number for the "jerseyHash" field.</summary>
     public const int JerseyHashFieldNumber = 36;
-    private int jerseyHash_;
+    private long jerseyHash_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int JerseyHash {
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long JerseyHash {
       get { return jerseyHash_; }
       set {
         jerseyHash_ = value;
       }
     }
 
+    /// <summary>Field number for the "evs_f37" field.</summary>
+    public const int EvsF37FieldNumber = 37;
+    private bool evsF37_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool EvsF37 {
+      get { return evsF37_; }
+      set {
+        evsF37_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evs_f38" field.</summary>
+    public const int EvsF38FieldNumber = 38;
+    private uint evsF38_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EvsF38 {
+      get { return evsF38_; }
+      set {
+        evsF38_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "auxiliaryUrl" field.</summary>
+    public const int AuxiliaryUrlFieldNumber = 39;
+    private string auxiliaryUrl_ = "";
+    /// <summary>
+    /// "https://cdn.zwift.com/AudioBroadcasts/wbrgrouprideaudiov4"
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string AuxiliaryUrl {
+      get { return auxiliaryUrl_; }
+      set {
+        auxiliaryUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "bikeHash" field.</summary>
+    public const int BikeHashFieldNumber = 40;
+    private ulong bikeHash_;
+    /// <summary>
+    /// 4208139356
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong BikeHash {
+      get { return bikeHash_; }
+      set {
+        bikeHash_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "invitedSweepers" field.</summary>
+    public const int InvitedSweepersFieldNumber = 41;
+    private static readonly pb::FieldCodec<ulong> _repeated_invitedSweepers_codec
+        = pb::FieldCodec.ForUInt64(330);
+    private readonly pbc::RepeatedField<ulong> invitedSweepers_ = new pbc::RepeatedField<ulong>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<ulong> InvitedSweepers {
+      get { return invitedSweepers_; }
+    }
+
+    /// <summary>Field number for the "evs_f42" field.</summary>
+    public const int EvsF42FieldNumber = 42;
+    private ulong evsF42_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EvsF42 {
+      get { return evsF42_; }
+      set {
+        evsF42_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "customUrl" field.</summary>
+    public const int CustomUrlFieldNumber = 43;
+    private string customUrl_ = "";
+    /// <summary>
+    /// https://cdn.zwift.com/events/upload/workouts/CafeRide1.zwo
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string CustomUrl {
+      get { return customUrl_; }
+      set {
+        customUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "evs_f44" field.</summary>
+    public const int EvsF44FieldNumber = 44;
+    private bool evsF44_;
+    /// <summary>
+    /// false
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool EvsF44 {
+      get { return evsF44_; }
+      set {
+        evsF44_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "tags" field.</summary>
+    public const int TagsFieldNumber = 45;
+    private string tags_ = "";
+    /// <summary>
+    /// semi-colon delimited tags eg: "fenced;3r;created_ryan;communityevent;no_kick_mode;timestamp=1603911177622"
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Tags {
+      get { return tags_; }
+      set {
+        tags_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "lateJoinInMinutes" field.</summary>
+    public const int LateJoinInMinutesFieldNumber = 46;
+    private uint lateJoinInMinutes_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LateJoinInMinutes {
+      get { return lateJoinInMinutes_; }
+      set {
+        lateJoinInMinutes_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "course_id" field.</summary>
+    public const int CourseIdFieldNumber = 47;
+    private ulong courseId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong CourseId {
+      get { return courseId_; }
+      set {
+        courseId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "evs_f48" field.</summary>
+    public const int EvsF48FieldNumber = 48;
+    private ulong evsF48_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong EvsF48 {
+      get { return evsF48_; }
+      set {
+        evsF48_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "routeUrl" field.</summary>
+    public const int RouteUrlFieldNumber = 49;
+    private string routeUrl_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RouteUrl {
+      get { return routeUrl_; }
+      set {
+        routeUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "evs_f50" field.</summary>
+    public const int EvsF50FieldNumber = 50;
+    private static readonly pb::FieldCodec<int> _repeated_evsF50_codec
+        = pb::FieldCodec.ForInt32(402);
+    private readonly pbc::RepeatedField<int> evsF50_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> EvsF50 {
+      get { return evsF50_; }
+    }
+
+    /// <summary>Field number for the "evs_f51" field.</summary>
+    public const int EvsF51FieldNumber = 51;
+    private bool evsF51_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool EvsF51 {
+      get { return evsF51_; }
+      set {
+        evsF51_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as EventSubgroupProtobuf);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(EventSubgroupProtobuf other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -9871,28 +15210,107 @@ namespace ZwiftPacketMonitor {
       }
       if (Id != other.Id) return false;
       if (Name != other.Name) return false;
-      if (Rules != other.Rules) return false;
-      if (Route != other.Route) return false;
+      if (Description != other.Description) return false;
+      if (EvsF4 != other.EvsF4) return false;
+      if (EvsF5 != other.EvsF5) return false;
+      if (EvsF6 != other.EvsF6) return false;
+      if (Scode != other.Scode) return false;
+      if (RulesId != other.RulesId) return false;
+      if (RegistrationStart != other.RegistrationStart) return false;
+      if (RegistrationStartWT != other.RegistrationStartWT) return false;
+      if (RegistrationEnd != other.RegistrationEnd) return false;
+      if (RegistrationEndWT != other.RegistrationEndWT) return false;
+      if (LineUpStart != other.LineUpStart) return false;
+      if (LineUpStartWT != other.LineUpStartWT) return false;
+      if (LineUpEnd != other.LineUpEnd) return false;
+      if (LineUpEndWT != other.LineUpEndWT) return false;
+      if (EventSubgroupStart != other.EventSubgroupStart) return false;
+      if (EventSubgroupStartWT != other.EventSubgroupStartWT) return false;
+      if (EvsF19 != other.EvsF19) return false;
+      if (EvsF20 != other.EvsF20) return false;
+      if (EvsF21 != other.EvsF21) return false;
+      if (RouteId != other.RouteId) return false;
+      if(!invitedLeaders_.Equals(other.invitedLeaders_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DistanceInMeters, other.DistanceInMeters)) return false;
       if (Laps != other.Laps) return false;
       if (StartLocation != other.StartLocation) return false;
       if (Label != other.Label) return false;
       if (PaceType != other.PaceType) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FromPaceValue, other.FromPaceValue)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(ToPaceValue, other.ToPaceValue)) return false;
+      if (DurationInSeconds != other.DurationInSeconds) return false;
+      if (EvsF35 != other.EvsF35) return false;
       if (JerseyHash != other.JerseyHash) return false;
+      if (EvsF37 != other.EvsF37) return false;
+      if (EvsF38 != other.EvsF38) return false;
+      if (AuxiliaryUrl != other.AuxiliaryUrl) return false;
+      if (BikeHash != other.BikeHash) return false;
+      if(!invitedSweepers_.Equals(other.invitedSweepers_)) return false;
+      if (EvsF42 != other.EvsF42) return false;
+      if (CustomUrl != other.CustomUrl) return false;
+      if (EvsF44 != other.EvsF44) return false;
+      if (Tags != other.Tags) return false;
+      if (LateJoinInMinutes != other.LateJoinInMinutes) return false;
+      if (CourseId != other.CourseId) return false;
+      if (EvsF48 != other.EvsF48) return false;
+      if (RouteUrl != other.RouteUrl) return false;
+      if(!evsF50_.Equals(other.evsF50_)) return false;
+      if (EvsF51 != other.EvsF51) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Id != 0L) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Rules != 0) hash ^= Rules.GetHashCode();
-      if (Route != 0) hash ^= Route.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (EvsF4 != 0) hash ^= EvsF4.GetHashCode();
+      if (EvsF5 != 0) hash ^= EvsF5.GetHashCode();
+      if (EvsF6 != 0) hash ^= EvsF6.GetHashCode();
+      if (Scode.Length != 0) hash ^= Scode.GetHashCode();
+      if (RulesId != 0) hash ^= RulesId.GetHashCode();
+      if (RegistrationStart != 0UL) hash ^= RegistrationStart.GetHashCode();
+      if (RegistrationStartWT != 0UL) hash ^= RegistrationStartWT.GetHashCode();
+      if (RegistrationEnd != 0UL) hash ^= RegistrationEnd.GetHashCode();
+      if (RegistrationEndWT != 0UL) hash ^= RegistrationEndWT.GetHashCode();
+      if (LineUpStart != 0UL) hash ^= LineUpStart.GetHashCode();
+      if (LineUpStartWT != 0UL) hash ^= LineUpStartWT.GetHashCode();
+      if (LineUpEnd != 0UL) hash ^= LineUpEnd.GetHashCode();
+      if (LineUpEndWT != 0UL) hash ^= LineUpEndWT.GetHashCode();
+      if (EventSubgroupStart != 0UL) hash ^= EventSubgroupStart.GetHashCode();
+      if (EventSubgroupStartWT != 0UL) hash ^= EventSubgroupStartWT.GetHashCode();
+      if (EvsF19 != 0UL) hash ^= EvsF19.GetHashCode();
+      if (EvsF20 != 0UL) hash ^= EvsF20.GetHashCode();
+      if (EvsF21 != false) hash ^= EvsF21.GetHashCode();
+      if (RouteId != 0L) hash ^= RouteId.GetHashCode();
+      hash ^= invitedLeaders_.GetHashCode();
+      if (DistanceInMeters != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DistanceInMeters);
       if (Laps != 0) hash ^= Laps.GetHashCode();
       if (StartLocation != 0) hash ^= StartLocation.GetHashCode();
       if (Label != 0) hash ^= Label.GetHashCode();
       if (PaceType != 0) hash ^= PaceType.GetHashCode();
-      if (JerseyHash != 0) hash ^= JerseyHash.GetHashCode();
+      if (FromPaceValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FromPaceValue);
+      if (ToPaceValue != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(ToPaceValue);
+      if (DurationInSeconds != 0) hash ^= DurationInSeconds.GetHashCode();
+      if (EvsF35 != 0) hash ^= EvsF35.GetHashCode();
+      if (JerseyHash != 0L) hash ^= JerseyHash.GetHashCode();
+      if (EvsF37 != false) hash ^= EvsF37.GetHashCode();
+      if (EvsF38 != 0) hash ^= EvsF38.GetHashCode();
+      if (AuxiliaryUrl.Length != 0) hash ^= AuxiliaryUrl.GetHashCode();
+      if (BikeHash != 0UL) hash ^= BikeHash.GetHashCode();
+      hash ^= invitedSweepers_.GetHashCode();
+      if (EvsF42 != 0UL) hash ^= EvsF42.GetHashCode();
+      if (CustomUrl.Length != 0) hash ^= CustomUrl.GetHashCode();
+      if (EvsF44 != false) hash ^= EvsF44.GetHashCode();
+      if (Tags.Length != 0) hash ^= Tags.GetHashCode();
+      if (LateJoinInMinutes != 0) hash ^= LateJoinInMinutes.GetHashCode();
+      if (CourseId != 0UL) hash ^= CourseId.GetHashCode();
+      if (EvsF48 != 0UL) hash ^= EvsF48.GetHashCode();
+      if (RouteUrl.Length != 0) hash ^= RouteUrl.GetHashCode();
+      hash ^= evsF50_.GetHashCode();
+      if (EvsF51 != false) hash ^= EvsF51.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -9900,30 +15318,109 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Id != 0) {
+      if (Id != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt32(Id);
+        output.WriteInt64(Id);
       }
       if (Name.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
-      if (Rules != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(Rules);
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
       }
-      if (Route != 0) {
+      if (EvsF4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(EvsF4);
+      }
+      if (EvsF5 != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(EvsF5);
+      }
+      if (EvsF6 != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(EvsF6);
+      }
+      if (Scode.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Scode);
+      }
+      if (RulesId != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(RulesId);
+      }
+      if (RegistrationStart != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(RegistrationStart);
+      }
+      if (RegistrationStartWT != 0UL) {
+        output.WriteRawTag(80);
+        output.WriteUInt64(RegistrationStartWT);
+      }
+      if (RegistrationEnd != 0UL) {
+        output.WriteRawTag(88);
+        output.WriteUInt64(RegistrationEnd);
+      }
+      if (RegistrationEndWT != 0UL) {
+        output.WriteRawTag(96);
+        output.WriteUInt64(RegistrationEndWT);
+      }
+      if (LineUpStart != 0UL) {
+        output.WriteRawTag(104);
+        output.WriteUInt64(LineUpStart);
+      }
+      if (LineUpStartWT != 0UL) {
+        output.WriteRawTag(112);
+        output.WriteUInt64(LineUpStartWT);
+      }
+      if (LineUpEnd != 0UL) {
+        output.WriteRawTag(120);
+        output.WriteUInt64(LineUpEnd);
+      }
+      if (LineUpEndWT != 0UL) {
+        output.WriteRawTag(128, 1);
+        output.WriteUInt64(LineUpEndWT);
+      }
+      if (EventSubgroupStart != 0UL) {
+        output.WriteRawTag(136, 1);
+        output.WriteUInt64(EventSubgroupStart);
+      }
+      if (EventSubgroupStartWT != 0UL) {
+        output.WriteRawTag(144, 1);
+        output.WriteUInt64(EventSubgroupStartWT);
+      }
+      if (EvsF19 != 0UL) {
+        output.WriteRawTag(152, 1);
+        output.WriteUInt64(EvsF19);
+      }
+      if (EvsF20 != 0UL) {
+        output.WriteRawTag(160, 1);
+        output.WriteUInt64(EvsF20);
+      }
+      if (EvsF21 != false) {
+        output.WriteRawTag(168, 1);
+        output.WriteBool(EvsF21);
+      }
+      if (RouteId != 0L) {
         output.WriteRawTag(176, 1);
-        output.WriteInt32(Route);
+        output.WriteInt64(RouteId);
+      }
+      invitedLeaders_.WriteTo(output, _repeated_invitedLeaders_codec);
+      if (DistanceInMeters != 0F) {
+        output.WriteRawTag(197, 1);
+        output.WriteFloat(DistanceInMeters);
       }
       if (Laps != 0) {
         output.WriteRawTag(200, 1);
@@ -9941,9 +15438,79 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(248, 1);
         output.WriteInt32(PaceType);
       }
-      if (JerseyHash != 0) {
+      if (FromPaceValue != 0F) {
+        output.WriteRawTag(133, 2);
+        output.WriteFloat(FromPaceValue);
+      }
+      if (ToPaceValue != 0F) {
+        output.WriteRawTag(141, 2);
+        output.WriteFloat(ToPaceValue);
+      }
+      if (DurationInSeconds != 0) {
+        output.WriteRawTag(144, 2);
+        output.WriteUInt32(DurationInSeconds);
+      }
+      if (EvsF35 != 0) {
+        output.WriteRawTag(152, 2);
+        output.WriteUInt32(EvsF35);
+      }
+      if (JerseyHash != 0L) {
         output.WriteRawTag(160, 2);
-        output.WriteInt32(JerseyHash);
+        output.WriteInt64(JerseyHash);
+      }
+      if (EvsF37 != false) {
+        output.WriteRawTag(168, 2);
+        output.WriteBool(EvsF37);
+      }
+      if (EvsF38 != 0) {
+        output.WriteRawTag(176, 2);
+        output.WriteUInt32(EvsF38);
+      }
+      if (AuxiliaryUrl.Length != 0) {
+        output.WriteRawTag(186, 2);
+        output.WriteString(AuxiliaryUrl);
+      }
+      if (BikeHash != 0UL) {
+        output.WriteRawTag(192, 2);
+        output.WriteUInt64(BikeHash);
+      }
+      invitedSweepers_.WriteTo(output, _repeated_invitedSweepers_codec);
+      if (EvsF42 != 0UL) {
+        output.WriteRawTag(208, 2);
+        output.WriteUInt64(EvsF42);
+      }
+      if (CustomUrl.Length != 0) {
+        output.WriteRawTag(218, 2);
+        output.WriteString(CustomUrl);
+      }
+      if (EvsF44 != false) {
+        output.WriteRawTag(224, 2);
+        output.WriteBool(EvsF44);
+      }
+      if (Tags.Length != 0) {
+        output.WriteRawTag(234, 2);
+        output.WriteString(Tags);
+      }
+      if (LateJoinInMinutes != 0) {
+        output.WriteRawTag(240, 2);
+        output.WriteUInt32(LateJoinInMinutes);
+      }
+      if (CourseId != 0UL) {
+        output.WriteRawTag(248, 2);
+        output.WriteUInt64(CourseId);
+      }
+      if (EvsF48 != 0UL) {
+        output.WriteRawTag(128, 3);
+        output.WriteUInt64(EvsF48);
+      }
+      if (RouteUrl.Length != 0) {
+        output.WriteRawTag(138, 3);
+        output.WriteString(RouteUrl);
+      }
+      evsF50_.WriteTo(output, _repeated_evsF50_codec);
+      if (EvsF51 != false) {
+        output.WriteRawTag(152, 3);
+        output.WriteBool(EvsF51);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -9953,22 +15520,100 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id != 0) {
+      if (Id != 0L) {
         output.WriteRawTag(8);
-        output.WriteInt32(Id);
+        output.WriteInt64(Id);
       }
       if (Name.Length != 0) {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
-      if (Rules != 0) {
-        output.WriteRawTag(64);
-        output.WriteInt32(Rules);
+      if (Description.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Description);
       }
-      if (Route != 0) {
+      if (EvsF4 != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(EvsF4);
+      }
+      if (EvsF5 != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(EvsF5);
+      }
+      if (EvsF6 != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(EvsF6);
+      }
+      if (Scode.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Scode);
+      }
+      if (RulesId != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(RulesId);
+      }
+      if (RegistrationStart != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(RegistrationStart);
+      }
+      if (RegistrationStartWT != 0UL) {
+        output.WriteRawTag(80);
+        output.WriteUInt64(RegistrationStartWT);
+      }
+      if (RegistrationEnd != 0UL) {
+        output.WriteRawTag(88);
+        output.WriteUInt64(RegistrationEnd);
+      }
+      if (RegistrationEndWT != 0UL) {
+        output.WriteRawTag(96);
+        output.WriteUInt64(RegistrationEndWT);
+      }
+      if (LineUpStart != 0UL) {
+        output.WriteRawTag(104);
+        output.WriteUInt64(LineUpStart);
+      }
+      if (LineUpStartWT != 0UL) {
+        output.WriteRawTag(112);
+        output.WriteUInt64(LineUpStartWT);
+      }
+      if (LineUpEnd != 0UL) {
+        output.WriteRawTag(120);
+        output.WriteUInt64(LineUpEnd);
+      }
+      if (LineUpEndWT != 0UL) {
+        output.WriteRawTag(128, 1);
+        output.WriteUInt64(LineUpEndWT);
+      }
+      if (EventSubgroupStart != 0UL) {
+        output.WriteRawTag(136, 1);
+        output.WriteUInt64(EventSubgroupStart);
+      }
+      if (EventSubgroupStartWT != 0UL) {
+        output.WriteRawTag(144, 1);
+        output.WriteUInt64(EventSubgroupStartWT);
+      }
+      if (EvsF19 != 0UL) {
+        output.WriteRawTag(152, 1);
+        output.WriteUInt64(EvsF19);
+      }
+      if (EvsF20 != 0UL) {
+        output.WriteRawTag(160, 1);
+        output.WriteUInt64(EvsF20);
+      }
+      if (EvsF21 != false) {
+        output.WriteRawTag(168, 1);
+        output.WriteBool(EvsF21);
+      }
+      if (RouteId != 0L) {
         output.WriteRawTag(176, 1);
-        output.WriteInt32(Route);
+        output.WriteInt64(RouteId);
+      }
+      invitedLeaders_.WriteTo(ref output, _repeated_invitedLeaders_codec);
+      if (DistanceInMeters != 0F) {
+        output.WriteRawTag(197, 1);
+        output.WriteFloat(DistanceInMeters);
       }
       if (Laps != 0) {
         output.WriteRawTag(200, 1);
@@ -9986,9 +15631,79 @@ namespace ZwiftPacketMonitor {
         output.WriteRawTag(248, 1);
         output.WriteInt32(PaceType);
       }
-      if (JerseyHash != 0) {
+      if (FromPaceValue != 0F) {
+        output.WriteRawTag(133, 2);
+        output.WriteFloat(FromPaceValue);
+      }
+      if (ToPaceValue != 0F) {
+        output.WriteRawTag(141, 2);
+        output.WriteFloat(ToPaceValue);
+      }
+      if (DurationInSeconds != 0) {
+        output.WriteRawTag(144, 2);
+        output.WriteUInt32(DurationInSeconds);
+      }
+      if (EvsF35 != 0) {
+        output.WriteRawTag(152, 2);
+        output.WriteUInt32(EvsF35);
+      }
+      if (JerseyHash != 0L) {
         output.WriteRawTag(160, 2);
-        output.WriteInt32(JerseyHash);
+        output.WriteInt64(JerseyHash);
+      }
+      if (EvsF37 != false) {
+        output.WriteRawTag(168, 2);
+        output.WriteBool(EvsF37);
+      }
+      if (EvsF38 != 0) {
+        output.WriteRawTag(176, 2);
+        output.WriteUInt32(EvsF38);
+      }
+      if (AuxiliaryUrl.Length != 0) {
+        output.WriteRawTag(186, 2);
+        output.WriteString(AuxiliaryUrl);
+      }
+      if (BikeHash != 0UL) {
+        output.WriteRawTag(192, 2);
+        output.WriteUInt64(BikeHash);
+      }
+      invitedSweepers_.WriteTo(ref output, _repeated_invitedSweepers_codec);
+      if (EvsF42 != 0UL) {
+        output.WriteRawTag(208, 2);
+        output.WriteUInt64(EvsF42);
+      }
+      if (CustomUrl.Length != 0) {
+        output.WriteRawTag(218, 2);
+        output.WriteString(CustomUrl);
+      }
+      if (EvsF44 != false) {
+        output.WriteRawTag(224, 2);
+        output.WriteBool(EvsF44);
+      }
+      if (Tags.Length != 0) {
+        output.WriteRawTag(234, 2);
+        output.WriteString(Tags);
+      }
+      if (LateJoinInMinutes != 0) {
+        output.WriteRawTag(240, 2);
+        output.WriteUInt32(LateJoinInMinutes);
+      }
+      if (CourseId != 0UL) {
+        output.WriteRawTag(248, 2);
+        output.WriteUInt64(CourseId);
+      }
+      if (EvsF48 != 0UL) {
+        output.WriteRawTag(128, 3);
+        output.WriteUInt64(EvsF48);
+      }
+      if (RouteUrl.Length != 0) {
+        output.WriteRawTag(138, 3);
+        output.WriteString(RouteUrl);
+      }
+      evsF50_.WriteTo(ref output, _repeated_evsF50_codec);
+      if (EvsF51 != false) {
+        output.WriteRawTag(152, 3);
+        output.WriteBool(EvsF51);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -9997,19 +15712,78 @@ namespace ZwiftPacketMonitor {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      if (Id != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Id);
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (Rules != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Rules);
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
       }
-      if (Route != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Route);
+      if (EvsF4 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EvsF4);
+      }
+      if (EvsF5 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EvsF5);
+      }
+      if (EvsF6 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EvsF6);
+      }
+      if (Scode.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Scode);
+      }
+      if (RulesId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RulesId);
+      }
+      if (RegistrationStart != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(RegistrationStart);
+      }
+      if (RegistrationStartWT != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(RegistrationStartWT);
+      }
+      if (RegistrationEnd != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(RegistrationEnd);
+      }
+      if (RegistrationEndWT != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(RegistrationEndWT);
+      }
+      if (LineUpStart != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(LineUpStart);
+      }
+      if (LineUpStartWT != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(LineUpStartWT);
+      }
+      if (LineUpEnd != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(LineUpEnd);
+      }
+      if (LineUpEndWT != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(LineUpEndWT);
+      }
+      if (EventSubgroupStart != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EventSubgroupStart);
+      }
+      if (EventSubgroupStartWT != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EventSubgroupStartWT);
+      }
+      if (EvsF19 != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EvsF19);
+      }
+      if (EvsF20 != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EvsF20);
+      }
+      if (EvsF21 != false) {
+        size += 2 + 1;
+      }
+      if (RouteId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(RouteId);
+      }
+      size += invitedLeaders_.CalculateSize(_repeated_invitedLeaders_codec);
+      if (DistanceInMeters != 0F) {
+        size += 2 + 4;
       }
       if (Laps != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(Laps);
@@ -10023,8 +15797,61 @@ namespace ZwiftPacketMonitor {
       if (PaceType != 0) {
         size += 2 + pb::CodedOutputStream.ComputeInt32Size(PaceType);
       }
-      if (JerseyHash != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(JerseyHash);
+      if (FromPaceValue != 0F) {
+        size += 2 + 4;
+      }
+      if (ToPaceValue != 0F) {
+        size += 2 + 4;
+      }
+      if (DurationInSeconds != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(DurationInSeconds);
+      }
+      if (EvsF35 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(EvsF35);
+      }
+      if (JerseyHash != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(JerseyHash);
+      }
+      if (EvsF37 != false) {
+        size += 2 + 1;
+      }
+      if (EvsF38 != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(EvsF38);
+      }
+      if (AuxiliaryUrl.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(AuxiliaryUrl);
+      }
+      if (BikeHash != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(BikeHash);
+      }
+      size += invitedSweepers_.CalculateSize(_repeated_invitedSweepers_codec);
+      if (EvsF42 != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EvsF42);
+      }
+      if (CustomUrl.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(CustomUrl);
+      }
+      if (EvsF44 != false) {
+        size += 2 + 1;
+      }
+      if (Tags.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Tags);
+      }
+      if (LateJoinInMinutes != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(LateJoinInMinutes);
+      }
+      if (CourseId != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(CourseId);
+      }
+      if (EvsF48 != 0UL) {
+        size += 2 + pb::CodedOutputStream.ComputeUInt64Size(EvsF48);
+      }
+      if (RouteUrl.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(RouteUrl);
+      }
+      size += evsF50_.CalculateSize(_repeated_evsF50_codec);
+      if (EvsF51 != false) {
+        size += 2 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -10033,21 +15860,80 @@ namespace ZwiftPacketMonitor {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(EventSubgroupProtobuf other) {
       if (other == null) {
         return;
       }
-      if (other.Id != 0) {
+      if (other.Id != 0L) {
         Id = other.Id;
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.Rules != 0) {
-        Rules = other.Rules;
+      if (other.Description.Length != 0) {
+        Description = other.Description;
       }
-      if (other.Route != 0) {
-        Route = other.Route;
+      if (other.EvsF4 != 0) {
+        EvsF4 = other.EvsF4;
+      }
+      if (other.EvsF5 != 0) {
+        EvsF5 = other.EvsF5;
+      }
+      if (other.EvsF6 != 0) {
+        EvsF6 = other.EvsF6;
+      }
+      if (other.Scode.Length != 0) {
+        Scode = other.Scode;
+      }
+      if (other.RulesId != 0) {
+        RulesId = other.RulesId;
+      }
+      if (other.RegistrationStart != 0UL) {
+        RegistrationStart = other.RegistrationStart;
+      }
+      if (other.RegistrationStartWT != 0UL) {
+        RegistrationStartWT = other.RegistrationStartWT;
+      }
+      if (other.RegistrationEnd != 0UL) {
+        RegistrationEnd = other.RegistrationEnd;
+      }
+      if (other.RegistrationEndWT != 0UL) {
+        RegistrationEndWT = other.RegistrationEndWT;
+      }
+      if (other.LineUpStart != 0UL) {
+        LineUpStart = other.LineUpStart;
+      }
+      if (other.LineUpStartWT != 0UL) {
+        LineUpStartWT = other.LineUpStartWT;
+      }
+      if (other.LineUpEnd != 0UL) {
+        LineUpEnd = other.LineUpEnd;
+      }
+      if (other.LineUpEndWT != 0UL) {
+        LineUpEndWT = other.LineUpEndWT;
+      }
+      if (other.EventSubgroupStart != 0UL) {
+        EventSubgroupStart = other.EventSubgroupStart;
+      }
+      if (other.EventSubgroupStartWT != 0UL) {
+        EventSubgroupStartWT = other.EventSubgroupStartWT;
+      }
+      if (other.EvsF19 != 0UL) {
+        EvsF19 = other.EvsF19;
+      }
+      if (other.EvsF20 != 0UL) {
+        EvsF20 = other.EvsF20;
+      }
+      if (other.EvsF21 != false) {
+        EvsF21 = other.EvsF21;
+      }
+      if (other.RouteId != 0L) {
+        RouteId = other.RouteId;
+      }
+      invitedLeaders_.Add(other.invitedLeaders_);
+      if (other.DistanceInMeters != 0F) {
+        DistanceInMeters = other.DistanceInMeters;
       }
       if (other.Laps != 0) {
         Laps = other.Laps;
@@ -10061,13 +15947,67 @@ namespace ZwiftPacketMonitor {
       if (other.PaceType != 0) {
         PaceType = other.PaceType;
       }
-      if (other.JerseyHash != 0) {
+      if (other.FromPaceValue != 0F) {
+        FromPaceValue = other.FromPaceValue;
+      }
+      if (other.ToPaceValue != 0F) {
+        ToPaceValue = other.ToPaceValue;
+      }
+      if (other.DurationInSeconds != 0) {
+        DurationInSeconds = other.DurationInSeconds;
+      }
+      if (other.EvsF35 != 0) {
+        EvsF35 = other.EvsF35;
+      }
+      if (other.JerseyHash != 0L) {
         JerseyHash = other.JerseyHash;
       }
+      if (other.EvsF37 != false) {
+        EvsF37 = other.EvsF37;
+      }
+      if (other.EvsF38 != 0) {
+        EvsF38 = other.EvsF38;
+      }
+      if (other.AuxiliaryUrl.Length != 0) {
+        AuxiliaryUrl = other.AuxiliaryUrl;
+      }
+      if (other.BikeHash != 0UL) {
+        BikeHash = other.BikeHash;
+      }
+      invitedSweepers_.Add(other.invitedSweepers_);
+      if (other.EvsF42 != 0UL) {
+        EvsF42 = other.EvsF42;
+      }
+      if (other.CustomUrl.Length != 0) {
+        CustomUrl = other.CustomUrl;
+      }
+      if (other.EvsF44 != false) {
+        EvsF44 = other.EvsF44;
+      }
+      if (other.Tags.Length != 0) {
+        Tags = other.Tags;
+      }
+      if (other.LateJoinInMinutes != 0) {
+        LateJoinInMinutes = other.LateJoinInMinutes;
+      }
+      if (other.CourseId != 0UL) {
+        CourseId = other.CourseId;
+      }
+      if (other.EvsF48 != 0UL) {
+        EvsF48 = other.EvsF48;
+      }
+      if (other.RouteUrl.Length != 0) {
+        RouteUrl = other.RouteUrl;
+      }
+      evsF50_.Add(other.evsF50_);
+      if (other.EvsF51 != false) {
+        EvsF51 = other.EvsF51;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -10079,19 +16019,100 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Id = input.ReadInt32();
+            Id = input.ReadInt64();
             break;
           }
           case 18: {
             Name = input.ReadString();
             break;
           }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 32: {
+            EvsF4 = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            EvsF5 = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            EvsF6 = input.ReadUInt32();
+            break;
+          }
+          case 58: {
+            Scode = input.ReadString();
+            break;
+          }
           case 64: {
-            Rules = input.ReadInt32();
+            RulesId = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            RegistrationStart = input.ReadUInt64();
+            break;
+          }
+          case 80: {
+            RegistrationStartWT = input.ReadUInt64();
+            break;
+          }
+          case 88: {
+            RegistrationEnd = input.ReadUInt64();
+            break;
+          }
+          case 96: {
+            RegistrationEndWT = input.ReadUInt64();
+            break;
+          }
+          case 104: {
+            LineUpStart = input.ReadUInt64();
+            break;
+          }
+          case 112: {
+            LineUpStartWT = input.ReadUInt64();
+            break;
+          }
+          case 120: {
+            LineUpEnd = input.ReadUInt64();
+            break;
+          }
+          case 128: {
+            LineUpEndWT = input.ReadUInt64();
+            break;
+          }
+          case 136: {
+            EventSubgroupStart = input.ReadUInt64();
+            break;
+          }
+          case 144: {
+            EventSubgroupStartWT = input.ReadUInt64();
+            break;
+          }
+          case 152: {
+            EvsF19 = input.ReadUInt64();
+            break;
+          }
+          case 160: {
+            EvsF20 = input.ReadUInt64();
+            break;
+          }
+          case 168: {
+            EvsF21 = input.ReadBool();
             break;
           }
           case 176: {
-            Route = input.ReadInt32();
+            RouteId = input.ReadInt64();
+            break;
+          }
+          case 186:
+          case 184: {
+            invitedLeaders_.AddEntriesFrom(input, _repeated_invitedLeaders_codec);
+            break;
+          }
+          case 197: {
+            DistanceInMeters = input.ReadFloat();
             break;
           }
           case 200: {
@@ -10110,8 +16131,86 @@ namespace ZwiftPacketMonitor {
             PaceType = input.ReadInt32();
             break;
           }
+          case 261: {
+            FromPaceValue = input.ReadFloat();
+            break;
+          }
+          case 269: {
+            ToPaceValue = input.ReadFloat();
+            break;
+          }
+          case 272: {
+            DurationInSeconds = input.ReadUInt32();
+            break;
+          }
+          case 280: {
+            EvsF35 = input.ReadUInt32();
+            break;
+          }
           case 288: {
-            JerseyHash = input.ReadInt32();
+            JerseyHash = input.ReadInt64();
+            break;
+          }
+          case 296: {
+            EvsF37 = input.ReadBool();
+            break;
+          }
+          case 304: {
+            EvsF38 = input.ReadUInt32();
+            break;
+          }
+          case 314: {
+            AuxiliaryUrl = input.ReadString();
+            break;
+          }
+          case 320: {
+            BikeHash = input.ReadUInt64();
+            break;
+          }
+          case 330:
+          case 328: {
+            invitedSweepers_.AddEntriesFrom(input, _repeated_invitedSweepers_codec);
+            break;
+          }
+          case 336: {
+            EvsF42 = input.ReadUInt64();
+            break;
+          }
+          case 346: {
+            CustomUrl = input.ReadString();
+            break;
+          }
+          case 352: {
+            EvsF44 = input.ReadBool();
+            break;
+          }
+          case 362: {
+            Tags = input.ReadString();
+            break;
+          }
+          case 368: {
+            LateJoinInMinutes = input.ReadUInt32();
+            break;
+          }
+          case 376: {
+            CourseId = input.ReadUInt64();
+            break;
+          }
+          case 384: {
+            EvsF48 = input.ReadUInt64();
+            break;
+          }
+          case 394: {
+            RouteUrl = input.ReadString();
+            break;
+          }
+          case 402:
+          case 400: {
+            evsF50_.AddEntriesFrom(input, _repeated_evsF50_codec);
+            break;
+          }
+          case 408: {
+            EvsF51 = input.ReadBool();
             break;
           }
         }
@@ -10121,6 +16220,7 @@ namespace ZwiftPacketMonitor {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -10129,19 +16229,100 @@ namespace ZwiftPacketMonitor {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Id = input.ReadInt32();
+            Id = input.ReadInt64();
             break;
           }
           case 18: {
             Name = input.ReadString();
             break;
           }
+          case 26: {
+            Description = input.ReadString();
+            break;
+          }
+          case 32: {
+            EvsF4 = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            EvsF5 = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            EvsF6 = input.ReadUInt32();
+            break;
+          }
+          case 58: {
+            Scode = input.ReadString();
+            break;
+          }
           case 64: {
-            Rules = input.ReadInt32();
+            RulesId = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            RegistrationStart = input.ReadUInt64();
+            break;
+          }
+          case 80: {
+            RegistrationStartWT = input.ReadUInt64();
+            break;
+          }
+          case 88: {
+            RegistrationEnd = input.ReadUInt64();
+            break;
+          }
+          case 96: {
+            RegistrationEndWT = input.ReadUInt64();
+            break;
+          }
+          case 104: {
+            LineUpStart = input.ReadUInt64();
+            break;
+          }
+          case 112: {
+            LineUpStartWT = input.ReadUInt64();
+            break;
+          }
+          case 120: {
+            LineUpEnd = input.ReadUInt64();
+            break;
+          }
+          case 128: {
+            LineUpEndWT = input.ReadUInt64();
+            break;
+          }
+          case 136: {
+            EventSubgroupStart = input.ReadUInt64();
+            break;
+          }
+          case 144: {
+            EventSubgroupStartWT = input.ReadUInt64();
+            break;
+          }
+          case 152: {
+            EvsF19 = input.ReadUInt64();
+            break;
+          }
+          case 160: {
+            EvsF20 = input.ReadUInt64();
+            break;
+          }
+          case 168: {
+            EvsF21 = input.ReadBool();
             break;
           }
           case 176: {
-            Route = input.ReadInt32();
+            RouteId = input.ReadInt64();
+            break;
+          }
+          case 186:
+          case 184: {
+            invitedLeaders_.AddEntriesFrom(ref input, _repeated_invitedLeaders_codec);
+            break;
+          }
+          case 197: {
+            DistanceInMeters = input.ReadFloat();
             break;
           }
           case 200: {
@@ -10160,662 +16341,92 @@ namespace ZwiftPacketMonitor {
             PaceType = input.ReadInt32();
             break;
           }
+          case 261: {
+            FromPaceValue = input.ReadFloat();
+            break;
+          }
+          case 269: {
+            ToPaceValue = input.ReadFloat();
+            break;
+          }
+          case 272: {
+            DurationInSeconds = input.ReadUInt32();
+            break;
+          }
+          case 280: {
+            EvsF35 = input.ReadUInt32();
+            break;
+          }
           case 288: {
-            JerseyHash = input.ReadInt32();
+            JerseyHash = input.ReadInt64();
+            break;
+          }
+          case 296: {
+            EvsF37 = input.ReadBool();
+            break;
+          }
+          case 304: {
+            EvsF38 = input.ReadUInt32();
+            break;
+          }
+          case 314: {
+            AuxiliaryUrl = input.ReadString();
+            break;
+          }
+          case 320: {
+            BikeHash = input.ReadUInt64();
+            break;
+          }
+          case 330:
+          case 328: {
+            invitedSweepers_.AddEntriesFrom(ref input, _repeated_invitedSweepers_codec);
+            break;
+          }
+          case 336: {
+            EvsF42 = input.ReadUInt64();
+            break;
+          }
+          case 346: {
+            CustomUrl = input.ReadString();
+            break;
+          }
+          case 352: {
+            EvsF44 = input.ReadBool();
+            break;
+          }
+          case 362: {
+            Tags = input.ReadString();
+            break;
+          }
+          case 368: {
+            LateJoinInMinutes = input.ReadUInt32();
+            break;
+          }
+          case 376: {
+            CourseId = input.ReadUInt64();
+            break;
+          }
+          case 384: {
+            EvsF48 = input.ReadUInt64();
+            break;
+          }
+          case 394: {
+            RouteUrl = input.ReadString();
+            break;
+          }
+          case 402:
+          case 400: {
+            evsF50_.AddEntriesFrom(ref input, _repeated_evsF50_codec);
+            break;
+          }
+          case 408: {
+            EvsF51 = input.ReadBool();
             break;
           }
         }
       }
     }
     #endif
-
-  }
-
-  public sealed partial class RiderAttributes : pb::IMessage<RiderAttributes>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<RiderAttributes> _parser = new pb::MessageParser<RiderAttributes>(() => new RiderAttributes());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<RiderAttributes> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::ZwiftPacketMonitor.ZwiftMessagesReflection.Descriptor.MessageTypes[22]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RiderAttributes() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RiderAttributes(RiderAttributes other) : this() {
-      f2_ = other.f2_;
-      f3_ = other.f3_;
-      attributeMessage_ = other.attributeMessage_ != null ? other.attributeMessage_.Clone() : null;
-      theirId_ = other.theirId_;
-      f13_ = other.f13_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RiderAttributes Clone() {
-      return new RiderAttributes(this);
-    }
-
-    /// <summary>Field number for the "f2" field.</summary>
-    public const int F2FieldNumber = 2;
-    private int f2_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F2 {
-      get { return f2_; }
-      set {
-        f2_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f3" field.</summary>
-    public const int F3FieldNumber = 3;
-    private int f3_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F3 {
-      get { return f3_; }
-      set {
-        f3_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "attributeMessage" field.</summary>
-    public const int AttributeMessageFieldNumber = 4;
-    private global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage attributeMessage_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage AttributeMessage {
-      get { return attributeMessage_; }
-      set {
-        attributeMessage_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "theirId" field.</summary>
-    public const int TheirIdFieldNumber = 10;
-    private int theirId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int TheirId {
-      get { return theirId_; }
-      set {
-        theirId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "f13" field.</summary>
-    public const int F13FieldNumber = 13;
-    private int f13_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int F13 {
-      get { return f13_; }
-      set {
-        f13_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as RiderAttributes);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(RiderAttributes other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (F2 != other.F2) return false;
-      if (F3 != other.F3) return false;
-      if (!object.Equals(AttributeMessage, other.AttributeMessage)) return false;
-      if (TheirId != other.TheirId) return false;
-      if (F13 != other.F13) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (F2 != 0) hash ^= F2.GetHashCode();
-      if (F3 != 0) hash ^= F3.GetHashCode();
-      if (attributeMessage_ != null) hash ^= AttributeMessage.GetHashCode();
-      if (TheirId != 0) hash ^= TheirId.GetHashCode();
-      if (F13 != 0) hash ^= F13.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (F2 != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(F2);
-      }
-      if (F3 != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(F3);
-      }
-      if (attributeMessage_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(AttributeMessage);
-      }
-      if (TheirId != 0) {
-        output.WriteRawTag(80);
-        output.WriteInt32(TheirId);
-      }
-      if (F13 != 0) {
-        output.WriteRawTag(104);
-        output.WriteInt32(F13);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (F2 != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(F2);
-      }
-      if (F3 != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(F3);
-      }
-      if (attributeMessage_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(AttributeMessage);
-      }
-      if (TheirId != 0) {
-        output.WriteRawTag(80);
-        output.WriteInt32(TheirId);
-      }
-      if (F13 != 0) {
-        output.WriteRawTag(104);
-        output.WriteInt32(F13);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (F2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F2);
-      }
-      if (F3 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F3);
-      }
-      if (attributeMessage_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AttributeMessage);
-      }
-      if (TheirId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TheirId);
-      }
-      if (F13 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(F13);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(RiderAttributes other) {
-      if (other == null) {
-        return;
-      }
-      if (other.F2 != 0) {
-        F2 = other.F2;
-      }
-      if (other.F3 != 0) {
-        F3 = other.F3;
-      }
-      if (other.attributeMessage_ != null) {
-        if (attributeMessage_ == null) {
-          AttributeMessage = new global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage();
-        }
-        AttributeMessage.MergeFrom(other.AttributeMessage);
-      }
-      if (other.TheirId != 0) {
-        TheirId = other.TheirId;
-      }
-      if (other.F13 != 0) {
-        F13 = other.F13;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 16: {
-            F2 = input.ReadInt32();
-            break;
-          }
-          case 24: {
-            F3 = input.ReadInt32();
-            break;
-          }
-          case 34: {
-            if (attributeMessage_ == null) {
-              AttributeMessage = new global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage();
-            }
-            input.ReadMessage(AttributeMessage);
-            break;
-          }
-          case 80: {
-            TheirId = input.ReadInt32();
-            break;
-          }
-          case 104: {
-            F13 = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 16: {
-            F2 = input.ReadInt32();
-            break;
-          }
-          case 24: {
-            F3 = input.ReadInt32();
-            break;
-          }
-          case 34: {
-            if (attributeMessage_ == null) {
-              AttributeMessage = new global::ZwiftPacketMonitor.RiderAttributes.Types.AttributeMessage();
-            }
-            input.ReadMessage(AttributeMessage);
-            break;
-          }
-          case 80: {
-            TheirId = input.ReadInt32();
-            break;
-          }
-          case 104: {
-            F13 = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the RiderAttributes message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public sealed partial class AttributeMessage : pb::IMessage<AttributeMessage>
-      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          , pb::IBufferMessage
-      #endif
-      {
-        private static readonly pb::MessageParser<AttributeMessage> _parser = new pb::MessageParser<AttributeMessage>(() => new AttributeMessage());
-        private pb::UnknownFieldSet _unknownFields;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<AttributeMessage> Parser { get { return _parser; } }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pbr::MessageDescriptor Descriptor {
-          get { return global::ZwiftPacketMonitor.RiderAttributes.Descriptor.NestedTypes[0]; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        pbr::MessageDescriptor pb::IMessage.Descriptor {
-          get { return Descriptor; }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public AttributeMessage() {
-          OnConstruction();
-        }
-
-        partial void OnConstruction();
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public AttributeMessage(AttributeMessage other) : this() {
-          myId_ = other.myId_;
-          theirId_ = other.theirId_;
-          firstName_ = other.firstName_;
-          lastName_ = other.lastName_;
-          countryCode_ = other.countryCode_;
-          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public AttributeMessage Clone() {
-          return new AttributeMessage(this);
-        }
-
-        /// <summary>Field number for the "myId" field.</summary>
-        public const int MyIdFieldNumber = 1;
-        private int myId_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int MyId {
-          get { return myId_; }
-          set {
-            myId_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "theirId" field.</summary>
-        public const int TheirIdFieldNumber = 2;
-        private int theirId_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int TheirId {
-          get { return theirId_; }
-          set {
-            theirId_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "firstName" field.</summary>
-        public const int FirstNameFieldNumber = 3;
-        private string firstName_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string FirstName {
-          get { return firstName_; }
-          set {
-            firstName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "lastName" field.</summary>
-        public const int LastNameFieldNumber = 4;
-        private string lastName_ = "";
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string LastName {
-          get { return lastName_; }
-          set {
-            lastName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-          }
-        }
-
-        /// <summary>Field number for the "countryCode" field.</summary>
-        public const int CountryCodeFieldNumber = 5;
-        private int countryCode_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int CountryCode {
-          get { return countryCode_; }
-          set {
-            countryCode_ = value;
-          }
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override bool Equals(object other) {
-          return Equals(other as AttributeMessage);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(AttributeMessage other) {
-          if (ReferenceEquals(other, null)) {
-            return false;
-          }
-          if (ReferenceEquals(other, this)) {
-            return true;
-          }
-          if (MyId != other.MyId) return false;
-          if (TheirId != other.TheirId) return false;
-          if (FirstName != other.FirstName) return false;
-          if (LastName != other.LastName) return false;
-          if (CountryCode != other.CountryCode) return false;
-          return Equals(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override int GetHashCode() {
-          int hash = 1;
-          if (MyId != 0) hash ^= MyId.GetHashCode();
-          if (TheirId != 0) hash ^= TheirId.GetHashCode();
-          if (FirstName.Length != 0) hash ^= FirstName.GetHashCode();
-          if (LastName.Length != 0) hash ^= LastName.GetHashCode();
-          if (CountryCode != 0) hash ^= CountryCode.GetHashCode();
-          if (_unknownFields != null) {
-            hash ^= _unknownFields.GetHashCode();
-          }
-          return hash;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public override string ToString() {
-          return pb::JsonFormatter.ToDiagnosticString(this);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void WriteTo(pb::CodedOutputStream output) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          output.WriteRawMessage(this);
-        #else
-          if (MyId != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(MyId);
-          }
-          if (TheirId != 0) {
-            output.WriteRawTag(16);
-            output.WriteInt32(TheirId);
-          }
-          if (FirstName.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(FirstName);
-          }
-          if (LastName.Length != 0) {
-            output.WriteRawTag(34);
-            output.WriteString(LastName);
-          }
-          if (CountryCode != 0) {
-            output.WriteRawTag(40);
-            output.WriteInt32(CountryCode);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(output);
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          if (MyId != 0) {
-            output.WriteRawTag(8);
-            output.WriteInt32(MyId);
-          }
-          if (TheirId != 0) {
-            output.WriteRawTag(16);
-            output.WriteInt32(TheirId);
-          }
-          if (FirstName.Length != 0) {
-            output.WriteRawTag(26);
-            output.WriteString(FirstName);
-          }
-          if (LastName.Length != 0) {
-            output.WriteRawTag(34);
-            output.WriteString(LastName);
-          }
-          if (CountryCode != 0) {
-            output.WriteRawTag(40);
-            output.WriteInt32(CountryCode);
-          }
-          if (_unknownFields != null) {
-            _unknownFields.WriteTo(ref output);
-          }
-        }
-        #endif
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int CalculateSize() {
-          int size = 0;
-          if (MyId != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(MyId);
-          }
-          if (TheirId != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(TheirId);
-          }
-          if (FirstName.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(FirstName);
-          }
-          if (LastName.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(LastName);
-          }
-          if (CountryCode != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeInt32Size(CountryCode);
-          }
-          if (_unknownFields != null) {
-            size += _unknownFields.CalculateSize();
-          }
-          return size;
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(AttributeMessage other) {
-          if (other == null) {
-            return;
-          }
-          if (other.MyId != 0) {
-            MyId = other.MyId;
-          }
-          if (other.TheirId != 0) {
-            TheirId = other.TheirId;
-          }
-          if (other.FirstName.Length != 0) {
-            FirstName = other.FirstName;
-          }
-          if (other.LastName.Length != 0) {
-            LastName = other.LastName;
-          }
-          if (other.CountryCode != 0) {
-            CountryCode = other.CountryCode;
-          }
-          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-        }
-
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(pb::CodedInputStream input) {
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-          input.ReadRawMessage(this);
-        #else
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                break;
-              case 8: {
-                MyId = input.ReadInt32();
-                break;
-              }
-              case 16: {
-                TheirId = input.ReadInt32();
-                break;
-              }
-              case 26: {
-                FirstName = input.ReadString();
-                break;
-              }
-              case 34: {
-                LastName = input.ReadString();
-                break;
-              }
-              case 40: {
-                CountryCode = input.ReadInt32();
-                break;
-              }
-            }
-          }
-        #endif
-        }
-
-        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-          uint tag;
-          while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
-              default:
-                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                break;
-              case 8: {
-                MyId = input.ReadInt32();
-                break;
-              }
-              case 16: {
-                TheirId = input.ReadInt32();
-                break;
-              }
-              case 26: {
-                FirstName = input.ReadString();
-                break;
-              }
-              case 34: {
-                LastName = input.ReadString();
-                break;
-              }
-              case 40: {
-                CountryCode = input.ReadInt32();
-                break;
-              }
-            }
-          }
-        }
-        #endif
-
-      }
-
-    }
-    #endregion
 
   }
 
