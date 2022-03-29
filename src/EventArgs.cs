@@ -5,45 +5,36 @@ namespace ZwiftPacketMonitor {
         public PlayerState PlayerState {get; set;}
     }
 
-    public class SegmentResultEventArgs : EventArgs {
+    public class WaEventArgs : EventArgs {
+        public WorldAttribute WorldAttribute { get; set; }
+    }
+    public class SegmentResultEventArgs : WaEventArgs {
         public SegmentResult SegmentResult { get; set;}
     }
-
-    public class RideOnGivenEventArgs : EventArgs {
+    public class RideOnGivenEventArgs : WaEventArgs {
         public RideOn RideOn {get; set;}
     }
-
-    public class SocialPlayerActionEventArgs : EventArgs {
+    public class SocialPlayerActionEventArgs : WaEventArgs {
         public SocialPlayerAction SocialPlayerAction { get; set;}
     }
-
-    public class PlayerLeftWorldEventArgs : EventArgs {
+    public class PlayerLeftWorldEventArgs : WaEventArgs {
         public PlayerLeftWorld PlayerLeftWorld { get; set;}
         public WA_TYPE WaType { get; set; }
     }
-
-    public class EventProtobufEventArgs : EventArgs {
+    public class EventProtobufEventArgs : WaEventArgs {
         public EventProtobuf EventProtobuf { get; set;}
     }
-
-    public class PlayerJoinedEventArgs : EventArgs {
+    public class PlayerJoinedEventArgs : WaEventArgs {
         public PlayerJoinedEvent PlayerJoinedEvent {get; set;}
     }
-
-    public class PlayerLeftEventArgs : EventArgs {
+    public class PlayerLeftEventArgs : WaEventArgs {
         public PlayerLeftEvent PlayerLeftEvent {get; set;}
     }
-
-    public class EventInviteEventArgs : EventArgs {
-        public EventInviteProto EventInviteProto { get; set;}
-    }
-
-    public class NotableEventArgs : EventArgs {
+    public class NotableEventArgs : WaEventArgs {
         public string NotableHexStr { get; set;}
         public Int64 PlayerId { get; set; }
     }
-
-    public class GroupEventArgs : EventArgs {
+    public class GroupEventArgs : WaEventArgs {
         public string GeHexStr { get; set;}
         public string GeKindStr { get; set;}
         public Int64 PlayerId { get; set; }
@@ -53,32 +44,25 @@ namespace ZwiftPacketMonitor {
         BA_ELBOW = 0, BA_WAVE, BA_2, BA_RIDEON, 
         BA_HAMMER, BA_NICE, BA_BRING_IT, BA_TOAST, BA_BELL, BA_HOLIDAY_WAVE
     }
-    public class BikeActionEventArgs : EventArgs {
+    public class BikeActionEventArgs : WaEventArgs {
         public string BaHexStr { get; set;}
         public BikeAction BikeAction { get; set;}
         public Int64 PlayerId { get; set; }
     }
-
-    public class NoPayloadWaEventArgs : EventArgs {
+    public class NoPayloadWaEventArgs : WaEventArgs {
         public WA_TYPE WaType { get; set;}
     }
-
-    public class EventSubgroupPlacementsEventArgs : EventArgs {
+    public class EventSubgroupPlacementsEventArgs : WaEventArgs {
         public EventSubgroupPlacements EvSubgroupPs { get; set;}
     }
-
-    public class MessageWaEventArgs : EventArgs
-    {
+    public class MessageWaEventArgs : WaEventArgs {
         public WA_TYPE WaType { get; set; }
         public string Message { get; set; }
     }
-
-    public class FloatTimeWaEventArgs : EventArgs
-    {
+    public class FloatTimeWaEventArgs : WaEventArgs {
         public WA_TYPE WaType { get; set; }
         public float FloatTime { get; set; }
     }
-
     public class FlagWaInfo {
         public Int64 networkId, playerId;
         public double doubleVal;
@@ -94,9 +78,7 @@ namespace ZwiftPacketMonitor {
             return $"networkId: {networkId}, playerId: {playerId}, doubleVal: {doubleVal}, flag: {flag}";
         }
     }
-
-    public class FlagWaEventArgs : EventArgs
-    {
+    public class FlagWaEventArgs : WaEventArgs {
         public FlagWaInfo FlagWaInfo { get; set; }
     }
 }

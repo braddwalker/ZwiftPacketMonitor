@@ -87,7 +87,7 @@ namespace ZwiftPacketMonitor
         /// <summary>
         /// This event gets invoked when the player invited to event
         /// </summary>
-        public event EventHandler<EventInviteEventArgs> IncomingEventInviteEvent;
+        public event EventHandler<EventProtobufEventArgs> IncomingEventInviteEvent;
 
         /// <summary>
         /// This event gets invoked when notable moment occurred
@@ -211,7 +211,7 @@ namespace ZwiftPacketMonitor
             }
         }  
 
-        private void OnIncomingEventInviteEvent(EventInviteEventArgs e)
+        private void OnIncomingEventInviteEvent(EventProtobufEventArgs e)
         {
             var handler = IncomingEventInviteEvent;
             if (handler != null)
@@ -624,18 +624,21 @@ namespace ZwiftPacketMonitor
                                         OnIncomingRideOnGivenEvent(new RideOnGivenEventArgs()
                                         {
                                             RideOn = RideOn.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            WorldAttribute = pu,
                                         });
                                         break;
                                     case WA_TYPE.WatSpa:
                                         OnIncomingSocialPlayerActionEvent(new SocialPlayerActionEventArgs()
                                         {
                                             SocialPlayerAction = SocialPlayerAction.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            WorldAttribute = pu,
                                         });
                                         break;
                                     case WA_TYPE.WatSr:
                                         OnIncomingSegmentResultEvent(new SegmentResultEventArgs()
                                         {
                                             SegmentResult = SegmentResult.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            WorldAttribute = pu,
                                         });
                                         break;
                                     case WA_TYPE.WatRelogin:
@@ -644,30 +647,35 @@ namespace ZwiftPacketMonitor
                                         {
                                             PlayerLeftWorld = PlayerLeftWorld.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                             WaType = pu.WaType,
+                                            WorldAttribute = pu,
                                         });
                                         break;
                                     case WA_TYPE.WatEvent:
                                         OnIncomingMeetupEvent(new EventProtobufEventArgs()
                                         {
                                             EventProtobuf = EventProtobuf.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            WorldAttribute = pu,
                                         });
                                         break;
                                     case WA_TYPE.WatJoinE:
                                         OnIncomingPlayerJoinedEvent(new PlayerJoinedEventArgs()
                                         {
                                             PlayerJoinedEvent = PlayerJoinedEvent.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            WorldAttribute = pu,
                                         });
                                         break;
                                     case WA_TYPE.WatLeftE:
                                         OnIncomingPlayerLeftEvent(new PlayerLeftEventArgs()
                                         {
                                             PlayerLeftEvent = PlayerLeftEvent.Parser.ParseFrom(pu.Payload.ToByteArray()),
-                                        }); //did not checked yet
+                                            WorldAttribute = pu,
+                                        });
                                         break;
                                     case WA_TYPE.WatInvW:
-                                        OnIncomingEventInviteEvent(new EventInviteEventArgs()
+                                        OnIncomingEventInviteEvent(new EventProtobufEventArgs()
                                         {
-                                            EventInviteProto = EventInviteProto.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            EventProtobuf = EventProtobuf.Parser.ParseFrom(pu.Payload.ToByteArray()),
+                                            WorldAttribute = pu,
                                         });
                                         break;
                                     case WA_TYPE.WatGrpM:
@@ -676,6 +684,7 @@ namespace ZwiftPacketMonitor
                                         {
                                             //Message = StringProto.Parser.ParseFrom(pu.Payload.ToByteArray()),
                                             WaType = pu.WaType,
+                                            WorldAttribute = pu,
                                         }); //did not checked yet
                                         break;
                                     case WA_TYPE.WatWtime: //check: 4-byte world time, int or float?
@@ -684,12 +693,14 @@ namespace ZwiftPacketMonitor
                                         {
                                             FloatTime = BitConverter.ToSingle(pu.Payload.ToByteArray()),  //did not checked yet
                                             WaType = pu.WaType,
+                                            WorldAttribute = pu,
                                         });
                                         break;
                                     case WA_TYPE.WatFlag:
                                         OnIncomingFlagWaEvent(new FlagWaEventArgs()
                                         {
-                                            FlagWaInfo = new FlagWaInfo(pu.Payload.ToByteArray())
+                                            FlagWaInfo = new FlagWaInfo(pu.Payload.ToByteArray()),
+                                            WorldAttribute = pu,
                                         });
                                         break;
 /*todo:

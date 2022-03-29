@@ -209,22 +209,27 @@ message PlayerJoinedEvent {
     uint64 pje_f3 = 3;
 }
 message PlayerLeftEvent {
-    uint64 ev_sg_id = 1;
+    uint64 event_id = 1;
     uint64 player_id = 2;
     uint64 ple_f3 = 3;
 }
 message InvitedProfileProto {
-    uint64 ipp_f1 = 1;
-    string ipp_f2 = 2;
-    string ipp_f3 = 3;
-    string ipp_f4 = 4;
-    bool ipp_f5 = 5;
-    bool ipp_f6 = 6;
+    uint64 player_id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string imageSrc = 4;
+    bool enrolledZwiftAcademy = 5;
+    bool male = 6;
     PlayerType player_type = 7;
+}
+enum EventInviteStatus {
+    PENDING = 0;
+    ACCEPTED = 1;
+    REJECTED = 2;
 }
 message EventInviteProto {
     InvitedProfileProto profile = 1;
-    uint64 invite_f2 = 2;
+    EventInviteStatus status = 2;
 }
 message WorldAttribute {
     int64 wa_f1 = 1;

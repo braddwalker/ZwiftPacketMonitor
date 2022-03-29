@@ -42,19 +42,19 @@ namespace ZwiftPacketMonitorDemo
             };*/
             monitor.IncomingRideOnGivenEvent += (s, e) =>
             {
-                logger.LogInformation($"RIDEON: {e.RideOn}");
+                logger.LogInformation($"RIDEON: {e.RideOn}, wa: {e.WorldAttribute}");
             };
-            /*monitor.IncomingEventProtobufEvent += (s, e) =>
+            monitor.IncomingEventProtobufEvent += (s, e) =>
             {
-                logger.LogInformation($"EventProtobuf: {e.EventProtobuf}");
-            };*/
+                logger.LogInformation($"EventProtobuf: {e.EventProtobuf}, wa: {e.WorldAttribute}");
+            };
             monitor.IncomingPlayerJoinedEvent += (s, e) =>
             {
-                logger.LogInformation($"PlayerJoinedEvent: {e.PlayerJoinedEvent}");
+                logger.LogInformation($"PlayerJoinedEvent: {e.PlayerJoinedEvent}, wa: {e.WorldAttribute}");
             };
             monitor.IncomingPlayerLeftEvent += (s, e) =>
             {
-                logger.LogInformation($"PlayerLeftEvent: {e.PlayerLeftEvent}");
+                logger.LogInformation($"PlayerLeftEvent: {e.PlayerLeftEvent}, wa: {e.WorldAttribute}");
             };
             /*monitor.IncomingPlayerLeftWorldEvent += (s, e) =>
             {
@@ -62,13 +62,13 @@ namespace ZwiftPacketMonitorDemo
             };*/
             monitor.IncomingEventInviteEvent += (s, e) =>
             {
-                logger.LogInformation($"EventInvite: {e.EventInviteProto}");
+                logger.LogInformation($"EventInvite: {e.EventProtobuf}, wa: {e.WorldAttribute}");
             };
             /*monitor.IncomingNotableEvent += (s, e) =>
             {
                 logger.LogInformation($"Notable: PlayerId: {e.PlayerId} Hex: {e.NotableHexStr}");
-            };
-            monitor.IncomingGroupEvent += (s, e) =>
+            };*/
+            /*monitor.IncomingGroupEvent += (s, e) =>
             {
                 logger.LogInformation($"GroupEvent {e.GeKindStr}: PlayerId: {e.PlayerId} Hex: {e.GeHexStr}");
             };*/
