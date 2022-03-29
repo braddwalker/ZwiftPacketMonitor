@@ -23,11 +23,11 @@ See the included ZwiftPacketMonitor.Demo project for a complete working example.
     monitor.OutgoingPlayerEvent += (s, e) => {
         logger.LogInformation($"OUTGOING: {e.PlayerState}");
     };
-    monitor.IncomingChatMessageEvent += (s, e) => {
-        logger.LogInformation($"CHAT: {e.Message}");
+    monitor.IncomingSocialPlayerActionEvent += (s, e) => {
+        logger.LogInformation($"SPA: {e.SocialPlayerAction}");
     };
-    monitor.IncomingPlayerEnteredWorldEvent += (s, e) => {
-        logger.LogInformation($"WORLD: {e.PlayerUpdate}");
+    monitor.IncomingSegmentResultWorldEvent += (s, e) => {
+        logger.LogInformation($"SegmentResult: {e.SegmentResult}");
     };
     monitor.IncomingRideOnGivenEvent += (s, e) => {
         logger.LogInformation($"RIDEON: {e.RideOn}");

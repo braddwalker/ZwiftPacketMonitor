@@ -24,26 +24,74 @@ namespace ZwiftPacketMonitorDemo
             var logger = serviceProvider.GetService<ILogger<Program>>();
             var monitor = serviceProvider.GetService<Monitor>();
 
-            monitor.IncomingPlayerEvent += (s, e) =>
+            /*monitor.IncomingPlayerEvent += (s, e) =>
             {
                 logger.LogInformation($"INCOMING: {e.PlayerState}");
             };
             monitor.OutgoingPlayerEvent += (s, e) =>
             {
                 logger.LogInformation($"OUTGOING: {e.PlayerState}");
-            };
-            monitor.IncomingChatMessageEvent += (s, e) =>
+            };*/
+            monitor.IncomingSocialPlayerActionEvent += (s, e) =>
             {
-                logger.LogInformation($"CHAT: {e.Message}");
+                logger.LogInformation($"SPA: {e.SocialPlayerAction}");
             };
-            monitor.IncomingPlayerEnteredWorldEvent += (s, e) =>
+            /*monitor.IncomingSegmentResultEvent += (s, e) =>
             {
-                logger.LogInformation($"WORLD: {e.PlayerUpdate}");
-            };
+                logger.LogInformation($"SegmentResult: {e.SegmentResult}");
+            };*/
             monitor.IncomingRideOnGivenEvent += (s, e) =>
             {
-                logger.LogInformation($"RIDEON: {e.RideOn}");
+                logger.LogInformation($"RIDEON: {e.RideOn}, wa: {e.WorldAttribute}");
             };
+            monitor.IncomingEventProtobufEvent += (s, e) =>
+            {
+                logger.LogInformation($"EventProtobuf: {e.EventProtobuf}, wa: {e.WorldAttribute}");
+            };
+            monitor.IncomingPlayerJoinedEvent += (s, e) =>
+            {
+                logger.LogInformation($"PlayerJoinedEvent: {e.PlayerJoinedEvent}, wa: {e.WorldAttribute}");
+            };
+            monitor.IncomingPlayerLeftEvent += (s, e) =>
+            {
+                logger.LogInformation($"PlayerLeftEvent: {e.PlayerLeftEvent}, wa: {e.WorldAttribute}");
+            };
+            /*monitor.IncomingPlayerLeftWorldEvent += (s, e) =>
+            {
+                logger.LogInformation($"PlayerLeftWorld: {e.WaType}: {e.PlayerLeftWorld}");
+            };*/
+            monitor.IncomingEventInviteEvent += (s, e) =>
+            {
+                logger.LogInformation($"EventInvite: {e.EventProtobuf}, wa: {e.WorldAttribute}");
+            };
+            /*monitor.IncomingNotableEvent += (s, e) =>
+            {
+                logger.LogInformation($"Notable: PlayerId: {e.PlayerId} Hex: {e.NotableHexStr}");
+            };*/
+            /*monitor.IncomingGroupEvent += (s, e) =>
+            {
+                logger.LogInformation($"GroupEvent {e.GeKindStr}: PlayerId: {e.PlayerId} Hex: {e.GeHexStr}");
+            };*/
+            monitor.IncomingBikeActionEvent += (s, e) =>
+            {
+                logger.LogInformation($"BikeActionEvent {e.BikeAction}: PlayerId: {e.PlayerId} Hex: {e.BaHexStr}");
+            };
+            monitor.IncomingNoPayloadWaEvent += (s, e) =>
+            {
+                logger.LogInformation($"NoPayloadWa: {e.WaType}");
+            };
+            monitor.IncomingMessageWaEvent += (s, e) =>
+            {
+                logger.LogInformation($"Message: {e.WaType}: {e.Message}");
+            };
+            monitor.IncomingFloatTimeWaEvent += (s, e) =>
+            {
+                logger.LogInformation($"FloatTimeWa: {e.WaType}: {e.FloatTime}");
+            };
+            /*monitor.IncomingFlagWaEvent += (s, e) =>
+            {
+                logger.LogInformation($"FlagWa: {e.FlagWaInfo}");
+            };*/
 
             // Print SharpPcap version
             var ver = Pcap.SharpPcapVersion;

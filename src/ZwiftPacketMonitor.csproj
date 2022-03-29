@@ -27,4 +27,12 @@
     <ItemGroup>
       <None Include="..\readme.md" Pack="true" PackagePath="" />
   </ItemGroup>
+    <ItemGroup>
+      <None Update="zwiftMessages.proto">
+        <Generator></Generator>
+      </None>
+    </ItemGroup>
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="c:\Users\Youra\Downloads\ZWiftOffline\protobuf\protoc.exe --csharp_out=. zwiftMessages.proto" />
+    </Target>
 </Project>

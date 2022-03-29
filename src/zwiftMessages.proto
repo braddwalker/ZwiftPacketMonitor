@@ -1,62 +1,150 @@
 syntax="proto3";
 package ZwiftPacketMonitor;
 
-message Meetup {
-    int32 id = 1;
-    int32 tag2 = 2;
+enum NotableMomentTypeZG {
+    NMT_NEW_PR = 0;
+    NMT_GAINED_LEVEL = 5;
+    NMT_TRAINING_PLAN_COMPLETE = 19;
+    NMT_UNLOCKED_ITEM = 4;
+    NMT_ACHIEVEMENT_UNLOCKED = 2;
+    NMT_MISSION_COMPLETED = 3;
+    NMT_COMPLETED_GOAL = 10;
+    NMT_MET_DAILY_TARGET = 1;
+    NMT_TOOK_ARCH_JERSEY = 8;
+    NMT_FINISHED_CHALLENGE = 17;
+    NMT_FINISHED_EVENT = 13;
+    NMT_FINISHED_WORKOUT = 15;
+    NMT_ACTIVITY_BESTS = 20;
+    NMT_RIDEON = 18;
+    NMT_RIDEON_INT = 22; //international
+    NMT_QUIT_EVENT = 12;
+    NMT_USED_POWERUP = 6;
+    NMT_PASSED_TIMING_ARCH = 7;
+    NMT_CREATED_GOAL = 9;
+    NMT_JOINED_EVENT = 11;
+    NMT_STARTED_WORKOUT = 14;
+    NMT_STARTED_MISSION = 16;
+    NMT_HOLIDAY_EVENT_COMPLETE = 21;
+}
+message NotableMoment {
+    uint64 activity_id = 1;
+    NotableMomentTypeZG type = 2;
+    uint32 priority = 3;
+    uint64 incidentTime = 4;
+    string aux1 = 5;
+    string aux2 = 6;
+    string largeImageUrl = 7;
+}
+enum EventType {
+    ET_UNKNOWN = 0;
+    EFONDO = 1;
+    RACE = 2;
+    GROUP_RIDE = 3;
+    GROUP_WORKOUT = 4;
+    TIME_TRIAL = 5;
+}
+enum EventVisibility {
+    EV_NULL = 0;
+    EV_PUB_SHARE = 1;   // event public shareable
+    EV_BY_RESOURCE = 2; // event defined by resource
+    EV_SHAREABLE = 3;
+}
+message MicroserviceEventData {
+    string name = 1;                // "clubs" everywhere (json: microserviceName)
+    bytes externalResourceId = 2;   // different 16-byte bb4538bfd13346c99a4df2b3cc3b5d95 (json: microserviceExternalResourceId)
+    EventVisibility visibility = 3; // enum 1 (json: microserviceEventVisibility)
+}
+message EventSeriesProtobuf {
+    uint64 id = 1;            //5445 or 1485
+    string name = 2;          //INEOSVTC or "Fast Friday"
+    string description = 3;   //"" or "Congratulations, you crushed another week of workouts! ..."
+}
+message EventTimeTrialOptions {
+    uint32 timeGapBetweenRowsMs = 1;  //15000 everywhere
+    uint32 maxRows = 2;               //50 or 25
+    uint32 maxRidersPerRow = 3;       //10 everywhere
+    uint32 evt_f4 = 4;
+    uint64 evt_f5 = 5;
+}
+message EventProtobuf {
+    int64 id = 1;
+    int64 server_realm = 2;
     string name = 3;
     string description = 4;
-    int64 start_time = 5;
-    fixed32 distance = 7;
-    int32 tag8 = 8;
-
-    message MeetupInner {
-        int32 id = 1;
-        string name = 2;
-        string description = 3;
-        string f7 = 7;
-        int64 f8 = 8;
-        int64 f9 = 9;
-        int64 f10 = 10;
-        int64 f11 = 11;
-        int64 f12 = 12;
-        int64 f13 = 13;
-        int64 f14 = 14;
-        int64 f15 = 15;
-        int64 f16 = 16;
-        int64 f17 = 17;
-        int64 f18 = 18;
-        int64 f22 = 22;
-        fixed32 distance = 24;
-        int64 f25 = 25;
-        int32 f29 = 29;
-        int32 f30 = 30;
-        int32 f31 = 31;
-        fixed32 f32 = 32;
-        fixed32 f33 = 33;
-        int32 duration = 34;
-        int64 f42 = 42;
-        int64 f44 = 44;
-        int32 f46 = 46;
-        int32 f47 = 47;
-    }
-    MeetupInner meetup_inner = 10;
+    int64 event_start = 5;
+    string e_f6 = 6;
+    float distanceInMeters = 7;
+    int32 laps = 8;
+    int32 e_f9 = 9;
+    EventSubgroupProtobuf category = 10; //event_subgroup_size() <= MAX_SUBGROUPS(6)
+    string e_f11 = 11;
     string thumbnail = 12;
-    int32 duration = 13;
-    int64 f14 = 14;
-    int32 f17 = 17;
-    int32 f18 = 18;
-    int32 f22 = 22;
-    int32 f23 = 23;
-    int32 meetup_only_view = 24;
-    int32 f25 = 25;
-    int32 f27 = 27;
-    int32 f28 = 28;
-    int32 f29 = 29;
-    int32 f34 = 34;
-    int32 f35 = 35;   
+    int32 durationInSeconds = 13;
+    int64 route_id = 14;
+    int64 rules_id = 15;
+    int32 e_f16 = 16;
+    bool visible = 17;
+    int64 jerseyHash = 18;
+    string e_f19 = 19;
+    string e_f20 = 20;
+    string e_f21 = 21;
+    Sport sport = 22;
+    int64 e_f23 = 23;
+    EventType eventType = 24;
+    uint64 e_f25 = 25;
+    string e_f26 = 26;
+    uint64 e_f27 = 27; //<=4, ENUM?
+    bool overrideMapPreferences = 28;
+    bool invisibleToNonParticipants = 29;
+    EventSeriesProtobuf evSeries = 30;
+    string tags = 31; // semi-colon delimited tags
+    uint64 e_f32 = 32;
+    bool e_wtrl = 33; //WTRL (World Tactical Racing Leagues)
+    uint32 lateJoinInMinutes = 34;
+    uint64 course_id = 35;
+    EventTimeTrialOptions tto = 36;
+    string e_f37 = 37;
+    string e_f38 = 38;
+    uint32 e_f39 = 39;
+    MicroserviceEventData msed = 40;
+    repeated uint32 e_f41 = 41;
 }
-
+enum WA_TYPE {
+    WAT_UNK0 = 0;
+    WAT_UNK1 = 1;
+    WAT_LEAVE = 2;   //proto::PlayerLeftWorld
+    WAT_RELOGIN = 3; //proto::PlayerLeftWorld
+    WAT_RIDE_ON = 4; //proto::RideOn
+    WAT_SPA = 5;     //proto::SocialPlayerAction (chat message)
+    WAT_EVENT = 6;   //proto::Event
+    WAT_JOIN_E = 7;  //proto::PlayerJoinedEvent
+    WAT_LEFT_E = 8;  //proto::PlayerLeftEvent
+    WAT_RQ_PROF = 9; //proto::RequestProfileFromServer
+    WAT_INV_W = 10;  //proto::ReceiveInvitationWorldAttribute
+    WAT_KICKED = 11; //no payload
+    WAT_WTIME = 100; //g_WorldTime := payload (GOD message, may be ignored if ZWIFT\CONFIG\IGNOREGODMESSAGES=1)
+    WAT_RTIME = 101; //BlimpEntity::SetRoadTime(payload), also GOD message
+    WAT_B_ACT = 102; //BikeEntity::PerformAction(payload)
+    WAT_GRP_M = 103; //GroupMessage (may be ignored if ZWIFT\CONFIG\SHOWGROUPMSGS=1)
+    WAT_PRI_M = 104; //PrivateMessage
+    WAT_SR    = 105; //proto::SegmentResult
+    WAT_FLAG = 106;  //Leaderboards::FlagSandbagger / Leaderboards::FlagCheater
+    WAT_NONE = 107;  //does nothing
+    WAT_RLA = 108;   //ZNETWORK_BroadcastRideLeaderAction
+    WAT_GE = 109;    //GroupEvents::UserSignedup / GroupEvents::UserRegistered
+    WAT_NM = 110;    //notable moment + Play_Magic_Whoosh_Deep_Sparkle
+    WAT_LATE = 111;  //ZNETWORK_INTERNAL_HandleLateJoinRequest
+    WAT_RH = 112;    //ZNETWORK_INTERNAL_HandleRouteHashRequest
+    WAT_STATS = 113; //GLOBAL_MESSAGE_TYPE_RIDER_FENCE_STATS
+    WAT_FENCE = 114; //GLOBAL_MESSAGE_TYPE_GRFENCE_CONFIG
+    WAT_BN_GE = 115; //ZNETWORK_BroadcastBibNumberForGroupEvent
+    WAT_PPI = 116;   //ZNETWORK_INTERNAL_HandlePacePartnerInfo
+}
+enum Sport {
+    CYCLING = 0;
+    RUNNING = 1;
+    ROWING = 2;
+}
 message PlayerState {
     int32 id = 1;
     int64 worldTime = 2;
@@ -64,14 +152,18 @@ message PlayerState {
     int32 roadTime = 4;
     int32 laps = 5;
     int32 speed = 6;
+    uint32 ps_f7 = 7;
     int32 roadPosition = 8;
     int32 cadenceUHz = 9;
+    int32 ps_f10 = 10;
     int32 heartrate = 11;
     int32 power = 12;
     int64 heading = 13;
     int32 lean = 14;
     int32 climbing = 15;
     int32 time = 16;
+    int32 ps_f17 = 17;
+    uint32 frameHue = 18;
     int32 f19 = 19;
     int32 f20 = 20;
     int32 progress = 21;
@@ -79,207 +171,322 @@ message PlayerState {
     int32 justWatching = 23;
     int32 calories = 24;
     float x = 25;
-    float altitude = 26;
-    float y = 27;
-    int32 watchingRiderId = 28;
-    int32 groupId = 29;
-    int64 sport = 31;
-    float f34 = 34;  // actual distance moved included lateral movement
+    float y = 26;
+    float z = 27;
+    int64 watchingRiderId = 28;
+    int64 groupId = 29;
+    Sport sport = 31;
+    float ps_f32 = 32;
+    uint32 ps_f33 = 33;
+    float dist_lat = 34; // actual distance moved included lateral movement
+    int32 world = 35;
+    uint32 ps_f36 = 36;
+    uint32 ps_f37 = 37;
+    bool canSteer = 38;
+    int32 route = 39;
 }
-
 message ClientToServer {
-    int32 connected = 1;
-    int32 rider_id = 2;
+    int32 server_realm = 1;
+    int32 player_id = 2;
     int64 world_time = 3;
     int32 seqno = 4;
+    int32 cts_f5 = 5;
+    int64 cts_f6 = 6;
     PlayerState state = 7;
-    int64 tag8 = 8;
-    int64 tag9 = 9;
+    bool cts_f8 = 8;
+    bool cts_f9 = 9;
     int64 last_update = 10;
-    int64 tag11 = 11;
+    bool cts_f11 = 11;
     int64 last_player_update = 12;
+    int64 larg_wa_time = 13;
+    bool cts_f14 = 14;
+    repeated int64 subsSegments = 15;
+    repeated int64 unsSegments = 16;
 }
-
-message UnknownMessage1 {
-    // string firstName=7;
-    // string lastName=8;
-    // string timestamp=17;
+message PlayerJoinedEvent {
+    uint64 ev_sg_id = 1;
+    uint64 player_id = 2;
+    uint64 pje_f3 = 3;
 }
-
-message UnknownMessage {
-    // int64 tag1=1;
-    // UnknownMessage1 tag4=4;
+message PlayerLeftEvent {
+    uint64 event_id = 1;
+    uint64 player_id = 2;
+    uint64 ple_f3 = 3;
 }
-
-
-message PlayerUpdate {
-    int64 tag1 = 1;
-    int32 tag2 = 2;
-    int32 tag3 = 3;
+message InvitedProfileProto {
+    uint64 player_id = 1;
+    string firstName = 2;
+    string lastName = 3;
+    string imageSrc = 4;
+    bool enrolledZwiftAcademy = 5;
+    bool male = 6;
+    PlayerType player_type = 7;
+}
+enum EventInviteStatus {
+    PENDING = 0;
+    ACCEPTED = 1;
+    REJECTED = 2;
+}
+message EventInviteProto {
+    InvitedProfileProto profile = 1;
+    EventInviteStatus status = 2;
+}
+message WorldAttribute {
+    int64 wa_f1 = 1;
+    int64 server_realm = 2;
+    WA_TYPE wa_type = 3;
     bytes payload = 4;
-    int64 tag5 = 5;
-    int64 tag6 = 6;
-    int64 tag7 = 7;
-    int64 tag8 = 8;
-    int64 tag9 = 9;
-    int64 tag11 = 11;
-    int64 tag12 = 12;
-    int64 tag14 = 14;
-    int64 tag15 = 15;
+    int64 world_time_born = 5;
+    int64 x = 6;
+    int64 y = 7;
+    int64 z = 8;
+    int64 world_time_expire = 9;
+    int64 rel_id = 10;
+    int32 importance = 11;
+    int64 wa_f12 = 12;
+    int32 wa_f13 = 13;
+    int64 timestamp = 14;
+    int32 wa_f15 = 15;
+    int64 wa_f16 = 16;
 }
-
-message Payload105 { // player entered world ?
-    int64 f1 = 1;
-    int32 rider_id = 2;
-    int32 f3 = 3;
-    int64 f4 = 4; // int32?
-    int64 f5 = 5; 
-    int64 f6 = 6; // int32?
-    string firstName = 7;
+enum PlayerType {
+    PLAYERTYPE0 = 0;
+    NORMAL = 1;
+    PRO_CYCLIST = 2;
+    ZWIFT_STAFF = 3;
+    AMBASSADOR = 4;
+    VERIFIED = 5;
+    ZED = 6;
+    ZAC = 7;
+    PRO_TRIATHLETE = 8;
+    PRO_RUNNER = 9;
+}
+enum PowerType {
+    PT_VIRTUAL = 0;
+    PT_METER = 1;
+    PT_UNK = -1;
+}
+message SegmentResult {
+    int64 id = 1;
+    int32 player_id = 2;
+    int64 server_realm = 3;
+    int64 course_id = 4;
+    int64 segment_id = 5; 
+    int64 event_subgroup_id = 6;
+    string firstNameL1 = 7;
     string lastName = 8;
-    int64 f9 = 9;
-    int64 f11 = 11;
-    int32 f12 = 12;
-    int32 f13 = 13;
-    int32 f14 = 14;
-    int32 f15 = 15;
-    int32 f16 = 16;
-    string f7date = 17;
-    int32 f19 = 19;
+    uint64 world_time = 9;
+    string finish_time_str = 10;
+    uint64 elapsed_ms = 11;
+    PowerType power_type = 12;
+    uint32 weight_in_grams = 13;
+    uint32 sr_f14 = 14; //always 0
+    uint32 avg_power = 15;
+    bool is_male = 16;
+    string magicLeaderboardBirthday = 17;
+    PlayerType player_type = 18;
+    uint32 avg_hr = 19;
+    Sport sport = 20;
+    uint64 activity_id = 21; //may be -1
+    bool sr_f22 = 22;
+    string firstNameL1_copy = 23;
 }
-
-message Chat {
-    int32 rider_id = 1;
-    int32 to_rider_id = 2; // 0 if public message
-    int32 f3 = 3; // always value 1 ?
+enum SocialPlayerActionType {
+    SOCIAL_ACTION_UNKNOWN_TYPE = 0;
+    SOCIAL_TEXT_MESSAGE = 1;
+    SOCIAL_RIDE_ON = 2;
+    SOCIAL_FLAG = 3;
+}
+enum FlagType {
+    FLAG_TYPE_UNKNOWN = 0;
+    FLAG_TYPE_HARASSMENT = 1;
+    FLAG_TYPE_FLIER = 2;
+    FLAG_TYPE_BAD_LANGUAGE = 3;
+}
+enum MessageGroupType {
+    MGT_UNKNOWN = 0;
+    MGT_GLOBAL = 1;
+    MGT_DIRECT = 2;
+    MGT_EVENT = 3;
+    MGT_CLUB = 4;
+}
+message SocialPlayerAction {
+    int32 player_id = 1;
+    int32 to_player_id = 2; // 0 if public message
+    SocialPlayerActionType spa_type = 3;
     string firstName = 4;
     string lastName = 5;
     string message = 6;
     string avatar = 7;
     int32 countryCode = 8;
-    int32 eventSubgroup = 11;
+    FlagType flagType = 9;
+    MessageGroupType mgType = 10;
+    int64 eventSubgroup = 11;
 }
-
 message RideOn {
-    int32 rider_id = 1;
-    int32 to_rider_id = 2;
+    int32 player_id = 1;
+    int32 to_player_id = 2;
     string firstName = 3;
     string lastName = 4;
     int32 countryCode = 5;
 }
-
-message Payload2 {
-    int32 f1 = 1;
-    int64 f2 = 2;
+message PlayerLeftWorld {
+    int64 player_id = 1;
+    int64 world_time = 2; // not sure
+    bool anotherLogin = 3; // user profile logged in twice -> one of them should be logged out
+    bool plw_f4 = 4;
+    repeated sint64 plw_f5 = 5;
 }
-
-message TimeSync { 
-    int32 rider_id = 1;
-    int64 world_time = 2;
-    int32 f3 = 3;
+message PlayerRouteDistance {
+    int32 player_id = 1;
+    float distance_covered = 2; //not sure
+    int32 prd_f3 = 3;
 }
-
-message Payload110 { 
-    // format to be determined
-}
-
-message Payload109 { 
-    // format to be determined
-}
-
-
-message EventPositions {
+message EventSubgroupPlacements {
     int32 position = 1;
-    message EventRiderPosition {
-        int32 rider_id = 1;
-        // ?? float distance_covered = 2; 
-    }
-    repeated EventRiderPosition eventRiderPosition = 4;
-    int32 num_riders = 116;
+    repeated PlayerRouteDistance player_rd1 = 2;
+    repeated PlayerRouteDistance player_rd2 = 3;
+    repeated PlayerRouteDistance eventRiderPosition = 4;
+    repeated PlayerRouteDistance player_rd4 = 5;
+    int32 eventTotalRiders = 6;
+    int32 bikeNetworkId = 7;
+    int32 esp_f8 = 8;
+    float esp_f9 = 9; //or fixed
 }
-
+enum IPProtocol {
+    IPP_UNK = 0;
+    UDP = 1;
+    TCP = 2;
+}
+message PlayerSummary {
+    int32 plsu_f1 = 1;
+    int32 plsu_f2 = 2;
+    int32 plsu_f3 = 3;
+    int32 plsu_f4 = 4;
+}
+message PlayerSummaries {
+    sint64 plsus_f1 = 1; //stored as int32
+    sint64 plsus_f2 = 2; //stored as int32
+    sint32 plsus_f3 = 3;
+    sint32 plsus_f4 = 4;
+    int32 plsus_f5 = 5;
+    int32 plsus_f6 = 6;
+    int32 plsus_f7 = 7;
+    repeated PlayerSummary player_summaries = 8;
+}
 message ServerToClient {
-    int32 tag1 = 1;
-    int32 rider_id = 2;
+    int64 server_realm = 1;
+    int64 player_id = 2;
     int64 world_time = 3;
     int32 seqno = 4;
-    repeated PlayerState player_states = 8;
-    repeated PlayerUpdate player_updates = 9;
-    int64 tag11 = 11;
-    string local_ip = 12;
-    int32 tag15 = 15;
-    int64 tag17 = 17;
+    int32 stc_f5 = 5;
+    repeated PlayerState states = 8;
+    repeated WorldAttribute player_updates = 9;
+    repeated int64 stc_f10 = 10;
+    int64 stc_f11 = 11;
+    string zc_local_ip = 12;
+    int64 stc_f13 = 13;
+    int32 zwifters = 14;
+    int32 zc_local_port = 15;
+    IPProtocol zc_protocol = 16;
+    int64 stc_f17 = 17;
     int32 num_msgs = 18;
     int32 msgnum = 19;
-    EventPositions event_positions = 23;
-    Server1 servers1 = 24;
-    Server2 servers2 = 25;
+    bool hasSimultLogin = 20;
+    PlayerSummaries player_summaries = 21;
+    EventSubgroupPlacements ev_subgroup_ps = 23;
+    UdpConfig udp_config = 24;
+    UdpConfigVOD udp_config_vod_1 = 25;
+    int32 stc_f26 = 26;
+    UdpConfigVOD udp_config_vod_2 = 27;
+    repeated PlayerState player_states = 28;
+    TcpConfig tcp_config = 29;
+    repeated int64 ackSubsSegm = 30;
 }
-
-message ServerAddress {
-    int32 f1 = 1;
-    int32 f2 = 2;
+message RelayAddress {
+    int32 lb_realm = 1;  // load balancing cluster: server realm or 0 (generic)
+    int32 lb_course = 2; // load balancing cluster: course id
     string ip = 3;
-    int32 f4 = 4;
-    fixed32 f5 = 5;
-    fixed32 f6 = 6;
+    int32 port = 4;
+    float ra_f5 = 5; //or fixed
+    float ra_f6 = 6; //or fixed
 }
-
-message ServerPool {
-    int32 f1 = 1;
-    int32 f2 = 2;
-    repeated ServerAddress addresses = 3;
-    int32 f4 = 4;
+message RelayAddressesVOD {
+    int32 lb_realm = 1;  // load balancing cluster: server realm or 0 (generic)
+    int32 lb_course = 2; // load balancing cluster: course id
+    repeated RelayAddress relay_addresses = 3;
+    int32 rav_f4 = 4;
 }
-
-message Server2 {
-    repeated ServerPool pool = 1;
-    int32 f2 = 2;
+message UdpConfigVOD {
+    repeated RelayAddressesVOD relay_addresses_vod = 1;
+    int32 port = 2;
+    int64 ucv_f3 = 3;
+    int64 ucv_f4 = 4;
+    float ucv_f5 = 5; //or fixed
+    float ucv_f6 = 6; //or fixed
 }
-
-message Server1 {
-    repeated ServerAddress addresses = 1;
-    int32 f2 = 2;
-    int32 f3 = 3;
-    int32 f4 = 4;
+message UdpConfig {
+    repeated RelayAddress relay_addresses = 1;
+    int32 uc_f2 = 2;
+    int32 uc_f3 = 3;
+    int32 uc_f4 = 4;
 }
-
-message WorldAttributes {
-    int32 world_id = 1;
-    string name = 2;
-    int64 tag3 = 3;
-    int64 tag5 = 4;
-    int64 world_time = 6;
-    int64 clock_time = 7;
+message TcpAddress {
+    string ip = 1;
+    int32 port = 2;
+    int32 lb_realm = 3;  //load balancing cluster: server realm or 0 (generic)
+    int32 lb_course = 4; //load balancing cluster: course id (see also TcpAddressService::updateAddresses)
 }
-
-message WorldAttribute {
-    int64 world_time = 2;
+message TcpConfig {
+    repeated TcpAddress nodes = 1;
 }
-
 message EventSubgroupProtobuf {
-    int32 id = 1;
+    int64 id = 1;
     string name = 2;
-    int32 rules = 8;
-    int32 route = 22;
+    string description = 3; // ex: "Welcome to our sociable early morning/evening social group ride."
+    uint32 evs_f4 = 4; // ""
+    uint32 evs_f5 = 5; // 154 and others
+    uint32 evs_f6 = 6; // 0
+    string scode = 7; // ex: "PT3600S"
+    int32 rules_id = 8;
+    uint64 registrationStart = 9;
+    uint64 registrationStartWT = 10;
+    uint64 registrationEnd = 11;
+    uint64 registrationEndWT = 12;
+    uint64 lineUpStart = 13;
+    uint64 lineUpStartWT = 14;
+    uint64 lineUpEnd = 15;
+    uint64 lineUpEndWT = 16;
+    uint64 eventSubgroupStart = 17;
+    uint64 eventSubgroupStartWT = 18;
+    uint64 evs_f19 = 19;
+    uint64 evs_f20 = 20;
+    bool evs_f21 = 21;
+    int64 route_id = 22;
+    repeated uint64 invitedLeaders = 23;
+    float distanceInMeters = 24;
     int32 laps = 25;
     int32 startLocation = 29;
     int32 label = 30;
     int32 paceType = 31;
-    int32 jerseyHash = 36;
-}
-
-message RiderAttributes {
-    int32 f2 = 2;
-    int32 f3 = 3;
-    message AttributeMessage {
-        int32 myId = 1;
-        int32 theirId = 2;
-        string firstName = 3;
-        string lastName = 4;
-        int32 countryCode = 5;
-    }
-    AttributeMessage attributeMessage = 4;
-    int32 theirId = 10;
-    int32 f13 = 13;
+    float fromPaceValue = 32;
+    float toPaceValue = 33;
+    uint32 durationInSeconds = 34;
+    uint32 evs_f35 = 35;
+    int64 jerseyHash = 36;
+    bool evs_f37 = 37;
+    uint32 evs_f38 = 38;
+    string auxiliaryUrl = 39; // "https://cdn.zwift.com/AudioBroadcasts/wbrgrouprideaudiov4"
+    uint64 bikeHash = 40; // 4208139356
+    repeated uint64 invitedSweepers = 41;
+    uint64 evs_f42 = 42;
+    string customUrl = 43; // https://cdn.zwift.com/events/upload/workouts/CafeRide1.zwo
+    bool evs_f44 = 44; // false
+    string tags = 45; // semi-colon delimited tags eg: "fenced;3r;created_ryan;communityevent;no_kick_mode;timestamp=1603911177622"
+    uint32 lateJoinInMinutes = 46;
+    uint64 course_id = 47;
+    uint64 evs_f48 = 48;
+    string routeUrl = 49;
+    repeated int32 evs_f50 = 50;
+    bool evs_f51 = 51;
 }
